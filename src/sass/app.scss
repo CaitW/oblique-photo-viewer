@@ -1,0 +1,35 @@
+@import 'lib/bootstrap';
+@import 'lib/leaflet';
+html {
+    height: 100%;
+    body {
+        height: 100%;
+    }
+}
+
+#react-root {
+    height: 100%;
+    .main-container {
+        height: 100%;
+        .navRow {
+            nav {
+                margin-bottom: 0;
+            }
+        }
+        .contentRow {
+            height: 100%;
+            margin-top: -52px;
+            padding-top: 52px;
+            .sidebar {
+            	padding-top: 20px;
+            }
+            .map-container {
+                height: 100%;
+                padding: 0;
+                #map {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

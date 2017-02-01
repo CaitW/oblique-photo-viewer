@@ -7,7 +7,7 @@ export default class SideBar extends React.Component {
 	}
 	render () {
 		return (
-			<Col xsHidden sm={5} md={4} lg={3}>
+			<Col xsHidden sm={5} md={4} lg={3} className="sidebar">
 				Sidebar
 			</Col>
 		)

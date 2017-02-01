@@ -7,15 +7,15 @@ import { Grid } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 class App extends React.Component {
 	constructor () {
-		
+		super();
 	}
     render() {
         return (
-			<Grid fluid={true}>
-				<Row>
+			<Grid fluid={true} className="main-container">
+				<Row className="navRow">
 					<NavBar />
 				</Row>
-				<Row>
+				<Row className="contentRow">
 					<SideBar />
 					<MapContainer />
 				</Row>
