@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col } from 'react-bootstrap';
 
 export default class SideBar extends React.Component {
 	constructor () {
@@ -6,7 +7,9 @@ export default class SideBar extends React.Component {
 	}
 	render () {
 		return (
-			<div></div>
+			<Col xsHidden sm={5} md={4} lg={3}>
+				Sidebar
+			</Col>
 		)
 	}
 }
