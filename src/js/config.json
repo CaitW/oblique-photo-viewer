@@ -1,0 +1,17 @@
+{
+    "map": {
+        "maxExtent": [],
+        "baselayers": {},
+        "layers": {
+            "Photo1": {
+                "layerName": "Photo Group 1"
+            },
+            "Photo2": {
+                "layerName": "Photo Group 2"
+            },
+            "Photo3": {
+                "layerName": "Photo Group 3"
+            }
+        }
+    }
+}

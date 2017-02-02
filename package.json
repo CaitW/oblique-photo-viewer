@@ -2,7 +2,7 @@
   "name": "oblique-photo-viewer",
   "version": "1.0.0",
   "description": "Oblique Photo Viewer",
-  "main": "index.js",
+  "main": "dist/app.bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,9 +21,8 @@
     "gulp-sass": "^3.1.0",
     "gulp-watch": "^4.3.11",
     "gulp-webpack": "^1.5.0",
-    "webpack": "^2.2.1"
-  },
-  "dependencies": {
+    "json-loader": "^0.5.4",
+    "webpack": "^2.2.1",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
