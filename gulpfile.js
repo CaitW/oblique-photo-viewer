@@ -27,6 +27,7 @@ gulp.task('sass', function () {
 
 gulp.task('watch', function() {
 	livereload.listen();
+    gulp.watch('src/js/**/*.js', ['webpack']);
     gulp.watch('src/js/**/*.jsx', ['webpack']);
     gulp.watch('src/js/**/*.json', ['webpack']);
     gulp.watch('src/sass/**/*.scss', ['sass']);
