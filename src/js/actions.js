@@ -4,3 +4,10 @@ export function toggleLayer (layerID) {
 		layerID
 	}
 }
+
+export function toggleBaselayer (baselayerID) {
+	return {
+		type: "MAP:TOGGLE_BASELAYER",
+		baselayerID
+	}
+}

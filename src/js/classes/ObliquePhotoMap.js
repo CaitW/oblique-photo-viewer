@@ -6,4 +6,7 @@ export default class ObliquePhotoMap {
 		    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 		}).addTo(self.map);
 	}
+	toggleLayer(layerName, active) {
+		console.log(layerName, active);
+	}
 }

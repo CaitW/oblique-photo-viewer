@@ -1,7 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import ObliquePhotoMap from '../classes/ObliquePhotoMap.js';
 
-export default class LeafletMap extends React.Component {
+const mapStateToProps = function(store) {
+  return {
+    layers: store.layers
+  };
+}
+
+class LeafletMap extends React.Component {
 	constructor () {
 		super();
 	}
@@ -9,8 +16,13 @@ export default class LeafletMap extends React.Component {
 		let map = this.refs.map;
 		this.map = new ObliquePhotoMap(map);
 	}
-	shouldComponentUpdate () {
-		//return false;
+	componentWillReceiveProps(nextProps) {
+		let oldProps = this.props;
+		for(let layer in nextProps.layers) {
+			if(nextProps.layers[layer].active !== oldProps.layers[layer].active) {
+				this.map.toggleLayer(layer, nextProps.layers[layer].active);
+			}
+		}
 	}
 	render () {
 		return (
@@ -19,3 +31,5 @@ export default class LeafletMap extends React.Component {
 		);
 	}
 }
+
+export default connect(mapStateToProps)(LeafletMap);

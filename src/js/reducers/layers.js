@@ -1,8 +1,5 @@
 import CONFIG from '../config.json';
 const initialLayers = CONFIG.map.layers;
-for (let layerName in initialLayers) {
-    initialLayers[layerName].active = false;
-}
 export default function layers(state = initialLayers, action) {
     let newState = Object.assign({}, state);
     switch (action.type) {
