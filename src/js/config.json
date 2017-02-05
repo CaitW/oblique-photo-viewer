@@ -1,13 +1,21 @@
 {
     "map": {
-        "maxExtent": [],
+        "wisconsinExtent": [[42.491966313001029, -92.889241325548369],[47.080774762180504, -86.80479844725258]],
+        "maxExtent": [[41.491966313001029, -93.889241325548369],[48.080774762180504, -85.80479844725258]],
         "baselayers": {
-            "baselayer1": { 
-                "baselayerName": "Baselayer 1", 
+            "light": { 
+                "baselayerName": "Light", 
+                "url": "https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
                 "active": true 
             },
-            "baselayer2": { 
-                "baselayerName": "Baselayer 2", 
+            "streets": { 
+                "baselayerName": "Streets", 
+                "url": "https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
+                "active": false 
+            },
+            "satellite": { 
+                "baselayerName": "Satellite", 
+                "url": "https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
                 "active": false 
             }
         },
