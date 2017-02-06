@@ -2,16 +2,16 @@ import CONFIG from '../config.json';
 export default class ObliquePhotoMap {
     constructor(map) {
         var self = this;
-        this.baselayerGroup = L.layerGroup();
+        this.basemapGroup = L.layerGroup();
         this.layerGroup = L.layerGroup();
         this.map = L.map(map, {
                 maxBounds: CONFIG.map.maxExtent,
-                layers: [self.baselayerGroup, self.layerGroup]
+                layers: [self.basemapGroup, self.layerGroup]
             })
             .fitBounds(CONFIG.map.wisconsinExtent, {
                 padding: [10, 10]
             });
-        this.baselayerIndex = {};
+        this.basemapIndex = {};
         this.layerIndex = {};
     }
     toggleLayer(layerID, layer) {
@@ -26,23 +26,23 @@ export default class ObliquePhotoMap {
                 this.layerIndex[layerID].layer = L.tileLayer(layer.url);
             }
             if (layer.active === true) {
-                let newBaselayer = L.tileLayer(baselayer.url);
-                this.baselayerGroup.addLayer(newBaselayer);
+                let newBasemap = L.tileLayer(basemap.url);
+                this.basemapGroup.addLayer(newBasemap);
             }
         }
     }
-    toggleBaselayer(baselayerID, baselayer) {
+    toggleBasemap(basemapID, basemap) {
         var self = this;
-        if (typeof baselayer.url === "undefined") {
-        	console.error("Baselayer " + baselayerID + " must have a tile URL");
+        if (typeof basemap.url === "undefined") {
+        	console.error("Basemap " + basemapID + " must have a tile URL");
         } else {
-            if (typeof this.baselayerIndex[baselayerID] === "undefined") {
-                this.baselayerIndex[baselayerID] = Object.assign({}, baselayer);
-                this.baselayerIndex[baselayerID].layer = L.tileLayer(baselayer.url);
+            if (typeof this.basemapIndex[basemapID] === "undefined") {
+                this.basemapIndex[basemapID] = Object.assign({}, basemap);
+                this.basemapIndex[basemapID].layer = L.tileLayer(basemap.url);
             }
-            if (baselayer.active === true) {
-                this.baselayerGroup.clearLayers();
-                this.baselayerGroup.addLayer(self.baselayerIndex[baselayerID].layer);
+            if (basemap.active === true) {
+                this.basemapGroup.clearLayers();
+                this.basemapGroup.addLayer(self.basemapIndex[basemapID].layer);
             }
         }
     }

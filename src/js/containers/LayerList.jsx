@@ -1,67 +1,34 @@
 import React from 'react';
-import Layer from '../components/Layer.jsx';
-import Baselayer from '../components/Baselayer.jsx';
-import {ListGroup} from 'react-bootstrap';
+import LayerGroupList from '../components/LayerGroupList.jsx';
+import BasemapList from '../components/BasemapList.jsx';
+import { ListGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import store from '../store.js';
-import {toggleLayer, toggleBaselayer} from '../actions.js';
+import { toggleLayer, toggleBasemap } from '../actions.js';
 
 const mapStateToProps = function(store) {
-  return {
-    layers: store.layers,
-    baselayers: store.baselayers
-  };
+    return {
+        layers: store.layers,
+        basemaps: store.basemaps
+    };
 }
-
 class LayerList extends React.Component {
     constructor(props) {
         super(props);
-        this.onLayerClick = this.onLayerClick.bind(this);
     }
-    onLayerClick (layerID) {
-        store.dispatch(toggleLayer(layerID));
+    onLayerClick(layerGroupID, layerID) {
+        store.dispatch(toggleLayer(layerGroupID, layerID));
     }
-    onBaselayerClick (baselayerID) {
-        store.dispatch(toggleBaselayer(baselayerID));
-    }
-    createLayerList() {
-        let layers = [];
-        for(let layerID in this.props.layers) {
-            layers.push(<Layer 
-                key={layerID} 
-                layerID={layerID} 
-                layerName={this.props.layers[layerID].layerName}
-                active={this.props.layers[layerID].active}
-                onLayerClick={this.onLayerClick}
-            />);
-        }     
-        return layers;   
-    }
-    createBaselayerList() {
-        let baselayers = [];
-        for(let baselayerID in this.props.baselayers) {
-            baselayers.push(<Baselayer 
-                key={baselayerID} 
-                baselayerID={baselayerID} 
-                baselayerName={this.props.baselayers[baselayerID].baselayerName}
-                active={this.props.baselayers[baselayerID].active}
-                onBaselayerClick={this.onBaselayerClick}
-            />);
-        }     
-        return baselayers;           
+    onBasemapClick(basemapID) {
+        store.dispatch(toggleBasemap(basemapID));
     }
     render() {
-    	return (
+        return (
             <div>
-                <ListGroup>
-                    {this.createBaselayerList()}
-                </ListGroup>
-                <ListGroup>
-                    {this.createLayerList()}
-                </ListGroup>
+                <BasemapList basemaps={this.props.basemaps} onBasemapClick={this.onBasemapClick}/>
+                <LayerGroupList layers={this.props.layers} onLayerClick={this.onLayerClick}/>
             </div>
-    	);
+        );
     }
 }
-
 export default connect(mapStateToProps)(LayerList);

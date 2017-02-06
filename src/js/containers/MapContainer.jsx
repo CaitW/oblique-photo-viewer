@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import LeafletMap from '../components/LeafletMap.jsx';
+import LeafletMap from './LeafletMap.jsx';
 
 export default class MapContainer extends React.Component {
 	constructor () {

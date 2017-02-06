@@ -1,37 +1,67 @@
 {
     "map": {
-        "wisconsinExtent": [[42.491966313001029, -92.889241325548369],[47.080774762180504, -86.80479844725258]],
-        "maxExtent": [[41.491966313001029, -93.889241325548369],[48.080774762180504, -85.80479844725258]],
-        "baselayers": {
-            "light": { 
-                "baselayerName": "Light", 
+        "wisconsinExtent": [
+            [42.491966313001029, -92.889241325548369],
+            [47.080774762180504, -86.80479844725258]
+        ],
+        "maxExtent": [
+            [41.491966313001029, -93.889241325548369],
+            [48.080774762180504, -85.80479844725258]
+        ],
+        "basemaps": {
+            "light": {
+                "basemapName": "Light",
                 "url": "https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
-                "active": true 
+                "active": true
             },
-            "streets": { 
-                "baselayerName": "Streets", 
+            "streets": {
+                "basemapName": "Streets",
                 "url": "https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
-                "active": false 
+                "active": false
             },
-            "satellite": { 
-                "baselayerName": "Satellite", 
+            "satellite": {
+                "basemapName": "Satellite",
                 "url": "https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
-                "active": false 
+                "active": false
             }
         },
         "layers": {
-            "Photo1": {
-                "layerName": "Photo Group 1",
-                "active": true
+            "LayerGroup1": {
+                "title": "Layer Group 1",
+                "type": "layerGroup",
+                "layers": {
+                    "Photo1": {
+                        "layerName": "Photo Group 1",
+                        "active": true
+                    },
+                    "Photo2": {
+                        "layerName": "Photo Group 2",
+                        "active": false
+                    },
+                    "Photo3": {
+                        "layerName": "Photo Group 3",
+                        "active": false
+                    }
+                }
             },
-            "Photo2": {
-                "layerName": "Photo Group 2",
-                "active": false
-            },
-            "Photo3": {
-                "layerName": "Photo Group 3",
-                "active": false
-            }
+            "LayerGroup2": {
+                "title": "Layer Group 2",
+                "type": "layerGroup",
+                "layers": {
+                    "Photo1": {
+                        "layerName": "Photo Group 1",
+                        "active": false
+                    },
+                    "Photo2": {
+                        "layerName": "Photo Group 2",
+                        "active": true
+                    },
+                    "Photo3": {
+                        "layerName": "Photo Group 3",
+                        "active": false
+                    }
+                }
+            }           
         }
     }
 }
