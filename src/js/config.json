@@ -26,21 +26,14 @@
             }
         },
         "layers": {
-            "LayerGroup1": {
-                "title": "Layer Group 1",
+            "Boundaries": {
+                "title": "Boundaries",
                 "type": "layerGroup",
                 "layers": {
-                    "Photo1": {
-                        "layerName": "Photo Group 1",
+                    "County Extents": {
+                        "layerName": "County Extents",
+                        "url": "https://api.mapbox.com/styles/v1/asfpm/ciyudtx3u00262sll3x184fnb/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
                         "active": true
-                    },
-                    "Photo2": {
-                        "layerName": "Photo Group 2",
-                        "active": false
-                    },
-                    "Photo3": {
-                        "layerName": "Photo Group 3",
-                        "active": false
                     }
                 }
             },

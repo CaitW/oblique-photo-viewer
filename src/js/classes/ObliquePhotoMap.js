@@ -12,22 +12,28 @@ export default class ObliquePhotoMap {
                 padding: [10, 10]
             });
         this.basemapIndex = {};
-        this.layerIndex = {};
+        this.layerGroupIndex = {};
     }
-    toggleLayer(layerID, layer) {
+    toggleLayer(layerGroupID, layerID, layer) {
         var self = this;
         // temp if
         if (typeof layer.url === "undefined") {
         	console.error("Layer " + layerID + " must have a tile URL");
         }
         else {
-            if (typeof this.layerIndex[layerID] === "undefined") {
-                this.layerIndex[layerID] = Object.assign({}, layer);
-                this.layerIndex[layerID].layer = L.tileLayer(layer.url);
+            if (typeof this.layerGroupIndex[layerGroupID] === "undefined") {
+                this.layerGroupIndex[layerGroupID] = {}
+            }
+            let layerGroupLayers = this.layerGroupIndex[layerGroupID];
+            if (typeof layerGroupLayers[layerID] === "undefined") {
+                layerGroupLayers[layerID] = L.tileLayer(layer.url);
             }
             if (layer.active === true) {
-                let newBasemap = L.tileLayer(basemap.url);
-                this.basemapGroup.addLayer(newBasemap);
+                console.log("adding ", layerGroupID, layerID);
+                this.layerGroup.addLayer(layerGroupLayers[layerID]);
+            } else {
+               console.log("removing ", layerGroupID, layerID);
+                this.layerGroup.removeLayer(layerGroupLayers[layerID]);
             }
         }
     }
@@ -37,12 +43,11 @@ export default class ObliquePhotoMap {
         	console.error("Basemap " + basemapID + " must have a tile URL");
         } else {
             if (typeof this.basemapIndex[basemapID] === "undefined") {
-                this.basemapIndex[basemapID] = Object.assign({}, basemap);
-                this.basemapIndex[basemapID].layer = L.tileLayer(basemap.url);
+                this.basemapIndex[basemapID] = L.tileLayer(basemap.url);
             }
             if (basemap.active === true) {
                 this.basemapGroup.clearLayers();
-                this.basemapGroup.addLayer(self.basemapIndex[basemapID].layer);
+                this.basemapGroup.addLayer(self.basemapIndex[basemapID]);
             }
         }
     }
