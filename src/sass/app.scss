@@ -22,6 +22,8 @@ html {
             padding-top: 52px;
             .sidebar {
             	padding-top: 20px;
+                height: 100%;
+                overflow: scroll;
             }
             .map-container {
                 height: 100%;

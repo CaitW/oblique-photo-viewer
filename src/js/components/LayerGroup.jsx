@@ -1,6 +1,6 @@
 import React from 'react';
 import Layer from './Layer.jsx';
-import { ListGroup } from 'react-bootstrap';
+import { ListGroup, Panel } from 'react-bootstrap';
 const LayerGroup = (props) => {
     let layers = [];
     for (let layer in props.layerGroup.layers) {
@@ -16,9 +16,11 @@ const LayerGroup = (props) => {
         );
     }
     return (
-        <ListGroup>
-            {layers}
-        </ListGroup>
+        <Panel header={props.layerGroup.title}>
+            <ListGroup>
+                {layers}
+            </ListGroup>
+        </Panel>
     ); 
 }
 export default LayerGroup;

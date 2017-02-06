@@ -1,6 +1,6 @@
 import React from 'react';
 import { toggleBasemap } from '../actions.js';
-import { ListGroup } from 'react-bootstrap';
+import { Panel, ListGroup } from 'react-bootstrap';
 import Basemap from './Basemap.jsx';
 const BasemapList = (props) => {
     let basemaps = [];
@@ -16,9 +16,11 @@ const BasemapList = (props) => {
         );
     }
     return (
-        <ListGroup>
-            {basemaps}
-        </ListGroup>
+        <Panel header="Basemaps">
+            <ListGroup>
+                {basemaps}
+            </ListGroup>
+        </Panel>
     )
 };
 export default BasemapList;

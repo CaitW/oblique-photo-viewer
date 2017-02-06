@@ -1,7 +1,7 @@
 import React from 'react';
 import LayerGroupList from '../components/LayerGroupList.jsx';
 import BasemapList from '../components/BasemapList.jsx';
-import { ListGroup } from 'react-bootstrap';
+import { ListGroup, Accordion } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import store from '../store.js';
 import { toggleLayer, toggleBasemap } from '../actions.js';
