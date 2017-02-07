@@ -14,8 +14,9 @@ class LeafletMap extends React.Component {
     componentDidMount() {
         let map = this.refs.map;
         this.map = new ObliquePhotoMap(map);
-        this.toggleLayers(null, this.props.layers);
+        // order here matters (basemaps, then layers)
         this.toggleBasemaps(null, this.props.basemaps);
+        this.toggleLayers(null, this.props.layers);
     }
     toggleLayers(oldLayerProps, newLayerProps) {
         for (let layerGroupID in newLayerProps) {
@@ -37,8 +38,8 @@ class LeafletMap extends React.Component {
     }
     componentWillReceiveProps(nextProps) {
     	let oldProps = this.props;
+    	this.toggleBasemaps(oldProps.basemaps, nextProps.basemaps);
         this.toggleLayers(oldProps.layers, nextProps.layers);
-        this.toggleBasemaps(oldProps.basemaps, nextProps.basemaps);
     }
     render() {
         return (<div ref="map" id="map">

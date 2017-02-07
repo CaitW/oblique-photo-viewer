@@ -26,13 +26,13 @@ export default class ObliquePhotoMap {
             }
             let layerGroupLayers = this.layerGroupIndex[layerGroupID];
             if (typeof layerGroupLayers[layerID] === "undefined") {
-                layerGroupLayers[layerID] = L.tileLayer(layer.url);
+                layerGroupLayers[layerID] = L.tileLayer(layer.url, {
+                    zIndex: 1
+                });
             }
             if (layer.active === true) {
-                console.log("adding ", layerGroupID, layerID);
                 this.layerGroup.addLayer(layerGroupLayers[layerID]);
             } else {
-               console.log("removing ", layerGroupID, layerID);
                 this.layerGroup.removeLayer(layerGroupLayers[layerID]);
             }
         }
@@ -43,7 +43,9 @@ export default class ObliquePhotoMap {
         	console.error("Basemap " + basemapID + " must have a tile URL");
         } else {
             if (typeof this.basemapIndex[basemapID] === "undefined") {
-                this.basemapIndex[basemapID] = L.tileLayer(basemap.url);
+                this.basemapIndex[basemapID] = L.tileLayer(basemap.url, {
+                    zIndex: 0
+                });
             }
             if (basemap.active === true) {
                 this.basemapGroup.clearLayers();
