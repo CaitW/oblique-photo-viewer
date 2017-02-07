@@ -53,4 +53,10 @@ export default class ObliquePhotoMap {
             }
         }
     }
+    zoomToExtent(extent) {
+        console.log(extent);
+        this.map.fitBounds(extent, {
+            padding: [10,10]
+        });
+    }
 }

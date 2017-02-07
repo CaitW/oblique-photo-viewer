@@ -14,6 +14,10 @@ html {
         .navRow {
             nav {
                 margin-bottom: 0;
+                .dropdown-menu {
+                    max-height: 300px;
+                    overflow: scroll;
+                }
             }
         }
         .contentRow {

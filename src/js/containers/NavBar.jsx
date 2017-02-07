@@ -1,5 +1,6 @@
 import React from 'react';
 import { Nav, Navbar, NavItem, Col, MenuItem, NavDropdown } from 'react-bootstrap';
+import ZoomToCounty from './ZoomToCounty.jsx';
 
 export default class NavBar extends React.Component {
 	constructor () {
@@ -18,13 +19,7 @@ export default class NavBar extends React.Component {
 		      <Nav>
 		        <NavItem eventKey={1} href="#">Link</NavItem>
 		        <NavItem eventKey={2} href="#">Link</NavItem>
-		        <NavDropdown eventKey={3} title="Zoom To County">
-		          <MenuItem eventKey={3.1}>Action</MenuItem>
-		          <MenuItem eventKey={3.2}>Another action</MenuItem>
-		          <MenuItem eventKey={3.3}>Something else here</MenuItem>
-		          <MenuItem divider />
-		          <MenuItem eventKey={3.3}>Separated link</MenuItem>
-		        </NavDropdown>
+		        <ZoomToCounty />
 		      </Nav>
 		    </Navbar.Collapse>
 		  </Navbar>

@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import store from '../store.js';
 import ObliquePhotoMap from '../classes/ObliquePhotoMap.js';
+import { doneZooming } from '../actions.js';
 const mapStateToProps = function(store) {
     return {
         layers: store.layers,
-        basemaps: store.basemaps
+        basemaps: store.basemaps,
+        map: store.map
     };
 }
 class LeafletMap extends React.Component {
@@ -36,10 +39,19 @@ class LeafletMap extends React.Component {
             }
         }
     }
+    toggleMapActions(oldMapProps, newMapProps) {
+        if(oldMapProps !== null) {
+            if(newMapProps.state.action === "willZoom") {
+                this.map.zoomToExtent(newMapProps.state.extent);
+                store.dispatch(doneZooming());
+            }
+        }
+    }
     componentWillReceiveProps(nextProps) {
     	let oldProps = this.props;
     	this.toggleBasemaps(oldProps.basemaps, nextProps.basemaps);
         this.toggleLayers(oldProps.layers, nextProps.layers);
+        this.toggleMapActions(oldProps.map, nextProps.map);
     }
     render() {
         return (<div ref="map" id="map">
