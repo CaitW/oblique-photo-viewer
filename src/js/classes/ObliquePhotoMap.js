@@ -1,4 +1,6 @@
 import CONFIG from '../config.json';
+import LAYER_STYLES from '../styles/layers.js';
+var axios = require('axios');
 export default class ObliquePhotoMap {
     constructor(map) {
         var self = this;
@@ -14,33 +16,62 @@ export default class ObliquePhotoMap {
         this.basemapIndex = {};
         this.layerGroupIndex = {};
     }
-    toggleLayer(layerGroupID, layerID, layer) {
+    createLayer(layerGroupID, layerID, layer) {
         var self = this;
-        // temp if
-        if (typeof layer.url === "undefined") {
-        	console.error("Layer " + layerID + " must have a tile URL");
+        switch (layer.type) {
+            case "tileLayer":
+                if (typeof layer.url === "undefined") {
+                    console.error("Layer " + layerID + " must have a tile URL");
+                } else {
+                    this.layerGroupIndex[layerGroupID][layerID] = L.tileLayer(layer.url, {
+                        zIndex: 1
+                    });
+                }
+                break;
+            case "geojson":
+                if (typeof layer.dataLocation === "undefined") {
+                    console.error("Layer " + layerID + " must have a data location");
+                } else {
+                    let layerOptions = {
+                        pointToLayer: function (feature, latlng) {
+                            return new L.circleMarker(latlng);
+                        }
+                    };
+                    if (typeof layer.styleID !== "undefined" && typeof LAYER_STYLES[layer.styleID] !== "undefined") {
+                        layerOptions.style = LAYER_STYLES[layer.styleID];
+                    }
+                    this.layerGroupIndex[layerGroupID][layerID] = L.geoJson(null, layerOptions);
+                    axios.get(layer.dataLocation)
+                        .then(function(response) {
+                            self.layerGroupIndex[layerGroupID][layerID].addData(response.data);
+                        })
+                        .catch(function(error) {
+                            console.error(error);
+                        });
+                }
+                break;
+            default:
+                console.error("Unrecognized layer type in config");
+                break;
         }
-        else {
-            if (typeof this.layerGroupIndex[layerGroupID] === "undefined") {
-                this.layerGroupIndex[layerGroupID] = {}
-            }
-            let layerGroupLayers = this.layerGroupIndex[layerGroupID];
-            if (typeof layerGroupLayers[layerID] === "undefined") {
-                layerGroupLayers[layerID] = L.tileLayer(layer.url, {
-                    zIndex: 1
-                });
-            }
-            if (layer.active === true) {
-                this.layerGroup.addLayer(layerGroupLayers[layerID]);
-            } else {
-                this.layerGroup.removeLayer(layerGroupLayers[layerID]);
-            }
+    }
+    toggleLayer(layerGroupID, layerID, layer) {
+        if (typeof this.layerGroupIndex[layerGroupID] === "undefined") {
+            this.layerGroupIndex[layerGroupID] = {}
+        }
+        if (typeof this.layerGroupIndex[layerGroupID][layerID] === "undefined") {
+            this.createLayer(layerGroupID, layerID, layer);
+        }
+        if (layer.active === true) {
+            this.layerGroup.addLayer(this.layerGroupIndex[layerGroupID][layerID]);
+        } else {
+            this.layerGroup.removeLayer(this.layerGroupIndex[layerGroupID][layerID]);
         }
     }
     toggleBasemap(basemapID, basemap) {
         var self = this;
         if (typeof basemap.url === "undefined") {
-        	console.error("Basemap " + basemapID + " must have a tile URL");
+            console.error("Basemap " + basemapID + " must have a tile URL");
         } else {
             if (typeof this.basemapIndex[basemapID] === "undefined") {
                 this.basemapIndex[basemapID] = L.tileLayer(basemap.url, {
@@ -54,9 +85,8 @@ export default class ObliquePhotoMap {
         }
     }
     zoomToExtent(extent) {
-        console.log(extent);
         this.map.fitBounds(extent, {
-            padding: [10,10]
+            padding: [10, 10]
         });
     }
 }
