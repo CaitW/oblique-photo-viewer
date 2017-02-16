@@ -1,10 +1,15 @@
 import React from 'react';
 import { Nav, Navbar, NavItem, Col, MenuItem, NavDropdown } from 'react-bootstrap';
 import ZoomToCounty from './ZoomToCounty.jsx';
+import { openMobileLayerList } from '../actions.js';
+import store from '../store.js';
 
 export default class NavBar extends React.Component {
 	constructor () {
 		super();
+	}
+	onMobileLayersClick () {
+		store.dispatch(openMobileLayerList());
 	}
 	render () {
 		return (
@@ -17,8 +22,7 @@ export default class NavBar extends React.Component {
 		    </Navbar.Header>
 		    <Navbar.Collapse>
 		      <Nav>
-		        <NavItem eventKey={1} href="#">Link</NavItem>
-		        <NavItem eventKey={2} href="#">Link</NavItem>
+		        <NavItem eventKey={1} href="#" className='visible-xs-block' onClick={this.onMobileLayersClick}>Layers</NavItem>
 		        <ZoomToCounty />
 		      </Nav>
 		    </Navbar.Collapse>

@@ -1,5 +1,6 @@
 import CONFIG from '../config.json';
-import LAYER_STYLES from '../styles/layers.js';
+import LAYER_STYLES from '../layers/styles.js';
+import ON_EACH_FEATURE from '../layers/onEachFeature.js';
 var axios = require('axios');
 export default class ObliquePhotoMap {
     constructor(map) {
@@ -37,6 +38,9 @@ export default class ObliquePhotoMap {
                             return new L.circleMarker(latlng);
                         }
                     };
+                    if (typeof layer.onEachFeatureID !== "undefined" && typeof ON_EACH_FEATURE[layer.onEachFeatureID] !== "undefined") {
+                        layerOptions.onEachFeature = ON_EACH_FEATURE[layer.onEachFeatureID];
+                    }
                     if (typeof layer.styleID !== "undefined" && typeof LAYER_STYLES[layer.styleID] !== "undefined") {
                         layerOptions.style = LAYER_STYLES[layer.styleID];
                     }

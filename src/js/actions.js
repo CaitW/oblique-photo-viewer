@@ -22,3 +22,33 @@ export function doneZooming(countyName) {
         type: "MAP:DONE_ZOOMING"
     }
 }
+export function clickFeature(featureProperties, layerName) {
+    return {
+        type: "LAYER:CLICK_FEATURE",
+        featureProperties,
+        layerName
+    }
+}
+export function closePopup() {
+    return {
+        type: "POPUP:CLOSE"
+    }
+}
+export function openMobileLayerList () {
+    return {
+        type: "MOBILE:LAYER_POPUP:OPEN"
+    }
+}
+export function closeMobileLayerList () {
+    return {
+        type: "MOBILE:LAYER_POPUP:CLOSE"
+    }
+}
+export function updateWindowDimensions (height, width) {
+    return {
+        type: "WINDOW:UPDATE_DIMENSIONS",
+        height,
+        width
+    }
+}
+

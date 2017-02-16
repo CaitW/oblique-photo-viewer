@@ -46,12 +46,15 @@
             "layerName": "Backshore",
             "type": "geojson",
             "styleID": "backshore_2007",
+            "onEachFeatureID": "backshore_2007",
             "dataLocation": "./data/layers/backshore_2007.geojson",
             "active": false
           },
           "Beachclass": {
             "layerName": "Beachclass",
             "type": "geojson",
+            "styleID": "beachclass_2007",
+            "onEachFeatureID": "beachclass_2007",
             "dataLocation": "./data/layers/beachclass_2007.geojson",
             "active": false
           },
@@ -59,6 +62,7 @@
             "layerName": "Structure",
             "type": "geojson",
             "styleID": "structure_2007",
+            "onEachFeatureID": "structure_2007",
             "dataLocation": "./data/layers/structure_2007.geojson",
             "active": false
           },
@@ -67,6 +71,7 @@
             "type": "geojson",
             "dataLocation": "./data/layers/photos_2007.geojson",
             "styleID": "photos_2007",
+            "onEachFeatureID": "photos_2007",
             "active": false
           }
         }
@@ -79,19 +84,23 @@
             "layerName": "Backshore",
             "type": "geojson",
             "styleID": "backshore_1976",
+            "onEachFeatureID": "backshore_1976", 
             "dataLocation": "./data/layers/backshore_1976.geojson",
             "active": false
           },
           "Beachclass": {
             "layerName": "Beachclass",
             "type": "geojson",
+            "styleID": "beachclass_1976",
+            "onEachFeatureID":  "beachclass_1976",
             "dataLocation": "./data/layers/beachclass_1976.geojson",
-            "active": false
+            "active": true
           },
           "Structure": {
             "layerName": "Structure",
             "type": "geojson",
             "styleID": "structure_1976",
+            "onEachFeatureID": "structure_1976",
             "dataLocation": "./data/layers/structure_1976.geojson",
             "active": false
           },
@@ -100,6 +109,7 @@
             "type": "geojson",
             "dataLocation": "./data/layers/photos_1976.geojson",
             "styleID": "photos_1976",
+            "onEachFeatureID":  "photos_1976",
             "active": false
           }
         }
