@@ -38,44 +38,6 @@
           }
         }
       },
-      "2007 Inventory": {
-        "title": "2007 Inventory",
-        "type": "layerGroup",
-        "layers": {
-          "Backshore": {
-            "layerName": "Backshore",
-            "type": "geojson",
-            "styleID": "backshore_2007",
-            "onEachFeatureID": "backshore_2007",
-            "dataLocation": "./data/layers/backshore_2007.geojson",
-            "active": false
-          },
-          "Beachclass": {
-            "layerName": "Beachclass",
-            "type": "geojson",
-            "styleID": "beachclass_2007",
-            "onEachFeatureID": "beachclass_2007",
-            "dataLocation": "./data/layers/beachclass_2007.geojson",
-            "active": false
-          },
-          "Structure": {
-            "layerName": "Structure",
-            "type": "geojson",
-            "styleID": "structure_2007",
-            "onEachFeatureID": "structure_2007",
-            "dataLocation": "./data/layers/structure_2007.geojson",
-            "active": false
-          },
-          "Photos": {
-            "layerName": "Photos",
-            "type": "geojson",
-            "dataLocation": "./data/layers/photos_2007.geojson",
-            "styleID": "photos_2007",
-            "onEachFeatureID": "photos_2007",
-            "active": false
-          }
-        }
-      },
       "1976 Inventory": {
         "title": "1976 Inventory",
         "type": "layerGroup",
@@ -110,6 +72,44 @@
             "dataLocation": "./data/layers/photos_1976.geojson",
             "styleID": "photos_1976",
             "onEachFeatureID":  "photos_1976",
+            "active": false
+          }
+        }
+      },
+      "2007 Inventory": {
+        "title": "2007 Inventory",
+        "type": "layerGroup",
+        "layers": {
+          "Backshore": {
+            "layerName": "Backshore",
+            "type": "geojson",
+            "styleID": "backshore_2007",
+            "onEachFeatureID": "backshore_2007",
+            "dataLocation": "./data/layers/backshore_2007.geojson",
+            "active": false
+          },
+          "Beachclass": {
+            "layerName": "Beachclass",
+            "type": "geojson",
+            "styleID": "beachclass_2007",
+            "onEachFeatureID": "beachclass_2007",
+            "dataLocation": "./data/layers/beachclass_2007.geojson",
+            "active": false
+          },
+          "Structure": {
+            "layerName": "Structure",
+            "type": "geojson",
+            "styleID": "structure_2007",
+            "onEachFeatureID": "structure_2007",
+            "dataLocation": "./data/layers/structure_2007.geojson",
+            "active": false
+          },
+          "Photos": {
+            "layerName": "Photos",
+            "type": "geojson",
+            "dataLocation": "./data/layers/photos_2007.geojson",
+            "styleID": "photos_2007",
+            "onEachFeatureID": "photos_2007",
             "active": false
           }
         }

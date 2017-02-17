@@ -28,11 +28,20 @@ html {
                 padding-top: 20px;
                 height: 100%;
                 overflow: scroll;
-                .panel-body {
-                    padding: 10px;
-                    .list-group {
-                        margin-bottom: 0;
+                .panel {
+                    margin-bottom: 10px;
+                    .panel-heading {
+                        padding: 5px 10px;
                     }
+                    .panel-body {
+                        padding: 10px;
+                        .list-group {
+                            margin-bottom: 0;
+                            .list-group-item {
+                                padding: 5px 10px;
+                            }
+                        }
+                    }                    
                 }
             }
             .map-container {
