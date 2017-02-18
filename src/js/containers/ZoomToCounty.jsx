@@ -18,11 +18,11 @@ class ZoomToCounty extends React.Component {
     render() {
     	var self = this;
     	var counties = [];
-    	for(let countyName in CONFIG.map.countyBounds) {
+    	for(let countyName in CONFIG.map.county_shorelines) {
     		counties.push(<MenuItem key={countyName} onClick={self.onMenuItemClick.bind(null, countyName)}>{countyName}</MenuItem>);
     	}
     	return (
-			<NavDropdown title="Zoom To County" id="zoom-to-county">
+			<NavDropdown title="Zoom To Shoreline" id="zoom-to-county">
 				{counties}
 			</NavDropdown>
     	)

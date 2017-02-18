@@ -8,7 +8,7 @@ export default function map(state = initialMapState, action) {
     let newState = Object.assign({}, state);
     switch (action.type) {
         case "MAP:ZOOM_TO_COUNTY":
-            let extent = CONFIG.map.countyBounds[action.countyName];
+            let extent = CONFIG.map.county_shorelines[action.countyName];
             newState.state = {
                 action: "willZoom",
                 extent: extent

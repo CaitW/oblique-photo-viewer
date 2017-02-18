@@ -16,6 +16,10 @@ export default class ObliquePhotoMap {
             });
         this.basemapIndex = {};
         this.layerGroupIndex = {};
+        window.getExtent = function () {
+            var bounds = self.map.getBounds();
+            return bounds.toBBoxString();
+        }
     }
     createLayer(layerGroupID, layerID, layer) {
         var self = this;
