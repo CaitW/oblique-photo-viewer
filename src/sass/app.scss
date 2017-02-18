@@ -15,8 +15,10 @@ html {
             nav {
                 margin-bottom: 0;
                 .dropdown-menu {
-                    max-height: 300px;
-                    overflow: scroll;
+                    z-index: 9999;
+                    .shoreline {
+                        text-transform: capitalize;
+                    }
                 }
             }
         }
