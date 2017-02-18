@@ -51,4 +51,8 @@ export function updateWindowDimensions (height, width) {
         width
     }
 }
-
+export function resetMapView () {
+    return {
+        type: "MAP:RESET_VIEW"
+    }
+}

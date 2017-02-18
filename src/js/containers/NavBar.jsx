@@ -1,6 +1,7 @@
 import React from 'react';
 import { Nav, Navbar, NavItem, Col, MenuItem, NavDropdown } from 'react-bootstrap';
 import ZoomToCounty from './ZoomToCounty.jsx';
+import ResetView from '../components/ResetView.jsx';
 import { openMobileLayerList } from '../actions.js';
 import store from '../store.js';
 
@@ -24,6 +25,8 @@ export default class NavBar extends React.Component {
 		      <Nav>
 		        <NavItem eventKey={1} href="#" className='visible-xs-block' onClick={this.onMobileLayersClick}>Layers</NavItem>
 		        <ZoomToCounty />
+		      	<ResetView />
+		      	<NavItem eventKey={3} href="#">About</NavItem>
 		      </Nav>
 		    </Navbar.Collapse>
 		  </Navbar>
