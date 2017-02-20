@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import LayerList from './LayerList.jsx';
+import Legend from './Legend.jsx';
 
 export default class SideBar extends React.Component {
 	constructor () {
@@ -10,6 +11,7 @@ export default class SideBar extends React.Component {
 		return (
 			<Col xsHidden sm={5} md={4} lg={3} className="sidebar">
 				<LayerList />
+				<Legend />
 			</Col>
 		)
 	}
