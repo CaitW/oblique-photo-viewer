@@ -1,20 +1,20 @@
 let initialState = {
     visible: false,
     featureProperties: false,
-    popupType: false
+    featureType: false
 };
-export default function popup(state = initialState, action) {
+export default function featureModal(state = initialState, action) {
     let newState = Object.assign({}, state);
     switch (action.type) {
         case "LAYER:CLICK_FEATURE":
             newState.visible = true;
             newState.featureProperties = action.featureProperties;
-            newState.popupType = action.popupType;
+            newState.featureType = action.featureType;
             break;
-        case "POPUP:CLOSE":
+        case "FEATURE_MODAL:CLOSE":
             newState.visible = false;
             newState.featureProperties = false;
-            newState.popupType = false;
+            newState.featureType = false;
             break;
         default:
             newState = state;

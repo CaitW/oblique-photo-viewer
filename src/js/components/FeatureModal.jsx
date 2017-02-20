@@ -2,7 +2,7 @@ import React from 'react';
 import {Modal, Button, Table, Tabs, Tab} from 'react-bootstrap';
 import {getPhotoURLs} from '../util.js';
 
-const Popup = (props) => {
+const FeatureModal = (props) => {
     let classNames = ["static-modal"];
     if (props.visible === false) {
         classNames.push("hidden");
@@ -13,7 +13,7 @@ const Popup = (props) => {
     	rows.push(<tr key={property}><td><strong>{property}</strong></td><td>{value}</td></tr>);
     }
     let tabs = [];
-    switch(props.popupType) {
+    switch(props.featureType) {
     	case "photo": 
             let photoURLs = getPhotoURLs(props.featureProperties);
      		tabs.push(
@@ -64,4 +64,4 @@ const Popup = (props) => {
 		</div>
 	);
 }
-export default Popup;
+export default FeatureModal;
