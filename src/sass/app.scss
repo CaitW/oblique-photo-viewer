@@ -84,6 +84,12 @@ html {
                 height: 100%;
                 overflow: scroll;
                 .modal-body {
+                    .panel-heading {
+                        i {
+                            float: right;
+                            line-height: inherit;
+                        }
+                    }
                     .panel-body {
                         padding: 5px;
                         .list-group {
