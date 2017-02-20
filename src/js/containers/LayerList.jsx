@@ -1,7 +1,7 @@
 import React from 'react';
-import LayerGroupList from '../components/LayerGroupList.jsx';
+import LayerGroup from '../components/LayerGroup.jsx';
 import BasemapList from '../components/BasemapList.jsx';
-import { ListGroup, Accordion } from 'react-bootstrap';
+import { PanelGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import store from '../store.js';
 import { toggleLayer, toggleBasemap } from '../actions.js';
@@ -23,11 +23,25 @@ class LayerList extends React.Component {
         store.dispatch(toggleBasemap(basemapID));
     }
     render() {
+        let layerGroups = [];
+        let eventKey = 1;
+        for (let layerGroupID in this.props.layers) {
+            layerGroups.push(
+                <LayerGroup 
+                    key={layerGroupID} 
+                    layerGroupID={layerGroupID} 
+                    layerGroup={this.props.layers[layerGroupID]}
+                    onLayerClick={this.onLayerClick}
+                    eventKey={eventKey.toString()}
+                />
+            );
+            eventKey++;
+        }
         return (
-            <div>
-                <BasemapList basemaps={this.props.basemaps} onBasemapClick={this.onBasemapClick}/>
-                <LayerGroupList layers={this.props.layers} onLayerClick={this.onLayerClick}/>
-            </div>
+            <PanelGroup>
+                {layerGroups}
+                <BasemapList basemaps={this.props.basemaps} onBasemapClick={this.onBasemapClick} eventKey={eventKey.toString()}/>
+            </PanelGroup>
         );
     }
 }

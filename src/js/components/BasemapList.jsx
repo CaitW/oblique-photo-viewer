@@ -16,7 +16,7 @@ const BasemapList = (props) => {
         );
     }
     return (
-        <Panel header="Basemaps">
+        <Panel header="Basemaps" eventKey="1">
             <ListGroup>
                 {basemaps}
             </ListGroup>

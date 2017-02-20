@@ -16,7 +16,7 @@ const LayerGroup = (props) => {
         );
     }
     return (
-        <Panel header={props.layerGroup.title}>
+        <Panel header={props.layerGroup.title} eventKey={props.eventKey}>
             <ListGroup>
                 {layers}
             </ListGroup>
