@@ -19,6 +19,9 @@ const Popup = (props) => {
      		tabs.push(
     			<Tab key="image" eventKey={1} title="Image">
                     <img src={photoURLs.popup} />
+                    <div className="photo-button-group">
+                        <a href={photoURLs.original} target="_blank" rel="noopener noreferrer"><Button bsStyle="primary">Open Original in New Window</Button></a>
+                    </div>
     			</Tab>
     		);
     		tabs.push(

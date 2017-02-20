@@ -15,6 +15,5 @@ export function getPhotoURLs (photoProperties) {
 		} 
 		urls[size] = [base,lakeName,year,sizeDir,modifiedFilename].join("/");
 	}
-	console.log(urls);
 	return urls;
 }

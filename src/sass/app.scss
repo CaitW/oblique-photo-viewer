@@ -43,7 +43,7 @@ html {
                                 padding: 5px 10px;
                             }
                         }
-                    }                    
+                    }
                 }
             }
             .map-container {
@@ -56,6 +56,17 @@ html {
                     .modal-body {
                         max-height: 400px;
                         overflow-y: scroll;
+                        .tab-content {
+                            border: 1px solid #ddd;
+                            border-top-width: 0;
+                            padding: 10px;
+                            table {
+                                margin-bottom: 0;
+                            }
+                            .photo-button-group {
+                                margin-top: 10px;
+                            }
+                        }
                     }
                 }
             }
