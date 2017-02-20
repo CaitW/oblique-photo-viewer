@@ -56,7 +56,7 @@
                         "styleID": "beachclass_1976",
                         "onEachFeatureID": "beachclass_1976",
                         "dataLocation": "./data/layers/beachclass_1976.geojson",
-                        "active": true
+                        "active": false
                     },
                     "Structure": {
                         "layerName": "Structure",
@@ -72,7 +72,7 @@
                         "dataLocation": "./data/layers/photos_1976.geojson",
                         "styleID": "photos_1976",
                         "onEachFeatureID": "photos_1976",
-                        "active": false
+                        "active": true
                     }
                 }
             },
@@ -176,6 +176,15 @@
                 [42.481212777716166, -87.95997619628908],
                 [42.69051116998241, -87.68531799316406]
             ]
+        }
+    },
+    "photos": {
+        "urlBase": "http://floodatlas.org/wcmp/obliques",
+        "sizes": {
+            "popup": "pop",
+            "medium": "med",
+            "original": "orig",
+            "thumbnail": "thumb"
         }
     }
 }

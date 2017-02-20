@@ -22,11 +22,12 @@ export function doneZooming(countyName) {
         type: "MAP:DONE_ZOOMING"
     }
 }
-export function clickFeature(featureProperties, layerName) {
+export function clickFeature(featureProperties, layerName, popupType) {
     return {
         type: "LAYER:CLICK_FEATURE",
         featureProperties,
-        layerName
+        layerName,
+        popupType
     }
 }
 export function closePopup() {

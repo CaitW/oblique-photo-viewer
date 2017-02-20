@@ -20,7 +20,7 @@ class MapContainer extends React.Component {
     render() {
         return (
         	<Col xs={12} sm={7} md={8} lg={9} className="map-container">
-				<Popup visible={this.props.popup.visible} featureProperties={this.props.popup.featureProperties} onCloseClick={this.closeModal}/>
+				<Popup visible={this.props.popup.visible} featureProperties={this.props.popup.featureProperties} popupType={this.props.popup.popupType} onCloseClick={this.closeModal}/>
 				<LeafletMap />
 			</Col>
 		);

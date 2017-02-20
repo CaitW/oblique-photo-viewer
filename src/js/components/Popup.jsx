@@ -1,5 +1,6 @@
 import React from 'react';
-import {Modal, Button, Table} from 'react-bootstrap';
+import {Modal, Button, Table, Tabs, Tab} from 'react-bootstrap';
+import {getPhotoURLs} from '../util.js';
 
 const Popup = (props) => {
     let classNames = ["static-modal"];
@@ -11,6 +12,37 @@ const Popup = (props) => {
     	let value = props.featureProperties[property];
     	rows.push(<tr key={property}><td><strong>{property}</strong></td><td>{value}</td></tr>);
     }
+    let tabs = [];
+    switch(props.popupType) {
+    	case "photo": 
+            let photoURLs = getPhotoURLs(props.featureProperties);
+     		tabs.push(
+    			<Tab key="image" eventKey={1} title="Image">
+                    <img src={photoURLs.popup} />
+    			</Tab>
+    		);
+    		tabs.push(
+    			<Tab key="data" eventKey={2} title="Data">
+					  <Table striped bordered condensed hover>
+					    <tbody>
+					    	{rows}
+					    </tbody>
+					  </Table>
+    			</Tab>
+    		);
+    	break;
+    	default:
+    		tabs.push(
+    			<Tab key="data" eventKey={1} title="Data">
+					  <Table striped bordered condensed hover>
+					    <tbody>
+					    	{rows}
+					    </tbody>
+					  </Table>
+    			</Tab>
+    		);
+    	break;
+    }
     return (
     	<div id='map-popup' className={classNames.join(" ")}>
 		    <Modal.Dialog>
@@ -18,11 +50,9 @@ const Popup = (props) => {
 			        	<Modal.Title>Feature</Modal.Title>
 			      </Modal.Header>
 			      <Modal.Body>
-					  <Table striped bordered condensed hover>
-					    <tbody>
-					    	{rows}
-					    </tbody>
-					  </Table>
+	      			<Tabs id="uncontrolled-tab-example">	
+			    		{tabs}
+					</Tabs>
 			      </Modal.Body>
 			      <Modal.Footer>
 			        	<Button onClick={props.onCloseClick}>Close</Button>
