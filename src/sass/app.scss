@@ -1,5 +1,6 @@
 @import 'lib/bootstrap';
 @import 'lib/leaflet';
+@import 'lib/font-awesome/font-awesome';
 html {
     height: 100%;
     body {
@@ -34,6 +35,13 @@ html {
                     margin-bottom: 10px;
                     .panel-heading {
                         padding: 5px 10px;
+                        i {
+                            float: right;
+                            line-height: inherit;
+                        }
+                        &:hover {
+                            cursor: pointer;
+                        }
                     }
                     .panel-body {
                         padding: 10px;

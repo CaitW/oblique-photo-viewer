@@ -15,12 +15,24 @@ const LayerGroup = (props) => {
             />
         );
     }
+    let bodyClassNames = ["panel-body"];
+    let headerClassNames = ["panel-heading"];
+    let iconClassNames = ["fa"];
+    if(props.panelVisible === false) {
+        bodyClassNames.push("hidden");
+        iconClassNames.push("fa-plus");
+    } else {
+        headerClassNames.push("active");
+    }
     return (
-        <Panel header={props.layerGroup.title} eventKey={props.eventKey}>
-            <ListGroup>
-                {layers}
-            </ListGroup>
-        </Panel>
+        <div className="panel panel-default">
+            <div className={headerClassNames.join(" ")} onClick={props.onPanelClick.bind(null, props.layerGroupID)}>{props.layerGroup.title}<i className={iconClassNames.join(" ")}></i></div>
+            <div className={bodyClassNames.join(" ")}>
+                <ListGroup>
+                    {layers}
+                </ListGroup>
+            </div>
+        </div>
     ); 
 }
 export default LayerGroup;

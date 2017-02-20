@@ -15,12 +15,24 @@ const BasemapList = (props) => {
             />
         );
     }
+    let bodyClassNames = ["panel-body"];
+    let headerClassNames = ["panel-heading"];
+    let iconClassNames = ["fa"];
+    if(props.panelVisible === false) {
+        bodyClassNames.push("hidden");
+        iconClassNames.push("fa-plus");
+    } else {
+        headerClassNames.push("active");
+    }
     return (
-        <Panel header="Basemaps" eventKey="1">
-            <ListGroup>
-                {basemaps}
-            </ListGroup>
-        </Panel>
+        <div className="panel panel-default">
+            <div className={headerClassNames.join(" ")} onClick={props.onPanelClick.bind(null, "Basemaps")}>Basemaps<i className={iconClassNames.join(" ")}></i></div>
+            <div className={bodyClassNames.join(" ")}>
+                <ListGroup>
+                    {basemaps}
+                </ListGroup>
+            </div>
+        </div>
     )
 };
 export default BasemapList;

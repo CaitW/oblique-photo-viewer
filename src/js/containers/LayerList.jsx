@@ -15,12 +15,31 @@ const mapStateToProps = function(store) {
 class LayerList extends React.Component {
     constructor(props) {
         super(props);
+        let groups = {};
+        groups["Basemaps"] = false;
+        for(let layerGroupID in this.props.layers) {
+            groups[layerGroupID] = false;
+        }
+        this.state = groups;
+        this.onPanelClick = this.onPanelClick.bind(this);
     }
     onLayerClick(layerGroupID, layerID) {
         store.dispatch(toggleLayer(layerGroupID, layerID));
     }
     onBasemapClick(basemapID) {
         store.dispatch(toggleBasemap(basemapID));
+    }
+    onPanelClick(panelName) {
+        let self = this;
+        let newState = Object.assign({}, self.state);
+        for(let layerGroup in newState) {
+            if(panelName === layerGroup) {
+                newState[panelName] = !newState[panelName];
+            } else {
+                newState[layerGroup] = false;
+            }
+        }
+        this.setState(newState);
     }
     render() {
         let layerGroups = [];
@@ -33,6 +52,8 @@ class LayerList extends React.Component {
                     layerGroup={this.props.layers[layerGroupID]}
                     onLayerClick={this.onLayerClick}
                     eventKey={eventKey.toString()}
+                    onPanelClick={this.onPanelClick}
+                    panelVisible={this.state[layerGroupID]}
                 />
             );
             eventKey++;
@@ -40,7 +61,7 @@ class LayerList extends React.Component {
         return (
             <PanelGroup>
                 {layerGroups}
-                <BasemapList basemaps={this.props.basemaps} onBasemapClick={this.onBasemapClick} eventKey={eventKey.toString()}/>
+                <BasemapList basemaps={this.props.basemaps} panelVisible={this.state["Basemaps"]} onBasemapClick={this.onBasemapClick} eventKey={eventKey.toString()} onPanelClick={this.onPanelClick}/>
             </PanelGroup>
         );
     }

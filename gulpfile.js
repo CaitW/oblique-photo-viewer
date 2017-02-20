@@ -12,6 +12,8 @@ gulp.task('html', function() {
 gulp.task('copy', function() {
     gulp.src('./src/data/**/*')
         .pipe(gulp.dest('./dist/data'));
+    gulp.src('./src/fonts/**/*')
+        .pipe(gulp.dest('./dist/fonts'));
 });
 gulp.task('webpack', function() {
     return gulp.src('src/js/app.jsx')
@@ -35,6 +37,7 @@ gulp.task('watch-files', function() {
     gulp.watch('src/*.html', ['html']);
     gulp.watch('src/js/lib/*.js', ['scripts']);
     gulp.watch('src/data/**/*', ['copy']);
+    gulp.watch('src/fonts/**/*', ['copy']);
 });
 gulp.task('scripts', function() {
     return gulp.src('src/js/lib/*.js')
