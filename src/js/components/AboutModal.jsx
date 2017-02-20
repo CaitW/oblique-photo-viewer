@@ -1,28 +1,39 @@
 import React from 'react';
-import {Modal, Button, Table, Tabs, Tab} from 'react-bootstrap';
-import {getPhotoURLs} from '../util.js';
-
-const AboutModal = (props) => {
-    let classNames = ["static-modal"];
-    if (props.visible === false) {
-        classNames.push("hidden");
-    }
-    return (
-    	<div id='about-modal' className={classNames.join(" ")}>
-		    <Modal.Dialog>
-			      <Modal.Header>
-			        	<Modal.Title>Feature</Modal.Title>
-			      </Modal.Header>
-			      <Modal.Body>
-	      			<Tabs id="uncontrolled-tab-example">	
-			    		{tabs}
-					</Tabs>
-			      </Modal.Body>
-			      <Modal.Footer>
-			        	<Button onClick={props.onCloseClick}>Close</Button>
-			      </Modal.Footer>
-		    </Modal.Dialog>
-		</div>
-	);
+import { Modal, Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import store from '../store.js';
+import { closeAboutModal } from '../actions.js';
+import CONFIG from '../config.json';
+const mapStateToProps = function(store) {
+    return {
+        visible: store.aboutModal.visible
+    };
 }
-export default Popup;
+class AboutModal extends React.Component {
+    constructor() {
+        super();
+    }
+    onCloseClick() {
+        store.dispatch(closeAboutModal());
+    }
+    render() {
+        let classNames = ["static-modal"];
+        if (this.props.visible === false) {
+            classNames.push("hidden");
+        }
+        return (<div id='about-modal' className={classNames.join(" ")}>
+			    <Modal.Dialog>
+				      <Modal.Header>
+				        	<Modal.Title>About</Modal.Title>
+				      </Modal.Header>
+				      <Modal.Body>
+				      	{CONFIG.meta.aboutText}
+				      </Modal.Body>
+				      <Modal.Footer>
+				        	<Button onClick={this.onCloseClick}>Close</Button>
+				      </Modal.Footer>
+			    </Modal.Dialog>
+			</div>);
+    }
+}
+export default connect(mapStateToProps)(AboutModal);

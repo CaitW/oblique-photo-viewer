@@ -5,12 +5,14 @@ import basemaps from './reducers/basemaps.js';
 import map from './reducers/map.js';
 import featureModal from './reducers/featureModal.js';
 import mobile from './reducers/mobile.js';
+import aboutModal from './reducers/aboutModal.js';
 const theReducer = combineReducers({
     layers,
     basemaps,
     map,
     featureModal,
-    mobile
+    mobile,
+    aboutModal
 });
 const store = createStore(theReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 export default store;

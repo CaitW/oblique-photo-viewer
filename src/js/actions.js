@@ -57,3 +57,13 @@ export function resetMapView () {
         type: "MAP:RESET_VIEW"
     }
 }
+export function closeAboutModal () {
+    return {
+        type: "ABOUT_MODAL:CLOSE"
+    }
+}
+export function openAboutModal () {
+    return {
+        type: "ABOUT_MODAL:OPEN"
+    }
+}

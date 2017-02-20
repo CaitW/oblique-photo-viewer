@@ -1,4 +1,7 @@
 {
+    "meta": {
+        "aboutText": "About text goes here"
+    },
     "map": {
         "wisconsinExtent": [
             [42.491966313001029, -92.889241325548369],
