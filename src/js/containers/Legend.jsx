@@ -1,6 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default class Legend extends React.Component {
+const mapStateToProps = function(store) {
+    return {
+        layers: store.layers
+    };
+}
+class Legend extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -25,13 +31,26 @@ export default class Legend extends React.Component {
             headerClassNames.push("active");
             iconClassNames.push("fa-chevron-up");
         }
+        let activeLayers = [];
+        for (let layerGroupName in this.props.layers) {
+        	let layerGroup = this.props.layers[layerGroupName].layers;
+        	for (let layerName in layerGroup) {
+        		let layer = layerGroup[layerName];
+        		if(layer.active === true) {
+        			activeLayers.push(
+        				<div key={layerGroupName + ":" + layerName}>{layer.layerName}</div>
+        			);
+        		}
+        	}
+        }
         return (
         	<div className="panel panel-default">
 	            <div className={headerClassNames.join(" ")} onClick={this.onPanelClick}>Legend<i className={iconClassNames.join(" ")}></i></div>
 	            <div className={bodyClassNames.join(" ")}>
-	            	Legend
+	            	{activeLayers}
 	            </div>
 	        </div>
 	    );
     }
 }
+export default connect(mapStateToProps)(Legend);
