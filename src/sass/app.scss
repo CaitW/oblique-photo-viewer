@@ -1,6 +1,9 @@
+// Libraries
 @import 'lib/bootstrap';
 @import 'lib/leaflet';
 @import 'lib/font-awesome/font-awesome';
+
+// CSS
 html {
     height: 100%;
     body {
@@ -38,9 +41,11 @@ html {
                         i {
                             float: right;
                             line-height: inherit;
+                            color: #616161;
                         }
                         &:hover {
                             cursor: pointer;
+                            background-color: #EEEEEE;
                         }
                     }
                     .panel-body {

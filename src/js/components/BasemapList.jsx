@@ -23,6 +23,7 @@ const BasemapList = (props) => {
         iconClassNames.push("fa-plus");
     } else {
         headerClassNames.push("active");
+        iconClassNames.push("fa-chevron-up");
     }
     return (
         <div className="panel panel-default">
