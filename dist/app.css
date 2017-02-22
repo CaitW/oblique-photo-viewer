@@ -8427,6 +8427,8 @@ html {
             border: 1px solid #ddd;
             border-top-width: 0;
             padding: 10px; }
+            #react-root .main-container .contentRow .map-container #map-popup .modal-body .tab-content img {
+              max-width: 100%; }
             #react-root .main-container .contentRow .map-container #map-popup .modal-body .tab-content table {
               margin-bottom: 0; }
             #react-root .main-container .contentRow .map-container #map-popup .modal-body .tab-content .photo-button-group {
