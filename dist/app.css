@@ -8392,7 +8392,8 @@ html {
       #react-root .main-container .contentRow .sidebar {
         padding-top: 20px;
         height: 100%;
-        overflow: scroll; }
+        overflow-y: scroll;
+        overflow-x: hidden; }
         #react-root .main-container .contentRow .sidebar .panel {
           margin-bottom: 10px; }
           #react-root .main-container .contentRow .sidebar .panel .panel-heading {
