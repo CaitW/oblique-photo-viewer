@@ -67,3 +67,13 @@ export function openAboutModal () {
         type: "ABOUT_MODAL:OPEN"
     }
 }
+export function styleCacheUpdate (layerGroupName, layerName, propertyName, style, geometryType) {
+    return {
+        type: "LAYER:STYLE_CACHE_UPDATE",
+        layerGroupName, 
+        layerName, 
+        propertyName, 
+        style, 
+        geometryType
+    }
+}

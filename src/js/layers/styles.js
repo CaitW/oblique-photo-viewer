@@ -1,3 +1,6 @@
+import store from '../store.js';
+import { styleCacheUpdate } from '../actions.js';
+
 let COLORS = {
     RED: "#F44336",
     GREEN: "#8BC34A",
@@ -18,6 +21,17 @@ let COLORS = {
     LIGHT_GRAY: "#E0E0E0",
     LIGHT_PINK: "#F48FB1"
 };
+// keeps track of current styles for legend
+var STYLE_CACHE = {};
+function addToCache(layerGroupName, layerName, propertyName, style, geometryType) {
+    STYLE_CACHE[layerGroupName] = STYLE_CACHE[layerGroupName] || {};
+    STYLE_CACHE[layerGroupName][layerName] = STYLE_CACHE[layerGroupName][layerName] || {};
+    if (typeof STYLE_CACHE[layerGroupName][layerName][propertyName] === "undefined") {
+        STYLE_CACHE[layerGroupName][layerName][propertyName] = true;
+        store.dispatch(styleCacheUpdate(layerGroupName, layerName, propertyName, style, geometryType))
+    }
+    return style;
+}
 var LAYER_STYLES = {
     backshore_1976: function(feature) {
         let style = {
@@ -43,7 +57,7 @@ var LAYER_STYLES = {
                 style.color = COLORS.BLACK;
                 break;
         }
-        return style;
+        return addToCache("1976 Inventory", "Backshore", feature.properties.Bluff_Cond, style, feature.geometry.type);
     },
     backshore_2007: function(feature) {
         let style = {
@@ -69,39 +83,43 @@ var LAYER_STYLES = {
                 style.color = COLORS.BLACK;
                 break;
         }
-        return style;
+        return addToCache("2007 Inventory", "Backshore", feature.properties.Bluff_Cond, style, feature.geometry.type);
     },
     photos_1976: function(feature) {
-        return {
+        let style = {
             radius: 3,
             fillColor: COLORS.PURPLE,
             weight: 0,
             fillOpacity: 1
         };
+        return addToCache("1976 Inventory", "Photos", "photos", style, feature.geometry.type);
     },
     photos_2007: function(feature) {
-        return {
+        let style = {
             radius: 3,
             fillColor: COLORS.CYAN,
             weight: 0,
             fillOpacity: 1
         };
+        return addToCache("2007 Inventory", "Photos", "photos", style, feature.geometry.type);
     },
     structure_1976: function(feature) {
-        return {
+        let style = {
             radius: 3,
             fillColor: COLORS.BLACK,
             weight: 0,
             fillOpacity: 1
         };
+        return addToCache("1976 Inventory", "Structure", "structures", style, feature.geometry.type);
     },
     structure_2007: function(feature) {
-        return {
+        let style = {
             radius: 3,
             fillColor: COLORS.BLACK,
             weight: 0,
             fillOpacity: 1
         };
+        return addToCache("2007 Inventory", "Structure", "structures", style, feature.geometry.type);
     },
     beachclass_1976: function(feature) {
         let style = {
@@ -143,9 +161,9 @@ var LAYER_STYLES = {
                 break;
             default:
                 style.color = COLORS.BLACK;
-            break;
+                break;
         }
-        return style;
+        return addToCache("1976 Inventory", "Beachclass", feature.properties["Protecti_1"], style, feature.geometry.type);
     },
     beachclass_2007: function(feature) {
         let style = {
@@ -187,9 +205,9 @@ var LAYER_STYLES = {
                 break;
             default:
                 style.color = COLORS.BLACK;
-            break;
+                break;
         }
-        return style;
+        return addToCache("2007 Inventory", "Beachclass", feature.properties["Protecti_1"], style, feature.geometry.type);
     }
 }
-export default LAYER_STYLES;
+export {LAYER_STYLES};

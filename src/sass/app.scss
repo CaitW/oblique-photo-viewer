@@ -58,6 +58,14 @@ html {
                         }
                     }
                 }
+                #legend {
+                    .legend-list {
+                        list-style: none;
+                        i {
+                            margin-right: 10px;
+                        }
+                    }
+                }
             }
             .map-container {
                 height: 100%;

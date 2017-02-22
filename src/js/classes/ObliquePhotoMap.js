@@ -1,5 +1,5 @@
 import CONFIG from '../config.json';
-import LAYER_STYLES from '../layers/styles.js';
+import {LAYER_STYLES} from '../layers/styles.js';
 import ON_EACH_FEATURE from '../layers/onEachFeature.js';
 var axios = require('axios');
 export default class ObliquePhotoMap {
