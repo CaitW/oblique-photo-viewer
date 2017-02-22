@@ -50,8 +50,24 @@ class Legend extends React.Component {
                 styleIconClassNames.push("fa-circle");
                 iconStyle.color = layer.styleCache[styleName].style.fillColor;
             }
-            styles.push(<li key={styleName}><i style={iconStyle} className={styleIconClassNames.join(" ")}></i>{styleName}</li>);
+            if(styleName === "null") {
+            	styleName = "(No Value)";
+            }
+            styles.push({
+            	styleName,
+            	iconStyle,
+            	styleIconClassNames
+            });
         }
+        styles = styles.sort(function (a,b) {
+        	if (a.styleName < b.styleName) {
+        		return -1;
+        	}
+        	if (a.styleName > b.styleName) {
+        		return 1;
+        	}
+        	return 0;
+        });
         return styles;
     };
     render() {
@@ -68,10 +84,13 @@ class Legend extends React.Component {
         let layers = [];
         let activeLayers = this.getActiveLayers();
         for (let layerData of activeLayers) {
-            let styles = this.getLayerStyleTypes(layerData.layer);
+            let styles = [];
+            for(let style of this.getLayerStyleTypes(layerData.layer)) {
+            	styles.push(<li key={style.styleName}><i style={style.iconStyle} className={style.styleIconClassNames.join(" ")}></i>{style.styleName}</li>);
+            }
             layers.push(
             	<div key={layerData.layerGroupName + ":" + layerData.layerName}>
-		    		{layerData.layerGroupName + " - " + layerData.layerName}
+		    		<h5>{layerData.layerGroupName + " - " + layerData.layerName}</h5>
 		    		<ul className="legend-list">
 		    			{styles}
 		    		</ul>

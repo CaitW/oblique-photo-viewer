@@ -44019,13 +44019,24 @@
 	                    styleIconClassNames.push("fa-circle");
 	                    iconStyle.color = layer.styleCache[styleName].style.fillColor;
 	                }
-	                styles.push(_react2.default.createElement(
-	                    'li',
-	                    { key: styleName },
-	                    _react2.default.createElement('i', { style: iconStyle, className: styleIconClassNames.join(" ") }),
-	                    styleName
-	                ));
+	                if (styleName === "null") {
+	                    styleName = "(No Value)";
+	                }
+	                styles.push({
+	                    styleName: styleName,
+	                    iconStyle: iconStyle,
+	                    styleIconClassNames: styleIconClassNames
+	                });
 	            }
+	            styles = styles.sort(function (a, b) {
+	                if (a.styleName < b.styleName) {
+	                    return -1;
+	                }
+	                if (a.styleName > b.styleName) {
+	                    return 1;
+	                }
+	                return 0;
+	            });
 	            return styles;
 	        }
 	    }, {
@@ -44051,11 +44062,45 @@
 	                for (var _iterator = activeLayers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 	                    var layerData = _step.value;
 
-	                    var styles = this.getLayerStyleTypes(layerData.layer);
+	                    var styles = [];
+	                    var _iteratorNormalCompletion2 = true;
+	                    var _didIteratorError2 = false;
+	                    var _iteratorError2 = undefined;
+
+	                    try {
+	                        for (var _iterator2 = this.getLayerStyleTypes(layerData.layer)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	                            var style = _step2.value;
+
+	                            styles.push(_react2.default.createElement(
+	                                'li',
+	                                { key: style.styleName },
+	                                _react2.default.createElement('i', { style: style.iconStyle, className: style.styleIconClassNames.join(" ") }),
+	                                style.styleName
+	                            ));
+	                        }
+	                    } catch (err) {
+	                        _didIteratorError2 = true;
+	                        _iteratorError2 = err;
+	                    } finally {
+	                        try {
+	                            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	                                _iterator2.return();
+	                            }
+	                        } finally {
+	                            if (_didIteratorError2) {
+	                                throw _iteratorError2;
+	                            }
+	                        }
+	                    }
+
 	                    layers.push(_react2.default.createElement(
 	                        'div',
 	                        { key: layerData.layerGroupName + ":" + layerData.layerName },
-	                        layerData.layerGroupName + " - " + layerData.layerName,
+	                        _react2.default.createElement(
+	                            'h5',
+	                            null,
+	                            layerData.layerGroupName + " - " + layerData.layerName
+	                        ),
 	                        _react2.default.createElement(
 	                            'ul',
 	                            { className: 'legend-list' },
