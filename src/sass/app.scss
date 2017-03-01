@@ -3,7 +3,6 @@
 @import 'lib/leaflet';
 @import 'lib/L.Control.MousePosition';
 @import 'lib/font-awesome/font-awesome';
-
 // CSS
 html {
     height: 100%;
@@ -93,9 +92,11 @@ html {
                             table {
                                 margin-bottom: 0;
                             }
-                            .photo-button-group {
-                                margin-top: 10px;
-                            }
+                        }
+                    }
+                    .modal-footer {
+                        .open-larger-image-button {
+                            margin-right: 10px;
                         }
                     }
                 }

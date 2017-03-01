@@ -13,15 +13,13 @@ const FeatureModal = (props) => {
     	rows.push(<tr key={property}><td><strong>{property}</strong></td><td>{value}</td></tr>);
     }
     let tabs = [];
+    let footer = [<Button key="close" onClick={props.onCloseClick}>Close</Button>];
     switch(props.featureType) {
     	case "photo": 
             let photoURLs = getPhotoURLs(props.featureProperties);
      		tabs.push(
     			<Tab key="image" eventKey={1} title="Image">
                     <img src={photoURLs.popup} />
-                    <div className="photo-button-group">
-                        <a href={photoURLs.original} target="_blank" rel="noopener noreferrer"><Button bsStyle="primary">Open Original in New Window</Button></a>
-                    </div>
     			</Tab>
     		);
     		tabs.push(
@@ -33,6 +31,7 @@ const FeatureModal = (props) => {
 					  </Table>
     			</Tab>
     		);
+            footer.unshift(<a href={photoURLs.original} key="open-larger-image-button" target="_blank" rel="noopener noreferrer" ><Button bsStyle="primary" className="open-larger-image-button">Open Original in New Window</Button></a>)
     	break;
     	default:
     		tabs.push(
@@ -58,7 +57,7 @@ const FeatureModal = (props) => {
 					</Tabs>
 			      </Modal.Body>
 			      <Modal.Footer>
-			        	<Button onClick={props.onCloseClick}>Close</Button>
+			        	{footer}
 			      </Modal.Footer>
 		    </Modal.Dialog>
 		</div>

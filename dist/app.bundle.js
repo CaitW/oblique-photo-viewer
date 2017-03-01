@@ -54420,26 +54420,18 @@
 	    ));
 	  }
 	  var tabs = [];
+	  var footer = [_react2.default.createElement(
+	    _reactBootstrap.Button,
+	    { key: 'close', onClick: props.onCloseClick },
+	    'Close'
+	  )];
 	  switch (props.featureType) {
 	    case "photo":
 	      var photoURLs = (0, _util.getPhotoURLs)(props.featureProperties);
 	      tabs.push(_react2.default.createElement(
 	        _reactBootstrap.Tab,
 	        { key: 'image', eventKey: 1, title: 'Image' },
-	        _react2.default.createElement('img', { src: photoURLs.popup }),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'photo-button-group' },
-	          _react2.default.createElement(
-	            'a',
-	            { href: photoURLs.original, target: '_blank', rel: 'noopener noreferrer' },
-	            _react2.default.createElement(
-	              _reactBootstrap.Button,
-	              { bsStyle: 'primary' },
-	              'Open Original in New Window'
-	            )
-	          )
-	        )
+	        _react2.default.createElement('img', { src: photoURLs.popup })
 	      ));
 	      tabs.push(_react2.default.createElement(
 	        _reactBootstrap.Tab,
@@ -54452,6 +54444,15 @@
 	            null,
 	            rows
 	          )
+	        )
+	      ));
+	      footer.unshift(_react2.default.createElement(
+	        'a',
+	        { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
+	        _react2.default.createElement(
+	          _reactBootstrap.Button,
+	          { bsStyle: 'primary', className: 'open-larger-image-button' },
+	          'Open Original in New Window'
 	        )
 	      ));
 	      break;
@@ -54498,11 +54499,7 @@
 	      _react2.default.createElement(
 	        _reactBootstrap.Modal.Footer,
 	        null,
-	        _react2.default.createElement(
-	          _reactBootstrap.Button,
-	          { onClick: props.onCloseClick },
-	          'Close'
-	        )
+	        footer
 	      )
 	    )
 	  );
