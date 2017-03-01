@@ -8442,8 +8442,8 @@ html {
               max-width: 100%; }
             #react-root .main-container .contentRow .map-container #map-popup .modal-body .tab-content table {
               margin-bottom: 0; }
-            #react-root .main-container .contentRow .map-container #map-popup .modal-body .tab-content .photo-button-group {
-              margin-top: 10px; }
+        #react-root .main-container .contentRow .map-container #map-popup .modal-footer .open-larger-image-button {
+          margin-right: 10px; }
     #react-root .main-container #mobile-layers-list .modal-dialog {
       height: 100%;
       overflow: scroll; }
