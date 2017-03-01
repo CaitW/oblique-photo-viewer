@@ -52493,6 +52493,7 @@
 	            padding: [10, 10]
 	        });
 	        L.control.mousePosition().addTo(self.map);
+	        L.control.scale().addTo(self.map);
 	        this.basemapIndex = {};
 	        this.layerGroupIndex = {};
 	        window.getExtent = function () {
