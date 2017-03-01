@@ -52492,6 +52492,7 @@
 	        }).fitBounds(_config2.default.map.wisconsinExtent, {
 	            padding: [10, 10]
 	        });
+	        L.control.mousePosition().addTo(self.map);
 	        this.basemapIndex = {};
 	        this.layerGroupIndex = {};
 	        window.getExtent = function () {

@@ -6041,6 +6041,14 @@ button.close {
   margin-left: -12px;
   border-right-color: #fff; }
 
+.leaflet-container .leaflet-control-mouseposition {
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 5px #bbb;
+  padding: 0 5px;
+  margin: 0;
+  color: #333;
+  font: 11px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif; }
+
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -8412,9 +8420,12 @@ html {
               #react-root .main-container .contentRow .sidebar .panel .panel-body .list-group .list-group-item {
                 padding: 5px 10px; }
         #react-root .main-container .contentRow .sidebar #legend .legend-list {
-          list-style: none; }
+          list-style: none;
+          text-transform: capitalize; }
           #react-root .main-container .contentRow .sidebar #legend .legend-list i {
             margin-right: 10px; }
+            #react-root .main-container .contentRow .sidebar #legend .legend-list i.fa-circle {
+              font-size: 10px; }
       #react-root .main-container .contentRow .map-container {
         height: 100%;
         padding: 0; }

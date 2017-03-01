@@ -1,6 +1,7 @@
 // Libraries
 @import 'lib/bootstrap';
 @import 'lib/leaflet';
+@import 'lib/L.Control.MousePosition';
 @import 'lib/font-awesome/font-awesome';
 
 // CSS
@@ -62,8 +63,12 @@ html {
                 #legend {
                     .legend-list {
                         list-style: none;
+                        text-transform: capitalize;
                         i {
                             margin-right: 10px;
+                            &.fa-circle {
+                                font-size: 10px;
+                            }
                         }
                     }
                 }

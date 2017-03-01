@@ -14,6 +14,7 @@ export default class ObliquePhotoMap {
             .fitBounds(CONFIG.map.wisconsinExtent, {
                 padding: [10, 10]
             });
+        L.control.mousePosition().addTo(self.map);
         this.basemapIndex = {};
         this.layerGroupIndex = {};
         window.getExtent = function () {

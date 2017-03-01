@@ -4,6 +4,8 @@ var watch = require('gulp-watch');
 var livereload = require('gulp-livereload');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var pump = require('pump');
 gulp.task('html', function() {
     return gulp.src('src/index.html')
         .pipe(gulp.dest('dist/'))
@@ -40,9 +42,16 @@ gulp.task('watch-files', function() {
     gulp.watch('src/fonts/**/*', ['copy']);
 });
 gulp.task('scripts', function() {
-    return gulp.src('src/js/lib/*.js')
+    return gulp.src(['src/js/lib/leaflet.js', 'src/js/lib/L.Control.MousePosition.js'])
         .pipe(concat('lib.js'))
         .pipe(gulp.dest('./dist/'));
 });
-gulp.task('default', ['html', 'copy', 'sass', 'scripts', 'webpack']);
+gulp.task('compress', ['scripts'], function(cb) {
+    pump([
+        gulp.src('./dist/lib.js'),
+        uglify(),
+        gulp.dest('dist')
+    ]);
+});
+gulp.task('default', ['html', 'copy', 'sass', 'scripts', 'webpack', 'compress']);
 gulp.task('watch', ['default', 'watch-files']);
