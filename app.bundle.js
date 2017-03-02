@@ -51303,8 +51303,7 @@
 	    visible: false,
 	    featureProperties: false,
 	    featureType: false,
-	    layerName: false,
-	    layerGroupName: false
+	    layerId: false
 	};
 	function featureModal() {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -51316,15 +51315,13 @@
 	            newState.visible = true;
 	            newState.featureProperties = action.featureProperties;
 	            newState.featureType = action.featureType;
-	            newState.layerName = action.layerName;
-	            newState.layerGroupName = action.layerGroupName;
+	            newState.layerId = action.layerId;
 	            break;
 	        case "FEATURE_MODAL:CLOSE":
 	            newState.visible = false;
 	            newState.featureProperties = false;
 	            newState.featureType = false;
-	            newState.layerName = false;
-	            newState.layerGroupName = false;
+	            newState.layerId = false;
 	            break;
 	        default:
 	            newState = state;
@@ -51457,13 +51454,12 @@
 	        type: "MAP:DONE_ZOOMING"
 	    };
 	}
-	function clickFeature(featureProperties, layerName, featureType, layerGroupName) {
+	function clickFeature(featureProperties, featureType, layerId) {
 	    return {
 	        type: "LAYER:CLICK_FEATURE",
 	        featureProperties: featureProperties,
-	        layerName: layerName,
 	        featureType: featureType,
-	        layerGroupName: layerGroupName
+	        layerId: layerId
 	    };
 	}
 	function closeFeatureModal() {
@@ -51966,7 +51962,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.getLabeledFeatureModalData = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = undefined;
+	exports.mapFeatureModalPropertiesToHeaderNames = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -52091,8 +52087,29 @@
 
 	    return stylesByLayerId;
 	});
-	var getLabeledFeatureModalData = exports.getLabeledFeatureModalData = (0, _reselect.createSelector)([getLayers, getFeatureModal], function (layers, featureModalData) {
-	    if (featureModalData.layerName) {}
+	/**
+	 * In config.json, you can specify column names for the data properties that 
+	 * appear in the feature popup by specifying the header_names property.
+	 * This selector maps the original properties in the layer's JSON file to their
+	 * renamed versions specified in the config.
+	 */
+	var mapFeatureModalPropertiesToHeaderNames = exports.mapFeatureModalPropertiesToHeaderNames = (0, _reselect.createSelector)([getLayersById, getFeatureModal], function (layers, featureModal) {
+	    if (typeof featureModal.layerId !== "undefined") {
+	        var layerId = featureModal.layerId;
+	        if (typeof layers[layerId] !== "undefined" && layers[layerId].header_names !== "undefined") {
+	            var headerNames = layers[layerId].header_names;
+	            var mappedFeatureProperties = {};
+	            for (var propertyId in featureModal.featureProperties) {
+	                var mappedPropertyName = headerNames[propertyId];
+	                // Only display the named property if it exists in the header_names section of the layer config
+	                if (typeof mappedPropertyName !== "undefined") {
+	                    mappedFeatureProperties[mappedPropertyName] = featureModal.featureProperties[propertyId];
+	                }
+	            }
+	            return mappedFeatureProperties;
+	        }
+	    }
+	    return featureModal.featureProperties;
 	});
 
 /***/ },
@@ -52370,6 +52387,8 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _react = __webpack_require__(300);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -52392,6 +52411,8 @@
 
 	var _actions = __webpack_require__(774);
 
+	var _selectors = __webpack_require__(782);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52402,7 +52423,9 @@
 
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
-	        featureModal: store.featureModal
+	        featureModal: _extends({}, store.featureModal, {
+	            mappedFeatureProperties: (0, _selectors.mapFeatureModalPropertiesToHeaderNames)(store)
+	        })
 	    };
 	};
 
@@ -52426,7 +52449,7 @@
 	            return _react2.default.createElement(
 	                _reactBootstrap.Col,
 	                { xs: 12, sm: 7, md: 8, lg: 9, className: 'map-container' },
-	                _react2.default.createElement(_FeatureModal2.default, { visible: this.props.featureModal.visible, featureProperties: this.props.featureModal.featureProperties, featureType: this.props.featureModal.featureType, onCloseClick: this.closeFeatureModal }),
+	                _react2.default.createElement(_FeatureModal2.default, { visible: this.props.featureModal.visible, featureProperties: this.props.featureModal.featureProperties, mappedFeatureProperties: this.props.featureModal.mappedFeatureProperties, featureType: this.props.featureModal.featureType, onCloseClick: this.closeFeatureModal }),
 	                _react2.default.createElement(_LeafletMap2.default, null)
 	            );
 	        }
@@ -52621,7 +52644,9 @@
 	                    } else {
 	                        var layerOptions = {
 	                            pointToLayer: function pointToLayer(feature, latlng) {
-	                                return new L.circleMarker(latlng);
+	                                return new L.circleMarker(latlng, {
+	                                    layerId: layerId
+	                                });
 	                            },
 	                            layerId: layerId
 	                        };
@@ -52935,46 +52960,36 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function handleClick(featureProperties, layer, dataType) {
+	    var layerId = layer.defaultOptions.layerId;
+	    layer.on('mousedown', function () {
+	        _store2.default.dispatch((0, _actions.clickFeature)(featureProperties, dataType, layerId));
+	    });
+	}
 	var ON_EACH_FEATURE = {
 	    backshore_1976: function backshore_1976(feature, layer) {
-	        layer.on('mousedown', function () {
-	            _store2.default.dispatch((0, _actions.clickFeature)(feature.properties, "backshore_1976", "data"));
-	        });
+	        handleClick(feature.properties, layer, "data");
 	    },
 	    backshore_2007: function backshore_2007(feature, layer) {
-	        layer.on('mousedown', function () {
-	            _store2.default.dispatch((0, _actions.clickFeature)(feature.properties, "backshore_2007", "data"));
-	        });
+	        handleClick(feature.properties, layer, "data");
 	    },
 	    photos_1976: function photos_1976(feature, layer) {
-	        layer.on('mousedown', function () {
-	            _store2.default.dispatch((0, _actions.clickFeature)(feature.properties, "photos_1976", "photo"));
-	        });
+	        handleClick(feature.properties, layer, "photo");
 	    },
 	    photos_2007: function photos_2007(feature, layer) {
-	        layer.on('mousedown', function () {
-	            _store2.default.dispatch((0, _actions.clickFeature)(feature.properties, "photos_2007", "photo"));
-	        });
+	        handleClick(feature.properties, layer, "photo");
 	    },
 	    structure_1976: function structure_1976(feature, layer) {
-	        layer.on('mousedown', function () {
-	            _store2.default.dispatch((0, _actions.clickFeature)(feature.properties, "structure_1976", "data"));
-	        });
+	        handleClick(feature.properties, layer, "data");
 	    },
 	    structure_2007: function structure_2007(feature, layer) {
-	        layer.on('mousedown', function () {
-	            _store2.default.dispatch((0, _actions.clickFeature)(feature.properties, "structure_2007", "data"));
-	        });
+	        handleClick(feature.properties, layer, "data");
 	    },
 	    beachclass_1976: function beachclass_1976(feature, layer) {
-	        layer.on('mousedown', function () {
-	            _store2.default.dispatch((0, _actions.clickFeature)(feature.properties, "beachclass_1976", "data"));
-	        });
+	        handleClick(feature.properties, layer, "data");
 	    },
 	    beachclass_2007: function beachclass_2007(feature, layer) {
-	        layer.on('mousedown', function () {
-	            _store2.default.dispatch((0, _actions.clickFeature)(feature.properties, "beachclass_2007", "data"));
-	        });
+	        handleClick(feature.properties, layer, "data");
 	    }
 	};
 	exports.default = ON_EACH_FEATURE;
@@ -54494,8 +54509,8 @@
 	        classNames.push("hidden");
 	    }
 	    var rows = [];
-	    for (var property in props.featureProperties) {
-	        var value = props.featureProperties[property];
+	    for (var property in props.mappedFeatureProperties) {
+	        var value = props.mappedFeatureProperties[property];
 	        rows.push(_react2.default.createElement(
 	            'tr',
 	            { key: property },
