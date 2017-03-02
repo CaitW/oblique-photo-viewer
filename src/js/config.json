@@ -30,8 +30,8 @@
         },
         "layers": {
             "1976 Inventory": {
-                "title": "1976 Inventory",
-                "type": "layerGroup",
+                "name": "1976 Inventory",
+                
                 "layers": {
                     "Backshore": {
                         "layerName": "Backshore",
@@ -63,13 +63,27 @@
                         "dataLocation": "./data/layers/photos_1976.geojson",
                         "styleID": "photos_1976",
                         "onEachFeatureID": "photos_1976",
-                        "active": true
+                        "active": true,
+                        "header_names": {
+                            "FILENAME": "File Name",
+                            "YEAR_": "Year",
+                            "STATE": "State",
+                            "GREATLAKE": "Great Lake",
+                            "LATITUDE": "Latitude",
+                            "LONGITUDE": "Longitude",
+                            "ZONE_": "UTM Zone",
+                            "EAST": "Easting",
+                            "NORTH": "Northing",
+                            "COUNTY": "County",
+                            "FIPS": "County FIPS",
+                            "NAME": "Original File Name"
+                        }
                     }
                 }
             },
             "2007 Inventory": {
-                "title": "2007 Inventory",
-                "type": "layerGroup",
+                "name": "2007 Inventory",
+                
                 "layers": {
                     "Backshore": {
                         "layerName": "Backshore",
@@ -101,13 +115,27 @@
                         "dataLocation": "./data/layers/photos_2007.geojson",
                         "styleID": "photos_2007",
                         "onEachFeatureID": "photos_2007",
-                        "active": false
+                        "active": false,
+                        "header_names": {
+                            "FILENAME": "File Name",
+                            "YEAR_": "Year",
+                            "STATE": "State",
+                            "GREATLAKE": "Great Lake",
+                            "LATITUDE": "Latitude",
+                            "LONGITUDE": "Longitude",
+                            "ZONE_": "UTM Zone",
+                            "EAST": "Easting",
+                            "NORTH": "Northing",
+                            "COUNTY": "County",
+                            "FIPS": "County FIPS",
+                            "NAME": "Original File Name"
+                        }
                     }
                 }
             },
             "Boundaries": {
-                "title": "Boundaries",
-                "type": "layerGroup",
+                "name": "Boundaries",
+                
                 "layers": {
                     "County Boundaries": {
                         "layerName": "County Boundaries",

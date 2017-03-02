@@ -4,7 +4,7 @@ const Layer = (props) => (
 	<ListGroupItem
 		href="#" 
 		active={props.active} 
-		onClick={props.onLayerClick.bind(null, props.layerGroupID, props.layerID)}>
+		onClick={props.onLayerClick.bind(null, props.layerID)}>
 		{props.layerName}
     </ListGroupItem>
 );

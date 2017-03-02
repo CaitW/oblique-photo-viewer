@@ -17,43 +17,44 @@ export default class ObliquePhotoMap {
         L.control.mousePosition().addTo(self.map);
         L.control.scale().addTo(self.map);
         this.basemapIndex = {};
-        this.layerGroupIndex = {};
+        this.layerIndex = {};
         window.getExtent = function () {
             var bounds = self.map.getBounds();
             return bounds.toBBoxString();
         }
     }
-    createLayer(layerGroupID, layerID, layer) {
+    createLayer(layerId, layer) {
         var self = this;
         switch (layer.type) {
             case "tileLayer":
                 if (typeof layer.url === "undefined") {
-                    console.error("Layer " + layerID + " must have a tile URL");
+                    console.error("Layer " + layerId + " must have a tile URL");
                 } else {
-                    this.layerGroupIndex[layerGroupID][layerID] = L.tileLayer(layer.url, {
+                    this.layerIndex[layerId] = L.tileLayer(layer.url, {
                         zIndex: 1
                     });
                 }
                 break;
             case "geojson":
                 if (typeof layer.dataLocation === "undefined") {
-                    console.error("Layer " + layerID + " must have a data location");
+                    console.error("Layer " + layerId + " must have a data location");
                 } else {
                     let layerOptions = {
                         pointToLayer: function (feature, latlng) {
                             return new L.circleMarker(latlng);
-                        }
+                        },
+                        layerId: layerId
                     };
                     if (typeof layer.onEachFeatureID !== "undefined" && typeof ON_EACH_FEATURE[layer.onEachFeatureID] !== "undefined") {
                         layerOptions.onEachFeature = ON_EACH_FEATURE[layer.onEachFeatureID];
                     }
                     if (typeof layer.styleID !== "undefined" && typeof LAYER_STYLES[layer.styleID] !== "undefined") {
-                        layerOptions.style = LAYER_STYLES[layer.styleID];
+                        layerOptions.style = LAYER_STYLES[layer.styleID].bind(layerOptions);
                     }
-                    this.layerGroupIndex[layerGroupID][layerID] = L.geoJson(null, layerOptions);
+                    this.layerIndex[layerId] = L.geoJson(null, layerOptions);
                     axios.get(layer.dataLocation)
                         .then(function(response) {
-                            self.layerGroupIndex[layerGroupID][layerID].addData(response.data);
+                            self.layerIndex[layerId].addData(response.data);
                         })
                         .catch(function(error) {
                             console.error(error);
@@ -65,17 +66,14 @@ export default class ObliquePhotoMap {
                 break;
         }
     }
-    toggleLayer(layerGroupID, layerID, layer) {
-        if (typeof this.layerGroupIndex[layerGroupID] === "undefined") {
-            this.layerGroupIndex[layerGroupID] = {}
-        }
-        if (typeof this.layerGroupIndex[layerGroupID][layerID] === "undefined") {
-            this.createLayer(layerGroupID, layerID, layer);
+    toggleLayer(layerId, layer) {
+        if (typeof this.layerIndex[layerId] === "undefined") {
+            this.createLayer(layerId, layer);
         }
         if (layer.active === true) {
-            this.layerGroup.addLayer(this.layerGroupIndex[layerGroupID][layerID]);
+            this.layerGroup.addLayer(this.layerIndex[layerId]);
         } else {
-            this.layerGroup.removeLayer(this.layerGroupIndex[layerGroupID][layerID]);
+            this.layerGroup.removeLayer(this.layerIndex[layerId]);
         }
     }
     toggleBasemap(basemapID, basemap) {

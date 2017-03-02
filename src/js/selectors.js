@@ -1,18 +1,32 @@
 import { createSelector } from 'reselect';
 const getLayers = (state) => state.layers;
-export const getActiveLayers = createSelector(getLayers, layers => {
+const getLayersById = (state) => state.layers.layersById;
+const getFeatureModal = (state) => state.featureModal;
+export const mapLayerGroupsToLayers = createSelector([getLayers], layers => {
+    let layersById = layers.layersById;
+    let layerGroupsById = layers.layerGroupsById;
+    let mappedLayerGroups = {};
+    for (let layerGroupName in layerGroupsById) {
+        if (typeof mappedLayerGroups[layerGroupName] === "undefined") {
+            mappedLayerGroups[layerGroupName] = {
+                ...layerGroupsById[layerGroupName],
+                layers: {}
+            };
+        }
+        for (let layerId of layerGroupsById[layerGroupName].layers) {
+            mappedLayerGroups[layerGroupName].layers[layerId] = layersById[layerId];
+        }
+    }
+    return mappedLayerGroups;
+})
+export const getActiveLayers = createSelector(getLayersById, layers => {
     let activeLayers = [];
-    for (let layerGroupName in layers) {
-        let layerGroup = layers[layerGroupName].layers;
-        for (let layerName in layerGroup) {
-            let layer = layerGroup[layerName];
-            if (layer.active === true) {
-                activeLayers.push({
-                    layerGroupName,
-                    layerName,
-                    layer
-                });
-            }
+    for (let layerId in layers) {
+        if (layers[layerId].active === true) {
+            activeLayers.push({
+                layerId: layerId,
+                layer: layers[layerId]
+            });
         }
     }
     return activeLayers;
@@ -52,7 +66,10 @@ export const getActiveLayerStyleTypes = createSelector(getActiveLayers, activeLa
             }
             return 0;
         });
-        stylesByLayerId[layerData.layerGroupName + " - " + layerData.layerName] = styles;
+        stylesByLayerId[layerData.layer.layerGroupName + " - " + layerData.layer.layerName] = styles;
     }
     return stylesByLayerId;
-})
+});
+export const getLabeledFeatureModalData = createSelector([getLayers, getFeatureModal], (layers, featureModalData) => {
+    if (featureModalData.layerName) {}
+});

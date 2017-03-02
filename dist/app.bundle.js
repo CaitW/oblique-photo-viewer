@@ -8346,8 +8346,7 @@
 			},
 			"layers": {
 				"1976 Inventory": {
-					"title": "1976 Inventory",
-					"type": "layerGroup",
+					"name": "1976 Inventory",
 					"layers": {
 						"Backshore": {
 							"layerName": "Backshore",
@@ -8379,13 +8378,26 @@
 							"dataLocation": "./data/layers/photos_1976.geojson",
 							"styleID": "photos_1976",
 							"onEachFeatureID": "photos_1976",
-							"active": true
+							"active": true,
+							"header_names": {
+								"FILENAME": "File Name",
+								"YEAR_": "Year",
+								"STATE": "State",
+								"GREATLAKE": "Great Lake",
+								"LATITUDE": "Latitude",
+								"LONGITUDE": "Longitude",
+								"ZONE_": "UTM Zone",
+								"EAST": "Easting",
+								"NORTH": "Northing",
+								"COUNTY": "County",
+								"FIPS": "County FIPS",
+								"NAME": "Original File Name"
+							}
 						}
 					}
 				},
 				"2007 Inventory": {
-					"title": "2007 Inventory",
-					"type": "layerGroup",
+					"name": "2007 Inventory",
 					"layers": {
 						"Backshore": {
 							"layerName": "Backshore",
@@ -8417,13 +8429,26 @@
 							"dataLocation": "./data/layers/photos_2007.geojson",
 							"styleID": "photos_2007",
 							"onEachFeatureID": "photos_2007",
-							"active": false
+							"active": false,
+							"header_names": {
+								"FILENAME": "File Name",
+								"YEAR_": "Year",
+								"STATE": "State",
+								"GREATLAKE": "Great Lake",
+								"LATITUDE": "Latitude",
+								"LONGITUDE": "Longitude",
+								"ZONE_": "UTM Zone",
+								"EAST": "Easting",
+								"NORTH": "Northing",
+								"COUNTY": "County",
+								"FIPS": "County FIPS",
+								"NAME": "Original File Name"
+							}
 						}
 					}
 				},
 				"Boundaries": {
-					"title": "Boundaries",
-					"type": "layerGroup",
+					"name": "Boundaries",
 					"layers": {
 						"County Boundaries": {
 							"layerName": "County Boundaries",
@@ -51100,6 +51125,9 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	exports.default = layers;
 
 	var _config = __webpack_require__(299);
@@ -51108,35 +51136,57 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var initialLayers = _config2.default.map.layers;
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	var layerGroupsById = {};
+	var layersById = {};
+	function getUniqueLayerId(layerGroupName, layerName) {
+	    return layerGroupName.replace(/ /g, "_") + ":" + layerName.replace(/ /g, "_");
+	}
 	for (var layerGroupName in _config2.default.map.layers) {
 	    var layerGroupLayers = _config2.default.map.layers[layerGroupName].layers;
 	    for (var layerName in layerGroupLayers) {
 	        var layer = layerGroupLayers[layerName];
+	        var layerId = getUniqueLayerId(layerGroupName, layerName);
 	        layer.styleCache = layer.styleCache || {};
+	        layer.layerGroupName = layerGroupName;
+	        layer.id = layerId;
+	        layersById[layerId] = layer;
+	        var layerGroupProperties = _config2.default.map.layers[layerGroupName];
+	        if (typeof layerGroupsById[layerGroupName] === "undefined") {
+	            layerGroupsById[layerGroupName] = _extends({}, layerGroupProperties);
+	            layerGroupsById[layerGroupName].layers = [];
+	        }
+	        layerGroupsById[layerGroupName].layers.push(layerId);
 	    }
 	}
+	var initialLayers = {
+	    layersById: layersById,
+	    layerGroupsById: layerGroupsById
+	};
 	function layers() {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialLayers;
 	    var action = arguments[1];
 
-	    var newState = Object.assign({}, state);
+	    var newState = state;
 	    switch (action.type) {
 	        case "MAP:TOGGLE_LAYER":
-	            var layerGroupSlice = Object.assign({}, newState[action.layerGroupID]);
-	            layerGroupSlice.layers = Object.assign({}, layerGroupSlice.layers);
-	            layerGroupSlice.layers[action.layerID] = Object.assign({}, layerGroupSlice.layers[action.layerID]);
-	            layerGroupSlice.layers[action.layerID].active = !newState[action.layerGroupID].layers[action.layerID].active;
-	            newState[action.layerGroupID] = layerGroupSlice;
+	            newState = _extends({}, state, {
+	                layersById: _extends({}, state.layersById, _defineProperty({}, action.layerId, _extends({}, state.layersById[action.layerId], {
+	                    active: !state.layersById[action.layerId].active
+	                })))
+	            });
 	            break;
 	        case "LAYER:STYLE_CACHE_UPDATE":
-	            var cacheStateSlice = Object.assign({}, newState[action.layerGroupName].layers[action.layerName].styleCache);
 	            var styleCache = {
 	                style: action.style,
 	                geometryType: action.geometryType
 	            };
-	            cacheStateSlice[action.propertyName] = styleCache;
-	            newState[action.layerGroupName].layers[action.layerName].styleCache = cacheStateSlice;
+	            newState = _extends({}, state, {
+	                layersById: _extends({}, state.layersById, _defineProperty({}, action.layerId, _extends({}, state.layersById[action.layerId], {
+	                    styleCache: _extends({}, state.layersById[action.layerId].styleCache, _defineProperty({}, action.propertyName, styleCache))
+	                })))
+	            });
 	            break;
 	    };
 	    return newState;
@@ -51252,7 +51302,9 @@
 	var initialState = {
 	    visible: false,
 	    featureProperties: false,
-	    featureType: false
+	    featureType: false,
+	    layerName: false,
+	    layerGroupName: false
 	};
 	function featureModal() {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -51264,11 +51316,15 @@
 	            newState.visible = true;
 	            newState.featureProperties = action.featureProperties;
 	            newState.featureType = action.featureType;
+	            newState.layerName = action.layerName;
+	            newState.layerGroupName = action.layerGroupName;
 	            break;
 	        case "FEATURE_MODAL:CLOSE":
 	            newState.visible = false;
 	            newState.featureProperties = false;
 	            newState.featureType = false;
+	            newState.layerName = false;
+	            newState.layerGroupName = false;
 	            break;
 	        default:
 	            newState = state;
@@ -51378,11 +51434,10 @@
 	exports.closeAboutModal = closeAboutModal;
 	exports.openAboutModal = openAboutModal;
 	exports.styleCacheUpdate = styleCacheUpdate;
-	function toggleLayer(layerGroupID, layerID) {
+	function toggleLayer(layerId) {
 	    return {
 	        type: "MAP:TOGGLE_LAYER",
-	        layerGroupID: layerGroupID,
-	        layerID: layerID
+	        layerId: layerId
 	    };
 	}
 	function toggleBasemap(basemapID) {
@@ -51402,12 +51457,13 @@
 	        type: "MAP:DONE_ZOOMING"
 	    };
 	}
-	function clickFeature(featureProperties, layerName, featureType) {
+	function clickFeature(featureProperties, layerName, featureType, layerGroupName) {
 	    return {
 	        type: "LAYER:CLICK_FEATURE",
 	        featureProperties: featureProperties,
 	        layerName: layerName,
-	        featureType: featureType
+	        featureType: featureType,
+	        layerGroupName: layerGroupName
 	    };
 	}
 	function closeFeatureModal() {
@@ -51447,11 +51503,10 @@
 	        type: "ABOUT_MODAL:OPEN"
 	    };
 	}
-	function styleCacheUpdate(layerGroupName, layerName, propertyName, style, geometryType) {
+	function styleCacheUpdate(layerId, propertyName, style, geometryType) {
 	    return {
 	        type: "LAYER:STYLE_CACHE_UPDATE",
-	        layerGroupName: layerGroupName,
-	        layerName: layerName,
+	        layerId: layerId,
 	        propertyName: propertyName,
 	        style: style,
 	        geometryType: geometryType
@@ -51546,7 +51601,7 @@
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
 
-	var _Legend = __webpack_require__(782);
+	var _Legend = __webpack_require__(784);
 
 	var _Legend2 = _interopRequireDefault(_Legend);
 
@@ -51618,6 +51673,8 @@
 
 	var _actions = __webpack_require__(774);
 
+	var _selectors = __webpack_require__(782);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -51628,7 +51685,7 @@
 
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
-	        layers: store.layers,
+	        layers: (0, _selectors.mapLayerGroupsToLayers)(store),
 	        basemaps: store.basemaps
 	    };
 	};
@@ -51643,8 +51700,8 @@
 
 	        var groups = {};
 	        groups["Basemaps"] = false;
-	        for (var layerGroupID in _this.props.layers) {
-	            groups[layerGroupID] = false;
+	        for (var layerGroupId in _this.props.layers) {
+	            groups[layerGroupId] = false;
 	        }
 	        _this.state = groups;
 	        _this.onPanelClick = _this.onPanelClick.bind(_this);
@@ -51653,8 +51710,8 @@
 
 	    _createClass(LayerList, [{
 	        key: 'onLayerClick',
-	        value: function onLayerClick(layerGroupID, layerID) {
-	            _store2.default.dispatch((0, _actions.toggleLayer)(layerGroupID, layerID));
+	        value: function onLayerClick(layerId) {
+	            _store2.default.dispatch((0, _actions.toggleLayer)(layerId));
 	        }
 	    }, {
 	        key: 'onBasemapClick',
@@ -51680,15 +51737,16 @@
 	        value: function render() {
 	            var layerGroups = [];
 	            var eventKey = 1;
-	            for (var layerGroupID in this.props.layers) {
+	            for (var layerGroupId in this.props.layers) {
 	                layerGroups.push(_react2.default.createElement(_LayerGroup2.default, {
-	                    key: layerGroupID,
-	                    layerGroupID: layerGroupID,
-	                    layerGroup: this.props.layers[layerGroupID],
+	                    key: layerGroupId,
+	                    layerGroupId: layerGroupId,
+	                    layerGroupName: this.props.layers[layerGroupId].name,
+	                    layers: this.props.layers[layerGroupId].layers,
 	                    onLayerClick: this.onLayerClick,
 	                    eventKey: eventKey.toString(),
 	                    onPanelClick: this.onPanelClick,
-	                    panelVisible: this.state[layerGroupID]
+	                    panelVisible: this.state[layerGroupId]
 	                }));
 	                eventKey++;
 	            }
@@ -51730,13 +51788,12 @@
 
 	var LayerGroup = function LayerGroup(props) {
 	    var layers = [];
-	    for (var layer in props.layerGroup.layers) {
+	    for (var layer in props.layers) {
 	        layers.push(_react2.default.createElement(_Layer2.default, {
-	            key: layer,
-	            layerID: layer,
-	            layerGroupID: props.layerGroupID,
-	            layerName: props.layerGroup.layers[layer].layerName,
-	            active: props.layerGroup.layers[layer].active,
+	            key: props.layers[layer].id,
+	            layerID: props.layers[layer].id,
+	            layerName: props.layers[layer].layerName,
+	            active: props.layers[layer].active,
 	            onLayerClick: props.onLayerClick
 	        }));
 	    }
@@ -51750,13 +51807,14 @@
 	        headerClassNames.push("active");
 	        iconClassNames.push("fa-chevron-up");
 	    }
+	    var boundOnLayerClick = props.onPanelClick.bind(null, props.layerGroupId);
 	    return _react2.default.createElement(
 	        'div',
 	        { className: 'panel panel-default' },
 	        _react2.default.createElement(
 	            'div',
-	            { className: headerClassNames.join(" "), onClick: props.onPanelClick.bind(null, props.layerGroupID) },
-	            props.layerGroup.title,
+	            { className: headerClassNames.join(" "), onClick: boundOnLayerClick },
+	            props.layerGroupName,
 	            _react2.default.createElement('i', { className: iconClassNames.join(" ") })
 	        ),
 	        _react2.default.createElement(
@@ -51796,7 +51854,7 @@
 			{
 				href: '#',
 				active: props.active,
-				onClick: props.onLayerClick.bind(null, props.layerGroupID, props.layerID) },
+				onClick: props.onLayerClick.bind(null, props.layerID) },
 			props.layerName
 		);
 	};
@@ -51903,6 +51961,260 @@
 /* 782 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.getLabeledFeatureModalData = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = undefined;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _reselect = __webpack_require__(783);
+
+	var getLayers = function getLayers(state) {
+	    return state.layers;
+	};
+	var getLayersById = function getLayersById(state) {
+	    return state.layers.layersById;
+	};
+	var getFeatureModal = function getFeatureModal(state) {
+	    return state.featureModal;
+	};
+	var mapLayerGroupsToLayers = exports.mapLayerGroupsToLayers = (0, _reselect.createSelector)([getLayers], function (layers) {
+	    var layersById = layers.layersById;
+	    var layerGroupsById = layers.layerGroupsById;
+	    var mappedLayerGroups = {};
+	    for (var layerGroupName in layerGroupsById) {
+	        if (typeof mappedLayerGroups[layerGroupName] === "undefined") {
+	            mappedLayerGroups[layerGroupName] = _extends({}, layerGroupsById[layerGroupName], {
+	                layers: {}
+	            });
+	        }
+	        var _iteratorNormalCompletion = true;
+	        var _didIteratorError = false;
+	        var _iteratorError = undefined;
+
+	        try {
+	            for (var _iterator = layerGroupsById[layerGroupName].layers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	                var layerId = _step.value;
+
+	                mappedLayerGroups[layerGroupName].layers[layerId] = layersById[layerId];
+	            }
+	        } catch (err) {
+	            _didIteratorError = true;
+	            _iteratorError = err;
+	        } finally {
+	            try {
+	                if (!_iteratorNormalCompletion && _iterator.return) {
+	                    _iterator.return();
+	                }
+	            } finally {
+	                if (_didIteratorError) {
+	                    throw _iteratorError;
+	                }
+	            }
+	        }
+	    }
+	    return mappedLayerGroups;
+	});
+	var getActiveLayers = exports.getActiveLayers = (0, _reselect.createSelector)(getLayersById, function (layers) {
+	    var activeLayers = [];
+	    for (var layerId in layers) {
+	        if (layers[layerId].active === true) {
+	            activeLayers.push({
+	                layerId: layerId,
+	                layer: layers[layerId]
+	            });
+	        }
+	    }
+	    return activeLayers;
+	});
+	var getActiveLayerStyleTypes = exports.getActiveLayerStyleTypes = (0, _reselect.createSelector)(getActiveLayers, function (activeLayers) {
+	    var stylesByLayerId = {};
+	    var _iteratorNormalCompletion2 = true;
+	    var _didIteratorError2 = false;
+	    var _iteratorError2 = undefined;
+
+	    try {
+	        for (var _iterator2 = activeLayers[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	            var layerData = _step2.value;
+
+	            var styles = [];
+	            var styleCache = layerData.layer.styleCache;
+	            for (var styleName in styleCache) {
+	                var styleIconClassNames = ["fa"];
+	                var iconStyle = {
+	                    color: "#000000"
+	                };
+	                if (styleCache[styleName].geometryType === "LineString" || styleCache[styleName].geometryType === "MultiLineString") {
+	                    styleIconClassNames.push("fa-minus");
+	                    iconStyle.color = styleCache[styleName].style.color;
+	                } else if (styleCache[styleName].geometryType === "Point") {
+	                    styleIconClassNames.push("fa-circle");
+	                    iconStyle.color = styleCache[styleName].style.fillColor;
+	                }
+	                if (styleName === "null") {
+	                    styleName = "(No Value)";
+	                }
+	                styles.push({
+	                    styleName: styleName,
+	                    iconStyle: iconStyle,
+	                    styleIconClassNames: styleIconClassNames
+	                });
+	            }
+	            styles = styles.sort(function (a, b) {
+	                if (a.styleName < b.styleName) {
+	                    return -1;
+	                }
+	                if (a.styleName > b.styleName) {
+	                    return 1;
+	                }
+	                return 0;
+	            });
+	            stylesByLayerId[layerData.layer.layerGroupName + " - " + layerData.layer.layerName] = styles;
+	        }
+	    } catch (err) {
+	        _didIteratorError2 = true;
+	        _iteratorError2 = err;
+	    } finally {
+	        try {
+	            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	                _iterator2.return();
+	            }
+	        } finally {
+	            if (_didIteratorError2) {
+	                throw _iteratorError2;
+	            }
+	        }
+	    }
+
+	    return stylesByLayerId;
+	});
+	var getLabeledFeatureModalData = exports.getLabeledFeatureModalData = (0, _reselect.createSelector)([getLayers, getFeatureModal], function (layers, featureModalData) {
+	    if (featureModalData.layerName) {}
+	});
+
+/***/ },
+/* 783 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.defaultMemoize = defaultMemoize;
+	exports.createSelectorCreator = createSelectorCreator;
+	exports.createStructuredSelector = createStructuredSelector;
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	function defaultEqualityCheck(a, b) {
+	  return a === b;
+	}
+
+	function defaultMemoize(func) {
+	  var equalityCheck = arguments.length <= 1 || arguments[1] === undefined ? defaultEqualityCheck : arguments[1];
+
+	  var lastArgs = null;
+	  var lastResult = null;
+	  return function () {
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    if (lastArgs === null || lastArgs.length !== args.length || !args.every(function (value, index) {
+	      return equalityCheck(value, lastArgs[index]);
+	    })) {
+	      lastResult = func.apply(undefined, args);
+	    }
+	    lastArgs = args;
+	    return lastResult;
+	  };
+	}
+
+	function getDependencies(funcs) {
+	  var dependencies = Array.isArray(funcs[0]) ? funcs[0] : funcs;
+
+	  if (!dependencies.every(function (dep) {
+	    return typeof dep === 'function';
+	  })) {
+	    var dependencyTypes = dependencies.map(function (dep) {
+	      return typeof dep;
+	    }).join(', ');
+	    throw new Error('Selector creators expect all input-selectors to be functions, ' + ('instead received the following types: [' + dependencyTypes + ']'));
+	  }
+
+	  return dependencies;
+	}
+
+	function createSelectorCreator(memoize) {
+	  for (var _len2 = arguments.length, memoizeOptions = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+	    memoizeOptions[_key2 - 1] = arguments[_key2];
+	  }
+
+	  return function () {
+	    for (var _len3 = arguments.length, funcs = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+	      funcs[_key3] = arguments[_key3];
+	    }
+
+	    var recomputations = 0;
+	    var resultFunc = funcs.pop();
+	    var dependencies = getDependencies(funcs);
+
+	    var memoizedResultFunc = memoize.apply(undefined, [function () {
+	      recomputations++;
+	      return resultFunc.apply(undefined, arguments);
+	    }].concat(memoizeOptions));
+
+	    var selector = function selector(state, props) {
+	      for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
+	        args[_key4 - 2] = arguments[_key4];
+	      }
+
+	      var params = dependencies.map(function (dependency) {
+	        return dependency.apply(undefined, [state, props].concat(args));
+	      });
+	      return memoizedResultFunc.apply(undefined, _toConsumableArray(params));
+	    };
+
+	    selector.resultFunc = resultFunc;
+	    selector.recomputations = function () {
+	      return recomputations;
+	    };
+	    selector.resetRecomputations = function () {
+	      return recomputations = 0;
+	    };
+	    return selector;
+	  };
+	}
+
+	var createSelector = exports.createSelector = createSelectorCreator(defaultMemoize);
+
+	function createStructuredSelector(selectors) {
+	  var selectorCreator = arguments.length <= 1 || arguments[1] === undefined ? createSelector : arguments[1];
+
+	  if (typeof selectors !== 'object') {
+	    throw new Error('createStructuredSelector expects first argument to be an object ' + ('where each property is a selector, instead received a ' + typeof selectors));
+	  }
+	  var objectKeys = Object.keys(selectors);
+	  return selectorCreator(objectKeys.map(function (key) {
+	    return selectors[key];
+	  }), function () {
+	    for (var _len5 = arguments.length, values = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+	      values[_key5] = arguments[_key5];
+	    }
+
+	    return values.reduce(function (composition, value, index) {
+	      composition[objectKeys[index]] = value;
+	      return composition;
+	    }, {});
+	  });
+	}
+
+/***/ },
+/* 784 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -51917,7 +52229,7 @@
 
 	var _reactRedux = __webpack_require__(730);
 
-	var _selectors = __webpack_require__(783);
+	var _selectors = __webpack_require__(782);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51929,7 +52241,6 @@
 
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
-	        layers: store.layers,
 	        activeLayerStyleTypes: (0, _selectors.getActiveLayerStyleTypes)(store)
 	    };
 	};
@@ -52048,217 +52359,6 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Legend);
 
 /***/ },
-/* 783 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.getActiveLayerStyleTypes = exports.getActiveLayers = undefined;
-
-	var _reselect = __webpack_require__(784);
-
-	var getLayers = function getLayers(state) {
-	    return state.layers;
-	};
-	var getActiveLayers = exports.getActiveLayers = (0, _reselect.createSelector)(getLayers, function (layers) {
-	    var activeLayers = [];
-	    for (var layerGroupName in layers) {
-	        var layerGroup = layers[layerGroupName].layers;
-	        for (var layerName in layerGroup) {
-	            var layer = layerGroup[layerName];
-	            if (layer.active === true) {
-	                activeLayers.push({
-	                    layerGroupName: layerGroupName,
-	                    layerName: layerName,
-	                    layer: layer
-	                });
-	            }
-	        }
-	    }
-	    return activeLayers;
-	});
-	var getActiveLayerStyleTypes = exports.getActiveLayerStyleTypes = (0, _reselect.createSelector)(getActiveLayers, function (activeLayers) {
-	    var stylesByLayerId = {};
-	    var _iteratorNormalCompletion = true;
-	    var _didIteratorError = false;
-	    var _iteratorError = undefined;
-
-	    try {
-	        for (var _iterator = activeLayers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	            var layerData = _step.value;
-
-	            var styles = [];
-	            var styleCache = layerData.layer.styleCache;
-	            for (var styleName in styleCache) {
-	                var styleIconClassNames = ["fa"];
-	                var iconStyle = {
-	                    color: "#000000"
-	                };
-	                if (styleCache[styleName].geometryType === "LineString" || styleCache[styleName].geometryType === "MultiLineString") {
-	                    styleIconClassNames.push("fa-minus");
-	                    iconStyle.color = styleCache[styleName].style.color;
-	                } else if (styleCache[styleName].geometryType === "Point") {
-	                    styleIconClassNames.push("fa-circle");
-	                    iconStyle.color = styleCache[styleName].style.fillColor;
-	                }
-	                if (styleName === "null") {
-	                    styleName = "(No Value)";
-	                }
-	                styles.push({
-	                    styleName: styleName,
-	                    iconStyle: iconStyle,
-	                    styleIconClassNames: styleIconClassNames
-	                });
-	            }
-	            styles = styles.sort(function (a, b) {
-	                if (a.styleName < b.styleName) {
-	                    return -1;
-	                }
-	                if (a.styleName > b.styleName) {
-	                    return 1;
-	                }
-	                return 0;
-	            });
-	            stylesByLayerId[layerData.layerGroupName + " - " + layerData.layerName] = styles;
-	        }
-	    } catch (err) {
-	        _didIteratorError = true;
-	        _iteratorError = err;
-	    } finally {
-	        try {
-	            if (!_iteratorNormalCompletion && _iterator.return) {
-	                _iterator.return();
-	            }
-	        } finally {
-	            if (_didIteratorError) {
-	                throw _iteratorError;
-	            }
-	        }
-	    }
-
-	    return stylesByLayerId;
-	});
-
-/***/ },
-/* 784 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports.defaultMemoize = defaultMemoize;
-	exports.createSelectorCreator = createSelectorCreator;
-	exports.createStructuredSelector = createStructuredSelector;
-
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-	function defaultEqualityCheck(a, b) {
-	  return a === b;
-	}
-
-	function defaultMemoize(func) {
-	  var equalityCheck = arguments.length <= 1 || arguments[1] === undefined ? defaultEqualityCheck : arguments[1];
-
-	  var lastArgs = null;
-	  var lastResult = null;
-	  return function () {
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-
-	    if (lastArgs === null || lastArgs.length !== args.length || !args.every(function (value, index) {
-	      return equalityCheck(value, lastArgs[index]);
-	    })) {
-	      lastResult = func.apply(undefined, args);
-	    }
-	    lastArgs = args;
-	    return lastResult;
-	  };
-	}
-
-	function getDependencies(funcs) {
-	  var dependencies = Array.isArray(funcs[0]) ? funcs[0] : funcs;
-
-	  if (!dependencies.every(function (dep) {
-	    return typeof dep === 'function';
-	  })) {
-	    var dependencyTypes = dependencies.map(function (dep) {
-	      return typeof dep;
-	    }).join(', ');
-	    throw new Error('Selector creators expect all input-selectors to be functions, ' + ('instead received the following types: [' + dependencyTypes + ']'));
-	  }
-
-	  return dependencies;
-	}
-
-	function createSelectorCreator(memoize) {
-	  for (var _len2 = arguments.length, memoizeOptions = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-	    memoizeOptions[_key2 - 1] = arguments[_key2];
-	  }
-
-	  return function () {
-	    for (var _len3 = arguments.length, funcs = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-	      funcs[_key3] = arguments[_key3];
-	    }
-
-	    var recomputations = 0;
-	    var resultFunc = funcs.pop();
-	    var dependencies = getDependencies(funcs);
-
-	    var memoizedResultFunc = memoize.apply(undefined, [function () {
-	      recomputations++;
-	      return resultFunc.apply(undefined, arguments);
-	    }].concat(memoizeOptions));
-
-	    var selector = function selector(state, props) {
-	      for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
-	        args[_key4 - 2] = arguments[_key4];
-	      }
-
-	      var params = dependencies.map(function (dependency) {
-	        return dependency.apply(undefined, [state, props].concat(args));
-	      });
-	      return memoizedResultFunc.apply(undefined, _toConsumableArray(params));
-	    };
-
-	    selector.resultFunc = resultFunc;
-	    selector.recomputations = function () {
-	      return recomputations;
-	    };
-	    selector.resetRecomputations = function () {
-	      return recomputations = 0;
-	    };
-	    return selector;
-	  };
-	}
-
-	var createSelector = exports.createSelector = createSelectorCreator(defaultMemoize);
-
-	function createStructuredSelector(selectors) {
-	  var selectorCreator = arguments.length <= 1 || arguments[1] === undefined ? createSelector : arguments[1];
-
-	  if (typeof selectors !== 'object') {
-	    throw new Error('createStructuredSelector expects first argument to be an object ' + ('where each property is a selector, instead received a ' + typeof selectors));
-	  }
-	  var objectKeys = Object.keys(selectors);
-	  return selectorCreator(objectKeys.map(function (key) {
-	    return selectors[key];
-	  }), function () {
-	    for (var _len5 = arguments.length, values = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
-	      values[_key5] = arguments[_key5];
-	    }
-
-	    return values.reduce(function (composition, value, index) {
-	      composition[objectKeys[index]] = value;
-	      return composition;
-	    }, {});
-	  });
-	}
-
-/***/ },
 /* 785 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -52365,6 +52465,8 @@
 
 	var _actions = __webpack_require__(774);
 
+	var _selectors = __webpack_require__(782);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52375,7 +52477,7 @@
 
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
-	        layers: store.layers,
+	        layers: store.layers.layersById,
 	        basemaps: store.basemaps,
 	        map: store.map
 	    };
@@ -52402,13 +52504,10 @@
 	    }, {
 	        key: 'toggleLayers',
 	        value: function toggleLayers(oldLayerProps, newLayerProps) {
-	            for (var layerGroupID in newLayerProps) {
-	                var layersInGroup = newLayerProps[layerGroupID].layers;
-	                for (var layerID in layersInGroup) {
-	                    var layer = layersInGroup[layerID];
-	                    if (oldLayerProps === null || layer.active !== oldLayerProps[layerGroupID].layers[layerID].active) {
-	                        this.map.toggleLayer(layerGroupID, layerID, layer);
-	                    }
+	            for (var layerId in newLayerProps) {
+	                var newLayer = newLayerProps[layerId];
+	                if (oldLayerProps === null || newLayer.active !== oldLayerProps[layerId].active) {
+	                    this.map.toggleLayer(layerId, newLayer);
 	                }
 	            }
 	        }
@@ -52495,7 +52594,7 @@
 	        L.control.mousePosition().addTo(self.map);
 	        L.control.scale().addTo(self.map);
 	        this.basemapIndex = {};
-	        this.layerGroupIndex = {};
+	        this.layerIndex = {};
 	        window.getExtent = function () {
 	            var bounds = self.map.getBounds();
 	            return bounds.toBBoxString();
@@ -52504,36 +52603,37 @@
 
 	    _createClass(ObliquePhotoMap, [{
 	        key: 'createLayer',
-	        value: function createLayer(layerGroupID, layerID, layer) {
+	        value: function createLayer(layerId, layer) {
 	            var self = this;
 	            switch (layer.type) {
 	                case "tileLayer":
 	                    if (typeof layer.url === "undefined") {
-	                        console.error("Layer " + layerID + " must have a tile URL");
+	                        console.error("Layer " + layerId + " must have a tile URL");
 	                    } else {
-	                        this.layerGroupIndex[layerGroupID][layerID] = L.tileLayer(layer.url, {
+	                        this.layerIndex[layerId] = L.tileLayer(layer.url, {
 	                            zIndex: 1
 	                        });
 	                    }
 	                    break;
 	                case "geojson":
 	                    if (typeof layer.dataLocation === "undefined") {
-	                        console.error("Layer " + layerID + " must have a data location");
+	                        console.error("Layer " + layerId + " must have a data location");
 	                    } else {
 	                        var layerOptions = {
 	                            pointToLayer: function pointToLayer(feature, latlng) {
 	                                return new L.circleMarker(latlng);
-	                            }
+	                            },
+	                            layerId: layerId
 	                        };
 	                        if (typeof layer.onEachFeatureID !== "undefined" && typeof _onEachFeature2.default[layer.onEachFeatureID] !== "undefined") {
 	                            layerOptions.onEachFeature = _onEachFeature2.default[layer.onEachFeatureID];
 	                        }
 	                        if (typeof layer.styleID !== "undefined" && typeof _styles.LAYER_STYLES[layer.styleID] !== "undefined") {
-	                            layerOptions.style = _styles.LAYER_STYLES[layer.styleID];
+	                            layerOptions.style = _styles.LAYER_STYLES[layer.styleID].bind(layerOptions);
 	                        }
-	                        this.layerGroupIndex[layerGroupID][layerID] = L.geoJson(null, layerOptions);
+	                        this.layerIndex[layerId] = L.geoJson(null, layerOptions);
 	                        axios.get(layer.dataLocation).then(function (response) {
-	                            self.layerGroupIndex[layerGroupID][layerID].addData(response.data);
+	                            self.layerIndex[layerId].addData(response.data);
 	                        }).catch(function (error) {
 	                            console.error(error);
 	                        });
@@ -52546,17 +52646,14 @@
 	        }
 	    }, {
 	        key: 'toggleLayer',
-	        value: function toggleLayer(layerGroupID, layerID, layer) {
-	            if (typeof this.layerGroupIndex[layerGroupID] === "undefined") {
-	                this.layerGroupIndex[layerGroupID] = {};
-	            }
-	            if (typeof this.layerGroupIndex[layerGroupID][layerID] === "undefined") {
-	                this.createLayer(layerGroupID, layerID, layer);
+	        value: function toggleLayer(layerId, layer) {
+	            if (typeof this.layerIndex[layerId] === "undefined") {
+	                this.createLayer(layerId, layer);
 	            }
 	            if (layer.active === true) {
-	                this.layerGroup.addLayer(this.layerGroupIndex[layerGroupID][layerID]);
+	                this.layerGroup.addLayer(this.layerIndex[layerId]);
 	            } else {
-	                this.layerGroup.removeLayer(this.layerGroupIndex[layerGroupID][layerID]);
+	                this.layerGroup.removeLayer(this.layerIndex[layerId]);
 	            }
 	        }
 	    }, {
@@ -52632,12 +52729,11 @@
 	};
 	// keeps track of current styles for legend
 	var STYLE_CACHE = {};
-	function addToCache(layerGroupName, layerName, propertyName, style, geometryType) {
-	    STYLE_CACHE[layerGroupName] = STYLE_CACHE[layerGroupName] || {};
-	    STYLE_CACHE[layerGroupName][layerName] = STYLE_CACHE[layerGroupName][layerName] || {};
-	    if (typeof STYLE_CACHE[layerGroupName][layerName][propertyName] === "undefined") {
-	        STYLE_CACHE[layerGroupName][layerName][propertyName] = true;
-	        _store2.default.dispatch((0, _actions.styleCacheUpdate)(layerGroupName, layerName, propertyName, style, geometryType));
+	function addToCache(layerId, propertyName, style, geometryType) {
+	    STYLE_CACHE[layerId] = STYLE_CACHE[layerId] || {};
+	    if (typeof STYLE_CACHE[layerId][propertyName] === "undefined") {
+	        STYLE_CACHE[layerId][propertyName] = true;
+	        _store2.default.dispatch((0, _actions.styleCacheUpdate)(layerId, propertyName, style, geometryType));
 	    }
 	    return style;
 	}
@@ -52666,7 +52762,7 @@
 	                style.color = COLORS.BLACK;
 	                break;
 	        }
-	        return addToCache("1976 Inventory", "Backshore", feature.properties.Bluff_Cond, style, feature.geometry.type);
+	        return addToCache(this.layerId, feature.properties.Bluff_Cond, style, feature.geometry.type);
 	    },
 	    backshore_2007: function backshore_2007(feature) {
 	        var style = {
@@ -52692,7 +52788,7 @@
 	                style.color = COLORS.BLACK;
 	                break;
 	        }
-	        return addToCache("2007 Inventory", "Backshore", feature.properties.Bluff_Cond, style, feature.geometry.type);
+	        return addToCache(this.layerId, feature.properties.Bluff_Cond, style, feature.geometry.type);
 	    },
 	    photos_1976: function photos_1976(feature) {
 	        var style = {
@@ -52701,7 +52797,7 @@
 	            weight: 0,
 	            fillOpacity: 1
 	        };
-	        return addToCache("1976 Inventory", "Photos", "photos", style, feature.geometry.type);
+	        return addToCache(this.layerId, "photos", style, feature.geometry.type);
 	    },
 	    photos_2007: function photos_2007(feature) {
 	        var style = {
@@ -52710,7 +52806,7 @@
 	            weight: 0,
 	            fillOpacity: 1
 	        };
-	        return addToCache("2007 Inventory", "Photos", "photos", style, feature.geometry.type);
+	        return addToCache(this.layerId, "photos", style, feature.geometry.type);
 	    },
 	    structure_1976: function structure_1976(feature) {
 	        var style = {
@@ -52719,7 +52815,7 @@
 	            weight: 0,
 	            fillOpacity: 1
 	        };
-	        return addToCache("1976 Inventory", "Structure", "structures", style, feature.geometry.type);
+	        return addToCache(this.layerId, "structures", style, feature.geometry.type);
 	    },
 	    structure_2007: function structure_2007(feature) {
 	        var style = {
@@ -52728,7 +52824,7 @@
 	            weight: 0,
 	            fillOpacity: 1
 	        };
-	        return addToCache("2007 Inventory", "Structure", "structures", style, feature.geometry.type);
+	        return addToCache(this.layerId, "structures", style, feature.geometry.type);
 	    },
 	    beachclass_1976: function beachclass_1976(feature) {
 	        var style = {
@@ -52772,7 +52868,7 @@
 	                style.color = COLORS.BLACK;
 	                break;
 	        }
-	        return addToCache("1976 Inventory", "Beachclass", feature.properties["Protecti_1"], style, feature.geometry.type);
+	        return addToCache(this.layerId, feature.properties["Protecti_1"], style, feature.geometry.type);
 	    },
 	    beachclass_2007: function beachclass_2007(feature) {
 	        var style = {
@@ -52816,7 +52912,7 @@
 	                style.color = COLORS.BLACK;
 	                break;
 	        }
-	        return addToCache("2007 Inventory", "Beachclass", feature.properties["Protecti_1"], style, feature.geometry.type);
+	        return addToCache(this.layerId, feature.properties["Protecti_1"], style, feature.geometry.type);
 	    }
 	};
 	exports.LAYER_STYLES = LAYER_STYLES;
@@ -54379,7 +54475,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _react = __webpack_require__(300);
@@ -54393,116 +54489,116 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var FeatureModal = function FeatureModal(props) {
-	  var classNames = ["static-modal"];
-	  if (props.visible === false) {
-	    classNames.push("hidden");
-	  }
-	  var rows = [];
-	  for (var property in props.featureProperties) {
-	    var value = props.featureProperties[property];
-	    rows.push(_react2.default.createElement(
-	      'tr',
-	      { key: property },
-	      _react2.default.createElement(
-	        'td',
-	        null,
+	    var classNames = ["static-modal"];
+	    if (props.visible === false) {
+	        classNames.push("hidden");
+	    }
+	    var rows = [];
+	    for (var property in props.featureProperties) {
+	        var value = props.featureProperties[property];
+	        rows.push(_react2.default.createElement(
+	            'tr',
+	            { key: property },
+	            _react2.default.createElement(
+	                'td',
+	                null,
+	                _react2.default.createElement(
+	                    'strong',
+	                    null,
+	                    property
+	                )
+	            ),
+	            _react2.default.createElement(
+	                'td',
+	                null,
+	                value
+	            )
+	        ));
+	    }
+	    var tabs = [];
+	    var footer = [_react2.default.createElement(
+	        _reactBootstrap.Button,
+	        { key: 'close', onClick: props.onCloseClick },
+	        'Close'
+	    )];
+	    switch (props.featureType) {
+	        case "photo":
+	            var photoURLs = (0, _util.getPhotoURLs)(props.featureProperties);
+	            tabs.push(_react2.default.createElement(
+	                _reactBootstrap.Tab,
+	                { key: 'image', eventKey: 1, title: 'Image' },
+	                _react2.default.createElement('img', { src: photoURLs.popup })
+	            ));
+	            tabs.push(_react2.default.createElement(
+	                _reactBootstrap.Tab,
+	                { key: 'data', eventKey: 2, title: 'Data' },
+	                _react2.default.createElement(
+	                    _reactBootstrap.Table,
+	                    { striped: true, bordered: true, condensed: true, hover: true },
+	                    _react2.default.createElement(
+	                        'tbody',
+	                        null,
+	                        rows
+	                    )
+	                )
+	            ));
+	            footer.unshift(_react2.default.createElement(
+	                'a',
+	                { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
+	                _react2.default.createElement(
+	                    _reactBootstrap.Button,
+	                    { bsStyle: 'primary', className: 'open-larger-image-button' },
+	                    'Open Original in New Window'
+	                )
+	            ));
+	            break;
+	        default:
+	            tabs.push(_react2.default.createElement(
+	                _reactBootstrap.Tab,
+	                { key: 'data', eventKey: 1, title: 'Data' },
+	                _react2.default.createElement(
+	                    _reactBootstrap.Table,
+	                    { striped: true, bordered: true, condensed: true, hover: true },
+	                    _react2.default.createElement(
+	                        'tbody',
+	                        null,
+	                        rows
+	                    )
+	                )
+	            ));
+	            break;
+	    }
+	    return _react2.default.createElement(
+	        'div',
+	        { id: 'map-popup', className: classNames.join(" ") },
 	        _react2.default.createElement(
-	          'strong',
-	          null,
-	          property
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'td',
-	        null,
-	        value
-	      )
-	    ));
-	  }
-	  var tabs = [];
-	  var footer = [_react2.default.createElement(
-	    _reactBootstrap.Button,
-	    { key: 'close', onClick: props.onCloseClick },
-	    'Close'
-	  )];
-	  switch (props.featureType) {
-	    case "photo":
-	      var photoURLs = (0, _util.getPhotoURLs)(props.featureProperties);
-	      tabs.push(_react2.default.createElement(
-	        _reactBootstrap.Tab,
-	        { key: 'image', eventKey: 1, title: 'Image' },
-	        _react2.default.createElement('img', { src: photoURLs.popup })
-	      ));
-	      tabs.push(_react2.default.createElement(
-	        _reactBootstrap.Tab,
-	        { key: 'data', eventKey: 2, title: 'Data' },
-	        _react2.default.createElement(
-	          _reactBootstrap.Table,
-	          { striped: true, bordered: true, condensed: true, hover: true },
-	          _react2.default.createElement(
-	            'tbody',
+	            _reactBootstrap.Modal.Dialog,
 	            null,
-	            rows
-	          )
+	            _react2.default.createElement(
+	                _reactBootstrap.Modal.Header,
+	                null,
+	                _react2.default.createElement(
+	                    _reactBootstrap.Modal.Title,
+	                    null,
+	                    'Feature'
+	                )
+	            ),
+	            _react2.default.createElement(
+	                _reactBootstrap.Modal.Body,
+	                null,
+	                _react2.default.createElement(
+	                    _reactBootstrap.Tabs,
+	                    { id: 'uncontrolled-tab-example' },
+	                    tabs
+	                )
+	            ),
+	            _react2.default.createElement(
+	                _reactBootstrap.Modal.Footer,
+	                null,
+	                footer
+	            )
 	        )
-	      ));
-	      footer.unshift(_react2.default.createElement(
-	        'a',
-	        { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
-	        _react2.default.createElement(
-	          _reactBootstrap.Button,
-	          { bsStyle: 'primary', className: 'open-larger-image-button' },
-	          'Open Original in New Window'
-	        )
-	      ));
-	      break;
-	    default:
-	      tabs.push(_react2.default.createElement(
-	        _reactBootstrap.Tab,
-	        { key: 'data', eventKey: 1, title: 'Data' },
-	        _react2.default.createElement(
-	          _reactBootstrap.Table,
-	          { striped: true, bordered: true, condensed: true, hover: true },
-	          _react2.default.createElement(
-	            'tbody',
-	            null,
-	            rows
-	          )
-	        )
-	      ));
-	      break;
-	  }
-	  return _react2.default.createElement(
-	    'div',
-	    { id: 'map-popup', className: classNames.join(" ") },
-	    _react2.default.createElement(
-	      _reactBootstrap.Modal.Dialog,
-	      null,
-	      _react2.default.createElement(
-	        _reactBootstrap.Modal.Header,
-	        null,
-	        _react2.default.createElement(
-	          _reactBootstrap.Modal.Title,
-	          null,
-	          'Feature'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        _reactBootstrap.Modal.Body,
-	        null,
-	        _react2.default.createElement(
-	          _reactBootstrap.Tabs,
-	          { id: 'uncontrolled-tab-example' },
-	          tabs
-	        )
-	      ),
-	      _react2.default.createElement(
-	        _reactBootstrap.Modal.Footer,
-	        null,
-	        footer
-	      )
-	    )
-	  );
+	    );
 	};
 	exports.default = FeatureModal;
 

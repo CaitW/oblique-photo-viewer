@@ -3,14 +3,13 @@ import Layer from './Layer.jsx';
 import { ListGroup, Panel } from 'react-bootstrap';
 const LayerGroup = (props) => {
     let layers = [];
-    for (let layer in props.layerGroup.layers) {
+    for (let layer in props.layers) {
         layers.push(
             <Layer 
-                key={layer} 
-                layerID={layer} 
-                layerGroupID={props.layerGroupID}
-                layerName={props.layerGroup.layers[layer].layerName}
-                active={props.layerGroup.layers[layer].active}
+                key={props.layers[layer].id} 
+                layerID={props.layers[layer].id} 
+                layerName={props.layers[layer].layerName}
+                active={props.layers[layer].active}
                 onLayerClick={props.onLayerClick}
             />
         );
@@ -25,9 +24,10 @@ const LayerGroup = (props) => {
         headerClassNames.push("active");
         iconClassNames.push("fa-chevron-up");
     }
+    let boundOnLayerClick = props.onPanelClick.bind(null, props.layerGroupId);
     return (
         <div className="panel panel-default">
-            <div className={headerClassNames.join(" ")} onClick={props.onPanelClick.bind(null, props.layerGroupID)}>{props.layerGroup.title}<i className={iconClassNames.join(" ")}></i></div>
+            <div className={headerClassNames.join(" ")} onClick={boundOnLayerClick}>{props.layerGroupName}<i className={iconClassNames.join(" ")}></i></div>
             <div className={bodyClassNames.join(" ")}>
                 <ListGroup>
                     {layers}

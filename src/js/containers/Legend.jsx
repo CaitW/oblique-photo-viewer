@@ -4,7 +4,6 @@ import { getActiveLayers, getActiveLayerStyleTypes } from '../selectors.js';
 
 const mapStateToProps = function(store) {
     return {
-        layers: store.layers,
         activeLayerStyleTypes: getActiveLayerStyleTypes(store)
     };
 }

@@ -1,8 +1,7 @@
-export function toggleLayer(layerGroupID, layerID) {
+export function toggleLayer(layerId) {
     return {
         type: "MAP:TOGGLE_LAYER",
-        layerGroupID,
-        layerID
+        layerId
     }
 }
 export function toggleBasemap(basemapID) {
@@ -22,12 +21,13 @@ export function doneZooming(countyName) {
         type: "MAP:DONE_ZOOMING"
     }
 }
-export function clickFeature(featureProperties, layerName, featureType) {
+export function clickFeature(featureProperties, layerName, featureType, layerGroupName) {
     return {
         type: "LAYER:CLICK_FEATURE",
         featureProperties,
         layerName,
-        featureType
+        featureType,
+        layerGroupName
     }
 }
 export function closeFeatureModal() {
@@ -67,11 +67,10 @@ export function openAboutModal () {
         type: "ABOUT_MODAL:OPEN"
     }
 }
-export function styleCacheUpdate (layerGroupName, layerName, propertyName, style, geometryType) {
+export function styleCacheUpdate (layerId, propertyName, style, geometryType) {
     return {
         type: "LAYER:STYLE_CACHE_UPDATE",
-        layerGroupName, 
-        layerName, 
+        layerId, 
         propertyName, 
         style, 
         geometryType

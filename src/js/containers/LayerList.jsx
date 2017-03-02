@@ -5,10 +5,11 @@ import { PanelGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import store from '../store.js';
 import { toggleLayer, toggleBasemap } from '../actions.js';
+import { mapLayerGroupsToLayers } from '../selectors.js';
 
 const mapStateToProps = function(store) {
     return {
-        layers: store.layers,
+        layers: mapLayerGroupsToLayers(store),
         basemaps: store.basemaps
     };
 }
@@ -17,14 +18,14 @@ class LayerList extends React.Component {
         super(props);
         let groups = {};
         groups["Basemaps"] = false;
-        for(let layerGroupID in this.props.layers) {
-            groups[layerGroupID] = false;
+        for(let layerGroupId in this.props.layers) {
+            groups[layerGroupId] = false;
         }
         this.state = groups;
         this.onPanelClick = this.onPanelClick.bind(this);
     }
-    onLayerClick(layerGroupID, layerID) {
-        store.dispatch(toggleLayer(layerGroupID, layerID));
+    onLayerClick(layerId) {
+        store.dispatch(toggleLayer(layerId));
     }
     onBasemapClick(basemapID) {
         store.dispatch(toggleBasemap(basemapID));
@@ -44,16 +45,17 @@ class LayerList extends React.Component {
     render() {
         let layerGroups = [];
         let eventKey = 1;
-        for (let layerGroupID in this.props.layers) {
+        for (let layerGroupId in this.props.layers) {
             layerGroups.push(
                 <LayerGroup 
-                    key={layerGroupID} 
-                    layerGroupID={layerGroupID} 
-                    layerGroup={this.props.layers[layerGroupID]}
+                    key={layerGroupId} 
+                    layerGroupId={layerGroupId}
+                    layerGroupName={this.props.layers[layerGroupId].name} 
+                    layers={this.props.layers[layerGroupId].layers}
                     onLayerClick={this.onLayerClick}
                     eventKey={eventKey.toString()}
                     onPanelClick={this.onPanelClick}
-                    panelVisible={this.state[layerGroupID]}
+                    panelVisible={this.state[layerGroupId]}
                 />
             );
             eventKey++;

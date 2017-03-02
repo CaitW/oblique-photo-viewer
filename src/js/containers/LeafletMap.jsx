@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import store from '../store.js';
 import ObliquePhotoMap from '../classes/ObliquePhotoMap.js';
 import { doneZooming } from '../actions.js';
+import {mapLayerGroupsToLayers} from '../selectors.js';
+
 const mapStateToProps = function(store) {
     return {
-        layers: store.layers,
+        layers: store.layers.layersById,
         basemaps: store.basemaps,
         map: store.map
     };
@@ -22,13 +24,10 @@ class LeafletMap extends React.Component {
         this.toggleLayers(null, this.props.layers);
     }
     toggleLayers(oldLayerProps, newLayerProps) {
-        for (let layerGroupID in newLayerProps) {
-            let layersInGroup = newLayerProps[layerGroupID].layers;
-            for (let layerID in layersInGroup) {
-                let layer = layersInGroup[layerID];
-                if (oldLayerProps === null || layer.active !== oldLayerProps[layerGroupID].layers[layerID].active) {
-                    this.map.toggleLayer(layerGroupID, layerID, layer);
-                }
+        for (let layerId in newLayerProps) {
+            let newLayer = newLayerProps[layerId];
+            if (oldLayerProps === null || newLayer.active !== oldLayerProps[layerId].active) {
+                this.map.toggleLayer(layerId, newLayer);
             }
         }
     }
