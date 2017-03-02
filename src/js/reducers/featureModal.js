@@ -2,8 +2,7 @@ let initialState = {
     visible: false,
     featureProperties: false,
     featureType: false,
-    layerName: false,
-    layerGroupName: false
+    layerId: false
 };
 export default function featureModal(state = initialState, action) {
     let newState = Object.assign({}, state);
@@ -12,15 +11,13 @@ export default function featureModal(state = initialState, action) {
             newState.visible = true;
             newState.featureProperties = action.featureProperties;
             newState.featureType = action.featureType;
-            newState.layerName = action.layerName;
-            newState.layerGroupName = action.layerGroupName;
+            newState.layerId = action.layerId;
             break;
         case "FEATURE_MODAL:CLOSE":
             newState.visible = false;
             newState.featureProperties = false;
             newState.featureType = false;
-            newState.layerName = false;
-            newState.layerGroupName = false;
+            newState.layerId = false;
             break;
         default:
             newState = state;

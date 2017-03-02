@@ -41,7 +41,9 @@ export default class ObliquePhotoMap {
                 } else {
                     let layerOptions = {
                         pointToLayer: function (feature, latlng) {
-                            return new L.circleMarker(latlng);
+                            return new L.circleMarker(latlng, {
+                                layerId
+                            });
                         },
                         layerId: layerId
                     };

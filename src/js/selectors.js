@@ -8,8 +8,7 @@ export const mapLayerGroupsToLayers = createSelector([getLayers], layers => {
     let mappedLayerGroups = {};
     for (let layerGroupName in layerGroupsById) {
         if (typeof mappedLayerGroups[layerGroupName] === "undefined") {
-            mappedLayerGroups[layerGroupName] = {
-                ...layerGroupsById[layerGroupName],
+            mappedLayerGroups[layerGroupName] = {...layerGroupsById[layerGroupName],
                 layers: {}
             };
         }
@@ -70,6 +69,27 @@ export const getActiveLayerStyleTypes = createSelector(getActiveLayers, activeLa
     }
     return stylesByLayerId;
 });
-export const getLabeledFeatureModalData = createSelector([getLayers, getFeatureModal], (layers, featureModalData) => {
-    if (featureModalData.layerName) {}
+/**
+ * In config.json, you can specify column names for the data properties that 
+ * appear in the feature popup by specifying the header_names property.
+ * This selector maps the original properties in the layer's JSON file to their
+ * renamed versions specified in the config.
+ */
+export const mapFeatureModalPropertiesToHeaderNames = createSelector([getLayersById, getFeatureModal], (layers, featureModal) => {
+    if (typeof featureModal.layerId !== "undefined") {
+        let layerId = featureModal.layerId;
+        if (typeof layers[layerId] !== "undefined" && layers[layerId].header_names !== "undefined") {
+            let headerNames = layers[layerId].header_names;
+            let mappedFeatureProperties = {};
+            for (let propertyId in featureModal.featureProperties) {
+                let mappedPropertyName = headerNames[propertyId];
+                // Only display the named property if it exists in the header_names section of the layer config
+                if (typeof mappedPropertyName !== "undefined") {
+                    mappedFeatureProperties[mappedPropertyName] = featureModal.featureProperties[propertyId];
+                }
+            }
+            return mappedFeatureProperties;
+        }
+    }
+    return featureModal.featureProperties;
 });

@@ -21,13 +21,12 @@ export function doneZooming(countyName) {
         type: "MAP:DONE_ZOOMING"
     }
 }
-export function clickFeature(featureProperties, layerName, featureType, layerGroupName) {
+export function clickFeature(featureProperties, featureType, layerId) {
     return {
         type: "LAYER:CLICK_FEATURE",
         featureProperties,
-        layerName,
         featureType,
-        layerGroupName
+        layerId
     }
 }
 export function closeFeatureModal() {
