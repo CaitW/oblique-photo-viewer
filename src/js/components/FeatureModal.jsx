@@ -26,7 +26,7 @@ const FeatureModal = (props) => {
                         </tbody>
                       </Table>
                 </Tab>);
-            footer.unshift(<a href={photoURLs.original} key="open-larger-image-button" target="_blank" rel="noopener noreferrer" ><Button bsStyle="primary" className="open-larger-image-button">Open Original in New Window</Button></a>)
+            footer.unshift(<a href={photoURLs.original} key="open-larger-image-button" target="_blank" rel="noopener noreferrer" ><Button className="open-larger-image-button">Open Original in New Window</Button></a>)
             break;
         default:
             tabs.push(<Tab key="data" eventKey={1} title="Data">
@@ -41,7 +41,7 @@ const FeatureModal = (props) => {
     return (<div id='map-popup' className={classNames.join(" ")}>
             <Modal.Dialog>
                   <Modal.Header>
-                        <Modal.Title>Feature</Modal.Title>
+                        <Modal.Title>{props.title}</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
                     <Tabs id="uncontrolled-tab-example">    

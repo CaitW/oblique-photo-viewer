@@ -51962,7 +51962,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.mapFeatureModalPropertiesToHeaderNames = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = undefined;
+	exports.getFeatureModalTitle = exports.mapFeatureModalPropertiesToHeaderNames = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -52110,6 +52110,15 @@
 	        }
 	    }
 	    return featureModal.featureProperties;
+	});
+	var getFeatureModalTitle = exports.getFeatureModalTitle = (0, _reselect.createSelector)([getLayersById, getFeatureModal], function (layers, featureModal) {
+	    if (typeof featureModal.layerId !== "undefined") {
+	        var layerId = featureModal.layerId;
+	        if (typeof layers[layerId] !== "undefined") {
+	            return layers[layerId].layerGroupName + " - " + layers[layerId].layerName;
+	        }
+	    }
+	    return "";
 	});
 
 /***/ },
@@ -52424,7 +52433,8 @@
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
 	        featureModal: _extends({}, store.featureModal, {
-	            mappedFeatureProperties: (0, _selectors.mapFeatureModalPropertiesToHeaderNames)(store)
+	            mappedFeatureProperties: (0, _selectors.mapFeatureModalPropertiesToHeaderNames)(store),
+	            title: (0, _selectors.getFeatureModalTitle)(store)
 	        })
 	    };
 	};
@@ -52449,7 +52459,7 @@
 	            return _react2.default.createElement(
 	                _reactBootstrap.Col,
 	                { xs: 12, sm: 7, md: 8, lg: 9, className: 'map-container' },
-	                _react2.default.createElement(_FeatureModal2.default, { visible: this.props.featureModal.visible, featureProperties: this.props.featureModal.featureProperties, mappedFeatureProperties: this.props.featureModal.mappedFeatureProperties, featureType: this.props.featureModal.featureType, onCloseClick: this.closeFeatureModal }),
+	                _react2.default.createElement(_FeatureModal2.default, { visible: this.props.featureModal.visible, featureProperties: this.props.featureModal.featureProperties, mappedFeatureProperties: this.props.featureModal.mappedFeatureProperties, featureType: this.props.featureModal.featureType, onCloseClick: this.closeFeatureModal, title: this.props.featureModal.title }),
 	                _react2.default.createElement(_LeafletMap2.default, null)
 	            );
 	        }
@@ -54562,7 +54572,7 @@
 	                { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
 	                _react2.default.createElement(
 	                    _reactBootstrap.Button,
-	                    { bsStyle: 'primary', className: 'open-larger-image-button' },
+	                    { className: 'open-larger-image-button' },
 	                    'Open Original in New Window'
 	                )
 	            ));
@@ -54595,7 +54605,7 @@
 	                _react2.default.createElement(
 	                    _reactBootstrap.Modal.Title,
 	                    null,
-	                    'Feature'
+	                    props.title
 	                )
 	            ),
 	            _react2.default.createElement(

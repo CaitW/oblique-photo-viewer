@@ -93,3 +93,12 @@ export const mapFeatureModalPropertiesToHeaderNames = createSelector([getLayersB
     }
     return featureModal.featureProperties;
 });
+export const getFeatureModalTitle = createSelector([getLayersById, getFeatureModal], (layers, featureModal) => {
+    if (typeof featureModal.layerId !== "undefined") {
+        let layerId = featureModal.layerId;
+        if(typeof layers[layerId] !== "undefined") {
+            return layers[layerId].layerGroupName + " - " + layers[layerId].layerName;
+        }
+    }
+    return "";
+});
