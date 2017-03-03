@@ -8381,44 +8381,84 @@ button.close {
 html {
   height: 100%; }
   html body {
-    height: 100%; }
+    height: 100%;
+    font-family: "Roboto"; }
 
 #react-root {
   height: 100%; }
   #react-root .main-container {
     height: 100%; }
     #react-root .main-container .navRow nav {
+      color: #FAFAFA;
+      border-width: 0;
+      border-radius: 0;
+      background-color: #616161;
       margin-bottom: 0; }
-      #react-root .main-container .navRow nav .dropdown-menu {
-        z-index: 9999; }
-        #react-root .main-container .navRow nav .dropdown-menu .shoreline {
-          text-transform: capitalize; }
+      #react-root .main-container .navRow nav .navbar-brand {
+        color: inherit; }
+      #react-root .main-container .navRow nav .navbar-nav {
+        color: #F5F5F5; }
+        #react-root .main-container .navRow nav .navbar-nav li a {
+          color: inherit; }
+        #react-root .main-container .navRow nav .navbar-nav .dropdown.open a {
+          background-color: #424242; }
+        #react-root .main-container .navRow nav .navbar-nav .dropdown .dropdown-menu {
+          z-index: 9999;
+          background-color: #424242; }
+          #react-root .main-container .navRow nav .navbar-nav .dropdown .dropdown-menu li {
+            background-color: #424242; }
+            #react-root .main-container .navRow nav .navbar-nav .dropdown .dropdown-menu li a {
+              background-color: #424242; }
+              #react-root .main-container .navRow nav .navbar-nav .dropdown .dropdown-menu li a:hover {
+                background-color: #616161; }
+          #react-root .main-container .navRow nav .navbar-nav .dropdown .dropdown-menu .shoreline {
+            text-transform: capitalize; }
     #react-root .main-container .contentRow {
       height: 100%;
       margin-top: -52px;
       padding-top: 52px; }
       #react-root .main-container .contentRow .sidebar {
+        background-color: #BDBDBD;
         padding-top: 20px;
         height: 100%;
         overflow-y: scroll;
         overflow-x: hidden; }
         #react-root .main-container .contentRow .sidebar .panel {
-          margin-bottom: 10px; }
+          margin-bottom: 10px;
+          border: 0; }
           #react-root .main-container .contentRow .sidebar .panel .panel-heading {
+            color: #FAFAFA;
+            background-color: #757575;
+            border: 0;
             padding: 5px 10px; }
             #react-root .main-container .contentRow .sidebar .panel .panel-heading i {
               float: right;
               line-height: inherit;
-              color: #9E9E9E; }
+              color: #F5F5F5; }
             #react-root .main-container .contentRow .sidebar .panel .panel-heading:hover {
               cursor: pointer;
-              background-color: #EEEEEE; }
+              background-color: #616161; }
           #react-root .main-container .contentRow .sidebar .panel .panel-body {
-            padding: 10px; }
+            background-color: #EEEEEE;
+            padding: 0;
+            border: 0; }
             #react-root .main-container .contentRow .sidebar .panel .panel-body .list-group {
+              border-width: 0;
+              border-radius: 0;
               margin-bottom: 0; }
               #react-root .main-container .contentRow .sidebar .panel .panel-body .list-group .list-group-item {
+                background-color: #EEEEEE;
+                border-color: #BDBDBD;
+                color: #424242;
+                border-width: 1px 0 0 0;
+                border-radius: 0;
                 padding: 5px 10px; }
+                #react-root .main-container .contentRow .sidebar .panel .panel-body .list-group .list-group-item.active {
+                  background-color: #424242;
+                  border-color: #BDBDBD;
+                  color: #F5F5F5; }
+        #react-root .main-container .contentRow .sidebar #legend .panel-body {
+          padding: 5px 10px; }
         #react-root .main-container .contentRow .sidebar #legend .legend-list {
           list-style: none;
           text-transform: capitalize; }
@@ -8431,19 +8471,52 @@ html {
         padding: 0; }
         #react-root .main-container .contentRow .map-container #map {
           height: 100%; }
-        #react-root .main-container .contentRow .map-container #map-popup .modal-body {
-          max-height: 400px;
-          overflow-y: scroll; }
-          #react-root .main-container .contentRow .map-container #map-popup .modal-body .tab-content {
-            border: 1px solid #ddd;
-            border-top-width: 0;
-            padding: 10px; }
-            #react-root .main-container .contentRow .map-container #map-popup .modal-body .tab-content img {
-              max-width: 100%; }
-            #react-root .main-container .contentRow .map-container #map-popup .modal-body .tab-content table {
-              margin-bottom: 0; }
-        #react-root .main-container .contentRow .map-container #map-popup .modal-footer .open-larger-image-button {
-          margin-right: 10px; }
+        #react-root .main-container .contentRow .map-container #map-popup .modal-content {
+          background-color: #757575; }
+          #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-header {
+            color: #FAFAFA;
+            border: 0; }
+          #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body {
+            background-color: #BDBDBD;
+            max-height: 400px;
+            overflow-y: scroll; }
+            #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .nav-tabs {
+              border-bottom: 1px solid #757575; }
+              #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .nav-tabs li a {
+                padding: 5px 10px;
+                border: 0; }
+                #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .nav-tabs li a[aria-selected=true] {
+                  background-color: #757575;
+                  color: #FAFAFA; }
+                #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .nav-tabs li a[aria-selected=false] {
+                  background-color: #EEEEEE;
+                  color: #212121;
+                  border-bottom: 1px solid #757575; }
+                  #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .nav-tabs li a[aria-selected=false]:hover {
+                    background-color: #E0E0E0; }
+            #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .tab-content {
+              border: 1px solid #757575;
+              background-color: #EEEEEE;
+              border-width: 3px 0 0 0;
+              padding: 10px; }
+              #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .tab-content img {
+                max-width: 100%; }
+              #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .tab-content table {
+                margin-bottom: 0; }
+            #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .table-striped > tbody > tr:nth-of-type(odd) {
+              background-color: #ffffff; }
+          #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-footer {
+            border: 0;
+            color: #F5F5F5; }
+            #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-footer .open-larger-image-button {
+              margin-right: 10px; }
+          #react-root .main-container .contentRow .map-container #map-popup .modal-content .btn {
+            padding: 5px 10px;
+            border: 0;
+            background-color: #EEEEEE;
+            color: #212121; }
+            #react-root .main-container .contentRow .map-container #map-popup .modal-content .btn:hover {
+              background-color: #E0E0E0; }
     #react-root .main-container #mobile-layers-list .modal-dialog {
       height: 100%;
       overflow: scroll; }
