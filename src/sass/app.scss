@@ -74,7 +74,7 @@ html {
             .sidebar {
                 box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
                 z-index: 9999;
-                background-color: $primary_200;
+                background-color: $primary_50;
                 padding-top: 20px;
                 height: 100%;
                 overflow-y: scroll;
@@ -98,7 +98,7 @@ html {
                         }
                     }
                     .panel-body {
-                        background-color: $primary_50;
+                        background-color: $primary_100;
                         padding: 0;
                         border: 0;
                         .list-group {
@@ -106,7 +106,7 @@ html {
                             border-radius: 0;
                             margin-bottom: 0;
                             .list-group-item {
-                                background-color: $primary_50;
+                                background-color: $primary_100;
                                 border-color: $primary_400;
                                 color: $primary_800;
                                 border-width: 1px 0 0 0;
@@ -118,7 +118,7 @@ html {
                                 &.active {
                                     background-color: $primary_800;
                                     border-color: $primary_400;
-                                    color: $primary_100;
+                                    color: $primary_50;
                                 }
                             }
                         }

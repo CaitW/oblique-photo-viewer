@@ -7,13 +7,13 @@
             border: 0;
         }
         .modal-body {
-            background-color: $primary_200;
+            background-color: $primary_50;
             overflow-y: scroll;
         }
         .modal-footer {
-            background-color: $primary_200;
+            background-color: $primary_50;
             border: 0;
-            color: $primary_100;
+            color: $primary_50;
         }
         .btn {
             border: 0;
@@ -53,7 +53,7 @@
             }
             .tab-content {
                 border: 1px solid $primary_600;
-                background-color: $primary_200;
+                background-color: $primary_100;
                 border-width: 3px 0 0 0;
                 padding: 10px;
                 img {
@@ -61,10 +61,27 @@
                 }
                 table {
                     margin-bottom: 0;
+                    tr {
+                        &:hover {
+                            background-color: $primary_200;
+                        }
+                        td {
+                            border: 1px solid $primary_400;
+                        }
+                    }
                 }
             }
             .table-striped > tbody > tr:nth-of-type(odd) {
                 background-color: #ffffff;
+                &:hover {
+                    background-color: $primary_200;
+                }
+            }
+            .table-striped > tbody > tr:nth-of-type(even) {
+                background-color: $primary_50;
+                &:hover {
+                    background-color: $primary_200;
+                }
             }
         }
         .modal-footer {
@@ -84,6 +101,7 @@
         overflow: scroll;
         .modal-content {
             .modal-body {
+                background-color: $primary_50;
                 .panel {
                     border: 0;
                     .panel-heading {
@@ -97,24 +115,24 @@
                         }
                     }
                     .panel-body {
-                        background-color: $primary_200;
                         padding: 0;
                         border: 0;
+                        background-color: $primary_100;
                         .list-group {
                             padding: 0;
                             border-width: 0;
                             border-radius: 0;
                             margin-bottom: 0;
                             .list-group-item {
-                                background-color: $white;
+                                background-color: $primary_100;
                                 border-color: $primary_400;
-                                color: $primary_800;
+                                color: $primary_900;
                                 border-width: 1px 0 0 0;
                                 border-radius: 0;
                                 &.active {
                                     background-color: $primary_800;
                                     border-color: $primary_400;
-                                    color: $primary_100;
+                                    color: $primary_50;
                                 }
                             }
                         }
