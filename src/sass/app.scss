@@ -3,11 +3,14 @@
 @import 'lib/leaflet';
 @import 'lib/L.Control.MousePosition';
 @import 'lib/font-awesome/font-awesome';
+// Partials
+@import 'colors';
 // CSS
 html {
     height: 100%;
     body {
         height: 100%;
+        font-family: "Roboto";
     }
 }
 
@@ -17,11 +20,43 @@ html {
         height: 100%;
         .navRow {
             nav {
+                color: $primary_50;
+                border-width: 0;
+                border-radius: 0;
+                background-color: $primary_700;
                 margin-bottom: 0;
-                .dropdown-menu {
-                    z-index: 9999;
-                    .shoreline {
-                        text-transform: capitalize;
+                .navbar-brand {
+                    color: inherit;
+                }
+                .navbar-nav {
+                    color: $primary_100;
+                    li {
+                        a {
+                            color: inherit;
+                        }
+                    }
+                    .dropdown {
+                        &.open {
+                            a {
+                                background-color: $primary_800;
+                            }
+                        }
+                        .dropdown-menu {
+                            z-index: 9999;
+                            background-color: $primary_800;
+                            li {
+                                background-color: $primary_800;
+                                a {
+                                    background-color: $primary_800;
+                                    &:hover {
+                                        background-color: $primary_700;
+                                    }
+                                }
+                            }
+                            .shoreline {
+                                text-transform: capitalize;
+                            }
+                        }
                     }
                 }
             }
@@ -31,35 +66,57 @@ html {
             margin-top: -52px;
             padding-top: 52px;
             .sidebar {
+                background-color: $primary_400;
                 padding-top: 20px;
                 height: 100%;
                 overflow-y: scroll;
                 overflow-x: hidden;
                 .panel {
                     margin-bottom: 10px;
+                    border: 0;
                     .panel-heading {
+                        color: $primary_50;
+                        background-color: $primary_600;
+                        border: 0;
                         padding: 5px 10px;
                         i {
                             float: right;
                             line-height: inherit;
-                            color: #9E9E9E;
+                            color: $primary_100;
                         }
                         &:hover {
                             cursor: pointer;
-                            background-color: #EEEEEE;
+                            background-color: $primary_700;
                         }
                     }
                     .panel-body {
-                        padding: 10px;
+                        background-color: $primary_200;
+                        padding: 0;
+                        border: 0;
                         .list-group {
+                            border-width: 0;
+                            border-radius: 0;
                             margin-bottom: 0;
                             .list-group-item {
+                                background-color: $primary_200;
+                                border-color: $primary_400;
+                                color: $primary_800;
+                                border-width: 1px 0 0 0;
+                                border-radius: 0;
                                 padding: 5px 10px;
+                                &.active {
+                                    background-color: $primary_800;
+                                    border-color: $primary_400;
+                                    color: $primary_100;
+                                }
                             }
                         }
                     }
                 }
                 #legend {
+                    .panel-body {
+                        padding: 5px 10px;
+                    }
                     .legend-list {
                         list-style: none;
                         text-transform: capitalize;
@@ -79,24 +136,69 @@ html {
                     height: 100%;
                 }
                 #map-popup {
-                    .modal-body {
-                        max-height: 400px;
-                        overflow-y: scroll;
-                        .tab-content {
-                            border: 1px solid #ddd;
-                            border-top-width: 0;
-                            padding: 10px;
-                            img {
-                                max-width: 100%;
+                    .modal-content {
+                        background-color: $primary_600;
+                        .modal-header {
+                            color: $primary_50;
+                            border: 0;
+                        }
+                        .modal-body {
+                            background-color: $primary_400;
+                            max-height: 400px;
+                            overflow-y: scroll;
+                            .nav-tabs {
+                                border-bottom: 1px solid $primary_600;
+                                li {
+                                    a {
+                                        padding: 5px 10px;
+                                        border: 0;
+                                        &[aria-selected=true] {
+                                            background-color: $primary_600;
+                                            color: $primary_50;
+                                        }
+                                        &[aria-selected=false] {
+                                            background-color: $primary_200;
+                                            color: $primary_900;
+                                            border-bottom: 1px solid $primary_600;
+                                            &:hover {
+                                                background-color: $primary_300;
+                                            }
+                                        }
+                                    }
+                                }
                             }
-                            table {
-                                margin-bottom: 0;
+                            .tab-content {
+                                border: 1px solid $primary_600;
+                                background-color: $primary_200;
+                                border-width: 3px 0 0 0;
+                                padding: 10px;
+                                img {
+                                    max-width: 100%;
+                                }
+                                table {
+                                    margin-bottom: 0;
+                                }
+                            }
+                            .table-striped > tbody > tr:nth-of-type(odd) {
+                                background-color: #ffffff;
                             }
                         }
-                    }
-                    .modal-footer {
-                        .open-larger-image-button {
-                            margin-right: 10px;
+                        .modal-footer {
+                            border: 0;
+                            color: $primary_100;
+                            .open-larger-image-button {
+                                margin-right: 10px;
+                            }
+                        }
+                        .btn {
+                            padding: 5px 10px;
+                            border: 0;
+                            background-color: $primary_200;
+                            color: $primary_900;
+                            &:hover {
+                                background-color: $primary_300;
+                                
+                            }
                         }
                     }
                 }
