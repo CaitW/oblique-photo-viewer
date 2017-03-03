@@ -8473,7 +8473,7 @@ button.close {
             border-width: 1px 0 0 0;
             border-radius: 0; }
             #mobile-layers-list .modal-dialog .modal-content .modal-body .panel .panel-body .list-group .list-group-item.active {
-              background-color: #37474F;
+              background-color: #455A64;
               border-color: #78909C;
               color: #ECEFF1; }
 
@@ -8533,7 +8533,7 @@ html {
           border: 0; }
           #react-root .main-container .contentRow .sidebar .panel .panel-heading {
             color: #ECEFF1;
-            background-color: #546E7A;
+            background-color: #607D8B;
             border: 0;
             padding: 5px 10px; }
             #react-root .main-container .contentRow .sidebar .panel .panel-heading i {
@@ -8561,7 +8561,7 @@ html {
                 #react-root .main-container .contentRow .sidebar .panel .panel-body .list-group .list-group-item:hover {
                   background-color: #B0BEC5; }
                 #react-root .main-container .contentRow .sidebar .panel .panel-body .list-group .list-group-item.active {
-                  background-color: #37474F;
+                  background-color: #455A64;
                   border-color: #78909C;
                   color: #ECEFF1; }
         #react-root .main-container .contentRow .sidebar #legend .panel-body {
