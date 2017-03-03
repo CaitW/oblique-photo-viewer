@@ -8378,6 +8378,93 @@ button.close {
   overflow: visible;
   clip: auto; }
 
+.modal-dialog .modal-content {
+  background-color: #BDBDBD; }
+  .modal-dialog .modal-content .modal-header {
+    background-color: #BDBDBD;
+    color: #212121;
+    border: 0; }
+  .modal-dialog .modal-content .modal-body {
+    background-color: #EEEEEE;
+    overflow-y: scroll; }
+  .modal-dialog .modal-content .modal-footer {
+    background-color: #EEEEEE;
+    border: 0;
+    color: #F5F5F5; }
+  .modal-dialog .modal-content .btn {
+    border: 0;
+    background-color: #757575;
+    color: #FAFAFA; }
+    .modal-dialog .modal-content .btn:hover {
+      background-color: #616161; }
+
+#map-popup .modal-content .modal-body {
+  max-height: 400px; }
+  #map-popup .modal-content .modal-body .nav-tabs {
+    border-bottom: 1px solid #757575; }
+    #map-popup .modal-content .modal-body .nav-tabs li a {
+      padding: 5px 10px;
+      border: 0; }
+      #map-popup .modal-content .modal-body .nav-tabs li a[aria-selected=true] {
+        background-color: #757575;
+        color: #FAFAFA; }
+      #map-popup .modal-content .modal-body .nav-tabs li a[aria-selected=false] {
+        background-color: #EEEEEE;
+        color: #212121;
+        border-bottom: 1px solid #757575; }
+        #map-popup .modal-content .modal-body .nav-tabs li a[aria-selected=false]:hover {
+          background-color: #E0E0E0; }
+  #map-popup .modal-content .modal-body .tab-content {
+    border: 1px solid #757575;
+    background-color: #EEEEEE;
+    border-width: 3px 0 0 0;
+    padding: 10px; }
+    #map-popup .modal-content .modal-body .tab-content img {
+      max-width: 100%; }
+    #map-popup .modal-content .modal-body .tab-content table {
+      margin-bottom: 0; }
+  #map-popup .modal-content .modal-body .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #ffffff; }
+
+#map-popup .modal-content .modal-footer .open-larger-image-button {
+  margin-right: 10px; }
+
+#map-popup .modal-content .btn {
+  padding: 5px 10px; }
+
+#mobile-layers-list .modal-dialog {
+  height: 100%;
+  overflow: scroll; }
+  #mobile-layers-list .modal-dialog .modal-content .modal-body .panel {
+    border: 0; }
+    #mobile-layers-list .modal-dialog .modal-content .modal-body .panel .panel-heading {
+      color: #212121;
+      background-color: #BDBDBD;
+      border: 0; }
+      #mobile-layers-list .modal-dialog .modal-content .modal-body .panel .panel-heading i {
+        float: right;
+        line-height: inherit;
+        color: #F5F5F5; }
+    #mobile-layers-list .modal-dialog .modal-content .modal-body .panel .panel-body {
+      background-color: #EEEEEE;
+      padding: 0;
+      border: 0; }
+      #mobile-layers-list .modal-dialog .modal-content .modal-body .panel .panel-body .list-group {
+        padding: 0;
+        border-width: 0;
+        border-radius: 0;
+        margin-bottom: 0; }
+        #mobile-layers-list .modal-dialog .modal-content .modal-body .panel .panel-body .list-group .list-group-item {
+          background-color: #FFFFFF;
+          border-color: #BDBDBD;
+          color: #424242;
+          border-width: 1px 0 0 0;
+          border-radius: 0; }
+          #mobile-layers-list .modal-dialog .modal-content .modal-body .panel .panel-body .list-group .list-group-item.active {
+            background-color: #424242;
+            border-color: #BDBDBD;
+            color: #F5F5F5; }
+
 html {
   height: 100%; }
   html body {
@@ -8395,7 +8482,8 @@ html {
       background-color: #616161;
       margin-bottom: 0; }
       #react-root .main-container .navRow nav .navbar-brand {
-        color: inherit; }
+        color: inherit;
+        font-family: "Fjalla One"; }
       #react-root .main-container .navRow nav .navbar-nav {
         color: #F5F5F5; }
         #react-root .main-container .navRow nav .navbar-nav li a {
@@ -8413,12 +8501,17 @@ html {
                 background-color: #616161; }
           #react-root .main-container .navRow nav .navbar-nav .dropdown .dropdown-menu .shoreline {
             text-transform: capitalize; }
+      #react-root .main-container .navRow nav .navbar-toggle {
+        border-radius: 3px;
+        border-color: #E0E0E0; }
     #react-root .main-container .contentRow {
       height: 100%;
       margin-top: -52px;
       padding-top: 52px; }
       #react-root .main-container .contentRow .sidebar {
-        background-color: #BDBDBD;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+        background-color: #EEEEEE;
         padding-top: 20px;
         height: 100%;
         overflow-y: scroll;
@@ -8439,7 +8532,7 @@ html {
               cursor: pointer;
               background-color: #616161; }
           #react-root .main-container .contentRow .sidebar .panel .panel-body {
-            background-color: #EEEEEE;
+            background-color: #FAFAFA;
             padding: 0;
             border: 0; }
             #react-root .main-container .contentRow .sidebar .panel .panel-body .list-group {
@@ -8447,12 +8540,14 @@ html {
               border-radius: 0;
               margin-bottom: 0; }
               #react-root .main-container .contentRow .sidebar .panel .panel-body .list-group .list-group-item {
-                background-color: #EEEEEE;
+                background-color: #FAFAFA;
                 border-color: #BDBDBD;
                 color: #424242;
                 border-width: 1px 0 0 0;
                 border-radius: 0;
                 padding: 5px 10px; }
+                #react-root .main-container .contentRow .sidebar .panel .panel-body .list-group .list-group-item:hover {
+                  background-color: #EEEEEE; }
                 #react-root .main-container .contentRow .sidebar .panel .panel-body .list-group .list-group-item.active {
                   background-color: #424242;
                   border-color: #BDBDBD;
@@ -8471,59 +8566,17 @@ html {
         padding: 0; }
         #react-root .main-container .contentRow .map-container #map {
           height: 100%; }
-        #react-root .main-container .contentRow .map-container #map-popup .modal-content {
-          background-color: #757575; }
-          #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-header {
-            color: #FAFAFA;
-            border: 0; }
-          #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body {
-            background-color: #BDBDBD;
-            max-height: 400px;
-            overflow-y: scroll; }
-            #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .nav-tabs {
-              border-bottom: 1px solid #757575; }
-              #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .nav-tabs li a {
-                padding: 5px 10px;
-                border: 0; }
-                #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .nav-tabs li a[aria-selected=true] {
-                  background-color: #757575;
-                  color: #FAFAFA; }
-                #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .nav-tabs li a[aria-selected=false] {
-                  background-color: #EEEEEE;
-                  color: #212121;
-                  border-bottom: 1px solid #757575; }
-                  #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .nav-tabs li a[aria-selected=false]:hover {
-                    background-color: #E0E0E0; }
-            #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .tab-content {
-              border: 1px solid #757575;
-              background-color: #EEEEEE;
-              border-width: 3px 0 0 0;
-              padding: 10px; }
-              #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .tab-content img {
-                max-width: 100%; }
-              #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .tab-content table {
-                margin-bottom: 0; }
-            #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-body .table-striped > tbody > tr:nth-of-type(odd) {
-              background-color: #ffffff; }
-          #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-footer {
-            border: 0;
-            color: #F5F5F5; }
-            #react-root .main-container .contentRow .map-container #map-popup .modal-content .modal-footer .open-larger-image-button {
-              margin-right: 10px; }
-          #react-root .main-container .contentRow .map-container #map-popup .modal-content .btn {
-            padding: 5px 10px;
-            border: 0;
-            background-color: #EEEEEE;
-            color: #212121; }
-            #react-root .main-container .contentRow .map-container #map-popup .modal-content .btn:hover {
-              background-color: #E0E0E0; }
-    #react-root .main-container #mobile-layers-list .modal-dialog {
-      height: 100%;
-      overflow: scroll; }
-      #react-root .main-container #mobile-layers-list .modal-dialog .modal-body .panel-heading i {
-        float: right;
-        line-height: inherit; }
-      #react-root .main-container #mobile-layers-list .modal-dialog .modal-body .panel-body {
-        padding: 5px; }
-        #react-root .main-container #mobile-layers-list .modal-dialog .modal-body .panel-body .list-group {
-          margin-bottom: 0; }
+
+.leaflet-control-zoom.leaflet-bar {
+  border: 0; }
+  .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-in,
+  .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-out {
+    color: #212121; }
+  .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-in {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }
+  .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-out {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }
