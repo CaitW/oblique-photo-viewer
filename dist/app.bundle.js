@@ -29953,7 +29953,7 @@
 							_react2.default.createElement(
 								'a',
 								{ href: '#' },
-								'Oblique Photo Viewer'
+								'Wisconsin Shoreline Inventory and Oblique Photo Viewer'
 							)
 						),
 						_react2.default.createElement(_reactBootstrap.Navbar.Toggle, null)

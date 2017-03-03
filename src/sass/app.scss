@@ -5,6 +5,7 @@
 @import 'lib/font-awesome/font-awesome';
 // Partials
 @import 'colors';
+@import 'modals';
 // CSS
 html {
     height: 100%;
@@ -27,6 +28,7 @@ html {
                 margin-bottom: 0;
                 .navbar-brand {
                     color: inherit;
+                    font-family: "Fjalla One";
                 }
                 .navbar-nav {
                     color: $primary_100;
@@ -59,6 +61,10 @@ html {
                         }
                     }
                 }
+                .navbar-toggle {
+                    border-radius: 3px;
+                    border-color: $primary_300;
+                }
             }
         }
         .contentRow {
@@ -66,7 +72,9 @@ html {
             margin-top: -52px;
             padding-top: 52px;
             .sidebar {
-                background-color: $primary_400;
+                box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+                z-index: 9999;
+                background-color: $primary_200;
                 padding-top: 20px;
                 height: 100%;
                 overflow-y: scroll;
@@ -90,7 +98,7 @@ html {
                         }
                     }
                     .panel-body {
-                        background-color: $primary_200;
+                        background-color: $primary_50;
                         padding: 0;
                         border: 0;
                         .list-group {
@@ -98,12 +106,15 @@ html {
                             border-radius: 0;
                             margin-bottom: 0;
                             .list-group-item {
-                                background-color: $primary_200;
+                                background-color: $primary_50;
                                 border-color: $primary_400;
                                 color: $primary_800;
                                 border-width: 1px 0 0 0;
                                 border-radius: 0;
                                 padding: 5px 10px;
+                                &:hover {
+                                    background-color: $primary_200;
+                                }
                                 &.active {
                                     background-color: $primary_800;
                                     border-color: $primary_400;
@@ -135,94 +146,25 @@ html {
                 #map {
                     height: 100%;
                 }
-                #map-popup {
-                    .modal-content {
-                        background-color: $primary_600;
-                        .modal-header {
-                            color: $primary_50;
-                            border: 0;
-                        }
-                        .modal-body {
-                            background-color: $primary_400;
-                            max-height: 400px;
-                            overflow-y: scroll;
-                            .nav-tabs {
-                                border-bottom: 1px solid $primary_600;
-                                li {
-                                    a {
-                                        padding: 5px 10px;
-                                        border: 0;
-                                        &[aria-selected=true] {
-                                            background-color: $primary_600;
-                                            color: $primary_50;
-                                        }
-                                        &[aria-selected=false] {
-                                            background-color: $primary_200;
-                                            color: $primary_900;
-                                            border-bottom: 1px solid $primary_600;
-                                            &:hover {
-                                                background-color: $primary_300;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            .tab-content {
-                                border: 1px solid $primary_600;
-                                background-color: $primary_200;
-                                border-width: 3px 0 0 0;
-                                padding: 10px;
-                                img {
-                                    max-width: 100%;
-                                }
-                                table {
-                                    margin-bottom: 0;
-                                }
-                            }
-                            .table-striped > tbody > tr:nth-of-type(odd) {
-                                background-color: #ffffff;
-                            }
-                        }
-                        .modal-footer {
-                            border: 0;
-                            color: $primary_100;
-                            .open-larger-image-button {
-                                margin-right: 10px;
-                            }
-                        }
-                        .btn {
-                            padding: 5px 10px;
-                            border: 0;
-                            background-color: $primary_200;
-                            color: $primary_900;
-                            &:hover {
-                                background-color: $primary_300;
-                                
-                            }
-                        }
-                    }
-                }
             }
         }
-        #mobile-layers-list {
-            .modal-dialog {
-                height: 100%;
-                overflow: scroll;
-                .modal-body {
-                    .panel-heading {
-                        i {
-                            float: right;
-                            line-height: inherit;
-                        }
-                    }
-                    .panel-body {
-                        padding: 5px;
-                        .list-group {
-                            margin-bottom: 0;
-                        }
-                    }
-                }
-            }
-        }
+    }
+}
+
+.leaflet-control-zoom.leaflet-bar {
+     border: 0;
+    .leaflet-control-zoom-in,
+    .leaflet-control-zoom-out {
+        color: $primary_900;
+    }
+    .leaflet-control-zoom-in {
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    }
+    .leaflet-control-zoom-out {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
     }
 }

@@ -20,7 +20,7 @@ export default class NavBar extends React.Component {
 		  <Navbar collapseOnSelect>
 		    <Navbar.Header>
 		      <Navbar.Brand>
-		        <a href="#">Oblique Photo Viewer</a>
+		        <a href="#">Wisconsin Shoreline Inventory and Oblique Photo Viewer</a>
 		      </Navbar.Brand>
 		      <Navbar.Toggle />
 		    </Navbar.Header>
