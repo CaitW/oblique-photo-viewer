@@ -34,7 +34,7 @@
                 
                 "layers": {
                     "Backshore": {
-                        "layerName": "Backshore",
+                        "layerName": "Bluff Condition",
                         "type": "geojson",
                         "styleID": "backshore_1976",
                         "onEachFeatureID": "backshore_1976",
@@ -42,7 +42,7 @@
                         "active": false
                     },
                     "Beachclass": {
-                        "layerName": "Beachclass",
+                        "layerName": "Beach Protection",
                         "type": "geojson",
                         "styleID": "beachclass_1976",
                         "onEachFeatureID": "beachclass_1976",
@@ -50,7 +50,7 @@
                         "active": false
                     },
                     "Structure": {
-                        "layerName": "Structure",
+                        "layerName": "Shore Structures",
                         "type": "geojson",
                         "styleID": "structure_1976",
                         "onEachFeatureID": "structure_1976",
@@ -86,7 +86,7 @@
                 
                 "layers": {
                     "Backshore": {
-                        "layerName": "Backshore",
+                        "layerName": "Bluff Condition",
                         "type": "geojson",
                         "styleID": "backshore_2007",
                         "onEachFeatureID": "backshore_2007",
@@ -94,7 +94,7 @@
                         "active": false
                     },
                     "Beachclass": {
-                        "layerName": "Beachclass",
+                        "layerName": "Beach Protection",
                         "type": "geojson",
                         "styleID": "beachclass_2007",
                         "onEachFeatureID": "beachclass_2007",
@@ -102,7 +102,7 @@
                         "active": false
                     },
                     "Structure": {
-                        "layerName": "Structure",
+                        "layerName": "Shore Structures",
                         "type": "geojson",
                         "styleID": "structure_2007",
                         "onEachFeatureID": "structure_2007",
