@@ -51793,7 +51793,7 @@
 	            onLayerClick: props.onLayerClick
 	        }));
 	    }
-	    var bodyClassNames = ["panel-body"];
+	    var bodyClassNames = ["panel-body", "pullDown"];
 	    var headerClassNames = ["panel-heading"];
 	    var iconClassNames = ["fa"];
 	    if (props.panelVisible === false) {
@@ -51891,7 +51891,7 @@
 	            onBasemapClick: props.onBasemapClick
 	        }));
 	    }
-	    var bodyClassNames = ["panel-body"];
+	    var bodyClassNames = ["panel-body", "pullDown"];
 	    var headerClassNames = ["panel-heading"];
 	    var iconClassNames = ["fa"];
 	    if (props.panelVisible === false) {
@@ -52351,7 +52351,7 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var bodyClassNames = ["panel-body"];
+	            var bodyClassNames = ["panel-body", "pullDown"];
 	            var headerClassNames = ["panel-heading"];
 	            var iconClassNames = ["fa"];
 	            if (this.state.panelVisible === false) {

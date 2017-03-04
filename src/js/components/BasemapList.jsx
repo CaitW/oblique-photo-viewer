@@ -15,7 +15,7 @@ const BasemapList = (props) => {
             />
         );
     }
-    let bodyClassNames = ["panel-body"];
+    let bodyClassNames = ["panel-body", "pullDown"];
     let headerClassNames = ["panel-heading"];
     let iconClassNames = ["fa"];
     if(props.panelVisible === false) {

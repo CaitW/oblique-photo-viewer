@@ -8448,6 +8448,7 @@ button.close {
   #mobile-layers-list .modal-dialog .modal-content .modal-body {
     background-color: #ECEFF1; }
     #mobile-layers-list .modal-dialog .modal-content .modal-body .panel {
+      background-color: #CFD8DC;
       border: 0; }
       #mobile-layers-list .modal-dialog .modal-content .modal-body .panel .panel-heading {
         color: #263238;
@@ -8476,6 +8477,23 @@ button.close {
               background-color: #455A64;
               border-color: #78909C;
               color: #ECEFF1; }
+
+.pullDown {
+  animation-name: pullDown;
+  -webkit-animation-name: pullDown;
+  animation-duration: 0.1s;
+  -webkit-animation-duration: 0.1s;
+  animation-timing-function: ease-out;
+  -webkit-animation-timing-function: ease-out;
+  transform-origin: 50% 0%;
+  -ms-transform-origin: 50% 0%;
+  -webkit-transform-origin: 50% 0%; }
+
+@keyframes pullDown {
+  0% {
+    transform: scaleY(0.1); }
+  100% {
+    transform: scaleY(1); } }
 
 html {
   height: 100%; }
@@ -8529,6 +8547,7 @@ html {
         overflow-y: scroll;
         overflow-x: hidden; }
         #react-root .main-container .contentRow .sidebar .panel {
+          background-color: #CFD8DC;
           margin-bottom: 10px;
           border: 0; }
           #react-root .main-container .contentRow .sidebar .panel .panel-heading {
