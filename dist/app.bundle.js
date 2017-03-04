@@ -8349,7 +8349,7 @@
 					"name": "1976 Inventory",
 					"layers": {
 						"Backshore": {
-							"layerName": "Backshore",
+							"layerName": "Bluff Condition",
 							"type": "geojson",
 							"styleID": "backshore_1976",
 							"onEachFeatureID": "backshore_1976",
@@ -8357,7 +8357,7 @@
 							"active": false
 						},
 						"Beachclass": {
-							"layerName": "Beachclass",
+							"layerName": "Beach Protection",
 							"type": "geojson",
 							"styleID": "beachclass_1976",
 							"onEachFeatureID": "beachclass_1976",
@@ -8365,7 +8365,7 @@
 							"active": false
 						},
 						"Structure": {
-							"layerName": "Structure",
+							"layerName": "Shore Structures",
 							"type": "geojson",
 							"styleID": "structure_1976",
 							"onEachFeatureID": "structure_1976",
@@ -8400,7 +8400,7 @@
 					"name": "2007 Inventory",
 					"layers": {
 						"Backshore": {
-							"layerName": "Backshore",
+							"layerName": "Bluff Condition",
 							"type": "geojson",
 							"styleID": "backshore_2007",
 							"onEachFeatureID": "backshore_2007",
@@ -8408,7 +8408,7 @@
 							"active": false
 						},
 						"Beachclass": {
-							"layerName": "Beachclass",
+							"layerName": "Beach Protection",
 							"type": "geojson",
 							"styleID": "beachclass_2007",
 							"onEachFeatureID": "beachclass_2007",
@@ -8416,7 +8416,7 @@
 							"active": false
 						},
 						"Structure": {
-							"layerName": "Structure",
+							"layerName": "Shore Structures",
 							"type": "geojson",
 							"styleID": "structure_2007",
 							"onEachFeatureID": "structure_2007",
@@ -52255,6 +52255,8 @@
 
 	var _reactRedux = __webpack_require__(730);
 
+	var _reactBootstrap = __webpack_require__(477);
+
 	var _selectors = __webpack_require__(782);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -52335,8 +52337,8 @@
 	                    'div',
 	                    { key: layerKey },
 	                    _react2.default.createElement(
-	                        'h5',
-	                        null,
+	                        'div',
+	                        { className: 'layerName' },
 	                        layerKey
 	                    ),
 	                    _react2.default.createElement(

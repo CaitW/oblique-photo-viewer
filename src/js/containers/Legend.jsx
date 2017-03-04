@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Well } from 'react-bootstrap';
 import { getActiveLayers, getActiveLayerStyleTypes } from '../selectors.js';
 
 const mapStateToProps = function(store) {
@@ -31,7 +32,7 @@ class Legend extends React.Component {
             }
             layers.push(
                 <div key={layerKey}>
-                    <h5>{layerKey}</h5>
+                    <div className="layerName">{layerKey}</div>
                     <ul className="legend-list">
                         {styles}
                     </ul>
