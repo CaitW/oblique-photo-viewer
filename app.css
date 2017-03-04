@@ -8572,7 +8572,7 @@ html {
               margin-bottom: 0; }
               #react-root .main-container .contentRow .sidebar .panel .panel-body .list-group .list-group-item {
                 background-color: #CFD8DC;
-                border-color: #78909C;
+                border-color: #B0BEC5;
                 color: #37474F;
                 border-width: 1px 0 0 0;
                 border-radius: 0;
@@ -8585,13 +8585,19 @@ html {
                   color: #ECEFF1; }
         #react-root .main-container .contentRow .sidebar #legend .panel-body {
           padding: 5px 10px; }
-        #react-root .main-container .contentRow .sidebar #legend .legend-list {
-          list-style: none;
-          text-transform: capitalize; }
-          #react-root .main-container .contentRow .sidebar #legend .legend-list i {
-            margin-right: 10px; }
-            #react-root .main-container .contentRow .sidebar #legend .legend-list i.fa-circle {
-              font-size: 10px; }
+          #react-root .main-container .contentRow .sidebar #legend .panel-body .layerName {
+            padding: 5px 0;
+            border: 1px solid #B0BEC5;
+            border-width: 0 0 1px 0;
+            font-weight: bold; }
+          #react-root .main-container .contentRow .sidebar #legend .panel-body .legend-list {
+            padding: 5px 10px;
+            list-style: none;
+            text-transform: capitalize; }
+            #react-root .main-container .contentRow .sidebar #legend .panel-body .legend-list i {
+              margin-right: 10px; }
+              #react-root .main-container .contentRow .sidebar #legend .panel-body .legend-list i.fa-circle {
+                font-size: 10px; }
       #react-root .main-container .contentRow .map-container {
         height: 100%;
         padding: 0; }
