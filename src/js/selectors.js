@@ -78,7 +78,7 @@ export const getActiveLayerStyleTypes = createSelector(getActiveLayers, activeLa
 export const mapFeatureModalPropertiesToHeaderNames = createSelector([getLayersById, getFeatureModal], (layers, featureModal) => {
     if (typeof featureModal.layerId !== "undefined") {
         let layerId = featureModal.layerId;
-        if (typeof layers[layerId] !== "undefined" && layers[layerId].header_names !== "undefined") {
+        if (typeof layers[layerId] !== "undefined" && typeof layers[layerId].header_names !== "undefined") {
             let headerNames = layers[layerId].header_names;
             let mappedFeatureProperties = {};
             for (let propertyId in featureModal.featureProperties) {

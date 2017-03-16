@@ -52096,7 +52096,7 @@
 	var mapFeatureModalPropertiesToHeaderNames = exports.mapFeatureModalPropertiesToHeaderNames = (0, _reselect.createSelector)([getLayersById, getFeatureModal], function (layers, featureModal) {
 	    if (typeof featureModal.layerId !== "undefined") {
 	        var layerId = featureModal.layerId;
-	        if (typeof layers[layerId] !== "undefined" && layers[layerId].header_names !== "undefined") {
+	        if (typeof layers[layerId] !== "undefined" && typeof layers[layerId].header_names !== "undefined") {
 	            var headerNames = layers[layerId].header_names;
 	            var mappedFeatureProperties = {};
 	            for (var propertyId in featureModal.featureProperties) {
