@@ -8353,74 +8353,32 @@
 							"type": "geojson",
 							"styleID": "backshore_1976",
 							"onEachFeatureID": "backshore_1976",
-							"dataLocation": "./data/layers/backshore_1976.geojson",
-							"active": false,
-							"header_names": {
-								"BackShoreT": "Backshore Type",
-								"Vegetation": "Vegetation Classification",
-								"Bluff_Cond": "Bluff Condition Classification",
-								"Bluff_Modi": "Bluff Modified Classification",
-								"Bluff_Fail": "Bluff Failure Classification",
-								"NonBluff_V": "Non-Bluff Classification",
-								"Confidence": "Confidence Level Classification",
-								"Length_Mil": "Segment Length (miles)",
-								"CountyName": "County",
-								"CountyFIPS": "FIPS",
-								"Comments": "Notes"
-							}
+							"dataLocation": "./data/layers/backshore_1976.json",
+							"active": false
 						},
 						"Beachclass": {
 							"layerName": "Beach Protection",
 							"type": "geojson",
 							"styleID": "beachclass_1976",
 							"onEachFeatureID": "beachclass_1976",
-							"dataLocation": "./data/layers/beachclass_1976.geojson",
-							"active": false,
-							"header_names": {
-								"ShoreType": "Shore Type",
-								"Protecti_1": "Shore Protection Classification",
-								"Beach_Valu": "Beach Classification",
-								"Length_Mil": "Segment Length (miles)",
-								"CountyName": "County",
-								"CountyFIPS": "FIPS",
-								"Comments": "Notes"
-							}
+							"dataLocation": "./data/layers/beachclass_1976.json",
+							"active": false
 						},
 						"Structure": {
 							"layerName": "Shore Structures",
 							"type": "geojson",
 							"styleID": "structure_1976",
 							"onEachFeatureID": "structure_1976",
-							"dataLocation": "./data/layers/structure_1976.geojson",
-							"active": false,
-							"header_names": {
-								"Structure_": "Structure Type",
-								"CountyName": "County",
-								"CountyFIPS": "FIPS",
-								"Notes": "Notes"
-							}
+							"dataLocation": "./data/layers/structure_1976.json",
+							"active": false
 						},
 						"Photos": {
 							"layerName": "Photos",
 							"type": "geojson",
-							"dataLocation": "./data/layers/photos_1976.geojson",
+							"dataLocation": "./data/layers/photos_1976.json",
 							"styleID": "photos_1976",
 							"onEachFeatureID": "photos_1976",
-							"active": true,
-							"header_names": {
-								"FILENAME": "File Name",
-								"YEAR_": "Year",
-								"STATE": "State",
-								"GREATLAKE": "Great Lake",
-								"LATITUDE": "Latitude",
-								"LONGITUDE": "Longitude",
-								"ZONE_": "UTM Zone",
-								"EAST": "Easting",
-								"NORTH": "Northing",
-								"COUNTY": "County",
-								"FIPS": "County FIPS",
-								"NAME": "Original File Name"
-							}
+							"active": true
 						}
 					}
 				},
@@ -8432,74 +8390,32 @@
 							"type": "geojson",
 							"styleID": "backshore_2007",
 							"onEachFeatureID": "backshore_2007",
-							"dataLocation": "./data/layers/backshore_2007.geojson",
-							"active": false,
-							"header_names": {
-								"BackShoreT": "Backshore Type",
-								"Vegetation": "Vegetation Classification",
-								"Bluff_Cond": "Bluff Condition Classification",
-								"Bluff_Modi": "Bluff Modified Classification",
-								"Bluff_Fail": "Bluff Failure Classification",
-								"NonBluff_V": "Non-Bluff Classification",
-								"Confidence": "Confidence Level Classification",
-								"Length_Mil": "Segment Length (miles)",
-								"CountyName": "County",
-								"CountyFIPS": "FIPS",
-								"Comments": "Notes"
-							}
+							"dataLocation": "./data/layers/backshore_2007.json",
+							"active": false
 						},
 						"Beachclass": {
 							"layerName": "Beach Protection",
 							"type": "geojson",
 							"styleID": "beachclass_2007",
 							"onEachFeatureID": "beachclass_2007",
-							"dataLocation": "./data/layers/beachclass_2007.geojson",
-							"active": false,
-							"header_names": {
-								"ShoreType": "Shore Type",
-								"Protecti_1": "Shore Protection Classification",
-								"Beach_Valu": "Beach Classification",
-								"Length_Mil": "Segment Length (miles)",
-								"CountyName": "County",
-								"CountyFIPS": "FIPS",
-								"Comments": "Notes"
-							}
+							"dataLocation": "./data/layers/beachclass_2007.json",
+							"active": false
 						},
 						"Structure": {
 							"layerName": "Shore Structures",
 							"type": "geojson",
 							"styleID": "structure_2007",
 							"onEachFeatureID": "structure_2007",
-							"dataLocation": "./data/layers/structure_2007.geojson",
-							"active": false,
-							"header_names": {
-								"Structure_": "Structure Type",
-								"CountyName": "County",
-								"CountyFIPS": "FIPS",
-								"Notes": "Notes"
-							}
+							"dataLocation": "./data/layers/structure_2007.json",
+							"active": false
 						},
 						"Photos": {
 							"layerName": "Photos",
 							"type": "geojson",
-							"dataLocation": "./data/layers/photos_2007.geojson",
+							"dataLocation": "./data/layers/photos_2007.json",
 							"styleID": "photos_2007",
 							"onEachFeatureID": "photos_2007",
-							"active": false,
-							"header_names": {
-								"FILENAME": "File Name",
-								"YEAR_": "Year",
-								"STATE": "State",
-								"GREATLAKE": "Great Lake",
-								"LATITUDE": "Latitude",
-								"LONGITUDE": "Longitude",
-								"ZONE_": "UTM Zone",
-								"EAST": "Easting",
-								"NORTH": "Northing",
-								"COUNTY": "County",
-								"FIPS": "County FIPS",
-								"NAME": "Original File Name"
-							}
+							"active": false
 						}
 					}
 				},
@@ -52018,7 +51934,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.getFeatureModalTitle = exports.mapFeatureModalPropertiesToHeaderNames = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = undefined;
+	exports.getFeatureModalTitle = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -52142,30 +52058,6 @@
 	    }
 
 	    return stylesByLayerId;
-	});
-	/**
-	 * In config.json, you can specify column names for the data properties that 
-	 * appear in the feature popup by specifying the header_names property.
-	 * This selector maps the original properties in the layer's JSON file to their
-	 * renamed versions specified in the config.
-	 */
-	var mapFeatureModalPropertiesToHeaderNames = exports.mapFeatureModalPropertiesToHeaderNames = (0, _reselect.createSelector)([getLayersById, getFeatureModal], function (layers, featureModal) {
-	    if (typeof featureModal.layerId !== "undefined") {
-	        var layerId = featureModal.layerId;
-	        if (typeof layers[layerId] !== "undefined" && typeof layers[layerId].header_names !== "undefined") {
-	            var headerNames = layers[layerId].header_names;
-	            var mappedFeatureProperties = {};
-	            for (var propertyId in featureModal.featureProperties) {
-	                var mappedPropertyName = headerNames[propertyId];
-	                // Only display the named property if it exists in the header_names section of the layer config
-	                if (typeof mappedPropertyName !== "undefined") {
-	                    mappedFeatureProperties[mappedPropertyName] = featureModal.featureProperties[propertyId];
-	                }
-	            }
-	            return mappedFeatureProperties;
-	        }
-	    }
-	    return featureModal.featureProperties;
 	});
 	var getFeatureModalTitle = exports.getFeatureModalTitle = (0, _reselect.createSelector)([getLayersById, getFeatureModal], function (layers, featureModal) {
 	    if (typeof featureModal.layerId !== "undefined") {
@@ -52491,7 +52383,6 @@
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
 	        featureModal: _extends({}, store.featureModal, {
-	            mappedFeatureProperties: (0, _selectors.mapFeatureModalPropertiesToHeaderNames)(store),
 	            title: (0, _selectors.getFeatureModalTitle)(store)
 	        })
 	    };
@@ -52517,7 +52408,7 @@
 	            return _react2.default.createElement(
 	                _reactBootstrap.Col,
 	                { xs: 12, sm: 7, md: 8, lg: 9, className: 'map-container' },
-	                _react2.default.createElement(_FeatureModal2.default, { visible: this.props.featureModal.visible, featureProperties: this.props.featureModal.featureProperties, mappedFeatureProperties: this.props.featureModal.mappedFeatureProperties, featureType: this.props.featureModal.featureType, onCloseClick: this.closeFeatureModal, title: this.props.featureModal.title }),
+	                _react2.default.createElement(_FeatureModal2.default, { visible: this.props.featureModal.visible, featureProperties: this.props.featureModal.featureProperties, featureType: this.props.featureModal.featureType, onCloseClick: this.closeFeatureModal, title: this.props.featureModal.title }),
 	                _react2.default.createElement(_LeafletMap2.default, null)
 	            );
 	        }
@@ -54577,26 +54468,28 @@
 	        classNames.push("hidden");
 	    }
 	    var rows = [];
-	    for (var property in props.mappedFeatureProperties) {
-	        var value = props.mappedFeatureProperties[property];
-	        rows.push(_react2.default.createElement(
-	            'tr',
-	            { key: property },
-	            _react2.default.createElement(
-	                'td',
-	                null,
+	    for (var property in props.featureProperties) {
+	        if (property !== "OBJECTID") {
+	            var value = props.featureProperties[property];
+	            rows.push(_react2.default.createElement(
+	                'tr',
+	                { key: property },
 	                _react2.default.createElement(
-	                    'strong',
+	                    'td',
 	                    null,
-	                    property
+	                    _react2.default.createElement(
+	                        'strong',
+	                        null,
+	                        property
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    value
 	                )
-	            ),
-	            _react2.default.createElement(
-	                'td',
-	                null,
-	                value
-	            )
-	        ));
+	            ));
+	        }
 	    }
 	    var tabs = [];
 	    var footer = [_react2.default.createElement(
@@ -54704,9 +54597,9 @@
 
 	function getPhotoURLs(photoProperties) {
 		var base = _config2.default.photos.urlBase;
-		var lakeName = photoProperties["GREATLAKE"].replace(/ /gi, "");
-		var year = photoProperties["YEAR_"];
-		var fileName = photoProperties["FILENAME"];
+		var lakeName = photoProperties["Great Lake"].replace(/ /gi, "");
+		var year = photoProperties["Year"];
+		var fileName = photoProperties["File Name"];
 		var urls = {};
 		for (var size in _config2.default.photos.sizes) {
 			var sizeDir = _config2.default.photos.sizes[size];

@@ -7,9 +7,11 @@ const FeatureModal = (props) => {
         classNames.push("hidden");
     }
     let rows = [];
-    for (let property in props.mappedFeatureProperties) {
-        let value = props.mappedFeatureProperties[property];
-        rows.push(<tr key={property}><td><strong>{property}</strong></td><td>{value}</td></tr>);
+    for (let property in props.featureProperties) {
+        if (property !== "OBJECTID") {
+            let value = props.featureProperties[property];
+            rows.push(<tr key={property}><td><strong>{property}</strong></td><td>{value}</td></tr>);
+        }
     }
     let tabs = [];
     let footer = [<Button key="close" onClick={props.onCloseClick}>Close</Button>];

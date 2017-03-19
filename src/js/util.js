@@ -1,9 +1,9 @@
 import CONFIG from './config.json';
 export function getPhotoURLs (photoProperties) {
 	let base = CONFIG.photos.urlBase;
-	let lakeName = photoProperties["GREATLAKE"].replace(/ /gi, "");
-	let year = photoProperties["YEAR_"];
-	let fileName = photoProperties["FILENAME"];
+	let lakeName = photoProperties["Great Lake"].replace(/ /gi, "");
+	let year = photoProperties["Year"];
+	let fileName = photoProperties["File Name"];
 	let urls = {};
 	for (let size in CONFIG.photos.sizes) {
 		let sizeDir = CONFIG.photos.sizes[size];

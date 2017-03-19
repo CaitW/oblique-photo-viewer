@@ -37,74 +37,32 @@
                         "type": "geojson",
                         "styleID": "backshore_1976",
                         "onEachFeatureID": "backshore_1976",
-                        "dataLocation": "./data/layers/backshore_1976.geojson",
-                        "active": false,
-                        "header_names": {
-                            "BackShoreT": "Backshore Type",
-                            "Vegetation": "Vegetation Classification",
-                            "Bluff_Cond": "Bluff Condition Classification",
-                            "Bluff_Modi": "Bluff Modified Classification",
-                            "Bluff_Fail": "Bluff Failure Classification",
-                            "NonBluff_V": "Non-Bluff Classification",
-                            "Confidence": "Confidence Level Classification",
-                            "Length_Mil": "Segment Length (miles)",
-                            "CountyName": "County",
-                            "CountyFIPS": "FIPS",
-                            "Comments": "Notes" 
-                        }
+                        "dataLocation": "./data/layers/backshore_1976.json",
+                        "active": false
                     },
                     "Beachclass": {
                         "layerName": "Beach Protection",
                         "type": "geojson",
                         "styleID": "beachclass_1976",
                         "onEachFeatureID": "beachclass_1976",
-                        "dataLocation": "./data/layers/beachclass_1976.geojson",
-                        "active": false,
-                        "header_names": {
-                            "ShoreType": "Shore Type",
-                            "Protecti_1": "Shore Protection Classification",
-                            "Beach_Valu": "Beach Classification",
-                            "Length_Mil": "Segment Length (miles)",
-                            "CountyName": "County",
-                            "CountyFIPS": "FIPS",
-                            "Comments": "Notes"
-                        }
+                        "dataLocation": "./data/layers/beachclass_1976.json",
+                        "active": false
                     },
                     "Structure": {
                         "layerName": "Shore Structures",
                         "type": "geojson",
                         "styleID": "structure_1976",
                         "onEachFeatureID": "structure_1976",
-                        "dataLocation": "./data/layers/structure_1976.geojson",
-                        "active": false,
-                        "header_names": {
-                            "Structure_": "Structure Type",
-                            "CountyName": "County",
-                            "CountyFIPS": "FIPS",
-                            "Notes": "Notes"
-                        }
+                        "dataLocation": "./data/layers/structure_1976.json",
+                        "active": false
                     },
                     "Photos": {
                         "layerName": "Photos",
                         "type": "geojson",
-                        "dataLocation": "./data/layers/photos_1976.geojson",
+                        "dataLocation": "./data/layers/photos_1976.json",
                         "styleID": "photos_1976",
                         "onEachFeatureID": "photos_1976",
-                        "active": true,
-                        "header_names": {
-                            "FILENAME": "File Name",
-                            "YEAR_": "Year",
-                            "STATE": "State",
-                            "GREATLAKE": "Great Lake",
-                            "LATITUDE": "Latitude",
-                            "LONGITUDE": "Longitude",
-                            "ZONE_": "UTM Zone",
-                            "EAST": "Easting",
-                            "NORTH": "Northing",
-                            "COUNTY": "County",
-                            "FIPS": "County FIPS",
-                            "NAME": "Original File Name"
-                        }
+                        "active": true
                     }
                 }
             },
@@ -116,74 +74,32 @@
                         "type": "geojson",
                         "styleID": "backshore_2007",
                         "onEachFeatureID": "backshore_2007",
-                        "dataLocation": "./data/layers/backshore_2007.geojson",
-                        "active": false,
-                        "header_names": {
-                            "BackShoreT": "Backshore Type",
-                            "Vegetation": "Vegetation Classification",
-                            "Bluff_Cond": "Bluff Condition Classification",
-                            "Bluff_Modi": "Bluff Modified Classification",
-                            "Bluff_Fail": "Bluff Failure Classification",
-                            "NonBluff_V": "Non-Bluff Classification",
-                            "Confidence": "Confidence Level Classification",
-                            "Length_Mil": "Segment Length (miles)",
-                            "CountyName": "County",
-                            "CountyFIPS": "FIPS",
-                            "Comments": "Notes" 
-                        }
+                        "dataLocation": "./data/layers/backshore_2007.json",
+                        "active": false
                     },
                     "Beachclass": {
                         "layerName": "Beach Protection",
                         "type": "geojson",
                         "styleID": "beachclass_2007",
                         "onEachFeatureID": "beachclass_2007",
-                        "dataLocation": "./data/layers/beachclass_2007.geojson",
-                        "active": false,
-                        "header_names": {
-                            "ShoreType": "Shore Type",
-                            "Protecti_1": "Shore Protection Classification",
-                            "Beach_Valu": "Beach Classification",
-                            "Length_Mil": "Segment Length (miles)",
-                            "CountyName": "County",
-                            "CountyFIPS": "FIPS",
-                            "Comments": "Notes"
-                        }
+                        "dataLocation": "./data/layers/beachclass_2007.json",
+                        "active": false
                     },
                     "Structure": {
                         "layerName": "Shore Structures",
                         "type": "geojson",
                         "styleID": "structure_2007",
                         "onEachFeatureID": "structure_2007",
-                        "dataLocation": "./data/layers/structure_2007.geojson",
-                        "active": false,
-                        "header_names": {
-                            "Structure_": "Structure Type",
-                            "CountyName": "County",
-                            "CountyFIPS": "FIPS",
-                            "Notes": "Notes"
-                        }
+                        "dataLocation": "./data/layers/structure_2007.json",
+                        "active": false
                     },
                     "Photos": {
                         "layerName": "Photos",
                         "type": "geojson",
-                        "dataLocation": "./data/layers/photos_2007.geojson",
+                        "dataLocation": "./data/layers/photos_2007.json",
                         "styleID": "photos_2007",
                         "onEachFeatureID": "photos_2007",
-                        "active": false,
-                        "header_names": {
-                            "FILENAME": "File Name",
-                            "YEAR_": "Year",
-                            "STATE": "State",
-                            "GREATLAKE": "Great Lake",
-                            "LATITUDE": "Latitude",
-                            "LONGITUDE": "Longitude",
-                            "ZONE_": "UTM Zone",
-                            "EAST": "Easting",
-                            "NORTH": "Northing",
-                            "COUNTY": "County",
-                            "FIPS": "County FIPS",
-                            "NAME": "Original File Name"
-                        }
+                        "active": false
                     }
                 }
             },
