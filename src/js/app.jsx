@@ -5,7 +5,7 @@ import NavBar from './containers/NavBar.jsx';
 import SideBar from './containers/SideBar.jsx';
 import MapContainer from './containers/MapContainer.jsx';
 import MobileLayerList from './containers/MobileLayerList.jsx';
-import AboutModal from './components/AboutModal.jsx';
+import AboutModal from './containers/AboutModal.jsx';
 import { Grid, Row } from 'react-bootstrap';
 import { Provider } from 'react-redux';
 import store from './store.js';
