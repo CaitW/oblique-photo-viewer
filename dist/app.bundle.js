@@ -8354,7 +8354,20 @@
 							"styleID": "backshore_1976",
 							"onEachFeatureID": "backshore_1976",
 							"dataLocation": "./data/layers/backshore_1976.geojson",
-							"active": false
+							"active": false,
+							"header_names": {
+								"BackShoreT": "Backshore Type",
+								"Vegetation": "Vegetation Classification",
+								"Bluff_Cond": "Bluff Condition Classification",
+								"Bluff_Modi": "Bluff Modified Classification",
+								"Bluff_Fail": "Bluff Failure Classification",
+								"NonBluff_V": "Non-Bluff Classification",
+								"Confidence": "Confidence Level Classification",
+								"Length_Mil": "Segment Length (miles)",
+								"CountyName": "County",
+								"CountyFIPS": "FIPS",
+								"Comments": "Notes"
+							}
 						},
 						"Beachclass": {
 							"layerName": "Beach Protection",
@@ -8362,7 +8375,16 @@
 							"styleID": "beachclass_1976",
 							"onEachFeatureID": "beachclass_1976",
 							"dataLocation": "./data/layers/beachclass_1976.geojson",
-							"active": false
+							"active": false,
+							"header_names": {
+								"ShoreType": "Shore Type",
+								"Protecti_1": "Shore Protection Classification",
+								"Beach_Valu": "Beach Classification",
+								"Length_Mil": "Segment Length (miles)",
+								"CountyName": "County",
+								"CountyFIPS": "FIPS",
+								"Comments": "Notes"
+							}
 						},
 						"Structure": {
 							"layerName": "Shore Structures",
@@ -8370,7 +8392,13 @@
 							"styleID": "structure_1976",
 							"onEachFeatureID": "structure_1976",
 							"dataLocation": "./data/layers/structure_1976.geojson",
-							"active": false
+							"active": false,
+							"header_names": {
+								"Structure_": "Structure Type",
+								"CountyName": "County",
+								"CountyFIPS": "FIPS",
+								"Notes": "Notes"
+							}
 						},
 						"Photos": {
 							"layerName": "Photos",
@@ -8405,7 +8433,20 @@
 							"styleID": "backshore_2007",
 							"onEachFeatureID": "backshore_2007",
 							"dataLocation": "./data/layers/backshore_2007.geojson",
-							"active": false
+							"active": false,
+							"header_names": {
+								"BackShoreT": "Backshore Type",
+								"Vegetation": "Vegetation Classification",
+								"Bluff_Cond": "Bluff Condition Classification",
+								"Bluff_Modi": "Bluff Modified Classification",
+								"Bluff_Fail": "Bluff Failure Classification",
+								"NonBluff_V": "Non-Bluff Classification",
+								"Confidence": "Confidence Level Classification",
+								"Length_Mil": "Segment Length (miles)",
+								"CountyName": "County",
+								"CountyFIPS": "FIPS",
+								"Comments": "Notes"
+							}
 						},
 						"Beachclass": {
 							"layerName": "Beach Protection",
@@ -8413,7 +8454,16 @@
 							"styleID": "beachclass_2007",
 							"onEachFeatureID": "beachclass_2007",
 							"dataLocation": "./data/layers/beachclass_2007.geojson",
-							"active": false
+							"active": false,
+							"header_names": {
+								"ShoreType": "Shore Type",
+								"Protecti_1": "Shore Protection Classification",
+								"Beach_Valu": "Beach Classification",
+								"Length_Mil": "Segment Length (miles)",
+								"CountyName": "County",
+								"CountyFIPS": "FIPS",
+								"Comments": "Notes"
+							}
 						},
 						"Structure": {
 							"layerName": "Shore Structures",
@@ -8421,7 +8471,13 @@
 							"styleID": "structure_2007",
 							"onEachFeatureID": "structure_2007",
 							"dataLocation": "./data/layers/structure_2007.geojson",
-							"active": false
+							"active": false,
+							"header_names": {
+								"Structure_": "Structure Type",
+								"CountyName": "County",
+								"CountyFIPS": "FIPS",
+								"Notes": "Notes"
+							}
 						},
 						"Photos": {
 							"layerName": "Photos",
