@@ -1,3 +1,9 @@
+/**
+ * LeafletMap.jsx
+ * Container with Leaflet map. References the primary map object (ObliquePhotoMap), 
+ * and facilitates communication between the map and interface.
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import store from '../store.js';

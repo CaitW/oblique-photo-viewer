@@ -1,3 +1,8 @@
+/**
+ * Legend.jsx
+ * This component references the Redux store to determine which layers are currently active.
+ * It then renders the legend based on the currently active layers.
+ */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Well } from 'react-bootstrap';

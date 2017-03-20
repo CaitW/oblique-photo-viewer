@@ -1,3 +1,7 @@
+/**
+ * FeatureModal.jsx
+ * This creates the modal that's displayed when a user clicks on an object in the map
+ */
 import React from 'react';
 import { Modal, Button, Table, Tabs, Tab } from 'react-bootstrap';
 import { getPhotoURLs } from '../util.js';

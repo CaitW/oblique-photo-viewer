@@ -1,3 +1,7 @@
+/**
+ * BasemapList.jsx
+ * This creates the group container that holds each Basemap list item, in the sidebar and mobile layer list
+ */
 import React from 'react';
 import { toggleBasemap } from '../actions.js';
 import { Panel, ListGroup } from 'react-bootstrap';

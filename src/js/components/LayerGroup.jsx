@@ -1,3 +1,7 @@
+/**
+ * LayerGroup.jsx
+ * This creates the group container that holds each non-basemap layer list item, in the sidebar and mobile layer list
+ */
 import React from 'react';
 import Layer from './Layer.jsx';
 import { ListGroup, Panel } from 'react-bootstrap';

@@ -1,3 +1,7 @@
+/**
+ * LayerList.jsx
+ * This component takes the current layers and basemaps and displays them, grouped by type, in the sidebar and mobile layers list.
+ */
 import React from 'react';
 import LayerGroup from '../components/LayerGroup.jsx';
 import BasemapList from '../components/BasemapList.jsx';

@@ -1,3 +1,7 @@
+/**
+ * MapContainer.jsx
+ * This component contains the primary map container (LeafletMap), as well as additional modals that appear over the map.
+ */
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import LeafletMap from './LeafletMap.jsx';

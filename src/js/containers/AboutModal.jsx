@@ -1,3 +1,7 @@
+/**
+ * AboutModal.jsx
+ * This creates the modal displaying "about" information
+ */
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';

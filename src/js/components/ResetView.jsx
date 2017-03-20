@@ -1,3 +1,7 @@
+/**
+ * ResetView.jsx
+ * This creates the button that resets the map view
+ */
 import React from 'react';
 import { NavItem } from 'react-bootstrap';
 import store from '../store.js';

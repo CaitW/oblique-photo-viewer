@@ -1,3 +1,8 @@
+/**
+ * ZoomToCounty.jsx
+ * This creates the dropdown that contains each county with a shoreline. 
+ * Upon clicking that county, the map will zoom to that county's shoreline. 
+ */
 import React from 'react';
 import { connect } from 'react-redux';
 import { MenuItem, NavDropdown } from 'react-bootstrap';

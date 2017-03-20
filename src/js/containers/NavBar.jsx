@@ -1,3 +1,11 @@
+/**
+ * NavBar.jsx
+ * This component creates the navigation toolbar that sits at the top of the screen.
+ * It contains:
+ * - the site brand
+ * - the button that activates the MobileLayerList
+ * - the button that activates the AboutModal
+ */
 import React from 'react';
 import { Nav, Navbar, NavItem, Col, MenuItem, NavDropdown } from 'react-bootstrap';
 import ZoomToCounty from './ZoomToCounty.jsx';

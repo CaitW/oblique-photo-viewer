@@ -1,3 +1,11 @@
+/**
+ * onEachFeatures.js
+ * This contains functions that are applied to each layer when they are loaded. 
+ *
+ * Each property of the ON_EACH_FEATURE object (below) is applied to a specific layer, 
+ * and Leaflet passes the layer's data to that function on load. It is used here to 
+ * apply click handling functions to each feature in each layer.
+ */
 import store from '../store.js';
 import {clickFeature} from '../actions.js';
 function handleClick (featureProperties, layer, dataType) {

@@ -1,3 +1,9 @@
+/**
+ * MobileLayerList.jsx
+ * This component creates the modal that appears on mobile devices and small screens.
+ * It is activated when the user clicks on the menu button in the nav bar.
+ * It displays the LayerList component
+ */
 import React from 'react';
 import LayerList from '../containers/LayerList.jsx';
 import { ListGroup, Accordion, Modal, Button } from 'react-bootstrap';
