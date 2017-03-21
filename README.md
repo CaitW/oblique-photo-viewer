@@ -72,3 +72,8 @@ The configuration file is located in ```src/js/config.json```. It contains selec
 ```map.countyShorelines``` - contains a list of county shorelines and their extents, for use in "zoom to shoreline" button
 ```map.photos``` - where aerial photos are located and what sizes are available
 
+#### Adding a Layer
+1. Add layer spec to config.json (```src/js/config.json```), within the ```map.layers``` property as documented above
+1. If a geojson layer, add that layer's geojson file to ```src/js/data/layers/```
+1. If you want click interaction (geojson layers only), add a function in ```src/js/layers/onEachFeature.js```
+1. If you want to style the layer (geojson layers only), add a (Leaflet) style function in ```src/js/layers/styles.js``` 
