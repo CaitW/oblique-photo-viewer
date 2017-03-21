@@ -8242,7 +8242,10 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * This file is the primary entry point for the application. 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
+
 
 	var App = function (_React$Component) {
 	    _inherits(App, _React$Component);
@@ -29889,7 +29892,15 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * NavBar.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component creates the navigation toolbar that sits at the top of the screen.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * It contains:
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * - the site brand
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * - the button that activates the MobileLayerList
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * - the button that activates the AboutModal
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
 
 	var NavBar = function (_React$Component) {
 		_inherits(NavBar, _React$Component);
@@ -48820,7 +48831,12 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * ZoomToCounty.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This creates the dropdown that contains each county with a shoreline. 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Upon clicking that county, the map will zoom to that county's shoreline. 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
 
 	var mapStateToProps = function mapStateToProps(store) {
 	  return {};
@@ -51515,7 +51531,11 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * ResetView.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This creates the button that resets the map view
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
 
 	var ResetView = function (_React$Component) {
 	    _inherits(ResetView, _React$Component);
@@ -51579,7 +51599,13 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Sidebar.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component creates the sidebar, which contains:
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * - Layers List
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * - Legend
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
 
 	var SideBar = function (_React$Component) {
 		_inherits(SideBar, _React$Component);
@@ -51649,7 +51675,11 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * LayerList.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component takes the current layers and basemaps and displays them, grouped by type, in the sidebar and mobile layers list.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
 
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
@@ -51795,7 +51825,10 @@
 	            )
 	        )
 	    );
-	};
+	}; /**
+	    * LayerGroup.jsx
+	    * This creates the group container that holds each non-basemap layer list item, in the sidebar and mobile layer list
+	    */
 	exports.default = LayerGroup;
 
 /***/ },
@@ -51816,6 +51849,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * Layer.jsx
+	 * This builds the list item representing a non-basemap layer in the sidebar and mobile layer list
+	 */
 	var Layer = function Layer(props) {
 		return _react2.default.createElement(
 			_reactBootstrap.ListGroupItem,
@@ -51852,11 +51889,14 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * BasemapList.jsx
+	 * This creates the group container that holds each Basemap list item, in the sidebar and mobile layer list
+	 */
 	var BasemapList = function BasemapList(props) {
 	    var basemaps = [];
 	    for (var basemapID in props.basemaps) {
-	        basemaps.push(_react2.default.createElement(_Basemap2.default, {
-	            key: basemapID,
+	        basemaps.push(_react2.default.createElement(_Basemap2.default, { key: basemapID,
 	            basemapID: basemapID,
 	            basemapName: props.basemaps[basemapID].basemapName,
 	            active: props.basemaps[basemapID].active,
@@ -51913,6 +51953,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * Basemap.jsx
+	 * This builds the list item representing basemaps in the sidebar and mobile layer list
+	 */
 	var Basemap = function Basemap(props) {
 		return _react2.default.createElement(
 			_reactBootstrap.ListGroupItem,
@@ -52213,7 +52257,12 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Legend.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component references the Redux store to determine which layers are currently active.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * It then renders the legend based on the currently active layers.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
 
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
@@ -52346,7 +52395,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
+	                                                                                                                                                                                                                                                                   * MapContainer.jsx
+	                                                                                                                                                                                                                                                                   * This component contains the primary map container (LeafletMap), as well as additional modals that appear over the map.
+	                                                                                                                                                                                                                                                                   */
+
 
 	var _react = __webpack_require__(300);
 
@@ -52455,7 +52508,11 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * LeafletMap.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Container with Leaflet map. References the primary map object (ObliquePhotoMap), 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * and facilitates communication between the map and interface.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
@@ -52691,6 +52748,12 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * styles.js
+	 * This contains style functions that are applied to each layer when they are loaded. 
+	 * Additionally, this file caches the styles applied by each layer, so that when 
+	 * the user activates them in the map, the legend can display all the associated styles.
+	 */
 	var COLORS = {
 	    RED: "#F44336",
 	    GREEN: "#8BC34A",
@@ -52721,6 +52784,7 @@
 	    }
 	    return style;
 	}
+	// Individual layer styles are added below, as referenced by ID in config.json
 	var LAYER_STYLES = {
 	    backshore_1976: function backshore_1976(feature) {
 	        var style = {
@@ -52919,12 +52983,23 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// function takes a feature's properties, the layer containing the feature, and the data type ("photo" or "data")
+	// and dispatches to the Redux store telling the application to open a popup with that information
+	/**
+	 * onEachFeatures.js
+	 * This contains functions that are applied to each layer when they are loaded. 
+	 *
+	 * Each property of the ON_EACH_FEATURE object (below) is applied to a specific layer, 
+	 * and Leaflet passes the layer's data to that function on load. It is used here to 
+	 * apply click handling functions to each feature in each layer.
+	 */
 	function handleClick(featureProperties, layer, dataType) {
 	    var layerId = layer.defaultOptions.layerId;
 	    layer.on('mousedown', function () {
 	        _store2.default.dispatch((0, _actions.clickFeature)(featureProperties, dataType, layerId));
 	    });
 	}
+	// Individual layer onEachFeature functions go below, as referenced by ID in config.json
 	var ON_EACH_FEATURE = {
 	    backshore_1976: function backshore_1976(feature, layer) {
 	        handleClick(feature.properties, layer, "data");
@@ -54575,7 +54650,10 @@
 	            )
 	        )
 	    );
-	};
+	}; /**
+	    * FeatureModal.jsx
+	    * This creates the modal that's displayed when a user clicks on an object in the map
+	    */
 	exports.default = FeatureModal;
 
 /***/ },
@@ -54650,7 +54728,13 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * MobileLayerList.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component creates the modal that appears on mobile devices and small screens.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * It is activated when the user clicks on the menu button in the nav bar.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * It displays the LayerList component
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
 
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
@@ -54754,7 +54838,11 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * AboutModal.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This creates the modal displaying "about" information
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
 
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
