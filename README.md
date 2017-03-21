@@ -2,22 +2,37 @@
 
 #### Front-end Stack:
  * **Framework**
-   * React
-   * Redux
-   * Reselect
+   * [React](https://facebook.github.io/react/)
+   * [Redux](http://redux.js.org/)
+   * [Reselect](https://github.com/reactjs/reselect)
  * **Map**
-   * Leaflet
+   * [Leaflet](http://leafletjs.com/)
  * **Design**
-   * react-bootstrap
-   * sass
+   * [react-bootstrap](https://react-bootstrap.github.io/)
+   * [sass](http://sass-lang.com/)
+   * [Font Awesome](http://fontawesome.io/)
  * **Workflow**
-   * Webpack
-   * Gulp 
-   * Babel
+   * [Webpack](https://webpack.github.io/)
+   * [Gulp](http://gulpjs.com/)
+   * [Babel](https://babeljs.io/)
  * **Other Libraries**
-   * axios
+   * [axios](https://github.com/mzabriskie/axios)
 
-#### Making Changes to the Configuration
+### Overview
+The Oblique Photo Viewer app is assembled using the collection of tools above. The source files (```src/```) are compiled, using several tools, into the production version of the application (```dist/```). 
+
+To make changes, you will need to alter the source files and re-compile the application. 
+
+#### Making Changes and Recompiling Application
+1. Clone the GitHub repository 
+1. ```cd``` to the repository directory
+1. ```npm install```
+1. Make any changes required to ```src/```
+1. ```gulp``` to compile
+
+Results will appear in the ```dist/``` folder
+
+#### config.json Modifications
 The configuration file is located in ```src/js/config.json```. It contains select options that can be changed quickly.
 
 ```meta.aboutText``` - the text displayed in the About modal
@@ -56,5 +71,4 @@ The configuration file is located in ```src/js/config.json```. It contains selec
 ````
 ```map.countyShorelines``` - contains a list of county shorelines and their extents, for use in "zoom to shoreline" button
 ```map.photos``` - where aerial photos are located and what sizes are available
-
 
