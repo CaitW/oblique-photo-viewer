@@ -21,9 +21,12 @@
 ### Overview
 The Oblique Photo Viewer app is assembled using the collection of tools above. The source files (```src/```) are compiled, using several tools, into the production version of the application (```dist/```). 
 
-To make changes, you will need to alter the source files and re-compile the application. 
+#### Simple Setup
+1. Download this repository
+2. Copy the contents of ```dist/``` onto your web server
 
 #### Making Changes and Recompiling Application
+To make changes, you will need to alter the source files and re-compile the application. 
 1. Clone the GitHub repository 
 1. ```cd``` to the repository directory
 1. ```npm install```
