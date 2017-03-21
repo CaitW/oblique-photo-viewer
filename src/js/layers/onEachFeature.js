@@ -8,12 +8,15 @@
  */
 import store from '../store.js';
 import {clickFeature} from '../actions.js';
+// function takes a feature's properties, the layer containing the feature, and the data type ("photo" or "data")
+// and dispatches to the Redux store telling the application to open a popup with that information
 function handleClick (featureProperties, layer, dataType) {
     let layerId = layer.defaultOptions.layerId;
     layer.on('mousedown', function () {
         store.dispatch(clickFeature(featureProperties, dataType, layerId));
     });    
 }
+// Individual layer onEachFeature functions go below, as referenced by ID in config.json
 var ON_EACH_FEATURE = {
     backshore_1976: function(feature, layer) {
         handleClick(feature.properties, layer, "data");

@@ -37,6 +37,7 @@ function addToCache(layerId, propertyName, style, geometryType) {
     }
     return style;
 }
+// Individual layer styles are added below, as referenced by ID in config.json
 var LAYER_STYLES = {
     backshore_1976: function(feature) {
         let style = {
