@@ -80,3 +80,6 @@ The configuration file is located in ```src/js/config.json```. It contains selec
 1. If a geojson layer, add that layer's geojson file to ```src/js/data/layers/```
 1. If you want click interaction (geojson layers only), add a function in ```src/js/layers/onEachFeature.js```
 1. If you want to style the layer (geojson layers only), add a (Leaflet) style function in ```src/js/layers/styles.js``` 
+
+#### Basemap Sources
+The application utilizes Mapbox basemaps. 
