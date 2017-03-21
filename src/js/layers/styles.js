@@ -46,7 +46,7 @@ var LAYER_STYLES = {
             lineCap: "round",
             lineJoin: "round"
         };
-        switch (feature.properties.Bluff_Cond) {
+        switch (feature.properties["Bluff Condition Classification"]) {
             case "Moderately Stable":
                 style.color = COLORS.GREEN;
                 break;
@@ -63,7 +63,7 @@ var LAYER_STYLES = {
                 style.color = COLORS.BLACK;
                 break;
         }
-        return addToCache(this.layerId, feature.properties.Bluff_Cond, style, feature.geometry.type);
+        return addToCache(this.layerId, feature.properties["Bluff Condition Classification"], style, feature.geometry.type);
     },
     backshore_2007: function(feature) {
         let style = {
@@ -72,7 +72,7 @@ var LAYER_STYLES = {
             lineCap: "round",
             lineJoin: "round"
         };
-        switch (feature.properties.Bluff_Cond) {
+        switch (feature.properties["Bluff Condition Classification"]) {
             case "Moderately Stable":
                 style.color = COLORS.GREEN;
                 break;
@@ -89,7 +89,7 @@ var LAYER_STYLES = {
                 style.color = COLORS.BLACK;
                 break;
         }
-        return addToCache(this.layerId, feature.properties.Bluff_Cond, style, feature.geometry.type);
+        return addToCache(this.layerId, feature.properties["Bluff Condition Classification"], style, feature.geometry.type);
     },
     photos_1976: function(feature) {
         let style = {
@@ -134,7 +134,7 @@ var LAYER_STYLES = {
             lineCap: "round",
             lineJoin: "round"
         };
-        switch (feature.properties["Protecti_1"]) {
+        switch (feature.properties["Shore Protection Classification"]) {
             case "None":
                 style.color = COLORS.LIGHT_GRAY;
                 break;
@@ -169,7 +169,7 @@ var LAYER_STYLES = {
                 style.color = COLORS.BLACK;
                 break;
         }
-        return addToCache(this.layerId, feature.properties["Protecti_1"], style, feature.geometry.type);
+        return addToCache(this.layerId, feature.properties["Shore Protection Classification"], style, feature.geometry.type);
     },
     beachclass_2007: function(feature) {
         let style = {
@@ -178,7 +178,7 @@ var LAYER_STYLES = {
             lineCap: "round",
             lineJoin: "round"
         };
-        switch (feature.properties["Protecti_1"]) {
+        switch (feature.properties["Shore Protection Classification"]) {
             case "None":
                 style.color = COLORS.LIGHT_GRAY;
                 break;
@@ -213,7 +213,7 @@ var LAYER_STYLES = {
                 style.color = COLORS.BLACK;
                 break;
         }
-        return addToCache(this.layerId, feature.properties["Protecti_1"], style, feature.geometry.type);
+        return addToCache(this.layerId, feature.properties["Shore Protection Classification"], style, feature.geometry.type);
     }
 }
 export {LAYER_STYLES};

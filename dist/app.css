@@ -8378,27 +8378,25 @@ button.close {
   overflow: visible;
   clip: auto; }
 
-.modal-dialog {
-  z-index: 600; }
-  .modal-dialog .modal-content {
-    background-color: #90A4AE; }
-    .modal-dialog .modal-content .modal-header {
-      background-color: #90A4AE;
-      color: #263238;
-      border: 0; }
-    .modal-dialog .modal-content .modal-body {
-      background-color: #ECEFF1;
-      overflow-y: scroll; }
-    .modal-dialog .modal-content .modal-footer {
-      background-color: #ECEFF1;
-      border: 0;
-      color: #ECEFF1; }
-    .modal-dialog .modal-content .btn {
-      border: 0;
-      background-color: #546E7A;
-      color: #ECEFF1; }
-      .modal-dialog .modal-content .btn:hover {
-        background-color: #455A64; }
+.modal-dialog .modal-content {
+  background-color: #90A4AE; }
+  .modal-dialog .modal-content .modal-header {
+    background-color: #90A4AE;
+    color: #263238;
+    border: 0; }
+  .modal-dialog .modal-content .modal-body {
+    background-color: #ECEFF1;
+    overflow-y: scroll; }
+  .modal-dialog .modal-content .modal-footer {
+    background-color: #ECEFF1;
+    border: 0;
+    color: #ECEFF1; }
+  .modal-dialog .modal-content .btn {
+    border: 0;
+    background-color: #546E7A;
+    color: #ECEFF1; }
+    .modal-dialog .modal-content .btn:hover {
+      background-color: #455A64; }
 
 #map-popup .modal-content .modal-body {
   max-height: 400px; }
@@ -8523,7 +8521,7 @@ html {
         #react-root .main-container .navRow nav .navbar-nav .dropdown.open a {
           background-color: #37474F; }
         #react-root .main-container .navRow nav .navbar-nav .dropdown .dropdown-menu {
-          z-index: 500;
+          z-index: 9999;
           background-color: #37474F; }
           #react-root .main-container .navRow nav .navbar-nav .dropdown .dropdown-menu li {
             background-color: #37474F; }
@@ -8542,7 +8540,7 @@ html {
       padding-top: 52px; }
       #react-root .main-container .contentRow .sidebar {
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        z-index: 500;
+        z-index: 9999;
         background-color: #ECEFF1;
         padding-top: 20px;
         height: 100%;
