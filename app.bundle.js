@@ -52793,7 +52793,7 @@
 	            lineCap: "round",
 	            lineJoin: "round"
 	        };
-	        switch (feature.properties.Bluff_Cond) {
+	        switch (feature.properties["Bluff Condition Classification"]) {
 	            case "Moderately Stable":
 	                style.color = COLORS.GREEN;
 	                break;
@@ -52810,7 +52810,7 @@
 	                style.color = COLORS.BLACK;
 	                break;
 	        }
-	        return addToCache(this.layerId, feature.properties.Bluff_Cond, style, feature.geometry.type);
+	        return addToCache(this.layerId, feature.properties["Bluff Condition Classification"], style, feature.geometry.type);
 	    },
 	    backshore_2007: function backshore_2007(feature) {
 	        var style = {
@@ -52819,7 +52819,7 @@
 	            lineCap: "round",
 	            lineJoin: "round"
 	        };
-	        switch (feature.properties.Bluff_Cond) {
+	        switch (feature.properties["Bluff Condition Classification"]) {
 	            case "Moderately Stable":
 	                style.color = COLORS.GREEN;
 	                break;
@@ -52836,7 +52836,7 @@
 	                style.color = COLORS.BLACK;
 	                break;
 	        }
-	        return addToCache(this.layerId, feature.properties.Bluff_Cond, style, feature.geometry.type);
+	        return addToCache(this.layerId, feature.properties["Bluff Condition Classification"], style, feature.geometry.type);
 	    },
 	    photos_1976: function photos_1976(feature) {
 	        var style = {
@@ -52881,7 +52881,7 @@
 	            lineCap: "round",
 	            lineJoin: "round"
 	        };
-	        switch (feature.properties["Protecti_1"]) {
+	        switch (feature.properties["Shore Protection Classification"]) {
 	            case "None":
 	                style.color = COLORS.LIGHT_GRAY;
 	                break;
@@ -52916,7 +52916,7 @@
 	                style.color = COLORS.BLACK;
 	                break;
 	        }
-	        return addToCache(this.layerId, feature.properties["Protecti_1"], style, feature.geometry.type);
+	        return addToCache(this.layerId, feature.properties["Shore Protection Classification"], style, feature.geometry.type);
 	    },
 	    beachclass_2007: function beachclass_2007(feature) {
 	        var style = {
@@ -52925,7 +52925,7 @@
 	            lineCap: "round",
 	            lineJoin: "round"
 	        };
-	        switch (feature.properties["Protecti_1"]) {
+	        switch (feature.properties["Shore Protection Classification"]) {
 	            case "None":
 	                style.color = COLORS.LIGHT_GRAY;
 	                break;
@@ -52960,7 +52960,7 @@
 	                style.color = COLORS.BLACK;
 	                break;
 	        }
-	        return addToCache(this.layerId, feature.properties["Protecti_1"], style, feature.geometry.type);
+	        return addToCache(this.layerId, feature.properties["Shore Protection Classification"], style, feature.geometry.type);
 	    }
 	};
 	exports.LAYER_STYLES = LAYER_STYLES;
