@@ -8512,11 +8512,20 @@ button.close {
       .navRow nav .navbar-collapse .navbar-nav .dropdown .dropdown-menu li {
         background-color: #37474F; }
         .navRow nav .navbar-collapse .navbar-nav .dropdown .dropdown-menu li a {
+          color: #CFD8DC;
           background-color: #37474F; }
           .navRow nav .navbar-collapse .navbar-nav .dropdown .dropdown-menu li a:hover {
             background-color: #455A64; }
       .navRow nav .navbar-collapse .navbar-nav .dropdown .dropdown-menu .shoreline {
         text-transform: capitalize; }
+
+@media (max-width: 767px) {
+  .navRow nav .navbar-collapse .navbar-nav {
+    font-size: 20px; }
+    .navRow nav .navbar-collapse .navbar-nav .dropdown .dropdown-menu li {
+      font-size: 18px; }
+      .navRow nav .navbar-collapse .navbar-nav .dropdown .dropdown-menu li a {
+        line-height: 30px; } }
 
 .sidebar {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
