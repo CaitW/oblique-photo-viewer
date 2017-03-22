@@ -54639,7 +54639,7 @@
 	                null,
 	                _react2.default.createElement(
 	                    _reactBootstrap.Tabs,
-	                    { id: 'uncontrolled-tab-example' },
+	                    { id: 'uncontrolled-tab' },
 	                    tabs
 	                )
 	            ),
