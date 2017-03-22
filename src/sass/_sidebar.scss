@@ -1,0 +1,77 @@
+.sidebar {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    z-index: 500;
+    background-color: $primary_50;
+    padding-top: 20px;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    .panel {
+        background-color: $primary_100;
+        margin-bottom: 10px;
+        border: 0;
+        .panel-heading {
+            color: $primary_50;
+            background-color: $primary_500;
+            border: 0;
+            padding: 5px 10px;
+            i {
+                float: right;
+                line-height: inherit;
+                color: $primary_100;
+            }
+            &:hover {
+                cursor: pointer;
+                background-color: $primary_700;
+            }
+        }
+        .panel-body {
+            background-color: $primary_100;
+            padding: 0;
+            border: 0;
+            .list-group {
+                border-width: 0;
+                border-radius: 0;
+                margin-bottom: 0;
+                .list-group-item {
+                    background-color: $primary_100;
+                    border-color: $primary_200;
+                    color: $primary_800;
+                    border-width: 1px 0 0 0;
+                    border-radius: 0;
+                    padding: 5px 10px;
+                    &:hover {
+                        background-color: $primary_200;
+                    }
+                    &.active {
+                        background-color: $primary_700;
+                        border-color: $primary_400;
+                        color: $primary_50;
+                    }
+                }
+            }
+        }
+    }
+    #legend {
+        .panel-body {
+            padding: 5px 10px;
+            .layerName {
+                padding: 5px 0;
+                border: 1px solid $primary_200;
+                border-width: 0 0 1px 0;
+                font-weight: bold;
+            }
+            .legend-list {
+                padding: 5px 10px;
+                list-style: none;
+                text-transform: capitalize;
+                i {
+                    margin-right: 10px;
+                    &.fa-circle {
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

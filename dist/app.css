@@ -8480,6 +8480,105 @@ button.close {
               border-color: #78909C;
               color: #ECEFF1; }
 
+.navRow nav {
+  color: #ECEFF1;
+  border-width: 0;
+  border-radius: 0;
+  background-color: #455A64;
+  margin-bottom: 0; }
+  .navRow nav .navbar-header img {
+    width: 50px;
+    height: 50px;
+    float: left; }
+  .navRow nav .navbar-header .navbar-brand {
+    color: inherit;
+    font-family: "Fjalla One"; }
+  .navRow nav .navbar-header .navbar-toggle {
+    border-radius: 3px;
+    border-color: #90A4AE; }
+  .navRow nav .navbar-collapse .navbar-nav {
+    color: #CFD8DC; }
+    .navRow nav .navbar-collapse .navbar-nav li:hover {
+      background-color: #37474F; }
+    .navRow nav .navbar-collapse .navbar-nav li a {
+      color: inherit; }
+    .navRow nav .navbar-collapse .navbar-nav .dropdown.open a {
+      background-color: #37474F; }
+      .navRow nav .navbar-collapse .navbar-nav .dropdown.open a:active, .navRow nav .navbar-collapse .navbar-nav .dropdown.open a:focus {
+        color: #ECEFF1; }
+    .navRow nav .navbar-collapse .navbar-nav .dropdown .dropdown-menu {
+      z-index: 500;
+      background-color: #37474F; }
+      .navRow nav .navbar-collapse .navbar-nav .dropdown .dropdown-menu li {
+        background-color: #37474F; }
+        .navRow nav .navbar-collapse .navbar-nav .dropdown .dropdown-menu li a {
+          background-color: #37474F; }
+          .navRow nav .navbar-collapse .navbar-nav .dropdown .dropdown-menu li a:hover {
+            background-color: #455A64; }
+      .navRow nav .navbar-collapse .navbar-nav .dropdown .dropdown-menu .shoreline {
+        text-transform: capitalize; }
+
+.sidebar {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  z-index: 500;
+  background-color: #ECEFF1;
+  padding-top: 20px;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden; }
+  .sidebar .panel {
+    background-color: #CFD8DC;
+    margin-bottom: 10px;
+    border: 0; }
+    .sidebar .panel .panel-heading {
+      color: #ECEFF1;
+      background-color: #607D8B;
+      border: 0;
+      padding: 5px 10px; }
+      .sidebar .panel .panel-heading i {
+        float: right;
+        line-height: inherit;
+        color: #CFD8DC; }
+      .sidebar .panel .panel-heading:hover {
+        cursor: pointer;
+        background-color: #455A64; }
+    .sidebar .panel .panel-body {
+      background-color: #CFD8DC;
+      padding: 0;
+      border: 0; }
+      .sidebar .panel .panel-body .list-group {
+        border-width: 0;
+        border-radius: 0;
+        margin-bottom: 0; }
+        .sidebar .panel .panel-body .list-group .list-group-item {
+          background-color: #CFD8DC;
+          border-color: #B0BEC5;
+          color: #37474F;
+          border-width: 1px 0 0 0;
+          border-radius: 0;
+          padding: 5px 10px; }
+          .sidebar .panel .panel-body .list-group .list-group-item:hover {
+            background-color: #B0BEC5; }
+          .sidebar .panel .panel-body .list-group .list-group-item.active {
+            background-color: #455A64;
+            border-color: #78909C;
+            color: #ECEFF1; }
+  .sidebar #legend .panel-body {
+    padding: 5px 10px; }
+    .sidebar #legend .panel-body .layerName {
+      padding: 5px 0;
+      border: 1px solid #B0BEC5;
+      border-width: 0 0 1px 0;
+      font-weight: bold; }
+    .sidebar #legend .panel-body .legend-list {
+      padding: 5px 10px;
+      list-style: none;
+      text-transform: capitalize; }
+      .sidebar #legend .panel-body .legend-list i {
+        margin-right: 10px; }
+        .sidebar #legend .panel-body .legend-list i.fa-circle {
+          font-size: 10px; }
+
 .pullDown {
   animation-name: pullDown;
   -webkit-animation-name: pullDown;
@@ -8507,103 +8606,10 @@ html {
   height: 100%; }
   #react-root .main-container {
     height: 100%; }
-    #react-root .main-container .navRow nav {
-      color: #ECEFF1;
-      border-width: 0;
-      border-radius: 0;
-      background-color: #455A64;
-      margin-bottom: 0; }
-      #react-root .main-container .navRow nav .navbar-header img {
-        width: 50px;
-        height: 50px;
-        float: left; }
-      #react-root .main-container .navRow nav .navbar-header .navbar-brand {
-        color: inherit;
-        font-family: "Fjalla One"; }
-      #react-root .main-container .navRow nav .navbar-nav {
-        color: #CFD8DC; }
-        #react-root .main-container .navRow nav .navbar-nav li a {
-          color: inherit; }
-        #react-root .main-container .navRow nav .navbar-nav .dropdown.open a {
-          background-color: #37474F; }
-        #react-root .main-container .navRow nav .navbar-nav .dropdown .dropdown-menu {
-          z-index: 500;
-          background-color: #37474F; }
-          #react-root .main-container .navRow nav .navbar-nav .dropdown .dropdown-menu li {
-            background-color: #37474F; }
-            #react-root .main-container .navRow nav .navbar-nav .dropdown .dropdown-menu li a {
-              background-color: #37474F; }
-              #react-root .main-container .navRow nav .navbar-nav .dropdown .dropdown-menu li a:hover {
-                background-color: #455A64; }
-          #react-root .main-container .navRow nav .navbar-nav .dropdown .dropdown-menu .shoreline {
-            text-transform: capitalize; }
-      #react-root .main-container .navRow nav .navbar-toggle {
-        border-radius: 3px;
-        border-color: #90A4AE; }
     #react-root .main-container .contentRow {
       height: 100%;
       margin-top: -52px;
       padding-top: 52px; }
-      #react-root .main-container .contentRow .sidebar {
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        z-index: 500;
-        background-color: #ECEFF1;
-        padding-top: 20px;
-        height: 100%;
-        overflow-y: scroll;
-        overflow-x: hidden; }
-        #react-root .main-container .contentRow .sidebar .panel {
-          background-color: #CFD8DC;
-          margin-bottom: 10px;
-          border: 0; }
-          #react-root .main-container .contentRow .sidebar .panel .panel-heading {
-            color: #ECEFF1;
-            background-color: #607D8B;
-            border: 0;
-            padding: 5px 10px; }
-            #react-root .main-container .contentRow .sidebar .panel .panel-heading i {
-              float: right;
-              line-height: inherit;
-              color: #CFD8DC; }
-            #react-root .main-container .contentRow .sidebar .panel .panel-heading:hover {
-              cursor: pointer;
-              background-color: #455A64; }
-          #react-root .main-container .contentRow .sidebar .panel .panel-body {
-            background-color: #CFD8DC;
-            padding: 0;
-            border: 0; }
-            #react-root .main-container .contentRow .sidebar .panel .panel-body .list-group {
-              border-width: 0;
-              border-radius: 0;
-              margin-bottom: 0; }
-              #react-root .main-container .contentRow .sidebar .panel .panel-body .list-group .list-group-item {
-                background-color: #CFD8DC;
-                border-color: #B0BEC5;
-                color: #37474F;
-                border-width: 1px 0 0 0;
-                border-radius: 0;
-                padding: 5px 10px; }
-                #react-root .main-container .contentRow .sidebar .panel .panel-body .list-group .list-group-item:hover {
-                  background-color: #B0BEC5; }
-                #react-root .main-container .contentRow .sidebar .panel .panel-body .list-group .list-group-item.active {
-                  background-color: #455A64;
-                  border-color: #78909C;
-                  color: #ECEFF1; }
-        #react-root .main-container .contentRow .sidebar #legend .panel-body {
-          padding: 5px 10px; }
-          #react-root .main-container .contentRow .sidebar #legend .panel-body .layerName {
-            padding: 5px 0;
-            border: 1px solid #B0BEC5;
-            border-width: 0 0 1px 0;
-            font-weight: bold; }
-          #react-root .main-container .contentRow .sidebar #legend .panel-body .legend-list {
-            padding: 5px 10px;
-            list-style: none;
-            text-transform: capitalize; }
-            #react-root .main-container .contentRow .sidebar #legend .panel-body .legend-list i {
-              margin-right: 10px; }
-              #react-root .main-container .contentRow .sidebar #legend .panel-body .legend-list i.fa-circle {
-                font-size: 10px; }
       #react-root .main-container .contentRow .map-container {
         height: 100%;
         padding: 0; }
