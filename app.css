@@ -8513,7 +8513,11 @@ html {
       border-radius: 0;
       background-color: #455A64;
       margin-bottom: 0; }
-      #react-root .main-container .navRow nav .navbar-brand {
+      #react-root .main-container .navRow nav .navbar-header img {
+        width: 50px;
+        height: 50px;
+        float: left; }
+      #react-root .main-container .navRow nav .navbar-header .navbar-brand {
         color: inherit;
         font-family: "Fjalla One"; }
       #react-root .main-container .navRow nav .navbar-nav {
