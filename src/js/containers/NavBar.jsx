@@ -27,6 +27,7 @@ export default class NavBar extends React.Component {
 		return (
 		  <Navbar collapseOnSelect>
 		    <Navbar.Header>
+		    <img src="img/wisconsin.svg" alt="Wisconsin Logo" className="hidden-xs"/>
 		      <Navbar.Brand>
 		        <a href="#">Wisconsin Shoreline Inventory and Oblique Photo Viewer</a>
 		      </Navbar.Brand>

@@ -29930,6 +29930,7 @@
 					_react2.default.createElement(
 						_reactBootstrap.Navbar.Header,
 						null,
+						_react2.default.createElement('img', { src: 'img/wisconsin.svg', alt: 'Wisconsin Logo', className: 'hidden-xs' }),
 						_react2.default.createElement(
 							_reactBootstrap.Navbar.Brand,
 							null,
