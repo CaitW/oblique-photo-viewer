@@ -6,6 +6,14 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var pump = require('pump');
+var del = require('del');
+var fs = require('fs');
+var runSequence = require('run-sequence');
+gulp.task('clean', function () {
+  return del([
+    'dist/*'
+  ]);
+});
 gulp.task('html', function() {
     return gulp.src('src/index.html')
         .pipe(gulp.dest('dist/'))
@@ -57,5 +65,12 @@ gulp.task('compress', ['scripts'], function(cb) {
         gulp.dest('dist')
     ]);
 });
+// this task runs the "clean" mechanism prior to rebuilding the files
+gulp.task('build', function(callback) {
+  runSequence('clean',
+              ['default'],
+              callback);
+});
+// default task, no cleaning
 gulp.task('default', ['html', 'copy', 'sass', 'scripts', 'webpack', 'compress']);
 gulp.task('watch', ['default', 'watch-files']);
