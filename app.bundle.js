@@ -29861,7 +29861,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -29903,70 +29903,74 @@
 
 
 	var NavBar = function (_React$Component) {
-		_inherits(NavBar, _React$Component);
+	  _inherits(NavBar, _React$Component);
 
-		function NavBar() {
-			_classCallCheck(this, NavBar);
+	  function NavBar() {
+	    _classCallCheck(this, NavBar);
 
-			return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this));
-		}
+	    return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this));
+	  }
 
-		_createClass(NavBar, [{
-			key: 'onMobileLayersClick',
-			value: function onMobileLayersClick() {
-				_store2.default.dispatch((0, _actions.openMobileLayerList)());
-			}
-		}, {
-			key: 'onAboutClick',
-			value: function onAboutClick() {
-				_store2.default.dispatch((0, _actions.openAboutModal)());
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					_reactBootstrap.Navbar,
-					{ collapseOnSelect: true },
-					_react2.default.createElement(
-						_reactBootstrap.Navbar.Header,
-						null,
-						_react2.default.createElement('img', { src: 'img/wisconsin.svg', alt: 'Wisconsin Logo', className: 'hidden-xs' }),
-						_react2.default.createElement(
-							_reactBootstrap.Navbar.Brand,
-							null,
-							_react2.default.createElement(
-								'a',
-								{ href: '#' },
-								'Wisconsin Shoreline Inventory and Oblique Photo Viewer'
-							)
-						),
-						_react2.default.createElement(_reactBootstrap.Navbar.Toggle, null)
-					),
-					_react2.default.createElement(
-						_reactBootstrap.Navbar.Collapse,
-						null,
-						_react2.default.createElement(
-							_reactBootstrap.Nav,
-							null,
-							_react2.default.createElement(
-								_reactBootstrap.NavItem,
-								{ eventKey: 1, href: '#', className: 'visible-xs-block', onClick: this.onMobileLayersClick },
-								'Layers'
-							),
-							_react2.default.createElement(_ZoomToCounty2.default, null),
-							_react2.default.createElement(_ResetView2.default, null),
-							_react2.default.createElement(
-								_reactBootstrap.NavItem,
-								{ eventKey: 3, href: '#', onClick: this.onAboutClick },
-								'About'
-							)
-						)
-					)
-				);
-			}
-		}]);
+	  _createClass(NavBar, [{
+	    key: 'onMobileLayersClick',
+	    value: function onMobileLayersClick() {
+	      _store2.default.dispatch((0, _actions.openMobileLayerList)());
+	    }
+	  }, {
+	    key: 'onAboutClick',
+	    value: function onAboutClick() {
+	      _store2.default.dispatch((0, _actions.openAboutModal)());
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        _reactBootstrap.Navbar,
+	        { collapseOnSelect: true, fluid: true },
+	        _react2.default.createElement(
+	          _reactBootstrap.Navbar.Header,
+	          null,
+	          _react2.default.createElement('img', { src: 'img/wisconsin.svg', alt: 'Wisconsin Logo', className: 'hidden-xs' }),
+	          _react2.default.createElement(
+	            _reactBootstrap.Navbar.Brand,
+	            null,
+	            _react2.default.createElement(
+	              'a',
+	              { href: '#' },
+	              'Wisconsin Shoreline Inventory and Oblique Viewer'
+	            )
+	          ),
+	          _react2.default.createElement(_reactBootstrap.Navbar.Toggle, null)
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Navbar.Collapse,
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Nav,
+	            { pullRight: true },
+	            _react2.default.createElement(
+	              _reactBootstrap.NavItem,
+	              { eventKey: 1,
+	                href: '#',
+	                className: 'visible-xs-block',
+	                onClick: this.onMobileLayersClick
+	              },
+	              'Layers'
+	            ),
+	            _react2.default.createElement(_ZoomToCounty2.default, null),
+	            _react2.default.createElement(_ResetView2.default, null),
+	            _react2.default.createElement(
+	              _reactBootstrap.NavItem,
+	              { eventKey: 3, href: '#', onClick: this.onAboutClick },
+	              'About'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
 
-		return NavBar;
+	  return NavBar;
 	}(_react2.default.Component);
 
 	exports.default = NavBar;
