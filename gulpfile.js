@@ -16,6 +16,8 @@ gulp.task('copy', function() {
         .pipe(gulp.dest('./dist/data'));
     gulp.src('./src/fonts/**/*')
         .pipe(gulp.dest('./dist/fonts'));
+    gulp.src('./src/favicons/**/*')
+        .pipe(gulp.dest('./dist/'));
 });
 gulp.task('webpack', function() {
     return gulp.src('src/js/app.jsx')
