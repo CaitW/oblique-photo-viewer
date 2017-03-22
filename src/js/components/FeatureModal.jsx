@@ -50,7 +50,7 @@ const FeatureModal = (props) => {
                         <Modal.Title>{props.title}</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                    <Tabs id="uncontrolled-tab-example">    
+                    <Tabs id="uncontrolled-tab">    
                         {tabs}
                     </Tabs>
                   </Modal.Body>
