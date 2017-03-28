@@ -1,5 +1,17 @@
 #map {
     height: 100%;
+    // all layers
+    .layer-photos-1976,
+    .layer-photos-2007,
+    .layer-structure-1976,
+    .layer-structure-2007,
+    .layer-beachclass-1976,
+    .layer-beachclass-2007,
+    .layer-backshore-1976,
+    .layer-backshore-2007 {
+
+    }
+    // Zoom Breakpoints
     &[data-zoom='1'],
     &[data-zoom='2'],
     &[data-zoom='3'],

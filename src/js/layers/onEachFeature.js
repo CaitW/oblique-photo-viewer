@@ -12,7 +12,7 @@ import {clickFeature} from '../actions.js';
 // and dispatches to the Redux store telling the application to open a popup with that information
 function handleClick (featureProperties, layer, dataType) {
     let layerId = layer.defaultOptions.layerId;
-    layer.on('mousedown', function () {
+    layer.on('mouseup', function () {
         store.dispatch(clickFeature(featureProperties, dataType, layerId));
     });    
 }
