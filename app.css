@@ -8606,6 +8606,37 @@ button.close {
   100% {
     transform: scaleY(1); } }
 
+#map {
+  height: 100%; }
+  #map[data-zoom='1'] .layer-photos-1976, #map[data-zoom='1'] .layer-photos-2007, #map[data-zoom='2'] .layer-photos-1976, #map[data-zoom='2'] .layer-photos-2007, #map[data-zoom='3'] .layer-photos-1976, #map[data-zoom='3'] .layer-photos-2007, #map[data-zoom='4'] .layer-photos-1976, #map[data-zoom='4'] .layer-photos-2007, #map[data-zoom='5'] .layer-photos-1976, #map[data-zoom='5'] .layer-photos-2007, #map[data-zoom='6'] .layer-photos-1976, #map[data-zoom='6'] .layer-photos-2007, #map[data-zoom='7'] .layer-photos-1976, #map[data-zoom='7'] .layer-photos-2007 {
+    stroke-width: 0; }
+  #map[data-zoom='8'] .layer-photos-1976, #map[data-zoom='8'] .layer-photos-2007, #map[data-zoom='9'] .layer-photos-1976, #map[data-zoom='9'] .layer-photos-2007, #map[data-zoom='10'] .layer-photos-1976, #map[data-zoom='10'] .layer-photos-2007, #map[data-zoom='11'] .layer-photos-1976, #map[data-zoom='11'] .layer-photos-2007, #map[data-zoom='12'] .layer-photos-1976, #map[data-zoom='12'] .layer-photos-2007 {
+    stroke-width: 2; }
+    #map[data-zoom='8'] .layer-photos-1976:hover, #map[data-zoom='8'] .layer-photos-2007:hover, #map[data-zoom='9'] .layer-photos-1976:hover, #map[data-zoom='9'] .layer-photos-2007:hover, #map[data-zoom='10'] .layer-photos-1976:hover, #map[data-zoom='10'] .layer-photos-2007:hover, #map[data-zoom='11'] .layer-photos-1976:hover, #map[data-zoom='11'] .layer-photos-2007:hover, #map[data-zoom='12'] .layer-photos-1976:hover, #map[data-zoom='12'] .layer-photos-2007:hover {
+      stroke-width: 6; }
+  #map[data-zoom='13'] .layer-photos-1976, #map[data-zoom='13'] .layer-photos-2007, #map[data-zoom='14'] .layer-photos-1976, #map[data-zoom='14'] .layer-photos-2007, #map[data-zoom='15'] .layer-photos-1976, #map[data-zoom='15'] .layer-photos-2007 {
+    stroke-width: 3; }
+    #map[data-zoom='13'] .layer-photos-1976:hover, #map[data-zoom='13'] .layer-photos-2007:hover, #map[data-zoom='14'] .layer-photos-1976:hover, #map[data-zoom='14'] .layer-photos-2007:hover, #map[data-zoom='15'] .layer-photos-1976:hover, #map[data-zoom='15'] .layer-photos-2007:hover {
+      stroke-width: 7; }
+  #map[data-zoom='16'] .layer-photos-1976, #map[data-zoom='16'] .layer-photos-2007, #map[data-zoom='17'] .layer-photos-1976, #map[data-zoom='17'] .layer-photos-2007, #map[data-zoom='18'] .layer-photos-1976, #map[data-zoom='18'] .layer-photos-2007 {
+    stroke-width: 5; }
+    #map[data-zoom='16'] .layer-photos-1976:hover, #map[data-zoom='16'] .layer-photos-2007:hover, #map[data-zoom='17'] .layer-photos-1976:hover, #map[data-zoom='17'] .layer-photos-2007:hover, #map[data-zoom='18'] .layer-photos-1976:hover, #map[data-zoom='18'] .layer-photos-2007:hover {
+      stroke-width: 9; }
+
+.leaflet-control-zoom.leaflet-bar {
+  border: 0; }
+  .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-in,
+  .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-out {
+    color: #263238; }
+  .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-in {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }
+  .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-out {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }
+
 html {
   height: 100%; }
   html body {
@@ -8623,19 +8654,3 @@ html {
       #react-root .main-container .contentRow .map-container {
         height: 100%;
         padding: 0; }
-        #react-root .main-container .contentRow .map-container #map {
-          height: 100%; }
-
-.leaflet-control-zoom.leaflet-bar {
-  border: 0; }
-  .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-in,
-  .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-out {
-    color: #263238; }
-  .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-in {
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }
-  .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-out {
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }
