@@ -45,7 +45,7 @@ export const getActiveLayerStyleTypes = createSelector(getActiveLayers, activeLa
                 iconStyle.color = styleCache[styleName].style.color;
             } else if (styleCache[styleName].geometryType === "Point") {
                 styleIconClassNames.push("fa-circle");
-                iconStyle.color = styleCache[styleName].style.fillColor;
+                iconStyle.color = styleCache[styleName].style.strokeColor;
             }
             if (styleName === "null") {
                 styleName = "(No Value)";
