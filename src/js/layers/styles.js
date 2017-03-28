@@ -44,7 +44,8 @@ var LAYER_STYLES = {
             weight: 5,
             opacity: 1,
             lineCap: "round",
-            lineJoin: "round"
+            lineJoin: "round",
+            className: "backshore_1976"
         };
         switch (feature.properties["Bluff Condition Classification"]) {
             case "Moderately Stable":
@@ -70,7 +71,8 @@ var LAYER_STYLES = {
             weight: 5,
             opacity: 1,
             lineCap: "round",
-            lineJoin: "round"
+            lineJoin: "round",
+            className: "layer-backshore-2007"
         };
         switch (feature.properties["Bluff Condition Classification"]) {
             case "Moderately Stable":
@@ -94,18 +96,22 @@ var LAYER_STYLES = {
     photos_1976: function(feature) {
         let style = {
             radius: 3,
-            fillColor: COLORS.PURPLE,
+            color: COLORS.PURPLE,
+            strokeColor: COLORS.PURPLE,
             weight: 0,
-            fillOpacity: 1
+            fillOpacity: 1,
+            className: "layer-photos-1976"
         };
         return addToCache(this.layerId, "photos", style, feature.geometry.type);
     },
     photos_2007: function(feature) {
         let style = {
             radius: 3,
-            fillColor: COLORS.CYAN,
+            color: COLORS.CYAN,
+            strokeColor: COLORS.CYAN,
             weight: 0,
-            fillOpacity: 1
+            fillOpacity: 1,
+            className: "layer-photos-2007"
         };
         return addToCache(this.layerId, "photos", style, feature.geometry.type);
     },
@@ -114,7 +120,8 @@ var LAYER_STYLES = {
             radius: 3,
             fillColor: COLORS.BLACK,
             weight: 0,
-            fillOpacity: 1
+            fillOpacity: 1,
+            className: "layer-structure-1976"
         };
         return addToCache(this.layerId, "structures", style, feature.geometry.type);
     },
@@ -123,7 +130,8 @@ var LAYER_STYLES = {
             radius: 3,
             fillColor: COLORS.BLACK,
             weight: 0,
-            fillOpacity: 1
+            fillOpacity: 1,
+            className: "layer-structure-2007"
         };
         return addToCache(this.layerId, "structures", style, feature.geometry.type);
     },
@@ -132,7 +140,8 @@ var LAYER_STYLES = {
             weight: 5,
             opacity: 1,
             lineCap: "round",
-            lineJoin: "round"
+            lineJoin: "round",
+            className: "layer-beachclass-1976"
         };
         switch (feature.properties["Shore Protection Classification"]) {
             case "None":
@@ -176,7 +185,8 @@ var LAYER_STYLES = {
             weight: 5,
             opacity: 1,
             lineCap: "round",
-            lineJoin: "round"
+            lineJoin: "round",
+            className: "layer-beachclass-2007"
         };
         switch (feature.properties["Shore Protection Classification"]) {
             case "None":
