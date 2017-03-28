@@ -53034,7 +53034,7 @@
 	 */
 	function handleClick(featureProperties, layer, dataType) {
 	    var layerId = layer.defaultOptions.layerId;
-	    layer.on('mousedown', function () {
+	    layer.on('mouseup', function () {
 	        _store2.default.dispatch((0, _actions.clickFeature)(featureProperties, dataType, layerId));
 	    });
 	}
