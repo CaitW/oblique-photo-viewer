@@ -8608,20 +8608,210 @@ button.close {
 
 #map {
   height: 100%; }
-  #map[data-zoom='1'] .layer-photos-1976, #map[data-zoom='1'] .layer-photos-2007, #map[data-zoom='2'] .layer-photos-1976, #map[data-zoom='2'] .layer-photos-2007, #map[data-zoom='3'] .layer-photos-1976, #map[data-zoom='3'] .layer-photos-2007, #map[data-zoom='4'] .layer-photos-1976, #map[data-zoom='4'] .layer-photos-2007, #map[data-zoom='5'] .layer-photos-1976, #map[data-zoom='5'] .layer-photos-2007, #map[data-zoom='6'] .layer-photos-1976, #map[data-zoom='6'] .layer-photos-2007, #map[data-zoom='7'] .layer-photos-1976, #map[data-zoom='7'] .layer-photos-2007 {
+  #map[data-zoom='1'] .layer-photos-1976,
+  #map[data-zoom='1'] .layer-photos-2007,
+  #map[data-zoom='1'] .layer-structure-1976,
+  #map[data-zoom='1'] .layer-structure-2007, #map[data-zoom='2'] .layer-photos-1976,
+  #map[data-zoom='2'] .layer-photos-2007,
+  #map[data-zoom='2'] .layer-structure-1976,
+  #map[data-zoom='2'] .layer-structure-2007, #map[data-zoom='3'] .layer-photos-1976,
+  #map[data-zoom='3'] .layer-photos-2007,
+  #map[data-zoom='3'] .layer-structure-1976,
+  #map[data-zoom='3'] .layer-structure-2007, #map[data-zoom='4'] .layer-photos-1976,
+  #map[data-zoom='4'] .layer-photos-2007,
+  #map[data-zoom='4'] .layer-structure-1976,
+  #map[data-zoom='4'] .layer-structure-2007, #map[data-zoom='5'] .layer-photos-1976,
+  #map[data-zoom='5'] .layer-photos-2007,
+  #map[data-zoom='5'] .layer-structure-1976,
+  #map[data-zoom='5'] .layer-structure-2007, #map[data-zoom='6'] .layer-photos-1976,
+  #map[data-zoom='6'] .layer-photos-2007,
+  #map[data-zoom='6'] .layer-structure-1976,
+  #map[data-zoom='6'] .layer-structure-2007, #map[data-zoom='7'] .layer-photos-1976,
+  #map[data-zoom='7'] .layer-photos-2007,
+  #map[data-zoom='7'] .layer-structure-1976,
+  #map[data-zoom='7'] .layer-structure-2007 {
     stroke-width: 0; }
-  #map[data-zoom='8'] .layer-photos-1976, #map[data-zoom='8'] .layer-photos-2007, #map[data-zoom='9'] .layer-photos-1976, #map[data-zoom='9'] .layer-photos-2007, #map[data-zoom='10'] .layer-photos-1976, #map[data-zoom='10'] .layer-photos-2007, #map[data-zoom='11'] .layer-photos-1976, #map[data-zoom='11'] .layer-photos-2007, #map[data-zoom='12'] .layer-photos-1976, #map[data-zoom='12'] .layer-photos-2007 {
-    stroke-width: 2; }
-    #map[data-zoom='8'] .layer-photos-1976:hover, #map[data-zoom='8'] .layer-photos-2007:hover, #map[data-zoom='9'] .layer-photos-1976:hover, #map[data-zoom='9'] .layer-photos-2007:hover, #map[data-zoom='10'] .layer-photos-1976:hover, #map[data-zoom='10'] .layer-photos-2007:hover, #map[data-zoom='11'] .layer-photos-1976:hover, #map[data-zoom='11'] .layer-photos-2007:hover, #map[data-zoom='12'] .layer-photos-1976:hover, #map[data-zoom='12'] .layer-photos-2007:hover {
-      stroke-width: 6; }
-  #map[data-zoom='13'] .layer-photos-1976, #map[data-zoom='13'] .layer-photos-2007, #map[data-zoom='14'] .layer-photos-1976, #map[data-zoom='14'] .layer-photos-2007, #map[data-zoom='15'] .layer-photos-1976, #map[data-zoom='15'] .layer-photos-2007 {
-    stroke-width: 3; }
-    #map[data-zoom='13'] .layer-photos-1976:hover, #map[data-zoom='13'] .layer-photos-2007:hover, #map[data-zoom='14'] .layer-photos-1976:hover, #map[data-zoom='14'] .layer-photos-2007:hover, #map[data-zoom='15'] .layer-photos-1976:hover, #map[data-zoom='15'] .layer-photos-2007:hover {
-      stroke-width: 7; }
-  #map[data-zoom='16'] .layer-photos-1976, #map[data-zoom='16'] .layer-photos-2007, #map[data-zoom='17'] .layer-photos-1976, #map[data-zoom='17'] .layer-photos-2007, #map[data-zoom='18'] .layer-photos-1976, #map[data-zoom='18'] .layer-photos-2007 {
+  #map[data-zoom='1'] .layer-beachclass-1976,
+  #map[data-zoom='1'] .layer-beachclass-2007,
+  #map[data-zoom='1'] .layer-backshore-1976,
+  #map[data-zoom='1'] .layer-backshore-2007, #map[data-zoom='2'] .layer-beachclass-1976,
+  #map[data-zoom='2'] .layer-beachclass-2007,
+  #map[data-zoom='2'] .layer-backshore-1976,
+  #map[data-zoom='2'] .layer-backshore-2007, #map[data-zoom='3'] .layer-beachclass-1976,
+  #map[data-zoom='3'] .layer-beachclass-2007,
+  #map[data-zoom='3'] .layer-backshore-1976,
+  #map[data-zoom='3'] .layer-backshore-2007, #map[data-zoom='4'] .layer-beachclass-1976,
+  #map[data-zoom='4'] .layer-beachclass-2007,
+  #map[data-zoom='4'] .layer-backshore-1976,
+  #map[data-zoom='4'] .layer-backshore-2007, #map[data-zoom='5'] .layer-beachclass-1976,
+  #map[data-zoom='5'] .layer-beachclass-2007,
+  #map[data-zoom='5'] .layer-backshore-1976,
+  #map[data-zoom='5'] .layer-backshore-2007, #map[data-zoom='6'] .layer-beachclass-1976,
+  #map[data-zoom='6'] .layer-beachclass-2007,
+  #map[data-zoom='6'] .layer-backshore-1976,
+  #map[data-zoom='6'] .layer-backshore-2007, #map[data-zoom='7'] .layer-beachclass-1976,
+  #map[data-zoom='7'] .layer-beachclass-2007,
+  #map[data-zoom='7'] .layer-backshore-1976,
+  #map[data-zoom='7'] .layer-backshore-2007 {
     stroke-width: 5; }
-    #map[data-zoom='16'] .layer-photos-1976:hover, #map[data-zoom='16'] .layer-photos-2007:hover, #map[data-zoom='17'] .layer-photos-1976:hover, #map[data-zoom='17'] .layer-photos-2007:hover, #map[data-zoom='18'] .layer-photos-1976:hover, #map[data-zoom='18'] .layer-photos-2007:hover {
+  #map[data-zoom='8'] .layer-photos-1976,
+  #map[data-zoom='8'] .layer-photos-2007,
+  #map[data-zoom='8'] .layer-structure-1976,
+  #map[data-zoom='8'] .layer-structure-2007, #map[data-zoom='9'] .layer-photos-1976,
+  #map[data-zoom='9'] .layer-photos-2007,
+  #map[data-zoom='9'] .layer-structure-1976,
+  #map[data-zoom='9'] .layer-structure-2007, #map[data-zoom='10'] .layer-photos-1976,
+  #map[data-zoom='10'] .layer-photos-2007,
+  #map[data-zoom='10'] .layer-structure-1976,
+  #map[data-zoom='10'] .layer-structure-2007, #map[data-zoom='11'] .layer-photos-1976,
+  #map[data-zoom='11'] .layer-photos-2007,
+  #map[data-zoom='11'] .layer-structure-1976,
+  #map[data-zoom='11'] .layer-structure-2007, #map[data-zoom='12'] .layer-photos-1976,
+  #map[data-zoom='12'] .layer-photos-2007,
+  #map[data-zoom='12'] .layer-structure-1976,
+  #map[data-zoom='12'] .layer-structure-2007 {
+    stroke-width: 2; }
+    #map[data-zoom='8'] .layer-photos-1976:hover,
+    #map[data-zoom='8'] .layer-photos-2007:hover,
+    #map[data-zoom='8'] .layer-structure-1976:hover,
+    #map[data-zoom='8'] .layer-structure-2007:hover, #map[data-zoom='9'] .layer-photos-1976:hover,
+    #map[data-zoom='9'] .layer-photos-2007:hover,
+    #map[data-zoom='9'] .layer-structure-1976:hover,
+    #map[data-zoom='9'] .layer-structure-2007:hover, #map[data-zoom='10'] .layer-photos-1976:hover,
+    #map[data-zoom='10'] .layer-photos-2007:hover,
+    #map[data-zoom='10'] .layer-structure-1976:hover,
+    #map[data-zoom='10'] .layer-structure-2007:hover, #map[data-zoom='11'] .layer-photos-1976:hover,
+    #map[data-zoom='11'] .layer-photos-2007:hover,
+    #map[data-zoom='11'] .layer-structure-1976:hover,
+    #map[data-zoom='11'] .layer-structure-2007:hover, #map[data-zoom='12'] .layer-photos-1976:hover,
+    #map[data-zoom='12'] .layer-photos-2007:hover,
+    #map[data-zoom='12'] .layer-structure-1976:hover,
+    #map[data-zoom='12'] .layer-structure-2007:hover {
+      stroke-width: 6; }
+  #map[data-zoom='8'] .layer-beachclass-1976,
+  #map[data-zoom='8'] .layer-beachclass-2007,
+  #map[data-zoom='8'] .layer-backshore-1976,
+  #map[data-zoom='8'] .layer-backshore-2007, #map[data-zoom='9'] .layer-beachclass-1976,
+  #map[data-zoom='9'] .layer-beachclass-2007,
+  #map[data-zoom='9'] .layer-backshore-1976,
+  #map[data-zoom='9'] .layer-backshore-2007, #map[data-zoom='10'] .layer-beachclass-1976,
+  #map[data-zoom='10'] .layer-beachclass-2007,
+  #map[data-zoom='10'] .layer-backshore-1976,
+  #map[data-zoom='10'] .layer-backshore-2007, #map[data-zoom='11'] .layer-beachclass-1976,
+  #map[data-zoom='11'] .layer-beachclass-2007,
+  #map[data-zoom='11'] .layer-backshore-1976,
+  #map[data-zoom='11'] .layer-backshore-2007, #map[data-zoom='12'] .layer-beachclass-1976,
+  #map[data-zoom='12'] .layer-beachclass-2007,
+  #map[data-zoom='12'] .layer-backshore-1976,
+  #map[data-zoom='12'] .layer-backshore-2007 {
+    stroke-width: 5; }
+    #map[data-zoom='8'] .layer-beachclass-1976:hover,
+    #map[data-zoom='8'] .layer-beachclass-2007:hover,
+    #map[data-zoom='8'] .layer-backshore-1976:hover,
+    #map[data-zoom='8'] .layer-backshore-2007:hover, #map[data-zoom='9'] .layer-beachclass-1976:hover,
+    #map[data-zoom='9'] .layer-beachclass-2007:hover,
+    #map[data-zoom='9'] .layer-backshore-1976:hover,
+    #map[data-zoom='9'] .layer-backshore-2007:hover, #map[data-zoom='10'] .layer-beachclass-1976:hover,
+    #map[data-zoom='10'] .layer-beachclass-2007:hover,
+    #map[data-zoom='10'] .layer-backshore-1976:hover,
+    #map[data-zoom='10'] .layer-backshore-2007:hover, #map[data-zoom='11'] .layer-beachclass-1976:hover,
+    #map[data-zoom='11'] .layer-beachclass-2007:hover,
+    #map[data-zoom='11'] .layer-backshore-1976:hover,
+    #map[data-zoom='11'] .layer-backshore-2007:hover, #map[data-zoom='12'] .layer-beachclass-1976:hover,
+    #map[data-zoom='12'] .layer-beachclass-2007:hover,
+    #map[data-zoom='12'] .layer-backshore-1976:hover,
+    #map[data-zoom='12'] .layer-backshore-2007:hover {
+      stroke-width: 7; }
+  #map[data-zoom='13'] .layer-photos-1976,
+  #map[data-zoom='13'] .layer-photos-2007,
+  #map[data-zoom='13'] .layer-structure-1976,
+  #map[data-zoom='13'] .layer-structure-2007, #map[data-zoom='14'] .layer-photos-1976,
+  #map[data-zoom='14'] .layer-photos-2007,
+  #map[data-zoom='14'] .layer-structure-1976,
+  #map[data-zoom='14'] .layer-structure-2007, #map[data-zoom='15'] .layer-photos-1976,
+  #map[data-zoom='15'] .layer-photos-2007,
+  #map[data-zoom='15'] .layer-structure-1976,
+  #map[data-zoom='15'] .layer-structure-2007 {
+    stroke-width: 3; }
+    #map[data-zoom='13'] .layer-photos-1976:hover,
+    #map[data-zoom='13'] .layer-photos-2007:hover,
+    #map[data-zoom='13'] .layer-structure-1976:hover,
+    #map[data-zoom='13'] .layer-structure-2007:hover, #map[data-zoom='14'] .layer-photos-1976:hover,
+    #map[data-zoom='14'] .layer-photos-2007:hover,
+    #map[data-zoom='14'] .layer-structure-1976:hover,
+    #map[data-zoom='14'] .layer-structure-2007:hover, #map[data-zoom='15'] .layer-photos-1976:hover,
+    #map[data-zoom='15'] .layer-photos-2007:hover,
+    #map[data-zoom='15'] .layer-structure-1976:hover,
+    #map[data-zoom='15'] .layer-structure-2007:hover {
+      stroke-width: 7; }
+  #map[data-zoom='13'] .layer-beachclass-1976,
+  #map[data-zoom='13'] .layer-beachclass-2007,
+  #map[data-zoom='13'] .layer-backshore-1976,
+  #map[data-zoom='13'] .layer-backshore-2007, #map[data-zoom='14'] .layer-beachclass-1976,
+  #map[data-zoom='14'] .layer-beachclass-2007,
+  #map[data-zoom='14'] .layer-backshore-1976,
+  #map[data-zoom='14'] .layer-backshore-2007, #map[data-zoom='15'] .layer-beachclass-1976,
+  #map[data-zoom='15'] .layer-beachclass-2007,
+  #map[data-zoom='15'] .layer-backshore-1976,
+  #map[data-zoom='15'] .layer-backshore-2007 {
+    stroke-width: 6;
+    stroke-linecap: butt; }
+    #map[data-zoom='13'] .layer-beachclass-1976:hover,
+    #map[data-zoom='13'] .layer-beachclass-2007:hover,
+    #map[data-zoom='13'] .layer-backshore-1976:hover,
+    #map[data-zoom='13'] .layer-backshore-2007:hover, #map[data-zoom='14'] .layer-beachclass-1976:hover,
+    #map[data-zoom='14'] .layer-beachclass-2007:hover,
+    #map[data-zoom='14'] .layer-backshore-1976:hover,
+    #map[data-zoom='14'] .layer-backshore-2007:hover, #map[data-zoom='15'] .layer-beachclass-1976:hover,
+    #map[data-zoom='15'] .layer-beachclass-2007:hover,
+    #map[data-zoom='15'] .layer-backshore-1976:hover,
+    #map[data-zoom='15'] .layer-backshore-2007:hover {
+      stroke-width: 10; }
+  #map[data-zoom='16'] .layer-photos-1976,
+  #map[data-zoom='16'] .layer-photos-2007,
+  #map[data-zoom='16'] .layer-structure-1976,
+  #map[data-zoom='16'] .layer-structure-2007, #map[data-zoom='17'] .layer-photos-1976,
+  #map[data-zoom='17'] .layer-photos-2007,
+  #map[data-zoom='17'] .layer-structure-1976,
+  #map[data-zoom='17'] .layer-structure-2007, #map[data-zoom='18'] .layer-photos-1976,
+  #map[data-zoom='18'] .layer-photos-2007,
+  #map[data-zoom='18'] .layer-structure-1976,
+  #map[data-zoom='18'] .layer-structure-2007 {
+    stroke-width: 5; }
+    #map[data-zoom='16'] .layer-photos-1976:hover,
+    #map[data-zoom='16'] .layer-photos-2007:hover,
+    #map[data-zoom='16'] .layer-structure-1976:hover,
+    #map[data-zoom='16'] .layer-structure-2007:hover, #map[data-zoom='17'] .layer-photos-1976:hover,
+    #map[data-zoom='17'] .layer-photos-2007:hover,
+    #map[data-zoom='17'] .layer-structure-1976:hover,
+    #map[data-zoom='17'] .layer-structure-2007:hover, #map[data-zoom='18'] .layer-photos-1976:hover,
+    #map[data-zoom='18'] .layer-photos-2007:hover,
+    #map[data-zoom='18'] .layer-structure-1976:hover,
+    #map[data-zoom='18'] .layer-structure-2007:hover {
       stroke-width: 9; }
+  #map[data-zoom='16'] .layer-beachclass-1976,
+  #map[data-zoom='16'] .layer-beachclass-2007,
+  #map[data-zoom='16'] .layer-backshore-1976,
+  #map[data-zoom='16'] .layer-backshore-2007, #map[data-zoom='17'] .layer-beachclass-1976,
+  #map[data-zoom='17'] .layer-beachclass-2007,
+  #map[data-zoom='17'] .layer-backshore-1976,
+  #map[data-zoom='17'] .layer-backshore-2007, #map[data-zoom='18'] .layer-beachclass-1976,
+  #map[data-zoom='18'] .layer-beachclass-2007,
+  #map[data-zoom='18'] .layer-backshore-1976,
+  #map[data-zoom='18'] .layer-backshore-2007 {
+    stroke-width: 9;
+    stroke-linecap: butt; }
+    #map[data-zoom='16'] .layer-beachclass-1976:hover,
+    #map[data-zoom='16'] .layer-beachclass-2007:hover,
+    #map[data-zoom='16'] .layer-backshore-1976:hover,
+    #map[data-zoom='16'] .layer-backshore-2007:hover, #map[data-zoom='17'] .layer-beachclass-1976:hover,
+    #map[data-zoom='17'] .layer-beachclass-2007:hover,
+    #map[data-zoom='17'] .layer-backshore-1976:hover,
+    #map[data-zoom='17'] .layer-backshore-2007:hover, #map[data-zoom='18'] .layer-beachclass-1976:hover,
+    #map[data-zoom='18'] .layer-beachclass-2007:hover,
+    #map[data-zoom='18'] .layer-backshore-1976:hover,
+    #map[data-zoom='18'] .layer-backshore-2007:hover {
+      stroke-width: 12; }
 
 .leaflet-control-zoom.leaflet-bar {
   border: 0; }
