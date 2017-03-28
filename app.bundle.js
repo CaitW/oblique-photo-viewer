@@ -52819,7 +52819,7 @@
 	            opacity: 1,
 	            lineCap: "round",
 	            lineJoin: "round",
-	            className: "backshore_1976"
+	            className: "layer-backshore-1976"
 	        };
 	        switch (feature.properties["Bluff Condition Classification"]) {
 	            case "Moderately Stable":
@@ -52892,6 +52892,7 @@
 	    structure_1976: function structure_1976(feature) {
 	        var style = {
 	            radius: 3,
+	            color: COLORS.BLACK,
 	            fillColor: COLORS.BLACK,
 	            weight: 0,
 	            fillOpacity: 1,
@@ -52902,6 +52903,7 @@
 	    structure_2007: function structure_2007(feature) {
 	        var style = {
 	            radius: 3,
+	            color: COLORS.BLACK,
 	            fillColor: COLORS.BLACK,
 	            weight: 0,
 	            fillOpacity: 1,
