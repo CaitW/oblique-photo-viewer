@@ -75,3 +75,9 @@ export function styleCacheUpdate (layerId, propertyName, style, geometryType) {
         geometryType
     }
 }
+export function mapNewZoomLevel (zoomLevel) {
+    return {
+        type: "MAP:NEW_ZOOM_LEVEL",
+        zoomLevel
+    }
+}

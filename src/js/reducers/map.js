@@ -2,7 +2,8 @@ import CONFIG from '../config.json';
 const initialMapState = {
     state: {
         action: "none"
-    }
+    },
+    zoom: false
 };
 export default function map(state = initialMapState, action) {
     let newState = Object.assign({}, state);
@@ -25,6 +26,9 @@ export default function map(state = initialMapState, action) {
                 action: "willZoom",
                 extent: wisconsinExtent
             };
+            break;
+        case "MAP:NEW_ZOOM_LEVEL": 
+            newState.zoom = action.zoomLevel;
             break;
         default:
             newState = state;

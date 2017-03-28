@@ -1,6 +1,8 @@
 import CONFIG from '../config.json';
 import {LAYER_STYLES} from '../layers/styles.js';
 import ON_EACH_FEATURE from '../layers/onEachFeature.js';
+import { mapNewZoomLevel } from '../actions.js';
+import store from '../store.js';
 var axios = require('axios');
 export default class ObliquePhotoMap {
     constructor(map) {
@@ -18,10 +20,13 @@ export default class ObliquePhotoMap {
         L.control.scale().addTo(self.map);
         this.basemapIndex = {};
         this.layerIndex = {};
-        window.getExtent = function () {
-            var bounds = self.map.getBounds();
-            return bounds.toBBoxString();
-        }
+        this.dispatchZoom = this.dispatchZoom.bind(this);
+        this.map.on('zoomend', self.dispatchZoom);
+        this.dispatchZoom();
+    }
+    dispatchZoom () {
+        let currentZoom = this.map.getZoom();
+        store.dispatch(mapNewZoomLevel(currentZoom));
     }
     createLayer(layerId, layer) {
         var self = this;

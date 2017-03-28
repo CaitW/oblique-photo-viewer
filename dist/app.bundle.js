@@ -51248,7 +51248,8 @@
 	var initialMapState = {
 	    state: {
 	        action: "none"
-	    }
+	    },
+	    zoom: false
 	};
 	function map() {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialMapState;
@@ -51274,6 +51275,9 @@
 	                action: "willZoom",
 	                extent: wisconsinExtent
 	            };
+	            break;
+	        case "MAP:NEW_ZOOM_LEVEL":
+	            newState.zoom = action.zoomLevel;
 	            break;
 	        default:
 	            newState = state;
@@ -51424,6 +51428,7 @@
 	exports.closeAboutModal = closeAboutModal;
 	exports.openAboutModal = openAboutModal;
 	exports.styleCacheUpdate = styleCacheUpdate;
+	exports.mapNewZoomLevel = mapNewZoomLevel;
 	function toggleLayer(layerId) {
 	    return {
 	        type: "MAP:TOGGLE_LAYER",
@@ -51499,6 +51504,12 @@
 	        propertyName: propertyName,
 	        style: style,
 	        geometryType: geometryType
+	    };
+	}
+	function mapNewZoomLevel(zoomLevel) {
+	    return {
+	        type: "MAP:NEW_ZOOM_LEVEL",
+	        zoomLevel: zoomLevel
 	    };
 	}
 
@@ -52585,7 +52596,7 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement('div', { ref: 'map', id: 'map' });
+	            return _react2.default.createElement('div', { ref: 'map', id: 'map', 'data-zoom': this.props.map.zoom });
 	        }
 	    }]);
 
@@ -52616,6 +52627,12 @@
 
 	var _onEachFeature2 = _interopRequireDefault(_onEachFeature);
 
+	var _actions = __webpack_require__(774);
+
+	var _store = __webpack_require__(767);
+
+	var _store2 = _interopRequireDefault(_store);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52639,13 +52656,18 @@
 	        L.control.scale().addTo(self.map);
 	        this.basemapIndex = {};
 	        this.layerIndex = {};
-	        window.getExtent = function () {
-	            var bounds = self.map.getBounds();
-	            return bounds.toBBoxString();
-	        };
+	        this.dispatchZoom = this.dispatchZoom.bind(this);
+	        this.map.on('zoomend', self.dispatchZoom);
+	        this.dispatchZoom();
 	    }
 
 	    _createClass(ObliquePhotoMap, [{
+	        key: 'dispatchZoom',
+	        value: function dispatchZoom() {
+	            var currentZoom = this.map.getZoom();
+	            _store2.default.dispatch((0, _actions.mapNewZoomLevel)(currentZoom));
+	        }
+	    }, {
 	        key: 'createLayer',
 	        value: function createLayer(layerId, layer) {
 	            var self = this;
