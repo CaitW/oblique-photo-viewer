@@ -8,6 +8,13 @@
  */
 import store from '../store.js';
 import { clickFeature } from '../actions.js';
+function getPopupContent (featureProperties, dataType) {
+    if (dataType === "photo") {
+        return "<div>Photo</div>";
+    } else {
+        return "<div>Not a photo</div>";
+    }
+}
 // Function that takes layer information and creates a popup.
 // Popups are added to the map as a layer so that multiple popups can be added at once. 
 function handleClick(feature, layer, dataType, map) {
@@ -16,16 +23,16 @@ function handleClick(feature, layer, dataType, map) {
         closeOnClick: false,
         className: "feature-popup"
     });
-    if (dataType === "photo") {
-        popup.setContent("<div>Photo</div>");
-    } else {
-        popup.setContent("<div>Not a photo</div>");
-    }
+    let popupContent = getPopupContent(feature.properties, dataType);
+    popup.setContent(popupContent);
     // on click, open popup
     layer.on('mouseup', function(e) {
-        popup.setLatLng(e.latlng);
-        map.addLayer(popup);
-        // store.dispatch(clickFeature(featureProperties, dataType, layerId));
+        if(store.getState().mobile.window.width < 992) {
+            store.dispatch(clickFeature(feature.properties, dataType, layerId));
+        } else {
+            popup.setLatLng(e.latlng);
+            map.addLayer(popup);            
+        }
     });
     // when the whole layer is removed from the map, remove the popup
     layer.on('remove', function (e) {
