@@ -53025,8 +53025,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// Function that takes layer information and creates a popup.
-	// Popups are added to the map as a layer so that multiple popups can be added at once. 
 	/**
 	 * onEachFeatures.js
 	 * This contains functions that are applied to each layer when they are loaded. 
@@ -53035,22 +53033,31 @@
 	 * and Leaflet passes the layer's data to that function on load. It is used here to 
 	 * apply click handling functions to each feature in each layer.
 	 */
+	function getPopupContent(featureProperties, dataType) {
+	    if (dataType === "photo") {
+	        return "<div>Photo</div>";
+	    } else {
+	        return "<div>Not a photo</div>";
+	    }
+	}
+	// Function that takes layer information and creates a popup.
+	// Popups are added to the map as a layer so that multiple popups can be added at once. 
 	function handleClick(feature, layer, dataType, map) {
 	    var layerId = layer.defaultOptions.layerId;
 	    var popup = L.popup({
 	        closeOnClick: false,
 	        className: "feature-popup"
 	    });
-	    if (dataType === "photo") {
-	        popup.setContent("<div>Photo</div>");
-	    } else {
-	        popup.setContent("<div>Not a photo</div>");
-	    }
+	    var popupContent = getPopupContent(feature.properties, dataType);
+	    popup.setContent(popupContent);
 	    // on click, open popup
 	    layer.on('mouseup', function (e) {
-	        popup.setLatLng(e.latlng);
-	        map.addLayer(popup);
-	        // store.dispatch(clickFeature(featureProperties, dataType, layerId));
+	        if (_store2.default.getState().mobile.window.width < 992) {
+	            _store2.default.dispatch((0, _actions.clickFeature)(feature.properties, dataType, layerId));
+	        } else {
+	            popup.setLatLng(e.latlng);
+	            map.addLayer(popup);
+	        }
 	    });
 	    // when the whole layer is removed from the map, remove the popup
 	    layer.on('remove', function (e) {
