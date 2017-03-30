@@ -7,40 +7,56 @@
  * apply click handling functions to each feature in each layer.
  */
 import store from '../store.js';
-import {clickFeature} from '../actions.js';
-// function takes a feature's properties, the layer containing the feature, and the data type ("photo" or "data")
-// and dispatches to the Redux store telling the application to open a popup with that information
-function handleClick (featureProperties, layer, dataType) {
+import { clickFeature } from '../actions.js';
+// Function that takes layer information and creates a popup.
+// Popups are added to the map as a layer so that multiple popups can be added at once. 
+function handleClick(feature, layer, dataType, map) {
     let layerId = layer.defaultOptions.layerId;
-    layer.on('mouseup', function () {
-        store.dispatch(clickFeature(featureProperties, dataType, layerId));
-    });    
+    let popup = L.popup({
+        closeOnClick: false,
+        className: "feature-popup"
+    });
+    if (dataType === "photo") {
+        popup.setContent("<div>Photo</div>");
+    } else {
+        popup.setContent("<div>Not a photo</div>");
+    }
+    // on click, open popup
+    layer.on('mouseup', function(e) {
+        popup.setLatLng(e.latlng);
+        map.addLayer(popup);
+        // store.dispatch(clickFeature(featureProperties, dataType, layerId));
+    });
+    // when the whole layer is removed from the map, remove the popup
+    layer.on('remove', function (e) {
+        map.removeLayer(popup);
+    });
 }
 // Individual layer onEachFeature functions go below, as referenced by ID in config.json
 var ON_EACH_FEATURE = {
     backshore_1976: function(feature, layer) {
-        handleClick(feature.properties, layer, "data");
+        handleClick(feature, layer, "data", this.map);
     },
     backshore_2007: function(feature, layer) {
-        handleClick(feature.properties, layer, "data");
+        handleClick(feature, layer, "data", this.map);
     },
     photos_1976: function(feature, layer) {
-        handleClick(feature.properties, layer, "photo");
+        handleClick(feature, layer, "photo", this.map);
     },
     photos_2007: function(feature, layer) {
-        handleClick(feature.properties, layer, "photo");
+        handleClick(feature, layer, "photo", this.map);
     },
     structure_1976: function(feature, layer) {
-        handleClick(feature.properties, layer, "data");
+        handleClick(feature, layer, "data", this.map);
     },
     structure_2007: function(feature, layer) {
-        handleClick(feature.properties, layer, "data");
+        handleClick(feature, layer, "data", this.map);
     },
     beachclass_1976: function(feature, layer) {
-        handleClick(feature.properties, layer, "data");
+        handleClick(feature, layer, "data", this.map);
     },
     beachclass_2007: function(feature, layer) {
-        handleClick(feature.properties, layer, "data");
+        handleClick(feature, layer, "data", this.map);
     }
 };
 export default ON_EACH_FEATURE;

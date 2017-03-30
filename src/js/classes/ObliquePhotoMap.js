@@ -50,12 +50,15 @@ export default class ObliquePhotoMap {
                                 layerId
                             });
                         },
-                        layerId: layerId
+                        layerId: layerId,
+                        map: self.map
                     };
                     if (typeof layer.onEachFeatureID !== "undefined" && typeof ON_EACH_FEATURE[layer.onEachFeatureID] !== "undefined") {
-                        layerOptions.onEachFeature = ON_EACH_FEATURE[layer.onEachFeatureID];
+                        // bind layer options so we have access to the map, layerId from within onEachFeature function
+                        layerOptions.onEachFeature = ON_EACH_FEATURE[layer.onEachFeatureID].bind(layerOptions);
                     }
                     if (typeof layer.styleID !== "undefined" && typeof LAYER_STYLES[layer.styleID] !== "undefined") {
+                        // bind layer options so we have access to the map, layerId from within style function
                         layerOptions.style = LAYER_STYLES[layer.styleID].bind(layerOptions);
                     }
                     this.layerIndex[layerId] = L.geoJson(null, layerOptions);
