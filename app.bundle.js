@@ -52691,12 +52691,15 @@
 	                                    layerId: layerId
 	                                });
 	                            },
-	                            layerId: layerId
+	                            layerId: layerId,
+	                            map: self.map
 	                        };
 	                        if (typeof layer.onEachFeatureID !== "undefined" && typeof _onEachFeature2.default[layer.onEachFeatureID] !== "undefined") {
-	                            layerOptions.onEachFeature = _onEachFeature2.default[layer.onEachFeatureID];
+	                            // bind layer options so we have access to the map, layerId from within onEachFeature function
+	                            layerOptions.onEachFeature = _onEachFeature2.default[layer.onEachFeatureID].bind(layerOptions);
 	                        }
 	                        if (typeof layer.styleID !== "undefined" && typeof _styles.LAYER_STYLES[layer.styleID] !== "undefined") {
+	                            // bind layer options so we have access to the map, layerId from within style function
 	                            layerOptions.style = _styles.LAYER_STYLES[layer.styleID].bind(layerOptions);
 	                        }
 	                        this.layerIndex[layerId] = L.geoJson(null, layerOptions);
@@ -53022,8 +53025,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// function takes a feature's properties, the layer containing the feature, and the data type ("photo" or "data")
-	// and dispatches to the Redux store telling the application to open a popup with that information
+	// Function that takes layer information and creates a popup.
+	// Popups are added to the map as a layer so that multiple popups can be added at once. 
 	/**
 	 * onEachFeatures.js
 	 * This contains functions that are applied to each layer when they are loaded. 
@@ -53032,37 +53035,53 @@
 	 * and Leaflet passes the layer's data to that function on load. It is used here to 
 	 * apply click handling functions to each feature in each layer.
 	 */
-	function handleClick(featureProperties, layer, dataType) {
+	function handleClick(feature, layer, dataType, map) {
 	    var layerId = layer.defaultOptions.layerId;
-	    layer.on('mouseup', function () {
-	        _store2.default.dispatch((0, _actions.clickFeature)(featureProperties, dataType, layerId));
+	    var popup = L.popup({
+	        closeOnClick: false,
+	        className: "feature-popup"
+	    });
+	    if (dataType === "photo") {
+	        popup.setContent("<div>Photo</div>");
+	    } else {
+	        popup.setContent("<div>Not a photo</div>");
+	    }
+	    // on click, open popup
+	    layer.on('mouseup', function (e) {
+	        popup.setLatLng(e.latlng);
+	        map.addLayer(popup);
+	        // store.dispatch(clickFeature(featureProperties, dataType, layerId));
+	    });
+	    // when the whole layer is removed from the map, remove the popup
+	    layer.on('remove', function (e) {
+	        map.removeLayer(popup);
 	    });
 	}
 	// Individual layer onEachFeature functions go below, as referenced by ID in config.json
 	var ON_EACH_FEATURE = {
 	    backshore_1976: function backshore_1976(feature, layer) {
-	        handleClick(feature.properties, layer, "data");
+	        handleClick(feature, layer, "data", this.map);
 	    },
 	    backshore_2007: function backshore_2007(feature, layer) {
-	        handleClick(feature.properties, layer, "data");
+	        handleClick(feature, layer, "data", this.map);
 	    },
 	    photos_1976: function photos_1976(feature, layer) {
-	        handleClick(feature.properties, layer, "photo");
+	        handleClick(feature, layer, "photo", this.map);
 	    },
 	    photos_2007: function photos_2007(feature, layer) {
-	        handleClick(feature.properties, layer, "photo");
+	        handleClick(feature, layer, "photo", this.map);
 	    },
 	    structure_1976: function structure_1976(feature, layer) {
-	        handleClick(feature.properties, layer, "data");
+	        handleClick(feature, layer, "data", this.map);
 	    },
 	    structure_2007: function structure_2007(feature, layer) {
-	        handleClick(feature.properties, layer, "data");
+	        handleClick(feature, layer, "data", this.map);
 	    },
 	    beachclass_1976: function beachclass_1976(feature, layer) {
-	        handleClick(feature.properties, layer, "data");
+	        handleClick(feature, layer, "data", this.map);
 	    },
 	    beachclass_2007: function beachclass_2007(feature, layer) {
-	        handleClick(feature.properties, layer, "data");
+	        handleClick(feature, layer, "data", this.map);
 	    }
 	};
 	exports.default = ON_EACH_FEATURE;
