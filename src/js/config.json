@@ -99,7 +99,7 @@
                         "dataLocation": "./data/layers/photos_2007.json",
                         "styleID": "photos_2007",
                         "onEachFeatureID": "photos_2007",
-                        "active": false
+                        "active": true
                     }
                 }
             },

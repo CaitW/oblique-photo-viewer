@@ -8418,7 +8418,7 @@
 							"dataLocation": "./data/layers/photos_2007.json",
 							"styleID": "photos_2007",
 							"onEachFeatureID": "photos_2007",
-							"active": false
+							"active": true
 						}
 					}
 				},
@@ -52427,7 +52427,7 @@
 
 	var _LeafletMap2 = _interopRequireDefault(_LeafletMap);
 
-	var _FeatureModal = __webpack_require__(815);
+	var _FeatureModal = __webpack_require__(816);
 
 	var _FeatureModal2 = _interopRequireDefault(_FeatureModal);
 
@@ -52637,7 +52637,7 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var axios = __webpack_require__(790);
+	var axios = __webpack_require__(791);
 
 	var ObliquePhotoMap = function () {
 	    function ObliquePhotoMap(map) {
@@ -53023,6 +53023,10 @@
 
 	var _actions = __webpack_require__(774);
 
+	var _util = __webpack_require__(790);
+
+	var _reactDom = __webpack_require__(330);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
@@ -53033,9 +53037,16 @@
 	 * and Leaflet passes the layer's data to that function on load. It is used here to 
 	 * apply click handling functions to each feature in each layer.
 	 */
-	function getPopupContent(featureProperties, dataType) {
+	function getPopupContent(featureProperties, dataType, popup) {
 	    if (dataType === "photo") {
-	        return "<div>Photo</div>";
+	        var photoURLs = (0, _util.getPhotoURLs)(featureProperties);
+	        //return "<img src='" + photoURLs.popup + "'/>";
+	        var img = document.createElement("img");
+	        img.setAttribute("src", photoURLs.popup);
+	        img.addEventListener('load', function () {
+	            popup.update();
+	        }, false);
+	        return img;
 	    } else {
 	        return "<div>Not a photo</div>";
 	    }
@@ -53043,25 +53054,25 @@
 	// Function that takes layer information and creates a popup.
 	// Popups are added to the map as a layer so that multiple popups can be added at once. 
 	function handleClick(feature, layer, dataType, map) {
+	    var popup = false;
 	    var layerId = layer.defaultOptions.layerId;
-	    var popup = L.popup({
-	        closeOnClick: false,
-	        className: "feature-popup"
-	    });
-	    var popupContent = getPopupContent(feature.properties, dataType);
-	    popup.setContent(popupContent);
-	    // on click, open popup
+	    // on click, create and open popup
 	    layer.on('mouseup', function (e) {
+	        // if the screen is small, open the popup as a full modal
+	        // if the screen is large, open the popup as a leaflet-based in-map popup
 	        if (_store2.default.getState().mobile.window.width < 992) {
 	            _store2.default.dispatch((0, _actions.clickFeature)(feature.properties, dataType, layerId));
-	        } else {
-	            popup.setLatLng(e.latlng);
-	            map.addLayer(popup);
+	        } else if (popup === false) {
+	            popup = L.popup({
+	                closeOnClick: false,
+	                className: "feature-popup",
+	                autoClose: false,
+	                maxWidth: 500
+	            });
+	            var popupContent = getPopupContent(feature.properties, dataType, popup);
+	            popup.setContent(popupContent);
+	            layer.bindPopup(popup);
 	        }
-	    });
-	    // when the whole layer is removed from the map, remove the popup
-	    layer.on('remove', function (e) {
-	        map.removeLayer(popup);
 	    });
 	}
 	// Individual layer onEachFeature functions go below, as referenced by ID in config.json
@@ -53097,18 +53108,54 @@
 /* 790 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(791);
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.getPhotoURLs = getPhotoURLs;
+
+	var _config = __webpack_require__(299);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function getPhotoURLs(photoProperties) {
+		var base = _config2.default.photos.urlBase;
+		var lakeName = photoProperties["Great Lake"].replace(/ /gi, "");
+		var year = photoProperties["Year"];
+		var fileName = photoProperties["File Name"];
+		var urls = {};
+		for (var size in _config2.default.photos.sizes) {
+			var sizeDir = _config2.default.photos.sizes[size];
+			var modifiedFilename = fileName;
+			if (size !== "original") {
+				var parts = fileName.split(".");
+				parts[0] += "_" + sizeDir;
+				modifiedFilename = parts.join(".");
+			}
+			urls[size] = [base, lakeName, year, sizeDir, modifiedFilename].join("/");
+		}
+		return urls;
+	}
 
 /***/ },
 /* 791 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = __webpack_require__(792);
+
+/***/ },
+/* 792 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
-	var utils = __webpack_require__(792);
-	var bind = __webpack_require__(793);
-	var Axios = __webpack_require__(794);
-	var defaults = __webpack_require__(795);
+	var utils = __webpack_require__(793);
+	var bind = __webpack_require__(794);
+	var Axios = __webpack_require__(795);
+	var defaults = __webpack_require__(796);
 
 	/**
 	 * Create an instance of Axios
@@ -53141,15 +53188,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(812);
-	axios.CancelToken = __webpack_require__(813);
-	axios.isCancel = __webpack_require__(809);
+	axios.Cancel = __webpack_require__(813);
+	axios.CancelToken = __webpack_require__(814);
+	axios.isCancel = __webpack_require__(810);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(814);
+	axios.spread = __webpack_require__(815);
 
 	module.exports = axios;
 
@@ -53158,12 +53205,12 @@
 
 
 /***/ },
-/* 792 */
+/* 793 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(793);
+	var bind = __webpack_require__(794);
 
 	/*global toString:true*/
 
@@ -53463,7 +53510,7 @@
 
 
 /***/ },
-/* 793 */
+/* 794 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53480,17 +53527,17 @@
 
 
 /***/ },
-/* 794 */
+/* 795 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(795);
-	var utils = __webpack_require__(792);
-	var InterceptorManager = __webpack_require__(806);
-	var dispatchRequest = __webpack_require__(807);
-	var isAbsoluteURL = __webpack_require__(810);
-	var combineURLs = __webpack_require__(811);
+	var defaults = __webpack_require__(796);
+	var utils = __webpack_require__(793);
+	var InterceptorManager = __webpack_require__(807);
+	var dispatchRequest = __webpack_require__(808);
+	var isAbsoluteURL = __webpack_require__(811);
+	var combineURLs = __webpack_require__(812);
 
 	/**
 	 * Create a new instance of Axios
@@ -53571,13 +53618,13 @@
 
 
 /***/ },
-/* 795 */
+/* 796 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(792);
-	var normalizeHeaderName = __webpack_require__(796);
+	var utils = __webpack_require__(793);
+	var normalizeHeaderName = __webpack_require__(797);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -53594,10 +53641,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(797);
+	    adapter = __webpack_require__(798);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(797);
+	    adapter = __webpack_require__(798);
 	  }
 	  return adapter;
 	}
@@ -53671,12 +53718,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 796 */
+/* 797 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
+	var utils = __webpack_require__(793);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -53689,18 +53736,18 @@
 
 
 /***/ },
-/* 797 */
+/* 798 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(792);
-	var settle = __webpack_require__(798);
-	var buildURL = __webpack_require__(801);
-	var parseHeaders = __webpack_require__(802);
-	var isURLSameOrigin = __webpack_require__(803);
-	var createError = __webpack_require__(799);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(804);
+	var utils = __webpack_require__(793);
+	var settle = __webpack_require__(799);
+	var buildURL = __webpack_require__(802);
+	var parseHeaders = __webpack_require__(803);
+	var isURLSameOrigin = __webpack_require__(804);
+	var createError = __webpack_require__(800);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(805);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -53796,7 +53843,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(805);
+	      var cookies = __webpack_require__(806);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -53873,12 +53920,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 798 */
+/* 799 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(799);
+	var createError = __webpack_require__(800);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -53904,12 +53951,12 @@
 
 
 /***/ },
-/* 799 */
+/* 800 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(800);
+	var enhanceError = __webpack_require__(801);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -53927,7 +53974,7 @@
 
 
 /***/ },
-/* 800 */
+/* 801 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53952,12 +53999,12 @@
 
 
 /***/ },
-/* 801 */
+/* 802 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
+	var utils = __webpack_require__(793);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -54026,12 +54073,12 @@
 
 
 /***/ },
-/* 802 */
+/* 803 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
+	var utils = __webpack_require__(793);
 
 	/**
 	 * Parse headers into an object
@@ -54069,12 +54116,12 @@
 
 
 /***/ },
-/* 803 */
+/* 804 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
+	var utils = __webpack_require__(793);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54143,7 +54190,7 @@
 
 
 /***/ },
-/* 804 */
+/* 805 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54185,12 +54232,12 @@
 
 
 /***/ },
-/* 805 */
+/* 806 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
+	var utils = __webpack_require__(793);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54244,12 +54291,12 @@
 
 
 /***/ },
-/* 806 */
+/* 807 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
+	var utils = __webpack_require__(793);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -54302,15 +54349,15 @@
 
 
 /***/ },
-/* 807 */
+/* 808 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
-	var transformData = __webpack_require__(808);
-	var isCancel = __webpack_require__(809);
-	var defaults = __webpack_require__(795);
+	var utils = __webpack_require__(793);
+	var transformData = __webpack_require__(809);
+	var isCancel = __webpack_require__(810);
+	var defaults = __webpack_require__(796);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -54387,12 +54434,12 @@
 
 
 /***/ },
-/* 808 */
+/* 809 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
+	var utils = __webpack_require__(793);
 
 	/**
 	 * Transform the data for a request or a response
@@ -54413,7 +54460,7 @@
 
 
 /***/ },
-/* 809 */
+/* 810 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54424,7 +54471,7 @@
 
 
 /***/ },
-/* 810 */
+/* 811 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54444,7 +54491,7 @@
 
 
 /***/ },
-/* 811 */
+/* 812 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54462,7 +54509,7 @@
 
 
 /***/ },
-/* 812 */
+/* 813 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54487,12 +54534,12 @@
 
 
 /***/ },
-/* 813 */
+/* 814 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(812);
+	var Cancel = __webpack_require__(813);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -54550,7 +54597,7 @@
 
 
 /***/ },
-/* 814 */
+/* 815 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54583,7 +54630,7 @@
 
 
 /***/ },
-/* 815 */
+/* 816 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54598,7 +54645,7 @@
 
 	var _reactBootstrap = __webpack_require__(477);
 
-	var _util = __webpack_require__(816);
+	var _util = __webpack_require__(790);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54720,42 +54767,6 @@
 	    * This creates the modal that's displayed when a user clicks on an object in the map
 	    */
 	exports.default = FeatureModal;
-
-/***/ },
-/* 816 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.getPhotoURLs = getPhotoURLs;
-
-	var _config = __webpack_require__(299);
-
-	var _config2 = _interopRequireDefault(_config);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function getPhotoURLs(photoProperties) {
-		var base = _config2.default.photos.urlBase;
-		var lakeName = photoProperties["Great Lake"].replace(/ /gi, "");
-		var year = photoProperties["Year"];
-		var fileName = photoProperties["File Name"];
-		var urls = {};
-		for (var size in _config2.default.photos.sizes) {
-			var sizeDir = _config2.default.photos.sizes[size];
-			var modifiedFilename = fileName;
-			if (size !== "original") {
-				var parts = fileName.split(".");
-				parts[0] += "_" + sizeDir;
-				modifiedFilename = parts.join(".");
-			}
-			urls[size] = [base, lakeName, year, sizeDir, modifiedFilename].join("/");
-		}
-		return urls;
-	}
 
 /***/ },
 /* 817 */

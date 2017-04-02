@@ -8,9 +8,19 @@
  */
 import store from '../store.js';
 import { clickFeature } from '../actions.js';
-function getPopupContent (featureProperties, dataType) {
+import { getPhotoURLs } from '../util.js';
+import { render } from 'react-dom';
+
+function getPopupContent(featureProperties, dataType, popup) {
     if (dataType === "photo") {
-        return "<div>Photo</div>";
+        let photoURLs = getPhotoURLs(featureProperties);
+        //return "<img src='" + photoURLs.popup + "'/>";
+        let img = document.createElement("img");
+        img.setAttribute("src", photoURLs.popup);
+        img.addEventListener('load', function() {
+            popup.update();
+        }, false);
+        return img;
     } else {
         return "<div>Not a photo</div>";
     }
@@ -18,25 +28,26 @@ function getPopupContent (featureProperties, dataType) {
 // Function that takes layer information and creates a popup.
 // Popups are added to the map as a layer so that multiple popups can be added at once. 
 function handleClick(feature, layer, dataType, map) {
+    var popup = false;
     let layerId = layer.defaultOptions.layerId;
-    let popup = L.popup({
-        closeOnClick: false,
-        className: "feature-popup"
-    });
-    let popupContent = getPopupContent(feature.properties, dataType);
-    popup.setContent(popupContent);
-    // on click, open popup
+    // on click, create and open popup
     layer.on('mouseup', function(e) {
-        if(store.getState().mobile.window.width < 992) {
+        // if the screen is small, open the popup as a full modal
+        // if the screen is large, open the popup as a leaflet-based in-map popup
+        if (store.getState()
+            .mobile.window.width < 992) {
             store.dispatch(clickFeature(feature.properties, dataType, layerId));
-        } else {
-            popup.setLatLng(e.latlng);
-            map.addLayer(popup);            
+        } else if (popup === false) {
+            popup = L.popup({
+                closeOnClick: false,
+                className: "feature-popup",
+                autoClose: false,
+                maxWidth: 500
+            });
+            let popupContent = getPopupContent(feature.properties, dataType, popup);
+            popup.setContent(popupContent);
+            layer.bindPopup(popup);
         }
-    });
-    // when the whole layer is removed from the map, remove the popup
-    layer.on('remove', function (e) {
-        map.removeLayer(popup);
     });
 }
 // Individual layer onEachFeature functions go below, as referenced by ID in config.json
