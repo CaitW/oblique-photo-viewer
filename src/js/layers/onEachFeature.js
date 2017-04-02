@@ -14,13 +14,17 @@ import { render } from 'react-dom';
 function getPopupContent(featureProperties, dataType, popup) {
     if (dataType === "photo") {
         let photoURLs = getPhotoURLs(featureProperties);
-        //return "<img src='" + photoURLs.popup + "'/>";
+        let container = document.createElement("div");
+        let header = document.createElement("div");
+        header.setAttribute("class", "popup-header");
         let img = document.createElement("img");
         img.setAttribute("src", photoURLs.popup);
         img.addEventListener('load', function() {
             popup.update();
         }, false);
-        return img;
+        container.appendChild(header);
+        container.appendChild(img);
+        return container;
     } else {
         return "<div>Not a photo</div>";
     }
