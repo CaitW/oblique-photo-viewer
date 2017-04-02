@@ -53040,13 +53040,17 @@
 	function getPopupContent(featureProperties, dataType, popup) {
 	    if (dataType === "photo") {
 	        var photoURLs = (0, _util.getPhotoURLs)(featureProperties);
-	        //return "<img src='" + photoURLs.popup + "'/>";
+	        var container = document.createElement("div");
+	        var header = document.createElement("div");
+	        header.setAttribute("class", "popup-header");
 	        var img = document.createElement("img");
 	        img.setAttribute("src", photoURLs.popup);
 	        img.addEventListener('load', function () {
 	            popup.update();
 	        }, false);
-	        return img;
+	        container.appendChild(header);
+	        container.appendChild(img);
+	        return container;
 	    } else {
 	        return "<div>Not a photo</div>";
 	    }
