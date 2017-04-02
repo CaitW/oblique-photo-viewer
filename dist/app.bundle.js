@@ -53041,6 +53041,9 @@
 	    if (dataType === "photo") {
 	        var photoURLs = (0, _util.getPhotoURLs)(featureProperties);
 	        var container = document.createElement("div");
+	        container.addEventListener('click', function () {
+	            popup.bringToFront();
+	        }, false);
 	        var header = document.createElement("div");
 	        header.setAttribute("class", "popup-header");
 	        var img = document.createElement("img");

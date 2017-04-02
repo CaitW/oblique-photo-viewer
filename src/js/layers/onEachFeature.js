@@ -15,6 +15,9 @@ function getPopupContent(featureProperties, dataType, popup) {
     if (dataType === "photo") {
         let photoURLs = getPhotoURLs(featureProperties);
         let container = document.createElement("div");
+        container.addEventListener('click', function() {
+            popup.bringToFront();
+        }, false);
         let header = document.createElement("div");
         header.setAttribute("class", "popup-header");
         let img = document.createElement("img");
