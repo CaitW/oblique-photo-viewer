@@ -8218,11 +8218,11 @@
 
 	var _MapContainer2 = _interopRequireDefault(_MapContainer);
 
-	var _MobileLayerList = __webpack_require__(817);
+	var _MobileLayerList = __webpack_require__(818);
 
 	var _MobileLayerList2 = _interopRequireDefault(_MobileLayerList);
 
-	var _AboutModal = __webpack_require__(818);
+	var _AboutModal = __webpack_require__(819);
 
 	var _AboutModal2 = _interopRequireDefault(_AboutModal);
 
@@ -52427,7 +52427,7 @@
 
 	var _LeafletMap2 = _interopRequireDefault(_LeafletMap);
 
-	var _FeatureModal = __webpack_require__(816);
+	var _FeatureModal = __webpack_require__(817);
 
 	var _FeatureModal2 = _interopRequireDefault(_FeatureModal);
 
@@ -52637,7 +52637,7 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var axios = __webpack_require__(791);
+	var axios = __webpack_require__(792);
 
 	var ObliquePhotoMap = function () {
 	    function ObliquePhotoMap(map) {
@@ -53021,45 +53021,32 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	var _actions = __webpack_require__(774);
 
 	var _util = __webpack_require__(790);
 
 	var _reactDom = __webpack_require__(330);
 
+	var _FeaturePopup = __webpack_require__(791);
+
+	var _FeaturePopup2 = _interopRequireDefault(_FeaturePopup);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// Function that takes layer information and creates a popup.
+	// Popups are added to the map as a layer so that multiple popups can be added at once. 
 	/**
-	 * onEachFeatures.js
+	 * onEachFeature.jsx
 	 * This contains functions that are applied to each layer when they are loaded. 
 	 *
 	 * Each property of the ON_EACH_FEATURE object (below) is applied to a specific layer, 
 	 * and Leaflet passes the layer's data to that function on load. It is used here to 
 	 * apply click handling functions to each feature in each layer.
 	 */
-	function getPopupContent(featureProperties, dataType, popup) {
-	    if (dataType === "photo") {
-	        var photoURLs = (0, _util.getPhotoURLs)(featureProperties);
-	        var container = document.createElement("div");
-	        container.addEventListener('click', function () {
-	            popup.bringToFront();
-	        }, false);
-	        var header = document.createElement("div");
-	        header.setAttribute("class", "popup-header");
-	        var img = document.createElement("img");
-	        img.setAttribute("src", photoURLs.popup);
-	        img.addEventListener('load', function () {
-	            popup.update();
-	        }, false);
-	        container.appendChild(header);
-	        container.appendChild(img);
-	        return container;
-	    } else {
-	        return "<div>Not a photo</div>";
-	    }
-	}
-	// Function that takes layer information and creates a popup.
-	// Popups are added to the map as a layer so that multiple popups can be added at once. 
 	function handleClick(feature, layer, dataType, map) {
 	    var popup = false;
 	    var layerId = layer.defaultOptions.layerId;
@@ -53070,15 +53057,24 @@
 	        if (_store2.default.getState().mobile.window.width < 992) {
 	            _store2.default.dispatch((0, _actions.clickFeature)(feature.properties, dataType, layerId));
 	        } else if (popup === false) {
-	            popup = L.popup({
-	                closeOnClick: false,
-	                className: "feature-popup",
-	                autoClose: false,
-	                maxWidth: 500
-	            });
-	            var popupContent = getPopupContent(feature.properties, dataType, popup);
-	            popup.setContent(popupContent);
-	            layer.bindPopup(popup);
+	            (function () {
+	                popup = L.popup({
+	                    closeOnClick: false,
+	                    className: "feature-popup",
+	                    autoClose: false,
+	                    maxWidth: 500,
+	                    minWidth: 300
+	                });
+	                var container = document.createElement("div");
+	                popup.on("add", function () {
+	                    (0, _reactDom.render)(_react2.default.createElement(_FeaturePopup2.default, { layerId: layerId, featureProperties: feature.properties, featureType: dataType, popup: popup }), container);
+	                });
+	                popup.setContent(container);
+	                layer.bindPopup(popup);
+	                popup.on("remove", function () {
+	                    (0, _reactDom.unmountComponentAtNode)(container);
+	                });
+	            })();
 	        }
 	    });
 	}
@@ -53151,18 +53147,174 @@
 /* 791 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(792);
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(300);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(477);
+
+	var _util = __webpack_require__(790);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * FeatureModal.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This creates the modal that's displayed when a user clicks on an object in the map
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var FeaturePopup = function (_React$Component) {
+	    _inherits(FeaturePopup, _React$Component);
+
+	    function FeaturePopup() {
+	        _classCallCheck(this, FeaturePopup);
+
+	        var _this = _possibleConstructorReturn(this, (FeaturePopup.__proto__ || Object.getPrototypeOf(FeaturePopup)).call(this));
+
+	        _this.onImageLoad = _this.onImageLoad.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(FeaturePopup, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.props.popup.update();
+	        }
+	    }, {
+	        key: 'onImageLoad',
+	        value: function onImageLoad() {
+	            this.props.popup.update();
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var rows = [];
+	            for (var property in this.props.featureProperties) {
+	                if (property !== "OBJECTID") {
+	                    var value = this.props.featureProperties[property];
+	                    rows.push(_react2.default.createElement(
+	                        'tr',
+	                        { key: property },
+	                        _react2.default.createElement(
+	                            'td',
+	                            null,
+	                            _react2.default.createElement(
+	                                'strong',
+	                                null,
+	                                property
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            null,
+	                            value
+	                        )
+	                    ));
+	                }
+	            }
+	            var tabs = [];
+	            var footer = [];
+	            switch (this.props.featureType) {
+	                case "photo":
+	                    var photoURLs = (0, _util.getPhotoURLs)(this.props.featureProperties);
+	                    tabs.push(_react2.default.createElement(
+	                        _reactBootstrap.Tab,
+	                        { key: 'image', eventKey: 1, title: 'Image' },
+	                        _react2.default.createElement('img', { src: photoURLs.popup, onLoad: this.onImageLoad })
+	                    ));
+	                    tabs.push(_react2.default.createElement(
+	                        _reactBootstrap.Tab,
+	                        { key: 'data', eventKey: 2, title: 'Data' },
+	                        _react2.default.createElement(
+	                            _reactBootstrap.Table,
+	                            { striped: true, bordered: true, condensed: true, hover: true },
+	                            _react2.default.createElement(
+	                                'tbody',
+	                                null,
+	                                rows
+	                            )
+	                        )
+	                    ));
+	                    footer.unshift(_react2.default.createElement(
+	                        'a',
+	                        { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
+	                        _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { className: 'open-larger-image-button' },
+	                            'Open Original in New Window'
+	                        )
+	                    ));
+	                    break;
+	                default:
+	                    tabs.push(_react2.default.createElement(
+	                        _reactBootstrap.Tab,
+	                        { key: 'data', eventKey: 1, title: 'Data' },
+	                        _react2.default.createElement(
+	                            _reactBootstrap.Table,
+	                            { striped: true, bordered: true, condensed: true, hover: true },
+	                            _react2.default.createElement(
+	                                'tbody',
+	                                null,
+	                                rows
+	                            )
+	                        )
+	                    ));
+	                    break;
+	            }
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'feature-popup-content' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'feature-popup-header' },
+	                    this.props.layerId
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'feature-popup-body' },
+	                    _react2.default.createElement(
+	                        _reactBootstrap.Tabs,
+	                        { id: 'uncontrolled-tab', onSelect: this.props.popup.update },
+	                        tabs
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return FeaturePopup;
+	}(_react2.default.Component);
+
+	exports.default = FeaturePopup;
 
 /***/ },
 /* 792 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = __webpack_require__(793);
+
+/***/ },
+/* 793 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
-	var utils = __webpack_require__(793);
-	var bind = __webpack_require__(794);
-	var Axios = __webpack_require__(795);
-	var defaults = __webpack_require__(796);
+	var utils = __webpack_require__(794);
+	var bind = __webpack_require__(795);
+	var Axios = __webpack_require__(796);
+	var defaults = __webpack_require__(797);
 
 	/**
 	 * Create an instance of Axios
@@ -53195,15 +53347,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(813);
-	axios.CancelToken = __webpack_require__(814);
-	axios.isCancel = __webpack_require__(810);
+	axios.Cancel = __webpack_require__(814);
+	axios.CancelToken = __webpack_require__(815);
+	axios.isCancel = __webpack_require__(811);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(815);
+	axios.spread = __webpack_require__(816);
 
 	module.exports = axios;
 
@@ -53212,12 +53364,12 @@
 
 
 /***/ },
-/* 793 */
+/* 794 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(794);
+	var bind = __webpack_require__(795);
 
 	/*global toString:true*/
 
@@ -53517,7 +53669,7 @@
 
 
 /***/ },
-/* 794 */
+/* 795 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53534,17 +53686,17 @@
 
 
 /***/ },
-/* 795 */
+/* 796 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(796);
-	var utils = __webpack_require__(793);
-	var InterceptorManager = __webpack_require__(807);
-	var dispatchRequest = __webpack_require__(808);
-	var isAbsoluteURL = __webpack_require__(811);
-	var combineURLs = __webpack_require__(812);
+	var defaults = __webpack_require__(797);
+	var utils = __webpack_require__(794);
+	var InterceptorManager = __webpack_require__(808);
+	var dispatchRequest = __webpack_require__(809);
+	var isAbsoluteURL = __webpack_require__(812);
+	var combineURLs = __webpack_require__(813);
 
 	/**
 	 * Create a new instance of Axios
@@ -53625,13 +53777,13 @@
 
 
 /***/ },
-/* 796 */
+/* 797 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(793);
-	var normalizeHeaderName = __webpack_require__(797);
+	var utils = __webpack_require__(794);
+	var normalizeHeaderName = __webpack_require__(798);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -53648,10 +53800,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(798);
+	    adapter = __webpack_require__(799);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(798);
+	    adapter = __webpack_require__(799);
 	  }
 	  return adapter;
 	}
@@ -53725,12 +53877,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 797 */
+/* 798 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(794);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -53743,18 +53895,18 @@
 
 
 /***/ },
-/* 798 */
+/* 799 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(793);
-	var settle = __webpack_require__(799);
-	var buildURL = __webpack_require__(802);
-	var parseHeaders = __webpack_require__(803);
-	var isURLSameOrigin = __webpack_require__(804);
-	var createError = __webpack_require__(800);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(805);
+	var utils = __webpack_require__(794);
+	var settle = __webpack_require__(800);
+	var buildURL = __webpack_require__(803);
+	var parseHeaders = __webpack_require__(804);
+	var isURLSameOrigin = __webpack_require__(805);
+	var createError = __webpack_require__(801);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(806);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -53850,7 +54002,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(806);
+	      var cookies = __webpack_require__(807);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -53927,12 +54079,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 799 */
+/* 800 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(800);
+	var createError = __webpack_require__(801);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -53958,12 +54110,12 @@
 
 
 /***/ },
-/* 800 */
+/* 801 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(801);
+	var enhanceError = __webpack_require__(802);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -53981,7 +54133,7 @@
 
 
 /***/ },
-/* 801 */
+/* 802 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54006,12 +54158,12 @@
 
 
 /***/ },
-/* 802 */
+/* 803 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(794);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -54080,12 +54232,12 @@
 
 
 /***/ },
-/* 803 */
+/* 804 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(794);
 
 	/**
 	 * Parse headers into an object
@@ -54123,12 +54275,12 @@
 
 
 /***/ },
-/* 804 */
+/* 805 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(794);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54197,7 +54349,7 @@
 
 
 /***/ },
-/* 805 */
+/* 806 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54239,12 +54391,12 @@
 
 
 /***/ },
-/* 806 */
+/* 807 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(794);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54298,12 +54450,12 @@
 
 
 /***/ },
-/* 807 */
+/* 808 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(794);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -54356,15 +54508,15 @@
 
 
 /***/ },
-/* 808 */
+/* 809 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
-	var transformData = __webpack_require__(809);
-	var isCancel = __webpack_require__(810);
-	var defaults = __webpack_require__(796);
+	var utils = __webpack_require__(794);
+	var transformData = __webpack_require__(810);
+	var isCancel = __webpack_require__(811);
+	var defaults = __webpack_require__(797);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -54441,12 +54593,12 @@
 
 
 /***/ },
-/* 809 */
+/* 810 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(794);
 
 	/**
 	 * Transform the data for a request or a response
@@ -54467,7 +54619,7 @@
 
 
 /***/ },
-/* 810 */
+/* 811 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54478,7 +54630,7 @@
 
 
 /***/ },
-/* 811 */
+/* 812 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54498,7 +54650,7 @@
 
 
 /***/ },
-/* 812 */
+/* 813 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54516,7 +54668,7 @@
 
 
 /***/ },
-/* 813 */
+/* 814 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54541,12 +54693,12 @@
 
 
 /***/ },
-/* 814 */
+/* 815 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(813);
+	var Cancel = __webpack_require__(814);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -54604,7 +54756,7 @@
 
 
 /***/ },
-/* 815 */
+/* 816 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54637,7 +54789,7 @@
 
 
 /***/ },
-/* 816 */
+/* 817 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54776,7 +54928,7 @@
 	exports.default = FeatureModal;
 
 /***/ },
-/* 817 */
+/* 818 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54886,7 +55038,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MobileLayerList);
 
 /***/ },
-/* 818 */
+/* 819 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
