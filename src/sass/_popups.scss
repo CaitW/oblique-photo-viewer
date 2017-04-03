@@ -1,0 +1,84 @@
+.feature-popup {
+    .leaflet-popup-close-button {
+        color: $primary_100;
+        &:hover {}
+    }
+    .leaflet-popup-content-wrapper {
+        margin: 0;
+        border-radius: 3px;
+        background-color: $primary_50;
+        .leaflet-popup-content {
+            margin: -1px;
+            .feature-popup-content {
+                .feature-popup-header {
+                    height: 30px;
+                    background-color: $primary_300;
+                    color: $primary_900;
+                    font-family: "Roboto";
+                    font-size: 14px;
+                    padding: 5px 10px;
+                    border-radius: 3px 3px 0 0;
+                }
+                .feature-popup-body {
+                    padding: 5px;
+                    .nav-tabs {
+                        border-bottom: 1px solid $primary_600;
+                        li {
+                            a {
+                                padding: 5px 10px;
+                                border: 0;
+                                &[aria-selected=true] {
+                                    background-color: $primary_600;
+                                    color: $primary_50;
+                                }
+                                &[aria-selected=false] {
+                                    background-color: $primary_100;
+                                    color: $primary_900;
+                                    border-bottom: 1px solid $primary_600;
+                                    &:hover {
+                                        background-color: $primary_300;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .tab-content {
+                        border: 1px solid $primary_600;
+                        background-color: $primary_100;
+                        border-width: 3px 0 0 0;
+                        padding: 10px;
+                        img {
+                            max-width: 100%;
+                        }
+                        table {
+                            margin-bottom: 0;
+                            tr {
+                                &:hover {
+                                    background-color: $primary_200;
+                                }
+                                td {
+                                    border: 1px solid $primary_400;
+                                }
+                            }
+                        }
+                    }
+                    .table-striped > tbody > tr:nth-of-type(odd) {
+                        background-color: #ffffff;
+                        &:hover {
+                            background-color: $primary_200;
+                        }
+                    }
+                    .table-striped > tbody > tr:nth-of-type(even) {
+                        background-color: $primary_50;
+                        &:hover {
+                            background-color: $primary_200;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .leaflet-popup-tip {
+        background-color: $primary_50;
+    }
+}

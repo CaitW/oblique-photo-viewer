@@ -103,33 +103,6 @@
             }
         }
     }
-    /**
-     * Popup Styling
-     */
-    .leaflet-popup {
-        .leaflet-popup-close-button {
-            color: $primary_100;
-            &:hover {
-
-            }
-        }
-        .leaflet-popup-content-wrapper {
-            border-radius: 3px;
-            background-color: $primary_50;
-            .leaflet-popup-content {
-                margin: 10px 15px;
-                .popup-header {
-                    height: 30px;
-                    background-color: $primary_300;
-                    margin: -12px -17px 10px -17px;
-                    border-radius: 3px 3px 0 0;
-                }
-            }
-        }
-        .leaflet-popup-tip {
-            background-color: $primary_50;
-        }
-    }
 }
 
 // Leaflet Modifications
