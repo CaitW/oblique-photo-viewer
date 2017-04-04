@@ -8888,6 +8888,16 @@ button.close {
 .feature-popup .leaflet-popup-tip {
   background-color: #ECEFF1; }
 
+#pinned-feature-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50px;
+  bottom: 0;
+  pointer-events: none; }
+  #pinned-feature-container * {
+    pointer-events: auto; }
+
 html {
   height: 100%; }
   html body {
