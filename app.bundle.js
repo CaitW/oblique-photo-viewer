@@ -53044,7 +53044,8 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// Function that takes layer information and creates a popup.
-	// Popups are added to the map as a layer so that multiple popups can be added at once. 
+	// The popup's content is handled by React (<FeaturePopup />), however Leaflet is not controlled by React. 
+	// Therefore, the popup's content must mount/unmount the React component manually whenever it is opened/closed.
 	/**
 	 * onEachFeature.jsx
 	 * This contains functions that are applied to each layer when they are loaded. 
@@ -53053,7 +53054,7 @@
 	 * and Leaflet passes the layer's data to that function on load. It is used here to 
 	 * apply click handling functions to each feature in each layer.
 	 */
-	function handleClick(feature, layer, dataType, map) {
+	function handleClick(feature, layer, dataType) {
 	    var popup = false;
 	    var layerId = layer.defaultOptions.layerId;
 	    // on click, create and open popup
@@ -53087,28 +53088,28 @@
 	// Individual layer onEachFeature functions go below, as referenced by ID in config.json
 	var ON_EACH_FEATURE = {
 	    backshore_1976: function backshore_1976(feature, layer) {
-	        handleClick(feature, layer, "data", this.map);
+	        handleClick(feature, layer, "data");
 	    },
 	    backshore_2007: function backshore_2007(feature, layer) {
-	        handleClick(feature, layer, "data", this.map);
+	        handleClick(feature, layer, "data");
 	    },
 	    photos_1976: function photos_1976(feature, layer) {
-	        handleClick(feature, layer, "photo", this.map);
+	        handleClick(feature, layer, "photo");
 	    },
 	    photos_2007: function photos_2007(feature, layer) {
-	        handleClick(feature, layer, "photo", this.map);
+	        handleClick(feature, layer, "photo");
 	    },
 	    structure_1976: function structure_1976(feature, layer) {
-	        handleClick(feature, layer, "data", this.map);
+	        handleClick(feature, layer, "data");
 	    },
 	    structure_2007: function structure_2007(feature, layer) {
-	        handleClick(feature, layer, "data", this.map);
+	        handleClick(feature, layer, "data");
 	    },
 	    beachclass_1976: function beachclass_1976(feature, layer) {
-	        handleClick(feature, layer, "data", this.map);
+	        handleClick(feature, layer, "data");
 	    },
 	    beachclass_2007: function beachclass_2007(feature, layer) {
-	        handleClick(feature, layer, "data", this.map);
+	        handleClick(feature, layer, "data");
 	    }
 	};
 	exports.default = ON_EACH_FEATURE;
