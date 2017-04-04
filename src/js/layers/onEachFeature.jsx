@@ -14,8 +14,9 @@ import { render, unmountComponentAtNode } from 'react-dom';
 import FeaturePopup from '../components/FeaturePopup.jsx';
 
 // Function that takes layer information and creates a popup.
-// Popups are added to the map as a layer so that multiple popups can be added at once. 
-function handleClick(feature, layer, dataType, map) {
+// The popup's content is handled by React (<FeaturePopup />), however Leaflet is not controlled by React. 
+// Therefore, the popup's content must mount/unmount the React component manually whenever it is opened/closed.
+function handleClick(feature, layer, dataType) {
     var popup = false;
     let layerId = layer.defaultOptions.layerId;
     // on click, create and open popup
@@ -50,28 +51,28 @@ function handleClick(feature, layer, dataType, map) {
 // Individual layer onEachFeature functions go below, as referenced by ID in config.json
 var ON_EACH_FEATURE = {
     backshore_1976: function(feature, layer) {
-        handleClick(feature, layer, "data", this.map);
+        handleClick(feature, layer, "data");
     },
     backshore_2007: function(feature, layer) {
-        handleClick(feature, layer, "data", this.map);
+        handleClick(feature, layer, "data");
     },
     photos_1976: function(feature, layer) {
-        handleClick(feature, layer, "photo", this.map);
+        handleClick(feature, layer, "photo");
     },
     photos_2007: function(feature, layer) {
-        handleClick(feature, layer, "photo", this.map);
+        handleClick(feature, layer, "photo");
     },
     structure_1976: function(feature, layer) {
-        handleClick(feature, layer, "data", this.map);
+        handleClick(feature, layer, "data");
     },
     structure_2007: function(feature, layer) {
-        handleClick(feature, layer, "data", this.map);
+        handleClick(feature, layer, "data");
     },
     beachclass_1976: function(feature, layer) {
-        handleClick(feature, layer, "data", this.map);
+        handleClick(feature, layer, "data");
     },
     beachclass_2007: function(feature, layer) {
-        handleClick(feature, layer, "data", this.map);
+        handleClick(feature, layer, "data");
     }
 };
 export default ON_EACH_FEATURE;
