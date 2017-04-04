@@ -5,16 +5,16 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import LeafletMap from './LeafletMap.jsx';
-import FeatureModal from '../components/FeatureModal.jsx';
+import MobileFeatureModal from '../components/MobileFeatureModal.jsx';
 import { connect } from 'react-redux';
 import store from '../store.js';
-import {closeFeatureModal} from '../actions.js';
-import {mapFeatureModalPropertiesToHeaderNames, getFeatureModalTitle} from '../selectors.js';
+import {closeMobileFeatureModal} from '../actions.js';
+import {getMobileFeatureModalTitle} from '../selectors.js';
 const mapStateToProps = function(store) {
     return {
-        featureModal: {
-            ...store.featureModal,
-            title: getFeatureModalTitle(store)
+        mobileFeatureModal: {
+            ...store.mobileFeatureModal,
+            title: getMobileFeatureModalTitle(store)
         }
     };
 }
@@ -22,13 +22,13 @@ class MapContainer extends React.Component {
     constructor() {
         super();
     }
-    closeFeatureModal () {
-    	store.dispatch(closeFeatureModal());
+    closeMobileFeatureModal () {
+    	store.dispatch(closeMobileFeatureModal());
     }
     render() {
         return (
         	<Col xs={12} sm={7} md={8} lg={9} className="map-container">
-				<FeatureModal visible={this.props.featureModal.visible} featureProperties={this.props.featureModal.featureProperties} featureType={this.props.featureModal.featureType} onCloseClick={this.closeFeatureModal} title={this.props.featureModal.title}/>
+				<MobileFeatureModal visible={this.props.mobileFeatureModal.visible} featureProperties={this.props.mobileFeatureModal.featureProperties} featureType={this.props.mobileFeatureModal.featureType} onCloseClick={this.closeMobileFeatureModal} title={this.props.mobileFeatureModal.title}/>
 				<LeafletMap />
 			</Col>
 		);

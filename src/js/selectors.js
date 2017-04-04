@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 const getLayers = (state) => state.layers;
 const getLayersById = (state) => state.layers.layersById;
-const getFeatureModal = (state) => state.featureModal;
+const getMobileFeatureModal = (state) => state.mobileFeatureModal;
 export const mapLayerGroupsToLayers = createSelector([getLayers], layers => {
     let layersById = layers.layersById;
     let layerGroupsById = layers.layerGroupsById;
@@ -69,7 +69,7 @@ export const getActiveLayerStyleTypes = createSelector(getActiveLayers, activeLa
     }
     return stylesByLayerId;
 });
-export const getFeatureModalTitle = createSelector([getLayersById, getFeatureModal], (layers, featureModal) => {
+export const getMobileFeatureModalTitle = createSelector([getLayersById, getMobileFeatureModal], (layers, featureModal) => {
     if (typeof featureModal.layerId !== "undefined") {
         let layerId = featureModal.layerId;
         if(typeof layers[layerId] !== "undefined") {

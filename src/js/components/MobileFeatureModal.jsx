@@ -5,7 +5,7 @@
 import React from 'react';
 import { Modal, Button, Table, Tabs, Tab } from 'react-bootstrap';
 import { getPhotoURLs } from '../util.js';
-const FeatureModal = (props) => {
+const MobileFeatureModal = (props) => {
     let classNames = ["static-modal"];
     if (props.visible === false) {
         classNames.push("hidden");
@@ -60,4 +60,4 @@ const FeatureModal = (props) => {
             </Modal.Dialog>
         </div>);
 }
-export default FeatureModal;
+export default MobileFeatureModal;

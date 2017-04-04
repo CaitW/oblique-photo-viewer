@@ -4,7 +4,7 @@ let initialState = {
     featureType: false,
     layerId: false
 };
-export default function featureModal(state = initialState, action) {
+export default function mobileFeatureModal(state = initialState, action) {
     let newState = Object.assign({}, state);
     switch (action.type) {
         case "LAYER:CLICK_FEATURE":
@@ -13,7 +13,7 @@ export default function featureModal(state = initialState, action) {
             newState.featureType = action.featureType;
             newState.layerId = action.layerId;
             break;
-        case "FEATURE_MODAL:CLOSE":
+        case "MOBILE_FEATURE_MODAL:CLOSE":
             newState.visible = false;
             newState.featureProperties = false;
             newState.featureType = false;

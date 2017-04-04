@@ -51084,9 +51084,9 @@
 
 	var _map2 = _interopRequireDefault(_map);
 
-	var _featureModal = __webpack_require__(771);
+	var _mobileFeatureModal = __webpack_require__(771);
 
-	var _featureModal2 = _interopRequireDefault(_featureModal);
+	var _mobileFeatureModal2 = _interopRequireDefault(_mobileFeatureModal);
 
 	var _mobile = __webpack_require__(772);
 
@@ -51102,7 +51102,7 @@
 	    layers: _layers2.default,
 	    basemaps: _basemaps2.default,
 	    map: _map2.default,
-	    featureModal: _featureModal2.default,
+	    mobileFeatureModal: _mobileFeatureModal2.default,
 	    mobile: _mobile2.default,
 	    aboutModal: _aboutModal2.default
 	});
@@ -51295,14 +51295,14 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.default = featureModal;
+	exports.default = mobileFeatureModal;
 	var initialState = {
 	    visible: false,
 	    featureProperties: false,
 	    featureType: false,
 	    layerId: false
 	};
-	function featureModal() {
+	function mobileFeatureModal() {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	    var action = arguments[1];
 
@@ -51314,7 +51314,7 @@
 	            newState.featureType = action.featureType;
 	            newState.layerId = action.layerId;
 	            break;
-	        case "FEATURE_MODAL:CLOSE":
+	        case "MOBILE_FEATURE_MODAL:CLOSE":
 	            newState.visible = false;
 	            newState.featureProperties = false;
 	            newState.featureType = false;
@@ -51420,7 +51420,7 @@
 	exports.zoomToCounty = zoomToCounty;
 	exports.doneZooming = doneZooming;
 	exports.clickFeature = clickFeature;
-	exports.closeFeatureModal = closeFeatureModal;
+	exports.closeMobileFeatureModal = closeMobileFeatureModal;
 	exports.openMobileLayerList = openMobileLayerList;
 	exports.closeMobileLayerList = closeMobileLayerList;
 	exports.updateWindowDimensions = updateWindowDimensions;
@@ -51460,9 +51460,9 @@
 	        layerId: layerId
 	    };
 	}
-	function closeFeatureModal() {
+	function closeMobileFeatureModal() {
 	    return {
-	        type: "FEATURE_MODAL:CLOSE"
+	        type: "MOBILE_FEATURE_MODAL:CLOSE"
 	    };
 	}
 	function openMobileLayerList() {
@@ -51994,7 +51994,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.getFeatureModalTitle = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = undefined;
+	exports.getMobileFeatureModalTitle = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -52006,8 +52006,8 @@
 	var getLayersById = function getLayersById(state) {
 	    return state.layers.layersById;
 	};
-	var getFeatureModal = function getFeatureModal(state) {
-	    return state.featureModal;
+	var getMobileFeatureModal = function getMobileFeatureModal(state) {
+	    return state.mobileFeatureModal;
 	};
 	var mapLayerGroupsToLayers = exports.mapLayerGroupsToLayers = (0, _reselect.createSelector)([getLayers], function (layers) {
 	    var layersById = layers.layersById;
@@ -52119,7 +52119,7 @@
 
 	    return stylesByLayerId;
 	});
-	var getFeatureModalTitle = exports.getFeatureModalTitle = (0, _reselect.createSelector)([getLayersById, getFeatureModal], function (layers, featureModal) {
+	var getMobileFeatureModalTitle = exports.getMobileFeatureModalTitle = (0, _reselect.createSelector)([getLayersById, getMobileFeatureModal], function (layers, featureModal) {
 	    if (typeof featureModal.layerId !== "undefined") {
 	        var layerId = featureModal.layerId;
 	        if (typeof layers[layerId] !== "undefined") {
@@ -52427,9 +52427,9 @@
 
 	var _LeafletMap2 = _interopRequireDefault(_LeafletMap);
 
-	var _FeatureModal = __webpack_require__(817);
+	var _MobileFeatureModal = __webpack_require__(817);
 
-	var _FeatureModal2 = _interopRequireDefault(_FeatureModal);
+	var _MobileFeatureModal2 = _interopRequireDefault(_MobileFeatureModal);
 
 	var _reactRedux = __webpack_require__(730);
 
@@ -52451,8 +52451,8 @@
 
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
-	        featureModal: _extends({}, store.featureModal, {
-	            title: (0, _selectors.getFeatureModalTitle)(store)
+	        mobileFeatureModal: _extends({}, store.mobileFeatureModal, {
+	            title: (0, _selectors.getMobileFeatureModalTitle)(store)
 	        })
 	    };
 	};
@@ -52467,9 +52467,9 @@
 	    }
 
 	    _createClass(MapContainer, [{
-	        key: 'closeFeatureModal',
-	        value: function closeFeatureModal() {
-	            _store2.default.dispatch((0, _actions.closeFeatureModal)());
+	        key: 'closeMobileFeatureModal',
+	        value: function closeMobileFeatureModal() {
+	            _store2.default.dispatch((0, _actions.closeMobileFeatureModal)());
 	        }
 	    }, {
 	        key: 'render',
@@ -52477,7 +52477,7 @@
 	            return _react2.default.createElement(
 	                _reactBootstrap.Col,
 	                { xs: 12, sm: 7, md: 8, lg: 9, className: 'map-container' },
-	                _react2.default.createElement(_FeatureModal2.default, { visible: this.props.featureModal.visible, featureProperties: this.props.featureModal.featureProperties, featureType: this.props.featureModal.featureType, onCloseClick: this.closeFeatureModal, title: this.props.featureModal.title }),
+	                _react2.default.createElement(_MobileFeatureModal2.default, { visible: this.props.mobileFeatureModal.visible, featureProperties: this.props.mobileFeatureModal.featureProperties, featureType: this.props.mobileFeatureModal.featureType, onCloseClick: this.closeMobileFeatureModal, title: this.props.mobileFeatureModal.title }),
 	                _react2.default.createElement(_LeafletMap2.default, null)
 	            );
 	        }
@@ -54814,7 +54814,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var FeatureModal = function FeatureModal(props) {
+	var MobileFeatureModal = function MobileFeatureModal(props) {
 	    var classNames = ["static-modal"];
 	    if (props.visible === false) {
 	        classNames.push("hidden");
@@ -54931,7 +54931,7 @@
 	    * FeatureModal.jsx
 	    * This creates the modal that's displayed when a user clicks on an object in the map
 	    */
-	exports.default = FeatureModal;
+	exports.default = MobileFeatureModal;
 
 /***/ },
 /* 818 */

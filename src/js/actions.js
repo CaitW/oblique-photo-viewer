@@ -29,9 +29,9 @@ export function clickFeature(featureProperties, featureType, layerId) {
         layerId
     }
 }
-export function closeFeatureModal() {
+export function closeMobileFeatureModal() {
     return {
-        type: "FEATURE_MODAL:CLOSE"
+        type: "MOBILE_FEATURE_MODAL:CLOSE"
     }
 }
 export function openMobileLayerList () {
