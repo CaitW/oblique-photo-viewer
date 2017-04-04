@@ -53183,19 +53183,25 @@
 
 	        var _this = _possibleConstructorReturn(this, (FeaturePopup.__proto__ || Object.getPrototypeOf(FeaturePopup)).call(this));
 
-	        _this.onImageLoad = _this.onImageLoad.bind(_this);
+	        _this.update = _this.update.bind(_this);
+	        _this.bringToFront = _this.bringToFront.bind(_this);
 	        return _this;
 	    }
 
 	    _createClass(FeaturePopup, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
+	            this.update();
+	        }
+	    }, {
+	        key: 'update',
+	        value: function update() {
 	            this.props.popup.update();
 	        }
 	    }, {
-	        key: 'onImageLoad',
-	        value: function onImageLoad() {
-	            this.props.popup.update();
+	        key: 'bringToFront',
+	        value: function bringToFront() {
+	            this.props.popup.bringToFront();
 	        }
 	    }, {
 	        key: 'render',
@@ -53232,7 +53238,7 @@
 	                    tabs.push(_react2.default.createElement(
 	                        _reactBootstrap.Tab,
 	                        { key: 'image', eventKey: 1, title: 'Image' },
-	                        _react2.default.createElement('img', { src: photoURLs.popup, onLoad: this.onImageLoad })
+	                        _react2.default.createElement('img', { src: photoURLs.popup, onLoad: this.update })
 	                    ));
 	                    tabs.push(_react2.default.createElement(
 	                        _reactBootstrap.Tab,
@@ -53275,7 +53281,7 @@
 	            }
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'feature-popup-content' },
+	                { className: 'feature-popup-content', onClick: this.bringToFront },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'feature-popup-header' },
@@ -53286,7 +53292,7 @@
 	                    { className: 'feature-popup-body' },
 	                    _react2.default.createElement(
 	                        _reactBootstrap.Tabs,
-	                        { id: 'uncontrolled-tab', onSelect: this.props.popup.update },
+	                        { id: 'uncontrolled-tab', onSelect: this.update },
 	                        tabs
 	                    )
 	                )
