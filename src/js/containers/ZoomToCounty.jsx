@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { MenuItem, NavDropdown } from 'react-bootstrap';
 import store from '../store.js';
 import CONFIG from '../config.json';
-import {zoomToCounty} from '../actions.js';
+import {zoomToCounty} from '../ducks/map.js';
 
 const mapStateToProps = function (store) {
 	return {};

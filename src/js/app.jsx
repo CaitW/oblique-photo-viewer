@@ -12,7 +12,7 @@ import AboutModal from './containers/AboutModal.jsx';
 import { Grid, Row } from 'react-bootstrap';
 import { Provider } from 'react-redux';
 import store from './store.js';
-import { updateWindowDimensions } from './actions.js';
+import { updateWindowDimensions } from './ducks/mobile.js';
 
 class App extends React.Component {
     constructor() {

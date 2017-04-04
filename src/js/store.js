@@ -1,16 +1,14 @@
 import { createStore, combineReducers } from 'redux';
 import CONFIG from './config.json';
-import layers from './reducers/layers.js';
-import basemaps from './reducers/basemaps.js';
-import map from './reducers/map.js';
-import mobileFeatureModal from './reducers/mobileFeatureModal.js';
-import mobile from './reducers/mobile.js';
-import aboutModal from './reducers/aboutModal.js';
+import layers from './ducks/layers.js';
+import basemaps from './ducks/basemaps.js';
+import map from './ducks/map.js';
+import mobile from './ducks/mobile.js';
+import aboutModal from './ducks/aboutModal.js';
 const theReducer = combineReducers({
     layers,
     basemaps,
     map,
-    mobileFeatureModal,
     mobile,
     aboutModal
 });

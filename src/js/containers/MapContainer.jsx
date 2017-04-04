@@ -8,12 +8,12 @@ import LeafletMap from './LeafletMap.jsx';
 import MobileFeatureModal from '../components/MobileFeatureModal.jsx';
 import { connect } from 'react-redux';
 import store from '../store.js';
-import {closeMobileFeatureModal} from '../actions.js';
+import {closeMobileFeatureModal} from '../ducks/mobile.js';
 import {getMobileFeatureModalTitle} from '../selectors.js';
 const mapStateToProps = function(store) {
     return {
         mobileFeatureModal: {
-            ...store.mobileFeatureModal,
+            ...store.mobile.featureModal,
             title: getMobileFeatureModalTitle(store)
         }
     };

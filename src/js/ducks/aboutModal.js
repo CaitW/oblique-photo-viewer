@@ -1,3 +1,19 @@
+/**
+ * aboutModal.js Ducks
+ * 
+ * Contains the actions and reducer part that controls the About modal
+ */
+export function closeAboutModal () {
+    return {
+        type: "ABOUT_MODAL:CLOSE"
+    }
+}
+export function openAboutModal () {
+    return {
+        type: "ABOUT_MODAL:OPEN"
+    }
+}
+
 let initialState = {
     visible: false
 };

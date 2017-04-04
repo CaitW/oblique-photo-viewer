@@ -1,4 +1,32 @@
+/**
+ * map.js Ducks
+ * 
+ * Contains the actions and reducer part that controls map functionality.
+ */
 import CONFIG from '../config.json';
+
+export function zoomToCounty(countyName) {
+    return {
+        type: "MAP:ZOOM_TO_COUNTY",
+        countyName
+    }
+}
+export function doneZooming(countyName) {
+    return {
+        type: "MAP:DONE_ZOOMING"
+    }
+}
+export function resetMapView () {
+    return {
+        type: "MAP:RESET_VIEW"
+    }
+}
+export function mapNewZoomLevel (zoomLevel) {
+    return {
+        type: "MAP:NEW_ZOOM_LEVEL",
+        zoomLevel
+    }
+}
 const initialMapState = {
     state: {
         action: "none"

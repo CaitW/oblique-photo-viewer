@@ -6,7 +6,7 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import store from '../store.js';
-import { closeAboutModal } from '../actions.js';
+import { closeAboutModal } from '../ducks/aboutModal.js';
 import CONFIG from '../config.json';
 const mapStateToProps = function(store) {
     return {

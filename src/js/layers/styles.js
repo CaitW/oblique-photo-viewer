@@ -5,7 +5,7 @@
  * the user activates them in the map, the legend can display all the associated styles.
  */
 import store from '../store.js';
-import { styleCacheUpdate } from '../actions.js';
+import { styleCacheUpdate } from '../ducks/layers.js';
 
 let COLORS = {
     RED: "#F44336",

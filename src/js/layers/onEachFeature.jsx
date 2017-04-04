@@ -8,7 +8,7 @@
  */
 import store from '../store.js';
 import React from 'react';
-import { clickFeature } from '../actions.js';
+import { mobileClickFeature } from '../ducks/mobile.js';
 import { getPhotoURLs } from '../util.js';
 import { render, unmountComponentAtNode } from 'react-dom';
 import FeaturePopup from '../components/FeaturePopup.jsx';
@@ -23,7 +23,7 @@ function handleClick(feature, layer, dataType, map) {
         // if the screen is small, open the popup as a full modal
         // if the screen is large, open the popup as a leaflet-based in-map popup
         if (store.getState().mobile.window.width < 992) {
-            store.dispatch(clickFeature(feature.properties, dataType, layerId));
+            store.dispatch(mobileClickFeature(feature.properties, dataType, layerId));
         } else if (popup === false) {
             popup = L.popup({
                 closeOnClick: false,

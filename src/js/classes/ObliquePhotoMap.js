@@ -1,7 +1,7 @@
 import CONFIG from '../config.json';
 import {LAYER_STYLES} from '../layers/styles.js';
 import ON_EACH_FEATURE from '../layers/onEachFeature.jsx';
-import { mapNewZoomLevel } from '../actions.js';
+import { mapNewZoomLevel } from '../ducks/map.js';
 import store from '../store.js';
 var axios = require('axios');
 export default class ObliquePhotoMap {

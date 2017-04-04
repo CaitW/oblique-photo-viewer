@@ -8,7 +8,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import store from '../store.js';
 import ObliquePhotoMap from '../classes/ObliquePhotoMap.js';
-import { doneZooming } from '../actions.js';
+import { doneZooming } from '../ducks/map.js';
 import {mapLayerGroupsToLayers} from '../selectors.js';
 
 const mapStateToProps = function(store) {

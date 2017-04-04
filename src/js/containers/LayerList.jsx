@@ -8,7 +8,8 @@ import BasemapList from '../components/BasemapList.jsx';
 import { PanelGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import store from '../store.js';
-import { toggleLayer, toggleBasemap } from '../actions.js';
+import { toggleLayers } from '../ducks/layers.js';
+import { toggleBasemap } from '../ducks/basemaps.js';
 import { mapLayerGroupsToLayers } from '../selectors.js';
 
 const mapStateToProps = function(store) {

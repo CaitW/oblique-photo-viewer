@@ -8210,19 +8210,19 @@
 
 	var _NavBar2 = _interopRequireDefault(_NavBar);
 
-	var _SideBar = __webpack_require__(776);
+	var _SideBar = __webpack_require__(774);
 
 	var _SideBar2 = _interopRequireDefault(_SideBar);
 
-	var _MapContainer = __webpack_require__(785);
+	var _MapContainer = __webpack_require__(783);
 
 	var _MapContainer2 = _interopRequireDefault(_MapContainer);
 
-	var _MobileLayerList = __webpack_require__(818);
+	var _MobileLayerList = __webpack_require__(816);
 
 	var _MobileLayerList2 = _interopRequireDefault(_MobileLayerList);
 
-	var _AboutModal = __webpack_require__(819);
+	var _AboutModal = __webpack_require__(817);
 
 	var _AboutModal2 = _interopRequireDefault(_AboutModal);
 
@@ -8234,7 +8234,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _actions = __webpack_require__(774);
+	var _mobile = __webpack_require__(771);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8261,7 +8261,7 @@
 	        value: function updateDimensions() {
 	            var height = window.innerHeight;
 	            var width = window.innerWidth;
-	            _store2.default.dispatch((0, _actions.updateWindowDimensions)(height, width));
+	            _store2.default.dispatch((0, _mobile.updateWindowDimensions)(height, width));
 	        }
 	    }, {
 	        key: 'componentDidMount',
@@ -29876,11 +29876,13 @@
 
 	var _ZoomToCounty2 = _interopRequireDefault(_ZoomToCounty);
 
-	var _ResetView = __webpack_require__(775);
+	var _ResetView = __webpack_require__(773);
 
 	var _ResetView2 = _interopRequireDefault(_ResetView);
 
-	var _actions = __webpack_require__(774);
+	var _mobile = __webpack_require__(771);
+
+	var _aboutModal = __webpack_require__(772);
 
 	var _store = __webpack_require__(767);
 
@@ -29914,12 +29916,12 @@
 	  _createClass(NavBar, [{
 	    key: 'onMobileLayersClick',
 	    value: function onMobileLayersClick() {
-	      _store2.default.dispatch((0, _actions.openMobileLayerList)());
+	      _store2.default.dispatch((0, _mobile.openMobileLayerList)());
 	    }
 	  }, {
 	    key: 'onAboutClick',
 	    value: function onAboutClick() {
-	      _store2.default.dispatch((0, _actions.openAboutModal)());
+	      _store2.default.dispatch((0, _aboutModal.openAboutModal)());
 	    }
 	  }, {
 	    key: 'render',
@@ -48828,7 +48830,7 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _actions = __webpack_require__(774);
+	var _map = __webpack_require__(770);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48859,7 +48861,7 @@
 	  _createClass(ZoomToCounty, [{
 	    key: 'onMenuItemClick',
 	    value: function onMenuItemClick(countyName) {
-	      _store2.default.dispatch((0, _actions.zoomToCounty)(countyName));
+	      _store2.default.dispatch((0, _map.zoomToCounty)(countyName));
 	    }
 	  }, {
 	    key: 'render',
@@ -51084,15 +51086,11 @@
 
 	var _map2 = _interopRequireDefault(_map);
 
-	var _mobileFeatureModal = __webpack_require__(771);
-
-	var _mobileFeatureModal2 = _interopRequireDefault(_mobileFeatureModal);
-
-	var _mobile = __webpack_require__(772);
+	var _mobile = __webpack_require__(771);
 
 	var _mobile2 = _interopRequireDefault(_mobile);
 
-	var _aboutModal = __webpack_require__(773);
+	var _aboutModal = __webpack_require__(772);
 
 	var _aboutModal2 = _interopRequireDefault(_aboutModal);
 
@@ -51102,7 +51100,6 @@
 	    layers: _layers2.default,
 	    basemaps: _basemaps2.default,
 	    map: _map2.default,
-	    mobileFeatureModal: _mobileFeatureModal2.default,
 	    mobile: _mobile2.default,
 	    aboutModal: _aboutModal2.default
 	});
@@ -51119,8 +51116,18 @@
 	    value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
+	                                                                                                                                                                                                                                                                   * layers.js Ducks
+	                                                                                                                                                                                                                                                                   * 
+	                                                                                                                                                                                                                                                                   * Contains the actions and reducer part that controls layers in the map.
+	                                                                                                                                                                                                                                                                   * - Controls adding and removing layers
+	                                                                                                                                                                                                                                                                   * - For each unique layer style present in ech layer, it creates a cache of that style
+	                                                                                                                                                                                                                                                                   *     so it can be presented in the legend.
+	                                                                                                                                                                                                                                                                   */
 
+
+	exports.toggleLayer = toggleLayer;
+	exports.styleCacheUpdate = styleCacheUpdate;
 	exports.default = layers;
 
 	var _config = __webpack_require__(299);
@@ -51131,8 +51138,24 @@
 
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+	function toggleLayer(layerId) {
+	    return {
+	        type: "MAP:TOGGLE_LAYER",
+	        layerId: layerId
+	    };
+	}
+	function styleCacheUpdate(layerId, propertyName, style, geometryType) {
+	    return {
+	        type: "LAYER:STYLE_CACHE_UPDATE",
+	        layerId: layerId,
+	        propertyName: propertyName,
+	        style: style,
+	        geometryType: geometryType
+	    };
+	}
 	var layerGroupsById = {};
 	var layersById = {};
+
 	function getUniqueLayerId(layerGroupName, layerName) {
 	    return layerGroupName.replace(/ /g, "_") + ":" + layerName.replace(/ /g, "_");
 	}
@@ -51194,6 +51217,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.toggleBasemap = toggleBasemap;
 	exports.default = basemaps;
 
 	var _config = __webpack_require__(299);
@@ -51202,7 +51226,19 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var initialbasemaps = _config2.default.map.basemaps;
+	var initialbasemaps = _config2.default.map.basemaps; /**
+	                                                      * basemaps.js Ducks
+	                                                      * 
+	                                                      * Contains the actions and reducer part that controls basemaps in the map.
+	                                                      * - Controls adding and removing basemaps
+	                                                      */
+	function toggleBasemap(basemapID) {
+	    return {
+	        type: "MAP:TOGGLE_BASEMAP",
+	        basemapID: basemapID
+	    };
+	}
+
 	function basemaps() {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialbasemaps;
 	    var action = arguments[1];
@@ -51237,6 +51273,10 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.zoomToCounty = zoomToCounty;
+	exports.doneZooming = doneZooming;
+	exports.resetMapView = resetMapView;
+	exports.mapNewZoomLevel = mapNewZoomLevel;
 	exports.default = map;
 
 	var _config = __webpack_require__(299);
@@ -51245,6 +51285,32 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function zoomToCounty(countyName) {
+	    return {
+	        type: "MAP:ZOOM_TO_COUNTY",
+	        countyName: countyName
+	    };
+	} /**
+	   * map.js Ducks
+	   * 
+	   * Contains the actions and reducer part that controls map functionality.
+	   */
+	function doneZooming(countyName) {
+	    return {
+	        type: "MAP:DONE_ZOOMING"
+	    };
+	}
+	function resetMapView() {
+	    return {
+	        type: "MAP:RESET_VIEW"
+	    };
+	}
+	function mapNewZoomLevel(zoomLevel) {
+	    return {
+	        type: "MAP:NEW_ZOOM_LEVEL",
+	        zoomLevel: zoomLevel
+	    };
+	}
 	var initialMapState = {
 	    state: {
 	        action: "none"
@@ -51295,30 +51361,104 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.default = mobileFeatureModal;
+	exports.openMobileLayerList = openMobileLayerList;
+	exports.closeMobileLayerList = closeMobileLayerList;
+	exports.updateWindowDimensions = updateWindowDimensions;
+	exports.mobileClickFeature = mobileClickFeature;
+	exports.closeMobileFeatureModal = closeMobileFeatureModal;
+	exports.default = mobile;
+	/**
+	 * mobile.js Ducks
+	 * 
+	 * Contains the actions and reducer part that controls mobile functionality.
+	 * Mobile functionality is present when the window is smaller than 992px.
+	 * These features include:
+	 * - Mobile Layer List 
+	 * - Keeping track of window size
+	 * - When a feature is clicked during mobile mode (<992px)
+	 * - Mobile Feature Modal
+	 */
+
+	function openMobileLayerList() {
+	    return {
+	        type: "MOBILE:LAYER_POPUP:OPEN"
+	    };
+	}
+	function closeMobileLayerList() {
+	    return {
+	        type: "MOBILE:LAYER_POPUP:CLOSE"
+	    };
+	}
+	function updateWindowDimensions(height, width) {
+	    return {
+	        type: "WINDOW:UPDATE_DIMENSIONS",
+	        height: height,
+	        width: width
+	    };
+	}
+	function mobileClickFeature(featureProperties, featureType, layerId) {
+	    return {
+	        type: "MOBILE:LAYER:CLICK_FEATURE",
+	        featureProperties: featureProperties,
+	        featureType: featureType,
+	        layerId: layerId
+	    };
+	}
+	function closeMobileFeatureModal() {
+	    return {
+	        type: "MOBILE:FEATURE_MODAL:CLOSE"
+	    };
+	}
 	var initialState = {
-	    visible: false,
-	    featureProperties: false,
-	    featureType: false,
-	    layerId: false
+	    window: {
+	        height: false,
+	        width: false
+	    },
+	    layersPopup: {
+	        visible: false
+	    },
+	    featureModal: {
+	        visible: false,
+	        featureProperties: false,
+	        featureType: false,
+	        layerId: false
+	    }
 	};
-	function mobileFeatureModal() {
+	function mobile() {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	    var action = arguments[1];
 
 	    var newState = Object.assign({}, state);
+	    var layersPopupState = Object.assign({}, newState.layersPopup);
+	    var windowState = Object.assign({}, newState.window);
+	    var featureModalState = Object.assign({}, newState.featureModal);
 	    switch (action.type) {
-	        case "LAYER:CLICK_FEATURE":
-	            newState.visible = true;
-	            newState.featureProperties = action.featureProperties;
-	            newState.featureType = action.featureType;
-	            newState.layerId = action.layerId;
+	        case "MOBILE:LAYER_POPUP:OPEN":
+	            layersPopupState.visible = true;
+	            newState.layersPopup = layersPopupState;
 	            break;
-	        case "MOBILE_FEATURE_MODAL:CLOSE":
-	            newState.visible = false;
-	            newState.featureProperties = false;
-	            newState.featureType = false;
-	            newState.layerId = false;
+	        case "MOBILE:LAYER_POPUP:CLOSE":
+	            layersPopupState.visible = false;
+	            newState.layersPopup = layersPopupState;
+	            break;
+	        case "WINDOW:UPDATE_DIMENSIONS":
+	            windowState.height = action.height;
+	            windowState.width = action.width;
+	            newState.window = windowState;
+	            break;
+	        case "MOBILE:LAYER:CLICK_FEATURE":
+	            featureModalState.visible = true;
+	            featureModalState.featureProperties = action.featureProperties;
+	            featureModalState.featureType = action.featureType;
+	            featureModalState.layerId = action.layerId;
+	            newState.featureModal = featureModalState;
+	            break;
+	        case "MOBILE:FEATURE_MODAL:CLOSE":
+	            featureModalState.visible = false;
+	            featureModalState.featureProperties = false;
+	            featureModalState.featureType = false;
+	            featureModalState.layerId = false;
+	            newState.featureModal = featureModalState;
 	            break;
 	        default:
 	            newState = state;
@@ -51336,54 +51476,25 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.default = mobile;
-	var initialState = {
-	    window: {
-	        height: false,
-	        width: false
-	    },
-	    layersPopup: {
-	        visible: false
-	    }
-	};
-	function mobile() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-	    var action = arguments[1];
-
-	    var newState = Object.assign({}, state);
-	    var layersPopupState = Object.assign({}, newState.layersPopup);
-	    var windowState = Object.assign({}, newState.window);
-	    switch (action.type) {
-	        case "MOBILE:LAYER_POPUP:OPEN":
-	            layersPopupState.visible = true;
-	            newState.layersPopup = layersPopupState;
-	            break;
-	        case "MOBILE:LAYER_POPUP:CLOSE":
-	            layersPopupState.visible = false;
-	            newState.layersPopup = layersPopupState;
-	            break;
-	        case "WINDOW:UPDATE_DIMENSIONS":
-	            windowState.height = action.height;
-	            windowState.width = action.width;
-	            newState.window = windowState;
-	            break;
-	        default:
-	            newState = state;
-	            break;
-	    }
-	    return newState;
+	exports.closeAboutModal = closeAboutModal;
+	exports.openAboutModal = openAboutModal;
+	exports.default = aboutModal;
+	/**
+	 * aboutModal.js Ducks
+	 * 
+	 * Contains the actions and reducer part that controls the About modal
+	 */
+	function closeAboutModal() {
+	    return {
+	        type: "ABOUT_MODAL:CLOSE"
+	    };
+	}
+	function openAboutModal() {
+	    return {
+	        type: "ABOUT_MODAL:OPEN"
+	    };
 	}
 
-/***/ },
-/* 773 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.default = aboutModal;
 	var initialState = {
 	    visible: false
 	};
@@ -51407,114 +51518,7 @@
 	}
 
 /***/ },
-/* 774 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.toggleLayer = toggleLayer;
-	exports.toggleBasemap = toggleBasemap;
-	exports.zoomToCounty = zoomToCounty;
-	exports.doneZooming = doneZooming;
-	exports.clickFeature = clickFeature;
-	exports.closeMobileFeatureModal = closeMobileFeatureModal;
-	exports.openMobileLayerList = openMobileLayerList;
-	exports.closeMobileLayerList = closeMobileLayerList;
-	exports.updateWindowDimensions = updateWindowDimensions;
-	exports.resetMapView = resetMapView;
-	exports.closeAboutModal = closeAboutModal;
-	exports.openAboutModal = openAboutModal;
-	exports.styleCacheUpdate = styleCacheUpdate;
-	exports.mapNewZoomLevel = mapNewZoomLevel;
-	function toggleLayer(layerId) {
-	    return {
-	        type: "MAP:TOGGLE_LAYER",
-	        layerId: layerId
-	    };
-	}
-	function toggleBasemap(basemapID) {
-	    return {
-	        type: "MAP:TOGGLE_BASEMAP",
-	        basemapID: basemapID
-	    };
-	}
-	function zoomToCounty(countyName) {
-	    return {
-	        type: "MAP:ZOOM_TO_COUNTY",
-	        countyName: countyName
-	    };
-	}
-	function doneZooming(countyName) {
-	    return {
-	        type: "MAP:DONE_ZOOMING"
-	    };
-	}
-	function clickFeature(featureProperties, featureType, layerId) {
-	    return {
-	        type: "LAYER:CLICK_FEATURE",
-	        featureProperties: featureProperties,
-	        featureType: featureType,
-	        layerId: layerId
-	    };
-	}
-	function closeMobileFeatureModal() {
-	    return {
-	        type: "MOBILE_FEATURE_MODAL:CLOSE"
-	    };
-	}
-	function openMobileLayerList() {
-	    return {
-	        type: "MOBILE:LAYER_POPUP:OPEN"
-	    };
-	}
-	function closeMobileLayerList() {
-	    return {
-	        type: "MOBILE:LAYER_POPUP:CLOSE"
-	    };
-	}
-	function updateWindowDimensions(height, width) {
-	    return {
-	        type: "WINDOW:UPDATE_DIMENSIONS",
-	        height: height,
-	        width: width
-	    };
-	}
-	function resetMapView() {
-	    return {
-	        type: "MAP:RESET_VIEW"
-	    };
-	}
-	function closeAboutModal() {
-	    return {
-	        type: "ABOUT_MODAL:CLOSE"
-	    };
-	}
-	function openAboutModal() {
-	    return {
-	        type: "ABOUT_MODAL:OPEN"
-	    };
-	}
-	function styleCacheUpdate(layerId, propertyName, style, geometryType) {
-	    return {
-	        type: "LAYER:STYLE_CACHE_UPDATE",
-	        layerId: layerId,
-	        propertyName: propertyName,
-	        style: style,
-	        geometryType: geometryType
-	    };
-	}
-	function mapNewZoomLevel(zoomLevel) {
-	    return {
-	        type: "MAP:NEW_ZOOM_LEVEL",
-	        zoomLevel: zoomLevel
-	    };
-	}
-
-/***/ },
-/* 775 */
+/* 773 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51539,7 +51543,7 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _actions = __webpack_require__(774);
+	var _map = __webpack_require__(770);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51565,7 +51569,7 @@
 	    _createClass(ResetView, [{
 	        key: 'onButtonClick',
 	        value: function onButtonClick() {
-	            _store2.default.dispatch((0, _actions.resetMapView)());
+	            _store2.default.dispatch((0, _map.resetMapView)());
 	        }
 	    }, {
 	        key: 'render',
@@ -51584,7 +51588,7 @@
 	exports.default = ResetView;
 
 /***/ },
-/* 776 */
+/* 774 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51601,11 +51605,11 @@
 
 	var _reactBootstrap = __webpack_require__(477);
 
-	var _LayerList = __webpack_require__(777);
+	var _LayerList = __webpack_require__(775);
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
 
-	var _Legend = __webpack_require__(784);
+	var _Legend = __webpack_require__(782);
 
 	var _Legend2 = _interopRequireDefault(_Legend);
 
@@ -51650,7 +51654,7 @@
 	exports.default = SideBar;
 
 /***/ },
-/* 777 */
+/* 775 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51665,11 +51669,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _LayerGroup = __webpack_require__(778);
+	var _LayerGroup = __webpack_require__(776);
 
 	var _LayerGroup2 = _interopRequireDefault(_LayerGroup);
 
-	var _BasemapList = __webpack_require__(780);
+	var _BasemapList = __webpack_require__(778);
 
 	var _BasemapList2 = _interopRequireDefault(_BasemapList);
 
@@ -51681,9 +51685,11 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _actions = __webpack_require__(774);
+	var _layers = __webpack_require__(768);
 
-	var _selectors = __webpack_require__(782);
+	var _basemaps = __webpack_require__(769);
+
+	var _selectors = __webpack_require__(780);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51725,12 +51731,12 @@
 	    _createClass(LayerList, [{
 	        key: 'onLayerClick',
 	        value: function onLayerClick(layerId) {
-	            _store2.default.dispatch((0, _actions.toggleLayer)(layerId));
+	            _store2.default.dispatch(toggleLayer(layerId));
 	        }
 	    }, {
 	        key: 'onBasemapClick',
 	        value: function onBasemapClick(basemapID) {
-	            _store2.default.dispatch((0, _actions.toggleBasemap)(basemapID));
+	            _store2.default.dispatch((0, _basemaps.toggleBasemap)(basemapID));
 	        }
 	    }, {
 	        key: 'onPanelClick',
@@ -51779,7 +51785,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LayerList);
 
 /***/ },
-/* 778 */
+/* 776 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51792,7 +51798,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Layer = __webpack_require__(779);
+	var _Layer = __webpack_require__(777);
 
 	var _Layer2 = _interopRequireDefault(_Layer);
 
@@ -51848,7 +51854,7 @@
 	exports.default = LayerGroup;
 
 /***/ },
-/* 779 */
+/* 777 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51882,7 +51888,7 @@
 	exports.default = Layer;
 
 /***/ },
-/* 780 */
+/* 778 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51895,11 +51901,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _actions = __webpack_require__(774);
+	var _basemaps = __webpack_require__(769);
 
 	var _reactBootstrap = __webpack_require__(477);
 
-	var _Basemap = __webpack_require__(781);
+	var _Basemap = __webpack_require__(779);
 
 	var _Basemap2 = _interopRequireDefault(_Basemap);
 
@@ -51952,7 +51958,7 @@
 	exports.default = BasemapList;
 
 /***/ },
-/* 781 */
+/* 779 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51986,7 +51992,7 @@
 	exports.default = Basemap;
 
 /***/ },
-/* 782 */
+/* 780 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -51998,7 +52004,7 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _reselect = __webpack_require__(783);
+	var _reselect = __webpack_require__(781);
 
 	var getLayers = function getLayers(state) {
 	    return state.layers;
@@ -52007,7 +52013,7 @@
 	    return state.layers.layersById;
 	};
 	var getMobileFeatureModal = function getMobileFeatureModal(state) {
-	    return state.mobileFeatureModal;
+	    return state.mobile.featureModal;
 	};
 	var mapLayerGroupsToLayers = exports.mapLayerGroupsToLayers = (0, _reselect.createSelector)([getLayers], function (layers) {
 	    var layersById = layers.layersById;
@@ -52130,7 +52136,7 @@
 	});
 
 /***/ },
-/* 783 */
+/* 781 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -52246,7 +52252,7 @@
 	}
 
 /***/ },
-/* 784 */
+/* 782 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52265,7 +52271,7 @@
 
 	var _reactBootstrap = __webpack_require__(477);
 
-	var _selectors = __webpack_require__(782);
+	var _selectors = __webpack_require__(780);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52400,7 +52406,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Legend);
 
 /***/ },
-/* 785 */
+/* 783 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52423,11 +52429,11 @@
 
 	var _reactBootstrap = __webpack_require__(477);
 
-	var _LeafletMap = __webpack_require__(786);
+	var _LeafletMap = __webpack_require__(784);
 
 	var _LeafletMap2 = _interopRequireDefault(_LeafletMap);
 
-	var _MobileFeatureModal = __webpack_require__(817);
+	var _MobileFeatureModal = __webpack_require__(815);
 
 	var _MobileFeatureModal2 = _interopRequireDefault(_MobileFeatureModal);
 
@@ -52437,9 +52443,9 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _actions = __webpack_require__(774);
+	var _mobile = __webpack_require__(771);
 
-	var _selectors = __webpack_require__(782);
+	var _selectors = __webpack_require__(780);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52451,7 +52457,7 @@
 
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
-	        mobileFeatureModal: _extends({}, store.mobileFeatureModal, {
+	        mobileFeatureModal: _extends({}, store.mobile.featureModal, {
 	            title: (0, _selectors.getMobileFeatureModalTitle)(store)
 	        })
 	    };
@@ -52469,7 +52475,7 @@
 	    _createClass(MapContainer, [{
 	        key: 'closeMobileFeatureModal',
 	        value: function closeMobileFeatureModal() {
-	            _store2.default.dispatch((0, _actions.closeMobileFeatureModal)());
+	            _store2.default.dispatch((0, _mobile.closeMobileFeatureModal)());
 	        }
 	    }, {
 	        key: 'render',
@@ -52489,7 +52495,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MapContainer);
 
 /***/ },
-/* 786 */
+/* 784 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52510,13 +52516,13 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _ObliquePhotoMap = __webpack_require__(787);
+	var _ObliquePhotoMap = __webpack_require__(785);
 
 	var _ObliquePhotoMap2 = _interopRequireDefault(_ObliquePhotoMap);
 
-	var _actions = __webpack_require__(774);
+	var _map = __webpack_require__(770);
 
-	var _selectors = __webpack_require__(782);
+	var _selectors = __webpack_require__(780);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52581,7 +52587,7 @@
 	            if (oldMapProps !== null) {
 	                if (newMapProps.state.action === "willZoom") {
 	                    this.map.zoomToExtent(newMapProps.state.extent);
-	                    _store2.default.dispatch((0, _actions.doneZooming)());
+	                    _store2.default.dispatch((0, _map.doneZooming)());
 	                }
 	            }
 	        }
@@ -52606,7 +52612,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LeafletMap);
 
 /***/ },
-/* 787 */
+/* 785 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52621,13 +52627,13 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _styles = __webpack_require__(788);
+	var _styles = __webpack_require__(786);
 
-	var _onEachFeature = __webpack_require__(789);
+	var _onEachFeature = __webpack_require__(787);
 
 	var _onEachFeature2 = _interopRequireDefault(_onEachFeature);
 
-	var _actions = __webpack_require__(774);
+	var _map = __webpack_require__(770);
 
 	var _store = __webpack_require__(767);
 
@@ -52637,7 +52643,7 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var axios = __webpack_require__(792);
+	var axios = __webpack_require__(790);
 
 	var ObliquePhotoMap = function () {
 	    function ObliquePhotoMap(map) {
@@ -52665,7 +52671,7 @@
 	        key: 'dispatchZoom',
 	        value: function dispatchZoom() {
 	            var currentZoom = this.map.getZoom();
-	            _store2.default.dispatch((0, _actions.mapNewZoomLevel)(currentZoom));
+	            _store2.default.dispatch((0, _map.mapNewZoomLevel)(currentZoom));
 	        }
 	    }, {
 	        key: 'createLayer',
@@ -52760,7 +52766,7 @@
 	exports.default = ObliquePhotoMap;
 
 /***/ },
-/* 788 */
+/* 786 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52774,7 +52780,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _actions = __webpack_require__(774);
+	var _layers = __webpack_require__(768);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52810,7 +52816,7 @@
 	    STYLE_CACHE[layerId] = STYLE_CACHE[layerId] || {};
 	    if (typeof STYLE_CACHE[layerId][propertyName] === "undefined") {
 	        STYLE_CACHE[layerId][propertyName] = true;
-	        _store2.default.dispatch((0, _actions.styleCacheUpdate)(layerId, propertyName, style, geometryType));
+	        _store2.default.dispatch((0, _layers.styleCacheUpdate)(layerId, propertyName, style, geometryType));
 	    }
 	    return style;
 	}
@@ -53008,7 +53014,7 @@
 	exports.LAYER_STYLES = LAYER_STYLES;
 
 /***/ },
-/* 789 */
+/* 787 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53025,13 +53031,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _actions = __webpack_require__(774);
+	var _mobile = __webpack_require__(771);
 
-	var _util = __webpack_require__(790);
+	var _util = __webpack_require__(788);
 
 	var _reactDom = __webpack_require__(330);
 
-	var _FeaturePopup = __webpack_require__(791);
+	var _FeaturePopup = __webpack_require__(789);
 
 	var _FeaturePopup2 = _interopRequireDefault(_FeaturePopup);
 
@@ -53055,7 +53061,7 @@
 	        // if the screen is small, open the popup as a full modal
 	        // if the screen is large, open the popup as a leaflet-based in-map popup
 	        if (_store2.default.getState().mobile.window.width < 992) {
-	            _store2.default.dispatch((0, _actions.clickFeature)(feature.properties, dataType, layerId));
+	            _store2.default.dispatch((0, _mobile.mobileClickFeature)(feature.properties, dataType, layerId));
 	        } else if (popup === false) {
 	            (function () {
 	                popup = L.popup({
@@ -53108,7 +53114,7 @@
 	exports.default = ON_EACH_FEATURE;
 
 /***/ },
-/* 790 */
+/* 788 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -53144,7 +53150,7 @@
 	}
 
 /***/ },
-/* 791 */
+/* 789 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53161,7 +53167,7 @@
 
 	var _reactBootstrap = __webpack_require__(477);
 
-	var _util = __webpack_require__(790);
+	var _util = __webpack_require__(788);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53306,21 +53312,21 @@
 	exports.default = FeaturePopup;
 
 /***/ },
-/* 792 */
+/* 790 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(793);
+	module.exports = __webpack_require__(791);
 
 /***/ },
-/* 793 */
+/* 791 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
-	var bind = __webpack_require__(795);
-	var Axios = __webpack_require__(796);
-	var defaults = __webpack_require__(797);
+	var utils = __webpack_require__(792);
+	var bind = __webpack_require__(793);
+	var Axios = __webpack_require__(794);
+	var defaults = __webpack_require__(795);
 
 	/**
 	 * Create an instance of Axios
@@ -53353,15 +53359,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(814);
-	axios.CancelToken = __webpack_require__(815);
-	axios.isCancel = __webpack_require__(811);
+	axios.Cancel = __webpack_require__(812);
+	axios.CancelToken = __webpack_require__(813);
+	axios.isCancel = __webpack_require__(809);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(816);
+	axios.spread = __webpack_require__(814);
 
 	module.exports = axios;
 
@@ -53370,12 +53376,12 @@
 
 
 /***/ },
-/* 794 */
+/* 792 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(795);
+	var bind = __webpack_require__(793);
 
 	/*global toString:true*/
 
@@ -53675,7 +53681,7 @@
 
 
 /***/ },
-/* 795 */
+/* 793 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53692,17 +53698,17 @@
 
 
 /***/ },
-/* 796 */
+/* 794 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(797);
-	var utils = __webpack_require__(794);
-	var InterceptorManager = __webpack_require__(808);
-	var dispatchRequest = __webpack_require__(809);
-	var isAbsoluteURL = __webpack_require__(812);
-	var combineURLs = __webpack_require__(813);
+	var defaults = __webpack_require__(795);
+	var utils = __webpack_require__(792);
+	var InterceptorManager = __webpack_require__(806);
+	var dispatchRequest = __webpack_require__(807);
+	var isAbsoluteURL = __webpack_require__(810);
+	var combineURLs = __webpack_require__(811);
 
 	/**
 	 * Create a new instance of Axios
@@ -53783,13 +53789,13 @@
 
 
 /***/ },
-/* 797 */
+/* 795 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(794);
-	var normalizeHeaderName = __webpack_require__(798);
+	var utils = __webpack_require__(792);
+	var normalizeHeaderName = __webpack_require__(796);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -53806,10 +53812,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(799);
+	    adapter = __webpack_require__(797);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(799);
+	    adapter = __webpack_require__(797);
 	  }
 	  return adapter;
 	}
@@ -53883,12 +53889,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 798 */
+/* 796 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
+	var utils = __webpack_require__(792);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -53901,18 +53907,18 @@
 
 
 /***/ },
-/* 799 */
+/* 797 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(794);
-	var settle = __webpack_require__(800);
-	var buildURL = __webpack_require__(803);
-	var parseHeaders = __webpack_require__(804);
-	var isURLSameOrigin = __webpack_require__(805);
-	var createError = __webpack_require__(801);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(806);
+	var utils = __webpack_require__(792);
+	var settle = __webpack_require__(798);
+	var buildURL = __webpack_require__(801);
+	var parseHeaders = __webpack_require__(802);
+	var isURLSameOrigin = __webpack_require__(803);
+	var createError = __webpack_require__(799);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(804);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -54008,7 +54014,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(807);
+	      var cookies = __webpack_require__(805);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -54085,12 +54091,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 800 */
+/* 798 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(801);
+	var createError = __webpack_require__(799);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -54116,12 +54122,12 @@
 
 
 /***/ },
-/* 801 */
+/* 799 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(802);
+	var enhanceError = __webpack_require__(800);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -54139,7 +54145,7 @@
 
 
 /***/ },
-/* 802 */
+/* 800 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54164,12 +54170,12 @@
 
 
 /***/ },
-/* 803 */
+/* 801 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
+	var utils = __webpack_require__(792);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -54238,12 +54244,12 @@
 
 
 /***/ },
-/* 804 */
+/* 802 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
+	var utils = __webpack_require__(792);
 
 	/**
 	 * Parse headers into an object
@@ -54281,12 +54287,12 @@
 
 
 /***/ },
-/* 805 */
+/* 803 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
+	var utils = __webpack_require__(792);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54355,7 +54361,7 @@
 
 
 /***/ },
-/* 806 */
+/* 804 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54397,12 +54403,12 @@
 
 
 /***/ },
-/* 807 */
+/* 805 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
+	var utils = __webpack_require__(792);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54456,12 +54462,12 @@
 
 
 /***/ },
-/* 808 */
+/* 806 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
+	var utils = __webpack_require__(792);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -54514,15 +54520,15 @@
 
 
 /***/ },
-/* 809 */
+/* 807 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
-	var transformData = __webpack_require__(810);
-	var isCancel = __webpack_require__(811);
-	var defaults = __webpack_require__(797);
+	var utils = __webpack_require__(792);
+	var transformData = __webpack_require__(808);
+	var isCancel = __webpack_require__(809);
+	var defaults = __webpack_require__(795);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -54599,12 +54605,12 @@
 
 
 /***/ },
-/* 810 */
+/* 808 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
+	var utils = __webpack_require__(792);
 
 	/**
 	 * Transform the data for a request or a response
@@ -54625,7 +54631,7 @@
 
 
 /***/ },
-/* 811 */
+/* 809 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54636,7 +54642,7 @@
 
 
 /***/ },
-/* 812 */
+/* 810 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54656,7 +54662,7 @@
 
 
 /***/ },
-/* 813 */
+/* 811 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54674,7 +54680,7 @@
 
 
 /***/ },
-/* 814 */
+/* 812 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54699,12 +54705,12 @@
 
 
 /***/ },
-/* 815 */
+/* 813 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(814);
+	var Cancel = __webpack_require__(812);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -54762,7 +54768,7 @@
 
 
 /***/ },
-/* 816 */
+/* 814 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54795,7 +54801,7 @@
 
 
 /***/ },
-/* 817 */
+/* 815 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54810,7 +54816,7 @@
 
 	var _reactBootstrap = __webpack_require__(477);
 
-	var _util = __webpack_require__(790);
+	var _util = __webpack_require__(788);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54934,7 +54940,7 @@
 	exports.default = MobileFeatureModal;
 
 /***/ },
-/* 818 */
+/* 816 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54949,7 +54955,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _LayerList = __webpack_require__(777);
+	var _LayerList = __webpack_require__(775);
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
 
@@ -54961,7 +54967,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _actions = __webpack_require__(774);
+	var _mobile = __webpack_require__(771);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54995,7 +55001,7 @@
 	    _createClass(MobileLayerList, [{
 	        key: 'closeModal',
 	        value: function closeModal() {
-	            _store2.default.dispatch((0, _actions.closeMobileLayerList)());
+	            _store2.default.dispatch((0, _mobile.closeMobileLayerList)());
 	        }
 	    }, {
 	        key: 'render',
@@ -55044,7 +55050,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MobileLayerList);
 
 /***/ },
-/* 819 */
+/* 817 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55067,7 +55073,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _actions = __webpack_require__(774);
+	var _aboutModal = __webpack_require__(772);
 
 	var _config = __webpack_require__(299);
 
@@ -55103,7 +55109,7 @@
 	    _createClass(AboutModal, [{
 	        key: 'onCloseClick',
 	        value: function onCloseClick() {
-	            _store2.default.dispatch((0, _actions.closeAboutModal)());
+	            _store2.default.dispatch((0, _aboutModal.closeAboutModal)());
 	        }
 	    }, {
 	        key: 'render',
