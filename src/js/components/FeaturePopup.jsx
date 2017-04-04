@@ -8,13 +8,17 @@ import { getPhotoURLs } from '../util.js';
 class FeaturePopup extends React.Component {
     constructor() {
         super();
-        this.onImageLoad = this.onImageLoad.bind(this);
+        this.update = this.update.bind(this);
+        this.bringToFront = this.bringToFront.bind(this);
     }
     componentDidMount() {
+        this.update();
+    }
+    update() {
         this.props.popup.update();
     }
-    onImageLoad() {
-        this.props.popup.update();
+    bringToFront () {
+        this.props.popup.bringToFront();
     }
     render() {
         let rows = [];
@@ -30,7 +34,7 @@ class FeaturePopup extends React.Component {
             case "photo":
                 let photoURLs = getPhotoURLs(this.props.featureProperties);
                 tabs.push(<Tab key="image" eventKey={1} title="Image">
-                    <img src={photoURLs.popup} onLoad={this.onImageLoad}/>
+                    <img src={photoURLs.popup} onLoad={this.update}/>
                 </Tab>);
                 tabs.push(<Tab key="data" eventKey={2} title="Data">
                       <Table striped bordered condensed hover>
@@ -51,12 +55,12 @@ class FeaturePopup extends React.Component {
                 </Tab>);
                 break;
         }
-        return (<div className="feature-popup-content">
+        return (<div className="feature-popup-content" onClick={this.bringToFront}>
             <div className="feature-popup-header">
                 {this.props.layerId}
             </div>
             <div className="feature-popup-body">
-                <Tabs id="uncontrolled-tab" onSelect={this.props.popup.update}>    
+                <Tabs id="uncontrolled-tab" onSelect={this.update}>    
                     {tabs}
                 </Tabs>
             </div>
