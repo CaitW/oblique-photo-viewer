@@ -51772,7 +51772,7 @@
 	    _createClass(LayerList, [{
 	        key: 'onLayerClick',
 	        value: function onLayerClick(layerId) {
-	            _store2.default.dispatch(toggleLayer(layerId));
+	            _store2.default.dispatch((0, _layers.toggleLayer)(layerId));
 	        }
 	    }, {
 	        key: 'onBasemapClick',
