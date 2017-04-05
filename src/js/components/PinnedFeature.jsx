@@ -5,32 +5,18 @@
 import React from 'react';
 import { Modal, Button, Table, Tabs, Tab } from 'react-bootstrap';
 import { getPhotoURLs } from '../util.js';
-import {newPinnedFeature} from '../ducks/pinnedFeatures.js';
+import {closePinnedFeature} from '../ducks/pinnedFeatures.js';
 import store from '../store.js';
-class FeaturePopup extends React.Component {
+import Draggable from 'react-draggable'; 
+
+class PinnedFeature extends React.Component {
     constructor() {
         super();
-        this.update = this.update.bind(this);
-        this.bringToFront = this.bringToFront.bind(this);
         this.close = this.close.bind(this);
-        this.pin = this.pin.bind(this);
-    }
-    componentDidMount() {
-        this.update();
-    }
-    update() {
-        this.props.popup.update();
-    }
-    bringToFront () {
-        this.props.popup.bringToFront();
     }
     close () {
-        this.props.closePopup();
-    }
-    pin () {
-        let position = this.props.getPosition();
-        store.dispatch(newPinnedFeature(this.props.layerId, this.props.featureProperties, this.props.featureType, position));
-        this.close();
+        let self = this;
+        store.dispatch(closePinnedFeature(this.props.featureId));
     }
     render() {
         let rows = [];
@@ -68,21 +54,27 @@ class FeaturePopup extends React.Component {
                 break;
         }
         return (
-            <div className="feature-popup-content" onClick={this.bringToFront}>
-                <div className="feature-popup-header">
-                    <div className="feature-popup-title"> {this.props.layerId} </div>
-                    <div className="feature-popup-controls">
-                        <i className="fa fa-thumb-tack feature-popup-pin" onClick={this.pin}></i> 
-                        <i className="fa fa-times feature-popup-close-button" onClick={this.close}></i> 
+            <Draggable
+                axis="both"
+                handle=".handle"
+                defaultPosition={{x: 0, y: 0}}
+                position={null}
+                zIndex={1100}>
+                <div className="pinned-feature-popup-content">
+                    <div className="feature-popup-header handle">
+                        <div className="feature-popup-title"> {this.props.layerId} </div>
+                        <div className="feature-popup-controls">
+                            <i className="fa fa-times feature-popup-close-button" onClick={this.close}></i> 
+                        </div>
+                    </div>
+                    <div className="feature-popup-body">
+                        <Tabs id="uncontrolled-tab">    
+                            {tabs}
+                        </Tabs>
                     </div>
                 </div>
-                <div className="feature-popup-body">
-                    <Tabs id="uncontrolled-tab" onSelect={this.update}>    
-                        {tabs}
-                    </Tabs>
-                </div>
-            </div>
+            </Draggable>
         );
     }
 }
-export default FeaturePopup;
+export default PinnedFeature;

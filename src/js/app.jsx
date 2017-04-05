@@ -38,9 +38,9 @@ class App extends React.Component {
 						<NavBar />
 					</Row>
 					<Row className="contentRow">
-                        <PinnedFeatureContainer />
 						<SideBar />
 						<MapContainer />
+                        <PinnedFeatureContainer />
 					</Row>
 				</Grid>
 			</Provider>

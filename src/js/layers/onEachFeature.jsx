@@ -16,7 +16,7 @@ import FeaturePopup from '../components/FeaturePopup.jsx';
 // Function that takes layer information and creates a popup.
 // The popup's content is handled by React (<FeaturePopup />), however Leaflet is not controlled by React. 
 // Therefore, the popup's content must mount/unmount the React component manually whenever it is opened/closed.
-function handleClick(feature, layer, dataType) {
+function handleClick(feature, layer, dataType, map) {
     var popup = false;
     let layerId = layer.defaultOptions.layerId;
     // on click, create and open popup
@@ -31,48 +31,58 @@ function handleClick(feature, layer, dataType) {
                 className: "feature-popup",
                 autoClose: false,
                 maxWidth: 500,
-                minWidth: 300
+                minWidth: 300,
+                closeButton: false
             });
             let container = document.createElement("div");
+            let getPopupPosition = function () {
+                let popupPosition = popup.getLatLng();
+                return map.latLngToContainerPoint(popupPosition);
+            }
+            let closePopup = function () {
+                // setTimeout hack to get around this current issue with React:
+                // https://github.com/facebook/react/issues/3298
+                setTimeout(function () {
+                   unmountComponentAtNode(container); 
+                   popup._close();
+               },10);
+            };
             popup.on("add", function () {
                 render(
-                    <FeaturePopup layerId={layerId} featureProperties={feature.properties} featureType={dataType} popup={popup} />,
+                    <FeaturePopup layerId={layerId} featureProperties={feature.properties} featureType={dataType} popup={popup} closePopup={closePopup} getPosition={getPopupPosition}/>,
                     container
                 );
             });
             popup.setContent(container);
             layer.bindPopup(popup);
-            popup.on("remove", function () {
-                unmountComponentAtNode(container);
-            })
         }
     });
 }
 // Individual layer onEachFeature functions go below, as referenced by ID in config.json
 var ON_EACH_FEATURE = {
     backshore_1976: function(feature, layer) {
-        handleClick(feature, layer, "data");
+        handleClick(feature, layer, "data", this.map);
     },
     backshore_2007: function(feature, layer) {
-        handleClick(feature, layer, "data");
+        handleClick(feature, layer, "data", this.map);
     },
     photos_1976: function(feature, layer) {
-        handleClick(feature, layer, "photo");
+        handleClick(feature, layer, "photo", this.map);
     },
     photos_2007: function(feature, layer) {
-        handleClick(feature, layer, "photo");
+        handleClick(feature, layer, "photo", this.map);
     },
     structure_1976: function(feature, layer) {
-        handleClick(feature, layer, "data");
+        handleClick(feature, layer, "data", this.map);
     },
     structure_2007: function(feature, layer) {
-        handleClick(feature, layer, "data");
+        handleClick(feature, layer, "data", this.map);
     },
     beachclass_1976: function(feature, layer) {
-        handleClick(feature, layer, "data");
+        handleClick(feature, layer, "data", this.map);
     },
     beachclass_2007: function(feature, layer) {
-        handleClick(feature, layer, "data");
+        handleClick(feature, layer, "data", this.map);
     }
 };
 export default ON_EACH_FEATURE;

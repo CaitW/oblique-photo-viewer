@@ -1,8 +1,4 @@
 .feature-popup {
-    .leaflet-popup-close-button {
-        color: $primary_100;
-        &:hover {}
-    }
     .leaflet-popup-content-wrapper {
         margin: 0;
         border-radius: 3px;
@@ -18,6 +14,20 @@
                     font-size: 14px;
                     padding: 5px 10px;
                     border-radius: 3px 3px 0 0;
+                    .feature-popup-title {
+                        float: left;
+                    }
+                    .feature-popup-controls {
+                        color: $primary_100;
+                        float: right;
+                        i {
+                            margin-left: 10px;
+                            &:hover {
+                                color: $primary_50;
+                                cursor: pointer;
+                            }
+                        }
+                    }
                 }
                 .feature-popup-body {
                     padding: 5px;
