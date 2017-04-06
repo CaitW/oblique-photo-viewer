@@ -53146,7 +53146,14 @@
 	                var container = document.createElement("div");
 	                var getPopupPosition = function getPopupPosition() {
 	                    var popupPosition = popup.getLatLng();
-	                    return map.latLngToContainerPoint(popupPosition);
+	                    var positionInMap = map.latLngToContainerPoint(popupPosition);
+	                    var mapElement = document.getElementById("map");
+	                    var mapLocation = mapElement.getBoundingClientRect();
+	                    var positionInDocument = {
+	                        x: positionInMap.x + mapLocation.left,
+	                        y: positionInMap.y + mapLocation.top
+	                    };
+	                    return positionInDocument;
 	                };
 	                var closePopup = function closePopup() {
 	                    // setTimeout hack to get around this current issue with React:
@@ -53338,7 +53345,6 @@
 	                }
 	            }
 	            var tabs = [];
-	            var footer = [];
 	            switch (this.props.featureType) {
 	                case "photo":
 	                    var photoURLs = (0, _util.getPhotoURLs)(this.props.featureProperties);
@@ -53358,15 +53364,6 @@
 	                                null,
 	                                rows
 	                            )
-	                        )
-	                    ));
-	                    footer.unshift(_react2.default.createElement(
-	                        'a',
-	                        { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
-	                        _react2.default.createElement(
-	                            _reactBootstrap.Button,
-	                            { className: 'open-larger-image-button' },
-	                            'Open Original in New Window'
 	                        )
 	                    ));
 	                    break;
@@ -55331,7 +55328,7 @@
 	                var pinnedFeature = this.props.pinnedFeatures[featureId];
 	                pinnedFeatures.push(_react2.default.createElement(_PinnedFeature2.default, { featureType: pinnedFeature.featureType,
 	                    featureProperties: pinnedFeature.featureProperties,
-	                    initialLocation: pinnedFeature.location,
+	                    initialPosition: pinnedFeature.position,
 	                    layerId: pinnedFeature.layerId,
 	                    featureId: featureId,
 	                    key: featureId
@@ -55407,7 +55404,6 @@
 	    _createClass(PinnedFeature, [{
 	        key: 'close',
 	        value: function close() {
-	            var self = this;
 	            _store2.default.dispatch((0, _pinnedFeatures.closePinnedFeature)(this.props.featureId));
 	        }
 	    }, {
@@ -55438,7 +55434,6 @@
 	                }
 	            }
 	            var tabs = [];
-	            var footer = [];
 	            switch (this.props.featureType) {
 	                case "photo":
 	                    var photoURLs = (0, _util.getPhotoURLs)(this.props.featureProperties);
@@ -55460,15 +55455,6 @@
 	                            )
 	                        )
 	                    ));
-	                    footer.unshift(_react2.default.createElement(
-	                        'a',
-	                        { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
-	                        _react2.default.createElement(
-	                            _reactBootstrap.Button,
-	                            { className: 'open-larger-image-button' },
-	                            'Open Original in New Window'
-	                        )
-	                    ));
 	                    break;
 	                default:
 	                    tabs.push(_react2.default.createElement(
@@ -55486,12 +55472,16 @@
 	                    ));
 	                    break;
 	            }
+	            var initialPositionAdjustedForContent = {
+	                x: this.props.initialPosition.x - 150,
+	                y: this.props.initialPosition.y - 300
+	            };
 	            return _react2.default.createElement(
 	                _reactDraggable2.default,
 	                {
 	                    axis: 'both',
 	                    handle: '.handle',
-	                    defaultPosition: { x: 0, y: 0 },
+	                    defaultPosition: initialPositionAdjustedForContent,
 	                    position: null,
 	                    zIndex: 1100 },
 	                _react2.default.createElement(
