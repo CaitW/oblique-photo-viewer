@@ -37,7 +37,14 @@ function handleClick(feature, layer, dataType, map) {
             let container = document.createElement("div");
             let getPopupPosition = function () {
                 let popupPosition = popup.getLatLng();
-                return map.latLngToContainerPoint(popupPosition);
+                let positionInMap = map.latLngToContainerPoint(popupPosition);
+                let mapElement = document.getElementById("map");
+                let mapLocation = mapElement.getBoundingClientRect();
+                let positionInDocument = {
+                    x: positionInMap.x + mapLocation.left,
+                    y: positionInMap.y + mapLocation.top 
+                }
+                return positionInDocument;
             }
             let closePopup = function () {
                 // setTimeout hack to get around this current issue with React:

@@ -41,7 +41,6 @@ class FeaturePopup extends React.Component {
             }
         }
         let tabs = [];
-        let footer = [];
         switch (this.props.featureType) {
             case "photo":
                 let photoURLs = getPhotoURLs(this.props.featureProperties);
@@ -55,7 +54,6 @@ class FeaturePopup extends React.Component {
                         </tbody>
                       </Table>
                 </Tab>);
-                footer.unshift(<a href={photoURLs.original} key="open-larger-image-button" target="_blank" rel="noopener noreferrer" ><Button className="open-larger-image-button">Open Original in New Window</Button></a>)
                 break;
             default:
                 tabs.push(<Tab key="data" eventKey={1} title="Data">

@@ -1,7 +1,7 @@
 #pinned-feature-container {
     position: absolute;
     left: 0;
-    top: 50px;
+    top: 0;
     pointer-events: none;
     overflow: visible;
     z-index: 1100;
@@ -9,7 +9,7 @@
         pointer-events: auto;
     }
     .pinned-feature-popup-content {
-    	min-width: 300px;
+    	width: 300px;
     	min-height: 300px;
     	background-color: $primary_50;
     	box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);

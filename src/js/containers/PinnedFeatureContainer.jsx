@@ -23,7 +23,7 @@ class PinnedFeatureContainer extends React.Component {
     		pinnedFeatures.push( 
     			<PinnedFeature featureType={pinnedFeature.featureType} 
     				featureProperties={pinnedFeature.featureProperties} 
-    				initialLocation={pinnedFeature.location} 
+    				initialPosition={pinnedFeature.position} 
     				layerId={pinnedFeature.layerId}
     				featureId={featureId}
     				key={featureId}
