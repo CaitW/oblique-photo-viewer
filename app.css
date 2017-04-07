@@ -8844,6 +8844,9 @@ button.close {
       font-size: 14px;
       padding: 5px 10px;
       border-radius: 3px 3px 0 0; }
+      .feature-popup .leaflet-popup-content-wrapper .leaflet-popup-content .feature-popup-content .feature-popup-header .fa-chevron-right {
+        font-size: 10px;
+        margin: 0 5px; }
       .feature-popup .leaflet-popup-content-wrapper .leaflet-popup-content .feature-popup-content .feature-popup-header .feature-popup-title {
         float: left; }
       .feature-popup .leaflet-popup-content-wrapper .leaflet-popup-content .feature-popup-content .feature-popup-header .feature-popup-controls {
@@ -8921,6 +8924,9 @@ button.close {
       padding: 5px 10px;
       border-radius: 3px 3px 0 0;
       cursor: move; }
+      #pinned-feature-container .pinned-feature-popup-content .feature-popup-header .fa-chevron-right {
+        font-size: 10px;
+        margin: 0 5px; }
       #pinned-feature-container .pinned-feature-popup-content .feature-popup-header .feature-popup-title {
         float: left; }
       #pinned-feature-container .pinned-feature-popup-content .feature-popup-header .feature-popup-controls {

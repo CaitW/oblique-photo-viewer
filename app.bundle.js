@@ -53344,6 +53344,14 @@
 	                    ));
 	                }
 	            }
+	            var layerGroupName = _store2.default.getState().layers.layersById[this.props.layerId].layerGroupName;
+	            var layerName = _store2.default.getState().layers.layersById[this.props.layerId].layerName;
+	            var featureName = "";
+	            if (typeof this.props.featureProperties.OBJECTID === "number") {
+	                featureName += "#" + this.props.featureProperties.OBJECTID;
+	            } else {
+	                featureName += "Feature";
+	            }
 	            var tabs = [];
 	            switch (this.props.featureType) {
 	                case "photo":
@@ -53392,9 +53400,11 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'feature-popup-title' },
-	                        ' ',
-	                        this.props.layerId,
-	                        ' '
+	                        layerGroupName,
+	                        _react2.default.createElement('i', { className: 'fa fa-chevron-right' }),
+	                        layerName,
+	                        _react2.default.createElement('i', { className: 'fa fa-chevron-right' }),
+	                        featureName
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
@@ -55433,6 +55443,14 @@
 	                    ));
 	                }
 	            }
+	            var layerGroupName = _store2.default.getState().layers.layersById[this.props.layerId].layerGroupName;
+	            var layerName = _store2.default.getState().layers.layersById[this.props.layerId].layerName;
+	            var featureName = "";
+	            if (typeof this.props.featureProperties.OBJECTID === "number") {
+	                featureName += "#" + this.props.featureProperties.OBJECTID;
+	            } else {
+	                featureName += "Feature";
+	            }
 	            var tabs = [];
 	            switch (this.props.featureType) {
 	                case "photo":
@@ -55492,9 +55510,11 @@
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'feature-popup-title' },
-	                            ' ',
-	                            this.props.layerId,
-	                            ' '
+	                            layerGroupName,
+	                            _react2.default.createElement('i', { className: 'fa fa-chevron-right' }),
+	                            layerName,
+	                            _react2.default.createElement('i', { className: 'fa fa-chevron-right' }),
+	                            featureName
 	                        ),
 	                        _react2.default.createElement(
 	                            'div',
