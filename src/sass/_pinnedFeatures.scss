@@ -12,10 +12,10 @@
         position: absolute;
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
-    	width: 300px;
-    	min-height: 300px;
-    	background-color: $primary_50;
-    	box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+        width: 300px;
+        min-height: 300px;
+        background-color: $primary_50;
+        box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
         .feature-popup-header {
             height: 30px;
             background-color: $primary_300;
@@ -25,6 +25,10 @@
             padding: 5px 10px;
             border-radius: 3px 3px 0 0;
             cursor: move;
+            .fa-chevron-right {
+                font-size: 10px;
+                margin: 0 5px;
+            }
             .feature-popup-title {
                 float: left;
             }

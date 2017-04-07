@@ -40,6 +40,14 @@ class FeaturePopup extends React.Component {
                 rows.push(<tr key={property}><td><strong>{property}</strong></td><td>{value}</td></tr>);
             }
         }
+        let layerGroupName = store.getState().layers.layersById[this.props.layerId].layerGroupName;
+        let layerName = store.getState().layers.layersById[this.props.layerId].layerName;
+        let featureName = "";
+        if(typeof this.props.featureProperties.OBJECTID === "number") {
+            featureName += "#" + this.props.featureProperties.OBJECTID;
+        } else {
+            featureName += "Feature";
+        }
         let tabs = [];
         switch (this.props.featureType) {
             case "photo":
@@ -68,7 +76,13 @@ class FeaturePopup extends React.Component {
         return (
             <div className="feature-popup-content" onClick={this.bringToFront}>
                 <div className="feature-popup-header">
-                    <div className="feature-popup-title"> {this.props.layerId} </div>
+                    <div className="feature-popup-title"> 
+                        {layerGroupName}
+                        <i className="fa fa-chevron-right"></i>
+                        {layerName}
+                        <i className="fa fa-chevron-right"></i>
+                        {featureName}
+                    </div>
                     <div className="feature-popup-controls">
                         <i className="fa fa-thumb-tack feature-popup-pin" onClick={this.pin}></i> 
                         <i className="fa fa-times feature-popup-close-button" onClick={this.close}></i> 
