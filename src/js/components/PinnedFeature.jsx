@@ -57,7 +57,6 @@ class PinnedFeature extends React.Component {
                 axis="both"
                 handle=".handle"
                 defaultPosition={initialPositionAdjustedForContent}
-                position={null}
                 zIndex={1100}>
                 <div className="pinned-feature-popup-content">
                     <div className="feature-popup-header handle">

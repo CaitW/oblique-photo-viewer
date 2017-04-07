@@ -8905,6 +8905,7 @@ button.close {
   #pinned-feature-container * {
     pointer-events: auto; }
   #pinned-feature-container .pinned-feature-popup-content {
+    position: absolute;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     width: 300px;

@@ -55482,7 +55482,6 @@
 	                    axis: 'both',
 	                    handle: '.handle',
 	                    defaultPosition: initialPositionAdjustedForContent,
-	                    position: null,
 	                    zIndex: 1100 },
 	                _react2.default.createElement(
 	                    'div',
