@@ -8861,7 +8861,8 @@ button.close {
 
 .feature-popup-content {
   font-size: 12px;
-  font-family: "Roboto"; }
+  font-family: "Roboto";
+  min-width: 400px; }
   .feature-popup-content .feature-popup-header {
     height: 30px;
     background-color: #90A4AE;
