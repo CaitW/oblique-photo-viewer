@@ -1,102 +1,18 @@
-.feature-popup {
-    .leaflet-popup-content-wrapper {
-        margin: 0;
-        border-radius: 3px;
-        background-color: $primary_50;
-        .leaflet-popup-content {
-            margin: -1px;
-            .feature-popup-content {
-                .feature-popup-header {
-                    height: 30px;
-                    background-color: $primary_300;
-                    color: $primary_900;
-                    font-family: "Roboto";
-                    font-size: 14px;
-                    padding: 5px 10px;
-                    border-radius: 3px 3px 0 0;
-                    .fa-chevron-right {
-                        font-size: 10px;
-                        margin: 0 5px;
-                    }
-                    .feature-popup-title {
-                        float: left;
-                    }
-                    .feature-popup-controls {
-                        color: $primary_100;
-                        float: right;
-                        i {
-                            margin-left: 10px;
-                            &:hover {
-                                color: $primary_50;
-                                cursor: pointer;
-                            }
-                        }
-                    }
-                }
-                .feature-popup-body {
-                    padding: 5px;
-                    .nav-tabs {
-                        border-bottom: 1px solid $primary_600;
-                        li {
-                            a {
-                                padding: 5px 10px;
-                                border: 0;
-                                &[aria-selected=true] {
-                                    background-color: $primary_600;
-                                    color: $primary_50;
-                                }
-                                &[aria-selected=false] {
-                                    background-color: $primary_100;
-                                    color: $primary_900;
-                                    border-bottom: 1px solid $primary_600;
-                                    &:hover {
-                                        background-color: $primary_300;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .tab-content {
-                        border: 1px solid $primary_600;
-                        background-color: $primary_100;
-                        border-width: 3px 0 0 0;
-                        padding: 10px;
-                        img {
-                            max-width: 100%;
-                        }
-                        table {
-                            margin-bottom: 0;
-                            tr {
-                                &:hover {
-                                    background-color: $primary_200;
-                                }
-                                td {
-                                    border: 1px solid $primary_400;
-                                }
-                            }
-                        }
-                    }
-                    .table-striped > tbody > tr:nth-of-type(odd) {
-                        background-color: #ffffff;
-                        &:hover {
-                            background-color: $primary_200;
-                        }
-                    }
-                    .table-striped > tbody > tr:nth-of-type(even) {
-                        background-color: $primary_50;
-                        &:hover {
-                            background-color: $primary_200;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    .leaflet-popup-tip {
-        background-color: $primary_50;
+// Unpinned Leaflet Feature Popups
+.leaflet-popup-content-wrapper {
+    margin: 0;
+    border-radius: 3px;
+    background-color: $primary_50;
+    .leaflet-popup-content {
+        margin: -1px;
     }
 }
 
+.leaflet-popup-tip {
+    background-color: $primary_50;
+}
+
+// Pinned Feature Popups
 #pinned-feature-container {
     position: absolute;
     left: 0;
@@ -107,98 +23,104 @@
     * {
         pointer-events: auto;
     }
-    .pinned-feature-popup-content {
+    .feature-popup-content {
         position: absolute;
+        min-width: 400px;
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
-        min-width: 300px;
-        min-height: 300px;
         background-color: $primary_50;
         box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
         .feature-popup-header {
-            height: 30px;
-            background-color: $primary_300;
-            color: $primary_900;
-            font-family: "Roboto";
-            font-size: 14px;
-            padding: 5px 10px;
-            border-radius: 3px 3px 0 0;
-            cursor: move;
-            .fa-chevron-right {
-                font-size: 10px;
-                margin: 0 5px;
-            }
-            .feature-popup-title {
-                float: left;
-            }
-            .feature-popup-controls {
-                color: $primary_100;
-                float: right;
-                i {
-                    margin-left: 10px;
-                    &:hover {
-                        color: $primary_50;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
-        .feature-popup-body {
-            padding: 5px;
-            .nav-tabs {
-                border-bottom: 1px solid $primary_600;
-                li {
-                    a {
-                        padding: 5px 10px;
-                        border: 0;
-                        &[aria-selected=true] {
-                            background-color: $primary_600;
-                            color: $primary_50;
-                        }
-                        &[aria-selected=false] {
-                            background-color: $primary_100;
-                            color: $primary_900;
-                            border-bottom: 1px solid $primary_600;
-                            &:hover {
-                                background-color: $primary_300;
-                            }
-                        }
-                    }
-                }
-            }
-            .tab-content {
-                border: 1px solid $primary_600;
-                background-color: $primary_100;
-                border-width: 3px 0 0 0;
-                padding: 10px;
-                img {
-                    max-width: 100%;
-                }
-                table {
-                    margin-bottom: 0;
-                    tr {
-                        &:hover {
-                            background-color: $primary_200;
-                        }
-                        td {
-                            border: 1px solid $primary_400;
-                        }
-                    }
-                }
-            }
-            .table-striped > tbody > tr:nth-of-type(odd) {
-                background-color: #ffffff;
-                &:hover {
-                    background-color: $primary_200;
-                }
-            }
-            .table-striped > tbody > tr:nth-of-type(even) {
-                background-color: $primary_50;
-                &:hover {
-                    background-color: $primary_200;
-                }
-            }
+            cursor: move
         }
     }
 }
 
+// Both Leaflet Popups and Pinned Popups
+.feature-popup-content {
+    font-size: 12px;
+    font-family: "Roboto";
+    .feature-popup-header {
+        height: 30px;
+        background-color: $primary_300;
+        color: $primary_900;
+        font-family: "Roboto";
+        font-size: 14px;
+        padding: 5px 10px;
+        border-radius: 3px 3px 0 0;
+        .fa-chevron-right {
+            font-size: 10px;
+            margin: 0 5px;
+        }
+        .feature-popup-title {
+            float: left;
+        }
+        .feature-popup-controls {
+            color: $primary_100;
+            float: right;
+            i {
+                margin-left: 10px;
+                &:hover {
+                    color: $primary_50;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .feature-popup-body {
+        padding: 5px;
+        .nav-tabs {
+            border-bottom: 1px solid $primary_600;
+            li {
+                a {
+                    padding: 5px 10px;
+                    border: 0;
+                    &[aria-selected=true] {
+                        background-color: $primary_600;
+                        color: $primary_50;
+                    }
+                    &[aria-selected=false] {
+                        background-color: $primary_100;
+                        color: $primary_900;
+                        border-bottom: 1px solid $primary_600;
+                        &:hover {
+                            background-color: $primary_300;
+                        }
+                    }
+                }
+            }
+        }
+        .tab-content {
+            border: 1px solid $primary_600;
+            background-color: $primary_100;
+            border-width: 3px 0 0 0;
+            padding: 10px;
+            img {
+                max-width: 100%;
+            }
+            table {
+                margin-bottom: 0;
+                tr {
+                    &:hover {
+                        background-color: $primary_200;
+                    }
+                    td {
+                        border: 1px solid $primary_400;
+                    }
+                }
+            }
+        }
+        .table-striped > tbody > tr:nth-of-type(odd) {
+            background-color: #ffffff;
+            &:hover {
+                background-color: $primary_200;
+            }
+        }
+        .table-striped > tbody > tr:nth-of-type(even) {
+            background-color: $primary_50;
+            &:hover {
+                background-color: $primary_200;
+            }
+        }
+    }
+}

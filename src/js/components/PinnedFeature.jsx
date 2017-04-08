@@ -81,7 +81,7 @@ class PinnedFeature extends React.Component {
                 axis="both"
                 handle=".handle"
                 zIndex={1100}>
-                <div className="pinned-feature-popup-content" ref="content" style={style}>
+                <div className="feature-popup-content" ref="content" style={style}>
                     <div className="feature-popup-header handle">
                         <div className="feature-popup-title"> 
                             {layerGroupName}

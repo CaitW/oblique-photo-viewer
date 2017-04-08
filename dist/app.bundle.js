@@ -55520,7 +55520,7 @@
 	                    zIndex: 1100 },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'pinned-feature-popup-content', ref: 'content', style: style },
+	                    { className: 'feature-popup-content', ref: 'content', style: style },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'feature-popup-header handle' },
