@@ -8362,7 +8362,7 @@
 							"styleID": "backshore_1976",
 							"onEachFeatureID": "backshore_1976",
 							"dataLocation": "./data/layers/backshore_1976.json",
-							"active": false
+							"active": true
 						},
 						"Beachclass": {
 							"layerName": "Beach Protection",
@@ -8386,7 +8386,7 @@
 							"dataLocation": "./data/layers/photos_1976.json",
 							"styleID": "photos_1976",
 							"onEachFeatureID": "photos_1976",
-							"active": true
+							"active": false
 						}
 					}
 				},
@@ -8423,7 +8423,7 @@
 							"dataLocation": "./data/layers/photos_2007.json",
 							"styleID": "photos_2007",
 							"onEachFeatureID": "photos_2007",
-							"active": true
+							"active": false
 						}
 					}
 				},
@@ -55408,6 +55408,10 @@
 	        var _this = _possibleConstructorReturn(this, (PinnedFeature.__proto__ || Object.getPrototypeOf(PinnedFeature)).call(this));
 
 	        _this.close = _this.close.bind(_this);
+	        _this.state = {
+	            height: 300,
+	            width: 300
+	        };
 	        return _this;
 	    }
 
@@ -55415,6 +55419,16 @@
 	        key: 'close',
 	        value: function close() {
 	            _store2.default.dispatch((0, _pinnedFeatures.closePinnedFeature)(this.props.featureId));
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var height = this.refs.content.clientHeight;
+	            var width = this.refs.content.clientWidth;
+	            this.setState({
+	                height: height,
+	                width: width
+	            });
 	        }
 	    }, {
 	        key: 'render',
@@ -55491,19 +55505,22 @@
 	                    break;
 	            }
 	            var initialPositionAdjustedForContent = {
-	                x: this.props.initialPosition.x - 150,
-	                y: this.props.initialPosition.y - 300
+	                x: this.props.initialPosition.x - this.state.width / 2,
+	                y: this.props.initialPosition.y - this.state.height
+	            };
+	            var style = {
+	                "top": initialPositionAdjustedForContent.y,
+	                "left": initialPositionAdjustedForContent.x
 	            };
 	            return _react2.default.createElement(
 	                _reactDraggable2.default,
 	                {
 	                    axis: 'both',
 	                    handle: '.handle',
-	                    defaultPosition: initialPositionAdjustedForContent,
 	                    zIndex: 1100 },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'pinned-feature-popup-content' },
+	                    { className: 'pinned-feature-popup-content', ref: 'content', style: style },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'feature-popup-header handle' },
