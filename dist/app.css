@@ -8851,7 +8851,6 @@ button.close {
     pointer-events: auto; }
   #pinned-feature-container .feature-popup-content {
     position: absolute;
-    min-width: 400px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     background-color: #ECEFF1;
@@ -8862,7 +8861,7 @@ button.close {
 .feature-popup-content {
   font-size: 12px;
   font-family: "Roboto";
-  min-width: 400px; }
+  min-width: 300px; }
   .feature-popup-content .feature-popup-header {
     height: 30px;
     background-color: #90A4AE;
@@ -8908,6 +8907,7 @@ button.close {
       .feature-popup-content .feature-popup-body .tab-content img {
         max-width: 100%; }
       .feature-popup-content .feature-popup-body .tab-content table {
+        min-width: 350px;
         margin-bottom: 0; }
         .feature-popup-content .feature-popup-body .tab-content table tr:hover {
           background-color: #B0BEC5; }

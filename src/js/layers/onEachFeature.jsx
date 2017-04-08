@@ -28,7 +28,7 @@ function handleClick(feature, layer, dataType, map) {
         } else if (popup === false) {
             popup = L.popup({
                 closeOnClick: false,
-                className: "feature-popup",
+                className: "feature-popup hidden-xs",
                 autoClose: false,
                 maxWidth: 500,
                 minWidth: 400,

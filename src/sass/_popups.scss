@@ -25,7 +25,6 @@
     }
     .feature-popup-content {
         position: absolute;
-        min-width: 400px;
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
         background-color: $primary_50;
@@ -40,7 +39,7 @@
 .feature-popup-content {
     font-size: 12px;
     font-family: "Roboto";
-    min-width: 400px;
+    min-width: 300px;
     .feature-popup-header {
         height: 30px;
         background-color: $primary_300;
@@ -100,6 +99,7 @@
                 max-width: 100%;
             }
             table {
+                min-width: 350px;
                 margin-bottom: 0;
                 tr {
                     &:hover {

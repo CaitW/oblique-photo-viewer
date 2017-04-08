@@ -53137,7 +53137,7 @@
 	            (function () {
 	                popup = L.popup({
 	                    closeOnClick: false,
-	                    className: "feature-popup",
+	                    className: "feature-popup hidden-xs",
 	                    autoClose: false,
 	                    maxWidth: 500,
 	                    minWidth: 400,
@@ -55520,7 +55520,7 @@
 	                    zIndex: 1100 },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'feature-popup-content', ref: 'content', style: style },
+	                    { className: 'feature-popup-content hidden-xs', ref: 'content', style: style },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'feature-popup-header handle' },
