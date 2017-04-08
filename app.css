@@ -8769,7 +8769,8 @@ button.close {
     #map[data-zoom='15'] .layer-beachclass-2007:hover,
     #map[data-zoom='15'] .layer-backshore-1976:hover,
     #map[data-zoom='15'] .layer-backshore-2007:hover {
-      stroke-width: 10; }
+      stroke-width: 10;
+      stroke-linecap: round; }
   #map[data-zoom='16'] .layer-photos-1976,
   #map[data-zoom='16'] .layer-photos-2007,
   #map[data-zoom='16'] .layer-structure-1976,
@@ -8814,7 +8815,8 @@ button.close {
     #map[data-zoom='18'] .layer-beachclass-2007:hover,
     #map[data-zoom='18'] .layer-backshore-1976:hover,
     #map[data-zoom='18'] .layer-backshore-2007:hover {
-      stroke-width: 12; }
+      stroke-width: 12;
+      stroke-linecap: round; }
 
 .leaflet-control-zoom.leaflet-bar {
   border: 0; }
