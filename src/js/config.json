@@ -38,7 +38,7 @@
                         "styleID": "backshore_1976",
                         "onEachFeatureID": "backshore_1976",
                         "dataLocation": "./data/layers/backshore_1976.json",
-                        "active": false
+                        "active": true
                     },
                     "Beachclass": {
                         "layerName": "Beach Protection",
@@ -62,7 +62,7 @@
                         "dataLocation": "./data/layers/photos_1976.json",
                         "styleID": "photos_1976",
                         "onEachFeatureID": "photos_1976",
-                        "active": true
+                        "active": false
                     }
                 }
             },
@@ -99,7 +99,7 @@
                         "dataLocation": "./data/layers/photos_2007.json",
                         "styleID": "photos_2007",
                         "onEachFeatureID": "photos_2007",
-                        "active": true
+                        "active": false
                     }
                 }
             },

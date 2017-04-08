@@ -12,9 +12,21 @@ class PinnedFeature extends React.Component {
     constructor() {
         super();
         this.close = this.close.bind(this);
+        this.state = {
+            height: 300,
+            width: 300
+        };
     }
     close() {
         store.dispatch(closePinnedFeature(this.props.featureId));
+    }
+    componentDidMount () {
+        let height = this.refs.content.clientHeight;
+        let width = this.refs.content.clientWidth;
+        this.setState({
+            height: height,
+            width: width
+        });
     }
     render() {
         let rows = [];
@@ -58,15 +70,18 @@ class PinnedFeature extends React.Component {
                 break;
         }
         let initialPositionAdjustedForContent = {
-            x: this.props.initialPosition.x - 150,
-            y: this.props.initialPosition.y - 300
+            x: this.props.initialPosition.x - (this.state.width / 2),
+            y: this.props.initialPosition.y - this.state.height
+        }
+        let style = {
+            "top": initialPositionAdjustedForContent.y,
+            "left": initialPositionAdjustedForContent.x
         }
         return (<Draggable
                 axis="both"
                 handle=".handle"
-                defaultPosition={initialPositionAdjustedForContent}
                 zIndex={1100}>
-                <div className="pinned-feature-popup-content">
+                <div className="pinned-feature-popup-content" ref="content" style={style}>
                     <div className="feature-popup-header handle">
                         <div className="feature-popup-title"> 
                             {layerGroupName}
