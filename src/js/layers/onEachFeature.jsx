@@ -31,7 +31,7 @@ function handleClick(feature, layer, dataType, map) {
                 className: "feature-popup",
                 autoClose: false,
                 maxWidth: 500,
-                minWidth: 300,
+                minWidth: 400,
                 closeButton: false
             });
             let container = document.createElement("div");

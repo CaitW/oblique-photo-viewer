@@ -53140,7 +53140,7 @@
 	                    className: "feature-popup",
 	                    autoClose: false,
 	                    maxWidth: 500,
-	                    minWidth: 300,
+	                    minWidth: 400,
 	                    closeButton: false
 	                });
 	                var container = document.createElement("div");
