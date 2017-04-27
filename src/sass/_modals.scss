@@ -1,148 +1,147 @@
 .modal-dialog {
-    z-index: 600;
-    .modal-content {
-        background-color: $primary_300;
-        .modal-header {
-            background-color: $primary_300;
-            color: $primary_900;
-            border: 0;
-        }
-        .modal-body {
-            background-color: $primary_50;
-            overflow-y: scroll;
-        }
-        .modal-footer {
-            background-color: $primary_50;
-            border: 0;
-            color: $primary_50;
-        }
-        .btn {
-            border: 0;
-            background-color: $primary_600;
-            color: $primary_50;
-            &:hover {
-                background-color: $primary_700;
-            }
-        }
+  z-index: 600;
+  .modal-content {
+    background-color: $primary_300;
+    .modal-header {
+      background-color: $primary_300;
+      color: $primary_900;
+      border: 0;
     }
+    .modal-body {
+      background-color: $primary_50;
+      overflow-y: scroll;
+    }
+    .modal-footer {
+      background-color: $primary_50;
+      border: 0;
+      color: $primary_50;
+    }
+    .btn {
+      border: 0;
+      background-color: $primary_600;
+      color: $primary_50;
+      &:hover {
+        background-color: $primary_700;
+      }
+    }
+  }
 }
 
 #map-popup {
-    .modal-content {
-        .modal-body {
-            max-height: 400px;
-            .nav-tabs {
-                border-bottom: 1px solid $primary_600;
-                li {
-                    a {
-                        padding: 5px 10px;
-                        border: 0;
-                        &[aria-selected=true] {
-                            background-color: $primary_600;
-                            color: $primary_50;
-                        }
-                        &[aria-selected=false] {
-                            background-color: $primary_100;
-                            color: $primary_900;
-                            border-bottom: 1px solid $primary_600;
-                            &:hover {
-                                background-color: $primary_300;
-                            }
-                        }
-                    }
-                }
-            }
-            .tab-content {
-                border: 1px solid $primary_600;
-                background-color: $primary_100;
-                border-width: 3px 0 0 0;
-                padding: 10px;
-                img {
-                    max-width: 100%;
-                }
-                table {
-                    margin-bottom: 0;
-                    tr {
-                        &:hover {
-                            background-color: $primary_200;
-                        }
-                        td {
-                            border: 1px solid $primary_400;
-                        }
-                    }
-                }
-            }
-            .table-striped > tbody > tr:nth-of-type(odd) {
-                background-color: #ffffff;
-                &:hover {
-                    background-color: $primary_200;
-                }
-            }
-            .table-striped > tbody > tr:nth-of-type(even) {
-                background-color: $primary_50;
-                &:hover {
-                    background-color: $primary_200;
-                }
-            }
-        }
-        .modal-footer {
-            .open-larger-image-button {
-                margin-right: 10px;
-            }
-        }
-        .btn {
+  .modal-content {
+    .modal-body {
+      max-height: 400px;
+      .nav-tabs {
+        border-bottom: 1px solid $primary_600;
+        li {
+          a {
             padding: 5px 10px;
+            border: 0;
+            &[aria-selected=true] {
+              background-color: $primary_600;
+              color: $primary_50;
+            }
+            &[aria-selected=false] {
+              background-color: $primary_100;
+              color: $primary_900;
+              border-bottom: 1px solid $primary_600;
+              &:hover {
+                background-color: $primary_300;
+              }
+            }
+          }
         }
+      }
+      .tab-content {
+        border: 1px solid $primary_600;
+        background-color: $primary_100;
+        border-width: 3px 0 0 0;
+        padding: 10px;
+        img {
+          max-width: 100%;
+        }
+        table {
+          margin-bottom: 0;
+          tr {
+            &:hover {
+              background-color: $primary_200;
+            }
+            td {
+              border: 1px solid $primary_400;
+            }
+          }
+        }
+      }
+      .table-striped > tbody > tr:nth-of-type(odd) {
+        background-color: #ffffff;
+        &:hover {
+          background-color: $primary_200;
+        }
+      }
+      .table-striped > tbody > tr:nth-of-type(even) {
+        background-color: $primary_50;
+        &:hover {
+          background-color: $primary_200;
+        }
+      }
     }
+    .modal-footer {
+      .open-larger-image-button {
+        margin-right: 10px;
+      }
+    }
+    .btn {
+      padding: 5px 10px;
+    }
+  }
 }
 
 #mobile-layers-list {
-    .modal-dialog {
-        font-size: 20px;
-        height: 100%;
-        overflow: scroll;
-        .modal-content {
-            .modal-body {
-                background-color: $primary_50;
-                .panel {
-                    background-color: $primary_100;
-                    border: 0;
-                    .panel-heading {
-                        color: $primary_900;
-                        background-color: $primary_400;
-                        border: 0;
-                        i {
-                            float: right;
-                            line-height: inherit;
-                            color: $primary_100;
-                        }
-                    }
-                    .panel-body {
-                        padding: 0;
-                        border: 0;
-                        background-color: $primary_100;
-                        .list-group {
-                            padding: 0;
-                            border-width: 0;
-                            border-radius: 0;
-                            margin-bottom: 0;
-                            .list-group-item {
-                                background-color: $primary_100;
-                                border-color: $primary_400;
-                                color: $primary_900;
-                                border-width: 1px 0 0 0;
-                                border-radius: 0;
-                                &.active {
-                                    background-color: $primary_700;
-                                    border-color: $primary_400;
-                                    color: $primary_50;
-                                }
-                            }
-                        }
-                    }
-                }
+  .modal-dialog {
+    font-size: 20px;
+    height: 100%;
+    overflow: scroll;
+    .modal-content {
+      .modal-body {
+        background-color: $primary_50;
+        .panel {
+          background-color: $primary_100;
+          border: 0;
+          .panel-heading {
+            color: $primary_900;
+            background-color: $primary_400;
+            border: 0;
+            i {
+              float: right;
+              line-height: inherit;
+              color: $primary_100;
             }
+          }
+          .panel-body {
+            padding: 0;
+            border: 0;
+            background-color: $primary_100;
+            .list-group {
+              padding: 0;
+              border-width: 0;
+              border-radius: 0;
+              margin-bottom: 0;
+              .list-group-item {
+                background-color: $primary_100;
+                border-color: $primary_400;
+                color: $primary_900;
+                border-width: 1px 0 0 0;
+                border-radius: 0;
+                &.active {
+                  background-color: $primary_700;
+                  border-color: $primary_400;
+                  color: $primary_50;
+                }
+              }
+            }
+          }
         }
+      }
     }
+  }
 }
-

@@ -1,76 +1,77 @@
 .navRow {
-    nav {
-        color: $primary_50;
-        border-width: 0;
-        border-radius: 0;
-        background-color: $primary_700;
-        margin-bottom: 0;
-        .navbar-header {
-            img {
-                width: 50px;
-                height: 50px;
-                float: left;
-            }
-            .navbar-brand {
-                color: inherit;
-                font-family: "Fjalla One";
-            }
-            .navbar-toggle {
-                border-radius: 3px;
-                border-color: $primary_300;
-            }
-        }
-        .navbar-collapse {
-            .navbar-nav {
-                color: $primary_100;
-                li {
-                    &:hover {
-                        background-color: $primary_800;
-                    }
-                    a {
-                        color: inherit;
-                    }
-                }
-                .dropdown {
-                    &.open {
-                        a {
-                            background-color: $primary_800;
-                            &:active, &:focus {
-                                color: $primary_50;
-                            }
-                        }
-                    }
-                    .dropdown-menu {
-                        z-index: 500;
-                        background-color: $primary_800;
-                        li {
-                            background-color: $primary_800;
-                            a {
-                                color: $primary_100;
-                                background-color: $primary_800;
-                                &:hover {
-                                    background-color: $primary_700;
-                                }
-                            }
-                        }
-                        .shoreline {
-                            text-transform: capitalize;
-                        }
-                    }
-                }
-            }
-        }
+  nav {
+    color: $primary_50;
+    border-width: 0;
+    border-radius: 0;
+    background-color: $primary_700;
+    margin-bottom: 0;
+    .navbar-header {
+      img {
+        width: 50px;
+        height: 50px;
+        float: left;
+      }
+      .navbar-brand {
+        color: inherit;
+        font-family: "Fjalla One";
+      }
+      .navbar-toggle {
+        border-radius: 3px;
+        border-color: $primary_300;
+      }
     }
+    .navbar-collapse {
+      .navbar-nav {
+        color: $primary_100;
+        li {
+          &:hover {
+            background-color: $primary_800;
+          }
+          a {
+            color: inherit;
+          }
+        }
+        .dropdown {
+          &.open {
+            a {
+              background-color: $primary_800;
+              &:active,
+              &:focus {
+                color: $primary_50;
+              }
+            }
+          }
+          .dropdown-menu {
+            z-index: 500;
+            background-color: $primary_800;
+            li {
+              background-color: $primary_800;
+              a {
+                color: $primary_100;
+                background-color: $primary_800;
+                &:hover {
+                  background-color: $primary_700;
+                }
+              }
+            }
+            .shoreline {
+              text-transform: capitalize;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 767px) {
-    .navRow nav .navbar-collapse .navbar-nav {
-        font-size: 20px;
-        .dropdown .dropdown-menu li {
-            font-size: 18px;
-            a {
-                line-height: 30px;   
-            }         
-        }
+  .navRow nav .navbar-collapse .navbar-nav {
+    font-size: 20px;
+    .dropdown .dropdown-menu li {
+      font-size: 18px;
+      a {
+        line-height: 30px;
+      }
     }
+  }
 }

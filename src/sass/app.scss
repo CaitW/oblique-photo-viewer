@@ -13,25 +13,25 @@
 @import 'popups';
 // CSS
 html {
+  height: 100%;
+  body {
     height: 100%;
-    body {
-        height: 100%;
-        font-family: "Roboto";
-    }
+    font-family: "Roboto";
+  }
 }
 
 #react-root {
+  height: 100%;
+  .main-container {
     height: 100%;
-    .main-container {
+    .contentRow {
+      height: 100%;
+      margin-top: -52px;
+      padding-top: 52px;
+      .map-container {
         height: 100%;
-        .contentRow {
-            height: 100%;
-            margin-top: -52px;
-            padding-top: 52px;
-            .map-container {
-                height: 100%;
-                padding: 0;
-            }
-        }
+        padding: 0;
+      }
     }
+  }
 }
