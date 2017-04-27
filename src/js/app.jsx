@@ -20,30 +20,30 @@ class App extends React.Component {
         super();
     }
     updateDimensions () {
-    	let height = window.innerHeight;
-    	let width = window.innerWidth;
-    	store.dispatch(updateWindowDimensions(height, width));
+        let height = window.innerHeight;
+        let width = window.innerWidth;
+        store.dispatch(updateWindowDimensions(height, width));
     }
     componentDidMount () {
-    	this.updateDimensions();
+        this.updateDimensions();
         window.addEventListener("resize", this.updateDimensions);
     }
     render() {
         return (
-        	<Provider store={store}>
-	        	<Grid fluid={true} className="main-container">
+            <Provider store={store}>
+                <Grid fluid={true} className="main-container">
                     <AboutModal />
-	        		<MobileLayerList />
-					<Row className="navRow">
-						<NavBar />
-					</Row>
-					<Row className="contentRow">
-						<SideBar />
-						<MapContainer />
+                    <MobileLayerList />
+                    <Row className="navRow">
+                        <NavBar />
+                    </Row>
+                    <Row className="contentRow">
+                        <SideBar />
+                        <MapContainer />
                         <PinnedFeatureContainer />
-					</Row>
-				</Grid>
-			</Provider>
+                    </Row>
+                </Grid>
+            </Provider>
         );
     }
 }

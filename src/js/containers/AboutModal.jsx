@@ -26,18 +26,18 @@ class AboutModal extends React.Component {
             classNames.push("hidden");
         }
         return (<div id='about-modal' className={classNames.join(" ")}>
-			    <Modal.Dialog>
-				      <Modal.Header>
-				        	<Modal.Title>About</Modal.Title>
-				      </Modal.Header>
-				      <Modal.Body>
-				      	{CONFIG.meta.aboutText}
-				      </Modal.Body>
-				      <Modal.Footer>
-				        	<Button onClick={this.onCloseClick}>Close</Button>
-				      </Modal.Footer>
-			    </Modal.Dialog>
-			</div>);
+                <Modal.Dialog>
+                      <Modal.Header>
+                            <Modal.Title>About</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                          {CONFIG.meta.aboutText}
+                      </Modal.Body>
+                      <Modal.Footer>
+                            <Button onClick={this.onCloseClick}>Close</Button>
+                      </Modal.Footer>
+                </Modal.Dialog>
+            </div>);
     }
 }
 export default connect(mapStateToProps)(AboutModal);

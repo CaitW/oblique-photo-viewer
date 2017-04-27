@@ -15,10 +15,10 @@ export default class SideBar extends React.Component {
     }
     render () {
         return (
-			<Col xsHidden sm={5} md={4} lg={3} className="sidebar">
-				<LayerList />
-				<Legend />
-			</Col>
+            <Col xsHidden sm={5} md={4} lg={3} className="sidebar">
+                <LayerList />
+                <Legend />
+            </Col>
         )
     }
 }

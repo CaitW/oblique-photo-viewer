@@ -9,7 +9,7 @@ import PinnedFeature from '../components/PinnedFeature.jsx';
 
 const mapStateToProps = function(store) {
     return {
-    	pinnedFeatures: store.pinnedFeatures
+        pinnedFeatures: store.pinnedFeatures
     }
 }
 class PinnedFeatureContainer extends React.Component {
@@ -17,23 +17,23 @@ class PinnedFeatureContainer extends React.Component {
         super();
     }
     render() {
-    	let pinnedFeatures = [];
-    	for(let featureId in this.props.pinnedFeatures) {
-    		let pinnedFeature = this.props.pinnedFeatures[featureId];
-    		pinnedFeatures.push( 
-    			<PinnedFeature featureType={pinnedFeature.featureType} 
-    				featureProperties={pinnedFeature.featureProperties} 
-    				initialPosition={pinnedFeature.position} 
-    				layerId={pinnedFeature.layerId}
-    				featureId={featureId}
-    				key={featureId}
-    			/>
-    		)
-    	}
+        let pinnedFeatures = [];
+        for(let featureId in this.props.pinnedFeatures) {
+            let pinnedFeature = this.props.pinnedFeatures[featureId];
+            pinnedFeatures.push( 
+                <PinnedFeature featureType={pinnedFeature.featureType} 
+                    featureProperties={pinnedFeature.featureProperties} 
+                    initialPosition={pinnedFeature.position} 
+                    layerId={pinnedFeature.layerId}
+                    featureId={featureId}
+                    key={featureId}
+                />
+            )
+        }
         return (
-        	<div id="pinned-feature-container">
-        		{pinnedFeatures}
-			</div>
+            <div id="pinned-feature-container">
+                {pinnedFeatures}
+            </div>
         );
     }
 }

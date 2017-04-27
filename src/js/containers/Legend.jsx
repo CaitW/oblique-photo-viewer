@@ -59,11 +59,11 @@ class Legend extends React.Component {
         }
         return (
             <div id="legend" className="panel panel-default">
-	            <div className={headerClassNames.join(" ")} onClick={this.onPanelClick}>Legend<i className={iconClassNames.join(" ")}></i></div>
-	            <div className={bodyClassNames.join(" ")}>
-	            	{this.renderLayerStyleTypes()}
-	            </div>
-	        </div>
+                <div className={headerClassNames.join(" ")} onClick={this.onPanelClick}>Legend<i className={iconClassNames.join(" ")}></i></div>
+                <div className={bodyClassNames.join(" ")}>
+                    {this.renderLayerStyleTypes()}
+                </div>
+            </div>
         );
     }
 }

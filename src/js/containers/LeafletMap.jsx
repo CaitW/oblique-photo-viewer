@@ -53,15 +53,15 @@ class LeafletMap extends React.Component {
         }
     }
     componentWillReceiveProps(nextProps) {
-    	let oldProps = this.props;
-    	this.toggleBasemaps(oldProps.basemaps, nextProps.basemaps);
+        let oldProps = this.props;
+        this.toggleBasemaps(oldProps.basemaps, nextProps.basemaps);
         this.toggleLayers(oldProps.layers, nextProps.layers);
         this.toggleMapActions(oldProps.map, nextProps.map);
     }
     render() {
         return (
             <div ref="map" id="map" data-zoom={this.props.map.zoom}>
-			</div>
+            </div>
         );
     }
 }

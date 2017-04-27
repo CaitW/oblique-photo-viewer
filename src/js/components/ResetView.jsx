@@ -13,11 +13,11 @@ export default class ResetView extends React.Component {
         super();
     }
     onButtonClick () {
-    	store.dispatch(resetMapView());
+        store.dispatch(resetMapView());
     }
     render() {
-    	return (
+        return (
             <NavItem onClick={this.onButtonClick} href="#">Reset View</NavItem>
-    	)
+        )
     }
 }
