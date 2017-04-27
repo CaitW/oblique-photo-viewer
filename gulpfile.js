@@ -9,6 +9,7 @@ var pump = require('pump');
 var del = require('del');
 var fs = require('fs');
 var runSequence = require('run-sequence');
+var eslint = require('gulp-eslint');
 gulp.task('clean', function () {
   return del([
     'dist/*'
@@ -65,12 +66,33 @@ gulp.task('compress', ['scripts'], function(cb) {
         gulp.dest('dist')
     ]);
 });
+gulp.task('lint', () => {
+    // ESLint ignores files with "node_modules" paths.
+    // So, it's best to have gulp ignore the directory as well.
+    // Also, Be sure to return the stream from the task;
+    // Otherwise, the task may end before the stream has finished.
+    return gulp.src(['src/js/**/*.js','!node_modules/**','!src/js/lib/**'])
+        // eslint() attaches the lint output to the "eslint" property
+        // of the file object so it can be used by other modules.
+        .pipe(eslint())
+        // eslint.format() outputs the lint results to the console.
+        // Alternatively use eslint.formatEach() (see Docs).
+        .pipe(eslint.format())
+        // To have the process exit with an error code (1) on
+        // lint error, return the stream and pipe to failAfterError last.
+        .pipe(eslint.failAfterError());
+});
+// default task, no cleaning
+gulp.task('default', ['html', 'copy', 'sass', 'scripts', 'webpack', 'compress']);
 // this task runs the "clean" mechanism prior to rebuilding the files
 gulp.task('build', function(callback) {
   runSequence('clean',
               ['default'],
               callback);
 });
-// default task, no cleaning
-gulp.task('default', ['html', 'copy', 'sass', 'scripts', 'webpack', 'compress']);
+gulp.task('deploy', function(callback) {
+  runSequence('lint',
+              ['build'],
+              callback);
+});
 gulp.task('watch', ['default', 'watch-files']);
