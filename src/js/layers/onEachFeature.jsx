@@ -50,9 +50,9 @@ function handleClick(feature, layer, dataType, map) {
                 // setTimeout hack to get around this current issue with React:
                 // https://github.com/facebook/react/issues/3298
                 setTimeout(function () {
-                   unmountComponentAtNode(container); 
-                   popup._close();
-               },10);
+                    unmountComponentAtNode(container); 
+                    popup._close();
+                },10);
             };
             popup.on("add", function () {
                 render(

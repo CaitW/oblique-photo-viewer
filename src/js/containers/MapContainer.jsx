@@ -31,7 +31,7 @@ class MapContainer extends React.Component {
 				<MobileFeatureModal visible={this.props.mobileFeatureModal.visible} featureProperties={this.props.mobileFeatureModal.featureProperties} featureType={this.props.mobileFeatureModal.featureType} onCloseClick={this.closeMobileFeatureModal} title={this.props.mobileFeatureModal.title}/>
 				<LeafletMap />
 			</Col>
-		);
+        );
     }
 }
 export default connect(mapStateToProps)(MapContainer);

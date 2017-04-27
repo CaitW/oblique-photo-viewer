@@ -44,7 +44,7 @@ class App extends React.Component {
 					</Row>
 				</Grid>
 			</Provider>
-		);
+        );
     }
 }
 render(<App/>, document.getElementById('react-root'));

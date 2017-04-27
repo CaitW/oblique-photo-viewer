@@ -11,7 +11,7 @@ import CONFIG from '../config.json';
 import {zoomToCounty} from '../ducks/map.js';
 
 const mapStateToProps = function (store) {
-	return {};
+    return {};
 };
 class ZoomToCounty extends React.Component {
     constructor(props) {

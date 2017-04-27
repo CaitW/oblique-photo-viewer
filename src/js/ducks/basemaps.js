@@ -31,7 +31,7 @@ export default function basemaps(state = initialbasemaps, action) {
             break;
         default:
             newState = state;
-        break;
+            break;
     }
     return newState;
 }

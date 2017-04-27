@@ -34,7 +34,7 @@ class PinnedFeatureContainer extends React.Component {
         	<div id="pinned-feature-container">
         		{pinnedFeatures}
 			</div>
-		);
+        );
     }
 }
 export default connect(mapStateToProps)(PinnedFeatureContainer);
