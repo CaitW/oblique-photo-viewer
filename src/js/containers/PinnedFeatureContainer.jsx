@@ -4,7 +4,6 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
-import store from '../store.js';
 import PinnedFeature from '../components/PinnedFeature.jsx';
 
 const mapStateToProps = function(store) {

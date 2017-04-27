@@ -83,6 +83,7 @@ gulp.task('lint', () => {
         // lint error, return the stream and pipe to failAfterError last.
         .pipe(eslint.failAfterError());
 });
+// remove tabs, replace with spaces
 gulp.task('soften', () => {
     // ESLint ignores files with "node_modules" paths.
     // So, it's best to have gulp ignore the directory as well.

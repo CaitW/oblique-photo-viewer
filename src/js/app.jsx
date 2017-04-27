@@ -1,7 +1,6 @@
 /**
   * This file is the primary entry point for the application. 
   */
-import CONFIG from './config.json';
 import React from 'react';
 import { render } from 'react-dom';
 import NavBar from './containers/NavBar.jsx';

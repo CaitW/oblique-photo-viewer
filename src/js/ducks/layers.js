@@ -1,6 +1,6 @@
 /**
  * layers.js Ducks
- * 
+ *
  * Contains the actions and reducer part that controls layers in the map.
  * - Controls adding and removing layers
  * - For each unique layer style present in ech layer, it creates a cache of that style
@@ -54,29 +54,33 @@ export default function layers(state = initialLayers, action) {
     let newState = state;
     switch (action.type) {
         case "MAP:TOGGLE_LAYER":
-            newState = {...state,
-                layersById: {...state.layersById,
-                    [action.layerId]: {...state.layersById[action.layerId],
-                        active: !state.layersById[action.layerId].active
-                    }
-                }
-            }
-            break;
-        case "LAYER:STYLE_CACHE_UPDATE":
-            let styleCache = {
-                style: action.style,
-                geometryType: action.geometryType
-            };
-            newState = {...state,
-                layersById: {...state.layersById,
-                    [action.layerId]: {...state.layersById[action.layerId],
-                        styleCache: {...state.layersById[action.layerId].styleCache,
-                            [action.propertyName]: styleCache
+            {
+                newState = {...state,
+                    layersById: {...state.layersById,
+                        [action.layerId]: {...state.layersById[action.layerId],
+                            active: !state.layersById[action.layerId].active
                         }
                     }
                 }
+                break;
             }
-            break;
-    };
+        case "LAYER:STYLE_CACHE_UPDATE":
+            {
+                let styleCache = {
+                    style: action.style,
+                    geometryType: action.geometryType
+                };
+                newState = {...state,
+                    layersById: {...state.layersById,
+                        [action.layerId]: {...state.layersById[action.layerId],
+                            styleCache: {...state.layersById[action.layerId].styleCache,
+                                [action.propertyName]: styleCache
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+    }
     return newState;
 }

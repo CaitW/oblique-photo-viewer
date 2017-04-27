@@ -3,8 +3,7 @@
  * This creates the group container that holds each Basemap list item, in the sidebar and mobile layer list
  */
 import React from 'react';
-import { toggleBasemap } from '../ducks/basemaps.js';
-import { Panel, ListGroup } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 import Basemap from './Basemap.jsx';
 const BasemapList = (props) => {
     let basemaps = [];

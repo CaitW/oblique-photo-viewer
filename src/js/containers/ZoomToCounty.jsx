@@ -1,20 +1,16 @@
 /**
  * ZoomToCounty.jsx
- * This creates the dropdown that contains each county with a shoreline. 
- * Upon clicking that county, the map will zoom to that county's shoreline. 
+ * This creates the dropdown that contains each county with a shoreline.
+ * Upon clicking that county, the map will zoom to that county's shoreline.
  */
 import React from 'react';
-import { connect } from 'react-redux';
 import { MenuItem, NavDropdown } from 'react-bootstrap';
 import store from '../store.js';
 import CONFIG from '../config.json';
 import {zoomToCounty} from '../ducks/map.js';
 
-const mapStateToProps = function (store) {
-    return {};
-};
-class ZoomToCounty extends React.Component {
-    constructor(props) {
+export default class ZoomToCounty extends React.Component {
+    constructor() {
         super();
     }
     onMenuItemClick (countyName) {
@@ -33,4 +29,3 @@ class ZoomToCounty extends React.Component {
         )
     }
 }
-export default connect(mapStateToProps)(ZoomToCounty);

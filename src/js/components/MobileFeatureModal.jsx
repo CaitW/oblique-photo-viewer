@@ -21,19 +21,21 @@ const MobileFeatureModal = (props) => {
     let footer = [<Button key="close" onClick={props.onCloseClick}>Close</Button>];
     switch (props.featureType) {
         case "photo":
-            let photoURLs = getPhotoURLs(props.featureProperties);
-            tabs.push(<Tab key="image" eventKey={1} title="Image">
-                    <img src={photoURLs.popup} />
-                </Tab>);
-            tabs.push(<Tab key="data" eventKey={2} title="Data">
-                      <Table striped bordered condensed hover>
-                        <tbody>
-                            {rows}
-                        </tbody>
-                      </Table>
-                </Tab>);
-            footer.unshift(<a href={photoURLs.original} key="open-larger-image-button" target="_blank" rel="noopener noreferrer" ><Button className="open-larger-image-button">Open Original in New Window</Button></a>)
-            break;
+            {
+                let photoURLs = getPhotoURLs(props.featureProperties);
+                tabs.push(<Tab key="image" eventKey={1} title="Image">
+                            <img src={photoURLs.popup} />
+                        </Tab>);
+                tabs.push(<Tab key="data" eventKey={2} title="Data">
+                              <Table striped bordered condensed hover>
+                                <tbody>
+                                    {rows}
+                                </tbody>
+                              </Table>
+                        </Tab>);
+                footer.unshift(<a href={photoURLs.original} key="open-larger-image-button" target="_blank" rel="noopener noreferrer" ><Button className="open-larger-image-button">Open Original in New Window</Button></a>)
+                break;
+            }
         default:
             tabs.push(<Tab key="data" eventKey={1} title="Data">
                       <Table striped bordered condensed hover>

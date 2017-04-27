@@ -3,7 +3,7 @@
  * This creates the modal that's displayed when a user clicks on an object in the map
  */
 import React from 'react';
-import { Modal, Button, Table, Tabs, Tab } from 'react-bootstrap';
+import { Table, Tabs, Tab } from 'react-bootstrap';
 import { getPhotoURLs } from '../util.js';
 import {newPinnedFeature} from '../ducks/pinnedFeatures.js';
 import store from '../store.js';
@@ -50,7 +50,7 @@ class FeaturePopup extends React.Component {
         }
         let tabs = [];
         switch (this.props.featureType) {
-            case "photo":
+            case "photo": {
                 let photoURLs = getPhotoURLs(this.props.featureProperties);
                 tabs.push(<Tab key="image" eventKey={1} title="Image">
                     <img src={photoURLs.popup} onLoad={this.update}/>
@@ -63,7 +63,8 @@ class FeaturePopup extends React.Component {
                       </Table>
                 </Tab>);
                 break;
-            default:
+            }
+            default: {
                 tabs.push(<Tab key="data" eventKey={1} title="Data">
                       <Table striped bordered condensed hover>
                         <tbody>
@@ -72,6 +73,7 @@ class FeaturePopup extends React.Component {
                       </Table>
                 </Tab>);
                 break;
+            }
         }
         return (
             <div className="feature-popup-content" onClick={this.bringToFront}>

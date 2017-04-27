@@ -3,7 +3,7 @@ import {LAYER_STYLES} from '../layers/styles.js';
 import ON_EACH_FEATURE from '../layers/onEachFeature.jsx';
 import { mapNewZoomLevel } from '../ducks/map.js';
 import store from '../store.js';
-var axios = require('axios');
+import axios from 'axios';
 export default class ObliquePhotoMap {
     constructor(map) {
         var self = this;

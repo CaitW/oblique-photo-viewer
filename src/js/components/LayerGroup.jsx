@@ -4,7 +4,7 @@
  */
 import React from 'react';
 import Layer from './Layer.jsx';
-import { ListGroup, Panel } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 const LayerGroup = (props) => {
     let layers = [];
     for (let layer in props.layers) {

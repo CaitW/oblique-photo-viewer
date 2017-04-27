@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 import store from '../store.js';
 import ObliquePhotoMap from '../classes/ObliquePhotoMap.js';
 import { doneZooming } from '../ducks/map.js';
-import {mapLayerGroupsToLayers} from '../selectors.js';
 
 const mapStateToProps = function(store) {
     return {
@@ -19,7 +18,7 @@ const mapStateToProps = function(store) {
     };
 }
 class LeafletMap extends React.Component {
-    constructor(props) {
+    constructor() {
         super();
     }
     componentDidMount() {

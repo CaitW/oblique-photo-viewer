@@ -3,7 +3,7 @@
  * This creates the modal that's displayed when a user clicks on an object in the map
  */
 import React from 'react';
-import { Modal, Button, Table, Tabs, Tab } from 'react-bootstrap';
+import { Table, Tabs, Tab } from 'react-bootstrap';
 import { getPhotoURLs } from '../util.js';
 import { closePinnedFeature } from '../ducks/pinnedFeatures.js';
 import store from '../store.js';
@@ -47,17 +47,19 @@ class PinnedFeature extends React.Component {
         let tabs = [];
         switch (this.props.featureType) {
             case "photo":
-                let photoURLs = getPhotoURLs(this.props.featureProperties);
-                tabs.push(<Tab key="image" eventKey={1} title="Image">
-                    <img src={photoURLs.popup} onLoad={this.update}/>
-                </Tab>);
-                tabs.push(<Tab key="data" eventKey={2} title="Data">
-                      <Table striped bordered condensed hover>
-                        <tbody>
-                            {rows}
-                        </tbody>
-                      </Table>
-                </Tab>);
+                {
+                    let photoURLs = getPhotoURLs(this.props.featureProperties);
+                    tabs.push(<Tab key="image" eventKey={1} title="Image">
+                            <img src={photoURLs.popup} onLoad={this.update}/>
+                        </Tab>);
+                    tabs.push(<Tab key="data" eventKey={2} title="Data">
+                          <Table striped bordered condensed hover>
+                            <tbody>
+                                {rows}
+                            </tbody>
+                          </Table>
+                    </Tab>);
+                }
                 break;
             default:
                 tabs.push(<Tab key="data" eventKey={1} title="Data">
@@ -69,6 +71,7 @@ class PinnedFeature extends React.Component {
                 </Tab>);
                 break;
         }
+
         let initialPositionAdjustedForContent = {
             x: this.props.initialPosition.x - (this.state.width / 2),
             y: this.props.initialPosition.y - this.state.height

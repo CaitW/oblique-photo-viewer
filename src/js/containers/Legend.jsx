@@ -5,8 +5,7 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
-import { Well } from 'react-bootstrap';
-import { getActiveLayers, getActiveLayerStyleTypes } from '../selectors.js';
+import { getActiveLayerStyleTypes } from '../selectors.js';
 
 const mapStateToProps = function(store) {
     return {

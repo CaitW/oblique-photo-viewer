@@ -1,5 +1,4 @@
 import { createStore, combineReducers } from 'redux';
-import CONFIG from './config.json';
 import layers from './ducks/layers.js';
 import basemaps from './ducks/basemaps.js';
 import map from './ducks/map.js';

@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import LayerList from '../containers/LayerList.jsx';
-import { ListGroup, Accordion, Modal, Button } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import store from '../store.js';
 import { closeMobileLayerList } from '../ducks/mobile.js';

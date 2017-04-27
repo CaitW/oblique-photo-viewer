@@ -7,7 +7,7 @@
  * - the button that activates the AboutModal
  */
 import React from 'react';
-import { Nav, Navbar, NavItem, Col, MenuItem, NavDropdown } from 'react-bootstrap';
+import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import ZoomToCounty from './ZoomToCounty.jsx';
 import ResetView from '../components/ResetView.jsx';
 import { openMobileLayerList } from '../ducks/mobile.js';
