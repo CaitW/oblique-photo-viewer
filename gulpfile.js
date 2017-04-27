@@ -10,7 +10,6 @@ var del = require('del');
 var fs = require('fs');
 var runSequence = require('run-sequence');
 var eslint = require('gulp-eslint');
-var soften = require('gulp-soften');
 gulp.task('clean', function () {
   return del([
     'dist/*'
@@ -72,7 +71,12 @@ gulp.task('lint', () => {
     // So, it's best to have gulp ignore the directory as well.
     // Also, Be sure to return the stream from the task;
     // Otherwise, the task may end before the stream has finished.
-    return gulp.src(['src/js/**/*.js','!node_modules/**','!src/js/lib/**'])
+    return gulp.src([
+        'src/js/**/*.js',
+        'src/js/**/*.jsx',
+        '!node_modules/**',
+        '!src/js/lib/**'
+        ])
         // eslint() attaches the lint output to the "eslint" property
         // of the file object so it can be used by other modules.
         .pipe(eslint())
@@ -83,15 +87,17 @@ gulp.task('lint', () => {
         // lint error, return the stream and pipe to failAfterError last.
         .pipe(eslint.failAfterError());
 });
-// remove tabs, replace with spaces
-gulp.task('soften', () => {
-    // ESLint ignores files with "node_modules" paths.
-    // So, it's best to have gulp ignore the directory as well.
-    // Also, Be sure to return the stream from the task;
-    // Otherwise, the task may end before the stream has finished.
-    return gulp.src(['src/js/**/*.js','src/js/**/*.jsx','!node_modules/**','!src/js/lib/**'])
-        .pipe(soften(4))
-        .pipe(gulp.dest('./src/js/'));
+// Lint CSS
+gulp.task('lint-css', function lintCssTask() {
+  const gulpStylelint = require('gulp-stylelint');
+
+  return gulp
+    .src(['src/sass/*.scss','!src/sass/lib/**'])
+    .pipe(gulpStylelint({
+      reporters: [
+        {formatter: 'string', console: true}
+      ]
+    }));
 });
 // default task, no cleaning
 gulp.task('default', ['html', 'copy', 'sass', 'scripts', 'webpack', 'compress']);
@@ -101,6 +107,7 @@ gulp.task('build', function(callback) {
               ['default'],
               callback);
 });
+// runs linting task prior to calling default build process
 gulp.task('deploy', function(callback) {
   runSequence('lint',
               ['build'],
