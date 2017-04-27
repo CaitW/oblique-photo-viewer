@@ -66,6 +66,9 @@ gulp.task('compress', ['scripts'], function(cb) {
         gulp.dest('dist')
     ]);
 });
+// Javascript Linting
+// Via CLI:
+// eslint --ext .js,.jsx src/js/** --ignore-pattern '/lib/' --ignore-pattern '*.json'
 gulp.task('lint', () => {
     // ESLint ignores files with "node_modules" paths.
     // So, it's best to have gulp ignore the directory as well.
@@ -88,6 +91,8 @@ gulp.task('lint', () => {
         .pipe(eslint.failAfterError());
 });
 // Lint CSS
+// Command line command to lint:
+// stylefmt -r "src/sass/*.scss"
 gulp.task('lint-css', function lintCssTask() {
   const gulpStylelint = require('gulp-stylelint');
 

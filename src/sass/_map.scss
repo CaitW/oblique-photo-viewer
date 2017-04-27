@@ -1,8 +1,6 @@
 #map {
   height: 100%;
-  /**
-     * Layer Styling
-     */
+  // Layer Styling
   .layer-photos-1976,
   .layer-photos-2007,
   .layer-structure-1976,
@@ -11,6 +9,7 @@
   .layer-beachclass-2007,
   .layer-backshore-1976,
   .layer-backshore-2007 {
+    // TODO
   }
   // Zoom Breakpoints
   &[data-zoom='1'],
@@ -39,8 +38,7 @@
   &[data-zoom='9'],
   &[data-zoom='10'],
   &[data-zoom='11'],
-  &[data-zoom='12'],
-   {
+  &[data-zoom='12'] {
     .layer-photos-1976,
     .layer-photos-2007,
     .layer-structure-1976,
