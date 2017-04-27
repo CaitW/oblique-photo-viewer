@@ -10,6 +10,7 @@ var del = require('del');
 var fs = require('fs');
 var runSequence = require('run-sequence');
 var eslint = require('gulp-eslint');
+var soften = require('gulp-soften');
 gulp.task('clean', function () {
   return del([
     'dist/*'
@@ -81,6 +82,15 @@ gulp.task('lint', () => {
         // To have the process exit with an error code (1) on
         // lint error, return the stream and pipe to failAfterError last.
         .pipe(eslint.failAfterError());
+});
+gulp.task('soften', () => {
+    // ESLint ignores files with "node_modules" paths.
+    // So, it's best to have gulp ignore the directory as well.
+    // Also, Be sure to return the stream from the task;
+    // Otherwise, the task may end before the stream has finished.
+    return gulp.src(['src/js/**/*.js','!node_modules/**','!src/js/lib/**'])
+        .pipe(soften(4))
+        .pipe(gulp.dest('./'));
 });
 // default task, no cleaning
 gulp.task('default', ['html', 'copy', 'sass', 'scripts', 'webpack', 'compress']);
