@@ -10,6 +10,7 @@ var del = require('del');
 var fs = require('fs');
 var runSequence = require('run-sequence');
 var eslint = require('gulp-eslint');
+var gulpStylelint = require('gulp-stylelint');
 gulp.task('clean', function () {
   return del([
     'dist/*'
@@ -93,9 +94,7 @@ gulp.task('lint', () => {
 // Lint CSS
 // Command line command to lint:
 // stylefmt -r "src/sass/*.scss"
-gulp.task('lint-css', function lintCssTask() {
-  const gulpStylelint = require('gulp-stylelint');
-
+gulp.task('lint-css', function () {
   return gulp
     .src(['src/sass/*.scss','!src/sass/lib/**'])
     .pipe(gulpStylelint({
@@ -104,18 +103,15 @@ gulp.task('lint-css', function lintCssTask() {
       ]
     }));
 });
-// default task, no cleaning
+// default task
 gulp.task('default', ['html', 'copy', 'sass', 'scripts', 'webpack', 'compress']);
-// this task runs the "clean" mechanism prior to rebuilding the files
-gulp.task('build', function(callback) {
-  runSequence('clean',
+// pre-deploy tasks (for releases)
+gulp.task('pre-deploy', ['clean','lint','lint-css']);
+// this task runs the "clean" and linting mechanisms prior to rebuilding the files
+gulp.task('deploy', function(callback) {
+  runSequence('pre-deploy',
               ['default'],
               callback);
 });
-// runs linting task prior to calling default build process
-gulp.task('deploy', function(callback) {
-  runSequence('lint',
-              ['build'],
-              callback);
-});
+// for active development
 gulp.task('watch', ['default', 'watch-files']);

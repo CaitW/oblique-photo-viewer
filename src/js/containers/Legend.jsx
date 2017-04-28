@@ -42,8 +42,8 @@ class Legend extends React.Component {
                     </ul>
                 </div>
             );
-        }  
-        return layers;      
+        }
+        return layers;
     }
     render() {
         let bodyClassNames = ["panel-body", "pullDown"];
