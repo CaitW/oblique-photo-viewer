@@ -3,14 +3,19 @@
   */
 import React from 'react';
 import { render } from 'react-dom';
+// containers
 import NavBar from './containers/NavBar.jsx';
 import SideBar from './containers/SideBar.jsx';
 import MapContainer from './containers/MapContainer.jsx';
 import MobileLayerList from './containers/MobileLayerList.jsx';
 import AboutModal from './containers/AboutModal.jsx';
 import PinnedFeatureContainer from './containers/PinnedFeatureContainer.jsx';
+import LayerList from './containers/LayerList.jsx';
+import Legend from './containers/Legend.jsx';
+// layout components
 import { Grid, Row } from 'react-bootstrap';
 import { Provider } from 'react-redux';
+// Redux
 import store from './store.js';
 import { updateWindowDimensions } from './ducks/mobile.js';
 
@@ -37,7 +42,10 @@ class App extends React.Component {
                         <NavBar />
                     </Row>
                     <Row className="contentRow">
-                        <SideBar />
+                        <SideBar>
+                            <LayerList />
+                            <Legend />
+                        </SideBar>
                         <MapContainer />
                         <PinnedFeatureContainer />
                     </Row>
