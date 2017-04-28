@@ -5,7 +5,7 @@ import React from 'react';
 import { render } from 'react-dom';
 // containers
 import NavBar from './containers/NavBar.jsx';
-import SideBar from './containers/SideBar.jsx';
+import SideBar from './components/SideBar.jsx';
 import MapContainer from './containers/MapContainer.jsx';
 import MobileLayerList from './containers/MobileLayerList.jsx';
 import AboutModal from './containers/AboutModal.jsx';
