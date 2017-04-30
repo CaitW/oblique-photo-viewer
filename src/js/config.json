@@ -38,7 +38,7 @@
                         "styleID": "backshore_1976",
                         "onEachFeatureID": "backshore_1976",
                         "dataLocation": "./data/layers/backshore_1976.json",
-                        "active": true
+                        "active": false
                     },
                     "Beachclass": {
                         "layerName": "Beach Protection",
@@ -100,6 +100,19 @@
                         "styleID": "photos_2007",
                         "onEachFeatureID": "photos_2007",
                         "active": false
+                    }
+                }
+            },
+            "Bluff Profiles": {
+                "name": "Bluff Profiles",
+                "layers": {
+                    "Profile Lines": {
+                        "layerName": "Profile Lines",
+                        "type": "geojson",
+                        "styleID": "profiles",
+                        "onEachFeatureID": "profiles",
+                        "dataLocation": "./data/layers/profiles-simplified.json",
+                        "active": true
                     }
                 }
             },

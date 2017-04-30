@@ -1,7 +1,7 @@
 /**
  * styles.js
- * This contains style functions that are applied to each layer when they are loaded. 
- * Additionally, this file caches the styles applied by each layer, so that when 
+ * This contains style functions that are applied to each layer when they are loaded.
+ * Additionally, this file caches the styles applied by each layer, so that when
  * the user activates them in the map, the legend can display all the associated styles.
  */
 import store from '../store.js';
@@ -226,6 +226,17 @@ var LAYER_STYLES = {
                 break;
         }
         return addToCache(this.layerId, feature.properties["Shore Protection Classification"], style, feature.geometry.type);
+    },
+    profiles: function (feature) {
+        let style = {
+            weight: 5,
+            opacity: 1,
+            lineCap: "round",
+            lineJoin: "round",
+            className: "layer-profiles",
+            color: COLORS.BLACK
+        };
+        return addToCache(this.layerId, "Profile Line", style, feature.geometry.type);
     }
 }
 export {LAYER_STYLES};

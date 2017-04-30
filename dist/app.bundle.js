@@ -8210,25 +8210,33 @@
 
 	var _SideBar2 = _interopRequireDefault(_SideBar);
 
-	var _MapContainer = __webpack_require__(784);
+	var _MapContainer = __webpack_require__(760);
 
 	var _MapContainer2 = _interopRequireDefault(_MapContainer);
 
-	var _MobileLayerList = __webpack_require__(817);
+	var _MobileLayerList = __webpack_require__(811);
 
 	var _MobileLayerList2 = _interopRequireDefault(_MobileLayerList);
 
-	var _AboutModal = __webpack_require__(818);
+	var _AboutModal = __webpack_require__(817);
 
 	var _AboutModal2 = _interopRequireDefault(_AboutModal);
 
-	var _PinnedFeatureContainer = __webpack_require__(819);
+	var _PinnedFeatureContainer = __webpack_require__(818);
 
 	var _PinnedFeatureContainer2 = _interopRequireDefault(_PinnedFeatureContainer);
 
+	var _LayerList = __webpack_require__(812);
+
+	var _LayerList2 = _interopRequireDefault(_LayerList);
+
+	var _Legend = __webpack_require__(821);
+
+	var _Legend2 = _interopRequireDefault(_Legend);
+
 	var _reactBootstrap = __webpack_require__(476);
 
-	var _reactRedux = __webpack_require__(765);
+	var _reactRedux = __webpack_require__(762);
 
 	var _store = __webpack_require__(729);
 
@@ -8245,6 +8253,12 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * This file is the primary entry point for the application. 
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
+
+	// containers
+
+	// layout components
+
+	// Redux
 
 
 	var App = function (_React$Component) {
@@ -8288,7 +8302,12 @@
 	                    _react2.default.createElement(
 	                        _reactBootstrap.Row,
 	                        { className: 'contentRow' },
-	                        _react2.default.createElement(_SideBar2.default, null),
+	                        _react2.default.createElement(
+	                            _SideBar2.default,
+	                            null,
+	                            _react2.default.createElement(_LayerList2.default, null),
+	                            _react2.default.createElement(_Legend2.default, null)
+	                        ),
 	                        _react2.default.createElement(_MapContainer2.default, null),
 	                        _react2.default.createElement(_PinnedFeatureContainer2.default, null)
 	                    )
@@ -49821,7 +49840,7 @@
 							"styleID": "backshore_1976",
 							"onEachFeatureID": "backshore_1976",
 							"dataLocation": "./data/layers/backshore_1976.json",
-							"active": true
+							"active": false
 						},
 						"Beachclass": {
 							"layerName": "Beach Protection",
@@ -49883,6 +49902,19 @@
 							"styleID": "photos_2007",
 							"onEachFeatureID": "photos_2007",
 							"active": false
+						}
+					}
+				},
+				"Bluff Profiles": {
+					"name": "Bluff Profiles",
+					"layers": {
+						"Profile Lines": {
+							"layerName": "Profile Lines",
+							"type": "geojson",
+							"styleID": "profiles",
+							"onEachFeatureID": "profiles",
+							"dataLocation": "./data/layers/profiles-simplified.json",
+							"active": true
 						}
 					}
 				},
@@ -50528,60 +50560,27 @@
 	    value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(299);
 
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactBootstrap = __webpack_require__(476);
 
-	var _LayerList = __webpack_require__(760);
-
-	var _LayerList2 = _interopRequireDefault(_LayerList);
-
-	var _Legend = __webpack_require__(783);
-
-	var _Legend2 = _interopRequireDefault(_Legend);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Sidebar.jsx
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component creates the sidebar, which contains:
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * - Layers List
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * - Legend
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-
-	var SideBar = function (_React$Component) {
-	    _inherits(SideBar, _React$Component);
-
-	    function SideBar() {
-	        _classCallCheck(this, SideBar);
-
-	        return _possibleConstructorReturn(this, (SideBar.__proto__ || Object.getPrototypeOf(SideBar)).call(this));
-	    }
-
-	    _createClass(SideBar, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                _reactBootstrap.Col,
-	                { xsHidden: true, sm: 5, md: 4, lg: 3, className: 'sidebar' },
-	                _react2.default.createElement(_LayerList2.default, null),
-	                _react2.default.createElement(_Legend2.default, null)
-	            );
-	        }
-	    }]);
-
-	    return SideBar;
-	}(_react2.default.Component);
-
+	/**
+	 * Sidebar.jsx
+	 * This component creates the sidebar, which contains:
+	 * - Layers List
+	 * - Legend
+	 */
+	var SideBar = function SideBar(props) {
+	    return _react2.default.createElement(
+	        _reactBootstrap.Col,
+	        { xsHidden: true, sm: 5, md: 4, lg: 3, className: 'sidebar' },
+	        props.children
+	    );
+	};
 	exports.default = SideBar;
 
 /***/ },
@@ -50596,31 +50595,35 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
+	                                                                                                                                                                                                                                                                   * MapContainer.jsx
+	                                                                                                                                                                                                                                                                   * This component contains the primary map container (LeafletMap), as well as additional modals that appear over the map.
+	                                                                                                                                                                                                                                                                   */
+
+
 	var _react = __webpack_require__(299);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _LayerGroup = __webpack_require__(761);
-
-	var _LayerGroup2 = _interopRequireDefault(_LayerGroup);
-
-	var _BasemapList = __webpack_require__(763);
-
-	var _BasemapList2 = _interopRequireDefault(_BasemapList);
-
 	var _reactBootstrap = __webpack_require__(476);
 
-	var _reactRedux = __webpack_require__(765);
+	var _LeafletMap = __webpack_require__(761);
+
+	var _LeafletMap2 = _interopRequireDefault(_LeafletMap);
+
+	var _MobileFeatureModal = __webpack_require__(808);
+
+	var _MobileFeatureModal2 = _interopRequireDefault(_MobileFeatureModal);
+
+	var _reactRedux = __webpack_require__(762);
 
 	var _store = __webpack_require__(729);
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _layers = __webpack_require__(751);
+	var _mobile = __webpack_require__(755);
 
-	var _basemaps = __webpack_require__(753);
-
-	var _selectors = __webpack_require__(781);
+	var _selectors = __webpack_require__(809);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50628,92 +50631,46 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * LayerList.jsx
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component takes the current layers and basemaps and displays them, grouped by type, in the sidebar and mobile layers list.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
-	        layers: (0, _selectors.mapLayerGroupsToLayers)(store),
-	        basemaps: store.basemaps
+	        mobileFeatureModal: _extends({}, store.mobile.featureModal, {
+	            title: (0, _selectors.getMobileFeatureModalTitle)(store)
+	        })
 	    };
 	};
 
-	var LayerList = function (_React$Component) {
-	    _inherits(LayerList, _React$Component);
+	var MapContainer = function (_React$Component) {
+	    _inherits(MapContainer, _React$Component);
 
-	    function LayerList(props) {
-	        _classCallCheck(this, LayerList);
+	    function MapContainer() {
+	        _classCallCheck(this, MapContainer);
 
-	        var _this = _possibleConstructorReturn(this, (LayerList.__proto__ || Object.getPrototypeOf(LayerList)).call(this, props));
-
-	        var groups = {};
-	        groups["Basemaps"] = false;
-	        for (var layerGroupId in _this.props.layers) {
-	            groups[layerGroupId] = false;
-	        }
-	        _this.state = groups;
-	        _this.onPanelClick = _this.onPanelClick.bind(_this);
-	        return _this;
+	        return _possibleConstructorReturn(this, (MapContainer.__proto__ || Object.getPrototypeOf(MapContainer)).call(this));
 	    }
 
-	    _createClass(LayerList, [{
-	        key: 'onLayerClick',
-	        value: function onLayerClick(layerId) {
-	            _store2.default.dispatch((0, _layers.toggleLayer)(layerId));
-	        }
-	    }, {
-	        key: 'onBasemapClick',
-	        value: function onBasemapClick(basemapID) {
-	            _store2.default.dispatch((0, _basemaps.toggleBasemap)(basemapID));
-	        }
-	    }, {
-	        key: 'onPanelClick',
-	        value: function onPanelClick(panelName) {
-	            var self = this;
-	            var newState = Object.assign({}, self.state);
-	            for (var layerGroup in newState) {
-	                if (panelName === layerGroup) {
-	                    newState[panelName] = !newState[panelName];
-	                } else {
-	                    newState[layerGroup] = false;
-	                }
-	            }
-	            this.setState(newState);
+	    _createClass(MapContainer, [{
+	        key: 'closeMobileFeatureModal',
+	        value: function closeMobileFeatureModal() {
+	            _store2.default.dispatch((0, _mobile.closeMobileFeatureModal)());
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var layerGroups = [];
-	            var eventKey = 1;
-	            for (var layerGroupId in this.props.layers) {
-	                layerGroups.push(_react2.default.createElement(_LayerGroup2.default, {
-	                    key: layerGroupId,
-	                    layerGroupId: layerGroupId,
-	                    layerGroupName: this.props.layers[layerGroupId].name,
-	                    layers: this.props.layers[layerGroupId].layers,
-	                    onLayerClick: this.onLayerClick,
-	                    eventKey: eventKey.toString(),
-	                    onPanelClick: this.onPanelClick,
-	                    panelVisible: this.state[layerGroupId]
-	                }));
-	                eventKey++;
-	            }
 	            return _react2.default.createElement(
-	                _reactBootstrap.PanelGroup,
-	                null,
-	                layerGroups,
-	                _react2.default.createElement(_BasemapList2.default, { basemaps: this.props.basemaps, panelVisible: this.state["Basemaps"], onBasemapClick: this.onBasemapClick, eventKey: eventKey.toString(), onPanelClick: this.onPanelClick })
+	                _reactBootstrap.Col,
+	                { xs: 12, sm: 7, md: 8, lg: 9, className: 'map-container' },
+	                _react2.default.createElement(_MobileFeatureModal2.default, { visible: this.props.mobileFeatureModal.visible, featureProperties: this.props.mobileFeatureModal.featureProperties, featureType: this.props.mobileFeatureModal.featureType, onCloseClick: this.closeMobileFeatureModal, title: this.props.mobileFeatureModal.title }),
+	                _react2.default.createElement(_LeafletMap2.default, null)
 	            );
 	        }
 	    }]);
 
-	    return LayerList;
+	    return MapContainer;
 	}(_react2.default.Component);
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LayerList);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MapContainer);
 
 /***/ },
 /* 761 */
@@ -50725,64 +50682,110 @@
 	    value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(299);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Layer = __webpack_require__(762);
+	var _reactRedux = __webpack_require__(762);
 
-	var _Layer2 = _interopRequireDefault(_Layer);
+	var _store = __webpack_require__(729);
 
-	var _reactBootstrap = __webpack_require__(476);
+	var _store2 = _interopRequireDefault(_store);
+
+	var _ObliquePhotoMap = __webpack_require__(778);
+
+	var _ObliquePhotoMap2 = _interopRequireDefault(_ObliquePhotoMap);
+
+	var _map = __webpack_require__(754);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var LayerGroup = function LayerGroup(props) {
-	    var layers = [];
-	    for (var layer in props.layers) {
-	        layers.push(_react2.default.createElement(_Layer2.default, {
-	            key: props.layers[layer].id,
-	            layerID: props.layers[layer].id,
-	            layerName: props.layers[layer].layerName,
-	            active: props.layers[layer].active,
-	            onLayerClick: props.onLayerClick
-	        }));
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * LeafletMap.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Container with Leaflet map. References the primary map object (ObliquePhotoMap), 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * and facilitates communication between the map and interface.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+	var mapStateToProps = function mapStateToProps(store) {
+	    return {
+	        layers: store.layers.layersById,
+	        basemaps: store.basemaps,
+	        map: store.map
+	    };
+	};
+
+	var LeafletMap = function (_React$Component) {
+	    _inherits(LeafletMap, _React$Component);
+
+	    function LeafletMap() {
+	        _classCallCheck(this, LeafletMap);
+
+	        return _possibleConstructorReturn(this, (LeafletMap.__proto__ || Object.getPrototypeOf(LeafletMap)).call(this));
 	    }
-	    var bodyClassNames = ["panel-body", "pullDown"];
-	    var headerClassNames = ["panel-heading"];
-	    var iconClassNames = ["fa"];
-	    if (props.panelVisible === false) {
-	        bodyClassNames.push("hidden");
-	        iconClassNames.push("fa-plus");
-	    } else {
-	        headerClassNames.push("active");
-	        iconClassNames.push("fa-chevron-up");
-	    }
-	    var boundOnLayerClick = props.onPanelClick.bind(null, props.layerGroupId);
-	    return _react2.default.createElement(
-	        'div',
-	        { className: 'panel panel-default' },
-	        _react2.default.createElement(
-	            'div',
-	            { className: headerClassNames.join(" "), onClick: boundOnLayerClick },
-	            props.layerGroupName,
-	            _react2.default.createElement('i', { className: iconClassNames.join(" ") })
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: bodyClassNames.join(" ") },
-	            _react2.default.createElement(
-	                _reactBootstrap.ListGroup,
-	                null,
-	                layers
-	            )
-	        )
-	    );
-	}; /**
-	    * LayerGroup.jsx
-	    * This creates the group container that holds each non-basemap layer list item, in the sidebar and mobile layer list
-	    */
-	exports.default = LayerGroup;
+
+	    _createClass(LeafletMap, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            var map = this.refs.map;
+	            this.map = new _ObliquePhotoMap2.default(map);
+	            // order here matters (basemaps, then layers)
+	            this.toggleBasemaps(null, this.props.basemaps);
+	            this.toggleLayers(null, this.props.layers);
+	        }
+	    }, {
+	        key: 'toggleLayers',
+	        value: function toggleLayers(oldLayerProps, newLayerProps) {
+	            for (var layerId in newLayerProps) {
+	                var newLayer = newLayerProps[layerId];
+	                if (oldLayerProps === null || newLayer.active !== oldLayerProps[layerId].active) {
+	                    this.map.toggleLayer(layerId, newLayer);
+	                }
+	            }
+	        }
+	    }, {
+	        key: 'toggleBasemaps',
+	        value: function toggleBasemaps(oldBasemapProps, newBasemapProps) {
+	            for (var basemap in newBasemapProps) {
+	                if (oldBasemapProps === null || newBasemapProps[basemap].active !== oldBasemapProps[basemap].active) {
+	                    this.map.toggleBasemap(basemap, newBasemapProps[basemap]);
+	                }
+	            }
+	        }
+	    }, {
+	        key: 'toggleMapActions',
+	        value: function toggleMapActions(oldMapProps, newMapProps) {
+	            if (oldMapProps !== null) {
+	                if (newMapProps.state.action === "willZoom") {
+	                    this.map.zoomToExtent(newMapProps.state.extent);
+	                    _store2.default.dispatch((0, _map.doneZooming)());
+	                }
+	            }
+	        }
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            var oldProps = this.props;
+	            this.toggleBasemaps(oldProps.basemaps, nextProps.basemaps);
+	            this.toggleLayers(oldProps.layers, nextProps.layers);
+	            this.toggleMapActions(oldProps.map, nextProps.map);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement('div', { ref: 'map', id: 'map', 'data-zoom': this.props.map.zoom });
+	        }
+	    }]);
+
+	    return LeafletMap;
+	}(_react2.default.Component);
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LeafletMap);
 
 /***/ },
 /* 762 */
@@ -50790,153 +50793,18 @@
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactBootstrap = __webpack_require__(476);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * Layer.jsx
-	 * This builds the list item representing a non-basemap layer in the sidebar and mobile layer list
-	 */
-	var Layer = function Layer(props) {
-	    return _react2.default.createElement(
-	        _reactBootstrap.ListGroupItem,
-	        {
-	            href: '#',
-	            active: props.active,
-	            onClick: props.onLayerClick.bind(null, props.layerID) },
-	        props.layerName
-	    );
-	};
-	exports.default = Layer;
-
-/***/ },
-/* 763 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactBootstrap = __webpack_require__(476);
-
-	var _Basemap = __webpack_require__(764);
-
-	var _Basemap2 = _interopRequireDefault(_Basemap);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var BasemapList = function BasemapList(props) {
-	    var basemaps = [];
-	    for (var basemapID in props.basemaps) {
-	        basemaps.push(_react2.default.createElement(_Basemap2.default, { key: basemapID,
-	            basemapID: basemapID,
-	            basemapName: props.basemaps[basemapID].basemapName,
-	            active: props.basemaps[basemapID].active,
-	            onBasemapClick: props.onBasemapClick
-	        }));
-	    }
-	    var bodyClassNames = ["panel-body", "pullDown"];
-	    var headerClassNames = ["panel-heading"];
-	    var iconClassNames = ["fa"];
-	    if (props.panelVisible === false) {
-	        bodyClassNames.push("hidden");
-	        iconClassNames.push("fa-plus");
-	    } else {
-	        headerClassNames.push("active");
-	        iconClassNames.push("fa-chevron-up");
-	    }
-	    return _react2.default.createElement(
-	        'div',
-	        { className: 'panel panel-default' },
-	        _react2.default.createElement(
-	            'div',
-	            { className: headerClassNames.join(" "), onClick: props.onPanelClick.bind(null, "Basemaps") },
-	            'Basemaps',
-	            _react2.default.createElement('i', { className: iconClassNames.join(" ") })
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: bodyClassNames.join(" ") },
-	            _react2.default.createElement(
-	                _reactBootstrap.ListGroup,
-	                null,
-	                basemaps
-	            )
-	        )
-	    );
-	}; /**
-	    * BasemapList.jsx
-	    * This creates the group container that holds each Basemap list item, in the sidebar and mobile layer list
-	    */
-	exports.default = BasemapList;
-
-/***/ },
-/* 764 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactBootstrap = __webpack_require__(476);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * Basemap.jsx
-	 * This builds the list item representing basemaps in the sidebar and mobile layer list
-	 */
-	var Basemap = function Basemap(props) {
-	    return _react2.default.createElement(
-	        _reactBootstrap.ListGroupItem,
-	        {
-	            href: '#',
-	            active: props.active,
-	            onClick: props.onBasemapClick.bind(null, props.basemapID) },
-	        props.basemapName
-	    );
-	};
-	exports.default = Basemap;
-
-/***/ },
-/* 765 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	exports.__esModule = true;
 	exports.connect = exports.connectAdvanced = exports.Provider = undefined;
 
-	var _Provider = __webpack_require__(766);
+	var _Provider = __webpack_require__(763);
 
 	var _Provider2 = _interopRequireDefault(_Provider);
 
-	var _connectAdvanced = __webpack_require__(770);
+	var _connectAdvanced = __webpack_require__(767);
 
 	var _connectAdvanced2 = _interopRequireDefault(_connectAdvanced);
 
-	var _connect = __webpack_require__(772);
+	var _connect = __webpack_require__(769);
 
 	var _connect2 = _interopRequireDefault(_connect);
 
@@ -50947,7 +50815,7 @@
 	exports.connect = _connect2.default;
 
 /***/ },
-/* 766 */
+/* 763 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -50957,15 +50825,15 @@
 
 	var _react = __webpack_require__(299);
 
-	var _Subscription = __webpack_require__(767);
+	var _Subscription = __webpack_require__(764);
 
 	var _Subscription2 = _interopRequireDefault(_Subscription);
 
-	var _storeShape = __webpack_require__(768);
+	var _storeShape = __webpack_require__(765);
 
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 
-	var _warning = __webpack_require__(769);
+	var _warning = __webpack_require__(766);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -51037,7 +50905,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 767 */
+/* 764 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -51135,7 +51003,7 @@
 	exports.default = Subscription;
 
 /***/ },
-/* 768 */
+/* 765 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51151,7 +51019,7 @@
 	});
 
 /***/ },
-/* 769 */
+/* 766 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -51181,7 +51049,7 @@
 	}
 
 /***/ },
-/* 770 */
+/* 767 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -51192,7 +51060,7 @@
 
 	exports.default = connectAdvanced;
 
-	var _hoistNonReactStatics = __webpack_require__(771);
+	var _hoistNonReactStatics = __webpack_require__(768);
 
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
@@ -51202,11 +51070,11 @@
 
 	var _react = __webpack_require__(299);
 
-	var _Subscription = __webpack_require__(767);
+	var _Subscription = __webpack_require__(764);
 
 	var _Subscription2 = _interopRequireDefault(_Subscription);
 
-	var _storeShape = __webpack_require__(768);
+	var _storeShape = __webpack_require__(765);
 
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 
@@ -51463,7 +51331,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 771 */
+/* 768 */
 /***/ function(module, exports) {
 
 	/**
@@ -51519,7 +51387,7 @@
 
 
 /***/ },
-/* 772 */
+/* 769 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51530,27 +51398,27 @@
 
 	exports.createConnect = createConnect;
 
-	var _connectAdvanced = __webpack_require__(770);
+	var _connectAdvanced = __webpack_require__(767);
 
 	var _connectAdvanced2 = _interopRequireDefault(_connectAdvanced);
 
-	var _shallowEqual = __webpack_require__(773);
+	var _shallowEqual = __webpack_require__(770);
 
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 
-	var _mapDispatchToProps = __webpack_require__(774);
+	var _mapDispatchToProps = __webpack_require__(771);
 
 	var _mapDispatchToProps2 = _interopRequireDefault(_mapDispatchToProps);
 
-	var _mapStateToProps = __webpack_require__(777);
+	var _mapStateToProps = __webpack_require__(774);
 
 	var _mapStateToProps2 = _interopRequireDefault(_mapStateToProps);
 
-	var _mergeProps = __webpack_require__(778);
+	var _mergeProps = __webpack_require__(775);
 
 	var _mergeProps2 = _interopRequireDefault(_mergeProps);
 
-	var _selectorFactory = __webpack_require__(779);
+	var _selectorFactory = __webpack_require__(776);
 
 	var _selectorFactory2 = _interopRequireDefault(_selectorFactory);
 
@@ -51652,7 +51520,7 @@
 	exports.default = createConnect();
 
 /***/ },
-/* 773 */
+/* 770 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -51680,7 +51548,7 @@
 	}
 
 /***/ },
-/* 774 */
+/* 771 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51692,7 +51560,7 @@
 
 	var _redux = __webpack_require__(730);
 
-	var _wrapMapToProps = __webpack_require__(775);
+	var _wrapMapToProps = __webpack_require__(772);
 
 	function whenMapDispatchToPropsIsFunction(mapDispatchToProps) {
 	  return typeof mapDispatchToProps === 'function' ? (0, _wrapMapToProps.wrapMapToPropsFunc)(mapDispatchToProps, 'mapDispatchToProps') : undefined;
@@ -51713,7 +51581,7 @@
 	exports.default = [whenMapDispatchToPropsIsFunction, whenMapDispatchToPropsIsMissing, whenMapDispatchToPropsIsObject];
 
 /***/ },
-/* 775 */
+/* 772 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -51723,7 +51591,7 @@
 	exports.getDependsOnOwnProps = getDependsOnOwnProps;
 	exports.wrapMapToPropsFunc = wrapMapToPropsFunc;
 
-	var _verifyPlainObject = __webpack_require__(776);
+	var _verifyPlainObject = __webpack_require__(773);
 
 	var _verifyPlainObject2 = _interopRequireDefault(_verifyPlainObject);
 
@@ -51795,7 +51663,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 776 */
+/* 773 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51807,7 +51675,7 @@
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _warning = __webpack_require__(769);
+	var _warning = __webpack_require__(766);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -51820,7 +51688,7 @@
 	}
 
 /***/ },
-/* 777 */
+/* 774 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51829,7 +51697,7 @@
 	exports.whenMapStateToPropsIsFunction = whenMapStateToPropsIsFunction;
 	exports.whenMapStateToPropsIsMissing = whenMapStateToPropsIsMissing;
 
-	var _wrapMapToProps = __webpack_require__(775);
+	var _wrapMapToProps = __webpack_require__(772);
 
 	function whenMapStateToPropsIsFunction(mapStateToProps) {
 	  return typeof mapStateToProps === 'function' ? (0, _wrapMapToProps.wrapMapToPropsFunc)(mapStateToProps, 'mapStateToProps') : undefined;
@@ -51844,7 +51712,7 @@
 	exports.default = [whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing];
 
 /***/ },
-/* 778 */
+/* 775 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -51858,7 +51726,7 @@
 	exports.whenMergePropsIsFunction = whenMergePropsIsFunction;
 	exports.whenMergePropsIsOmitted = whenMergePropsIsOmitted;
 
-	var _verifyPlainObject = __webpack_require__(776);
+	var _verifyPlainObject = __webpack_require__(773);
 
 	var _verifyPlainObject2 = _interopRequireDefault(_verifyPlainObject);
 
@@ -51908,7 +51776,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 779 */
+/* 776 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -51918,7 +51786,7 @@
 	exports.pureFinalPropsSelectorFactory = pureFinalPropsSelectorFactory;
 	exports.default = finalPropsSelectorFactory;
 
-	var _verifySubselectors = __webpack_require__(780);
+	var _verifySubselectors = __webpack_require__(777);
 
 	var _verifySubselectors2 = _interopRequireDefault(_verifySubselectors);
 
@@ -52027,7 +51895,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 780 */
+/* 777 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52035,7 +51903,7 @@
 	exports.__esModule = true;
 	exports.default = verifySubselectors;
 
-	var _warning = __webpack_require__(769);
+	var _warning = __webpack_require__(766);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -52058,623 +51926,7 @@
 	}
 
 /***/ },
-/* 781 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.getMobileFeatureModalTitle = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = undefined;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _reselect = __webpack_require__(782);
-
-	var getLayers = function getLayers(state) {
-	    return state.layers;
-	};
-	var getLayersById = function getLayersById(state) {
-	    return state.layers.layersById;
-	};
-	var getMobileFeatureModal = function getMobileFeatureModal(state) {
-	    return state.mobile.featureModal;
-	};
-	var mapLayerGroupsToLayers = exports.mapLayerGroupsToLayers = (0, _reselect.createSelector)([getLayers], function (layers) {
-	    var layersById = layers.layersById;
-	    var layerGroupsById = layers.layerGroupsById;
-	    var mappedLayerGroups = {};
-	    for (var layerGroupName in layerGroupsById) {
-	        if (typeof mappedLayerGroups[layerGroupName] === "undefined") {
-	            mappedLayerGroups[layerGroupName] = _extends({}, layerGroupsById[layerGroupName], {
-	                layers: {}
-	            });
-	        }
-	        var _iteratorNormalCompletion = true;
-	        var _didIteratorError = false;
-	        var _iteratorError = undefined;
-
-	        try {
-	            for (var _iterator = layerGroupsById[layerGroupName].layers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	                var layerId = _step.value;
-
-	                mappedLayerGroups[layerGroupName].layers[layerId] = layersById[layerId];
-	            }
-	        } catch (err) {
-	            _didIteratorError = true;
-	            _iteratorError = err;
-	        } finally {
-	            try {
-	                if (!_iteratorNormalCompletion && _iterator.return) {
-	                    _iterator.return();
-	                }
-	            } finally {
-	                if (_didIteratorError) {
-	                    throw _iteratorError;
-	                }
-	            }
-	        }
-	    }
-	    return mappedLayerGroups;
-	});
-	var getActiveLayers = exports.getActiveLayers = (0, _reselect.createSelector)(getLayersById, function (layers) {
-	    var activeLayers = [];
-	    for (var layerId in layers) {
-	        if (layers[layerId].active === true) {
-	            activeLayers.push({
-	                layerId: layerId,
-	                layer: layers[layerId]
-	            });
-	        }
-	    }
-	    return activeLayers;
-	});
-	var getActiveLayerStyleTypes = exports.getActiveLayerStyleTypes = (0, _reselect.createSelector)(getActiveLayers, function (activeLayers) {
-	    var stylesByLayerId = {};
-	    var _iteratorNormalCompletion2 = true;
-	    var _didIteratorError2 = false;
-	    var _iteratorError2 = undefined;
-
-	    try {
-	        for (var _iterator2 = activeLayers[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	            var layerData = _step2.value;
-
-	            var styles = [];
-	            var styleCache = layerData.layer.styleCache;
-	            for (var styleName in styleCache) {
-	                var styleIconClassNames = ["fa"];
-	                var iconStyle = {
-	                    color: "#000000"
-	                };
-	                if (styleCache[styleName].geometryType === "LineString" || styleCache[styleName].geometryType === "MultiLineString") {
-	                    styleIconClassNames.push("fa-minus");
-	                    iconStyle.color = styleCache[styleName].style.color;
-	                } else if (styleCache[styleName].geometryType === "Point") {
-	                    styleIconClassNames.push("fa-circle");
-	                    iconStyle.color = styleCache[styleName].style.strokeColor;
-	                }
-	                if (styleName === "null") {
-	                    styleName = "(No Value)";
-	                }
-	                styles.push({
-	                    styleName: styleName,
-	                    iconStyle: iconStyle,
-	                    styleIconClassNames: styleIconClassNames
-	                });
-	            }
-	            styles = styles.sort(function (a, b) {
-	                if (a.styleName < b.styleName) {
-	                    return -1;
-	                }
-	                if (a.styleName > b.styleName) {
-	                    return 1;
-	                }
-	                return 0;
-	            });
-	            stylesByLayerId[layerData.layer.layerGroupName + " - " + layerData.layer.layerName] = styles;
-	        }
-	    } catch (err) {
-	        _didIteratorError2 = true;
-	        _iteratorError2 = err;
-	    } finally {
-	        try {
-	            if (!_iteratorNormalCompletion2 && _iterator2.return) {
-	                _iterator2.return();
-	            }
-	        } finally {
-	            if (_didIteratorError2) {
-	                throw _iteratorError2;
-	            }
-	        }
-	    }
-
-	    return stylesByLayerId;
-	});
-	var getMobileFeatureModalTitle = exports.getMobileFeatureModalTitle = (0, _reselect.createSelector)([getLayersById, getMobileFeatureModal], function (layers, featureModal) {
-	    if (typeof featureModal.layerId !== "undefined") {
-	        var layerId = featureModal.layerId;
-	        if (typeof layers[layerId] !== "undefined") {
-	            return layers[layerId].layerGroupName + " - " + layers[layerId].layerName;
-	        }
-	    }
-	    return "";
-	});
-
-/***/ },
-/* 782 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports.defaultMemoize = defaultMemoize;
-	exports.createSelectorCreator = createSelectorCreator;
-	exports.createStructuredSelector = createStructuredSelector;
-
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-	function defaultEqualityCheck(a, b) {
-	  return a === b;
-	}
-
-	function defaultMemoize(func) {
-	  var equalityCheck = arguments.length <= 1 || arguments[1] === undefined ? defaultEqualityCheck : arguments[1];
-
-	  var lastArgs = null;
-	  var lastResult = null;
-	  return function () {
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-
-	    if (lastArgs === null || lastArgs.length !== args.length || !args.every(function (value, index) {
-	      return equalityCheck(value, lastArgs[index]);
-	    })) {
-	      lastResult = func.apply(undefined, args);
-	    }
-	    lastArgs = args;
-	    return lastResult;
-	  };
-	}
-
-	function getDependencies(funcs) {
-	  var dependencies = Array.isArray(funcs[0]) ? funcs[0] : funcs;
-
-	  if (!dependencies.every(function (dep) {
-	    return typeof dep === 'function';
-	  })) {
-	    var dependencyTypes = dependencies.map(function (dep) {
-	      return typeof dep;
-	    }).join(', ');
-	    throw new Error('Selector creators expect all input-selectors to be functions, ' + ('instead received the following types: [' + dependencyTypes + ']'));
-	  }
-
-	  return dependencies;
-	}
-
-	function createSelectorCreator(memoize) {
-	  for (var _len2 = arguments.length, memoizeOptions = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-	    memoizeOptions[_key2 - 1] = arguments[_key2];
-	  }
-
-	  return function () {
-	    for (var _len3 = arguments.length, funcs = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-	      funcs[_key3] = arguments[_key3];
-	    }
-
-	    var recomputations = 0;
-	    var resultFunc = funcs.pop();
-	    var dependencies = getDependencies(funcs);
-
-	    var memoizedResultFunc = memoize.apply(undefined, [function () {
-	      recomputations++;
-	      return resultFunc.apply(undefined, arguments);
-	    }].concat(memoizeOptions));
-
-	    var selector = function selector(state, props) {
-	      for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
-	        args[_key4 - 2] = arguments[_key4];
-	      }
-
-	      var params = dependencies.map(function (dependency) {
-	        return dependency.apply(undefined, [state, props].concat(args));
-	      });
-	      return memoizedResultFunc.apply(undefined, _toConsumableArray(params));
-	    };
-
-	    selector.resultFunc = resultFunc;
-	    selector.recomputations = function () {
-	      return recomputations;
-	    };
-	    selector.resetRecomputations = function () {
-	      return recomputations = 0;
-	    };
-	    return selector;
-	  };
-	}
-
-	var createSelector = exports.createSelector = createSelectorCreator(defaultMemoize);
-
-	function createStructuredSelector(selectors) {
-	  var selectorCreator = arguments.length <= 1 || arguments[1] === undefined ? createSelector : arguments[1];
-
-	  if (typeof selectors !== 'object') {
-	    throw new Error('createStructuredSelector expects first argument to be an object ' + ('where each property is a selector, instead received a ' + typeof selectors));
-	  }
-	  var objectKeys = Object.keys(selectors);
-	  return selectorCreator(objectKeys.map(function (key) {
-	    return selectors[key];
-	  }), function () {
-	    for (var _len5 = arguments.length, values = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
-	      values[_key5] = arguments[_key5];
-	    }
-
-	    return values.reduce(function (composition, value, index) {
-	      composition[objectKeys[index]] = value;
-	      return composition;
-	    }, {});
-	  });
-	}
-
-/***/ },
-/* 783 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(765);
-
-	var _selectors = __webpack_require__(781);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Legend.jsx
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component references the Redux store to determine which layers are currently active.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * It then renders the legend based on the currently active layers.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-
-	var mapStateToProps = function mapStateToProps(store) {
-	    return {
-	        activeLayerStyleTypes: (0, _selectors.getActiveLayerStyleTypes)(store)
-	    };
-	};
-
-	var Legend = function (_React$Component) {
-	    _inherits(Legend, _React$Component);
-
-	    function Legend() {
-	        _classCallCheck(this, Legend);
-
-	        var _this = _possibleConstructorReturn(this, (Legend.__proto__ || Object.getPrototypeOf(Legend)).call(this));
-
-	        _this.state = {
-	            panelVisible: true
-	        };
-	        _this.onPanelClick = _this.onPanelClick.bind(_this);
-	        return _this;
-	    }
-
-	    _createClass(Legend, [{
-	        key: 'onPanelClick',
-	        value: function onPanelClick() {
-	            var self = this;
-	            var newState = Object.assign({}, self.state);
-	            newState.panelVisible = !newState.panelVisible;
-	            this.setState(newState);
-	        }
-	    }, {
-	        key: 'renderLayerStyleTypes',
-	        value: function renderLayerStyleTypes() {
-	            var layers = [];
-	            var activeLayerStyleTypes = this.props.activeLayerStyleTypes;
-	            for (var layerKey in activeLayerStyleTypes) {
-	                var styles = [];
-	                var _iteratorNormalCompletion = true;
-	                var _didIteratorError = false;
-	                var _iteratorError = undefined;
-
-	                try {
-	                    for (var _iterator = activeLayerStyleTypes[layerKey][Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	                        var style = _step.value;
-
-	                        styles.push(_react2.default.createElement(
-	                            'li',
-	                            { key: style.styleName },
-	                            _react2.default.createElement('i', { style: style.iconStyle, className: style.styleIconClassNames.join(" ") }),
-	                            style.styleName
-	                        ));
-	                    }
-	                } catch (err) {
-	                    _didIteratorError = true;
-	                    _iteratorError = err;
-	                } finally {
-	                    try {
-	                        if (!_iteratorNormalCompletion && _iterator.return) {
-	                            _iterator.return();
-	                        }
-	                    } finally {
-	                        if (_didIteratorError) {
-	                            throw _iteratorError;
-	                        }
-	                    }
-	                }
-
-	                layers.push(_react2.default.createElement(
-	                    'div',
-	                    { key: layerKey },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'layerName' },
-	                        layerKey
-	                    ),
-	                    _react2.default.createElement(
-	                        'ul',
-	                        { className: 'legend-list' },
-	                        styles
-	                    )
-	                ));
-	            }
-	            return layers;
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var bodyClassNames = ["panel-body", "pullDown"];
-	            var headerClassNames = ["panel-heading"];
-	            var iconClassNames = ["fa"];
-	            if (this.state.panelVisible === false) {
-	                bodyClassNames.push("hidden");
-	                iconClassNames.push("fa-plus");
-	            } else {
-	                headerClassNames.push("active");
-	                iconClassNames.push("fa-chevron-up");
-	            }
-	            return _react2.default.createElement(
-	                'div',
-	                { id: 'legend', className: 'panel panel-default' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: headerClassNames.join(" "), onClick: this.onPanelClick },
-	                    'Legend',
-	                    _react2.default.createElement('i', { className: iconClassNames.join(" ") })
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: bodyClassNames.join(" ") },
-	                    this.renderLayerStyleTypes()
-	                )
-	            );
-	        }
-	    }]);
-
-	    return Legend;
-	}(_react2.default.Component);
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Legend);
-
-/***/ },
-/* 784 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
-	                                                                                                                                                                                                                                                                   * MapContainer.jsx
-	                                                                                                                                                                                                                                                                   * This component contains the primary map container (LeafletMap), as well as additional modals that appear over the map.
-	                                                                                                                                                                                                                                                                   */
-
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactBootstrap = __webpack_require__(476);
-
-	var _LeafletMap = __webpack_require__(785);
-
-	var _LeafletMap2 = _interopRequireDefault(_LeafletMap);
-
-	var _MobileFeatureModal = __webpack_require__(816);
-
-	var _MobileFeatureModal2 = _interopRequireDefault(_MobileFeatureModal);
-
-	var _reactRedux = __webpack_require__(765);
-
-	var _store = __webpack_require__(729);
-
-	var _store2 = _interopRequireDefault(_store);
-
-	var _mobile = __webpack_require__(755);
-
-	var _selectors = __webpack_require__(781);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var mapStateToProps = function mapStateToProps(store) {
-	    return {
-	        mobileFeatureModal: _extends({}, store.mobile.featureModal, {
-	            title: (0, _selectors.getMobileFeatureModalTitle)(store)
-	        })
-	    };
-	};
-
-	var MapContainer = function (_React$Component) {
-	    _inherits(MapContainer, _React$Component);
-
-	    function MapContainer() {
-	        _classCallCheck(this, MapContainer);
-
-	        return _possibleConstructorReturn(this, (MapContainer.__proto__ || Object.getPrototypeOf(MapContainer)).call(this));
-	    }
-
-	    _createClass(MapContainer, [{
-	        key: 'closeMobileFeatureModal',
-	        value: function closeMobileFeatureModal() {
-	            _store2.default.dispatch((0, _mobile.closeMobileFeatureModal)());
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                _reactBootstrap.Col,
-	                { xs: 12, sm: 7, md: 8, lg: 9, className: 'map-container' },
-	                _react2.default.createElement(_MobileFeatureModal2.default, { visible: this.props.mobileFeatureModal.visible, featureProperties: this.props.mobileFeatureModal.featureProperties, featureType: this.props.mobileFeatureModal.featureType, onCloseClick: this.closeMobileFeatureModal, title: this.props.mobileFeatureModal.title }),
-	                _react2.default.createElement(_LeafletMap2.default, null)
-	            );
-	        }
-	    }]);
-
-	    return MapContainer;
-	}(_react2.default.Component);
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MapContainer);
-
-/***/ },
-/* 785 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(765);
-
-	var _store = __webpack_require__(729);
-
-	var _store2 = _interopRequireDefault(_store);
-
-	var _ObliquePhotoMap = __webpack_require__(786);
-
-	var _ObliquePhotoMap2 = _interopRequireDefault(_ObliquePhotoMap);
-
-	var _map = __webpack_require__(754);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * LeafletMap.jsx
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Container with Leaflet map. References the primary map object (ObliquePhotoMap), 
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * and facilitates communication between the map and interface.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-	var mapStateToProps = function mapStateToProps(store) {
-	    return {
-	        layers: store.layers.layersById,
-	        basemaps: store.basemaps,
-	        map: store.map
-	    };
-	};
-
-	var LeafletMap = function (_React$Component) {
-	    _inherits(LeafletMap, _React$Component);
-
-	    function LeafletMap() {
-	        _classCallCheck(this, LeafletMap);
-
-	        return _possibleConstructorReturn(this, (LeafletMap.__proto__ || Object.getPrototypeOf(LeafletMap)).call(this));
-	    }
-
-	    _createClass(LeafletMap, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            var map = this.refs.map;
-	            this.map = new _ObliquePhotoMap2.default(map);
-	            // order here matters (basemaps, then layers)
-	            this.toggleBasemaps(null, this.props.basemaps);
-	            this.toggleLayers(null, this.props.layers);
-	        }
-	    }, {
-	        key: 'toggleLayers',
-	        value: function toggleLayers(oldLayerProps, newLayerProps) {
-	            for (var layerId in newLayerProps) {
-	                var newLayer = newLayerProps[layerId];
-	                if (oldLayerProps === null || newLayer.active !== oldLayerProps[layerId].active) {
-	                    this.map.toggleLayer(layerId, newLayer);
-	                }
-	            }
-	        }
-	    }, {
-	        key: 'toggleBasemaps',
-	        value: function toggleBasemaps(oldBasemapProps, newBasemapProps) {
-	            for (var basemap in newBasemapProps) {
-	                if (oldBasemapProps === null || newBasemapProps[basemap].active !== oldBasemapProps[basemap].active) {
-	                    this.map.toggleBasemap(basemap, newBasemapProps[basemap]);
-	                }
-	            }
-	        }
-	    }, {
-	        key: 'toggleMapActions',
-	        value: function toggleMapActions(oldMapProps, newMapProps) {
-	            if (oldMapProps !== null) {
-	                if (newMapProps.state.action === "willZoom") {
-	                    this.map.zoomToExtent(newMapProps.state.extent);
-	                    _store2.default.dispatch((0, _map.doneZooming)());
-	                }
-	            }
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-	            var oldProps = this.props;
-	            this.toggleBasemaps(oldProps.basemaps, nextProps.basemaps);
-	            this.toggleLayers(oldProps.layers, nextProps.layers);
-	            this.toggleMapActions(oldProps.map, nextProps.map);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement('div', { ref: 'map', id: 'map', 'data-zoom': this.props.map.zoom });
-	        }
-	    }]);
-
-	    return LeafletMap;
-	}(_react2.default.Component);
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LeafletMap);
-
-/***/ },
-/* 786 */
+/* 778 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52689,9 +51941,9 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _styles = __webpack_require__(787);
+	var _styles = __webpack_require__(779);
 
-	var _onEachFeature = __webpack_require__(788);
+	var _onEachFeature = __webpack_require__(780);
 
 	var _onEachFeature2 = _interopRequireDefault(_onEachFeature);
 
@@ -52701,7 +51953,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _axios = __webpack_require__(791);
+	var _axios = __webpack_require__(783);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -52830,7 +52082,7 @@
 	exports.default = ObliquePhotoMap;
 
 /***/ },
-/* 787 */
+/* 779 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52850,8 +52102,8 @@
 
 	/**
 	 * styles.js
-	 * This contains style functions that are applied to each layer when they are loaded. 
-	 * Additionally, this file caches the styles applied by each layer, so that when 
+	 * This contains style functions that are applied to each layer when they are loaded.
+	 * Additionally, this file caches the styles applied by each layer, so that when
 	 * the user activates them in the map, the legend can display all the associated styles.
 	 */
 	var COLORS = {
@@ -53073,12 +52325,23 @@
 	                break;
 	        }
 	        return addToCache(this.layerId, feature.properties["Shore Protection Classification"], style, feature.geometry.type);
+	    },
+	    profiles: function profiles(feature) {
+	        var style = {
+	            weight: 5,
+	            opacity: 1,
+	            lineCap: "round",
+	            lineJoin: "round",
+	            className: "layer-profiles",
+	            color: COLORS.BLACK
+	        };
+	        return addToCache(this.layerId, "Profile Line", style, feature.geometry.type);
 	    }
 	};
 	exports.LAYER_STYLES = LAYER_STYLES;
 
 /***/ },
-/* 788 */
+/* 780 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53099,7 +52362,7 @@
 
 	var _reactDom = __webpack_require__(329);
 
-	var _FeaturePopup = __webpack_require__(789);
+	var _FeaturePopup = __webpack_require__(781);
 
 	var _FeaturePopup2 = _interopRequireDefault(_FeaturePopup);
 
@@ -53189,12 +52452,15 @@
 	    },
 	    beachclass_2007: function beachclass_2007(feature, layer) {
 	        handleClick(feature, layer, "data", this.map);
+	    },
+	    profiles: function profiles(feature, layer) {
+	        handleClick(feature, layer, "profile", this.map);
 	    }
 	};
 	exports.default = ON_EACH_FEATURE;
 
 /***/ },
-/* 789 */
+/* 781 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53211,7 +52477,7 @@
 
 	var _reactBootstrap = __webpack_require__(476);
 
-	var _util = __webpack_require__(790);
+	var _util = __webpack_require__(782);
 
 	var _pinnedFeatures = __webpack_require__(757);
 
@@ -53392,7 +52658,7 @@
 	exports.default = FeaturePopup;
 
 /***/ },
-/* 790 */
+/* 782 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -53428,21 +52694,21 @@
 	}
 
 /***/ },
-/* 791 */
+/* 783 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(792);
+	module.exports = __webpack_require__(784);
 
 /***/ },
-/* 792 */
+/* 784 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
-	var bind = __webpack_require__(794);
-	var Axios = __webpack_require__(795);
-	var defaults = __webpack_require__(796);
+	var utils = __webpack_require__(785);
+	var bind = __webpack_require__(786);
+	var Axios = __webpack_require__(787);
+	var defaults = __webpack_require__(788);
 
 	/**
 	 * Create an instance of Axios
@@ -53475,15 +52741,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(813);
-	axios.CancelToken = __webpack_require__(814);
-	axios.isCancel = __webpack_require__(810);
+	axios.Cancel = __webpack_require__(805);
+	axios.CancelToken = __webpack_require__(806);
+	axios.isCancel = __webpack_require__(802);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(815);
+	axios.spread = __webpack_require__(807);
 
 	module.exports = axios;
 
@@ -53492,12 +52758,12 @@
 
 
 /***/ },
-/* 793 */
+/* 785 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(794);
+	var bind = __webpack_require__(786);
 
 	/*global toString:true*/
 
@@ -53797,7 +53063,7 @@
 
 
 /***/ },
-/* 794 */
+/* 786 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53814,17 +53080,17 @@
 
 
 /***/ },
-/* 795 */
+/* 787 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(796);
-	var utils = __webpack_require__(793);
-	var InterceptorManager = __webpack_require__(807);
-	var dispatchRequest = __webpack_require__(808);
-	var isAbsoluteURL = __webpack_require__(811);
-	var combineURLs = __webpack_require__(812);
+	var defaults = __webpack_require__(788);
+	var utils = __webpack_require__(785);
+	var InterceptorManager = __webpack_require__(799);
+	var dispatchRequest = __webpack_require__(800);
+	var isAbsoluteURL = __webpack_require__(803);
+	var combineURLs = __webpack_require__(804);
 
 	/**
 	 * Create a new instance of Axios
@@ -53905,13 +53171,13 @@
 
 
 /***/ },
-/* 796 */
+/* 788 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(793);
-	var normalizeHeaderName = __webpack_require__(797);
+	var utils = __webpack_require__(785);
+	var normalizeHeaderName = __webpack_require__(789);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -53928,10 +53194,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(798);
+	    adapter = __webpack_require__(790);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(798);
+	    adapter = __webpack_require__(790);
 	  }
 	  return adapter;
 	}
@@ -54005,12 +53271,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 797 */
+/* 789 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(785);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -54023,18 +53289,18 @@
 
 
 /***/ },
-/* 798 */
+/* 790 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(793);
-	var settle = __webpack_require__(799);
-	var buildURL = __webpack_require__(802);
-	var parseHeaders = __webpack_require__(803);
-	var isURLSameOrigin = __webpack_require__(804);
-	var createError = __webpack_require__(800);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(805);
+	var utils = __webpack_require__(785);
+	var settle = __webpack_require__(791);
+	var buildURL = __webpack_require__(794);
+	var parseHeaders = __webpack_require__(795);
+	var isURLSameOrigin = __webpack_require__(796);
+	var createError = __webpack_require__(792);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(797);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -54130,7 +53396,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(806);
+	      var cookies = __webpack_require__(798);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -54207,12 +53473,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 799 */
+/* 791 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(800);
+	var createError = __webpack_require__(792);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -54238,12 +53504,12 @@
 
 
 /***/ },
-/* 800 */
+/* 792 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(801);
+	var enhanceError = __webpack_require__(793);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -54261,7 +53527,7 @@
 
 
 /***/ },
-/* 801 */
+/* 793 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54286,12 +53552,12 @@
 
 
 /***/ },
-/* 802 */
+/* 794 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(785);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -54360,12 +53626,12 @@
 
 
 /***/ },
-/* 803 */
+/* 795 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(785);
 
 	/**
 	 * Parse headers into an object
@@ -54403,12 +53669,12 @@
 
 
 /***/ },
-/* 804 */
+/* 796 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(785);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54477,7 +53743,7 @@
 
 
 /***/ },
-/* 805 */
+/* 797 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54519,12 +53785,12 @@
 
 
 /***/ },
-/* 806 */
+/* 798 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(785);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54578,12 +53844,12 @@
 
 
 /***/ },
-/* 807 */
+/* 799 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(785);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -54636,15 +53902,15 @@
 
 
 /***/ },
-/* 808 */
+/* 800 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
-	var transformData = __webpack_require__(809);
-	var isCancel = __webpack_require__(810);
-	var defaults = __webpack_require__(796);
+	var utils = __webpack_require__(785);
+	var transformData = __webpack_require__(801);
+	var isCancel = __webpack_require__(802);
+	var defaults = __webpack_require__(788);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -54721,12 +53987,12 @@
 
 
 /***/ },
-/* 809 */
+/* 801 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(785);
 
 	/**
 	 * Transform the data for a request or a response
@@ -54747,7 +54013,7 @@
 
 
 /***/ },
-/* 810 */
+/* 802 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54758,7 +54024,7 @@
 
 
 /***/ },
-/* 811 */
+/* 803 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54778,7 +54044,7 @@
 
 
 /***/ },
-/* 812 */
+/* 804 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54796,7 +54062,7 @@
 
 
 /***/ },
-/* 813 */
+/* 805 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54821,12 +54087,12 @@
 
 
 /***/ },
-/* 814 */
+/* 806 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(813);
+	var Cancel = __webpack_require__(805);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -54884,7 +54150,7 @@
 
 
 /***/ },
-/* 815 */
+/* 807 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54917,7 +54183,7 @@
 
 
 /***/ },
-/* 816 */
+/* 808 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54932,7 +54198,7 @@
 
 	var _reactBootstrap = __webpack_require__(476);
 
-	var _util = __webpack_require__(790);
+	var _util = __webpack_require__(782);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55058,7 +54324,267 @@
 	exports.default = MobileFeatureModal;
 
 /***/ },
-/* 817 */
+/* 809 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.getMobileFeatureModalTitle = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = undefined;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _reselect = __webpack_require__(810);
+
+	var getLayers = function getLayers(state) {
+	    return state.layers;
+	};
+	var getLayersById = function getLayersById(state) {
+	    return state.layers.layersById;
+	};
+	var getMobileFeatureModal = function getMobileFeatureModal(state) {
+	    return state.mobile.featureModal;
+	};
+	var mapLayerGroupsToLayers = exports.mapLayerGroupsToLayers = (0, _reselect.createSelector)([getLayers], function (layers) {
+	    var layersById = layers.layersById;
+	    var layerGroupsById = layers.layerGroupsById;
+	    var mappedLayerGroups = {};
+	    for (var layerGroupName in layerGroupsById) {
+	        if (typeof mappedLayerGroups[layerGroupName] === "undefined") {
+	            mappedLayerGroups[layerGroupName] = _extends({}, layerGroupsById[layerGroupName], {
+	                layers: {}
+	            });
+	        }
+	        var _iteratorNormalCompletion = true;
+	        var _didIteratorError = false;
+	        var _iteratorError = undefined;
+
+	        try {
+	            for (var _iterator = layerGroupsById[layerGroupName].layers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	                var layerId = _step.value;
+
+	                mappedLayerGroups[layerGroupName].layers[layerId] = layersById[layerId];
+	            }
+	        } catch (err) {
+	            _didIteratorError = true;
+	            _iteratorError = err;
+	        } finally {
+	            try {
+	                if (!_iteratorNormalCompletion && _iterator.return) {
+	                    _iterator.return();
+	                }
+	            } finally {
+	                if (_didIteratorError) {
+	                    throw _iteratorError;
+	                }
+	            }
+	        }
+	    }
+	    return mappedLayerGroups;
+	});
+	var getActiveLayers = exports.getActiveLayers = (0, _reselect.createSelector)(getLayersById, function (layers) {
+	    var activeLayers = [];
+	    for (var layerId in layers) {
+	        if (layers[layerId].active === true) {
+	            activeLayers.push({
+	                layerId: layerId,
+	                layer: layers[layerId]
+	            });
+	        }
+	    }
+	    return activeLayers;
+	});
+	var getActiveLayerStyleTypes = exports.getActiveLayerStyleTypes = (0, _reselect.createSelector)(getActiveLayers, function (activeLayers) {
+	    var stylesByLayerId = {};
+	    var _iteratorNormalCompletion2 = true;
+	    var _didIteratorError2 = false;
+	    var _iteratorError2 = undefined;
+
+	    try {
+	        for (var _iterator2 = activeLayers[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	            var layerData = _step2.value;
+
+	            var styles = [];
+	            var styleCache = layerData.layer.styleCache;
+	            for (var styleName in styleCache) {
+	                var styleIconClassNames = ["fa"];
+	                var iconStyle = {
+	                    color: "#000000"
+	                };
+	                if (styleCache[styleName].geometryType === "LineString" || styleCache[styleName].geometryType === "MultiLineString") {
+	                    styleIconClassNames.push("fa-minus");
+	                    iconStyle.color = styleCache[styleName].style.color;
+	                } else if (styleCache[styleName].geometryType === "Point") {
+	                    styleIconClassNames.push("fa-circle");
+	                    iconStyle.color = styleCache[styleName].style.strokeColor;
+	                }
+	                if (styleName === "null") {
+	                    styleName = "(No Value)";
+	                }
+	                styles.push({
+	                    styleName: styleName,
+	                    iconStyle: iconStyle,
+	                    styleIconClassNames: styleIconClassNames
+	                });
+	            }
+	            styles = styles.sort(function (a, b) {
+	                if (a.styleName < b.styleName) {
+	                    return -1;
+	                }
+	                if (a.styleName > b.styleName) {
+	                    return 1;
+	                }
+	                return 0;
+	            });
+	            stylesByLayerId[layerData.layer.layerGroupName + " - " + layerData.layer.layerName] = styles;
+	        }
+	    } catch (err) {
+	        _didIteratorError2 = true;
+	        _iteratorError2 = err;
+	    } finally {
+	        try {
+	            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	                _iterator2.return();
+	            }
+	        } finally {
+	            if (_didIteratorError2) {
+	                throw _iteratorError2;
+	            }
+	        }
+	    }
+
+	    return stylesByLayerId;
+	});
+	var getMobileFeatureModalTitle = exports.getMobileFeatureModalTitle = (0, _reselect.createSelector)([getLayersById, getMobileFeatureModal], function (layers, featureModal) {
+	    if (typeof featureModal.layerId !== "undefined") {
+	        var layerId = featureModal.layerId;
+	        if (typeof layers[layerId] !== "undefined") {
+	            return layers[layerId].layerGroupName + " - " + layers[layerId].layerName;
+	        }
+	    }
+	    return "";
+	});
+
+/***/ },
+/* 810 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.defaultMemoize = defaultMemoize;
+	exports.createSelectorCreator = createSelectorCreator;
+	exports.createStructuredSelector = createStructuredSelector;
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	function defaultEqualityCheck(a, b) {
+	  return a === b;
+	}
+
+	function defaultMemoize(func) {
+	  var equalityCheck = arguments.length <= 1 || arguments[1] === undefined ? defaultEqualityCheck : arguments[1];
+
+	  var lastArgs = null;
+	  var lastResult = null;
+	  return function () {
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    if (lastArgs === null || lastArgs.length !== args.length || !args.every(function (value, index) {
+	      return equalityCheck(value, lastArgs[index]);
+	    })) {
+	      lastResult = func.apply(undefined, args);
+	    }
+	    lastArgs = args;
+	    return lastResult;
+	  };
+	}
+
+	function getDependencies(funcs) {
+	  var dependencies = Array.isArray(funcs[0]) ? funcs[0] : funcs;
+
+	  if (!dependencies.every(function (dep) {
+	    return typeof dep === 'function';
+	  })) {
+	    var dependencyTypes = dependencies.map(function (dep) {
+	      return typeof dep;
+	    }).join(', ');
+	    throw new Error('Selector creators expect all input-selectors to be functions, ' + ('instead received the following types: [' + dependencyTypes + ']'));
+	  }
+
+	  return dependencies;
+	}
+
+	function createSelectorCreator(memoize) {
+	  for (var _len2 = arguments.length, memoizeOptions = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+	    memoizeOptions[_key2 - 1] = arguments[_key2];
+	  }
+
+	  return function () {
+	    for (var _len3 = arguments.length, funcs = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+	      funcs[_key3] = arguments[_key3];
+	    }
+
+	    var recomputations = 0;
+	    var resultFunc = funcs.pop();
+	    var dependencies = getDependencies(funcs);
+
+	    var memoizedResultFunc = memoize.apply(undefined, [function () {
+	      recomputations++;
+	      return resultFunc.apply(undefined, arguments);
+	    }].concat(memoizeOptions));
+
+	    var selector = function selector(state, props) {
+	      for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
+	        args[_key4 - 2] = arguments[_key4];
+	      }
+
+	      var params = dependencies.map(function (dependency) {
+	        return dependency.apply(undefined, [state, props].concat(args));
+	      });
+	      return memoizedResultFunc.apply(undefined, _toConsumableArray(params));
+	    };
+
+	    selector.resultFunc = resultFunc;
+	    selector.recomputations = function () {
+	      return recomputations;
+	    };
+	    selector.resetRecomputations = function () {
+	      return recomputations = 0;
+	    };
+	    return selector;
+	  };
+	}
+
+	var createSelector = exports.createSelector = createSelectorCreator(defaultMemoize);
+
+	function createStructuredSelector(selectors) {
+	  var selectorCreator = arguments.length <= 1 || arguments[1] === undefined ? createSelector : arguments[1];
+
+	  if (typeof selectors !== 'object') {
+	    throw new Error('createStructuredSelector expects first argument to be an object ' + ('where each property is a selector, instead received a ' + typeof selectors));
+	  }
+	  var objectKeys = Object.keys(selectors);
+	  return selectorCreator(objectKeys.map(function (key) {
+	    return selectors[key];
+	  }), function () {
+	    for (var _len5 = arguments.length, values = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+	      values[_key5] = arguments[_key5];
+	    }
+
+	    return values.reduce(function (composition, value, index) {
+	      composition[objectKeys[index]] = value;
+	      return composition;
+	    }, {});
+	  });
+	}
+
+/***/ },
+/* 811 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55073,13 +54599,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _LayerList = __webpack_require__(760);
+	var _LayerList = __webpack_require__(812);
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
 
 	var _reactBootstrap = __webpack_require__(476);
 
-	var _reactRedux = __webpack_require__(765);
+	var _reactRedux = __webpack_require__(762);
 
 	var _store = __webpack_require__(729);
 
@@ -55168,7 +54694,342 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MobileLayerList);
 
 /***/ },
-/* 818 */
+/* 812 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _LayerGroup = __webpack_require__(813);
+
+	var _LayerGroup2 = _interopRequireDefault(_LayerGroup);
+
+	var _BasemapList = __webpack_require__(815);
+
+	var _BasemapList2 = _interopRequireDefault(_BasemapList);
+
+	var _reactBootstrap = __webpack_require__(476);
+
+	var _reactRedux = __webpack_require__(762);
+
+	var _store = __webpack_require__(729);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	var _layers = __webpack_require__(751);
+
+	var _basemaps = __webpack_require__(753);
+
+	var _selectors = __webpack_require__(809);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * LayerList.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component takes the current layers and basemaps and displays them, grouped by type, in the sidebar and mobile layers list.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var mapStateToProps = function mapStateToProps(store) {
+	    return {
+	        layers: (0, _selectors.mapLayerGroupsToLayers)(store),
+	        basemaps: store.basemaps
+	    };
+	};
+
+	var LayerList = function (_React$Component) {
+	    _inherits(LayerList, _React$Component);
+
+	    function LayerList(props) {
+	        _classCallCheck(this, LayerList);
+
+	        var _this = _possibleConstructorReturn(this, (LayerList.__proto__ || Object.getPrototypeOf(LayerList)).call(this, props));
+
+	        var groups = {};
+	        groups["Basemaps"] = false;
+	        for (var layerGroupId in _this.props.layers) {
+	            groups[layerGroupId] = false;
+	        }
+	        _this.state = groups;
+	        _this.onPanelClick = _this.onPanelClick.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(LayerList, [{
+	        key: 'onLayerClick',
+	        value: function onLayerClick(layerId) {
+	            _store2.default.dispatch((0, _layers.toggleLayer)(layerId));
+	        }
+	    }, {
+	        key: 'onBasemapClick',
+	        value: function onBasemapClick(basemapID) {
+	            _store2.default.dispatch((0, _basemaps.toggleBasemap)(basemapID));
+	        }
+	    }, {
+	        key: 'onPanelClick',
+	        value: function onPanelClick(panelName) {
+	            var self = this;
+	            var newState = Object.assign({}, self.state);
+	            for (var layerGroup in newState) {
+	                if (panelName === layerGroup) {
+	                    newState[panelName] = !newState[panelName];
+	                } else {
+	                    newState[layerGroup] = false;
+	                }
+	            }
+	            this.setState(newState);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var layerGroups = [];
+	            var eventKey = 1;
+	            for (var layerGroupId in this.props.layers) {
+	                layerGroups.push(_react2.default.createElement(_LayerGroup2.default, {
+	                    key: layerGroupId,
+	                    layerGroupId: layerGroupId,
+	                    layerGroupName: this.props.layers[layerGroupId].name,
+	                    layers: this.props.layers[layerGroupId].layers,
+	                    onLayerClick: this.onLayerClick,
+	                    eventKey: eventKey.toString(),
+	                    onPanelClick: this.onPanelClick,
+	                    panelVisible: this.state[layerGroupId]
+	                }));
+	                eventKey++;
+	            }
+	            return _react2.default.createElement(
+	                _reactBootstrap.PanelGroup,
+	                null,
+	                layerGroups,
+	                _react2.default.createElement(_BasemapList2.default, { basemaps: this.props.basemaps, panelVisible: this.state["Basemaps"], onBasemapClick: this.onBasemapClick, eventKey: eventKey.toString(), onPanelClick: this.onPanelClick })
+	            );
+	        }
+	    }]);
+
+	    return LayerList;
+	}(_react2.default.Component);
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LayerList);
+
+/***/ },
+/* 813 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Layer = __webpack_require__(814);
+
+	var _Layer2 = _interopRequireDefault(_Layer);
+
+	var _reactBootstrap = __webpack_require__(476);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var LayerGroup = function LayerGroup(props) {
+	    var layers = [];
+	    for (var layer in props.layers) {
+	        layers.push(_react2.default.createElement(_Layer2.default, {
+	            key: props.layers[layer].id,
+	            layerID: props.layers[layer].id,
+	            layerName: props.layers[layer].layerName,
+	            active: props.layers[layer].active,
+	            onLayerClick: props.onLayerClick
+	        }));
+	    }
+	    var bodyClassNames = ["panel-body", "pullDown"];
+	    var headerClassNames = ["panel-heading"];
+	    var iconClassNames = ["fa"];
+	    if (props.panelVisible === false) {
+	        bodyClassNames.push("hidden");
+	        iconClassNames.push("fa-plus");
+	    } else {
+	        headerClassNames.push("active");
+	        iconClassNames.push("fa-chevron-up");
+	    }
+	    var boundOnLayerClick = props.onPanelClick.bind(null, props.layerGroupId);
+	    return _react2.default.createElement(
+	        'div',
+	        { className: 'panel panel-default' },
+	        _react2.default.createElement(
+	            'div',
+	            { className: headerClassNames.join(" "), onClick: boundOnLayerClick },
+	            props.layerGroupName,
+	            _react2.default.createElement('i', { className: iconClassNames.join(" ") })
+	        ),
+	        _react2.default.createElement(
+	            'div',
+	            { className: bodyClassNames.join(" ") },
+	            _react2.default.createElement(
+	                _reactBootstrap.ListGroup,
+	                null,
+	                layers
+	            )
+	        )
+	    );
+	}; /**
+	    * LayerGroup.jsx
+	    * This creates the group container that holds each non-basemap layer list item, in the sidebar and mobile layer list
+	    */
+	exports.default = LayerGroup;
+
+/***/ },
+/* 814 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(476);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * Layer.jsx
+	 * This builds the list item representing a non-basemap layer in the sidebar and mobile layer list
+	 */
+	var Layer = function Layer(props) {
+	    return _react2.default.createElement(
+	        _reactBootstrap.ListGroupItem,
+	        {
+	            href: '#',
+	            active: props.active,
+	            onClick: props.onLayerClick.bind(null, props.layerID) },
+	        props.layerName
+	    );
+	};
+	exports.default = Layer;
+
+/***/ },
+/* 815 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(476);
+
+	var _Basemap = __webpack_require__(816);
+
+	var _Basemap2 = _interopRequireDefault(_Basemap);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var BasemapList = function BasemapList(props) {
+	    var basemaps = [];
+	    for (var basemapID in props.basemaps) {
+	        basemaps.push(_react2.default.createElement(_Basemap2.default, { key: basemapID,
+	            basemapID: basemapID,
+	            basemapName: props.basemaps[basemapID].basemapName,
+	            active: props.basemaps[basemapID].active,
+	            onBasemapClick: props.onBasemapClick
+	        }));
+	    }
+	    var bodyClassNames = ["panel-body", "pullDown"];
+	    var headerClassNames = ["panel-heading"];
+	    var iconClassNames = ["fa"];
+	    if (props.panelVisible === false) {
+	        bodyClassNames.push("hidden");
+	        iconClassNames.push("fa-plus");
+	    } else {
+	        headerClassNames.push("active");
+	        iconClassNames.push("fa-chevron-up");
+	    }
+	    return _react2.default.createElement(
+	        'div',
+	        { className: 'panel panel-default' },
+	        _react2.default.createElement(
+	            'div',
+	            { className: headerClassNames.join(" "), onClick: props.onPanelClick.bind(null, "Basemaps") },
+	            'Basemaps',
+	            _react2.default.createElement('i', { className: iconClassNames.join(" ") })
+	        ),
+	        _react2.default.createElement(
+	            'div',
+	            { className: bodyClassNames.join(" ") },
+	            _react2.default.createElement(
+	                _reactBootstrap.ListGroup,
+	                null,
+	                basemaps
+	            )
+	        )
+	    );
+	}; /**
+	    * BasemapList.jsx
+	    * This creates the group container that holds each Basemap list item, in the sidebar and mobile layer list
+	    */
+	exports.default = BasemapList;
+
+/***/ },
+/* 816 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(476);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * Basemap.jsx
+	 * This builds the list item representing basemaps in the sidebar and mobile layer list
+	 */
+	var Basemap = function Basemap(props) {
+	    return _react2.default.createElement(
+	        _reactBootstrap.ListGroupItem,
+	        {
+	            href: '#',
+	            active: props.active,
+	            onClick: props.onBasemapClick.bind(null, props.basemapID) },
+	        props.basemapName
+	    );
+	};
+	exports.default = Basemap;
+
+/***/ },
+/* 817 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55185,7 +55046,7 @@
 
 	var _reactBootstrap = __webpack_require__(476);
 
-	var _reactRedux = __webpack_require__(765);
+	var _reactRedux = __webpack_require__(762);
 
 	var _store = __webpack_require__(729);
 
@@ -55276,7 +55137,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AboutModal);
 
 /***/ },
-/* 819 */
+/* 818 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55291,9 +55152,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(765);
+	var _reactRedux = __webpack_require__(762);
 
-	var _PinnedFeature = __webpack_require__(820);
+	var _PinnedFeature = __webpack_require__(819);
 
 	var _PinnedFeature2 = _interopRequireDefault(_PinnedFeature);
 
@@ -55352,7 +55213,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(PinnedFeatureContainer);
 
 /***/ },
-/* 820 */
+/* 819 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55369,7 +55230,7 @@
 
 	var _reactBootstrap = __webpack_require__(476);
 
-	var _util = __webpack_require__(790);
+	var _util = __webpack_require__(782);
 
 	var _pinnedFeatures = __webpack_require__(757);
 
@@ -55377,7 +55238,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _reactDraggable = __webpack_require__(821);
+	var _reactDraggable = __webpack_require__(820);
 
 	var _reactDraggable2 = _interopRequireDefault(_reactDraggable);
 
@@ -55556,7 +55417,7 @@
 	exports.default = PinnedFeature;
 
 /***/ },
-/* 821 */
+/* 820 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -57166,6 +57027,158 @@
 	});
 	;
 	//# sourceMappingURL=react-draggable.js.map
+
+/***/ },
+/* 821 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(762);
+
+	var _selectors = __webpack_require__(809);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Legend.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component references the Redux store to determine which layers are currently active.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * It then renders the legend based on the currently active layers.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var mapStateToProps = function mapStateToProps(store) {
+	    return {
+	        activeLayerStyleTypes: (0, _selectors.getActiveLayerStyleTypes)(store)
+	    };
+	};
+
+	var Legend = function (_React$Component) {
+	    _inherits(Legend, _React$Component);
+
+	    function Legend() {
+	        _classCallCheck(this, Legend);
+
+	        var _this = _possibleConstructorReturn(this, (Legend.__proto__ || Object.getPrototypeOf(Legend)).call(this));
+
+	        _this.state = {
+	            panelVisible: true
+	        };
+	        _this.onPanelClick = _this.onPanelClick.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(Legend, [{
+	        key: 'onPanelClick',
+	        value: function onPanelClick() {
+	            var self = this;
+	            var newState = Object.assign({}, self.state);
+	            newState.panelVisible = !newState.panelVisible;
+	            this.setState(newState);
+	        }
+	    }, {
+	        key: 'renderLayerStyleTypes',
+	        value: function renderLayerStyleTypes() {
+	            var layers = [];
+	            var activeLayerStyleTypes = this.props.activeLayerStyleTypes;
+	            for (var layerKey in activeLayerStyleTypes) {
+	                var styles = [];
+	                var _iteratorNormalCompletion = true;
+	                var _didIteratorError = false;
+	                var _iteratorError = undefined;
+
+	                try {
+	                    for (var _iterator = activeLayerStyleTypes[layerKey][Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	                        var style = _step.value;
+
+	                        styles.push(_react2.default.createElement(
+	                            'li',
+	                            { key: style.styleName },
+	                            _react2.default.createElement('i', { style: style.iconStyle, className: style.styleIconClassNames.join(" ") }),
+	                            style.styleName
+	                        ));
+	                    }
+	                } catch (err) {
+	                    _didIteratorError = true;
+	                    _iteratorError = err;
+	                } finally {
+	                    try {
+	                        if (!_iteratorNormalCompletion && _iterator.return) {
+	                            _iterator.return();
+	                        }
+	                    } finally {
+	                        if (_didIteratorError) {
+	                            throw _iteratorError;
+	                        }
+	                    }
+	                }
+
+	                layers.push(_react2.default.createElement(
+	                    'div',
+	                    { key: layerKey },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'layerName' },
+	                        layerKey
+	                    ),
+	                    _react2.default.createElement(
+	                        'ul',
+	                        { className: 'legend-list' },
+	                        styles
+	                    )
+	                ));
+	            }
+	            return layers;
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var bodyClassNames = ["panel-body", "pullDown"];
+	            var headerClassNames = ["panel-heading"];
+	            var iconClassNames = ["fa"];
+	            if (this.state.panelVisible === false) {
+	                bodyClassNames.push("hidden");
+	                iconClassNames.push("fa-plus");
+	            } else {
+	                headerClassNames.push("active");
+	                iconClassNames.push("fa-chevron-up");
+	            }
+	            return _react2.default.createElement(
+	                'div',
+	                { id: 'legend', className: 'panel panel-default' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: headerClassNames.join(" "), onClick: this.onPanelClick },
+	                    'Legend',
+	                    _react2.default.createElement('i', { className: iconClassNames.join(" ") })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: bodyClassNames.join(" ") },
+	                    this.renderLayerStyleTypes()
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Legend;
+	}(_react2.default.Component);
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Legend);
 
 /***/ }
 /******/ ]);

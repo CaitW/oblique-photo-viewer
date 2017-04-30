@@ -89,6 +89,9 @@ var ON_EACH_FEATURE = {
     },
     beachclass_2007: function(feature, layer) {
         handleClick(feature, layer, "data", this.map);
+    },
+    profiles: function (feature, layer) {
+        handleClick(feature, layer, "profile", this.map);
     }
 };
 export default ON_EACH_FEATURE;
