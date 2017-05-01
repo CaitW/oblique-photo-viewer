@@ -52126,7 +52126,10 @@
 	    LIGHT_GRAY: "#E0E0E0",
 	    LIGHT_PINK: "#F48FB1"
 	};
-	// keeps track of current styles for legend
+	// Keeps track of current styles for legend.
+	// Each layer can have multiple style types cached, depending on what type of features it contains.
+	// i.e. when a layer has different colors assigned to unique bluff types, each differing style
+	// is cached using the `propertyName` attribute
 	var STYLE_CACHE = {};
 	function addToCache(layerId, propertyName, style, geometryType) {
 	    STYLE_CACHE[layerId] = STYLE_CACHE[layerId] || {};
@@ -52335,7 +52338,16 @@
 	            className: "layer-profiles",
 	            color: COLORS.BLACK
 	        };
-	        return addToCache(this.layerId, "Profile Line", style, feature.geometry.type);
+	        var propertyName = "Bluff Line";
+	        switch (feature.properties.isBathy) {
+	            case true:
+	                propertyName = "Bathymetric Line";
+	                style.color = COLORS.LIGHT_BLUE;
+	                break;
+	            default:
+	                break;
+	        }
+	        return addToCache(this.layerId, propertyName, style, feature.geometry.type);
 	    }
 	};
 	exports.LAYER_STYLES = LAYER_STYLES;
