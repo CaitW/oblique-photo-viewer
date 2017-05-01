@@ -32,6 +32,9 @@
     .layer-backshore-2007 {
       stroke-width: 5;
     }
+    .layer-profiles {
+      stroke-width: 2;
+    }
   }
 
   &[data-zoom='8'],
@@ -58,6 +61,13 @@
 
       &:hover {
         stroke-width: 7;
+      }
+    }
+    .layer-profiles {
+      stroke-width: 2;
+
+      &:hover {
+        stroke-width: 4;
       }
     }
   }
@@ -88,6 +98,14 @@
         stroke-linecap: round;
       }
     }
+
+    .layer-profiles {
+      stroke-width: 3;
+
+      &:hover {
+        stroke-width: 5;
+      }
+    }
   }
 
   &[data-zoom='16'],
@@ -114,6 +132,14 @@
       &:hover {
         stroke-width: 12;
         stroke-linecap: round;
+      }
+    }
+
+    .layer-profiles {
+      stroke-width: 4;
+
+      &:hover {
+        stroke-width: 6;
       }
     }
   }
