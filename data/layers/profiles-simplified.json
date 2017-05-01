@@ -26,9 +26,9 @@
         "ID": 2,
         "ProfileNo": "12-18",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-18 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-18.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -113,9 +113,9 @@
         "ID": 6,
         "ProfileNo": "12-17",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-17 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-17.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -140,9 +140,9 @@
         "ID": 7,
         "ProfileNo": "12-16",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-16 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-16.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -167,9 +167,9 @@
         "ID": 8,
         "ProfileNo": "12-15",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-15 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-15.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -194,9 +194,9 @@
         "ID": 9,
         "ProfileNo": "12-14",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-14 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-14.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -221,9 +221,9 @@
         "ID": 11,
         "ProfileNo": "12-13",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-13 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-13.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -248,9 +248,9 @@
         "ID": 12,
         "ProfileNo": "12-12",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-12 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-12.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -275,9 +275,9 @@
         "ID": 13,
         "ProfileNo": "12-11",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-11 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-11.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -302,9 +302,9 @@
         "ID": 14,
         "ProfileNo": "12-10",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-10 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-10.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -329,9 +329,9 @@
         "ID": 15,
         "ProfileNo": "12-6",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-6 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -356,9 +356,9 @@
         "ID": 16,
         "ProfileNo": "12-7",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-7 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -383,9 +383,9 @@
         "ID": 17,
         "ProfileNo": "12-9",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-9 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-9.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -410,9 +410,9 @@
         "ID": 18,
         "ProfileNo": "12-5",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-5 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-5.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -437,9 +437,9 @@
         "ID": 19,
         "ProfileNo": "12-4",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-4.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -464,9 +464,9 @@
         "ID": 20,
         "ProfileNo": "12-3",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -491,9 +491,9 @@
         "ID": 21,
         "ProfileNo": "12-2",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -518,9 +518,9 @@
         "ID": 22,
         "ProfileNo": "12-1",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -545,9 +545,9 @@
         "ID": 23,
         "ProfileNo": "12-19",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-19 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-19.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -572,9 +572,9 @@
         "ID": 24,
         "ProfileNo": "12-20",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-20 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-20.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -599,9 +599,9 @@
         "ID": 25,
         "ProfileNo": "12-21",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-21 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-21.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -626,9 +626,9 @@
         "ID": 26,
         "ProfileNo": "12-22",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-22 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-22.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -653,9 +653,9 @@
         "ID": 27,
         "ProfileNo": "12-23",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-23 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-23.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -680,9 +680,9 @@
         "ID": 28,
         "ProfileNo": "12-24",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-24 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-24.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -707,9 +707,9 @@
         "ID": 29,
         "ProfileNo": "12-25",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-25 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-25.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -734,9 +734,9 @@
         "ID": 30,
         "ProfileNo": "13-1",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -761,9 +761,9 @@
         "ID": 31,
         "ProfileNo": "13-2",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -788,9 +788,9 @@
         "ID": 32,
         "ProfileNo": "13-3",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -815,9 +815,9 @@
         "ID": 33,
         "ProfileNo": "13-4",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-4.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -842,9 +842,9 @@
         "ID": 34,
         "ProfileNo": "13-5",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-5 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-5.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -869,9 +869,9 @@
         "ID": 35,
         "ProfileNo": "13-6",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-6 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -896,9 +896,9 @@
         "ID": 36,
         "ProfileNo": "13-7",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-7 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -923,9 +923,9 @@
         "ID": 39,
         "ProfileNo": "13-8",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-8 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-8.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -950,9 +950,9 @@
         "ID": 40,
         "ProfileNo": "76-2",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": false,
         "bathy_xls": false,
-        "bluff_jpg": "n",
+        "bluff_jpg": false,
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -977,9 +977,9 @@
         "ID": 41,
         "ProfileNo": "82-15",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": false,
         "bathy_xls": false,
-        "bluff_jpg": "n",
+        "bluff_jpg": false,
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1004,9 +1004,9 @@
         "ID": 42,
         "ProfileNo": "13-9",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-9 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-9.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1031,9 +1031,9 @@
         "ID": 43,
         "ProfileNo": "13-10",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-10 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-10.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1058,9 +1058,9 @@
         "ID": 44,
         "ProfileNo": "13-11",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-11 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-11.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1085,9 +1085,9 @@
         "ID": 45,
         "ProfileNo": "13-12",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-12 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-12.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1112,9 +1112,9 @@
         "ID": 46,
         "ProfileNo": "13-13",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-13 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-13.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1139,9 +1139,9 @@
         "ID": 47,
         "ProfileNo": "13-14",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-14 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-14.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1166,9 +1166,9 @@
         "ID": 48,
         "ProfileNo": "13-15",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-15 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-15.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1193,9 +1193,9 @@
         "ID": 49,
         "ProfileNo": "13-16",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-16 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-16.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1220,9 +1220,9 @@
         "ID": 50,
         "ProfileNo": "13-17",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-17 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-17.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1247,9 +1247,9 @@
         "ID": 51,
         "ProfileNo": "13-18",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 13-18 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 13-18.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1274,9 +1274,9 @@
         "ID": 52,
         "ProfileNo": "11-9",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 11-9 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 11-9.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1301,9 +1301,9 @@
         "ID": 53,
         "ProfileNo": "11-8",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 11-8 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 11-8.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1328,9 +1328,9 @@
         "ID": 54,
         "ProfileNo": "11-6",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 11-6 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 11-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1355,9 +1355,9 @@
         "ID": 55,
         "ProfileNo": "11-5",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 11-5 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 11-5.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1382,9 +1382,9 @@
         "ID": 56,
         "ProfileNo": "11-7",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 11-7 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 11-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1409,9 +1409,9 @@
         "ID": 57,
         "ProfileNo": "12-8",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 12-8 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 12-8.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1436,9 +1436,9 @@
         "ID": 58,
         "ProfileNo": "11-4",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 11-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 11-4.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1463,9 +1463,9 @@
         "ID": 59,
         "ProfileNo": "11-3",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 11-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 11-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1490,9 +1490,9 @@
         "ID": 60,
         "ProfileNo": "11-2",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 11-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 11-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1517,9 +1517,9 @@
         "ID": 64,
         "ProfileNo": "11-1",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 11-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 11-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1544,9 +1544,9 @@
         "ID": 65,
         "ProfileNo": "10-14",
         "county": "MKE",
-        "bluff_xls_graph": "n",
+        "bluff_xls_graph": false,
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 10-14.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1571,9 +1571,9 @@
         "ID": 66,
         "ProfileNo": "10-13",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 10-13 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 10-13.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1598,9 +1598,9 @@
         "ID": 67,
         "ProfileNo": "10-12",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 10-12 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 10-12.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1725,9 +1725,9 @@
         "ID": 73,
         "ProfileNo": "10-11a",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 10-11a graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 10-11a.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1752,9 +1752,9 @@
         "ID": 74,
         "ProfileNo": "10-11",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 10-11 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 10-11.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1779,9 +1779,9 @@
         "ID": 75,
         "ProfileNo": "10-10",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 10-10 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 10-10.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1826,9 +1826,9 @@
         "ID": 77,
         "ProfileNo": "10-9",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 10-9 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 10-9.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1853,9 +1853,9 @@
         "ID": 78,
         "ProfileNo": "10-8",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 10-8 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 10-8.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1880,9 +1880,9 @@
         "ID": 79,
         "ProfileNo": "10-7",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 10-7 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 10-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1907,9 +1907,9 @@
         "ID": 80,
         "ProfileNo": "10-6",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 10-6 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 10-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1934,9 +1934,9 @@
         "ID": 81,
         "ProfileNo": "10-5",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 10-5 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 10-5.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1961,9 +1961,9 @@
         "ID": 82,
         "ProfileNo": "10-4",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 10-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 10-4.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -1988,9 +1988,9 @@
         "ID": 83,
         "ProfileNo": "10-3",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 10-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 10-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2015,9 +2015,9 @@
         "ID": 84,
         "ProfileNo": "10-2",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 10-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 10-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2042,9 +2042,9 @@
         "ID": 85,
         "ProfileNo": "10-1",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 10-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 10-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2069,9 +2069,9 @@
         "ID": 86,
         "ProfileNo": "9-1",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 9-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 9-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2096,9 +2096,9 @@
         "ID": 87,
         "ProfileNo": "8-41",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-41 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-41.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2123,9 +2123,9 @@
         "ID": 88,
         "ProfileNo": "8-40",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-40 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-40.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2150,9 +2150,9 @@
         "ID": 89,
         "ProfileNo": "8-39",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-39 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-39.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2177,9 +2177,9 @@
         "ID": 90,
         "ProfileNo": "8-38",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-38 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-38.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2204,9 +2204,9 @@
         "ID": 91,
         "ProfileNo": "8-37",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-37 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-37.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2231,9 +2231,9 @@
         "ID": 94,
         "ProfileNo": "8-35",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-35 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-35.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2258,9 +2258,9 @@
         "ID": 95,
         "ProfileNo": "8-34",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-34 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-34.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2285,9 +2285,9 @@
         "ID": 96,
         "ProfileNo": "8-33",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-33 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-33.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2332,9 +2332,9 @@
         "ID": 98,
         "ProfileNo": "8-32",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-32 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-32.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2359,9 +2359,9 @@
         "ID": 99,
         "ProfileNo": "8-36",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-36 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-36.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2386,9 +2386,9 @@
         "ID": 100,
         "ProfileNo": "8-31",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-31 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-31.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2413,9 +2413,9 @@
         "ID": 101,
         "ProfileNo": "8-30",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-30 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-30.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2440,9 +2440,9 @@
         "ID": 102,
         "ProfileNo": "8-29",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-29 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-29.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2467,9 +2467,9 @@
         "ID": 103,
         "ProfileNo": "8-28",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-28 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-28.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2494,9 +2494,9 @@
         "ID": 104,
         "ProfileNo": "8-27",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-27 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-27.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2521,9 +2521,9 @@
         "ID": 105,
         "ProfileNo": "8-26",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-26 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-26.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2548,9 +2548,9 @@
         "ID": 106,
         "ProfileNo": "8-25",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-25graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-25.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2575,9 +2575,9 @@
         "ID": 107,
         "ProfileNo": "8-24",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-24graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-24.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2602,9 +2602,9 @@
         "ID": 108,
         "ProfileNo": "8-23",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-23graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-23.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2629,9 +2629,9 @@
         "ID": 109,
         "ProfileNo": "8-22",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-22graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-22.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2656,9 +2656,9 @@
         "ID": 110,
         "ProfileNo": "8-21",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-21graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-21.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2703,9 +2703,9 @@
         "ID": 112,
         "ProfileNo": "8-20",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-20graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-20.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2750,9 +2750,9 @@
         "ID": 114,
         "ProfileNo": "8-19",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-19graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-19.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2797,9 +2797,9 @@
         "ID": 116,
         "ProfileNo": "8-18",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-18graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-18.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2824,9 +2824,9 @@
         "ID": 117,
         "ProfileNo": "8-17",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-17graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-17.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2851,9 +2851,9 @@
         "ID": 118,
         "ProfileNo": "8-16",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-16graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-16.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2878,9 +2878,9 @@
         "ID": 119,
         "ProfileNo": "8-15",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-15graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-15.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -2905,9 +2905,9 @@
         "ID": 120,
         "ProfileNo": "8-14",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-14graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-14.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3072,9 +3072,9 @@
         "ID": 128,
         "ProfileNo": "8-13",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-13graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-13.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3099,9 +3099,9 @@
         "ID": 129,
         "ProfileNo": "8-12",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-12graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-12.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3126,9 +3126,9 @@
         "ID": 129,
         "ProfileNo": "8-11",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-11graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-11.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3153,9 +3153,9 @@
         "ID": 130,
         "ProfileNo": "8-10",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-10 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-10.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3180,9 +3180,9 @@
         "ID": 131,
         "ProfileNo": "8-9",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-9 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-9.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3207,9 +3207,9 @@
         "ID": 132,
         "ProfileNo": "8-8",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-8 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-8.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3254,9 +3254,9 @@
         "ID": 134,
         "ProfileNo": "8-6",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-6 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3281,9 +3281,9 @@
         "ID": 136,
         "ProfileNo": "8-5",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-5 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-5.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3308,9 +3308,9 @@
         "ID": 136,
         "ProfileNo": "8-4",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-4 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-4.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3335,9 +3335,9 @@
         "ID": 137,
         "ProfileNo": "8-3",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-3 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3362,9 +3362,9 @@
         "ID": 138,
         "ProfileNo": "8-2",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-2 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3389,9 +3389,9 @@
         "ID": 141,
         "ProfileNo": "8-1",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 8-1 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 8-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3416,9 +3416,9 @@
         "ID": 140,
         "ProfileNo": "7-14",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 7-14 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 7-14.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3463,9 +3463,9 @@
         "ID": 142,
         "ProfileNo": "7-13",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 7-13 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 7-13.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3490,9 +3490,9 @@
         "ID": 143,
         "ProfileNo": "7-12",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 7-12 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 7-12.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3517,9 +3517,9 @@
         "ID": 144,
         "ProfileNo": "7-11",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 7-11 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 7-11.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3544,9 +3544,9 @@
         "ID": 145,
         "ProfileNo": "7-10",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 7-10 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 7-10.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3571,9 +3571,9 @@
         "ID": 146,
         "ProfileNo": "7-9",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 7-9 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 7-9.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3598,9 +3598,9 @@
         "ID": 147,
         "ProfileNo": "7-8",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 7-8 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 7-8.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3625,9 +3625,9 @@
         "ID": 148,
         "ProfileNo": "7-7",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 7-7 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 7-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3652,9 +3652,9 @@
         "ID": 149,
         "ProfileNo": "7-6",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 7-6 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 7-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3681,7 +3681,7 @@
         "county": "MKE",
         "bluff_xls_graph": false,
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 7-5.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3706,9 +3706,9 @@
         "ID": 151,
         "ProfileNo": "7-4",
         "county": "MKE",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 7-4 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 7-4.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3733,9 +3733,9 @@
         "ID": 152,
         "ProfileNo": "6-19",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-19 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-19.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3760,9 +3760,9 @@
         "ID": 153,
         "ProfileNo": "6-18",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-18 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-18.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3807,9 +3807,9 @@
         "ID": 155,
         "ProfileNo": "6-17a",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-17a graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-17a.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3834,9 +3834,9 @@
         "ID": 156,
         "ProfileNo": "6-17b",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-17b graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-17b.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": true
@@ -3881,9 +3881,9 @@
         "ID": 158,
         "ProfileNo": "6-16",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-16 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-16.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3908,9 +3908,9 @@
         "ID": 161,
         "ProfileNo": "6-15",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-15 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-15.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -3995,9 +3995,9 @@
         "ID": 163,
         "ProfileNo": "6-14",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-14 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-14.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4022,9 +4022,9 @@
         "ID": 164,
         "ProfileNo": "6-13",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-13 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-13.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4049,9 +4049,9 @@
         "ID": 165,
         "ProfileNo": "6-12",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-12 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-12.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4076,9 +4076,9 @@
         "ID": 166,
         "ProfileNo": "6-11",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-11 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-11.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4103,9 +4103,9 @@
         "ID": 167,
         "ProfileNo": "6-10",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-10 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-10.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4130,9 +4130,9 @@
         "ID": 168,
         "ProfileNo": "6-9",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-9 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-9.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4157,9 +4157,9 @@
         "ID": 169,
         "ProfileNo": "6-7",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-7 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4184,9 +4184,9 @@
         "ID": 170,
         "ProfileNo": "6-6",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-6 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4211,9 +4211,9 @@
         "ID": 171,
         "ProfileNo": "6-5",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-5 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-5.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4238,9 +4238,9 @@
         "ID": 172,
         "ProfileNo": "6-3",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-3 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4265,9 +4265,9 @@
         "ID": 173,
         "ProfileNo": "6-2",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-2 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4292,9 +4292,9 @@
         "ID": 174,
         "ProfileNo": "6-1",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-1 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4319,9 +4319,9 @@
         "ID": 175,
         "ProfileNo": "5-7",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 5-7 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 5-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4346,9 +4346,9 @@
         "ID": 176,
         "ProfileNo": "5-6",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 5-6 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 5-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4373,9 +4373,9 @@
         "ID": 177,
         "ProfileNo": "5-5",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 5-5 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 5-5.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4440,9 +4440,9 @@
         "ID": 180,
         "ProfileNo": "5-4",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 5-4 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 5-4.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4467,9 +4467,9 @@
         "ID": 181,
         "ProfileNo": "5-3",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 5-3 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 5-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4494,9 +4494,9 @@
         "ID": 182,
         "ProfileNo": "5-2",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 5-2 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 5-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4521,9 +4521,9 @@
         "ID": 183,
         "ProfileNo": "5-1",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 5-1 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 5-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4548,9 +4548,9 @@
         "ID": 184,
         "ProfileNo": "4-2",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 4-2 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 4-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4575,9 +4575,9 @@
         "ID": 185,
         "ProfileNo": "4-1",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 4-1 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 4-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4642,9 +4642,9 @@
         "ID": 188,
         "ProfileNo": "3-17a",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-17a graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": "n",
+        "bluff_jpg": false,
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4669,9 +4669,9 @@
         "ID": 189,
         "ProfileNo": "3-16",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-16 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-16.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4696,9 +4696,9 @@
         "ID": 190,
         "ProfileNo": "3-15",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-15 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-15.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4723,9 +4723,9 @@
         "ID": 191,
         "ProfileNo": "3-14",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-14 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-14.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4750,9 +4750,9 @@
         "ID": 192,
         "ProfileNo": "3-13",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-13 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-13.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4777,9 +4777,9 @@
         "ID": 193,
         "ProfileNo": "3-11",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-11 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-11.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4804,9 +4804,9 @@
         "ID": 194,
         "ProfileNo": "3-10",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-10 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-10.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4831,9 +4831,9 @@
         "ID": 195,
         "ProfileNo": "3-9",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-9 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-9.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4858,9 +4858,9 @@
         "ID": 196,
         "ProfileNo": "3-8",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-8 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-8.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4885,9 +4885,9 @@
         "ID": 197,
         "ProfileNo": "3-7",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-7 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4912,9 +4912,9 @@
         "ID": 198,
         "ProfileNo": "3-6",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-6 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4939,9 +4939,9 @@
         "ID": 199,
         "ProfileNo": "3-5",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-5 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-5.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4966,9 +4966,9 @@
         "ID": 200,
         "ProfileNo": "3-4",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-4.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -4993,9 +4993,9 @@
         "ID": 201,
         "ProfileNo": "3-3",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5020,9 +5020,9 @@
         "ID": 202,
         "ProfileNo": "3-2",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5047,9 +5047,9 @@
         "ID": 203,
         "ProfileNo": "3-1",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5074,9 +5074,9 @@
         "ID": 204,
         "ProfileNo": "1-4",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 1-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 1-4.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5101,9 +5101,9 @@
         "ID": 205,
         "ProfileNo": "1-3",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 1-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 1-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5188,9 +5188,9 @@
         "ID": 209,
         "ProfileNo": "1-2",
         "county": "Kenosha",
-        "bluff_xls_graph": true,
-        "bathy_xls": true,
-        "bluff_jpg": true,
+        "bluff_xls_graph": "profile 1-2 graph.xls",
+        "bathy_xls": false,
+        "bluff_jpg": "profile 1-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5215,9 +5215,9 @@
         "ID": 210,
         "ProfileNo": "15-1",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 15-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 15-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5242,9 +5242,9 @@
         "ID": 211,
         "ProfileNo": "15-2",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 15-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 15-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5269,9 +5269,9 @@
         "ID": 212,
         "ProfileNo": "15-3",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 15-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 15-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5296,9 +5296,9 @@
         "ID": 213,
         "ProfileNo": "15-4",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 15-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 15-4.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5323,9 +5323,9 @@
         "ID": 214,
         "ProfileNo": "15-5",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 15-5 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 15-5.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5350,9 +5350,9 @@
         "ID": 215,
         "ProfileNo": "15-6",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 15-6 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 15-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5397,9 +5397,9 @@
         "ID": 217,
         "ProfileNo": "15-7",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 15-7 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 15-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5424,9 +5424,9 @@
         "ID": 218,
         "ProfileNo": "15-8",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 15-8 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 15-8.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5451,9 +5451,9 @@
         "ID": 219,
         "ProfileNo": "15-9",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 15-9 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 15-9.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5478,9 +5478,9 @@
         "ID": 220,
         "ProfileNo": "15-10",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 15-10 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 15-10.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5505,9 +5505,9 @@
         "ID": 221,
         "ProfileNo": "15-11",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 15-11 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 15-11.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5532,9 +5532,9 @@
         "ID": 222,
         "ProfileNo": "15-12",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 15-12 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 15-12.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5559,9 +5559,9 @@
         "ID": 223,
         "ProfileNo": "15-13",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 15-13 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 15-13.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5586,9 +5586,9 @@
         "ID": 224,
         "ProfileNo": "15-14",
         "county": "Ozaukee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 15-14 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 15-14.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5633,9 +5633,9 @@
         "ID": 227,
         "ProfileNo": "3-17b",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-17b graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-17b.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": true
@@ -5660,9 +5660,9 @@
         "ID": 228,
         "ProfileNo": "3-18",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": false,
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-18.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5687,9 +5687,9 @@
         "ID": 229,
         "ProfileNo": "3-19",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-19 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-19.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5714,9 +5714,9 @@
         "ID": 230,
         "ProfileNo": "3-20",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 3-20 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 3-20.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5761,9 +5761,9 @@
         "ID": 225,
         "ProfileNo": "21-1",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5788,9 +5788,9 @@
         "ID": 225,
         "ProfileNo": "21-2",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5835,9 +5835,9 @@
         "ID": 226,
         "ProfileNo": "19-1",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 19-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 19-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5882,9 +5882,9 @@
         "ID": 228,
         "ProfileNo": "19-2",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 19-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 19-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5909,9 +5909,9 @@
         "ID": 229,
         "ProfileNo": "21-3",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5936,9 +5936,9 @@
         "ID": 230,
         "ProfileNo": "21-4",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-4.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -5983,9 +5983,9 @@
         "ID": 232,
         "ProfileNo": "21-7",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-7 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6010,9 +6010,9 @@
         "ID": 233,
         "ProfileNo": "21-10",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-10 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-10.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6037,9 +6037,9 @@
         "ID": 234,
         "ProfileNo": "21-11",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-11 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-11.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6064,9 +6064,9 @@
         "ID": 235,
         "ProfileNo": "21-12",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-12 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-12.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6091,9 +6091,9 @@
         "ID": 236,
         "ProfileNo": "21-13",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-13 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-13.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6118,9 +6118,9 @@
         "ID": 237,
         "ProfileNo": "21-14",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": false,
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-14.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6145,9 +6145,9 @@
         "ID": 238,
         "ProfileNo": "21-17",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-17 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-17.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6172,9 +6172,9 @@
         "ID": 239,
         "ProfileNo": "21-19",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-19 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-19.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6199,9 +6199,9 @@
         "ID": 240,
         "ProfileNo": "21-22",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-22 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-22.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6226,9 +6226,9 @@
         "ID": 242,
         "ProfileNo": "21-2",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6253,9 +6253,9 @@
         "ID": 243,
         "ProfileNo": "21-3",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6280,9 +6280,9 @@
         "ID": 244,
         "ProfileNo": "21-4",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-4.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6307,9 +6307,9 @@
         "ID": 245,
         "ProfileNo": "21-7",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-7 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6334,9 +6334,9 @@
         "ID": 246,
         "ProfileNo": "21-10",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-10 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-10.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6361,9 +6361,9 @@
         "ID": 247,
         "ProfileNo": "19-1",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 19-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 19-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6388,9 +6388,9 @@
         "ID": 248,
         "ProfileNo": "19-2",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 19-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 19-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6415,9 +6415,9 @@
         "ID": 250,
         "ProfileNo": "21-13",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-13 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-13.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6442,9 +6442,9 @@
         "ID": 251,
         "ProfileNo": "21-14",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": false,
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-14.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6469,9 +6469,9 @@
         "ID": 252,
         "ProfileNo": "21-17",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-17 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-17.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6496,9 +6496,9 @@
         "ID": 253,
         "ProfileNo": "21-22",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-22 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-22.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6523,9 +6523,9 @@
         "ID": 254,
         "ProfileNo": "21-19",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-19 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-19.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6550,10 +6550,10 @@
         "ID": 255,
         "ProfileNo": "21-23",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-23 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
-        "bathy_png": true,
+        "bluff_jpg": "profile 21-23.jpg",
+        "bathy_png": "profile 21-23.jpg",
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
       }
@@ -6577,10 +6577,10 @@
         "ID": 256,
         "ProfileNo": "21-24",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-24 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
-        "bathy_png": true,
+        "bluff_jpg": "profile 21-24.jpg",
+        "bathy_png": "profile 21-24.jpg",
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
       }
@@ -6604,9 +6604,9 @@
         "ID": 257,
         "ProfileNo": "21-11",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-11 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-11.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6631,10 +6631,10 @@
         "ID": 259,
         "ProfileNo": "21-28",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-28 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
-        "bathy_png": true,
+        "bluff_jpg": "profile 21-28.jpg",
+        "bathy_png": "profile 21-28.jpg",
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
       }
@@ -6658,10 +6658,10 @@
         "ID": 259,
         "ProfileNo": "22-1",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 22-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
-        "bathy_png": true,
+        "bluff_jpg": "profile 22-1.jpg",
+        "bathy_png": "profile 22-1.jpg",
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
       }
@@ -6685,10 +6685,10 @@
         "ID": 260,
         "ProfileNo": "22-2",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 22-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
-        "bathy_png": true,
+        "bluff_jpg": "profile 22-2.jpg",
+        "bathy_png": "profile 22-2.jpg",
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
       }
@@ -6712,10 +6712,10 @@
         "ID": 262,
         "ProfileNo": "22-3",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 22-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
-        "bathy_png": true,
+        "bluff_jpg": "profile 22-3.jpg",
+        "bathy_png": "profile 22-3.jpg",
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
       }
@@ -6779,10 +6779,10 @@
         "ID": 264,
         "ProfileNo": "22-4",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 22-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
-        "bathy_png": true,
+        "bluff_jpg": "profile 22-4.jpg",
+        "bathy_png": "profile 22-4.jpg",
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
       }
@@ -6806,9 +6806,9 @@
         "ID": 265,
         "ProfileNo": "23-2",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 23-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 23-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6833,9 +6833,9 @@
         "ID": 266,
         "ProfileNo": "23-3",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 23-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 23-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -6880,9 +6880,9 @@
         "ID": 268,
         "ProfileNo": "23-4",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 23-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 23-4.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -6967,9 +6967,9 @@
         "ID": 272,
         "ProfileNo": "23-5",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 23-5 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 23-5.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -6994,9 +6994,9 @@
         "ID": 273,
         "ProfileNo": "23-6",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 23-6 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 23-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7021,9 +7021,9 @@
         "ID": 274,
         "ProfileNo": "23-7",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 23-7 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 23-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7048,9 +7048,9 @@
         "ID": 275,
         "ProfileNo": "23-8",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 23-8 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 23-8.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7075,9 +7075,9 @@
         "ID": 276,
         "ProfileNo": "23-10",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 23-10 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 23-10.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7122,9 +7122,9 @@
         "ID": 278,
         "ProfileNo": "23-9",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 23-9 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 23-9.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7149,9 +7149,9 @@
         "ID": 279,
         "ProfileNo": "24-1",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 24-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 24-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7176,9 +7176,9 @@
         "ID": 280,
         "ProfileNo": "24-2",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 24-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 24-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7203,9 +7203,9 @@
         "ID": 281,
         "ProfileNo": "24-3",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 24-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 24-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7230,9 +7230,9 @@
         "ID": 283,
         "ProfileNo": "24-10",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 24-10 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 24-10.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7257,9 +7257,9 @@
         "ID": 285,
         "ProfileNo": "24-9",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 24-9 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 24-9.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7364,9 +7364,9 @@
         "ID": 293,
         "ProfileNo": "24-6",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 24-6 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 24-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7391,9 +7391,9 @@
         "ID": 294,
         "ProfileNo": "24-4",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 24-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 24-4.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -7418,9 +7418,9 @@
         "ID": 295,
         "ProfileNo": "25-2",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 25-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 25-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7445,9 +7445,9 @@
         "ID": 296,
         "ProfileNo": "25-3",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 25-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 25-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7472,9 +7472,9 @@
         "ID": 297,
         "ProfileNo": "25-5",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 25-5 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 25-5.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7499,9 +7499,9 @@
         "ID": 298,
         "ProfileNo": "25-6",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 25-6 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 25-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7526,9 +7526,9 @@
         "ID": 299,
         "ProfileNo": "25-10",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 25-10 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 25-10.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7553,9 +7553,9 @@
         "ID": 300,
         "ProfileNo": "25-9",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 25-9 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 25-9.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7580,9 +7580,9 @@
         "ID": 301,
         "ProfileNo": "25-8",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 25-8 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 25-8.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7607,9 +7607,9 @@
         "ID": 302,
         "ProfileNo": "25-11",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 25-11 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": "n",
+        "bluff_jpg": "profile 25-11.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -7694,9 +7694,9 @@
         "ID": 306,
         "ProfileNo": "25-12",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 25-12 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 25-12.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7721,9 +7721,9 @@
         "ID": 307,
         "ProfileNo": "25-14",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 25-14 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 25-14.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7748,9 +7748,9 @@
         "ID": 308,
         "ProfileNo": "25-16",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 25-16 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 25-16.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -7795,9 +7795,9 @@
         "ID": 310,
         "ProfileNo": "25-15",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 25-15 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 25-15.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7822,9 +7822,9 @@
         "ID": 311,
         "ProfileNo": "26-1",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 26-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 26-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7849,9 +7849,9 @@
         "ID": 312,
         "ProfileNo": "26-2",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 26-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 26-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7896,10 +7896,10 @@
         "ID": 314,
         "ProfileNo": "26-3",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 26-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": "n",
-        "bathy_png": true,
+        "bluff_jpg": false,
+        "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
       }
@@ -7923,9 +7923,9 @@
         "ID": 315,
         "ProfileNo": "27-1",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 27-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 27-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -7950,9 +7950,9 @@
         "ID": 316,
         "ProfileNo": "27-2",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 27-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 27-2.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -7977,9 +7977,9 @@
         "ID": 317,
         "ProfileNo": "30-1",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 30-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 30-1.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -8024,9 +8024,9 @@
         "ID": 319,
         "ProfileNo": "30-2",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 30-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 30-2.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -8071,9 +8071,9 @@
         "ID": 321,
         "ProfileNo": "30-3",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 30-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 30-3.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -8098,9 +8098,9 @@
         "ID": 322,
         "ProfileNo": "30-4",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 30-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": "n",
+        "bluff_jpg": false,
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -8145,9 +8145,9 @@
         "ID": 324,
         "ProfileNo": "30-5",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 30-5 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 30-5.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8172,9 +8172,9 @@
         "ID": 325,
         "ProfileNo": "30-7",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 30-7 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 30-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8199,9 +8199,9 @@
         "ID": 326,
         "ProfileNo": "30-8",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 30-8 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 30-8.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8246,9 +8246,9 @@
         "ID": 328,
         "ProfileNo": "30-9",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 30-9 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 30-9.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8273,9 +8273,9 @@
         "ID": 329,
         "ProfileNo": "30-6",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 30-6 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 30-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8300,9 +8300,9 @@
         "ID": 330,
         "ProfileNo": "30-10",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 30-10 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 30-10.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8327,9 +8327,9 @@
         "ID": 331,
         "ProfileNo": "30-11",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 30-11 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 30-11.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -8354,9 +8354,9 @@
         "ID": 332,
         "ProfileNo": "31-1",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 31-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 31-1.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -8381,9 +8381,9 @@
         "ID": 333,
         "ProfileNo": "31-2",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 31-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 31-2.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -8408,9 +8408,9 @@
         "ID": 334,
         "ProfileNo": "31-3",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 31-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 31-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8435,9 +8435,9 @@
         "ID": 335,
         "ProfileNo": "31-4",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 31-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 31-4.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -8462,9 +8462,9 @@
         "ID": 336,
         "ProfileNo": "31-6",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 31-6 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 31-6.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -8489,9 +8489,9 @@
         "ID": 337,
         "ProfileNo": "31-5",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 31-5 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 31-5.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -8516,9 +8516,9 @@
         "ID": 338,
         "ProfileNo": "31-7",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 31-7 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 31-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8543,9 +8543,9 @@
         "ID": 339,
         "ProfileNo": "31-8",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 31-8 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 31-8.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -8570,9 +8570,9 @@
         "ID": 340,
         "ProfileNo": "32-1",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 32-1graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 32-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8597,9 +8597,9 @@
         "ID": 341,
         "ProfileNo": "32-2",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 32-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 32-2.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8624,9 +8624,9 @@
         "ID": 342,
         "ProfileNo": "32-3",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 32-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 32-3.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8691,9 +8691,9 @@
         "ID": 344,
         "ProfileNo": "32-4",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 32-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 32-4.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8718,9 +8718,9 @@
         "ID": 346,
         "ProfileNo": "32-5",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 32-5 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 32-5.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8745,9 +8745,9 @@
         "ID": 348,
         "ProfileNo": "32-6",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 32-6 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 32-6.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -8772,9 +8772,9 @@
         "ID": 349,
         "ProfileNo": "32-7",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 32-7 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 32-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8799,9 +8799,9 @@
         "ID": 350,
         "ProfileNo": "33-1",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 33-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 33-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8866,9 +8866,9 @@
         "ID": 353,
         "ProfileNo": "33-2",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 33-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 33-2.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -8893,9 +8893,9 @@
         "ID": 354,
         "ProfileNo": "33-3",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 33-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 33-3.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -8920,9 +8920,9 @@
         "ID": 355,
         "ProfileNo": "33-4",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 33-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 33-4.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8947,9 +8947,9 @@
         "ID": 356,
         "ProfileNo": "33-5",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 33-5 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 33-5.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -8974,9 +8974,9 @@
         "ID": 357,
         "ProfileNo": "34-1",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 34-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 34-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -9001,9 +9001,9 @@
         "ID": 358,
         "ProfileNo": "34-2",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 34-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 34-2.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9028,9 +9028,9 @@
         "ID": 359,
         "ProfileNo": "34-3",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 34-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 34-3.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9055,9 +9055,9 @@
         "ID": 360,
         "ProfileNo": "35-1",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 35-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 35-1.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9082,9 +9082,9 @@
         "ID": 361,
         "ProfileNo": "35-2",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 35-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 35-2.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9109,9 +9109,9 @@
         "ID": 362,
         "ProfileNo": "35-3",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 35-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 35-3.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9136,9 +9136,9 @@
         "ID": 363,
         "ProfileNo": "35-4",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 35-4 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 35-4.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9163,9 +9163,9 @@
         "ID": 364,
         "ProfileNo": "35-5",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 35-5 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 35-5.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9190,9 +9190,9 @@
         "ID": 365,
         "ProfileNo": "35-6",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 35-6 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 35-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -9217,9 +9217,9 @@
         "ID": 370,
         "ProfileNo": "35-7",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 35-7 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 35-7.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9244,9 +9244,9 @@
         "ID": 370,
         "ProfileNo": "35-8",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 35-8 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 35-8.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -9271,9 +9271,9 @@
         "ID": 368,
         "ProfileNo": "35-9",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 35-9 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 35-9.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9298,9 +9298,9 @@
         "ID": 369,
         "ProfileNo": "35-10",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 35-10 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 35-10.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9325,9 +9325,9 @@
         "ID": 370,
         "ProfileNo": "35-11",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 35-11 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 35-11.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9352,9 +9352,9 @@
         "ID": 371,
         "ProfileNo": "36-2",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 36-2 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 36-2.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9379,9 +9379,9 @@
         "ID": 372,
         "ProfileNo": "36-3",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 36-3 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 36-3.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9406,9 +9406,9 @@
         "ID": 373,
         "ProfileNo": "36-4",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 36-4 graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 36-4.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9433,9 +9433,9 @@
         "ID": 374,
         "ProfileNo": "36-5",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 36-5 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 36-5.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -9460,9 +9460,9 @@
         "ID": 375,
         "ProfileNo": "36-6",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 36-6 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 36-6.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -9487,9 +9487,9 @@
         "ID": 376,
         "ProfileNo": "36-7",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 36-7 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 36-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -9514,9 +9514,9 @@
         "ID": 377,
         "ProfileNo": "36-8",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 36-8 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 36-8.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -9541,9 +9541,9 @@
         "ID": 379,
         "ProfileNo": "37-1",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 37-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 37-1.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9568,9 +9568,9 @@
         "ID": 380,
         "ProfileNo": "37-3",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
-        "bathy_xls": true,
-        "bluff_jpg": true,
+        "bluff_xls_graph": "profile 37-3 graph.xls",
+        "bathy_xls": false,
+        "bluff_jpg": "profile 37-3.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9615,9 +9615,9 @@
         "ID": 381,
         "ProfileNo": "38-1",
         "county": "Kewaunee",
-        "bluff_xls_graph": true,
-        "bathy_xls": true,
-        "bluff_jpg": true,
+        "bluff_xls_graph": "profile 38-1 graph.xls",
+        "bathy_xls": false,
+        "bluff_jpg": "profile 38-1.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9642,9 +9642,9 @@
         "ID": 382,
         "ProfileNo": "40-1",
         "county": "Door",
-        "bluff_xls_graph": true,
-        "bathy_xls": true,
-        "bluff_jpg": true,
+        "bluff_xls_graph": "profile 40-1 graph.xls",
+        "bathy_xls": false,
+        "bluff_jpg": "profile 40-1.jpg",
         "bathy_png": false,
         "notes": "bluff and bathy profiles are the same",
         "isBathy": false
@@ -9670,9 +9670,9 @@
         "ProfileNo": "15-14b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 15-14b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -9697,9 +9697,9 @@
         "ProfileNo": "15-13b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 15-13b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -9744,9 +9744,9 @@
         "ProfileNo": "15-11b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 15-11b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -9771,9 +9771,9 @@
         "ProfileNo": "15-10b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 15-10b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -9798,9 +9798,9 @@
         "ProfileNo": "15-9b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 15-9b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -9825,9 +9825,9 @@
         "ProfileNo": "15-8b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 15-8b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -9852,9 +9852,9 @@
         "ProfileNo": "15-7b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 15-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -9879,9 +9879,9 @@
         "ProfileNo": "15-6b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 15-6b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -9906,9 +9906,9 @@
         "ProfileNo": "15-5b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 15-5b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -9933,9 +9933,9 @@
         "ProfileNo": "15-4b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 15-4b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -9960,9 +9960,9 @@
         "ProfileNo": "15-3b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 15-3b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -9987,9 +9987,9 @@
         "ProfileNo": "15-2b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 15-2b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10014,9 +10014,9 @@
         "ProfileNo": "15-1b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 15-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10041,9 +10041,9 @@
         "ProfileNo": "13-18b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-18b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10088,9 +10088,9 @@
         "ProfileNo": "13-17b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-17b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10115,9 +10115,9 @@
         "ProfileNo": "13-16b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-16b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10182,9 +10182,9 @@
         "ProfileNo": "24-6b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 24-6b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10209,9 +10209,9 @@
         "ProfileNo": "24-7b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 24-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10236,9 +10236,9 @@
         "ProfileNo": "24-8b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 24-8b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10263,9 +10263,9 @@
         "ProfileNo": "24-9b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 24-9b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10290,9 +10290,9 @@
         "ProfileNo": "24-10b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 24-10b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10317,9 +10317,9 @@
         "ProfileNo": "24-11b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 24-11b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10344,9 +10344,9 @@
         "ProfileNo": "24-2b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 24-2b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10371,9 +10371,9 @@
         "ProfileNo": "24-3b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 24-3b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10398,9 +10398,9 @@
         "ProfileNo": "25-2b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 25-2b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10425,9 +10425,9 @@
         "ProfileNo": "25-3b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 25-3b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10472,9 +10472,9 @@
         "ProfileNo": "25-6b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 25-6b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10499,9 +10499,9 @@
         "ProfileNo": "25-8b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 25-8b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10526,9 +10526,9 @@
         "ProfileNo": "25-9b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 25-9b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10553,9 +10553,9 @@
         "ProfileNo": "25-10b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 25-10b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10580,9 +10580,9 @@
         "ProfileNo": "25-12b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 25-12b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10607,9 +10607,9 @@
         "ProfileNo": "26-1b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 26-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10634,9 +10634,9 @@
         "ProfileNo": "26-2b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 26-2b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10661,9 +10661,9 @@
         "ProfileNo": "27-1b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 27-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10688,9 +10688,9 @@
         "ProfileNo": "30-5b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 30-5b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10715,9 +10715,9 @@
         "ProfileNo": "30-6b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 30-6b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10742,9 +10742,9 @@
         "ProfileNo": "30-7b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 30-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10789,9 +10789,9 @@
         "ProfileNo": "30-9b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 30-9b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10816,9 +10816,9 @@
         "ProfileNo": "30-10b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 30-10b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10843,9 +10843,9 @@
         "ProfileNo": "31-3b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 31-3b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10870,9 +10870,9 @@
         "ProfileNo": "32-2b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 32-2b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10897,9 +10897,9 @@
         "ProfileNo": "31-7b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 31-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10944,9 +10944,9 @@
         "ProfileNo": "32-7b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 32-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10971,9 +10971,9 @@
         "ProfileNo": "33-1b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 33-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -10998,9 +10998,9 @@
         "ProfileNo": "33-5b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 33-5b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11025,9 +11025,9 @@
         "ProfileNo": "33-4b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 33-4b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11052,9 +11052,9 @@
         "ProfileNo": "34-1b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 34-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11079,9 +11079,9 @@
         "ProfileNo": "35-6b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 35-6b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11106,9 +11106,9 @@
         "ProfileNo": "35-8b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 35-8b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11133,9 +11133,9 @@
         "ProfileNo": "36-5b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 36-5b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11160,9 +11160,9 @@
         "ProfileNo": "36-6b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 36-6b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11187,9 +11187,9 @@
         "ProfileNo": "36-7b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 36-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11214,9 +11214,9 @@
         "ProfileNo": "36-8b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 36-8b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11281,9 +11281,9 @@
         "ProfileNo": "24-1b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 24-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11308,9 +11308,9 @@
         "ProfileNo": "23-8b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 23-8b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11335,9 +11335,9 @@
         "ProfileNo": "23-6b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 23-6b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11362,9 +11362,9 @@
         "ProfileNo": "23-3b",
         "county": "Sheboygan",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 23-3b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11389,9 +11389,9 @@
         "ProfileNo": "23-2b",
         "county": "Sheboygan",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 23-2b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11415,9 +11415,9 @@
         "ID": 454,
         "ProfileNo": "24-7",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 24-7 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 24-7.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -11442,9 +11442,9 @@
         "ID": 453,
         "ProfileNo": "21-12",
         "county": "Sheboygan",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 21-12 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 21-12.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -11470,9 +11470,9 @@
         "ProfileNo": "13-15b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-15b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11497,9 +11497,9 @@
         "ProfileNo": "13-14b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-14b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11524,9 +11524,9 @@
         "ProfileNo": "13-13b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-13b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11551,9 +11551,9 @@
         "ProfileNo": "13-12b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-12b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11578,9 +11578,9 @@
         "ProfileNo": "13-11b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-11b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11605,9 +11605,9 @@
         "ProfileNo": "13-10b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-10b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11632,9 +11632,9 @@
         "ProfileNo": "13-9b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-9b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11661,7 +11661,7 @@
         "bluff_xls_graph": false,
         "bathy_xls": false,
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11688,7 +11688,7 @@
         "bluff_xls_graph": false,
         "bathy_xls": false,
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11713,9 +11713,9 @@
         "ProfileNo": "13-8b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-8b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11740,9 +11740,9 @@
         "ProfileNo": "13-7b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11767,9 +11767,9 @@
         "ProfileNo": "13-6b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-6b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11794,9 +11794,9 @@
         "ProfileNo": "13-5b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-5b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11821,9 +11821,9 @@
         "ProfileNo": "13-4b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-4b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11848,9 +11848,9 @@
         "ProfileNo": "13-3b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-3b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11875,9 +11875,9 @@
         "ProfileNo": "13-2b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-2b.txt",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11902,9 +11902,9 @@
         "ProfileNo": "13-1b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 13-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11929,9 +11929,9 @@
         "ProfileNo": "12-25b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-25b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11956,9 +11956,9 @@
         "ProfileNo": "12-24b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-24b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -11983,9 +11983,9 @@
         "ProfileNo": "12-23b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-23b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12010,9 +12010,9 @@
         "ProfileNo": "12-22b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-22b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12037,9 +12037,9 @@
         "ProfileNo": "12-21b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-21b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12064,9 +12064,9 @@
         "ProfileNo": "12-20b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-20b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12091,9 +12091,9 @@
         "ProfileNo": "12-18b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-18b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12118,9 +12118,9 @@
         "ProfileNo": "12-19b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-19b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12145,9 +12145,9 @@
         "ProfileNo": "12-17b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-17b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12172,9 +12172,9 @@
         "ProfileNo": "12-16b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-16b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12199,9 +12199,9 @@
         "ProfileNo": "12-15b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-15b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12226,9 +12226,9 @@
         "ProfileNo": "12-14b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-14b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12253,9 +12253,9 @@
         "ProfileNo": "12-13b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-13b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12280,9 +12280,9 @@
         "ProfileNo": "12-12b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-12b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12307,9 +12307,9 @@
         "ProfileNo": "12-11b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-11b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12334,9 +12334,9 @@
         "ProfileNo": "12-10b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-10b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12361,9 +12361,9 @@
         "ProfileNo": "12-9b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-9b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12388,9 +12388,9 @@
         "ProfileNo": "12-8b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-8b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12415,9 +12415,9 @@
         "ProfileNo": "12-7b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12442,9 +12442,9 @@
         "ProfileNo": "12-6b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-6b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12469,9 +12469,9 @@
         "ProfileNo": "12-5b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-5b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12496,9 +12496,9 @@
         "ProfileNo": "12-4b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-4b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12523,9 +12523,9 @@
         "ProfileNo": "12-3b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-3b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12550,9 +12550,9 @@
         "ProfileNo": "12-2b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-2b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12577,9 +12577,9 @@
         "ProfileNo": "12-1b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 12-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12604,9 +12604,9 @@
         "ProfileNo": "11-9b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 11-9b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12631,9 +12631,9 @@
         "ProfileNo": "11-8b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 11-8b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12658,9 +12658,9 @@
         "ProfileNo": "11-7b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 11-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12685,9 +12685,9 @@
         "ProfileNo": "11-6b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 11-6b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12712,9 +12712,9 @@
         "ProfileNo": "11-5b",
         "county": "Ozaukee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 11-5b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12739,9 +12739,9 @@
         "ProfileNo": "11-4b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 11-4b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12766,9 +12766,9 @@
         "ProfileNo": "11-3b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 11-3b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12793,9 +12793,9 @@
         "ProfileNo": "11-2b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 11-2b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12820,9 +12820,9 @@
         "ProfileNo": "11-1b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 11-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12847,9 +12847,9 @@
         "ProfileNo": "10-14b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 10-14b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12874,9 +12874,9 @@
         "ProfileNo": "10-13b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 10-13b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12901,9 +12901,9 @@
         "ProfileNo": "10-12b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 10-12b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12928,9 +12928,9 @@
         "ProfileNo": "10-11ab",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 10-11ab.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12955,9 +12955,9 @@
         "ProfileNo": "10-11b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 10-11b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -12982,9 +12982,9 @@
         "ProfileNo": "10-10b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 10-10b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13009,9 +13009,9 @@
         "ProfileNo": "10-9b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 10-9b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13036,9 +13036,9 @@
         "ProfileNo": "10-8b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 10-8b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13063,9 +13063,9 @@
         "ProfileNo": "10-7b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 10-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13090,9 +13090,9 @@
         "ProfileNo": "10-6b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 10-6b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13117,9 +13117,9 @@
         "ProfileNo": "10-5b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 10-5b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13144,9 +13144,9 @@
         "ProfileNo": "10-4b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 10-4b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13171,9 +13171,9 @@
         "ProfileNo": "10-3b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 10-3b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13198,9 +13198,9 @@
         "ProfileNo": "10-2b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 10-2b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13225,9 +13225,9 @@
         "ProfileNo": "10-1b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 10-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13252,9 +13252,9 @@
         "ProfileNo": "9-1b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 9-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13279,9 +13279,9 @@
         "ProfileNo": "8-41b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-41b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13306,9 +13306,9 @@
         "ProfileNo": "8-40b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-40b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13333,9 +13333,9 @@
         "ProfileNo": "8-39b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-39b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13360,9 +13360,9 @@
         "ProfileNo": "8-38b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-38b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13387,9 +13387,9 @@
         "ProfileNo": "8-37b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-37b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13414,9 +13414,9 @@
         "ProfileNo": "8-36b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-36b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13441,9 +13441,9 @@
         "ProfileNo": "8-35b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-35b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13468,9 +13468,9 @@
         "ProfileNo": "8-34b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-34b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13495,9 +13495,9 @@
         "ProfileNo": "8-33b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-33b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13522,9 +13522,9 @@
         "ProfileNo": "8-32b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-32b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13549,9 +13549,9 @@
         "ProfileNo": "8-31b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-31b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13576,9 +13576,9 @@
         "ProfileNo": "8-30b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-30b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13603,9 +13603,9 @@
         "ProfileNo": "8-29b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-29b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13630,9 +13630,9 @@
         "ProfileNo": "8-28b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-28b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13657,9 +13657,9 @@
         "ProfileNo": "8-27b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-27b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13684,9 +13684,9 @@
         "ProfileNo": "8-26b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-26b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13711,9 +13711,9 @@
         "ProfileNo": "8-25b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-25b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13738,9 +13738,9 @@
         "ProfileNo": "8-24b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-24b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13765,9 +13765,9 @@
         "ProfileNo": "8-23b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-23b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13792,9 +13792,9 @@
         "ProfileNo": "8-22b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-22b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13819,9 +13819,9 @@
         "ProfileNo": "8-21b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-21b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13846,9 +13846,9 @@
         "ProfileNo": "8-20b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-20b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13873,9 +13873,9 @@
         "ProfileNo": "8-19b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-19b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13900,9 +13900,9 @@
         "ProfileNo": "8-18b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-18b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13927,9 +13927,9 @@
         "ProfileNo": "8-17b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-17b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -13974,9 +13974,9 @@
         "ProfileNo": "8-15b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-15b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14001,9 +14001,9 @@
         "ProfileNo": "8-14b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-14b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14028,9 +14028,9 @@
         "ProfileNo": "8-13b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-13b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14055,9 +14055,9 @@
         "ProfileNo": "8-12b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-12b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14082,9 +14082,9 @@
         "ProfileNo": "8-11b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-11b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14109,9 +14109,9 @@
         "ProfileNo": "8-10b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-10b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14136,9 +14136,9 @@
         "ProfileNo": "8-9b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-9b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14163,9 +14163,9 @@
         "ProfileNo": "8-8b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-8b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14190,9 +14190,9 @@
         "ProfileNo": "8-7b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14217,9 +14217,9 @@
         "ProfileNo": "8-6b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-6b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14244,9 +14244,9 @@
         "ProfileNo": "8-5b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-5b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14291,9 +14291,9 @@
         "ProfileNo": "8-3b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-3b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14318,9 +14318,9 @@
         "ProfileNo": "8-2b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-2b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14345,9 +14345,9 @@
         "ProfileNo": "8-1b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 8-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14372,9 +14372,9 @@
         "ProfileNo": "7-14b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 7-14b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14399,9 +14399,9 @@
         "ProfileNo": "7-13b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": false,
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14446,9 +14446,9 @@
         "ProfileNo": "7-11b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 7-11b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14473,9 +14473,9 @@
         "ProfileNo": "7-10b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 7-10b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14500,9 +14500,9 @@
         "ProfileNo": "7-9b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 7-9b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14527,9 +14527,9 @@
         "ProfileNo": "7-8b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 7-8b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14554,9 +14554,9 @@
         "ProfileNo": "7-7b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 7-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14581,9 +14581,9 @@
         "ProfileNo": "7-6b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 7-6b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14608,9 +14608,9 @@
         "ProfileNo": "7-5b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 7-5b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14635,9 +14635,9 @@
         "ProfileNo": "7-4b",
         "county": "MKE",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 7-4b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14682,9 +14682,9 @@
         "ProfileNo": "6-18b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-18b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14708,9 +14708,9 @@
         "ID": 573,
         "ProfileNo": "6-17b",
         "county": "Racine",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 6-17b graph.xlsx",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 6-17b.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": true
@@ -14736,9 +14736,9 @@
         "ProfileNo": "6-16b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-16b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14763,9 +14763,9 @@
         "ProfileNo": "6-15b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-15b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14790,9 +14790,9 @@
         "ProfileNo": "6-14b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-14b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14817,9 +14817,9 @@
         "ProfileNo": "6-13b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-13b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14844,9 +14844,9 @@
         "ProfileNo": "6-12b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-12b.txt",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14871,9 +14871,9 @@
         "ProfileNo": "6-11b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-11b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14898,9 +14898,9 @@
         "ProfileNo": "6-10b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-10b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14925,9 +14925,9 @@
         "ProfileNo": "6-9b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-9b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14952,9 +14952,9 @@
         "ProfileNo": "6-7b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -14979,9 +14979,9 @@
         "ProfileNo": "6-6b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-6b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15006,9 +15006,9 @@
         "ProfileNo": "6-5b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-5b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15033,9 +15033,9 @@
         "ProfileNo": "6-4b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-4b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15060,9 +15060,9 @@
         "ProfileNo": "6-3b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-3b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15087,9 +15087,9 @@
         "ProfileNo": "6-2b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-2b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15114,9 +15114,9 @@
         "ProfileNo": "6-1b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 6-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15141,9 +15141,9 @@
         "ProfileNo": "5-7b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 5-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15188,9 +15188,9 @@
         "ProfileNo": "5-5b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 5-5b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15215,9 +15215,9 @@
         "ProfileNo": "5-4b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 5-4b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15242,9 +15242,9 @@
         "ProfileNo": "5-3b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 5-3b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15269,9 +15269,9 @@
         "ProfileNo": "5-2b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 5-2b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15296,9 +15296,9 @@
         "ProfileNo": "5-1b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 5-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15323,9 +15323,9 @@
         "ProfileNo": "4-2b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 4-2b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15350,9 +15350,9 @@
         "ProfileNo": "4-1b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 4-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15377,9 +15377,9 @@
         "ProfileNo": "3-20b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-20b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15404,9 +15404,9 @@
         "ProfileNo": "3-19b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-19b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15431,9 +15431,9 @@
         "ProfileNo": "3-18b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": false,
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15458,9 +15458,9 @@
         "ProfileNo": "3-17bb",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-17bb.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15485,9 +15485,9 @@
         "ProfileNo": "3-17ab",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-17ab.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15532,9 +15532,9 @@
         "ProfileNo": "3-15b",
         "county": "Racine",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-15b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15559,9 +15559,9 @@
         "ProfileNo": "3-14b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-14b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15586,9 +15586,9 @@
         "ProfileNo": "3-13b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-13b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15613,9 +15613,9 @@
         "ProfileNo": "3-12b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-12b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15640,9 +15640,9 @@
         "ProfileNo": "3-11b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-11b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15667,9 +15667,9 @@
         "ProfileNo": "3-10b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-10b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15694,9 +15694,9 @@
         "ProfileNo": "3-9b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-9b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15721,9 +15721,9 @@
         "ProfileNo": "3-8b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-8b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15748,9 +15748,9 @@
         "ProfileNo": "3-7b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15775,9 +15775,9 @@
         "ProfileNo": "3-6b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-6b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15802,9 +15802,9 @@
         "ProfileNo": "3-5b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-5b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15829,9 +15829,9 @@
         "ProfileNo": "3-4b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-4b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15856,9 +15856,9 @@
         "ProfileNo": "3-3b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-3b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15883,9 +15883,9 @@
         "ProfileNo": "3-1b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15910,9 +15910,9 @@
         "ProfileNo": "1-4b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 1-4b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15937,9 +15937,9 @@
         "ProfileNo": "1-3b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 1-3b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15964,9 +15964,9 @@
         "ProfileNo": "1-2b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 1-2b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -15990,10 +15990,10 @@
         "ID": 622,
         "ProfileNo": "1-1ab",
         "county": "Kenosha",
-        "bluff_xls_graph": "no bluff",
-        "bathy_xls": true,
-        "bluff_jpg": "n",
-        "bathy_png": true,
+        "bluff_xls_graph": false,
+        "bathy_xls": "profile 1-1ab.xls",
+        "bluff_jpg": false,
+        "bathy_png": false,
         "notes": "no bluff",
         "isBathy": true
       }
@@ -16018,9 +16018,9 @@
         "ProfileNo": "21-1b",
         "county": "Sheboygan",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 21-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -16045,9 +16045,9 @@
         "ProfileNo": "23-10b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 23-10b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -16072,9 +16072,9 @@
         "ProfileNo": "23-7b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 23-7b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -16099,9 +16099,9 @@
         "ProfileNo": "23-9b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 23-9b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -16126,9 +16126,9 @@
         "ProfileNo": "25-14b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 25-14b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -16152,9 +16152,9 @@
         "ID": 623,
         "ProfileNo": "24-11",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 24-11 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 24-11.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -16179,9 +16179,9 @@
         "ID": 623,
         "ProfileNo": "29-1",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 29-1 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": true,
+        "bluff_jpg": "profile 29-1.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
@@ -16227,9 +16227,9 @@
         "ProfileNo": "29-1b",
         "county": "Manitowoc",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 29-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": "profile 29-1b.jpg",
         "notes": null,
         "isBathy": true
       }
@@ -16254,9 +16254,9 @@
         "ProfileNo": "3-2b",
         "county": "Kenosha",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 3-2b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -16281,9 +16281,9 @@
         "ProfileNo": "32-1b",
         "county": "Kewaunee",
         "bluff_xls_graph": false,
-        "bathy_xls": true,
+        "bathy_xls": "profile 32-1b.xls",
         "bluff_jpg": false,
-        "bathy_png": true,
+        "bathy_png": false,
         "notes": null,
         "isBathy": true
       }
@@ -16307,9 +16307,9 @@
         "ID": 627,
         "ProfileNo": "24-8",
         "county": "Manitowoc",
-        "bluff_xls_graph": true,
+        "bluff_xls_graph": "profile 24-8 graph.xls",
         "bathy_xls": false,
-        "bluff_jpg": "n",
+        "bluff_jpg": "profilee 24-8.jpg",
         "bathy_png": false,
         "notes": null,
         "isBathy": false
