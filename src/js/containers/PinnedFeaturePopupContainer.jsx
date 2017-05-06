@@ -4,14 +4,14 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
-import PinnedFeature from '../components/PinnedFeature.jsx';
+import PinnedFeaturePopup from '../components/PinnedFeaturePopup.jsx';
 
 const mapStateToProps = function(store) {
     return {
         pinnedFeatures: store.pinnedFeatures
     }
 }
-class PinnedFeatureContainer extends React.Component {
+class PinnedFeaturePopupContainer extends React.Component {
     constructor() {
         super();
     }
@@ -36,4 +36,4 @@ class PinnedFeatureContainer extends React.Component {
         );
     }
 }
-export default connect(mapStateToProps)(PinnedFeatureContainer);
+export default connect(mapStateToProps)(PinnedFeaturePopupContainer);

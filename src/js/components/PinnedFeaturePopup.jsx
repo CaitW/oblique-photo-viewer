@@ -8,7 +8,7 @@ import { getPhotoURLs } from '../util.js';
 import { closePinnedFeature } from '../ducks/pinnedFeatures.js';
 import store from '../store.js';
 import Draggable from 'react-draggable';
-class PinnedFeature extends React.Component {
+export default class PinnedFeaturePopup extends React.Component {
     constructor() {
         super();
         this.close = this.close.bind(this);
@@ -106,4 +106,4 @@ class PinnedFeature extends React.Component {
             </Draggable>);
     }
 }
-export default PinnedFeature;
+

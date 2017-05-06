@@ -9,7 +9,7 @@ import SideBar from './components/SideBar.jsx';
 import MapContainer from './containers/MapContainer.jsx';
 import MobileLayerList from './containers/MobileLayerList.jsx';
 import AboutModal from './containers/AboutModal.jsx';
-import PinnedFeatureContainer from './containers/PinnedFeatureContainer.jsx';
+import PinnedFeaturePopupContainer from './containers/PinnedFeaturePopupContainer.jsx';
 import LayerList from './containers/LayerList.jsx';
 import Legend from './containers/Legend.jsx';
 // layout components
@@ -47,7 +47,7 @@ class App extends React.Component {
                             <Legend />
                         </SideBar>
                         <MapContainer />
-                        <PinnedFeatureContainer />
+                        <PinnedFeaturePopupContainer />
                     </Row>
                 </Grid>
             </Provider>
