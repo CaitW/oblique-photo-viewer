@@ -8222,9 +8222,9 @@
 
 	var _AboutModal2 = _interopRequireDefault(_AboutModal);
 
-	var _PinnedFeatureContainer = __webpack_require__(818);
+	var _PinnedFeaturePopupContainer = __webpack_require__(818);
 
-	var _PinnedFeatureContainer2 = _interopRequireDefault(_PinnedFeatureContainer);
+	var _PinnedFeaturePopupContainer2 = _interopRequireDefault(_PinnedFeaturePopupContainer);
 
 	var _LayerList = __webpack_require__(812);
 
@@ -8309,7 +8309,7 @@
 	                            _react2.default.createElement(_Legend2.default, null)
 	                        ),
 	                        _react2.default.createElement(_MapContainer2.default, null),
-	                        _react2.default.createElement(_PinnedFeatureContainer2.default, null)
+	                        _react2.default.createElement(_PinnedFeaturePopupContainer2.default, null)
 	                    )
 	                )
 	            );
@@ -55166,9 +55166,9 @@
 
 	var _reactRedux = __webpack_require__(762);
 
-	var _PinnedFeature = __webpack_require__(819);
+	var _PinnedFeaturePopup = __webpack_require__(819);
 
-	var _PinnedFeature2 = _interopRequireDefault(_PinnedFeature);
+	var _PinnedFeaturePopup2 = _interopRequireDefault(_PinnedFeaturePopup);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55188,22 +55188,22 @@
 	    };
 	};
 
-	var PinnedFeatureContainer = function (_React$Component) {
-	    _inherits(PinnedFeatureContainer, _React$Component);
+	var PinnedFeaturePopupContainer = function (_React$Component) {
+	    _inherits(PinnedFeaturePopupContainer, _React$Component);
 
-	    function PinnedFeatureContainer() {
-	        _classCallCheck(this, PinnedFeatureContainer);
+	    function PinnedFeaturePopupContainer() {
+	        _classCallCheck(this, PinnedFeaturePopupContainer);
 
-	        return _possibleConstructorReturn(this, (PinnedFeatureContainer.__proto__ || Object.getPrototypeOf(PinnedFeatureContainer)).call(this));
+	        return _possibleConstructorReturn(this, (PinnedFeaturePopupContainer.__proto__ || Object.getPrototypeOf(PinnedFeaturePopupContainer)).call(this));
 	    }
 
-	    _createClass(PinnedFeatureContainer, [{
+	    _createClass(PinnedFeaturePopupContainer, [{
 	        key: 'render',
 	        value: function render() {
 	            var pinnedFeatures = [];
 	            for (var featureId in this.props.pinnedFeatures) {
 	                var pinnedFeature = this.props.pinnedFeatures[featureId];
-	                pinnedFeatures.push(_react2.default.createElement(_PinnedFeature2.default, { featureType: pinnedFeature.featureType,
+	                pinnedFeatures.push(_react2.default.createElement(PinnedFeature, { featureType: pinnedFeature.featureType,
 	                    featureProperties: pinnedFeature.featureProperties,
 	                    initialPosition: pinnedFeature.position,
 	                    layerId: pinnedFeature.layerId,
@@ -55219,10 +55219,10 @@
 	        }
 	    }]);
 
-	    return PinnedFeatureContainer;
+	    return PinnedFeaturePopupContainer;
 	}(_react2.default.Component);
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(PinnedFeatureContainer);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(PinnedFeaturePopupContainer);
 
 /***/ },
 /* 819 */
@@ -55266,13 +55266,13 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 
-	var PinnedFeature = function (_React$Component) {
-	    _inherits(PinnedFeature, _React$Component);
+	var PinnedFeaturePopup = function (_React$Component) {
+	    _inherits(PinnedFeaturePopup, _React$Component);
 
-	    function PinnedFeature() {
-	        _classCallCheck(this, PinnedFeature);
+	    function PinnedFeaturePopup() {
+	        _classCallCheck(this, PinnedFeaturePopup);
 
-	        var _this = _possibleConstructorReturn(this, (PinnedFeature.__proto__ || Object.getPrototypeOf(PinnedFeature)).call(this));
+	        var _this = _possibleConstructorReturn(this, (PinnedFeaturePopup.__proto__ || Object.getPrototypeOf(PinnedFeaturePopup)).call(this));
 
 	        _this.close = _this.close.bind(_this);
 	        _this.state = {
@@ -55282,7 +55282,7 @@
 	        return _this;
 	    }
 
-	    _createClass(PinnedFeature, [{
+	    _createClass(PinnedFeaturePopup, [{
 	        key: 'close',
 	        value: function close() {
 	            _store2.default.dispatch((0, _pinnedFeatures.closePinnedFeature)(this.props.featureId));
@@ -55423,10 +55423,10 @@
 	        }
 	    }]);
 
-	    return PinnedFeature;
+	    return PinnedFeaturePopup;
 	}(_react2.default.Component);
 
-	exports.default = PinnedFeature;
+	exports.default = PinnedFeaturePopup;
 
 /***/ },
 /* 820 */
