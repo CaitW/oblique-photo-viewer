@@ -9169,6 +9169,17 @@ button.close {
       background-color: #eceff1; }
       .feature-popup-content .feature-popup-body .table-striped > tbody > tr:nth-of-type(even):hover {
         background-color: #b0bec5; }
+  .feature-popup-content .feature-popup-footer {
+    padding: 0 5px 5px 5px; }
+    .feature-popup-content .feature-popup-footer button {
+      float: right;
+      font-size: inherit;
+      padding: 5px 10px;
+      border: 0;
+      background-color: #cfd8dc;
+      color: #263238; }
+      .feature-popup-content .feature-popup-footer button:hover {
+        background-color: #90a4ae; }
 
 html {
   height: 100%; }
