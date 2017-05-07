@@ -9171,15 +9171,17 @@ button.close {
         background-color: #b0bec5; }
   .feature-popup-content .feature-popup-footer {
     padding: 0 5px 5px 5px; }
-    .feature-popup-content .feature-popup-footer button {
+    .feature-popup-content .feature-popup-footer a {
       float: right;
-      font-size: inherit;
-      padding: 5px 10px;
-      border: 0;
-      background-color: #cfd8dc;
-      color: #263238; }
-      .feature-popup-content .feature-popup-footer button:hover {
-        background-color: #90a4ae; }
+      margin-left: 5px; }
+      .feature-popup-content .feature-popup-footer a button {
+        font-size: inherit;
+        padding: 5px 10px;
+        border: 0;
+        background-color: #cfd8dc;
+        color: #263238; }
+        .feature-popup-content .feature-popup-footer a button:hover {
+          background-color: #90a4ae; }
 
 html {
   height: 100%; }
