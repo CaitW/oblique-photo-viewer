@@ -4,21 +4,16 @@
  */
 import React from 'react';
 import { Table, Tabs, Tab } from 'react-bootstrap';
-import { getPhotoURLs } from '../util.js';
-import { closePinnedFeature } from '../ducks/pinnedFeatures.js';
-import store from '../store.js';
+import PopupTabs from './PopupTabs.jsx';
+import PopupTitle from './PopupTitle.jsx';
 import Draggable from 'react-draggable';
 export default class PinnedFeaturePopup extends React.Component {
     constructor() {
         super();
-        this.close = this.close.bind(this);
         this.state = {
             height: 300,
             width: 300
         };
-    }
-    close() {
-        store.dispatch(closePinnedFeature(this.props.featureId));
     }
     componentDidMount () {
         let height = this.refs.content.clientHeight;
@@ -29,49 +24,6 @@ export default class PinnedFeaturePopup extends React.Component {
         });
     }
     render() {
-        let rows = [];
-        for (let property in this.props.featureProperties) {
-            if (property !== "OBJECTID") {
-                let value = this.props.featureProperties[property];
-                rows.push(<tr key={property}><td><strong>{property}</strong></td><td>{value}</td></tr>);
-            }
-        }
-        let layerGroupName = store.getState().layers.layersById[this.props.layerId].layerGroupName;
-        let layerName = store.getState().layers.layersById[this.props.layerId].layerName;
-        let featureName = "";
-        if(typeof this.props.featureProperties.OBJECTID === "number") {
-            featureName += "#" + this.props.featureProperties.OBJECTID;
-        } else {
-            featureName += "Feature";
-        }
-        let tabs = [];
-        switch (this.props.featureType) {
-            case "photo":
-                {
-                    let photoURLs = getPhotoURLs(this.props.featureProperties);
-                    tabs.push(<Tab key="image" eventKey={1} title="Image">
-                            <img src={photoURLs.popup} onLoad={this.update}/>
-                        </Tab>);
-                    tabs.push(<Tab key="data" eventKey={2} title="Data">
-                          <Table striped bordered condensed hover>
-                            <tbody>
-                                {rows}
-                            </tbody>
-                          </Table>
-                    </Tab>);
-                }
-                break;
-            default:
-                tabs.push(<Tab key="data" eventKey={1} title="Data">
-                      <Table striped bordered condensed hover>
-                        <tbody>
-                            {rows}
-                        </tbody>
-                      </Table>
-                </Tab>);
-                break;
-        }
-
         let initialPositionAdjustedForContent = {
             x: this.props.initialPosition.x - (this.state.width / 2),
             y: this.props.initialPosition.y - this.state.height
@@ -80,30 +32,24 @@ export default class PinnedFeaturePopup extends React.Component {
             "top": initialPositionAdjustedForContent.y,
             "left": initialPositionAdjustedForContent.x
         }
-        return (<Draggable
+        return (
+            <Draggable
                 axis="both"
                 handle=".handle"
                 zIndex={1100}>
                 <div className="feature-popup-content hidden-xs" ref="content" style={style}>
                     <div className="feature-popup-header handle">
-                        <div className="feature-popup-title"> 
-                            {layerGroupName}
-                            <i className="fa fa-chevron-right"></i>
-                            {layerName}
-                            <i className="fa fa-chevron-right"></i>
-                            {featureName}
-                        </div>
+                        <PopupTitle featureProperties={this.props.featureProperties} layerGroupName={this.props.layerGroupName} layerName={this.props.layerName} />
                         <div className="feature-popup-controls">
-                            <i className="fa fa-times feature-popup-close-button" onClick={this.close}></i> 
+                            <i className="fa fa-times feature-popup-close-button" onClick={this.props.closePopup}></i>
                         </div>
                     </div>
                     <div className="feature-popup-body">
-                        <Tabs id="uncontrolled-tab">    
-                            {tabs}
-                        </Tabs>
+                        <PopupTabs featureType={this.props.featureType} featureProperties={this.props.featureProperties} />
                     </div>
                 </div>
-            </Draggable>);
+            </Draggable>
+        );
     }
 }
 

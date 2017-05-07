@@ -3,6 +3,7 @@
  *
  * Contains the actions and reducer part that controls feature popups that have been pinned to the page
  */
+import uuid from 'uuid';
 export function newPinnedFeature(layerId, featureProperties, featureType, position) {
     return {
         type: "PINNED_FEATURES:NEW",
@@ -24,12 +25,7 @@ export default function pinnedFeatures(state = initialState, action) {
     switch (action.type) {
         case "PINNED_FEATURES:NEW":
             {
-                let newPinnedFeatureId = action.layerId + "-";
-                if (typeof action.featureProperties.OBJECTID !== "undefined") {
-                    newPinnedFeatureId += action.featureProperties.OBJECTID;
-                } else {
-                    Math.floor((Math.random() * 10000) + 1);
-                }
+                let newPinnedFeatureId = uuid.v4();
                 newState[newPinnedFeatureId] = {
                     layerId: action.layerId,
                     featureProperties: action.featureProperties,

@@ -6,10 +6,12 @@ import React from 'react';
 import { Table, Tabs, Tab } from 'react-bootstrap';
 import { getPhotoURLs } from '../util.js';
 import {newPinnedFeature} from '../ducks/pinnedFeatures.js';
+import PopupTabs from './PopupTabs.jsx';
+import PopupTitle from './PopupTitle.jsx';
 import store from '../store.js';
-class FeaturePopup extends React.Component {
-    constructor() {
-        super();
+export default class FeaturePopup extends React.Component {
+    constructor(props) {
+        super(props);
         this.update = this.update.bind(this);
         this.bringToFront = this.bringToFront.bind(this);
         this.close = this.close.bind(this);
@@ -33,13 +35,6 @@ class FeaturePopup extends React.Component {
         this.close();
     }
     render() {
-        let rows = [];
-        for (let property in this.props.featureProperties) {
-            if (property !== "OBJECTID") {
-                let value = this.props.featureProperties[property];
-                rows.push(<tr key={property}><td><strong>{property}</strong></td><td>{value}</td></tr>);
-            }
-        }
         let layerGroupName = store.getState().layers.layersById[this.props.layerId].layerGroupName;
         let layerName = store.getState().layers.layersById[this.props.layerId].layerName;
         let featureName = "";
@@ -48,55 +43,19 @@ class FeaturePopup extends React.Component {
         } else {
             featureName += "Feature";
         }
-        let tabs = [];
-        switch (this.props.featureType) {
-            case "photo": {
-                let photoURLs = getPhotoURLs(this.props.featureProperties);
-                tabs.push(<Tab key="image" eventKey={1} title="Image">
-                    <img src={photoURLs.popup} onLoad={this.update}/>
-                </Tab>);
-                tabs.push(<Tab key="data" eventKey={2} title="Data">
-                      <Table striped bordered condensed hover>
-                        <tbody>
-                            {rows}
-                        </tbody>
-                      </Table>
-                </Tab>);
-                break;
-            }
-            default: {
-                tabs.push(<Tab key="data" eventKey={1} title="Data">
-                      <Table striped bordered condensed hover>
-                        <tbody>
-                            {rows}
-                        </tbody>
-                      </Table>
-                </Tab>);
-                break;
-            }
-        }
         return (
             <div className="feature-popup-content" onClick={this.bringToFront}>
                 <div className="feature-popup-header">
-                    <div className="feature-popup-title"> 
-                        {layerGroupName}
-                        <i className="fa fa-chevron-right"></i>
-                        {layerName}
-                        <i className="fa fa-chevron-right"></i>
-                        {featureName}
-                    </div>
+                    <PopupTitle featureProperties={this.props.featureProperties} layerGroupName={layerGroupName} layerName={layerName} />
                     <div className="feature-popup-controls">
-                        <i className="fa fa-thumb-tack feature-popup-pin" onClick={this.pin}></i> 
-                        <i className="fa fa-times feature-popup-close-button" onClick={this.close}></i> 
+                        <i className="fa fa-thumb-tack feature-popup-pin" onClick={this.pin}></i>
+                        <i className="fa fa-times feature-popup-close-button" onClick={this.close}></i>
                     </div>
                 </div>
                 <div className="feature-popup-body">
-                    <Tabs id="uncontrolled-tab" onSelect={this.update}>    
-                        {tabs}
-                    </Tabs>
+                    <PopupTabs featureType={this.props.featureType} featureProperties={this.props.featureProperties} update={this.update} />
                 </div>
             </div>
         );
     }
 }
-export default FeaturePopup;

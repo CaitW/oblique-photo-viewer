@@ -28,7 +28,13 @@ class MapContainer extends React.Component {
     render() {
         return (
             <Col xs={12} sm={7} md={8} lg={9} className="map-container">
-                <MobileFeatureModal visible={this.props.mobileFeatureModal.visible} featureProperties={this.props.mobileFeatureModal.featureProperties} featureType={this.props.mobileFeatureModal.featureType} onCloseClick={this.closeMobileFeatureModal} title={this.props.mobileFeatureModal.title}/>
+                <MobileFeatureModal
+                    visible={this.props.mobileFeatureModal.visible}
+                    featureProperties={this.props.mobileFeatureModal.featureProperties}
+                    featureType={this.props.mobileFeatureModal.featureType}
+                    onCloseClick={this.closeMobileFeatureModal}
+                    title={this.props.mobileFeatureModal.title}
+                />
                 <LeafletMap />
             </Col>
         );
