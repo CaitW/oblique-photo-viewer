@@ -6,8 +6,9 @@ import React from 'react';
 import { Table, Tabs, Tab, Button } from 'react-bootstrap';
 import { getPhotoURLs } from '../util.js';
 import {newPinnedFeature} from '../ducks/pinnedFeatures.js';
-import PopupTabs from './PopupTabs.jsx';
-import PopupTitle from './PopupTitle.jsx';
+import PopupTabs from './Popup/PopupTabs.jsx';
+import PopupTitle from './Popup/PopupTitle.jsx';
+import PopupFooter from './Popup/PopupFooter.jsx';
 import store from '../store.js';
 export default class FeaturePopup extends React.Component {
     constructor(props) {
@@ -37,21 +38,6 @@ export default class FeaturePopup extends React.Component {
     render() {
         let layerGroupName = store.getState().layers.layersById[this.props.layerId].layerGroupName;
         let layerName = store.getState().layers.layersById[this.props.layerId].layerName;
-        let footer = [];
-        switch (this.props.featureType) {
-            case "photo":
-                {
-                    let photoURLs = getPhotoURLs(this.props.featureProperties);
-                    footer.unshift(
-                        <a href={photoURLs.original} key="open-larger-image-button" target="_blank" rel="noopener noreferrer" >
-                            <Button className="open-larger-image-button">View Full-size Image</Button>
-                        </a>
-                    );
-                    break;
-                }
-            default:
-                break;
-        }
         return (
             <div className="feature-popup-content" onClick={this.bringToFront}>
                 <div className="feature-popup-header">
@@ -65,8 +51,9 @@ export default class FeaturePopup extends React.Component {
                     <PopupTabs featureType={this.props.featureType} featureProperties={this.props.featureProperties} update={this.update} />
                 </div>
                 <div className="feature-popup-footer">
-                    {footer}
-                    <div key="clearfix" className="clearfix"></div>
+                    <PopupFooter featureType={this.props.featureType} featureProperties={this.props.featureProperties}>
+                        <div key="clearfix" className="clearfix"></div>
+                    </PopupFooter>
                 </div>
             </div>
         );

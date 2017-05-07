@@ -5,8 +5,9 @@
 import React from 'react';
 import { Table, Tabs, Tab, Button } from 'react-bootstrap';
 import { getPhotoURLs } from '../util.js';
-import PopupTabs from './PopupTabs.jsx';
-import PopupTitle from './PopupTitle.jsx';
+import PopupTabs from './Popup/PopupTabs.jsx';
+import PopupTitle from './Popup/PopupTitle.jsx';
+import PopupFooter from './Popup/PopupFooter.jsx';
 import Draggable from 'react-draggable';
 export default class PinnedFeaturePopup extends React.Component {
     constructor() {
@@ -33,21 +34,6 @@ export default class PinnedFeaturePopup extends React.Component {
             "top": initialPositionAdjustedForContent.y,
             "left": initialPositionAdjustedForContent.x
         }
-        let footer = [];
-        switch (this.props.featureType) {
-            case "photo":
-                {
-                    let photoURLs = getPhotoURLs(this.props.featureProperties);
-                    footer.unshift(
-                        <a href={photoURLs.original} key="open-larger-image-button" target="_blank" rel="noopener noreferrer" >
-                            <Button className="open-larger-image-button">View Full-size Image</Button>
-                        </a>
-                    );
-                    break;
-                }
-            default:
-                break;
-        }
         return (
             <Draggable
                 axis="both"
@@ -64,8 +50,9 @@ export default class PinnedFeaturePopup extends React.Component {
                         <PopupTabs featureType={this.props.featureType} featureProperties={this.props.featureProperties} />
                     </div>
                     <div className="feature-popup-footer">
-                        {footer}
-                        <div key="clearfix" className="clearfix"></div>
+                        <PopupFooter featureType={this.props.featureType} featureProperties={this.props.featureProperties}>
+                            <div key="clearfix" className="clearfix"></div>
+                        </PopupFooter>
                     </div>
                 </div>
             </Draggable>

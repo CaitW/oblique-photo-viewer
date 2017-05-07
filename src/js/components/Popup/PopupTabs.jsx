@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table, Tabs, Tab } from 'react-bootstrap';
-import { getPhotoURLs } from '../util.js';
+import { getPhotoURLs } from '../../util.js';
 
 export default class PopupTabs extends React.Component {
     constructor (props) {

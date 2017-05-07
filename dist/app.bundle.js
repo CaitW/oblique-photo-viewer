@@ -8214,23 +8214,23 @@
 
 	var _MapContainer2 = _interopRequireDefault(_MapContainer);
 
-	var _MobileLayerList = __webpack_require__(818);
+	var _MobileLayerList = __webpack_require__(819);
 
 	var _MobileLayerList2 = _interopRequireDefault(_MobileLayerList);
 
-	var _AboutModal = __webpack_require__(824);
+	var _AboutModal = __webpack_require__(825);
 
 	var _AboutModal2 = _interopRequireDefault(_AboutModal);
 
-	var _PinnedFeaturePopupContainer = __webpack_require__(825);
+	var _PinnedFeaturePopupContainer = __webpack_require__(826);
 
 	var _PinnedFeaturePopupContainer2 = _interopRequireDefault(_PinnedFeaturePopupContainer);
 
-	var _LayerList = __webpack_require__(819);
+	var _LayerList = __webpack_require__(820);
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
 
-	var _Legend = __webpack_require__(828);
+	var _Legend = __webpack_require__(829);
 
 	var _Legend2 = _interopRequireDefault(_Legend);
 
@@ -50839,7 +50839,7 @@
 
 	var _LeafletMap2 = _interopRequireDefault(_LeafletMap);
 
-	var _MobileFeatureModal = __webpack_require__(815);
+	var _MobileFeatureModal = __webpack_require__(816);
 
 	var _MobileFeatureModal2 = _interopRequireDefault(_MobileFeatureModal);
 
@@ -50851,7 +50851,7 @@
 
 	var _mobile = __webpack_require__(755);
 
-	var _selectors = __webpack_require__(816);
+	var _selectors = __webpack_require__(817);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52187,7 +52187,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _axios = __webpack_require__(790);
+	var _axios = __webpack_require__(791);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -52735,6 +52735,10 @@
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
+	var _PopupFooter = __webpack_require__(790);
+
+	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
+
 	var _store = __webpack_require__(729);
 
 	var _store2 = _interopRequireDefault(_store);
@@ -52798,25 +52802,6 @@
 	        value: function render() {
 	            var layerGroupName = _store2.default.getState().layers.layersById[this.props.layerId].layerGroupName;
 	            var layerName = _store2.default.getState().layers.layersById[this.props.layerId].layerName;
-	            var footer = [];
-	            switch (this.props.featureType) {
-	                case "photo":
-	                    {
-	                        var photoURLs = (0, _util.getPhotoURLs)(this.props.featureProperties);
-	                        footer.unshift(_react2.default.createElement(
-	                            'a',
-	                            { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
-	                            _react2.default.createElement(
-	                                _reactBootstrap.Button,
-	                                { className: 'open-larger-image-button' },
-	                                'View Full-size Image'
-	                            )
-	                        ));
-	                        break;
-	                    }
-	                default:
-	                    break;
-	            }
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'feature-popup-content', onClick: this.bringToFront },
@@ -52839,8 +52824,11 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'feature-popup-footer' },
-	                    footer,
-	                    _react2.default.createElement('div', { key: 'clearfix', className: 'clearfix' })
+	                    _react2.default.createElement(
+	                        _PopupFooter2.default,
+	                        { featureType: this.props.featureType, featureProperties: this.props.featureProperties },
+	                        _react2.default.createElement('div', { key: 'clearfix', className: 'clearfix' })
+	                    )
 	                )
 	            );
 	        }
@@ -53056,18 +53044,92 @@
 /* 790 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(791);
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _util = __webpack_require__(787);
+
+	var _reactBootstrap = __webpack_require__(476);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var PopupFooter = function PopupFooter(props) {
+	    var footer = [];
+	    switch (props.featureType) {
+	        case "photo":
+	            {
+	                var photoURLs = (0, _util.getPhotoURLs)(undefined.props.featureProperties);
+	                footer.push(_react2.default.createElement(
+	                    'a',
+	                    { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
+	                    _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        { className: 'open-larger-image-button' },
+	                        _react2.default.createElement('i', { className: 'fa fa-image' }),
+	                        ' View Full-size'
+	                    )
+	                ));
+	                break;
+	            }
+	        case "profile":
+	            {
+	                footer.push(_react2.default.createElement(
+	                    'a',
+	                    { href: '', key: 'open-larger-graph-button', target: '_blank', rel: 'noopener noreferrer' },
+	                    _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        { className: 'open-larger-graph-button' },
+	                        _react2.default.createElement('i', { className: 'fa fa-image' }),
+	                        ' Full-size Graph'
+	                    )
+	                ));
+	                footer.push(_react2.default.createElement(
+	                    'a',
+	                    { href: '', key: 'download-excel-button', target: '_blank', rel: 'noopener noreferrer' },
+	                    _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        { className: 'download-excel-button' },
+	                        _react2.default.createElement('i', { className: 'fa fa-download' }),
+	                        ' Excel File'
+	                    )
+	                ));
+	                break;
+	            }
+	        default:
+	            break;
+	    }
+	    return _react2.default.createElement(
+	        'div',
+	        null,
+	        footer,
+	        props.children
+	    );
+	};
+	exports.default = PopupFooter;
 
 /***/ },
 /* 791 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = __webpack_require__(792);
+
+/***/ },
+/* 792 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
-	var utils = __webpack_require__(792);
-	var bind = __webpack_require__(793);
-	var Axios = __webpack_require__(794);
-	var defaults = __webpack_require__(795);
+	var utils = __webpack_require__(793);
+	var bind = __webpack_require__(794);
+	var Axios = __webpack_require__(795);
+	var defaults = __webpack_require__(796);
 
 	/**
 	 * Create an instance of Axios
@@ -53100,15 +53162,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(812);
-	axios.CancelToken = __webpack_require__(813);
-	axios.isCancel = __webpack_require__(809);
+	axios.Cancel = __webpack_require__(813);
+	axios.CancelToken = __webpack_require__(814);
+	axios.isCancel = __webpack_require__(810);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(814);
+	axios.spread = __webpack_require__(815);
 
 	module.exports = axios;
 
@@ -53117,12 +53179,12 @@
 
 
 /***/ },
-/* 792 */
+/* 793 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(793);
+	var bind = __webpack_require__(794);
 
 	/*global toString:true*/
 
@@ -53422,7 +53484,7 @@
 
 
 /***/ },
-/* 793 */
+/* 794 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53439,17 +53501,17 @@
 
 
 /***/ },
-/* 794 */
+/* 795 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(795);
-	var utils = __webpack_require__(792);
-	var InterceptorManager = __webpack_require__(806);
-	var dispatchRequest = __webpack_require__(807);
-	var isAbsoluteURL = __webpack_require__(810);
-	var combineURLs = __webpack_require__(811);
+	var defaults = __webpack_require__(796);
+	var utils = __webpack_require__(793);
+	var InterceptorManager = __webpack_require__(807);
+	var dispatchRequest = __webpack_require__(808);
+	var isAbsoluteURL = __webpack_require__(811);
+	var combineURLs = __webpack_require__(812);
 
 	/**
 	 * Create a new instance of Axios
@@ -53530,13 +53592,13 @@
 
 
 /***/ },
-/* 795 */
+/* 796 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(792);
-	var normalizeHeaderName = __webpack_require__(796);
+	var utils = __webpack_require__(793);
+	var normalizeHeaderName = __webpack_require__(797);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -53553,10 +53615,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(797);
+	    adapter = __webpack_require__(798);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(797);
+	    adapter = __webpack_require__(798);
 	  }
 	  return adapter;
 	}
@@ -53630,12 +53692,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 796 */
+/* 797 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
+	var utils = __webpack_require__(793);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -53648,18 +53710,18 @@
 
 
 /***/ },
-/* 797 */
+/* 798 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(792);
-	var settle = __webpack_require__(798);
-	var buildURL = __webpack_require__(801);
-	var parseHeaders = __webpack_require__(802);
-	var isURLSameOrigin = __webpack_require__(803);
-	var createError = __webpack_require__(799);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(804);
+	var utils = __webpack_require__(793);
+	var settle = __webpack_require__(799);
+	var buildURL = __webpack_require__(802);
+	var parseHeaders = __webpack_require__(803);
+	var isURLSameOrigin = __webpack_require__(804);
+	var createError = __webpack_require__(800);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(805);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -53755,7 +53817,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(805);
+	      var cookies = __webpack_require__(806);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -53832,12 +53894,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 798 */
+/* 799 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(799);
+	var createError = __webpack_require__(800);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -53863,12 +53925,12 @@
 
 
 /***/ },
-/* 799 */
+/* 800 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(800);
+	var enhanceError = __webpack_require__(801);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -53886,7 +53948,7 @@
 
 
 /***/ },
-/* 800 */
+/* 801 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53911,12 +53973,12 @@
 
 
 /***/ },
-/* 801 */
+/* 802 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
+	var utils = __webpack_require__(793);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -53985,12 +54047,12 @@
 
 
 /***/ },
-/* 802 */
+/* 803 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
+	var utils = __webpack_require__(793);
 
 	/**
 	 * Parse headers into an object
@@ -54028,12 +54090,12 @@
 
 
 /***/ },
-/* 803 */
+/* 804 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
+	var utils = __webpack_require__(793);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54102,7 +54164,7 @@
 
 
 /***/ },
-/* 804 */
+/* 805 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54144,12 +54206,12 @@
 
 
 /***/ },
-/* 805 */
+/* 806 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
+	var utils = __webpack_require__(793);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54203,12 +54265,12 @@
 
 
 /***/ },
-/* 806 */
+/* 807 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
+	var utils = __webpack_require__(793);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -54261,15 +54323,15 @@
 
 
 /***/ },
-/* 807 */
+/* 808 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
-	var transformData = __webpack_require__(808);
-	var isCancel = __webpack_require__(809);
-	var defaults = __webpack_require__(795);
+	var utils = __webpack_require__(793);
+	var transformData = __webpack_require__(809);
+	var isCancel = __webpack_require__(810);
+	var defaults = __webpack_require__(796);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -54346,12 +54408,12 @@
 
 
 /***/ },
-/* 808 */
+/* 809 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(792);
+	var utils = __webpack_require__(793);
 
 	/**
 	 * Transform the data for a request or a response
@@ -54372,7 +54434,7 @@
 
 
 /***/ },
-/* 809 */
+/* 810 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54383,7 +54445,7 @@
 
 
 /***/ },
-/* 810 */
+/* 811 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54403,7 +54465,7 @@
 
 
 /***/ },
-/* 811 */
+/* 812 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54421,7 +54483,7 @@
 
 
 /***/ },
-/* 812 */
+/* 813 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54446,12 +54508,12 @@
 
 
 /***/ },
-/* 813 */
+/* 814 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(812);
+	var Cancel = __webpack_require__(813);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -54509,7 +54571,7 @@
 
 
 /***/ },
-/* 814 */
+/* 815 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54542,7 +54604,7 @@
 
 
 /***/ },
-/* 815 */
+/* 816 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54563,6 +54625,14 @@
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
+	var _PopupTitle = __webpack_require__(789);
+
+	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
+
+	var _PopupFooter = __webpack_require__(790);
+
+	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
@@ -54573,29 +54643,6 @@
 	    var classNames = ["static-modal"];
 	    if (props.visible === false) {
 	        classNames.push("hidden");
-	    }
-	    var footer = [_react2.default.createElement(
-	        _reactBootstrap.Button,
-	        { key: 'close', onClick: props.onCloseClick },
-	        'Close'
-	    )];
-	    switch (props.featureType) {
-	        case "photo":
-	            {
-	                var photoURLs = (0, _util.getPhotoURLs)(props.featureProperties);
-	                footer.unshift(_react2.default.createElement(
-	                    'a',
-	                    { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
-	                    _react2.default.createElement(
-	                        _reactBootstrap.Button,
-	                        { className: 'open-larger-image-button' },
-	                        'Open Original in New Window'
-	                    )
-	                ));
-	                break;
-	            }
-	        default:
-	            break;
 	    }
 	    return _react2.default.createElement(
 	        'div',
@@ -54620,7 +54667,15 @@
 	            _react2.default.createElement(
 	                _reactBootstrap.Modal.Footer,
 	                null,
-	                footer
+	                _react2.default.createElement(
+	                    _PopupFooter2.default,
+	                    { featureType: props.featureType, featureProperties: props.featureProperties },
+	                    _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        { key: 'close', onClick: props.onCloseClick },
+	                        'Close'
+	                    )
+	                )
 	            )
 	        )
 	    );
@@ -54628,7 +54683,7 @@
 	exports.default = MobileFeatureModal;
 
 /***/ },
-/* 816 */
+/* 817 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -54640,7 +54695,7 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _reselect = __webpack_require__(817);
+	var _reselect = __webpack_require__(818);
 
 	var getLayers = function getLayers(state) {
 	    return state.layers;
@@ -54772,7 +54827,7 @@
 	});
 
 /***/ },
-/* 817 */
+/* 818 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54888,7 +54943,7 @@
 	}
 
 /***/ },
-/* 818 */
+/* 819 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54903,7 +54958,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _LayerList = __webpack_require__(819);
+	var _LayerList = __webpack_require__(820);
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
 
@@ -54998,7 +55053,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MobileLayerList);
 
 /***/ },
-/* 819 */
+/* 820 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55013,11 +55068,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _LayerGroup = __webpack_require__(820);
+	var _LayerGroup = __webpack_require__(821);
 
 	var _LayerGroup2 = _interopRequireDefault(_LayerGroup);
 
-	var _BasemapList = __webpack_require__(822);
+	var _BasemapList = __webpack_require__(823);
 
 	var _BasemapList2 = _interopRequireDefault(_BasemapList);
 
@@ -55033,7 +55088,7 @@
 
 	var _basemaps = __webpack_require__(753);
 
-	var _selectors = __webpack_require__(816);
+	var _selectors = __webpack_require__(817);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55129,7 +55184,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LayerList);
 
 /***/ },
-/* 820 */
+/* 821 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55142,7 +55197,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Layer = __webpack_require__(821);
+	var _Layer = __webpack_require__(822);
 
 	var _Layer2 = _interopRequireDefault(_Layer);
 
@@ -55198,7 +55253,7 @@
 	exports.default = LayerGroup;
 
 /***/ },
-/* 821 */
+/* 822 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55232,7 +55287,7 @@
 	exports.default = Layer;
 
 /***/ },
-/* 822 */
+/* 823 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55247,7 +55302,7 @@
 
 	var _reactBootstrap = __webpack_require__(476);
 
-	var _Basemap = __webpack_require__(823);
+	var _Basemap = __webpack_require__(824);
 
 	var _Basemap2 = _interopRequireDefault(_Basemap);
 
@@ -55299,7 +55354,7 @@
 	exports.default = BasemapList;
 
 /***/ },
-/* 823 */
+/* 824 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55333,7 +55388,7 @@
 	exports.default = Basemap;
 
 /***/ },
-/* 824 */
+/* 825 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55441,7 +55496,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AboutModal);
 
 /***/ },
-/* 825 */
+/* 826 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55464,7 +55519,7 @@
 
 	var _pinnedFeatures = __webpack_require__(757);
 
-	var _PinnedFeaturePopup = __webpack_require__(826);
+	var _PinnedFeaturePopup = __webpack_require__(827);
 
 	var _PinnedFeaturePopup2 = _interopRequireDefault(_PinnedFeaturePopup);
 
@@ -55544,7 +55599,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(PinnedFeaturePopupContainer);
 
 /***/ },
-/* 826 */
+/* 827 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55571,7 +55626,11 @@
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _reactDraggable = __webpack_require__(827);
+	var _PopupFooter = __webpack_require__(790);
+
+	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
+
+	var _reactDraggable = __webpack_require__(828);
 
 	var _reactDraggable2 = _interopRequireDefault(_reactDraggable);
 
@@ -55623,25 +55682,6 @@
 	                "top": initialPositionAdjustedForContent.y,
 	                "left": initialPositionAdjustedForContent.x
 	            };
-	            var footer = [];
-	            switch (this.props.featureType) {
-	                case "photo":
-	                    {
-	                        var photoURLs = (0, _util.getPhotoURLs)(this.props.featureProperties);
-	                        footer.unshift(_react2.default.createElement(
-	                            'a',
-	                            { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
-	                            _react2.default.createElement(
-	                                _reactBootstrap.Button,
-	                                { className: 'open-larger-image-button' },
-	                                'View Full-size Image'
-	                            )
-	                        ));
-	                        break;
-	                    }
-	                default:
-	                    break;
-	            }
 	            return _react2.default.createElement(
 	                _reactDraggable2.default,
 	                {
@@ -55669,8 +55709,11 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'feature-popup-footer' },
-	                        footer,
-	                        _react2.default.createElement('div', { key: 'clearfix', className: 'clearfix' })
+	                        _react2.default.createElement(
+	                            _PopupFooter2.default,
+	                            { featureType: this.props.featureType, featureProperties: this.props.featureProperties },
+	                            _react2.default.createElement('div', { key: 'clearfix', className: 'clearfix' })
+	                        )
 	                    )
 	                )
 	            );
@@ -55683,7 +55726,7 @@
 	exports.default = PinnedFeaturePopup;
 
 /***/ },
-/* 827 */
+/* 828 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -57295,7 +57338,7 @@
 	//# sourceMappingURL=react-draggable.js.map
 
 /***/ },
-/* 828 */
+/* 829 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57312,7 +57355,7 @@
 
 	var _reactRedux = __webpack_require__(767);
 
-	var _selectors = __webpack_require__(816);
+	var _selectors = __webpack_require__(817);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
