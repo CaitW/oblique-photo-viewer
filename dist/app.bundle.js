@@ -52798,11 +52798,24 @@
 	        value: function render() {
 	            var layerGroupName = _store2.default.getState().layers.layersById[this.props.layerId].layerGroupName;
 	            var layerName = _store2.default.getState().layers.layersById[this.props.layerId].layerName;
-	            var featureName = "";
-	            if (typeof this.props.featureProperties.OBJECTID === "number") {
-	                featureName += "#" + this.props.featureProperties.OBJECTID;
-	            } else {
-	                featureName += "Feature";
+	            var footer = [];
+	            switch (this.props.featureType) {
+	                case "photo":
+	                    {
+	                        var photoURLs = (0, _util.getPhotoURLs)(this.props.featureProperties);
+	                        footer.unshift(_react2.default.createElement(
+	                            'a',
+	                            { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
+	                            _react2.default.createElement(
+	                                _reactBootstrap.Button,
+	                                { className: 'open-larger-image-button' },
+	                                'View Full-size Image'
+	                            )
+	                        ));
+	                        break;
+	                    }
+	                default:
+	                    break;
 	            }
 	            return _react2.default.createElement(
 	                'div',
@@ -52822,6 +52835,12 @@
 	                    'div',
 	                    { className: 'feature-popup-body' },
 	                    _react2.default.createElement(_PopupTabs2.default, { featureType: this.props.featureType, featureProperties: this.props.featureProperties, update: this.update })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'feature-popup-footer' },
+	                    footer,
+	                    _react2.default.createElement('div', { key: 'clearfix', className: 'clearfix' })
 	                )
 	            );
 	        }
@@ -55542,6 +55561,8 @@
 
 	var _reactBootstrap = __webpack_require__(476);
 
+	var _util = __webpack_require__(787);
+
 	var _PopupTabs = __webpack_require__(788);
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
@@ -55602,6 +55623,25 @@
 	                "top": initialPositionAdjustedForContent.y,
 	                "left": initialPositionAdjustedForContent.x
 	            };
+	            var footer = [];
+	            switch (this.props.featureType) {
+	                case "photo":
+	                    {
+	                        var photoURLs = (0, _util.getPhotoURLs)(this.props.featureProperties);
+	                        footer.unshift(_react2.default.createElement(
+	                            'a',
+	                            { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
+	                            _react2.default.createElement(
+	                                _reactBootstrap.Button,
+	                                { className: 'open-larger-image-button' },
+	                                'View Full-size Image'
+	                            )
+	                        ));
+	                        break;
+	                    }
+	                default:
+	                    break;
+	            }
 	            return _react2.default.createElement(
 	                _reactDraggable2.default,
 	                {
@@ -55625,6 +55665,12 @@
 	                        'div',
 	                        { className: 'feature-popup-body' },
 	                        _react2.default.createElement(_PopupTabs2.default, { featureType: this.props.featureType, featureProperties: this.props.featureProperties })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'feature-popup-footer' },
+	                        footer,
+	                        _react2.default.createElement('div', { key: 'clearfix', className: 'clearfix' })
 	                    )
 	                )
 	            );

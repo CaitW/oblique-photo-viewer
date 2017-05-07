@@ -3,7 +3,7 @@
  * This creates the modal that's displayed when a user clicks on an object in the map
  */
 import React from 'react';
-import { Table, Tabs, Tab } from 'react-bootstrap';
+import { Table, Tabs, Tab, Button } from 'react-bootstrap';
 import { getPhotoURLs } from '../util.js';
 import {newPinnedFeature} from '../ducks/pinnedFeatures.js';
 import PopupTabs from './PopupTabs.jsx';
@@ -37,11 +37,20 @@ export default class FeaturePopup extends React.Component {
     render() {
         let layerGroupName = store.getState().layers.layersById[this.props.layerId].layerGroupName;
         let layerName = store.getState().layers.layersById[this.props.layerId].layerName;
-        let featureName = "";
-        if(typeof this.props.featureProperties.OBJECTID === "number") {
-            featureName += "#" + this.props.featureProperties.OBJECTID;
-        } else {
-            featureName += "Feature";
+        let footer = [];
+        switch (this.props.featureType) {
+            case "photo":
+                {
+                    let photoURLs = getPhotoURLs(this.props.featureProperties);
+                    footer.unshift(
+                        <a href={photoURLs.original} key="open-larger-image-button" target="_blank" rel="noopener noreferrer" >
+                            <Button className="open-larger-image-button">View Full-size Image</Button>
+                        </a>
+                    );
+                    break;
+                }
+            default:
+                break;
         }
         return (
             <div className="feature-popup-content" onClick={this.bringToFront}>
@@ -54,6 +63,10 @@ export default class FeaturePopup extends React.Component {
                 </div>
                 <div className="feature-popup-body">
                     <PopupTabs featureType={this.props.featureType} featureProperties={this.props.featureProperties} update={this.update} />
+                </div>
+                <div className="feature-popup-footer">
+                    {footer}
+                    <div key="clearfix" className="clearfix"></div>
                 </div>
             </div>
         );

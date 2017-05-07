@@ -3,7 +3,8 @@
  * This creates the modal that's displayed when a user clicks on an object in the map
  */
 import React from 'react';
-import { Table, Tabs, Tab } from 'react-bootstrap';
+import { Table, Tabs, Tab, Button } from 'react-bootstrap';
+import { getPhotoURLs } from '../util.js';
 import PopupTabs from './PopupTabs.jsx';
 import PopupTitle from './PopupTitle.jsx';
 import Draggable from 'react-draggable';
@@ -32,6 +33,21 @@ export default class PinnedFeaturePopup extends React.Component {
             "top": initialPositionAdjustedForContent.y,
             "left": initialPositionAdjustedForContent.x
         }
+        let footer = [];
+        switch (this.props.featureType) {
+            case "photo":
+                {
+                    let photoURLs = getPhotoURLs(this.props.featureProperties);
+                    footer.unshift(
+                        <a href={photoURLs.original} key="open-larger-image-button" target="_blank" rel="noopener noreferrer" >
+                            <Button className="open-larger-image-button">View Full-size Image</Button>
+                        </a>
+                    );
+                    break;
+                }
+            default:
+                break;
+        }
         return (
             <Draggable
                 axis="both"
@@ -46,6 +62,10 @@ export default class PinnedFeaturePopup extends React.Component {
                     </div>
                     <div className="feature-popup-body">
                         <PopupTabs featureType={this.props.featureType} featureProperties={this.props.featureProperties} />
+                    </div>
+                    <div className="feature-popup-footer">
+                        {footer}
+                        <div key="clearfix" className="clearfix"></div>
                     </div>
                 </div>
             </Draggable>

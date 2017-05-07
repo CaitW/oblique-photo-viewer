@@ -149,4 +149,19 @@
       }
     }
   }
+
+  .feature-popup-footer {
+    padding: 0 5px 5px 5px;
+    button {
+      float: right;
+      font-size: inherit;
+      padding: 5px 10px;
+      border: 0;
+      background-color: $primary_100;
+      color: $primary_900;
+      &:hover {
+        background-color: $primary_300;
+      }
+    }
+  }
 }
