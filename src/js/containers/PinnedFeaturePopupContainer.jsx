@@ -17,9 +17,39 @@ const mapStateToProps = function(store) {
 class PinnedFeaturePopupContainer extends React.Component {
     constructor() {
         super();
+        this.state = {
+            order: []
+        };
+        this.bringToFront = this.bringToFront.bind(this);
     }
     closePopup (featureId) {
         store.dispatch(closePinnedFeature(featureId));
+    }
+    bringToFront (featureId) {
+        let newOrder = [...this.state.order];
+        newOrder.splice(newOrder.indexOf(featureId), 1);
+        newOrder.push(featureId);
+        this.setState({
+            order: newOrder
+        });
+    }
+    componentWillReceiveProps (nextProps) {
+        let newOrder = [...this.state.order];
+        // if a new popup has been added, add that item to the beginning of the list
+        for(let featureId in nextProps.pinnedFeatures) {
+            if(newOrder.indexOf(featureId) === -1) {
+                newOrder.push(featureId);
+            }
+        }
+        // if a popup has been closed, remove that popup from the order
+        for(let featureId of newOrder) {
+            if(typeof nextProps.pinnedFeatures[featureId] === "undefined") {
+                newOrder.splice(newOrder.indexOf(featureId),1);
+            }
+        }
+        this.setState({
+            order: newOrder
+        });
     }
     render() {
         let pinnedFeatures = [];
@@ -28,6 +58,7 @@ class PinnedFeaturePopupContainer extends React.Component {
             let layerId = pinnedFeature.layerId;
             let layerName = this.props.layers[layerId].layerName;
             let layerGroupName = this.props.layers[layerId].layerGroupName;
+            let zIndex = this.state.order.indexOf(featureId);
             pinnedFeatures.push(
                 <PinnedFeaturePopup
                     featureType={pinnedFeature.featureType}
@@ -38,6 +69,8 @@ class PinnedFeaturePopupContainer extends React.Component {
                     featureId={featureId}
                     closePopup={() => {this.closePopup(featureId)}}
                     key={featureId}
+                    onClick={() => {this.bringToFront(featureId)}}
+                    zIndex={zIndex}
                 />
             )
         }

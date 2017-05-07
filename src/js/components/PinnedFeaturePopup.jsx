@@ -32,14 +32,16 @@ export default class PinnedFeaturePopup extends React.Component {
         }
         let style = {
             "top": initialPositionAdjustedForContent.y,
-            "left": initialPositionAdjustedForContent.x
+            "left": initialPositionAdjustedForContent.x,
+            "zIndex": this.props.zIndex
         }
         return (
             <Draggable
                 axis="both"
                 handle=".handle"
-                zIndex={1100}>
-                <div className="feature-popup-content hidden-xs" ref="content" style={style}>
+                zIndex={1100}
+                >
+                <div className="feature-popup-content hidden-xs" ref="content" style={style} onClick={this.props.onClick}>
                     <div className="feature-popup-header handle">
                         <PopupTitle featureProperties={this.props.featureProperties} layerGroupName={this.props.layerGroupName} layerName={this.props.layerName} />
                         <div className="feature-popup-controls">

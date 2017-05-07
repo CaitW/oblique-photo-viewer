@@ -55525,6 +55525,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -55548,13 +55550,71 @@
 	    function PinnedFeaturePopupContainer() {
 	        _classCallCheck(this, PinnedFeaturePopupContainer);
 
-	        return _possibleConstructorReturn(this, (PinnedFeaturePopupContainer.__proto__ || Object.getPrototypeOf(PinnedFeaturePopupContainer)).call(this));
+	        var _this = _possibleConstructorReturn(this, (PinnedFeaturePopupContainer.__proto__ || Object.getPrototypeOf(PinnedFeaturePopupContainer)).call(this));
+
+	        _this.state = {
+	            order: []
+	        };
+	        _this.bringToFront = _this.bringToFront.bind(_this);
+	        return _this;
 	    }
 
 	    _createClass(PinnedFeaturePopupContainer, [{
 	        key: 'closePopup',
 	        value: function closePopup(featureId) {
 	            _store2.default.dispatch((0, _pinnedFeatures.closePinnedFeature)(featureId));
+	        }
+	    }, {
+	        key: 'bringToFront',
+	        value: function bringToFront(featureId) {
+	            var newOrder = [].concat(_toConsumableArray(this.state.order));
+	            newOrder.splice(newOrder.indexOf(featureId), 1);
+	            newOrder.push(featureId);
+	            this.setState({
+	                order: newOrder
+	            });
+	        }
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            var newOrder = [].concat(_toConsumableArray(this.state.order));
+	            // if a new popup has been added, add that item to the beginning of the list
+	            for (var featureId in nextProps.pinnedFeatures) {
+	                if (newOrder.indexOf(featureId) === -1) {
+	                    newOrder.push(featureId);
+	                }
+	            }
+	            // if a popup has been closed, remove that popup from the order
+	            var _iteratorNormalCompletion = true;
+	            var _didIteratorError = false;
+	            var _iteratorError = undefined;
+
+	            try {
+	                for (var _iterator = newOrder[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	                    var _featureId = _step.value;
+
+	                    if (typeof nextProps.pinnedFeatures[_featureId] === "undefined") {
+	                        newOrder.splice(newOrder.indexOf(_featureId), 1);
+	                    }
+	                }
+	            } catch (err) {
+	                _didIteratorError = true;
+	                _iteratorError = err;
+	            } finally {
+	                try {
+	                    if (!_iteratorNormalCompletion && _iterator.return) {
+	                        _iterator.return();
+	                    }
+	                } finally {
+	                    if (_didIteratorError) {
+	                        throw _iteratorError;
+	                    }
+	                }
+	            }
+
+	            this.setState({
+	                order: newOrder
+	            });
 	        }
 	    }, {
 	        key: 'render',
@@ -55568,6 +55628,7 @@
 	                var layerId = pinnedFeature.layerId;
 	                var layerName = _this2.props.layers[layerId].layerName;
 	                var layerGroupName = _this2.props.layers[layerId].layerGroupName;
+	                var zIndex = _this2.state.order.indexOf(featureId);
 	                pinnedFeatures.push(_react2.default.createElement(_PinnedFeaturePopup2.default, {
 	                    featureType: pinnedFeature.featureType,
 	                    featureProperties: pinnedFeature.featureProperties,
@@ -55578,7 +55639,11 @@
 	                    closePopup: function closePopup() {
 	                        _this2.closePopup(featureId);
 	                    },
-	                    key: featureId
+	                    key: featureId,
+	                    onClick: function onClick() {
+	                        _this2.bringToFront(featureId);
+	                    },
+	                    zIndex: zIndex
 	                }));
 	            };
 
@@ -55680,17 +55745,19 @@
 	            };
 	            var style = {
 	                "top": initialPositionAdjustedForContent.y,
-	                "left": initialPositionAdjustedForContent.x
+	                "left": initialPositionAdjustedForContent.x,
+	                "zIndex": this.props.zIndex
 	            };
 	            return _react2.default.createElement(
 	                _reactDraggable2.default,
 	                {
 	                    axis: 'both',
 	                    handle: '.handle',
-	                    zIndex: 1100 },
+	                    zIndex: 1100
+	                },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'feature-popup-content hidden-xs', ref: 'content', style: style },
+	                    { className: 'feature-popup-content hidden-xs', ref: 'content', style: style, onClick: this.props.onClick },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'feature-popup-header handle' },
