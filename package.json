@@ -25,6 +25,7 @@
     "babel-preset-react": "^6.22.0",
     "del": "^2.2.2",
     "eslint": "^3.19.0",
+    "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^6.10.3",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
