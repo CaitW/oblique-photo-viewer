@@ -239,10 +239,10 @@ var LAYER_STYLES = {
             className: "layer-profiles",
             color: COLORS.BLACK
         };
-        let propertyName = "Bluff Line";
-        switch (feature.properties.isBathy) {
-            case true:
-                propertyName = "Bathymetric Line";
+        let propertyName = "Bluff Profile";
+        switch (feature.properties.type) {
+            case "bathymetry":
+                propertyName = "Bathymetric Profile";
                 style.color = COLORS.LIGHT_BLUE;
             break;
             default:
