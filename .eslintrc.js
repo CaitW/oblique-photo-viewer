@@ -12,13 +12,14 @@ module.exports = {
         'indent': ['error', 4, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
         'no-console': ['error', {allow: ['error']}],
         // TODO:
-        'react/prop-types': 0
+        'react/prop-types': 0,
+        "import/newline-after-import": 2
     },
     env: {
         "browser": true
     },
-    plugins: ["react"],
-    extends: ["eslint:recommended","plugin:react/recommended"],
+    plugins: ["react","import"],
+    extends: ["eslint:recommended","plugin:react/recommended", "plugin:import/recommended"],
     globals: {
         "L": false
     }
