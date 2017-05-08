@@ -52572,10 +52572,10 @@
 	            className: "layer-profiles",
 	            color: COLORS.BLACK
 	        };
-	        var propertyName = "Bluff Line";
-	        switch (feature.properties.isBathy) {
-	            case true:
-	                propertyName = "Bathymetric Line";
+	        var propertyName = "Bluff Profile";
+	        switch (feature.properties.type) {
+	            case "bathymetry":
+	                propertyName = "Bathymetric Profile";
 	                style.color = COLORS.LIGHT_BLUE;
 	                break;
 	            default:
@@ -53047,7 +53047,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _react = __webpack_require__(299);
@@ -53061,56 +53061,84 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var PopupFooter = function PopupFooter(props) {
-	    var footer = [];
-	    switch (props.featureType) {
-	        case "photo":
-	            {
-	                var photoURLs = (0, _util.getPhotoURLs)(undefined.props.featureProperties);
-	                footer.push(_react2.default.createElement(
-	                    'a',
-	                    { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
-	                    _react2.default.createElement(
-	                        _reactBootstrap.Button,
-	                        { className: 'open-larger-image-button' },
-	                        _react2.default.createElement('i', { className: 'fa fa-image' }),
-	                        ' View Full-size'
-	                    )
-	                ));
-	                break;
-	            }
-	        case "profile":
-	            {
-	                footer.push(_react2.default.createElement(
-	                    'a',
-	                    { href: '', key: 'open-larger-graph-button', target: '_blank', rel: 'noopener noreferrer' },
-	                    _react2.default.createElement(
-	                        _reactBootstrap.Button,
-	                        { className: 'open-larger-graph-button' },
-	                        _react2.default.createElement('i', { className: 'fa fa-image' }),
-	                        ' Full-size Graph'
-	                    )
-	                ));
-	                footer.push(_react2.default.createElement(
-	                    'a',
-	                    { href: '', key: 'download-excel-button', target: '_blank', rel: 'noopener noreferrer' },
-	                    _react2.default.createElement(
-	                        _reactBootstrap.Button,
-	                        { className: 'download-excel-button' },
-	                        _react2.default.createElement('i', { className: 'fa fa-download' }),
-	                        ' Excel File'
-	                    )
-	                ));
-	                break;
-	            }
-	        default:
-	            break;
-	    }
-	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        footer,
-	        props.children
-	    );
+	  var footer = [];
+	  switch (props.featureType) {
+	    case "photo":
+	      {
+	        var photoURLs = (0, _util.getPhotoURLs)(props.featureProperties);
+	        footer.push(_react2.default.createElement(
+	          'a',
+	          { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
+	          _react2.default.createElement(
+	            _reactBootstrap.Button,
+	            { className: 'open-larger-image-button' },
+	            _react2.default.createElement('i', { className: 'fa fa-image' }),
+	            ' View Full-size'
+	          )
+	        ));
+	        break;
+	      }
+	    case "profile":
+	      {
+	        if (props.featureProperties.bluff_xls !== false) {
+	          footer.push(_react2.default.createElement(
+	            'a',
+	            { href: '', key: 'download-bluff-excel-button', target: '_blank', rel: 'noopener noreferrer' },
+	            _react2.default.createElement(
+	              _reactBootstrap.Button,
+	              { className: 'download-excel-button' },
+	              _react2.default.createElement('i', { className: 'fa fa-download' }),
+	              ' Bluff Spreadsheet'
+	            )
+	          ));
+	        }
+	        if (props.featureProperties.bathy_xls !== false) {
+	          footer.push(_react2.default.createElement(
+	            'a',
+	            { href: '', key: 'download-bathy-excel-button', target: '_blank', rel: 'noopener noreferrer' },
+	            _react2.default.createElement(
+	              _reactBootstrap.Button,
+	              { className: 'download-excel-button' },
+	              _react2.default.createElement('i', { className: 'fa fa-download' }),
+	              ' Bathy Spreadsheet'
+	            )
+	          ));
+	        }
+	        if (props.featureProperties.bluff_jpg !== false) {
+	          footer.push(_react2.default.createElement(
+	            'a',
+	            { href: '', key: 'open-larger-bluff-graph-button', target: '_blank', rel: 'noopener noreferrer' },
+	            _react2.default.createElement(
+	              _reactBootstrap.Button,
+	              { className: 'open-larger-graph-button' },
+	              _react2.default.createElement('i', { className: 'fa fa-image' }),
+	              ' Full-size Bluff Graph'
+	            )
+	          ));
+	        }
+	        if (props.featureProperties.bathy_png !== false) {
+	          footer.push(_react2.default.createElement(
+	            'a',
+	            { href: '', key: 'open-larger-bathy-graph-button', target: '_blank', rel: 'noopener noreferrer' },
+	            _react2.default.createElement(
+	              _reactBootstrap.Button,
+	              { className: 'open-larger-graph-button' },
+	              _react2.default.createElement('i', { className: 'fa fa-image' }),
+	              ' Full-size Bathy Graph'
+	            )
+	          ));
+	        }
+	        break;
+	      }
+	    default:
+	      break;
+	  }
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    footer,
+	    props.children
+	  );
 	};
 	exports.default = PopupFooter;
 
