@@ -3,6 +3,7 @@ import { createSelector } from 'reselect';
 const getLayers = (state) => state.layers;
 const getLayersById = (state) => state.layers.layersById;
 const getMobileFeatureModal = (state) => state.mobile.featureModal;
+
 export const mapLayerGroupsToLayers = createSelector([getLayers], layers => {
     let layersById = layers.layersById;
     let layerGroupsById = layers.layerGroupsById;
@@ -19,35 +20,39 @@ export const mapLayerGroupsToLayers = createSelector([getLayers], layers => {
         }
     }
     return mappedLayerGroups;
-})
+});
+
 export const getActiveLayers = createSelector(getLayersById, layers => {
     let activeLayers = [];
     for (let layerId in layers) {
         if (layers[layerId].active === true) {
-            activeLayers.push({
-                layerId: layerId,
-                layer: layers[layerId]
-            });
+            activeLayers.push(layerId);
         }
     }
     return activeLayers;
 });
-export const getActiveLayerStyleTypes = createSelector(getActiveLayers, activeLayers => {
+
+// Legend Selectors
+export const getActiveLayerStyleTypes = createSelector([getLayers, getActiveLayers], (layers, activeLayers) => {
     let stylesByLayerId = {};
-    for (let layerData of activeLayers) {
+    for (let layerId of activeLayers) {
+        let layer = layers.layersById[layerId];
+        let layerName = layer.name;
+        let layerGroupId = layer.layerGroupId;
+        let layerGroupName = layers.layerGroupsById[layerGroupId].name;
+        let legendStyles = layer.legendStyles;
         let styles = [];
-        let styleCache = layerData.layer.styleCache;
-        for (let styleName in styleCache) {
+        for (let styleName in legendStyles) {
             let styleIconClassNames = ["fa"];
             let iconStyle = {
                 color: "#000000"
             };
-            if (styleCache[styleName].geometryType === "LineString" || styleCache[styleName].geometryType === "MultiLineString") {
+            if (legendStyles[styleName].geometryType === "LineString" || legendStyles[styleName].geometryType === "MultiLineString") {
                 styleIconClassNames.push("fa-minus");
-                iconStyle.color = styleCache[styleName].style.color;
-            } else if (styleCache[styleName].geometryType === "Point") {
+                iconStyle.color = legendStyles[styleName].style.color;
+            } else if (legendStyles[styleName].geometryType === "Point") {
                 styleIconClassNames.push("fa-circle");
-                iconStyle.color = styleCache[styleName].style.strokeColor;
+                iconStyle.color = legendStyles[styleName].style.strokeColor;
             }
             if (styleName === "null") {
                 styleName = "(No Value)";
@@ -67,10 +72,11 @@ export const getActiveLayerStyleTypes = createSelector(getActiveLayers, activeLa
             }
             return 0;
         });
-        stylesByLayerId[layerData.layer.layerGroupName + " - " + layerData.layer.layerName] = styles;
+        stylesByLayerId[layerGroupName + " - " + layerName] = styles;
     }
     return stylesByLayerId;
 });
+
 export const getMobileFeaturePopupProps = createSelector([getLayers, getMobileFeatureModal], (layers, featureModal) => {
     if (typeof featureModal.layerId !== "undefined" && featureModal.layerId !== false) {
         let layerId = featureModal.layerId;

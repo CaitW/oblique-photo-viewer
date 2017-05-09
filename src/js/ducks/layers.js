@@ -15,9 +15,9 @@ export function toggleLayer(layerId) {
     }
 }
 
-export function styleCacheUpdate(layerId, propertyName, style, geometryType) {
+export function legendStyleUpdate(layerId, propertyName, style, geometryType) {
     return {
-        type: "LAYER:STYLE_CACHE_UPDATE",
+        type: "LAYER:LEGEND_STYLE_UPDATE",
         layerId,
         propertyName,
         style,
@@ -32,8 +32,9 @@ for (let layerGroupId in CONFIG.map.layers) {
     let layerGroupLayers = CONFIG.map.layers[layerGroupId].layers;
     for (let layerId in layerGroupLayers) {
         let layer = layerGroupLayers[layerId];
-        layer.styleCache = layer.styleCache || {};
+        layer.legendStyles = layer.legendStyles || {};
         layer.layerGroupId = layerGroupId;
+        layer.id = layerId;
         layersById[layerId] = layer;
         let layerGroupProperties = CONFIG.map.layers[layerGroupId];
         if (typeof layerGroupsById[layerGroupId] === "undefined") {
@@ -68,9 +69,9 @@ export default function layers(state = initialLayers, action) {
                 }
                 break;
             }
-        case "LAYER:STYLE_CACHE_UPDATE":
+        case "LAYER:LEGEND_STYLE_UPDATE":
             {
-                let styleCache = {
+                let legendStyle = {
                     style: action.style,
                     geometryType: action.geometryType
                 };
@@ -79,9 +80,9 @@ export default function layers(state = initialLayers, action) {
                         ...state.layersById,
                         [action.layerId]: {
                             ...state.layersById[action.layerId],
-                            styleCache: {
-                                ...state.layersById[action.layerId].styleCache,
-                                [action.propertyName]: styleCache
+                            legendStyles: {
+                                ...state.layersById[action.layerId].legendStyles,
+                                [action.propertyName]: legendStyle
                             }
                         }
                     }

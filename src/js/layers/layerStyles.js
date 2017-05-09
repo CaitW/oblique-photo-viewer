@@ -5,7 +5,7 @@
  * the user activates them in the map, the legend can display all the associated styles.
  */
 import store from '../store.js';
-import { styleCacheUpdate } from '../ducks/layers.js';
+import { legendStyleUpdate } from '../ducks/layers.js';
 
 let COLORS = {
     RED: "#F44336",
@@ -31,17 +31,17 @@ let COLORS = {
 // Each layer can have multiple style types cached, depending on what type of features it contains.
 // i.e. when a layer has different colors assigned to unique bluff types, each differing style
 // is cached using the `propertyName` attribute
-var STYLE_CACHE = {};
-function addToCache(layerId, propertyName, style, geometryType) {
-    STYLE_CACHE[layerId] = STYLE_CACHE[layerId] || {};
-    if (typeof STYLE_CACHE[layerId][propertyName] === "undefined") {
-        STYLE_CACHE[layerId][propertyName] = true;
-        store.dispatch(styleCacheUpdate(layerId, propertyName, style, geometryType))
+var LEGEND_STYLES = {};
+function addToLegendStyles(layerId, propertyName, style, geometryType) {
+    LEGEND_STYLES[layerId] = LEGEND_STYLES[layerId] || {};
+    if (typeof LEGEND_STYLES[layerId][propertyName] === "undefined") {
+        LEGEND_STYLES[layerId][propertyName] = true;
+        store.dispatch(legendStyleUpdate(layerId, propertyName, style, geometryType))
     }
     return style;
 }
 // Individual layer styles are added below, as referenced by ID in config.json
-var LAYER_STYLES = {
+var LAYER_STYLES_BY_ID = {
     backshore_1976: function(feature) {
         let style = {
             weight: 5,
@@ -67,7 +67,7 @@ var LAYER_STYLES = {
                 style.color = COLORS.BLACK;
                 break;
         }
-        return addToCache(this.layerId, feature.properties["Bluff Condition Classification"], style, feature.geometry.type);
+        return addToLegendStyles("backshore_1976", feature.properties["Bluff Condition Classification"], style, feature.geometry.type);
     },
     backshore_2007: function(feature) {
         let style = {
@@ -94,7 +94,7 @@ var LAYER_STYLES = {
                 style.color = COLORS.BLACK;
                 break;
         }
-        return addToCache(this.layerId, feature.properties["Bluff Condition Classification"], style, feature.geometry.type);
+        return addToLegendStyles("backshore_2007", feature.properties["Bluff Condition Classification"], style, feature.geometry.type);
     },
     photos_1976: function(feature) {
         let style = {
@@ -105,7 +105,7 @@ var LAYER_STYLES = {
             fillOpacity: 1,
             className: "layer-photos-1976"
         };
-        return addToCache(this.layerId, "photos", style, feature.geometry.type);
+        return addToLegendStyles("photos_2007", "photos", style, feature.geometry.type);
     },
     photos_2007: function(feature) {
         let style = {
@@ -116,7 +116,7 @@ var LAYER_STYLES = {
             fillOpacity: 1,
             className: "layer-photos-2007"
         };
-        return addToCache(this.layerId, "photos", style, feature.geometry.type);
+        return addToLegendStyles("photos_2007", "photos", style, feature.geometry.type);
     },
     structure_1976: function(feature) {
         let style = {
@@ -127,7 +127,7 @@ var LAYER_STYLES = {
             fillOpacity: 1,
             className: "layer-structure-1976"
         };
-        return addToCache(this.layerId, "structures", style, feature.geometry.type);
+        return addToLegendStyles("structure_1976", "structures", style, feature.geometry.type);
     },
     structure_2007: function(feature) {
         let style = {
@@ -138,7 +138,7 @@ var LAYER_STYLES = {
             fillOpacity: 1,
             className: "layer-structure-2007"
         };
-        return addToCache(this.layerId, "structures", style, feature.geometry.type);
+        return addToLegendStyles("structure_2007", "structures", style, feature.geometry.type);
     },
     beachclass_1976: function(feature) {
         let style = {
@@ -183,7 +183,7 @@ var LAYER_STYLES = {
                 style.color = COLORS.BLACK;
                 break;
         }
-        return addToCache(this.layerId, feature.properties["Shore Protection Classification"], style, feature.geometry.type);
+        return addToLegendStyles("beachclass_1976", feature.properties["Shore Protection Classification"], style, feature.geometry.type);
     },
     beachclass_2007: function(feature) {
         let style = {
@@ -228,7 +228,7 @@ var LAYER_STYLES = {
                 style.color = COLORS.BLACK;
                 break;
         }
-        return addToCache(this.layerId, feature.properties["Shore Protection Classification"], style, feature.geometry.type);
+        return addToLegendStyles("beachclass_2007", feature.properties["Shore Protection Classification"], style, feature.geometry.type);
     },
     profiles: function (feature) {
         let style = {
@@ -248,7 +248,12 @@ var LAYER_STYLES = {
             default:
                 break;
         }
-        return addToCache(this.layerId, propertyName, style, feature.geometry.type);
+        return addToLegendStyles("profiles", propertyName, style, feature.geometry.type);
     }
 }
-export { LAYER_STYLES };
+export default function LAYER_STYLE (layerId) {
+    if(typeof LAYER_STYLES_BY_ID[layerId] !== "undefined") {
+        return LAYER_STYLES_BY_ID[layerId];
+    }
+    return null;
+}

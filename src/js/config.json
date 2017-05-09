@@ -106,7 +106,7 @@
                         "type": "tileLayer",
                         "url": "https://api.mapbox.com/styles/v1/asfpm/ciyudtx3u00262sll3x184fnb/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
                         "active": true,
-                        "styleCache": {
+                        "legendStyles": {
                             "County Boundaries": {
                                 "geometryType": "LineString",
                                 "style": {
