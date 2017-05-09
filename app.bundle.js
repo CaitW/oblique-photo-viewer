@@ -8214,23 +8214,23 @@
 
 	var _MapContainer2 = _interopRequireDefault(_MapContainer);
 
-	var _MobileLayerList = __webpack_require__(819);
+	var _MobileLayerList = __webpack_require__(820);
 
 	var _MobileLayerList2 = _interopRequireDefault(_MobileLayerList);
 
-	var _AboutModal = __webpack_require__(825);
+	var _AboutModal = __webpack_require__(826);
 
 	var _AboutModal2 = _interopRequireDefault(_AboutModal);
 
-	var _PinnedFeaturePopupContainer = __webpack_require__(826);
+	var _PinnedFeaturePopupContainer = __webpack_require__(827);
 
 	var _PinnedFeaturePopupContainer2 = _interopRequireDefault(_PinnedFeaturePopupContainer);
 
-	var _LayerList = __webpack_require__(820);
+	var _LayerList = __webpack_require__(821);
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
 
-	var _Legend = __webpack_require__(829);
+	var _Legend = __webpack_require__(830);
 
 	var _Legend2 = _interopRequireDefault(_Legend);
 
@@ -49716,6 +49716,7 @@
 	        layerId: layerId
 	    };
 	}
+
 	function styleCacheUpdate(layerId, propertyName, style, geometryType) {
 	    return {
 	        type: "LAYER:STYLE_CACHE_UPDATE",
@@ -49725,33 +49726,31 @@
 	        geometryType: geometryType
 	    };
 	}
+
 	var layerGroupsById = {};
 	var layersById = {};
 
-	function getUniqueLayerId(layerGroupName, layerName) {
-	    return layerGroupName.replace(/ /g, "_") + ":" + layerName.replace(/ /g, "_");
-	}
-	for (var layerGroupName in _config2.default.map.layers) {
-	    var layerGroupLayers = _config2.default.map.layers[layerGroupName].layers;
-	    for (var layerName in layerGroupLayers) {
-	        var layer = layerGroupLayers[layerName];
-	        var layerId = getUniqueLayerId(layerGroupName, layerName);
+	for (var layerGroupId in _config2.default.map.layers) {
+	    var layerGroupLayers = _config2.default.map.layers[layerGroupId].layers;
+	    for (var layerId in layerGroupLayers) {
+	        var layer = layerGroupLayers[layerId];
 	        layer.styleCache = layer.styleCache || {};
-	        layer.layerGroupName = layerGroupName;
-	        layer.id = layerId;
+	        layer.layerGroupId = layerGroupId;
 	        layersById[layerId] = layer;
-	        var layerGroupProperties = _config2.default.map.layers[layerGroupName];
-	        if (typeof layerGroupsById[layerGroupName] === "undefined") {
-	            layerGroupsById[layerGroupName] = _extends({}, layerGroupProperties);
-	            layerGroupsById[layerGroupName].layers = [];
+	        var layerGroupProperties = _config2.default.map.layers[layerGroupId];
+	        if (typeof layerGroupsById[layerGroupId] === "undefined") {
+	            layerGroupsById[layerGroupId] = _extends({}, layerGroupProperties);
+	            layerGroupsById[layerGroupId].layers = [];
 	        }
-	        layerGroupsById[layerGroupName].layers.push(layerId);
+	        layerGroupsById[layerGroupId].layers.push(layerId);
 	    }
 	}
+
 	var initialLayers = {
 	    layersById: layersById,
 	    layerGroupsById: layerGroupsById
 	};
+
 	function layers() {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialLayers;
 	    var action = arguments[1];
@@ -49815,114 +49814,96 @@
 			],
 			"basemaps": {
 				"light": {
-					"basemapName": "Light",
+					"name": "Light",
 					"url": "https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
 					"active": true
 				},
 				"streets": {
-					"basemapName": "Streets",
+					"name": "Streets",
 					"url": "https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
 					"active": false
 				},
 				"satellite": {
-					"basemapName": "Satellite",
+					"name": "Satellite",
 					"url": "https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
 					"active": false
 				}
 			},
 			"layers": {
-				"1976 Inventory": {
+				"1976_inventory": {
 					"name": "1976 Inventory",
 					"layers": {
-						"Backshore": {
-							"layerName": "Bluff Condition",
+						"backshore_1976": {
+							"name": "Bluff Condition",
 							"type": "geojson",
-							"styleID": "backshore_1976",
-							"onEachFeatureID": "backshore_1976",
 							"dataLocation": "./data/layers/backshore_1976.json",
 							"active": false
 						},
-						"Beachclass": {
-							"layerName": "Beach Protection",
+						"beachclass_1976": {
+							"name": "Beach Protection",
 							"type": "geojson",
-							"styleID": "beachclass_1976",
-							"onEachFeatureID": "beachclass_1976",
 							"dataLocation": "./data/layers/beachclass_1976.json",
 							"active": false
 						},
-						"Structure": {
-							"layerName": "Shore Structures",
+						"structure_1976": {
+							"name": "Shore Structures",
 							"type": "geojson",
-							"styleID": "structure_1976",
-							"onEachFeatureID": "structure_1976",
 							"dataLocation": "./data/layers/structure_1976.json",
 							"active": false
 						},
-						"Photos": {
-							"layerName": "Photos",
+						"photos_1976": {
+							"name": "Photos",
 							"type": "geojson",
 							"dataLocation": "./data/layers/photos_1976.json",
-							"styleID": "photos_1976",
-							"onEachFeatureID": "photos_1976",
 							"active": false
 						}
 					}
 				},
-				"2007 Inventory": {
+				"2007_inventory": {
 					"name": "2007 Inventory",
 					"layers": {
-						"Backshore": {
-							"layerName": "Bluff Condition",
+						"backshore_2007": {
+							"name": "Bluff Condition",
 							"type": "geojson",
-							"styleID": "backshore_2007",
-							"onEachFeatureID": "backshore_2007",
 							"dataLocation": "./data/layers/backshore_2007.json",
 							"active": false
 						},
-						"Beachclass": {
-							"layerName": "Beach Protection",
+						"beachclass_2007": {
+							"name": "Beach Protection",
 							"type": "geojson",
-							"styleID": "beachclass_2007",
-							"onEachFeatureID": "beachclass_2007",
 							"dataLocation": "./data/layers/beachclass_2007.json",
 							"active": false
 						},
-						"Structure": {
-							"layerName": "Shore Structures",
+						"structure_2007": {
+							"name": "Shore Structures",
 							"type": "geojson",
-							"styleID": "structure_2007",
-							"onEachFeatureID": "structure_2007",
 							"dataLocation": "./data/layers/structure_2007.json",
 							"active": false
 						},
-						"Photos": {
-							"layerName": "Photos",
+						"photos_2007": {
+							"name": "Photos",
 							"type": "geojson",
 							"dataLocation": "./data/layers/photos_2007.json",
-							"styleID": "photos_2007",
-							"onEachFeatureID": "photos_2007",
 							"active": false
 						}
 					}
 				},
-				"Bluff Profiles": {
+				"bluff_profiles": {
 					"name": "Bluff Profiles",
 					"layers": {
-						"Profile Lines": {
-							"layerName": "Profile Lines",
+						"profiles": {
+							"name": "Profile Lines",
 							"type": "geojson",
-							"styleID": "profiles",
-							"onEachFeatureID": "profiles",
-							"dataLocation": "./data/layers/profiles-simplified.json",
+							"dataLocation": "./data/layers/profiles.json",
 							"active": true
 						}
 					}
 				},
-				"Boundaries": {
+				"boundaries": {
 					"name": "Boundaries",
 					"layers": {
-						"County Boundaries": {
-							"layerName": "County Boundaries",
+						"county_bounds": {
+							"name": "County Boundaries",
 							"type": "tileLayer",
 							"url": "https://api.mapbox.com/styles/v1/asfpm/ciyudtx3u00262sll3x184fnb/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
 							"active": true,
@@ -50111,6 +50092,15 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
+	                                                                                                                                                                                                                                                                   * basemaps.js Ducks
+	                                                                                                                                                                                                                                                                   *
+	                                                                                                                                                                                                                                                                   * Contains the actions and reducer part that controls basemaps in the map.
+	                                                                                                                                                                                                                                                                   * - Controls adding and removing basemaps
+	                                                                                                                                                                                                                                                                   */
+
+
 	exports.toggleBasemap = toggleBasemap;
 	exports.default = basemaps;
 
@@ -50120,40 +50110,38 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var initialbasemaps = _config2.default.map.basemaps; /**
-	                                                      * basemaps.js Ducks
-	                                                      *
-	                                                      * Contains the actions and reducer part that controls basemaps in the map.
-	                                                      * - Controls adding and removing basemaps
-	                                                      */
-	function toggleBasemap(basemapID) {
+	var initialbasemaps = _config2.default.map.basemaps;
+
+	function toggleBasemap(basemapId) {
 	    return {
 	        type: "MAP:TOGGLE_BASEMAP",
-	        basemapID: basemapID
+	        basemapId: basemapId
 	    };
 	}
+
 	function basemaps() {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialbasemaps;
 	    var action = arguments[1];
 
-	    var newState = Object.assign({}, state);
+	    var newState = _extends({}, state);
 	    switch (action.type) {
 	        case "MAP:TOGGLE_BASEMAP":
 	            {
-	                var basemapIDToToggle = action.basemapID;
-	                for (var basemapID in newState) {
-	                    var basemapSlice = Object.assign({}, newState[basemapID]);
-	                    if (basemapID === basemapIDToToggle) {
-	                        basemapSlice.active = true;
+	                var basemapIdToToggle = action.basemapId;
+	                for (var basemapId in newState) {
+	                    if (basemapId === basemapIdToToggle) {
+	                        newState[basemapId] = _extends({}, newState[basemapId], {
+	                            active: true
+	                        });
 	                    } else {
-	                        basemapSlice.active = false;
+	                        newState[basemapId] = _extends({}, newState[basemapId], {
+	                            active: false
+	                        });
 	                    }
-	                    newState[basemapID] = basemapSlice;
 	                }
 	                break;
 	            }
 	        default:
-	            newState = state;
 	            break;
 	    }
 	    return newState;
@@ -50274,11 +50262,11 @@
 	exports.default = mobile;
 	/**
 	 * mobile.js Ducks
-	 * 
+	 *
 	 * Contains the actions and reducer part that controls mobile functionality.
 	 * Mobile functionality is present when the window is smaller than 992px.
 	 * These features include:
-	 * - Mobile Layer List 
+	 * - Mobile Layer List
 	 * - Keeping track of window size
 	 * - When a feature is clicked during mobile mode (<992px)
 	 * - Mobile Feature Modal
@@ -50301,11 +50289,10 @@
 	        width: width
 	    };
 	}
-	function mobileClickFeature(featureProperties, featureType, layerId) {
+	function mobileClickFeature(featureProperties, layerId) {
 	    return {
 	        type: "MOBILE:LAYER:CLICK_FEATURE",
 	        featureProperties: featureProperties,
-	        featureType: featureType,
 	        layerId: layerId
 	    };
 	}
@@ -50325,7 +50312,6 @@
 	    featureModal: {
 	        visible: false,
 	        featureProperties: false,
-	        featureType: false,
 	        layerId: false
 	    }
 	};
@@ -50354,14 +50340,12 @@
 	        case "MOBILE:LAYER:CLICK_FEATURE":
 	            featureModalState.visible = true;
 	            featureModalState.featureProperties = action.featureProperties;
-	            featureModalState.featureType = action.featureType;
 	            featureModalState.layerId = action.layerId;
 	            newState.featureModal = featureModalState;
 	            break;
 	        case "MOBILE:FEATURE_MODAL:CLOSE":
 	            featureModalState.visible = false;
 	            featureModalState.featureProperties = false;
-	            featureModalState.featureType = false;
 	            featureModalState.layerId = false;
 	            newState.featureModal = featureModalState;
 	            break;
@@ -50441,12 +50425,11 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function newPinnedFeature(layerId, featureProperties, featureType, position) {
+	function newPinnedFeature(layerId, featureProperties, position) {
 	    return {
 	        type: "PINNED_FEATURES:NEW",
 	        layerId: layerId,
 	        featureProperties: featureProperties,
-	        featureType: featureType,
 	        position: position
 	    };
 	} /**
@@ -50473,7 +50456,6 @@
 	                newState[newPinnedFeatureId] = {
 	                    layerId: action.layerId,
 	                    featureProperties: action.featureProperties,
-	                    featureType: action.featureType,
 	                    position: action.position
 	                };
 	                break;
@@ -50839,9 +50821,9 @@
 
 	var _LeafletMap2 = _interopRequireDefault(_LeafletMap);
 
-	var _MobileFeatureModal = __webpack_require__(816);
+	var _MobileFeaturePopup = __webpack_require__(817);
 
-	var _MobileFeatureModal2 = _interopRequireDefault(_MobileFeatureModal);
+	var _MobileFeaturePopup2 = _interopRequireDefault(_MobileFeaturePopup);
 
 	var _reactRedux = __webpack_require__(767);
 
@@ -50851,7 +50833,7 @@
 
 	var _mobile = __webpack_require__(755);
 
-	var _selectors = __webpack_require__(817);
+	var _selectors = __webpack_require__(818);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50862,10 +50844,9 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var mapStateToProps = function mapStateToProps(store) {
+	    var props = (0, _selectors.getMobileFeaturePopupProps)(store);
 	    return {
-	        mobileFeatureModal: _extends({}, store.mobile.featureModal, {
-	            title: (0, _selectors.getMobileFeatureModalTitle)(store)
-	        })
+	        mobileFeatureModal: _extends({}, props)
 	    };
 	};
 
@@ -50889,10 +50870,12 @@
 	            return _react2.default.createElement(
 	                _reactBootstrap.Col,
 	                { xs: 12, sm: 7, md: 8, lg: 9, className: 'map-container' },
-	                _react2.default.createElement(_MobileFeatureModal2.default, {
+	                _react2.default.createElement(_MobileFeaturePopup2.default, {
 	                    visible: this.props.mobileFeatureModal.visible,
 	                    featureProperties: this.props.mobileFeatureModal.featureProperties,
-	                    featureType: this.props.mobileFeatureModal.featureType,
+	                    layerId: this.props.mobileFeatureModal.layerId,
+	                    layerName: this.props.mobileFeatureModal.layerName,
+	                    layerGroupName: this.props.mobileFeatureModal.layerGroupName,
 	                    onCloseClick: this.closeMobileFeatureModal,
 	                    title: this.props.mobileFeatureModal.title
 	                }),
@@ -52187,7 +52170,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _axios = __webpack_require__(791);
+	var _axios = __webpack_require__(792);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -52247,16 +52230,12 @@
 	                                    layerId: layerId
 	                                });
 	                            },
-	                            layerId: layerId,
-	                            map: self.map
+	                            layerId: layerId
 	                        };
-	                        if (typeof layer.onEachFeatureID !== "undefined" && typeof _onEachFeature2.default[layer.onEachFeatureID] !== "undefined") {
-	                            // bind layer options so we have access to the map, layerId from within onEachFeature function
-	                            layerOptions.onEachFeature = _onEachFeature2.default[layer.onEachFeatureID].bind(layerOptions);
-	                        }
-	                        if (typeof layer.styleID !== "undefined" && typeof _styles.LAYER_STYLES[layer.styleID] !== "undefined") {
+	                        layerOptions.onEachFeature = (0, _onEachFeature2.default)(layerId, self.map);
+	                        if (typeof _styles.LAYER_STYLES[layerId] !== "undefined") {
 	                            // bind layer options so we have access to the map, layerId from within style function
-	                            layerOptions.style = _styles.LAYER_STYLES[layer.styleID].bind(layerOptions);
+	                            layerOptions.style = _styles.LAYER_STYLES[layerId].bind(layerOptions);
 	                        }
 	                        this.layerIndex[layerId] = L.geoJson(null, layerOptions);
 	                        _axios2.default.get(layer.dataLocation).then(function (response) {
@@ -52595,6 +52574,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.default = ON_EACH_FEATURE;
 
 	var _store = __webpack_require__(729);
 
@@ -52617,15 +52597,14 @@
 	// Function that takes layer information and creates a popup.
 	// The popup's content is handled by React (<FeaturePopup />), however Leaflet is not controlled by React.
 	// Therefore, the popup's content must mount/unmount the React component manually whenever it is opened/closed.
-	function handleClick(feature, layer, dataType, map) {
+	function handleClick(feature, layer, layerId, map) {
 	    var popup = false;
-	    var layerId = layer.defaultOptions.layerId;
 	    // on click, create and open popup
 	    layer.on('mouseup', function () {
 	        // if the screen is small, open the popup as a full modal
 	        // if the screen is large, open the popup as a leaflet-based in-map popup
 	        if (_store2.default.getState().mobile.window.width < 992) {
-	            _store2.default.dispatch((0, _mobile.mobileClickFeature)(feature.properties, dataType, layerId));
+	            _store2.default.dispatch((0, _mobile.mobileClickFeature)(feature.properties, layerId));
 	        } else if (popup === false) {
 	            (function () {
 	                popup = L.popup({
@@ -52657,53 +52636,32 @@
 	                    }, 10);
 	                };
 	                popup.on("add", function () {
-	                    (0, _reactDom.render)(_react2.default.createElement(_FeaturePopup2.default, { layerId: layerId, featureProperties: feature.properties, featureType: dataType, popup: popup, closePopup: closePopup, getPosition: getPopupPosition }), container);
+	                    (0, _reactDom.render)(_react2.default.createElement(_FeaturePopup2.default, {
+	                        layerId: layerId,
+	                        featureProperties: feature.properties,
+	                        popup: popup,
+	                        closePopup: closePopup,
+	                        getPosition: getPopupPosition
+	                    }), container);
 	                });
 	                popup.setContent(container);
 	                layer.bindPopup(popup);
 	            })();
 	        }
 	    });
+	} /**
+	   * onEachFeature.jsx
+	   * This contains functions that are applied to each layer when they are loaded.
+	   *
+	   * Each property of the ON_EACH_FEATURE object (below) is applied to a specific layer,
+	   * and Leaflet passes the layer's data to that function on load. It is used here to
+	   * apply click handling functions to each feature in each layer.
+	   */
+	function ON_EACH_FEATURE(layerId, map) {
+	    return function (feature, layer) {
+	        handleClick(feature, layer, layerId, map);
+	    };
 	}
-	// Individual layer onEachFeature functions go below, as referenced by ID in config.json
-	/**
-	 * onEachFeature.jsx
-	 * This contains functions that are applied to each layer when they are loaded.
-	 *
-	 * Each property of the ON_EACH_FEATURE object (below) is applied to a specific layer,
-	 * and Leaflet passes the layer's data to that function on load. It is used here to
-	 * apply click handling functions to each feature in each layer.
-	 */
-	var ON_EACH_FEATURE = {
-	    backshore_1976: function backshore_1976(feature, layer) {
-	        handleClick(feature, layer, "data", this.map);
-	    },
-	    backshore_2007: function backshore_2007(feature, layer) {
-	        handleClick(feature, layer, "data", this.map);
-	    },
-	    photos_1976: function photos_1976(feature, layer) {
-	        handleClick(feature, layer, "photo", this.map);
-	    },
-	    photos_2007: function photos_2007(feature, layer) {
-	        handleClick(feature, layer, "photo", this.map);
-	    },
-	    structure_1976: function structure_1976(feature, layer) {
-	        handleClick(feature, layer, "data", this.map);
-	    },
-	    structure_2007: function structure_2007(feature, layer) {
-	        handleClick(feature, layer, "data", this.map);
-	    },
-	    beachclass_1976: function beachclass_1976(feature, layer) {
-	        handleClick(feature, layer, "data", this.map);
-	    },
-	    beachclass_2007: function beachclass_2007(feature, layer) {
-	        handleClick(feature, layer, "data", this.map);
-	    },
-	    profiles: function profiles(feature, layer) {
-	        handleClick(feature, layer, "profile", this.map);
-	    }
-	};
-	exports.default = ON_EACH_FEATURE;
 
 /***/ },
 /* 786 */
@@ -52721,21 +52679,17 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactBootstrap = __webpack_require__(476);
-
-	var _util = __webpack_require__(787);
-
 	var _pinnedFeatures = __webpack_require__(757);
 
-	var _PopupTabs = __webpack_require__(788);
+	var _PopupTabs = __webpack_require__(787);
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
-	var _PopupTitle = __webpack_require__(789);
+	var _PopupTitle = __webpack_require__(790);
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _PopupFooter = __webpack_require__(790);
+	var _PopupFooter = __webpack_require__(791);
 
 	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
 
@@ -52794,21 +52748,26 @@
 	        key: 'pin',
 	        value: function pin() {
 	            var position = this.props.getPosition();
-	            _store2.default.dispatch((0, _pinnedFeatures.newPinnedFeature)(this.props.layerId, this.props.featureProperties, this.props.featureType, position));
+	            _store2.default.dispatch((0, _pinnedFeatures.newPinnedFeature)(this.props.layerId, this.props.featureProperties, position));
 	            this.close();
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var layerGroupName = _store2.default.getState().layers.layersById[this.props.layerId].layerGroupName;
-	            var layerName = _store2.default.getState().layers.layersById[this.props.layerId].layerName;
+	            var layerGroupId = _store2.default.getState().layers.layersById[this.props.layerId].layerGroupId;
+	            var layerGroupName = _store2.default.getState().layers.layerGroupsById[layerGroupId].name;
+	            var layerName = _store2.default.getState().layers.layersById[this.props.layerId].name;
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'feature-popup-content', onClick: this.bringToFront },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'feature-popup-header' },
-	                    _react2.default.createElement(_PopupTitle2.default, { featureProperties: this.props.featureProperties, layerGroupName: layerGroupName, layerName: layerName }),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'feature-popup-title' },
+	                        _react2.default.createElement(_PopupTitle2.default, { featureProperties: this.props.featureProperties, layerGroupName: layerGroupName, layerName: layerName })
+	                    ),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'feature-popup-controls' },
@@ -52819,14 +52778,14 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'feature-popup-body' },
-	                    _react2.default.createElement(_PopupTabs2.default, { featureType: this.props.featureType, featureProperties: this.props.featureProperties, update: this.update })
+	                    _react2.default.createElement(_PopupTabs2.default, { layerId: this.props.layerId, featureProperties: this.props.featureProperties, update: this.update })
 	                ),
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'feature-popup-footer' },
 	                    _react2.default.createElement(
 	                        _PopupFooter2.default,
-	                        { featureType: this.props.featureType, featureProperties: this.props.featureProperties },
+	                        { layerId: this.props.layerId, featureProperties: this.props.featureProperties },
 	                        _react2.default.createElement('div', { key: 'clearfix', className: 'clearfix' })
 	                    )
 	                )
@@ -52843,42 +52802,6 @@
 /* 787 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.getPhotoURLs = getPhotoURLs;
-
-	var _config = __webpack_require__(752);
-
-	var _config2 = _interopRequireDefault(_config);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function getPhotoURLs(photoProperties) {
-	    var base = _config2.default.photos.urlBase;
-	    var lakeName = photoProperties["Great Lake"].replace(/ /gi, "");
-	    var year = photoProperties["Year"];
-	    var fileName = photoProperties["File Name"];
-	    var urls = {};
-	    for (var size in _config2.default.photos.sizes) {
-	        var sizeDir = _config2.default.photos.sizes[size];
-	        var modifiedFilename = fileName;
-	        if (size !== "original") {
-	            var parts = fileName.split(".");
-	            parts[0] += "_" + sizeDir;
-	            modifiedFilename = parts.join(".");
-	        }
-	        urls[size] = [base, lakeName, year, sizeDir, modifiedFilename].join("/");
-	    }
-	    return urls;
-	}
-
-/***/ },
-/* 788 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -52893,7 +52816,9 @@
 
 	var _reactBootstrap = __webpack_require__(476);
 
-	var _util = __webpack_require__(787);
+	var _util = __webpack_require__(788);
+
+	var _dataTables = __webpack_require__(789);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52950,8 +52875,9 @@
 	                }
 	            }
 	            var tabs = [];
-	            switch (this.props.featureType) {
-	                case "photo":
+	            switch (this.props.layerId) {
+	                case "photos_1976":
+	                case "photos_2007":
 	                    {
 	                        var photoURLs = (0, _util.getPhotoURLs)(this.props.featureProperties);
 	                        tabs.push(_react2.default.createElement(
@@ -53006,7 +52932,168 @@
 	exports.default = PopupTabs;
 
 /***/ },
+/* 788 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.getPhotoURLs = getPhotoURLs;
+
+	var _config = __webpack_require__(752);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function getPhotoURLs(photoProperties) {
+	    var base = _config2.default.photos.urlBase;
+	    var lakeName = photoProperties["Great Lake"].replace(/ /gi, "");
+	    var year = photoProperties["Year"];
+	    var fileName = photoProperties["File Name"];
+	    var urls = {};
+	    for (var size in _config2.default.photos.sizes) {
+	        var sizeDir = _config2.default.photos.sizes[size];
+	        var modifiedFilename = fileName;
+	        if (size !== "original") {
+	            var parts = fileName.split(".");
+	            parts[0] += "_" + sizeDir;
+	            modifiedFilename = parts.join(".");
+	        }
+	        urls[size] = [base, lakeName, year, sizeDir, modifiedFilename].join("/");
+	    }
+	    return urls;
+	}
+
+/***/ },
 /* 789 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	/**
+	 * dataTables.js
+	 *
+	 * Describes which properties to display and which to hide in the data table
+	 * - On a per-layer basis
+	 *
+	 */
+
+	var DISPLAY_PROPERTIES = {
+	    backshore_1976: {
+	        "OBJECTID": false,
+	        "Backshore Type": true,
+	        "Notes": true,
+	        "County": true,
+	        "FIPS": true,
+	        "Segment Length (miles)": true,
+	        "Vegetation Classification": true,
+	        "Bluff Condition Classification": true,
+	        "Bluff Modified Classification": true,
+	        "Bluff Failure Classification": true,
+	        "Non-Bluff Classification": true,
+	        "Confidence Level Classification": true
+	    },
+	    backshore_2007: {
+	        "OBJECTID": false,
+	        "Backshore Type": true,
+	        "Notes": true,
+	        "County": true,
+	        "FIPS": true,
+	        "Segment Length (miles)": true,
+	        "Vegetation Classification": true,
+	        "Bluff Condition Classification": true,
+	        "Bluff Modified Classification": true,
+	        "Bluff Failure Classification": true,
+	        "Non-Bluff Classification": true,
+	        "Confidence Level Classification": true
+	    },
+	    beachclass_1976: {
+	        "OBJECTID": false,
+	        "Shore Type": true,
+	        "Notes": true,
+	        "County": true,
+	        "FIPS": true,
+	        "Segment Length (miles)": true,
+	        "Beach Classification": true,
+	        "Shore Protection Classification": true
+	    },
+	    beachclass_2007: {
+	        "OBJECTID": false,
+	        "Shore Type": true,
+	        "Notes": true,
+	        "County": true,
+	        "FIPS": true,
+	        "Segment Length (miles)": true,
+	        "Beach Classification": true,
+	        "Shore Protection Classification": true
+	    },
+	    photos_1976: {
+	        "OBJECTID": false,
+	        "Original File Name": true,
+	        "Longitude": true,
+	        "Latitude": true,
+	        "Easting": true,
+	        "Northing": true,
+	        "UTM Zone": true,
+	        "Great Lake": true,
+	        "County FIPS": true,
+	        "County": true,
+	        "State": true,
+	        "File Name": true,
+	        "Year": true
+	    },
+	    photos_2007: {
+	        "OBJECTID": false,
+	        "Original File Name": true,
+	        "Longitude": true,
+	        "Latitude": true,
+	        "Easting": true,
+	        "Northing": true,
+	        "UTM Zone": true,
+	        "Great Lake": true,
+	        "County FIPS": true,
+	        "County": true,
+	        "State": true,
+	        "File Name": true,
+	        "Year": true
+	    },
+	    structure_1976: {
+	        "OBJECTID": false,
+	        "Notes": true,
+	        "County": true,
+	        "FIPS": true,
+	        "Structure Type": true
+	    },
+	    structure_2007: {
+	        "OBJECTID": false,
+	        "Notes": true,
+	        "County": true,
+	        "FIPS": true,
+	        "Structure Type": true
+	    },
+	    profiles: {
+	        "ID": false,
+	        "ProfileNo": true,
+	        "county": true,
+	        "bluff_xls": true,
+	        "bathy_xls": true,
+	        "bluff_jpg": true,
+	        "bathy_png": true,
+	        "notes": true,
+	        "type": true
+	    }
+	};
+
+	exports.DISPLAY_PROPERTIES = DISPLAY_PROPERTIES;
+
+/***/ },
+/* 790 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -53030,7 +53117,7 @@
 	    }
 	    return _react2.default.createElement(
 	        "div",
-	        { className: "feature-popup-title" },
+	        null,
 	        props.layerGroupName,
 	        _react2.default.createElement("i", { className: "fa fa-chevron-right" }),
 	        props.layerName,
@@ -53041,123 +53128,124 @@
 	exports.default = PopupTitle;
 
 /***/ },
-/* 790 */
+/* 791 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _react = __webpack_require__(299);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _util = __webpack_require__(787);
+	var _util = __webpack_require__(788);
 
 	var _reactBootstrap = __webpack_require__(476);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var PopupFooter = function PopupFooter(props) {
-	  var footer = [];
-	  switch (props.featureType) {
-	    case "photo":
-	      {
-	        var photoURLs = (0, _util.getPhotoURLs)(props.featureProperties);
-	        footer.push(_react2.default.createElement(
-	          'a',
-	          { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
-	          _react2.default.createElement(
-	            _reactBootstrap.Button,
-	            { className: 'open-larger-image-button' },
-	            _react2.default.createElement('i', { className: 'fa fa-image' }),
-	            ' View Full-size'
-	          )
-	        ));
-	        break;
-	      }
-	    case "profile":
-	      {
-	        if (props.featureProperties.bluff_xls !== false) {
-	          footer.push(_react2.default.createElement(
-	            'a',
-	            { href: '', key: 'download-bluff-excel-button', target: '_blank', rel: 'noopener noreferrer' },
-	            _react2.default.createElement(
-	              _reactBootstrap.Button,
-	              { className: 'download-excel-button' },
-	              _react2.default.createElement('i', { className: 'fa fa-download' }),
-	              ' Bluff Spreadsheet'
-	            )
-	          ));
-	        }
-	        if (props.featureProperties.bathy_xls !== false) {
-	          footer.push(_react2.default.createElement(
-	            'a',
-	            { href: '', key: 'download-bathy-excel-button', target: '_blank', rel: 'noopener noreferrer' },
-	            _react2.default.createElement(
-	              _reactBootstrap.Button,
-	              { className: 'download-excel-button' },
-	              _react2.default.createElement('i', { className: 'fa fa-download' }),
-	              ' Bathy Spreadsheet'
-	            )
-	          ));
-	        }
-	        if (props.featureProperties.bluff_jpg !== false) {
-	          footer.push(_react2.default.createElement(
-	            'a',
-	            { href: '', key: 'open-larger-bluff-graph-button', target: '_blank', rel: 'noopener noreferrer' },
-	            _react2.default.createElement(
-	              _reactBootstrap.Button,
-	              { className: 'open-larger-graph-button' },
-	              _react2.default.createElement('i', { className: 'fa fa-image' }),
-	              ' Full-size Bluff Graph'
-	            )
-	          ));
-	        }
-	        if (props.featureProperties.bathy_png !== false) {
-	          footer.push(_react2.default.createElement(
-	            'a',
-	            { href: '', key: 'open-larger-bathy-graph-button', target: '_blank', rel: 'noopener noreferrer' },
-	            _react2.default.createElement(
-	              _reactBootstrap.Button,
-	              { className: 'open-larger-graph-button' },
-	              _react2.default.createElement('i', { className: 'fa fa-image' }),
-	              ' Full-size Bathy Graph'
-	            )
-	          ));
-	        }
-	        break;
-	      }
-	    default:
-	      break;
-	  }
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    footer,
-	    props.children
-	  );
+	    var footer = [];
+	    switch (props.layerId) {
+	        case "photos_1976":
+	        case "photos_2007":
+	            {
+	                var photoURLs = (0, _util.getPhotoURLs)(props.featureProperties);
+	                footer.push(_react2.default.createElement(
+	                    'a',
+	                    { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
+	                    _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        { className: 'open-larger-image-button' },
+	                        _react2.default.createElement('i', { className: 'fa fa-image' }),
+	                        ' View Full-size'
+	                    )
+	                ));
+	                break;
+	            }
+	        case "profiles":
+	            {
+	                if (props.featureProperties.bluff_xls !== false) {
+	                    footer.push(_react2.default.createElement(
+	                        'a',
+	                        { href: '', key: 'download-bluff-excel-button', target: '_blank', rel: 'noopener noreferrer' },
+	                        _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { className: 'download-excel-button' },
+	                            _react2.default.createElement('i', { className: 'fa fa-download' }),
+	                            ' Bluff Spreadsheet'
+	                        )
+	                    ));
+	                }
+	                if (props.featureProperties.bathy_xls !== false) {
+	                    footer.push(_react2.default.createElement(
+	                        'a',
+	                        { href: '', key: 'download-bathy-excel-button', target: '_blank', rel: 'noopener noreferrer' },
+	                        _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { className: 'download-excel-button' },
+	                            _react2.default.createElement('i', { className: 'fa fa-download' }),
+	                            ' Bathy Spreadsheet'
+	                        )
+	                    ));
+	                }
+	                if (props.featureProperties.bluff_jpg !== false) {
+	                    footer.push(_react2.default.createElement(
+	                        'a',
+	                        { href: '', key: 'open-larger-bluff-graph-button', target: '_blank', rel: 'noopener noreferrer' },
+	                        _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { className: 'open-larger-graph-button' },
+	                            _react2.default.createElement('i', { className: 'fa fa-image' }),
+	                            ' Full-size Bluff Graph'
+	                        )
+	                    ));
+	                }
+	                if (props.featureProperties.bathy_png !== false) {
+	                    footer.push(_react2.default.createElement(
+	                        'a',
+	                        { href: '', key: 'open-larger-bathy-graph-button', target: '_blank', rel: 'noopener noreferrer' },
+	                        _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { className: 'open-larger-graph-button' },
+	                            _react2.default.createElement('i', { className: 'fa fa-image' }),
+	                            ' Full-size Bathy Graph'
+	                        )
+	                    ));
+	                }
+	                break;
+	            }
+	        default:
+	            break;
+	    }
+	    return _react2.default.createElement(
+	        'div',
+	        null,
+	        footer,
+	        props.children
+	    );
 	};
 	exports.default = PopupFooter;
-
-/***/ },
-/* 791 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(792);
 
 /***/ },
 /* 792 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = __webpack_require__(793);
+
+/***/ },
+/* 793 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
-	var utils = __webpack_require__(793);
-	var bind = __webpack_require__(794);
-	var Axios = __webpack_require__(795);
-	var defaults = __webpack_require__(796);
+	var utils = __webpack_require__(794);
+	var bind = __webpack_require__(795);
+	var Axios = __webpack_require__(796);
+	var defaults = __webpack_require__(797);
 
 	/**
 	 * Create an instance of Axios
@@ -53190,15 +53278,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(813);
-	axios.CancelToken = __webpack_require__(814);
-	axios.isCancel = __webpack_require__(810);
+	axios.Cancel = __webpack_require__(814);
+	axios.CancelToken = __webpack_require__(815);
+	axios.isCancel = __webpack_require__(811);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(815);
+	axios.spread = __webpack_require__(816);
 
 	module.exports = axios;
 
@@ -53207,12 +53295,12 @@
 
 
 /***/ },
-/* 793 */
+/* 794 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(794);
+	var bind = __webpack_require__(795);
 
 	/*global toString:true*/
 
@@ -53512,7 +53600,7 @@
 
 
 /***/ },
-/* 794 */
+/* 795 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53529,17 +53617,17 @@
 
 
 /***/ },
-/* 795 */
+/* 796 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(796);
-	var utils = __webpack_require__(793);
-	var InterceptorManager = __webpack_require__(807);
-	var dispatchRequest = __webpack_require__(808);
-	var isAbsoluteURL = __webpack_require__(811);
-	var combineURLs = __webpack_require__(812);
+	var defaults = __webpack_require__(797);
+	var utils = __webpack_require__(794);
+	var InterceptorManager = __webpack_require__(808);
+	var dispatchRequest = __webpack_require__(809);
+	var isAbsoluteURL = __webpack_require__(812);
+	var combineURLs = __webpack_require__(813);
 
 	/**
 	 * Create a new instance of Axios
@@ -53620,13 +53708,13 @@
 
 
 /***/ },
-/* 796 */
+/* 797 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(793);
-	var normalizeHeaderName = __webpack_require__(797);
+	var utils = __webpack_require__(794);
+	var normalizeHeaderName = __webpack_require__(798);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -53643,10 +53731,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(798);
+	    adapter = __webpack_require__(799);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(798);
+	    adapter = __webpack_require__(799);
 	  }
 	  return adapter;
 	}
@@ -53720,12 +53808,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 797 */
+/* 798 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(794);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -53738,18 +53826,18 @@
 
 
 /***/ },
-/* 798 */
+/* 799 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(793);
-	var settle = __webpack_require__(799);
-	var buildURL = __webpack_require__(802);
-	var parseHeaders = __webpack_require__(803);
-	var isURLSameOrigin = __webpack_require__(804);
-	var createError = __webpack_require__(800);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(805);
+	var utils = __webpack_require__(794);
+	var settle = __webpack_require__(800);
+	var buildURL = __webpack_require__(803);
+	var parseHeaders = __webpack_require__(804);
+	var isURLSameOrigin = __webpack_require__(805);
+	var createError = __webpack_require__(801);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(806);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -53845,7 +53933,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(806);
+	      var cookies = __webpack_require__(807);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -53922,12 +54010,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 799 */
+/* 800 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(800);
+	var createError = __webpack_require__(801);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -53953,12 +54041,12 @@
 
 
 /***/ },
-/* 800 */
+/* 801 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(801);
+	var enhanceError = __webpack_require__(802);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -53976,7 +54064,7 @@
 
 
 /***/ },
-/* 801 */
+/* 802 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54001,12 +54089,12 @@
 
 
 /***/ },
-/* 802 */
+/* 803 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(794);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -54075,12 +54163,12 @@
 
 
 /***/ },
-/* 803 */
+/* 804 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(794);
 
 	/**
 	 * Parse headers into an object
@@ -54118,12 +54206,12 @@
 
 
 /***/ },
-/* 804 */
+/* 805 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(794);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54192,7 +54280,7 @@
 
 
 /***/ },
-/* 805 */
+/* 806 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54234,12 +54322,12 @@
 
 
 /***/ },
-/* 806 */
+/* 807 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(794);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54293,12 +54381,12 @@
 
 
 /***/ },
-/* 807 */
+/* 808 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(794);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -54351,15 +54439,15 @@
 
 
 /***/ },
-/* 808 */
+/* 809 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
-	var transformData = __webpack_require__(809);
-	var isCancel = __webpack_require__(810);
-	var defaults = __webpack_require__(796);
+	var utils = __webpack_require__(794);
+	var transformData = __webpack_require__(810);
+	var isCancel = __webpack_require__(811);
+	var defaults = __webpack_require__(797);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -54436,12 +54524,12 @@
 
 
 /***/ },
-/* 809 */
+/* 810 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(794);
 
 	/**
 	 * Transform the data for a request or a response
@@ -54462,7 +54550,7 @@
 
 
 /***/ },
-/* 810 */
+/* 811 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54473,7 +54561,7 @@
 
 
 /***/ },
-/* 811 */
+/* 812 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54493,7 +54581,7 @@
 
 
 /***/ },
-/* 812 */
+/* 813 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54511,7 +54599,7 @@
 
 
 /***/ },
-/* 813 */
+/* 814 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54536,12 +54624,12 @@
 
 
 /***/ },
-/* 814 */
+/* 815 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(813);
+	var Cancel = __webpack_require__(814);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -54599,7 +54687,7 @@
 
 
 /***/ },
-/* 815 */
+/* 816 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54632,13 +54720,13 @@
 
 
 /***/ },
-/* 816 */
+/* 817 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _react = __webpack_require__(299);
@@ -54647,71 +54735,72 @@
 
 	var _reactBootstrap = __webpack_require__(476);
 
-	var _util = __webpack_require__(787);
-
-	var _PopupTabs = __webpack_require__(788);
+	var _PopupTabs = __webpack_require__(787);
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
-	var _PopupTitle = __webpack_require__(789);
+	var _PopupTitle = __webpack_require__(790);
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _PopupFooter = __webpack_require__(790);
+	var _PopupFooter = __webpack_require__(791);
 
 	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	/**
-	 * FeatureModal.jsx
-	 * This creates the modal that's displayed when a user clicks on an object in the map
-	 */
-	var MobileFeatureModal = function MobileFeatureModal(props) {
-	    var classNames = ["static-modal"];
-	    if (props.visible === false) {
-	        classNames.push("hidden");
-	    }
-	    return _react2.default.createElement(
-	        'div',
-	        { id: 'map-popup', className: classNames.join(" ") },
+	var MobileFeaturePopup = function MobileFeaturePopup(props) {
+	  var classNames = ["static-modal"];
+	  if (props.visible === false) {
+	    classNames.push("hidden");
+	  }
+	  return _react2.default.createElement(
+	    'div',
+	    { id: 'map-popup', className: classNames.join(" ") },
+	    _react2.default.createElement(
+	      _reactBootstrap.Modal.Dialog,
+	      null,
+	      _react2.default.createElement(
+	        _reactBootstrap.Modal.Header,
+	        null,
 	        _react2.default.createElement(
-	            _reactBootstrap.Modal.Dialog,
-	            null,
-	            _react2.default.createElement(
-	                _reactBootstrap.Modal.Header,
-	                null,
-	                _react2.default.createElement(
-	                    _reactBootstrap.Modal.Title,
-	                    null,
-	                    props.title
-	                )
-	            ),
-	            _react2.default.createElement(
-	                _reactBootstrap.Modal.Body,
-	                null,
-	                _react2.default.createElement(_PopupTabs2.default, { featureType: props.featureType, featureProperties: props.featureProperties })
-	            ),
-	            _react2.default.createElement(
-	                _reactBootstrap.Modal.Footer,
-	                null,
-	                _react2.default.createElement(
-	                    _PopupFooter2.default,
-	                    { featureType: props.featureType, featureProperties: props.featureProperties },
-	                    _react2.default.createElement(
-	                        _reactBootstrap.Button,
-	                        { key: 'close', onClick: props.onCloseClick },
-	                        'Close'
-	                    )
-	                )
-	            )
+	          _reactBootstrap.Modal.Title,
+	          null,
+	          _react2.default.createElement(_PopupTitle2.default, {
+	            featureProperties: props.featureProperties,
+	            layerGroupName: props.layerGroupName,
+	            layerName: props.layerName
+	          })
 	        )
-	    );
-	};
-	exports.default = MobileFeatureModal;
+	      ),
+	      _react2.default.createElement(
+	        _reactBootstrap.Modal.Body,
+	        null,
+	        _react2.default.createElement(_PopupTabs2.default, { layerId: props.layerId, featureProperties: props.featureProperties })
+	      ),
+	      _react2.default.createElement(
+	        _reactBootstrap.Modal.Footer,
+	        null,
+	        _react2.default.createElement(
+	          _PopupFooter2.default,
+	          { layerId: props.layerId, featureProperties: props.featureProperties },
+	          _react2.default.createElement(
+	            _reactBootstrap.Button,
+	            { key: 'close', onClick: props.onCloseClick },
+	            'Close'
+	          )
+	        )
+	      )
+	    )
+	  );
+	}; /**
+	    * FeatureModal.jsx
+	    * This creates the modal that's displayed when a user clicks on an object in the map
+	    */
+	exports.default = MobileFeaturePopup;
 
 /***/ },
-/* 817 */
+/* 818 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -54719,11 +54808,11 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.getMobileFeatureModalTitle = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = undefined;
+	exports.getMobileFeaturePopupProps = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _reselect = __webpack_require__(818);
+	var _reselect = __webpack_require__(819);
 
 	var getLayers = function getLayers(state) {
 	    return state.layers;
@@ -54844,18 +54933,25 @@
 
 	    return stylesByLayerId;
 	});
-	var getMobileFeatureModalTitle = exports.getMobileFeatureModalTitle = (0, _reselect.createSelector)([getLayersById, getMobileFeatureModal], function (layers, featureModal) {
-	    if (typeof featureModal.layerId !== "undefined") {
+	var getMobileFeaturePopupProps = exports.getMobileFeaturePopupProps = (0, _reselect.createSelector)([getLayers, getMobileFeatureModal], function (layers, featureModal) {
+	    if (typeof featureModal.layerId !== "undefined" && featureModal.layerId !== false) {
 	        var layerId = featureModal.layerId;
-	        if (typeof layers[layerId] !== "undefined") {
-	            return layers[layerId].layerGroupName + " - " + layers[layerId].layerName;
-	        }
+	        var layerName = layers.layersById[layerId].name;
+	        var layerGroupId = layers.layersById[layerId].layerGroupId;
+	        var layerGroupName = layers.layerGroupsById[layerGroupId].name;
+	        return _extends({}, featureModal, {
+	            layerName: layerName,
+	            layerGroupName: layerGroupName
+	        });
 	    }
-	    return "";
+	    return _extends({}, featureModal, {
+	        layerName: "",
+	        layerGroupName: ""
+	    });
 	});
 
 /***/ },
-/* 818 */
+/* 819 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54971,7 +55067,7 @@
 	}
 
 /***/ },
-/* 819 */
+/* 820 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54986,7 +55082,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _LayerList = __webpack_require__(820);
+	var _LayerList = __webpack_require__(821);
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
 
@@ -55081,7 +55177,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MobileLayerList);
 
 /***/ },
-/* 820 */
+/* 821 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55096,11 +55192,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _LayerGroup = __webpack_require__(821);
+	var _LayerGroup = __webpack_require__(822);
 
 	var _LayerGroup2 = _interopRequireDefault(_LayerGroup);
 
-	var _BasemapList = __webpack_require__(823);
+	var _BasemapList = __webpack_require__(824);
 
 	var _BasemapList2 = _interopRequireDefault(_BasemapList);
 
@@ -55116,7 +55212,7 @@
 
 	var _basemaps = __webpack_require__(753);
 
-	var _selectors = __webpack_require__(817);
+	var _selectors = __webpack_require__(818);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55212,7 +55308,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LayerList);
 
 /***/ },
-/* 821 */
+/* 822 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55225,7 +55321,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Layer = __webpack_require__(822);
+	var _Layer = __webpack_require__(823);
 
 	var _Layer2 = _interopRequireDefault(_Layer);
 
@@ -55235,12 +55331,12 @@
 
 	var LayerGroup = function LayerGroup(props) {
 	    var layers = [];
-	    for (var layer in props.layers) {
+	    for (var layerId in props.layers) {
 	        layers.push(_react2.default.createElement(_Layer2.default, {
-	            key: props.layers[layer].id,
-	            layerID: props.layers[layer].id,
-	            layerName: props.layers[layer].layerName,
-	            active: props.layers[layer].active,
+	            key: layerId,
+	            layerID: layerId,
+	            layerName: props.layers[layerId].name,
+	            active: props.layers[layerId].active,
 	            onLayerClick: props.onLayerClick
 	        }));
 	    }
@@ -55281,7 +55377,7 @@
 	exports.default = LayerGroup;
 
 /***/ },
-/* 822 */
+/* 823 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55315,7 +55411,7 @@
 	exports.default = Layer;
 
 /***/ },
-/* 823 */
+/* 824 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55330,7 +55426,7 @@
 
 	var _reactBootstrap = __webpack_require__(476);
 
-	var _Basemap = __webpack_require__(824);
+	var _Basemap = __webpack_require__(825);
 
 	var _Basemap2 = _interopRequireDefault(_Basemap);
 
@@ -55382,7 +55478,7 @@
 	exports.default = BasemapList;
 
 /***/ },
-/* 824 */
+/* 825 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55416,7 +55512,7 @@
 	exports.default = Basemap;
 
 /***/ },
-/* 825 */
+/* 826 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55524,7 +55620,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AboutModal);
 
 /***/ },
-/* 826 */
+/* 827 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55547,7 +55643,7 @@
 
 	var _pinnedFeatures = __webpack_require__(757);
 
-	var _PinnedFeaturePopup = __webpack_require__(827);
+	var _PinnedFeaturePopup = __webpack_require__(828);
 
 	var _PinnedFeaturePopup2 = _interopRequireDefault(_PinnedFeaturePopup);
 
@@ -55654,11 +55750,12 @@
 	            var _loop = function _loop(featureId) {
 	                var pinnedFeature = _this2.props.pinnedFeatures[featureId];
 	                var layerId = pinnedFeature.layerId;
-	                var layerName = _this2.props.layers[layerId].layerName;
-	                var layerGroupName = _this2.props.layers[layerId].layerGroupName;
+	                var layerName = _this2.props.layers[layerId].name;
+	                var layerGroupId = _this2.props.layers[layerId].layerGroupId;
+	                var layerGroupName = _store2.default.getState().layers.layerGroupsById[layerGroupId].name;
 	                var zIndex = _this2.state.order.indexOf(featureId);
 	                pinnedFeatures.push(_react2.default.createElement(_PinnedFeaturePopup2.default, {
-	                    featureType: pinnedFeature.featureType,
+	                    layerId: layerId,
 	                    featureProperties: pinnedFeature.featureProperties,
 	                    initialPosition: pinnedFeature.position,
 	                    layerName: layerName,
@@ -55692,7 +55789,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(PinnedFeaturePopupContainer);
 
 /***/ },
-/* 827 */
+/* 828 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55707,23 +55804,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactBootstrap = __webpack_require__(476);
-
-	var _util = __webpack_require__(787);
-
-	var _PopupTabs = __webpack_require__(788);
+	var _PopupTabs = __webpack_require__(787);
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
-	var _PopupTitle = __webpack_require__(789);
+	var _PopupTitle = __webpack_require__(790);
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _PopupFooter = __webpack_require__(790);
+	var _PopupFooter = __webpack_require__(791);
 
 	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
 
-	var _reactDraggable = __webpack_require__(828);
+	var _reactDraggable = __webpack_require__(829);
 
 	var _reactDraggable2 = _interopRequireDefault(_reactDraggable);
 
@@ -55789,7 +55882,11 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'feature-popup-header handle' },
-	                        _react2.default.createElement(_PopupTitle2.default, { featureProperties: this.props.featureProperties, layerGroupName: this.props.layerGroupName, layerName: this.props.layerName }),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'feature-popup-title' },
+	                            _react2.default.createElement(_PopupTitle2.default, { featureProperties: this.props.featureProperties, layerGroupName: this.props.layerGroupName, layerName: this.props.layerName })
+	                        ),
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'feature-popup-controls' },
@@ -55799,14 +55896,14 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'feature-popup-body' },
-	                        _react2.default.createElement(_PopupTabs2.default, { featureType: this.props.featureType, featureProperties: this.props.featureProperties })
+	                        _react2.default.createElement(_PopupTabs2.default, { layerId: this.props.layerId, featureProperties: this.props.featureProperties })
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'feature-popup-footer' },
 	                        _react2.default.createElement(
 	                            _PopupFooter2.default,
-	                            { featureType: this.props.featureType, featureProperties: this.props.featureProperties },
+	                            { layerId: this.props.layerId, featureProperties: this.props.featureProperties },
 	                            _react2.default.createElement('div', { key: 'clearfix', className: 'clearfix' })
 	                        )
 	                    )
@@ -55821,7 +55918,7 @@
 	exports.default = PinnedFeaturePopup;
 
 /***/ },
-/* 828 */
+/* 829 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -57433,7 +57530,7 @@
 	//# sourceMappingURL=react-draggable.js.map
 
 /***/ },
-/* 829 */
+/* 830 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57450,7 +57547,7 @@
 
 	var _reactRedux = __webpack_require__(767);
 
-	var _selectors = __webpack_require__(817);
+	var _selectors = __webpack_require__(818);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
