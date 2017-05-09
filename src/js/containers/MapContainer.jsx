@@ -5,16 +5,17 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import LeafletMap from './LeafletMap.jsx';
-import MobileFeatureModal from '../components/MobileFeatureModal.jsx';
+import MobileFeaturePopup from '../components/FeaturePopups/MobileFeaturePopup.jsx';
 import { connect } from 'react-redux';
 import store from '../store.js';
-import {closeMobileFeatureModal} from '../ducks/mobile.js';
-import {getMobileFeatureModalTitle} from '../selectors.js';
+import { closeMobileFeatureModal } from '../ducks/mobile.js';
+import { getMobileFeaturePopupProps } from '../selectors.js';
+
 const mapStateToProps = function(store) {
+    let props = getMobileFeaturePopupProps(store);
     return {
         mobileFeatureModal: {
-            ...store.mobile.featureModal,
-            title: getMobileFeatureModalTitle(store)
+            ...props
         }
     };
 }
@@ -28,10 +29,12 @@ class MapContainer extends React.Component {
     render() {
         return (
             <Col xs={12} sm={7} md={8} lg={9} className="map-container">
-                <MobileFeatureModal
+                <MobileFeaturePopup
                     visible={this.props.mobileFeatureModal.visible}
                     featureProperties={this.props.mobileFeatureModal.featureProperties}
-                    featureType={this.props.mobileFeatureModal.featureType}
+                    layerId={this.props.mobileFeatureModal.layerId}
+                    layerName={this.props.mobileFeatureModal.layerName}
+                    layerGroupName={this.props.mobileFeatureModal.layerGroupName}
                     onCloseClick={this.closeMobileFeatureModal}
                     title={this.props.mobileFeatureModal.title}
                 />

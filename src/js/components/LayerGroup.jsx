@@ -5,15 +5,16 @@
 import React from 'react';
 import Layer from './Layer.jsx';
 import { ListGroup } from 'react-bootstrap';
+
 const LayerGroup = (props) => {
     let layers = [];
-    for (let layer in props.layers) {
+    for (let layerId in props.layers) {
         layers.push(
-            <Layer 
-                key={props.layers[layer].id} 
-                layerID={props.layers[layer].id} 
-                layerName={props.layers[layer].layerName}
-                active={props.layers[layer].active}
+            <Layer
+                key={layerId}
+                layerID={layerId}
+                layerName={props.layers[layerId].name}
+                active={props.layers[layerId].active}
                 onLayerClick={props.onLayerClick}
             />
         );

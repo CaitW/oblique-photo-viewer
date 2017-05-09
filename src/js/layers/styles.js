@@ -244,11 +244,11 @@ var LAYER_STYLES = {
             case "bathymetry":
                 propertyName = "Bathymetric Profile";
                 style.color = COLORS.LIGHT_BLUE;
-            break;
+                break;
             default:
-            break;
+                break;
         }
         return addToCache(this.layerId, propertyName, style, feature.geometry.type);
     }
 }
-export {LAYER_STYLES};
+export { LAYER_STYLES };

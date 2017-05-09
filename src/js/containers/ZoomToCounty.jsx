@@ -7,7 +7,7 @@ import React from 'react';
 import { MenuItem, NavDropdown } from 'react-bootstrap';
 import store from '../store.js';
 import CONFIG from '../config.json';
-import {zoomToCounty} from '../ducks/map.js';
+import { zoomToCounty } from '../ducks/map.js';
 
 export default class ZoomToCounty extends React.Component {
     constructor() {

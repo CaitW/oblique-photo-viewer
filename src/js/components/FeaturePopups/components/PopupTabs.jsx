@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table, Tabs, Tab } from 'react-bootstrap';
-import { getPhotoURLs } from '../../util.js';
+import { getPhotoURLs } from '../../../util.js';
+import { DISPLAY_PROPERTIES } from '../../../layers/dataTables.js';
 
 export default class PopupTabs extends React.Component {
     constructor (props) {
@@ -26,8 +27,9 @@ export default class PopupTabs extends React.Component {
             }
         }
         let tabs = [];
-        switch (this.props.featureType) {
-            case "photo": {
+        switch (this.props.layerId) {
+            case "photos_1976":
+            case "photos_2007": {
                 let photoURLs = getPhotoURLs(this.props.featureProperties);
                 tabs.push(
                     <Tab key="image" eventKey={1} title="Image">

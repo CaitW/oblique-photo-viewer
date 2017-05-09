@@ -6,7 +6,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import store from '../store.js';
 import { closePinnedFeature } from '../ducks/pinnedFeatures.js';
-import PinnedFeaturePopup from '../components/PinnedFeaturePopup.jsx';
+import PinnedFeaturePopup from '../components/FeaturePopups/PinnedFeaturePopup.jsx';
 
 const mapStateToProps = function(store) {
     return {
@@ -56,12 +56,13 @@ class PinnedFeaturePopupContainer extends React.Component {
         for(let featureId in this.props.pinnedFeatures) {
             let pinnedFeature = this.props.pinnedFeatures[featureId];
             let layerId = pinnedFeature.layerId;
-            let layerName = this.props.layers[layerId].layerName;
-            let layerGroupName = this.props.layers[layerId].layerGroupName;
+            let layerName = this.props.layers[layerId].name;
+            let layerGroupId = this.props.layers[layerId].layerGroupId;
+            let layerGroupName = store.getState().layers.layerGroupsById[layerGroupId].name;
             let zIndex = this.state.order.indexOf(featureId);
             pinnedFeatures.push(
                 <PinnedFeaturePopup
-                    featureType={pinnedFeature.featureType}
+                    layerId={layerId}
                     featureProperties={pinnedFeature.featureProperties}
                     initialPosition={pinnedFeature.position}
                     layerName={layerName}

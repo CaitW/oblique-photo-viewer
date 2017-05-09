@@ -5,6 +5,7 @@
 import React from 'react';
 import { ListGroup } from 'react-bootstrap';
 import Basemap from './Basemap.jsx';
+
 const BasemapList = (props) => {
     let basemaps = [];
     for (let basemapID in props.basemaps) {

@@ -1,10 +1,10 @@
 /**
  * mobile.js Ducks
- * 
+ *
  * Contains the actions and reducer part that controls mobile functionality.
  * Mobile functionality is present when the window is smaller than 992px.
  * These features include:
- * - Mobile Layer List 
+ * - Mobile Layer List
  * - Keeping track of window size
  * - When a feature is clicked during mobile mode (<992px)
  * - Mobile Feature Modal
@@ -27,11 +27,10 @@ export function updateWindowDimensions(height, width) {
         width
     }
 }
-export function mobileClickFeature(featureProperties, featureType, layerId) {
+export function mobileClickFeature(featureProperties, layerId) {
     return {
         type: "MOBILE:LAYER:CLICK_FEATURE",
         featureProperties,
-        featureType,
         layerId
     }
 }
@@ -51,7 +50,6 @@ let initialState = {
     featureModal: {
         visible: false,
         featureProperties: false,
-        featureType: false,
         layerId: false
     }
 };
@@ -77,14 +75,12 @@ export default function mobile(state = initialState, action) {
         case "MOBILE:LAYER:CLICK_FEATURE":
             featureModalState.visible = true;
             featureModalState.featureProperties = action.featureProperties;
-            featureModalState.featureType = action.featureType;
             featureModalState.layerId = action.layerId;
             newState.featureModal = featureModalState;
             break;
         case "MOBILE:FEATURE_MODAL:CLOSE":
             featureModalState.visible = false;
             featureModalState.featureProperties = false;
-            featureModalState.featureType = false;
             featureModalState.layerId = false;
             newState.featureModal = featureModalState;
             break;

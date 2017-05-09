@@ -1,9 +1,10 @@
 import CONFIG from '../config.json';
-import {LAYER_STYLES} from '../layers/styles.js';
+import { LAYER_STYLES } from '../layers/styles.js';
 import ON_EACH_FEATURE from '../layers/onEachFeature.jsx';
 import { mapNewZoomLevel } from '../ducks/map.js';
 import store from '../store.js';
 import axios from 'axios';
+
 export default class ObliquePhotoMap {
     constructor(map) {
         var self = this;
@@ -50,16 +51,12 @@ export default class ObliquePhotoMap {
                                 layerId
                             });
                         },
-                        layerId: layerId,
-                        map: self.map
+                        layerId: layerId
                     };
-                    if (typeof layer.onEachFeatureID !== "undefined" && typeof ON_EACH_FEATURE[layer.onEachFeatureID] !== "undefined") {
-                        // bind layer options so we have access to the map, layerId from within onEachFeature function
-                        layerOptions.onEachFeature = ON_EACH_FEATURE[layer.onEachFeatureID].bind(layerOptions);
-                    }
-                    if (typeof layer.styleID !== "undefined" && typeof LAYER_STYLES[layer.styleID] !== "undefined") {
+                    layerOptions.onEachFeature = ON_EACH_FEATURE(layerId, self.map);
+                    if (typeof LAYER_STYLES[layerId] !== "undefined") {
                         // bind layer options so we have access to the map, layerId from within style function
-                        layerOptions.style = LAYER_STYLES[layer.styleID].bind(layerOptions);
+                        layerOptions.style = LAYER_STYLES[layerId].bind(layerOptions);
                     }
                     this.layerIndex[layerId] = L.geoJson(null, layerOptions);
                     axios.get(layer.dataLocation)

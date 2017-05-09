@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+
 const getLayers = (state) => state.layers;
 const getLayersById = (state) => state.layers.layersById;
 const getMobileFeatureModal = (state) => state.mobile.featureModal;
@@ -8,7 +9,8 @@ export const mapLayerGroupsToLayers = createSelector([getLayers], layers => {
     let mappedLayerGroups = {};
     for (let layerGroupName in layerGroupsById) {
         if (typeof mappedLayerGroups[layerGroupName] === "undefined") {
-            mappedLayerGroups[layerGroupName] = {...layerGroupsById[layerGroupName],
+            mappedLayerGroups[layerGroupName] = {
+                ...layerGroupsById[layerGroupName],
                 layers: {}
             };
         }
@@ -69,12 +71,21 @@ export const getActiveLayerStyleTypes = createSelector(getActiveLayers, activeLa
     }
     return stylesByLayerId;
 });
-export const getMobileFeatureModalTitle = createSelector([getLayersById, getMobileFeatureModal], (layers, featureModal) => {
-    if (typeof featureModal.layerId !== "undefined") {
+export const getMobileFeaturePopupProps = createSelector([getLayers, getMobileFeatureModal], (layers, featureModal) => {
+    if (typeof featureModal.layerId !== "undefined" && featureModal.layerId !== false) {
         let layerId = featureModal.layerId;
-        if(typeof layers[layerId] !== "undefined") {
-            return layers[layerId].layerGroupName + " - " + layers[layerId].layerName;
+        let layerName = layers.layersById[layerId].name;
+        let layerGroupId = layers.layersById[layerId].layerGroupId;
+        let layerGroupName = layers.layerGroupsById[layerGroupId].name;
+        return {
+            ...featureModal,
+            layerName,
+            layerGroupName
         }
     }
-    return "";
+    return {
+        ...featureModal,
+        layerName: "",
+        layerGroupName: ""
+    };
 });

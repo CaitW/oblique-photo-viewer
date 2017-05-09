@@ -1,4 +1,5 @@
 import React from 'react';
+
 const PopupTitle = (props) => {
     let featureName = "";
     if(typeof props.featureProperties.OBJECTID === "number") {
@@ -7,7 +8,7 @@ const PopupTitle = (props) => {
         featureName += "Feature";
     }
     return (
-        <div className="feature-popup-title">
+        <div>
             {props.layerGroupName}
             <i className="fa fa-chevron-right"></i>
             {props.layerName}

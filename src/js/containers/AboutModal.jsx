@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import store from '../store.js';
 import { closeAboutModal } from '../ducks/aboutModal.js';
 import CONFIG from '../config.json';
+
 const mapStateToProps = function(store) {
     return {
         visible: store.aboutModal.visible

@@ -1,4 +1,5 @@
 import CONFIG from './config.json';
+
 export function getPhotoURLs (photoProperties) {
     let base = CONFIG.photos.urlBase;
     let lakeName = photoProperties["Great Lake"].replace(/ /gi, "");

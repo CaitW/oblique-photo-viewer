@@ -5,32 +5,40 @@
  * - Controls adding and removing basemaps
  */
 import CONFIG from '../config.json';
+
 const initialbasemaps = CONFIG.map.basemaps;
-export function toggleBasemap(basemapID) {
+
+export function toggleBasemap(basemapId) {
     return {
         type: "MAP:TOGGLE_BASEMAP",
-        basemapID
+        basemapId
     }
 }
+
 export default function basemaps(state = initialbasemaps, action) {
-    let newState = Object.assign({}, state);
+    let newState = {
+        ...state
+    };
     switch (action.type) {
         case "MAP:TOGGLE_BASEMAP":
             {
-                let basemapIDToToggle = action.basemapID;
-                for (let basemapID in newState) {
-                    let basemapSlice = Object.assign({}, newState[basemapID]);
-                    if (basemapID === basemapIDToToggle) {
-                        basemapSlice.active = true;
+                let basemapIdToToggle = action.basemapId;
+                for (let basemapId in newState) {
+                    if (basemapId === basemapIdToToggle) {
+                        newState[basemapId] = {
+                            ...newState[basemapId],
+                            active: true
+                        }
                     } else {
-                        basemapSlice.active = false;
+                        newState[basemapId] = {
+                            ...newState[basemapId],
+                            active: false
+                        }
                     }
-                    newState[basemapID] = basemapSlice;
                 }
                 break;
             }
         default:
-            newState = state;
             break;
     }
     return newState;

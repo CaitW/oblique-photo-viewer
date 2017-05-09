@@ -3,12 +3,11 @@
  * This creates the modal that's displayed when a user clicks on an object in the map
  */
 import React from 'react';
-import { Table, Tabs, Tab, Button } from 'react-bootstrap';
-import { getPhotoURLs } from '../util.js';
-import PopupTabs from './Popup/PopupTabs.jsx';
-import PopupTitle from './Popup/PopupTitle.jsx';
-import PopupFooter from './Popup/PopupFooter.jsx';
+import PopupTabs from './components/PopupTabs.jsx';
+import PopupTitle from './components/PopupTitle.jsx';
+import PopupFooter from './components/PopupFooter.jsx';
 import Draggable from 'react-draggable';
+
 export default class PinnedFeaturePopup extends React.Component {
     constructor() {
         super();
@@ -43,16 +42,18 @@ export default class PinnedFeaturePopup extends React.Component {
                 >
                 <div className="feature-popup-content hidden-xs" ref="content" style={style} onClick={this.props.onClick}>
                     <div className="feature-popup-header handle">
-                        <PopupTitle featureProperties={this.props.featureProperties} layerGroupName={this.props.layerGroupName} layerName={this.props.layerName} />
+                        <div className="feature-popup-title">
+                            <PopupTitle featureProperties={this.props.featureProperties} layerGroupName={this.props.layerGroupName} layerName={this.props.layerName} />
+                        </div>
                         <div className="feature-popup-controls">
                             <i className="fa fa-times feature-popup-close-button" onClick={this.props.closePopup}></i>
                         </div>
                     </div>
                     <div className="feature-popup-body">
-                        <PopupTabs featureType={this.props.featureType} featureProperties={this.props.featureProperties} />
+                        <PopupTabs layerId={this.props.layerId} featureProperties={this.props.featureProperties} />
                     </div>
                     <div className="feature-popup-footer">
-                        <PopupFooter featureType={this.props.featureType} featureProperties={this.props.featureProperties}>
+                        <PopupFooter layerId={this.props.layerId} featureProperties={this.props.featureProperties}>
                             <div key="clearfix" className="clearfix"></div>
                         </PopupFooter>
                     </div>

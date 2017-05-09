@@ -10,20 +10,19 @@ import store from '../store.js';
 import React from 'react';
 import { mobileClickFeature } from '../ducks/mobile.js';
 import { render, unmountComponentAtNode } from 'react-dom';
-import FeaturePopup from '../components/FeaturePopup.jsx';
+import FeaturePopup from '../components/FeaturePopups/FeaturePopup.jsx';
 
 // Function that takes layer information and creates a popup.
 // The popup's content is handled by React (<FeaturePopup />), however Leaflet is not controlled by React.
 // Therefore, the popup's content must mount/unmount the React component manually whenever it is opened/closed.
-function handleClick(feature, layer, dataType, map) {
+function handleClick(feature, layer, layerId, map) {
     var popup = false;
-    let layerId = layer.defaultOptions.layerId;
     // on click, create and open popup
     layer.on('mouseup', function() {
         // if the screen is small, open the popup as a full modal
         // if the screen is large, open the popup as a leaflet-based in-map popup
         if (store.getState().mobile.window.width < 992) {
-            store.dispatch(mobileClickFeature(feature.properties, dataType, layerId));
+            store.dispatch(mobileClickFeature(feature.properties, layerId));
         } else if (popup === false) {
             popup = L.popup({
                 closeOnClick: false,
@@ -55,7 +54,13 @@ function handleClick(feature, layer, dataType, map) {
             };
             popup.on("add", function () {
                 render(
-                    <FeaturePopup layerId={layerId} featureProperties={feature.properties} featureType={dataType} popup={popup} closePopup={closePopup} getPosition={getPopupPosition}/>,
+                    <FeaturePopup
+                        layerId={layerId}
+                        featureProperties={feature.properties}
+                        popup={popup}
+                        closePopup={closePopup}
+                        getPosition={getPopupPosition}
+                    />,
                     container
                 );
             });
@@ -64,34 +69,9 @@ function handleClick(feature, layer, dataType, map) {
         }
     });
 }
-// Individual layer onEachFeature functions go below, as referenced by ID in config.json
-var ON_EACH_FEATURE = {
-    backshore_1976: function(feature, layer) {
-        handleClick(feature, layer, "data", this.map);
-    },
-    backshore_2007: function(feature, layer) {
-        handleClick(feature, layer, "data", this.map);
-    },
-    photos_1976: function(feature, layer) {
-        handleClick(feature, layer, "photo", this.map);
-    },
-    photos_2007: function(feature, layer) {
-        handleClick(feature, layer, "photo", this.map);
-    },
-    structure_1976: function(feature, layer) {
-        handleClick(feature, layer, "data", this.map);
-    },
-    structure_2007: function(feature, layer) {
-        handleClick(feature, layer, "data", this.map);
-    },
-    beachclass_1976: function(feature, layer) {
-        handleClick(feature, layer, "data", this.map);
-    },
-    beachclass_2007: function(feature, layer) {
-        handleClick(feature, layer, "data", this.map);
-    },
-    profiles: function (feature, layer) {
-        handleClick(feature, layer, "profile", this.map);
+export default function ON_EACH_FEATURE (layerId, map) {
+    return function (feature, layer) {
+        handleClick(feature, layer, layerId, map);
     }
-};
-export default ON_EACH_FEATURE;
+}
+

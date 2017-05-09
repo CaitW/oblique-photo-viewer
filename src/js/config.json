@@ -13,114 +13,96 @@
         ],
         "basemaps": {
             "light": {
-                "basemapName": "Light",
+                "name": "Light",
                 "url": "https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
                 "active": true
             },
             "streets": {
-                "basemapName": "Streets",
+                "name": "Streets",
                 "url": "https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
                 "active": false
             },
             "satellite": {
-                "basemapName": "Satellite",
+                "name": "Satellite",
                 "url": "https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
                 "active": false
             }
         },
         "layers": {
-            "1976 Inventory": {
+            "1976_inventory": {
                 "name": "1976 Inventory",
                 "layers": {
-                    "Backshore": {
-                        "layerName": "Bluff Condition",
+                    "backshore_1976": {
+                        "name": "Bluff Condition",
                         "type": "geojson",
-                        "styleID": "backshore_1976",
-                        "onEachFeatureID": "backshore_1976",
                         "dataLocation": "./data/layers/backshore_1976.json",
                         "active": false
                     },
-                    "Beachclass": {
-                        "layerName": "Beach Protection",
+                    "beachclass_1976": {
+                        "name": "Beach Protection",
                         "type": "geojson",
-                        "styleID": "beachclass_1976",
-                        "onEachFeatureID": "beachclass_1976",
                         "dataLocation": "./data/layers/beachclass_1976.json",
                         "active": false
                     },
-                    "Structure": {
-                        "layerName": "Shore Structures",
+                    "structure_1976": {
+                        "name": "Shore Structures",
                         "type": "geojson",
-                        "styleID": "structure_1976",
-                        "onEachFeatureID": "structure_1976",
                         "dataLocation": "./data/layers/structure_1976.json",
                         "active": false
                     },
-                    "Photos": {
-                        "layerName": "Photos",
+                    "photos_1976": {
+                        "name": "Photos",
                         "type": "geojson",
                         "dataLocation": "./data/layers/photos_1976.json",
-                        "styleID": "photos_1976",
-                        "onEachFeatureID": "photos_1976",
                         "active": false
                     }
                 }
             },
-            "2007 Inventory": {
+            "2007_inventory": {
                 "name": "2007 Inventory",
                 "layers": {
-                    "Backshore": {
-                        "layerName": "Bluff Condition",
+                    "backshore_2007": {
+                        "name": "Bluff Condition",
                         "type": "geojson",
-                        "styleID": "backshore_2007",
-                        "onEachFeatureID": "backshore_2007",
                         "dataLocation": "./data/layers/backshore_2007.json",
                         "active": false
                     },
-                    "Beachclass": {
-                        "layerName": "Beach Protection",
+                    "beachclass_2007": {
+                        "name": "Beach Protection",
                         "type": "geojson",
-                        "styleID": "beachclass_2007",
-                        "onEachFeatureID": "beachclass_2007",
                         "dataLocation": "./data/layers/beachclass_2007.json",
                         "active": false
                     },
-                    "Structure": {
-                        "layerName": "Shore Structures",
+                    "structure_2007": {
+                        "name": "Shore Structures",
                         "type": "geojson",
-                        "styleID": "structure_2007",
-                        "onEachFeatureID": "structure_2007",
                         "dataLocation": "./data/layers/structure_2007.json",
                         "active": false
                     },
-                    "Photos": {
-                        "layerName": "Photos",
+                    "photos_2007": {
+                        "name": "Photos",
                         "type": "geojson",
                         "dataLocation": "./data/layers/photos_2007.json",
-                        "styleID": "photos_2007",
-                        "onEachFeatureID": "photos_2007",
                         "active": false
                     }
                 }
             },
-            "Bluff Profiles": {
+            "bluff_profiles": {
                 "name": "Bluff Profiles",
                 "layers": {
-                    "Profile Lines": {
-                        "layerName": "Profile Lines",
+                    "profiles": {
+                        "name": "Profile Lines",
                         "type": "geojson",
-                        "styleID": "profiles",
-                        "onEachFeatureID": "profiles",
-                        "dataLocation": "./data/layers/profiles-simplified.json",
+                        "dataLocation": "./data/layers/profiles.json",
                         "active": true
                     }
                 }
             },
-            "Boundaries": {
+            "boundaries": {
                 "name": "Boundaries",
                 "layers": {
-                    "County Boundaries": {
-                        "layerName": "County Boundaries",
+                    "county_bounds": {
+                        "name": "County Boundaries",
                         "type": "tileLayer",
                         "url": "https://api.mapbox.com/styles/v1/asfpm/ciyudtx3u00262sll3x184fnb/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
                         "active": true,

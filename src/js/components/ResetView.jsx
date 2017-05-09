@@ -5,7 +5,7 @@
 import React from 'react';
 import { NavItem } from 'react-bootstrap';
 import store from '../store.js';
-import {resetMapView} from '../ducks/map.js';
+import { resetMapView } from '../ducks/map.js';
 
 export default class ResetView extends React.Component {
     constructor() {

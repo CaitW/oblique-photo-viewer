@@ -4,6 +4,7 @@
  * Contains the actions and reducer part that controls map functionality.
  */
 import CONFIG from '../config.json';
+
 export function zoomToCounty(countyName) {
     return {
         type: "MAP:ZOOM_TO_COUNTY",
