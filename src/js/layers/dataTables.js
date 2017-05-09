@@ -3,6 +3,10 @@
  *
  * Describes which properties to display and which to hide in the data table
  * - On a per-layer basis
+ * - Possible Property Values:
+ *   - `true`: display the property in the data table
+ *   - `false`: don't display the property in the data table
+ *   - <String>: display the property, but display the property name as the specified <String>
  *
  */
 
@@ -101,14 +105,14 @@ const DISPLAY_PROPERTIES = {
     },
     profiles: {
         "ID": false,
-        "ProfileNo": true,
-        "county": true,
-        "bluff_xls": true,
-        "bathy_xls": true,
-        "bluff_jpg": true,
-        "bathy_png": true,
-        "notes": true,
-        "type": true
+        "ProfileNo": "Profile Number",
+        "county": "County",
+        "bluff_xls": false,
+        "bathy_xls": false,
+        "bluff_jpg": false,
+        "bathy_png": false,
+        "notes": "Notes",
+        "type": "Type"
     }
 };
 

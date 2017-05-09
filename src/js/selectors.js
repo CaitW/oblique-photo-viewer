@@ -32,7 +32,6 @@ export const getActiveLayers = createSelector(getLayersById, layers => {
     return activeLayers;
 });
 
-// Legend Selectors
 export const getActiveLayerStyleTypes = createSelector([getLayers, getActiveLayers], (layers, activeLayers) => {
     let stylesByLayerId = {};
     for (let layerId of activeLayers) {

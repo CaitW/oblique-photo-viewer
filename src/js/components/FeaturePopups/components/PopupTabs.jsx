@@ -13,19 +13,40 @@ export default class PopupTabs extends React.Component {
     update () {
         // do nothing unless reassigned by the constructor
     }
-    render () {
+    renderDataTable (featureProperties, layerId) {
         let rows = [];
-        for (let property in this.props.featureProperties) {
-            if (property !== "OBJECTID") {
+        let renderRow = (property, value) => {
+            return (
+                <tr key={property}>
+                    <td><strong>{property}</strong></td>
+                    <td>{value}</td>
+                </tr>
+            );
+        };
+        if(typeof DISPLAY_PROPERTIES[layerId] !== "undefined") {
+            let displayProperties = DISPLAY_PROPERTIES[layerId];
+            for (let property in this.props.featureProperties) {
+                if (typeof displayProperties[property] === "undefined" || displayProperties[property] !== false) {
+                    let value = this.props.featureProperties[property];
+                    if(typeof displayProperties[property] === "string") {
+                        property = displayProperties[property];
+                    }
+                    rows.push(
+                        renderRow(property, value)
+                    );
+                }
+            }
+        } else {
+            for (let property in this.props.featureProperties) {
                 let value = this.props.featureProperties[property];
                 rows.push(
-                    <tr key={property}>
-                        <td><strong>{property}</strong></td>
-                        <td>{value}</td>
-                    </tr>
+                    renderRow(property, value)
                 );
             }
         }
+        return rows;
+    }
+    render () {
         let tabs = [];
         switch (this.props.layerId) {
             case "photos_1976":
@@ -40,7 +61,7 @@ export default class PopupTabs extends React.Component {
                     <Tab key="data" eventKey={2} title="Data">
                         <Table striped bordered condensed hover>
                             <tbody>
-                                {rows}
+                                 {this.renderDataTable(this.props.featureProperties, this.props.layerId)}
                             </tbody>
                         </Table>
                     </Tab>
@@ -52,7 +73,7 @@ export default class PopupTabs extends React.Component {
                     <Tab key="data" eventKey={1} title="Data">
                         <Table striped bordered condensed hover>
                             <tbody>
-                                {rows}
+                                {this.renderDataTable(this.props.featureProperties, this.props.layerId)}
                             </tbody>
                         </Table>
                     </Tab>

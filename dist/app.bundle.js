@@ -52853,32 +52853,51 @@
 	            // do nothing unless reassigned by the constructor
 	        }
 	    }, {
-	        key: 'render',
-	        value: function render() {
+	        key: 'renderDataTable',
+	        value: function renderDataTable(featureProperties, layerId) {
 	            var rows = [];
-	            for (var property in this.props.featureProperties) {
-	                if (property !== "OBJECTID") {
-	                    var value = this.props.featureProperties[property];
-	                    rows.push(_react2.default.createElement(
-	                        'tr',
-	                        { key: property },
+	            var renderRow = function renderRow(property, value) {
+	                return _react2.default.createElement(
+	                    'tr',
+	                    { key: property },
+	                    _react2.default.createElement(
+	                        'td',
+	                        null,
 	                        _react2.default.createElement(
-	                            'td',
+	                            'strong',
 	                            null,
-	                            _react2.default.createElement(
-	                                'strong',
-	                                null,
-	                                property
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            'td',
-	                            null,
-	                            value
+	                            property
 	                        )
-	                    ));
+	                    ),
+	                    _react2.default.createElement(
+	                        'td',
+	                        null,
+	                        value
+	                    )
+	                );
+	            };
+	            if (typeof _dataTables.DISPLAY_PROPERTIES[layerId] !== "undefined") {
+	                var displayProperties = _dataTables.DISPLAY_PROPERTIES[layerId];
+	                for (var property in this.props.featureProperties) {
+	                    if (typeof displayProperties[property] === "undefined" || displayProperties[property] !== false) {
+	                        var value = this.props.featureProperties[property];
+	                        if (typeof displayProperties[property] === "string") {
+	                            property = displayProperties[property];
+	                        }
+	                        rows.push(renderRow(property, value));
+	                    }
+	                }
+	            } else {
+	                for (var _property in this.props.featureProperties) {
+	                    var _value = this.props.featureProperties[_property];
+	                    rows.push(renderRow(_property, _value));
 	                }
 	            }
+	            return rows;
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
 	            var tabs = [];
 	            switch (this.props.layerId) {
 	                case "photos_1976":
@@ -52899,7 +52918,7 @@
 	                                _react2.default.createElement(
 	                                    'tbody',
 	                                    null,
-	                                    rows
+	                                    this.renderDataTable(this.props.featureProperties, this.props.layerId)
 	                                )
 	                            )
 	                        ));
@@ -52916,7 +52935,7 @@
 	                                _react2.default.createElement(
 	                                    'tbody',
 	                                    null,
-	                                    rows
+	                                    this.renderDataTable(this.props.featureProperties, this.props.layerId)
 	                                )
 	                            )
 	                        ));
@@ -52986,6 +53005,10 @@
 	 *
 	 * Describes which properties to display and which to hide in the data table
 	 * - On a per-layer basis
+	 * - Possible Property Values:
+	 *   - `true`: display the property in the data table
+	 *   - `false`: don't display the property in the data table
+	 *   - <String>: display the property, but display the property name as the specified <String>
 	 *
 	 */
 
@@ -53084,14 +53107,14 @@
 	    },
 	    profiles: {
 	        "ID": false,
-	        "ProfileNo": true,
-	        "county": true,
-	        "bluff_xls": true,
-	        "bathy_xls": true,
-	        "bluff_jpg": true,
-	        "bathy_png": true,
-	        "notes": true,
-	        "type": true
+	        "ProfileNo": "Profile Number",
+	        "county": "County",
+	        "bluff_xls": false,
+	        "bathy_xls": false,
+	        "bluff_jpg": false,
+	        "bathy_png": false,
+	        "notes": "Notes",
+	        "type": "Type"
 	    }
 	};
 
@@ -54877,7 +54900,6 @@
 	    return activeLayers;
 	});
 
-	// Legend Selectors
 	var getActiveLayerStyleTypes = exports.getActiveLayerStyleTypes = (0, _reselect.createSelector)([getLayers, getActiveLayers], function (layers, activeLayers) {
 	    var stylesByLayerId = {};
 	    var _iteratorNormalCompletion2 = true;
