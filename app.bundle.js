@@ -49699,7 +49699,7 @@
 
 
 	exports.toggleLayer = toggleLayer;
-	exports.styleCacheUpdate = styleCacheUpdate;
+	exports.legendStyleUpdate = legendStyleUpdate;
 	exports.default = layers;
 
 	var _config = __webpack_require__(752);
@@ -49717,9 +49717,9 @@
 	    };
 	}
 
-	function styleCacheUpdate(layerId, propertyName, style, geometryType) {
+	function legendStyleUpdate(layerId, propertyName, style, geometryType) {
 	    return {
-	        type: "LAYER:STYLE_CACHE_UPDATE",
+	        type: "LAYER:LEGEND_STYLE_UPDATE",
 	        layerId: layerId,
 	        propertyName: propertyName,
 	        style: style,
@@ -49734,8 +49734,9 @@
 	    var layerGroupLayers = _config2.default.map.layers[layerGroupId].layers;
 	    for (var layerId in layerGroupLayers) {
 	        var layer = layerGroupLayers[layerId];
-	        layer.styleCache = layer.styleCache || {};
+	        layer.legendStyles = layer.legendStyles || {};
 	        layer.layerGroupId = layerGroupId;
+	        layer.id = layerId;
 	        layersById[layerId] = layer;
 	        var layerGroupProperties = _config2.default.map.layers[layerGroupId];
 	        if (typeof layerGroupsById[layerGroupId] === "undefined") {
@@ -49766,15 +49767,15 @@
 	                });
 	                break;
 	            }
-	        case "LAYER:STYLE_CACHE_UPDATE":
+	        case "LAYER:LEGEND_STYLE_UPDATE":
 	            {
-	                var styleCache = {
+	                var legendStyle = {
 	                    style: action.style,
 	                    geometryType: action.geometryType
 	                };
 	                newState = _extends({}, state, {
 	                    layersById: _extends({}, state.layersById, _defineProperty({}, action.layerId, _extends({}, state.layersById[action.layerId], {
-	                        styleCache: _extends({}, state.layersById[action.layerId].styleCache, _defineProperty({}, action.propertyName, styleCache))
+	                        legendStyles: _extends({}, state.layersById[action.layerId].legendStyles, _defineProperty({}, action.propertyName, legendStyle))
 	                    })))
 	                });
 	                break;
@@ -49907,7 +49908,7 @@
 							"type": "tileLayer",
 							"url": "https://api.mapbox.com/styles/v1/asfpm/ciyudtx3u00262sll3x184fnb/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
 							"active": true,
-							"styleCache": {
+							"legendStyles": {
 								"County Boundaries": {
 									"geometryType": "LineString",
 									"style": {
@@ -52158,7 +52159,9 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _styles = __webpack_require__(784);
+	var _layerStyles = __webpack_require__(784);
+
+	var _layerStyles2 = _interopRequireDefault(_layerStyles);
 
 	var _onEachFeature = __webpack_require__(785);
 
@@ -52233,10 +52236,7 @@
 	                            layerId: layerId
 	                        };
 	                        layerOptions.onEachFeature = (0, _onEachFeature2.default)(layerId, self.map);
-	                        if (typeof _styles.LAYER_STYLES[layerId] !== "undefined") {
-	                            // bind layer options so we have access to the map, layerId from within style function
-	                            layerOptions.style = _styles.LAYER_STYLES[layerId].bind(layerOptions);
-	                        }
+	                        layerOptions.style = (0, _layerStyles2.default)(layerId);
 	                        this.layerIndex[layerId] = L.geoJson(null, layerOptions);
 	                        _axios2.default.get(layer.dataLocation).then(function (response) {
 	                            self.layerIndex[layerId].addData(response.data);
@@ -52303,7 +52303,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.LAYER_STYLES = undefined;
+	exports.default = LAYER_STYLE;
 
 	var _store = __webpack_require__(729);
 
@@ -52343,17 +52343,17 @@
 	// Each layer can have multiple style types cached, depending on what type of features it contains.
 	// i.e. when a layer has different colors assigned to unique bluff types, each differing style
 	// is cached using the `propertyName` attribute
-	var STYLE_CACHE = {};
-	function addToCache(layerId, propertyName, style, geometryType) {
-	    STYLE_CACHE[layerId] = STYLE_CACHE[layerId] || {};
-	    if (typeof STYLE_CACHE[layerId][propertyName] === "undefined") {
-	        STYLE_CACHE[layerId][propertyName] = true;
-	        _store2.default.dispatch((0, _layers.styleCacheUpdate)(layerId, propertyName, style, geometryType));
+	var LEGEND_STYLES = {};
+	function addToLegendStyles(layerId, propertyName, style, geometryType) {
+	    LEGEND_STYLES[layerId] = LEGEND_STYLES[layerId] || {};
+	    if (typeof LEGEND_STYLES[layerId][propertyName] === "undefined") {
+	        LEGEND_STYLES[layerId][propertyName] = true;
+	        _store2.default.dispatch((0, _layers.legendStyleUpdate)(layerId, propertyName, style, geometryType));
 	    }
 	    return style;
 	}
 	// Individual layer styles are added below, as referenced by ID in config.json
-	var LAYER_STYLES = {
+	var LAYER_STYLES_BY_ID = {
 	    backshore_1976: function backshore_1976(feature) {
 	        var style = {
 	            weight: 5,
@@ -52379,7 +52379,7 @@
 	                style.color = COLORS.BLACK;
 	                break;
 	        }
-	        return addToCache(this.layerId, feature.properties["Bluff Condition Classification"], style, feature.geometry.type);
+	        return addToLegendStyles("backshore_1976", feature.properties["Bluff Condition Classification"], style, feature.geometry.type);
 	    },
 	    backshore_2007: function backshore_2007(feature) {
 	        var style = {
@@ -52406,7 +52406,7 @@
 	                style.color = COLORS.BLACK;
 	                break;
 	        }
-	        return addToCache(this.layerId, feature.properties["Bluff Condition Classification"], style, feature.geometry.type);
+	        return addToLegendStyles("backshore_2007", feature.properties["Bluff Condition Classification"], style, feature.geometry.type);
 	    },
 	    photos_1976: function photos_1976(feature) {
 	        var style = {
@@ -52417,7 +52417,7 @@
 	            fillOpacity: 1,
 	            className: "layer-photos-1976"
 	        };
-	        return addToCache(this.layerId, "photos", style, feature.geometry.type);
+	        return addToLegendStyles("photos_2007", "photos", style, feature.geometry.type);
 	    },
 	    photos_2007: function photos_2007(feature) {
 	        var style = {
@@ -52428,7 +52428,7 @@
 	            fillOpacity: 1,
 	            className: "layer-photos-2007"
 	        };
-	        return addToCache(this.layerId, "photos", style, feature.geometry.type);
+	        return addToLegendStyles("photos_2007", "photos", style, feature.geometry.type);
 	    },
 	    structure_1976: function structure_1976(feature) {
 	        var style = {
@@ -52439,7 +52439,7 @@
 	            fillOpacity: 1,
 	            className: "layer-structure-1976"
 	        };
-	        return addToCache(this.layerId, "structures", style, feature.geometry.type);
+	        return addToLegendStyles("structure_1976", "structures", style, feature.geometry.type);
 	    },
 	    structure_2007: function structure_2007(feature) {
 	        var style = {
@@ -52450,7 +52450,7 @@
 	            fillOpacity: 1,
 	            className: "layer-structure-2007"
 	        };
-	        return addToCache(this.layerId, "structures", style, feature.geometry.type);
+	        return addToLegendStyles("structure_2007", "structures", style, feature.geometry.type);
 	    },
 	    beachclass_1976: function beachclass_1976(feature) {
 	        var style = {
@@ -52495,7 +52495,7 @@
 	                style.color = COLORS.BLACK;
 	                break;
 	        }
-	        return addToCache(this.layerId, feature.properties["Shore Protection Classification"], style, feature.geometry.type);
+	        return addToLegendStyles("beachclass_1976", feature.properties["Shore Protection Classification"], style, feature.geometry.type);
 	    },
 	    beachclass_2007: function beachclass_2007(feature) {
 	        var style = {
@@ -52540,7 +52540,7 @@
 	                style.color = COLORS.BLACK;
 	                break;
 	        }
-	        return addToCache(this.layerId, feature.properties["Shore Protection Classification"], style, feature.geometry.type);
+	        return addToLegendStyles("beachclass_2007", feature.properties["Shore Protection Classification"], style, feature.geometry.type);
 	    },
 	    profiles: function profiles(feature) {
 	        var style = {
@@ -52560,10 +52560,15 @@
 	            default:
 	                break;
 	        }
-	        return addToCache(this.layerId, propertyName, style, feature.geometry.type);
+	        return addToLegendStyles("profiles", propertyName, style, feature.geometry.type);
 	    }
 	};
-	exports.LAYER_STYLES = LAYER_STYLES;
+	function LAYER_STYLE(layerId) {
+	    if (typeof LAYER_STYLES_BY_ID[layerId] !== "undefined") {
+	        return LAYER_STYLES_BY_ID[layerId];
+	    }
+	    return null;
+	}
 
 /***/ },
 /* 785 */
@@ -54823,6 +54828,7 @@
 	var getMobileFeatureModal = function getMobileFeatureModal(state) {
 	    return state.mobile.featureModal;
 	};
+
 	var mapLayerGroupsToLayers = exports.mapLayerGroupsToLayers = (0, _reselect.createSelector)([getLayers], function (layers) {
 	    var layersById = layers.layersById;
 	    var layerGroupsById = layers.layerGroupsById;
@@ -54860,19 +54866,19 @@
 	    }
 	    return mappedLayerGroups;
 	});
+
 	var getActiveLayers = exports.getActiveLayers = (0, _reselect.createSelector)(getLayersById, function (layers) {
 	    var activeLayers = [];
 	    for (var layerId in layers) {
 	        if (layers[layerId].active === true) {
-	            activeLayers.push({
-	                layerId: layerId,
-	                layer: layers[layerId]
-	            });
+	            activeLayers.push(layerId);
 	        }
 	    }
 	    return activeLayers;
 	});
-	var getActiveLayerStyleTypes = exports.getActiveLayerStyleTypes = (0, _reselect.createSelector)(getActiveLayers, function (activeLayers) {
+
+	// Legend Selectors
+	var getActiveLayerStyleTypes = exports.getActiveLayerStyleTypes = (0, _reselect.createSelector)([getLayers, getActiveLayers], function (layers, activeLayers) {
 	    var stylesByLayerId = {};
 	    var _iteratorNormalCompletion2 = true;
 	    var _didIteratorError2 = false;
@@ -54880,21 +54886,25 @@
 
 	    try {
 	        for (var _iterator2 = activeLayers[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	            var layerData = _step2.value;
+	            var layerId = _step2.value;
 
+	            var layer = layers.layersById[layerId];
+	            var layerName = layer.name;
+	            var layerGroupId = layer.layerGroupId;
+	            var layerGroupName = layers.layerGroupsById[layerGroupId].name;
+	            var legendStyles = layer.legendStyles;
 	            var styles = [];
-	            var styleCache = layerData.layer.styleCache;
-	            for (var styleName in styleCache) {
+	            for (var styleName in legendStyles) {
 	                var styleIconClassNames = ["fa"];
 	                var iconStyle = {
 	                    color: "#000000"
 	                };
-	                if (styleCache[styleName].geometryType === "LineString" || styleCache[styleName].geometryType === "MultiLineString") {
+	                if (legendStyles[styleName].geometryType === "LineString" || legendStyles[styleName].geometryType === "MultiLineString") {
 	                    styleIconClassNames.push("fa-minus");
-	                    iconStyle.color = styleCache[styleName].style.color;
-	                } else if (styleCache[styleName].geometryType === "Point") {
+	                    iconStyle.color = legendStyles[styleName].style.color;
+	                } else if (legendStyles[styleName].geometryType === "Point") {
 	                    styleIconClassNames.push("fa-circle");
-	                    iconStyle.color = styleCache[styleName].style.strokeColor;
+	                    iconStyle.color = legendStyles[styleName].style.strokeColor;
 	                }
 	                if (styleName === "null") {
 	                    styleName = "(No Value)";
@@ -54914,7 +54924,7 @@
 	                }
 	                return 0;
 	            });
-	            stylesByLayerId[layerData.layer.layerGroupName + " - " + layerData.layer.layerName] = styles;
+	            stylesByLayerId[layerGroupName + " - " + layerName] = styles;
 	        }
 	    } catch (err) {
 	        _didIteratorError2 = true;
@@ -54933,6 +54943,7 @@
 
 	    return stylesByLayerId;
 	});
+
 	var getMobileFeaturePopupProps = exports.getMobileFeaturePopupProps = (0, _reselect.createSelector)([getLayers, getMobileFeatureModal], function (layers, featureModal) {
 	    if (typeof featureModal.layerId !== "undefined" && featureModal.layerId !== false) {
 	        var layerId = featureModal.layerId;
