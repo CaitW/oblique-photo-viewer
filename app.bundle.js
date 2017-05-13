@@ -8251,7 +8251,7 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * This file is the primary entry point for the application. 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * This file is the primary entry point for the application.
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
 	// containers
@@ -50081,6 +50081,12 @@
 				"original": "orig",
 				"thumbnail": "thumb"
 			}
+		},
+		"profiles": {
+			"pathToGraphs": {
+				"bluff": "http://floodatlas.org/asfpm/oblique_viewer/bluff_profile/",
+				"bathy": "http://floodatlas.org/asfpm/oblique_viewer/bathy_profile/"
+			}
 		}
 	};
 
@@ -52825,6 +52831,10 @@
 
 	var _dataTables = __webpack_require__(789);
 
+	var _config = __webpack_require__(752);
+
+	var _config2 = _interopRequireDefault(_config);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52851,6 +52861,8 @@
 	        key: 'update',
 	        value: function update() {
 	            // do nothing unless reassigned by the constructor
+	            // Applies to popups within the Leaflet map scope, which
+	            // need to update their dimensions once images have loaded
 	        }
 	    }, {
 	        key: 'renderDataTable',
@@ -52907,11 +52919,92 @@
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
 	                            { key: 'image', eventKey: 1, title: 'Image' },
-	                            _react2.default.createElement('img', { src: photoURLs.popup, onLoad: this.update })
+	                            _react2.default.createElement('img', { src: photoURLs.popup, onLoad: this.update }),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'photo-image-button-row' },
+	                                _react2.default.createElement(
+	                                    'a',
+	                                    { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
+	                                    _react2.default.createElement(
+	                                        _reactBootstrap.Button,
+	                                        { className: 'open-larger-image-button' },
+	                                        _react2.default.createElement('i', { className: 'fa fa-image' }),
+	                                        ' View Full-size'
+	                                    )
+	                                ),
+	                                _react2.default.createElement('div', { className: 'clearfix' })
+	                            )
 	                        ));
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
 	                            { key: 'data', eventKey: 2, title: 'Data' },
+	                            _react2.default.createElement(
+	                                _reactBootstrap.Table,
+	                                { striped: true, bordered: true, condensed: true, hover: true },
+	                                _react2.default.createElement(
+	                                    'tbody',
+	                                    null,
+	                                    this.renderDataTable(this.props.featureProperties, this.props.layerId)
+	                                )
+	                            )
+	                        ));
+	                        break;
+	                    }
+	                case "profiles":
+	                    {
+	                        var eventKeyIndex = 1;
+	                        if (this.props.featureProperties.bluff_jpg !== false) {
+	                            var filePath = _config2.default.profiles.pathToGraphs.bluff + this.props.featureProperties.bluff_jpg;
+	                            tabs.push(_react2.default.createElement(
+	                                _reactBootstrap.Tab,
+	                                { key: 'bluff_graph', eventKey: eventKeyIndex, title: 'Bluff Profile Graph' },
+	                                _react2.default.createElement('img', { src: filePath, onLoad: this.update }),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'profile-image-button-row' },
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { href: '', key: 'open-larger-bluff-graph-button', target: '_blank', rel: 'noopener noreferrer' },
+	                                        _react2.default.createElement(
+	                                            _reactBootstrap.Button,
+	                                            { className: 'open-larger-graph-button' },
+	                                            _react2.default.createElement('i', { className: 'fa fa-image' }),
+	                                            ' Open in New Window'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement('div', { className: 'clearfix' })
+	                                )
+	                            ));
+	                            eventKeyIndex++;
+	                        }
+	                        if (this.props.featureProperties.bathy_png !== false) {
+	                            var _filePath = _config2.default.profiles.pathToGraphs.bathy + this.props.featureProperties.bathy_png;
+	                            tabs.push(_react2.default.createElement(
+	                                _reactBootstrap.Tab,
+	                                { key: 'bathy_graph', eventKey: eventKeyIndex, title: 'Bathy Profile Graph' },
+	                                _react2.default.createElement('img', { src: _filePath, onLoad: this.update }),
+	                                _react2.default.createElement(
+	                                    'div',
+	                                    { className: 'profile-image-button-row' },
+	                                    _react2.default.createElement(
+	                                        'a',
+	                                        { href: '', key: 'open-larger-bathy-graph-button', target: '_blank', rel: 'noopener noreferrer' },
+	                                        _react2.default.createElement(
+	                                            _reactBootstrap.Button,
+	                                            { className: 'open-larger-graph-button' },
+	                                            _react2.default.createElement('i', { className: 'fa fa-image' }),
+	                                            ' Open in New Window'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement('div', { className: 'clearfix' })
+	                                )
+	                            ));
+	                            eventKeyIndex++;
+	                        }
+	                        tabs.push(_react2.default.createElement(
+	                            _reactBootstrap.Tab,
+	                            { key: 'data', eventKey: eventKeyIndex, title: 'Data' },
 	                            _react2.default.createElement(
 	                                _reactBootstrap.Table,
 	                                { striped: true, bordered: true, condensed: true, hover: true },
@@ -52941,6 +53034,7 @@
 	                        ));
 	                        break;
 	                    }
+	                    console.log(tabs);
 	            }
 	            return _react2.default.createElement(
 	                _reactBootstrap.Tabs,
@@ -53178,22 +53272,6 @@
 	var PopupFooter = function PopupFooter(props) {
 	    var footer = [];
 	    switch (props.layerId) {
-	        case "photos_1976":
-	        case "photos_2007":
-	            {
-	                var photoURLs = (0, _util.getPhotoURLs)(props.featureProperties);
-	                footer.push(_react2.default.createElement(
-	                    'a',
-	                    { href: photoURLs.original, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
-	                    _react2.default.createElement(
-	                        _reactBootstrap.Button,
-	                        { className: 'open-larger-image-button' },
-	                        _react2.default.createElement('i', { className: 'fa fa-image' }),
-	                        ' View Full-size'
-	                    )
-	                ));
-	                break;
-	            }
 	        case "profiles":
 	            {
 	                if (props.featureProperties.bluff_xls !== false) {
@@ -53203,8 +53281,8 @@
 	                        _react2.default.createElement(
 	                            _reactBootstrap.Button,
 	                            { className: 'download-excel-button' },
-	                            _react2.default.createElement('i', { className: 'fa fa-download' }),
-	                            ' Bluff Spreadsheet'
+	                            _react2.default.createElement('i', { className: 'fa fa-table' }),
+	                            ' Bluff Profile'
 	                        )
 	                    ));
 	                }
@@ -53215,32 +53293,8 @@
 	                        _react2.default.createElement(
 	                            _reactBootstrap.Button,
 	                            { className: 'download-excel-button' },
-	                            _react2.default.createElement('i', { className: 'fa fa-download' }),
-	                            ' Bathy Spreadsheet'
-	                        )
-	                    ));
-	                }
-	                if (props.featureProperties.bluff_jpg !== false) {
-	                    footer.push(_react2.default.createElement(
-	                        'a',
-	                        { href: '', key: 'open-larger-bluff-graph-button', target: '_blank', rel: 'noopener noreferrer' },
-	                        _react2.default.createElement(
-	                            _reactBootstrap.Button,
-	                            { className: 'open-larger-graph-button' },
-	                            _react2.default.createElement('i', { className: 'fa fa-image' }),
-	                            ' Full-size Bluff Graph'
-	                        )
-	                    ));
-	                }
-	                if (props.featureProperties.bathy_png !== false) {
-	                    footer.push(_react2.default.createElement(
-	                        'a',
-	                        { href: '', key: 'open-larger-bathy-graph-button', target: '_blank', rel: 'noopener noreferrer' },
-	                        _react2.default.createElement(
-	                            _reactBootstrap.Button,
-	                            { className: 'open-larger-graph-button' },
-	                            _react2.default.createElement('i', { className: 'fa fa-image' }),
-	                            ' Full-size Bathy Graph'
+	                            _react2.default.createElement('i', { className: 'fa fa-table' }),
+	                            ' Bathymetry Profile'
 	                        )
 	                    ));
 	                }
@@ -54784,22 +54838,18 @@
 	  }
 	  return _react2.default.createElement(
 	    'div',
-	    { id: 'map-popup', className: classNames.join(" ") },
+	    { id: 'mobile-feature-popup', className: classNames.join(" ") },
 	    _react2.default.createElement(
 	      _reactBootstrap.Modal.Dialog,
 	      null,
 	      _react2.default.createElement(
 	        _reactBootstrap.Modal.Header,
 	        null,
-	        _react2.default.createElement(
-	          _reactBootstrap.Modal.Title,
-	          null,
-	          _react2.default.createElement(_PopupTitle2.default, {
-	            featureProperties: props.featureProperties,
-	            layerGroupName: props.layerGroupName,
-	            layerName: props.layerName
-	          })
-	        )
+	        _react2.default.createElement(_PopupTitle2.default, {
+	          featureProperties: props.featureProperties,
+	          layerGroupName: props.layerGroupName,
+	          layerName: props.layerName
+	        })
 	      ),
 	      _react2.default.createElement(
 	        _reactBootstrap.Modal.Body,
