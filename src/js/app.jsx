@@ -1,5 +1,5 @@
 /**
-  * This file is the primary entry point for the application. 
+  * This file is the primary entry point for the application.
   */
 import React from 'react';
 import { render } from 'react-dom';

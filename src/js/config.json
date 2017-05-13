@@ -189,5 +189,11 @@
             "original": "orig",
             "thumbnail": "thumb"
         }
+    },
+    "profiles": {
+        "pathToGraphs": {
+            "bluff": "http://floodatlas.org/asfpm/oblique_viewer/bluff_profile/",
+            "bathy": "http://floodatlas.org/asfpm/oblique_viewer/bathy_profile/"
+        }
     }
 }

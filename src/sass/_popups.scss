@@ -93,10 +93,12 @@
     .tab-content {
       border: 1px solid $primary_600;
       background-color: $primary_100;
-      border-width: 3px 0 0;
+      border-width: 3px 0 4px 0;
       padding: 10px;
       img {
         max-width: 100%;
+        display: block;
+        margin: 0 auto;
       }
       table {
         min-width: 350px;
@@ -107,6 +109,23 @@
           }
           td {
             border: 1px solid $primary_400;
+          }
+        }
+      }
+      .profile-image-button-row, .photo-image-button-row {
+        padding: 10px 0 0 0;
+        text-align: center;
+        a {
+          margin-left: 5px;
+          button {
+            font-size: inherit;
+            padding: 5px 10px;
+            border: 0;
+            background-color: $primary_200;
+            color: $primary_900;
+            &:hover {
+              background-color: $primary_300;
+            }
           }
         }
       }

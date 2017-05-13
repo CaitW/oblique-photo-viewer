@@ -14,16 +14,14 @@ const MobileFeaturePopup = (props) => {
         classNames.push("hidden");
     }
     return (
-      <div id='map-popup' className={classNames.join(" ")}>
+      <div id='mobile-feature-popup' className={classNames.join(" ")}>
             <Modal.Dialog>
                   <Modal.Header>
-                        <Modal.Title>
-                          <PopupTitle
-                            featureProperties={props.featureProperties}
-                            layerGroupName={props.layerGroupName}
-                            layerName={props.layerName}
-                          />
-                        </Modal.Title>
+                    <PopupTitle
+                      featureProperties={props.featureProperties}
+                      layerGroupName={props.layerGroupName}
+                      layerName={props.layerName}
+                    />
                   </Modal.Header>
                   <Modal.Body>
                     <PopupTabs layerId={props.layerId} featureProperties={props.featureProperties} />
