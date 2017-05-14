@@ -52905,7 +52905,15 @@
 	                    rows.push(renderRow(_property, _value));
 	                }
 	            }
-	            return rows;
+	            return _react2.default.createElement(
+	                _reactBootstrap.Table,
+	                { striped: true, bordered: true, condensed: true, hover: true },
+	                _react2.default.createElement(
+	                    'tbody',
+	                    null,
+	                    rows
+	                )
+	            );
 	        }
 	    }, {
 	        key: 'render',
@@ -52939,22 +52947,16 @@
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
 	                            { key: 'data', eventKey: 2, title: 'Data' },
-	                            _react2.default.createElement(
-	                                _reactBootstrap.Table,
-	                                { striped: true, bordered: true, condensed: true, hover: true },
-	                                _react2.default.createElement(
-	                                    'tbody',
-	                                    null,
-	                                    this.renderDataTable(this.props.featureProperties, this.props.layerId)
-	                                )
-	                            )
+	                            this.renderDataTable(this.props.featureProperties, this.props.layerId)
 	                        ));
 	                        break;
 	                    }
 	                case "profiles":
 	                    {
 	                        var eventKeyIndex = 1;
-	                        if (this.props.featureProperties.bluff_jpg !== false) {
+	                        var hasBluffImg = this.props.featureProperties.bluff_jpg !== false;
+	                        var hasBathyImg = this.props.featureProperties.bathy_png !== false;
+	                        if (hasBluffImg) {
 	                            var filePath = _config2.default.profiles.pathToGraphs.bluff + this.props.featureProperties.bluff_jpg;
 	                            tabs.push(_react2.default.createElement(
 	                                _reactBootstrap.Tab,
@@ -52978,7 +52980,7 @@
 	                            ));
 	                            eventKeyIndex++;
 	                        }
-	                        if (this.props.featureProperties.bathy_png !== false) {
+	                        if (hasBathyImg) {
 	                            var _filePath = _config2.default.profiles.pathToGraphs.bathy + this.props.featureProperties.bathy_png;
 	                            tabs.push(_react2.default.createElement(
 	                                _reactBootstrap.Tab,
@@ -53005,15 +53007,7 @@
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
 	                            { key: 'data', eventKey: eventKeyIndex, title: 'Data' },
-	                            _react2.default.createElement(
-	                                _reactBootstrap.Table,
-	                                { striped: true, bordered: true, condensed: true, hover: true },
-	                                _react2.default.createElement(
-	                                    'tbody',
-	                                    null,
-	                                    this.renderDataTable(this.props.featureProperties, this.props.layerId)
-	                                )
-	                            )
+	                            this.renderDataTable(this.props.featureProperties, this.props.layerId)
 	                        ));
 	                        break;
 	                    }
@@ -53022,15 +53016,7 @@
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
 	                            { key: 'data', eventKey: 1, title: 'Data' },
-	                            _react2.default.createElement(
-	                                _reactBootstrap.Table,
-	                                { striped: true, bordered: true, condensed: true, hover: true },
-	                                _react2.default.createElement(
-	                                    'tbody',
-	                                    null,
-	                                    this.renderDataTable(this.props.featureProperties, this.props.layerId)
-	                                )
-	                            )
+	                            this.renderDataTable(this.props.featureProperties, this.props.layerId)
 	                        ));
 	                        break;
 	                    }
