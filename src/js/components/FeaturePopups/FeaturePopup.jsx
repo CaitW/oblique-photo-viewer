@@ -39,7 +39,7 @@ export default class FeaturePopup extends React.Component {
         let layerGroupName = store.getState().layers.layerGroupsById[layerGroupId].name;
         let layerName = store.getState().layers.layersById[this.props.layerId].name;
         return (
-            <div className="feature-popup-content" onClick={this.bringToFront}>
+            <div className="wiscviewer-feature-popup" onClick={this.bringToFront}>
                 <div className="feature-popup-header">
                     <div className="feature-popup-title">
                         <PopupTitle featureProperties={this.props.featureProperties} layerGroupName={layerGroupName} layerName={layerName} />

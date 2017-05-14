@@ -8,7 +8,7 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 
 const SideBar = (props)  => (
-    <Col xsHidden sm={5} md={4} lg={3} className="sidebar">
+    <Col xsHidden sm={5} md={4} lg={3} className="wiscviewer-sidebar">
         {props.children}
     </Col>
 )

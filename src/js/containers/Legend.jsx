@@ -57,7 +57,7 @@ class Legend extends React.Component {
             iconClassNames.push("fa-chevron-up");
         }
         return (
-            <div id="legend" className="panel panel-default">
+            <div className="wiscviewer-legend panel panel-default">
                 <div className={headerClassNames.join(" ")} onClick={this.onPanelClick}>Legend<i className={iconClassNames.join(" ")}></i></div>
                 <div className={bodyClassNames.join(" ")}>
                     {this.renderLayerStyleTypes()}

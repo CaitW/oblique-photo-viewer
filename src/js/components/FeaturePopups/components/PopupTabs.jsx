@@ -84,7 +84,7 @@ export default class PopupTabs extends React.Component {
                 if(this.props.featureProperties.bluff_jpg !== false) {
                     let filePath = CONFIG.profiles.pathToGraphs.bluff + this.props.featureProperties.bluff_jpg;
                     tabs.push(
-                        <Tab key="bluff_graph" eventKey={eventKeyIndex} title="Bluff Profile Graph">
+                        <Tab key="bluff_graph" eventKey={eventKeyIndex} title="Bluff Profile">
                             <img src={filePath} onLoad={this.update}/>
                             <div className="profile-image-button-row">
                                 <a href="" key="open-larger-bluff-graph-button" target="_blank" rel="noopener noreferrer" >
@@ -101,7 +101,7 @@ export default class PopupTabs extends React.Component {
                 if(this.props.featureProperties.bathy_png !== false) {
                     let filePath = CONFIG.profiles.pathToGraphs.bathy + this.props.featureProperties.bathy_png;
                     tabs.push(
-                        <Tab key="bathy_graph" eventKey={eventKeyIndex} title="Bathy Profile Graph">
+                        <Tab key="bathy_graph" eventKey={eventKeyIndex} title="Bathy Profile">
                             <img src={filePath} onLoad={this.update}/>
                             <div className="profile-image-button-row">
                                 <a href="" key="open-larger-bathy-graph-button" target="_blank" rel="noopener noreferrer" >

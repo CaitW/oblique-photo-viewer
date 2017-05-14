@@ -40,7 +40,7 @@ export default class PinnedFeaturePopup extends React.Component {
                 handle=".handle"
                 zIndex={1100}
                 >
-                <div className="feature-popup-content hidden-xs" ref="content" style={style} onClick={this.props.onClick}>
+                <div className="wiscviewer-feature-popup wiscviewer-pinned-feature-popup hidden-xs" ref="content" style={style} onClick={this.props.onClick}>
                     <div className="feature-popup-header handle">
                         <div className="feature-popup-title">
                             <PopupTitle featureProperties={this.props.featureProperties} layerGroupName={this.props.layerGroupName} layerName={this.props.layerName} />

@@ -35,13 +35,13 @@ class App extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <Grid fluid={true} className="main-container">
+                <Grid fluid={true} className="wiscviewer-grid">
                     <AboutModal />
                     <MobileLayerList />
-                    <Row className="navRow">
+                    <Row className="wiscviewer-nav-container">
                         <NavBar />
                     </Row>
-                    <Row className="contentRow">
+                    <Row className="wiscviewer-content-container">
                         <SideBar>
                             <LayerList />
                             <Legend />

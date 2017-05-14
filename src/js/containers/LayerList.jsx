@@ -52,10 +52,10 @@ class LayerList extends React.Component {
         let eventKey = 1;
         for (let layerGroupId in this.props.layers) {
             layerGroups.push(
-                <LayerGroup 
-                    key={layerGroupId} 
+                <LayerGroup
+                    key={layerGroupId}
                     layerGroupId={layerGroupId}
-                    layerGroupName={this.props.layers[layerGroupId].name} 
+                    layerGroupName={this.props.layers[layerGroupId].name}
                     layers={this.props.layers[layerGroupId].layers}
                     onLayerClick={this.onLayerClick}
                     eventKey={eventKey.toString()}
@@ -66,9 +66,14 @@ class LayerList extends React.Component {
             eventKey++;
         }
         return (
-            <PanelGroup>
+            <PanelGroup className="wiscviewer-layer-list">
                 {layerGroups}
-                <BasemapList basemaps={this.props.basemaps} panelVisible={this.state["Basemaps"]} onBasemapClick={this.onBasemapClick} eventKey={eventKey.toString()} onPanelClick={this.onPanelClick}/>
+                <BasemapList basemaps={this.props.basemaps}
+                    panelVisible={this.state["Basemaps"]}
+                    onBasemapClick={this.onBasemapClick}
+                    eventKey={eventKey.toString()}
+                    onPanelClick={this.onPanelClick}
+                />
             </PanelGroup>
         );
     }

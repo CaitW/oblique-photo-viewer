@@ -26,7 +26,7 @@ export default class NavBar extends React.Component {
     }
     render() {
         return (
-            <Navbar collapseOnSelect fluid>
+            <Navbar collapseOnSelect fluid className="wiscviewer-nav">
               <Navbar.Header>
                 <img src="img/wisconsin.svg" alt="Wisconsin Logo" className="hidden-xs" />
                 <Navbar.Brand>

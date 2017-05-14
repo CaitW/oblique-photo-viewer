@@ -28,7 +28,7 @@ class MapContainer extends React.Component {
     }
     render() {
         return (
-            <Col xs={12} sm={7} md={8} lg={9} className="map-container">
+            <Col xs={12} sm={7} md={8} lg={9} className="wiscviewer-map-container">
                 <MobileFeaturePopup
                     visible={this.props.mobileFeatureModal.visible}
                     featureProperties={this.props.mobileFeatureModal.featureProperties}

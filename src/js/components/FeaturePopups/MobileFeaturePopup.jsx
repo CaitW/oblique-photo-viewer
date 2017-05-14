@@ -9,12 +9,12 @@ import PopupTitle from './components/PopupTitle.jsx';
 import PopupFooter from './components/PopupFooter.jsx';
 
 const MobileFeaturePopup = (props) => {
-    let classNames = ["static-modal"];
+    let classNames = ["wiscviewer-modal", "wiscviewer-mobile-modal", "wiscviewer-mobile-feature-popup", "static-modal"];
     if (props.visible === false) {
         classNames.push("hidden");
     }
     return (
-      <div id='mobile-feature-popup' className={classNames.join(" ")}>
+      <div className={classNames.join(" ")}>
             <Modal.Dialog>
                   <Modal.Header>
                     <PopupTitle

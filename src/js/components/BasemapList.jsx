@@ -12,7 +12,7 @@ const BasemapList = (props) => {
         basemaps.push(
             <Basemap key={ basemapID }
               basemapID={ basemapID }
-              basemapName={ props.basemaps[basemapID].basemapName }
+              basemapName={ props.basemaps[basemapID].name }
               active={ props.basemaps[basemapID].active }
               onBasemapClick={ props.onBasemapClick }
             />

@@ -12,8 +12,8 @@
   background-color: $primary_50;
 }
 
-// Pinned Feature Popups
-#pinned-feature-container {
+// Pinned Feature Popup Container
+.wiscviewer-pinned-feature-popup-container {
   position: absolute;
   left: 0;
   top: 0;
@@ -23,7 +23,7 @@
   * {
     pointer-events: auto;
   }
-  .feature-popup-content {
+  .wiscviewer-pinned-feature-popup {
     position: absolute;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
@@ -36,7 +36,7 @@
 }
 
 // Both Leaflet Popups and Pinned Popups
-.feature-popup-content {
+.wiscviewer-feature-popup {
   font-size: 12px;
   font-family: "Roboto";
   min-width: 300px;

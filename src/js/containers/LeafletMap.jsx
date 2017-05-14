@@ -59,7 +59,7 @@ class LeafletMap extends React.Component {
     }
     render() {
         return (
-            <div ref="map" id="map" data-zoom={this.props.map.zoom}>
+            <div ref="map" id="map" className="wiscviewer-map wiscviewer-map-zoom-levels" data-zoom={this.props.map.zoom}>
             </div>
         );
     }

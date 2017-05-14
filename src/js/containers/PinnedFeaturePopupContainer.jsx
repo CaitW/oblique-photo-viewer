@@ -76,7 +76,7 @@ class PinnedFeaturePopupContainer extends React.Component {
             )
         }
         return (
-            <div id="pinned-feature-container">
+            <div className="wiscviewer-pinned-feature-popup-container">
                 {pinnedFeatures}
             </div>
         );

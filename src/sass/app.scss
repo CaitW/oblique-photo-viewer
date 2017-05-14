@@ -24,15 +24,15 @@ html {
 #react-root {
   height: 100%;
 
-  .main-container {
+  .wiscviewer-grid {
     height: 100%;
 
-    .contentRow {
+    .wiscviewer-content-container {
       height: 100%;
       margin-top: -52px;
       padding-top: 52px;
 
-      .map-container {
+      .wiscviewer-map-container {
         height: 100%;
         padding: 0;
       }

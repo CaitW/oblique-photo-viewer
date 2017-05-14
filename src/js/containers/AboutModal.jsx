@@ -22,11 +22,11 @@ class AboutModal extends React.Component {
         store.dispatch(closeAboutModal());
     }
     render() {
-        let classNames = ["static-modal"];
+        let classNames = ["wiscviewer-about-modal", "wiscviewer-modal", "static-modal"];
         if (this.props.visible === false) {
             classNames.push("hidden");
         }
-        return (<div id='about-modal' className={classNames.join(" ")}>
+        return (<div className={classNames.join(" ")}>
                 <Modal.Dialog>
                       <Modal.Header>
                             <Modal.Title>About</Modal.Title>

@@ -24,12 +24,12 @@ class MobileLayerList extends React.Component {
         store.dispatch(closeMobileLayerList());
     }
     render() {
-        let classNames = ['hidden-sm', 'hidden-md', 'hidden-lg'];
+        let classNames = ['wiscviewer-modal', 'wiscviewer-mobile-modal',"wiscviewer-mobile-layers-list", 'hidden-sm', 'hidden-md', 'hidden-lg'];
         if(this.props.active === false) {
             classNames.push('hidden');
         }
         return (
-            <div id='mobile-layers-list' className={classNames.join(" ")}>
+            <div className={classNames.join(" ")}>
                 <Modal.Dialog>
                       <Modal.Header>
                             <Modal.Title>Layers</Modal.Title>

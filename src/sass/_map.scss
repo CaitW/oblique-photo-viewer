@@ -1,62 +1,70 @@
-#map {
+/**
+ * Structure
+ */
+
+.wiscviewer-map {
   height: 100%;
+}
+
+
+/**
+ * Skin
+ */
+
+.wiscviewer-map-zoom-levels {
   @for $zoom-level from 1 through 18 {
-      $profile-width: 1 + (0.2 * $zoom-level);
-      $line-width: 5 + (0.1 * $zoom-level);
-      $dot-stroke: 0 + (0.2 * $zoom-level);
-      $zoom-selector: "data-zoom=\'" + $zoom-level + "\'";
-        &[#{$zoom-selector}] {
-          .layer-photos-1976,
-          .layer-photos-2007,
-          .layer-structure-1976,
-          .layer-structure-2007 {
-            stroke-width: $dot-stroke;
-            &:hover {
-              stroke-width: $dot-stroke + 2;
-            }
-          }
-          .layer-beachclass-1976,
-          .layer-beachclass-2007,
-          .layer-backshore-1976,
-          .layer-backshore-2007 {
-            stroke-width: $line-width;
-            @if $zoom-level > 13 {
-              stroke-linecap: butt;
-            }
-            &:hover {
-              stroke-width: $line-width + 2;
-              stroke-linecap: round;
-            }
-          }
-          .layer-profiles {
-            stroke-width: $profile-width;
-            &:hover {
-              stroke-width: $profile-width + 2;
-            }
-          }
+    $profile-width: 1 + (0.2 * $zoom-level);
+    $line-width: 5 + (0.1 * $zoom-level);
+    $dot-stroke: 0 + (0.2 * $zoom-level);
+    $zoom-selector: "data-zoom=\'" + $zoom-level + "\'";
+    &[#{$zoom-selector}] {
+      .layer-photos-1976,
+      .layer-photos-2007,
+      .layer-structure-1976,
+      .layer-structure-2007 {
+        stroke-width: $dot-stroke;
+        &:hover {
+          stroke-width: $dot-stroke + 2;
+        }
       }
+      .layer-beachclass-1976,
+      .layer-beachclass-2007,
+      .layer-backshore-1976,
+      .layer-backshore-2007 {
+        stroke-width: $line-width;
+        @if $zoom-level > 13 {
+          stroke-linecap: butt;
+        }
+        &:hover {
+          stroke-width: $line-width + 2;
+          stroke-linecap: round;
+        }
+      }
+      .layer-profiles {
+        stroke-width: $profile-width;
+        &:hover {
+          stroke-width: $profile-width + 2;
+        }
+      }
+    }
   }
 }
 
 // Leaflet Modifications
 .leaflet-control-zoom.leaflet-bar {
   border: 0;
-
   .leaflet-control-zoom-in,
   .leaflet-control-zoom-out {
     color: $primary_900;
   }
-
   .leaflet-control-zoom-in {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   }
-
   .leaflet-control-zoom-out {
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   }
 }
-
