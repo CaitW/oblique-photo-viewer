@@ -47,7 +47,13 @@ export default class PopupTabs extends React.Component {
                 );
             }
         }
-        return rows;
+        return (
+            <Table striped bordered condensed hover>
+                <tbody>
+                    {rows}
+                </tbody>
+            </Table>
+        );
     }
     render () {
         let tabs = [];
@@ -70,18 +76,16 @@ export default class PopupTabs extends React.Component {
                 );
                 tabs.push(
                     <Tab key="data" eventKey={2} title="Data">
-                        <Table striped bordered condensed hover>
-                            <tbody>
-                                 {this.renderDataTable(this.props.featureProperties, this.props.layerId)}
-                            </tbody>
-                        </Table>
+                        {this.renderDataTable(this.props.featureProperties, this.props.layerId)}
                     </Tab>
                 );
                 break;
             }
             case "profiles": {
                 let eventKeyIndex = 1;
-                if(this.props.featureProperties.bluff_jpg !== false) {
+                let hasBluffImg = (this.props.featureProperties.bluff_jpg !== false);
+                let hasBathyImg = (this.props.featureProperties.bathy_png !== false);
+                if(hasBluffImg) {
                     let filePath = CONFIG.profiles.pathToGraphs.bluff + this.props.featureProperties.bluff_jpg;
                     tabs.push(
                         <Tab key="bluff_graph" eventKey={eventKeyIndex} title="Bluff Profile">
@@ -98,7 +102,7 @@ export default class PopupTabs extends React.Component {
                     );
                     eventKeyIndex++;
                 }
-                if(this.props.featureProperties.bathy_png !== false) {
+                if(hasBathyImg) {
                     let filePath = CONFIG.profiles.pathToGraphs.bathy + this.props.featureProperties.bathy_png;
                     tabs.push(
                         <Tab key="bathy_graph" eventKey={eventKeyIndex} title="Bathy Profile">
@@ -117,11 +121,7 @@ export default class PopupTabs extends React.Component {
                 }
                 tabs.push(
                     <Tab key="data" eventKey={eventKeyIndex} title="Data">
-                        <Table striped bordered condensed hover>
-                            <tbody>
-                                {this.renderDataTable(this.props.featureProperties, this.props.layerId)}
-                            </tbody>
-                        </Table>
+                        {this.renderDataTable(this.props.featureProperties, this.props.layerId)}
                     </Tab>
                 );
                 break;
@@ -129,11 +129,7 @@ export default class PopupTabs extends React.Component {
             default: {
                 tabs.push(
                     <Tab key="data" eventKey={1} title="Data">
-                        <Table striped bordered condensed hover>
-                            <tbody>
-                                {this.renderDataTable(this.props.featureProperties, this.props.layerId)}
-                            </tbody>
-                        </Table>
+                        {this.renderDataTable(this.props.featureProperties, this.props.layerId)}
                     </Tab>
                 );
                 break;
