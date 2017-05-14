@@ -8291,17 +8291,17 @@
 	                { store: _store2.default },
 	                _react2.default.createElement(
 	                    _reactBootstrap.Grid,
-	                    { fluid: true, className: 'main-container' },
+	                    { fluid: true, className: 'wiscviewer-grid' },
 	                    _react2.default.createElement(_AboutModal2.default, null),
 	                    _react2.default.createElement(_MobileLayerList2.default, null),
 	                    _react2.default.createElement(
 	                        _reactBootstrap.Row,
-	                        { className: 'navRow' },
+	                        { className: 'wiscviewer-nav-container' },
 	                        _react2.default.createElement(_NavBar2.default, null)
 	                    ),
 	                    _react2.default.createElement(
 	                        _reactBootstrap.Row,
-	                        { className: 'contentRow' },
+	                        { className: 'wiscviewer-content-container' },
 	                        _react2.default.createElement(
 	                            _SideBar2.default,
 	                            null,
@@ -29643,7 +29643,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        _reactBootstrap.Navbar,
-	        { collapseOnSelect: true, fluid: true },
+	        { collapseOnSelect: true, fluid: true, className: 'wiscviewer-nav' },
 	        _react2.default.createElement(
 	          _reactBootstrap.Navbar.Header,
 	          null,
@@ -50794,7 +50794,7 @@
 	var SideBar = function SideBar(props) {
 	    return _react2.default.createElement(
 	        _reactBootstrap.Col,
-	        { xsHidden: true, sm: 5, md: 4, lg: 3, className: 'sidebar' },
+	        { xsHidden: true, sm: 5, md: 4, lg: 3, className: 'wiscviewer-sidebar' },
 	        props.children
 	    );
 	};
@@ -50876,7 +50876,7 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                _reactBootstrap.Col,
-	                { xs: 12, sm: 7, md: 8, lg: 9, className: 'map-container' },
+	                { xs: 12, sm: 7, md: 8, lg: 9, className: 'wiscviewer-map-container' },
 	                _react2.default.createElement(_MobileFeaturePopup2.default, {
 	                    visible: this.props.mobileFeatureModal.visible,
 	                    featureProperties: this.props.mobileFeatureModal.featureProperties,
@@ -51002,7 +51002,7 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement('div', { ref: 'map', id: 'map', 'data-zoom': this.props.map.zoom });
+	            return _react2.default.createElement('div', { ref: 'map', id: 'map', className: 'wiscviewer-map wiscviewer-map-zoom-levels', 'data-zoom': this.props.map.zoom });
 	        }
 	    }]);
 
@@ -52770,7 +52770,7 @@
 	            var layerName = _store2.default.getState().layers.layersById[this.props.layerId].name;
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'feature-popup-content', onClick: this.bringToFront },
+	                { className: 'wiscviewer-feature-popup', onClick: this.bringToFront },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'feature-popup-header' },
@@ -52958,7 +52958,7 @@
 	                            var filePath = _config2.default.profiles.pathToGraphs.bluff + this.props.featureProperties.bluff_jpg;
 	                            tabs.push(_react2.default.createElement(
 	                                _reactBootstrap.Tab,
-	                                { key: 'bluff_graph', eventKey: eventKeyIndex, title: 'Bluff Profile Graph' },
+	                                { key: 'bluff_graph', eventKey: eventKeyIndex, title: 'Bluff Profile' },
 	                                _react2.default.createElement('img', { src: filePath, onLoad: this.update }),
 	                                _react2.default.createElement(
 	                                    'div',
@@ -52982,7 +52982,7 @@
 	                            var _filePath = _config2.default.profiles.pathToGraphs.bathy + this.props.featureProperties.bathy_png;
 	                            tabs.push(_react2.default.createElement(
 	                                _reactBootstrap.Tab,
-	                                { key: 'bathy_graph', eventKey: eventKeyIndex, title: 'Bathy Profile Graph' },
+	                                { key: 'bathy_graph', eventKey: eventKeyIndex, title: 'Bathy Profile' },
 	                                _react2.default.createElement('img', { src: _filePath, onLoad: this.update }),
 	                                _react2.default.createElement(
 	                                    'div',
@@ -54832,13 +54832,13 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var MobileFeaturePopup = function MobileFeaturePopup(props) {
-	  var classNames = ["static-modal"];
+	  var classNames = ["wiscviewer-modal", "wiscviewer-mobile-modal", "wiscviewer-mobile-feature-popup", "static-modal"];
 	  if (props.visible === false) {
 	    classNames.push("hidden");
 	  }
 	  return _react2.default.createElement(
 	    'div',
-	    { id: 'mobile-feature-popup', className: classNames.join(" ") },
+	    { className: classNames.join(" ") },
 	    _react2.default.createElement(
 	      _reactBootstrap.Modal.Dialog,
 	      null,
@@ -55216,13 +55216,13 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var classNames = ['hidden-sm', 'hidden-md', 'hidden-lg'];
+	            var classNames = ['wiscviewer-modal', 'wiscviewer-mobile-modal', "wiscviewer-mobile-layers-list", 'hidden-sm', 'hidden-md', 'hidden-lg'];
 	            if (this.props.active === false) {
 	                classNames.push('hidden');
 	            }
 	            return _react2.default.createElement(
 	                'div',
-	                { id: 'mobile-layers-list', className: classNames.join(" ") },
+	                { className: classNames.join(" ") },
 	                _react2.default.createElement(
 	                    _reactBootstrap.Modal.Dialog,
 	                    null,
@@ -55378,9 +55378,14 @@
 	            }
 	            return _react2.default.createElement(
 	                _reactBootstrap.PanelGroup,
-	                null,
+	                { className: 'wiscviewer-layer-list' },
 	                layerGroups,
-	                _react2.default.createElement(_BasemapList2.default, { basemaps: this.props.basemaps, panelVisible: this.state["Basemaps"], onBasemapClick: this.onBasemapClick, eventKey: eventKey.toString(), onPanelClick: this.onPanelClick })
+	                _react2.default.createElement(_BasemapList2.default, { basemaps: this.props.basemaps,
+	                    panelVisible: this.state["Basemaps"],
+	                    onBasemapClick: this.onBasemapClick,
+	                    eventKey: eventKey.toString(),
+	                    onPanelClick: this.onPanelClick
+	                })
 	            );
 	        }
 	    }]);
@@ -55520,7 +55525,7 @@
 	    for (var basemapID in props.basemaps) {
 	        basemaps.push(_react2.default.createElement(_Basemap2.default, { key: basemapID,
 	            basemapID: basemapID,
-	            basemapName: props.basemaps[basemapID].basemapName,
+	            basemapName: props.basemaps[basemapID].name,
 	            active: props.basemaps[basemapID].active,
 	            onBasemapClick: props.onBasemapClick
 	        }));
@@ -55659,13 +55664,13 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var classNames = ["static-modal"];
+	            var classNames = ["wiscviewer-about-modal", "wiscviewer-modal", "static-modal"];
 	            if (this.props.visible === false) {
 	                classNames.push("hidden");
 	            }
 	            return _react2.default.createElement(
 	                'div',
-	                { id: 'about-modal', className: classNames.join(" ") },
+	                { className: classNames.join(" ") },
 	                _react2.default.createElement(
 	                    _reactBootstrap.Modal.Dialog,
 	                    null,
@@ -55860,7 +55865,7 @@
 	            }
 	            return _react2.default.createElement(
 	                'div',
-	                { id: 'pinned-feature-container' },
+	                { className: 'wiscviewer-pinned-feature-popup-container' },
 	                pinnedFeatures
 	            );
 	        }
@@ -55961,7 +55966,7 @@
 	                },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'feature-popup-content hidden-xs', ref: 'content', style: style, onClick: this.props.onClick },
+	                    { className: 'wiscviewer-feature-popup wiscviewer-pinned-feature-popup hidden-xs', ref: 'content', style: style, onClick: this.props.onClick },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'feature-popup-header handle' },
@@ -57743,7 +57748,7 @@
 	            }
 	            return _react2.default.createElement(
 	                'div',
-	                { id: 'legend', className: 'panel panel-default' },
+	                { className: 'wiscviewer-legend panel panel-default' },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: headerClassNames.join(" "), onClick: this.onPanelClick },
