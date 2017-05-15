@@ -50086,6 +50086,10 @@
 			"pathToGraphs": {
 				"bluff": "http://floodatlas.org/asfpm/oblique_viewer/bluff_profile/",
 				"bathy": "http://floodatlas.org/asfpm/oblique_viewer/bathy_profile/"
+			},
+			"pathToXls": {
+				"bluff": "http://floodatlas.org/asfpm/oblique_viewer/bluff_spreadsheets/",
+				"bathy": "http://floodatlas.org/asfpm/oblique_viewer/bathy_spreadsheets/"
 			}
 		}
 	};
@@ -52954,8 +52958,10 @@
 	                case "profiles":
 	                    {
 	                        var eventKeyIndex = 1;
-	                        var hasBluffImg = this.props.featureProperties.bluff_jpg !== false;
-	                        var hasBathyImg = this.props.featureProperties.bathy_png !== false;
+	                        var bluffImg = this.props.featureProperties.bluff_jpg;
+	                        var bathyImg = this.props.featureProperties.bathy_png;
+	                        var hasBluffImg = typeof bluffImg !== "undefined" && bluffImg !== false;
+	                        var hasBathyImg = typeof bathyImg !== "undefined" && bathyImg !== false;
 	                        if (hasBluffImg) {
 	                            var filePath = _config2.default.profiles.pathToGraphs.bluff + this.props.featureProperties.bluff_jpg;
 	                            tabs.push(_react2.default.createElement(
@@ -53249,9 +53255,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _util = __webpack_require__(788);
-
 	var _reactBootstrap = __webpack_require__(476);
+
+	var _config = __webpack_require__(752);
+
+	var _config2 = _interopRequireDefault(_config);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53260,10 +53268,14 @@
 	    switch (props.layerId) {
 	        case "profiles":
 	            {
-	                if (props.featureProperties.bluff_xls !== false) {
+	                var bluffXls = props.featureProperties.bluff_xls;
+	                var bathyXls = props.featureProperties.bathy_xls;
+	                var hasBluffXls = typeof bluffXls !== "undefined" && bluffXls !== false;
+	                var hasBathyXls = typeof bathyXls !== "undefined" && bathyXls !== false;
+	                if (hasBluffXls) {
 	                    footer.push(_react2.default.createElement(
 	                        'a',
-	                        { href: '', key: 'download-bluff-excel-button', target: '_blank', rel: 'noopener noreferrer' },
+	                        { href: _config2.default.profiles.pathToXls.bluff + bluffXls, key: 'download-bluff-excel-button', target: '_blank', rel: 'noopener noreferrer' },
 	                        _react2.default.createElement(
 	                            _reactBootstrap.Button,
 	                            { className: 'download-excel-button' },
@@ -53272,10 +53284,10 @@
 	                        )
 	                    ));
 	                }
-	                if (props.featureProperties.bathy_xls !== false) {
+	                if (hasBathyXls) {
 	                    footer.push(_react2.default.createElement(
 	                        'a',
-	                        { href: '', key: 'download-bathy-excel-button', target: '_blank', rel: 'noopener noreferrer' },
+	                        { href: _config2.default.profiles.pathToXls.bathy + bathyXls, key: 'download-bathy-excel-button', target: '_blank', rel: 'noopener noreferrer' },
 	                        _react2.default.createElement(
 	                            _reactBootstrap.Button,
 	                            { className: 'download-excel-button' },
