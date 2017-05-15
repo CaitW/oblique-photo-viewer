@@ -83,8 +83,10 @@ export default class PopupTabs extends React.Component {
             }
             case "profiles": {
                 let eventKeyIndex = 1;
-                let hasBluffImg = (this.props.featureProperties.bluff_jpg !== false);
-                let hasBathyImg = (this.props.featureProperties.bathy_png !== false);
+                let bluffImg = this.props.featureProperties.bluff_jpg;
+                let bathyImg = this.props.featureProperties.bathy_png;
+                let hasBluffImg = (typeof bluffImg !== "undefined" && bluffImg !== false);
+                let hasBathyImg = (typeof bathyImg !== "undefined" && bathyImg !== false);
                 if(hasBluffImg) {
                     let filePath = CONFIG.profiles.pathToGraphs.bluff + this.props.featureProperties.bluff_jpg;
                     tabs.push(

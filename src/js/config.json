@@ -194,6 +194,10 @@
         "pathToGraphs": {
             "bluff": "http://floodatlas.org/asfpm/oblique_viewer/bluff_profile/",
             "bathy": "http://floodatlas.org/asfpm/oblique_viewer/bathy_profile/"
+        },
+        "pathToXls": {
+            "bluff": "http://floodatlas.org/asfpm/oblique_viewer/bluff_spreadsheets/",
+            "bathy": "http://floodatlas.org/asfpm/oblique_viewer/bathy_spreadsheets/"
         }
     }
 }

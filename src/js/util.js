@@ -13,8 +13,9 @@ export function getPhotoURLs (photoProperties) {
             let parts = fileName.split(".");
             parts[0] += "_" + sizeDir;
             modifiedFilename = parts.join(".");
-        } 
+        }
         urls[size] = [base,lakeName,year,sizeDir,modifiedFilename].join("/");
     }
     return urls;
 }
+

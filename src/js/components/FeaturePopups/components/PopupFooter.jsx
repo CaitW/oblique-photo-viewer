@@ -1,23 +1,27 @@
 import React from 'react';
-import { getPhotoURLs } from '../../../util.js';
 import { Button } from 'react-bootstrap';
+import CONFIG from '../../../config.json';
 
 const PopupFooter = (props) => {
     let footer = [];
     switch (props.layerId) {
         case "profiles": {
-            if(props.featureProperties.bluff_xls !== false) {
+            let bluffXls = props.featureProperties.bluff_xls;
+            let bathyXls = props.featureProperties.bathy_xls;
+            let hasBluffXls = (typeof bluffXls !== "undefined" && bluffXls !== false);
+            let hasBathyXls = (typeof bathyXls !== "undefined" && bathyXls !== false);
+            if(hasBluffXls) {
                 footer.push(
-                  <a href="" key="download-bluff-excel-button" target="_blank" rel="noopener noreferrer" >
+                  <a href={CONFIG.profiles.pathToXls.bluff + bluffXls} key="download-bluff-excel-button" target="_blank" rel="noopener noreferrer" >
                     <Button className="download-excel-button">
                       <i className="fa fa-table"></i> Bluff Profile
                     </Button>
                   </a>
                 );
             }
-            if(props.featureProperties.bathy_xls !== false) {
+            if(hasBathyXls) {
                 footer.push(
-                  <a href="" key="download-bathy-excel-button" target="_blank" rel="noopener noreferrer" >
+                  <a href={CONFIG.profiles.pathToXls.bathy + bathyXls} key="download-bathy-excel-button" target="_blank" rel="noopener noreferrer" >
                     <Button className="download-excel-button">
                       <i className="fa fa-table"></i> Bathymetry Profile
                     </Button>
