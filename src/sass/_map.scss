@@ -18,19 +18,19 @@
     $dot-stroke: 0 + (0.2 * $zoom-level);
     $zoom-selector: "data-zoom=\'" + $zoom-level + "\'";
     &[#{$zoom-selector}] {
-      .layer-photos-1976,
-      .layer-photos-2007,
-      .layer-structure-1976,
-      .layer-structure-2007 {
+      .layer-photos_1976,
+      .layer-photos_2007,
+      .layer-structure_1976,
+      .layer-structure_2007 {
         stroke-width: $dot-stroke;
         &:hover {
           stroke-width: $dot-stroke + 2;
         }
       }
-      .layer-beachclass-1976,
-      .layer-beachclass-2007,
-      .layer-backshore-1976,
-      .layer-backshore-2007 {
+      .layer-beachclass_1976,
+      .layer-beachclass_2007,
+      .layer-backshore_1976,
+      .layer-backshore_2007 {
         stroke-width: $line-width;
         @if $zoom-level > 13 {
           stroke-linecap: butt;
