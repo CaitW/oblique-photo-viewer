@@ -128,6 +128,48 @@ export default class PopupTabs extends React.Component {
                 );
                 break;
             }
+            case "photos_obl_2016": {
+                tabs.push(
+                    <Tab key="image" eventKey={1} title="Image">
+                        <img src={CONFIG.photos_2016.obl_urlBase + this.props.featureProperties.filename} onLoad={this.update}/>
+                        <div className="photo-image-button-row">
+                            <a href={CONFIG.photos_2016.obl_urlBase + this.props.featureProperties.filename} key="open-larger-image-button" target="_blank" rel="noopener noreferrer" >
+                                <Button className="open-larger-image-button">
+                                    <i className="fa fa-image"></i> View Full-size
+                                </Button>
+                            </a>
+                            <div className="clearfix"></div>
+                        </div>
+                    </Tab>
+                );
+                tabs.push(
+                    <Tab key="data" eventKey={2} title="Data">
+                        {this.renderDataTable(this.props.featureProperties, this.props.layerId)}
+                    </Tab>
+                );
+                break;
+            }
+            case "photos_dm_2016": {
+                tabs.push(
+                    <Tab key="image" eventKey={1} title="Image">
+                        <img src={CONFIG.photos_2016.dm_urlBase + this.props.featureProperties.filename} onLoad={this.update}/>
+                        <div className="photo-image-button-row">
+                            <a href={CONFIG.photos_2016.dm_urlBase + this.props.featureProperties.filename} key="open-larger-image-button" target="_blank" rel="noopener noreferrer" >
+                                <Button className="open-larger-image-button">
+                                    <i className="fa fa-image"></i> View Full-size
+                                </Button>
+                            </a>
+                            <div className="clearfix"></div>
+                        </div>
+                    </Tab>
+                );
+                tabs.push(
+                    <Tab key="data" eventKey={2} title="Data">
+                        {this.renderDataTable(this.props.featureProperties, this.props.layerId)}
+                    </Tab>
+                );
+                break;
+            }
             default: {
                 tabs.push(
                     <Tab key="data" eventKey={1} title="Data">
