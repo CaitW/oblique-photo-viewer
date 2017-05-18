@@ -216,5 +216,9 @@
             "bluff": "http://floodatlas.org/asfpm/oblique_viewer/bluff_spreadsheets/",
             "bathy": "http://floodatlas.org/asfpm/oblique_viewer/bathy_spreadsheets/"
         }
+    },
+    "photos_2016": {
+        "dm_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/dm_photos/",
+        "obl_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/lz_photos/"
     }
 }
