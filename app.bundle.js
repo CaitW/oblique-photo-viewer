@@ -50108,6 +50108,10 @@
 				"bluff": "http://floodatlas.org/asfpm/oblique_viewer/bluff_spreadsheets/",
 				"bathy": "http://floodatlas.org/asfpm/oblique_viewer/bathy_spreadsheets/"
 			}
+		},
+		"photos_2016": {
+			"dm_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/dm_photos/",
+			"obl_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/lz_photos/"
 		}
 	};
 
@@ -52377,8 +52381,34 @@
 	        LEGEND_STYLES[layerId][propertyName] = true;
 	        _store2.default.dispatch((0, _layers.legendStyleUpdate)(layerId, propertyName, style, geometryType));
 	    }
+	    var layerIdClass = "layer-" + layerId;
+	    var layerTypeClass = "layer-type-" + geometryType;
+	    style.className = [layerTypeClass, layerIdClass].join(" ");
 	    return style;
 	}
+	var DEFAULT_STYLES = {
+	    LineString: {
+	        weight: 5,
+	        opacity: 1,
+	        lineCap: "round",
+	        lineJoin: "round",
+	        color: COLORS.BLACK
+	    },
+	    Point: {
+	        radius: 3,
+	        color: COLORS.BLACK,
+	        strokeColor: COLORS.BLACK,
+	        weight: 0,
+	        fillOpacity: 1
+	    },
+	    MultiLineString: {
+	        weight: 5,
+	        opacity: 1,
+	        lineCap: "round",
+	        lineJoin: "round",
+	        color: COLORS.BLACK
+	    }
+	};
 	// Individual layer styles are added below, as referenced by ID in config.json
 	var LAYER_STYLES_BY_ID = {
 	    backshore_1976: function backshore_1976(feature) {
@@ -52386,8 +52416,7 @@
 	            weight: 5,
 	            opacity: 1,
 	            lineCap: "round",
-	            lineJoin: "round",
-	            className: "layer-backshore-1976"
+	            lineJoin: "round"
 	        };
 	        switch (feature.properties["Bluff Condition Classification"]) {
 	            case "Moderately Stable":
@@ -52413,8 +52442,7 @@
 	            weight: 5,
 	            opacity: 1,
 	            lineCap: "round",
-	            lineJoin: "round",
-	            className: "layer-backshore-2007"
+	            lineJoin: "round"
 	        };
 	        switch (feature.properties["Bluff Condition Classification"]) {
 	            case "Moderately Stable":
@@ -52441,8 +52469,7 @@
 	            color: COLORS.PURPLE,
 	            strokeColor: COLORS.PURPLE,
 	            weight: 0,
-	            fillOpacity: 1,
-	            className: "layer-photos-1976"
+	            fillOpacity: 1
 	        };
 	        return addToLegendStyles("photos_2007", "photos", style, feature.geometry.type);
 	    },
@@ -52452,8 +52479,7 @@
 	            color: COLORS.CYAN,
 	            strokeColor: COLORS.CYAN,
 	            weight: 0,
-	            fillOpacity: 1,
-	            className: "layer-photos-2007"
+	            fillOpacity: 1
 	        };
 	        return addToLegendStyles("photos_2007", "photos", style, feature.geometry.type);
 	    },
@@ -52463,8 +52489,7 @@
 	            color: COLORS.BLACK,
 	            fillColor: COLORS.BLACK,
 	            weight: 0,
-	            fillOpacity: 1,
-	            className: "layer-structure-1976"
+	            fillOpacity: 1
 	        };
 	        return addToLegendStyles("structure_1976", "structures", style, feature.geometry.type);
 	    },
@@ -52474,8 +52499,7 @@
 	            color: COLORS.BLACK,
 	            fillColor: COLORS.BLACK,
 	            weight: 0,
-	            fillOpacity: 1,
-	            className: "layer-structure-2007"
+	            fillOpacity: 1
 	        };
 	        return addToLegendStyles("structure_2007", "structures", style, feature.geometry.type);
 	    },
@@ -52484,8 +52508,7 @@
 	            weight: 5,
 	            opacity: 1,
 	            lineCap: "round",
-	            lineJoin: "round",
-	            className: "layer-beachclass-1976"
+	            lineJoin: "round"
 	        };
 	        switch (feature.properties["Shore Protection Classification"]) {
 	            case "None":
@@ -52529,8 +52552,7 @@
 	            weight: 5,
 	            opacity: 1,
 	            lineCap: "round",
-	            lineJoin: "round",
-	            className: "layer-beachclass-2007"
+	            lineJoin: "round"
 	        };
 	        switch (feature.properties["Shore Protection Classification"]) {
 	            case "None":
@@ -52575,7 +52597,6 @@
 	            opacity: 1,
 	            lineCap: "round",
 	            lineJoin: "round",
-	            className: "layer-profiles",
 	            color: COLORS.BLACK
 	        };
 	        var propertyName = "Bluff Profile";
@@ -52595,8 +52616,7 @@
 	            color: COLORS.PURPLE,
 	            strokeColor: COLORS.PURPLE,
 	            weight: 0,
-	            fillOpacity: 1,
-	            className: "layer-photos-obl-2016"
+	            fillOpacity: 1
 	        };
 	        return addToLegendStyles("photos_obl_2016", "photos", style, feature.geometry.type);
 	    },
@@ -52606,8 +52626,7 @@
 	            color: COLORS.PURPLE,
 	            strokeColor: COLORS.PURPLE,
 	            weight: 0,
-	            fillOpacity: 1,
-	            className: "layer-photos-dm-2016"
+	            fillOpacity: 1
 	        };
 	        return addToLegendStyles("photos_dm_2016", "photos", style, feature.geometry.type);
 	    }
@@ -52616,7 +52635,16 @@
 	    if (typeof LAYER_STYLES_BY_ID[layerId] !== "undefined") {
 	        return LAYER_STYLES_BY_ID[layerId];
 	    }
-	    return null;
+	    // default, if no layer style is specified
+	    return function (feature) {
+	        if (typeof DEFAULT_STYLES[feature.geometry.type] !== "undefined") {
+	            var layerIdClass = "layer-" + layerId;
+	            var layerTypeClass = "layer-type-" + feature.geometry.type;
+	            DEFAULT_STYLES[feature.geometry.type].className = [layerTypeClass, layerIdClass].join(" ");
+	            return addToLegendStyles(layerId, layerId, DEFAULT_STYLES[feature.geometry.type], feature.geometry.type);
+	        }
+	        return null;
+	    };
 	}
 
 /***/ },
@@ -53052,6 +53080,64 @@
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
 	                            { key: 'data', eventKey: eventKeyIndex, title: 'Data' },
+	                            this.renderDataTable(this.props.featureProperties, this.props.layerId)
+	                        ));
+	                        break;
+	                    }
+	                case "photos_obl_2016":
+	                    {
+	                        tabs.push(_react2.default.createElement(
+	                            _reactBootstrap.Tab,
+	                            { key: 'image', eventKey: 1, title: 'Image' },
+	                            _react2.default.createElement('img', { src: _config2.default.photos_2016.obl_urlBase + this.props.featureProperties.filename, onLoad: this.update }),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'photo-image-button-row' },
+	                                _react2.default.createElement(
+	                                    'a',
+	                                    { href: _config2.default.photos_2016.obl_urlBase + this.props.featureProperties.filename, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
+	                                    _react2.default.createElement(
+	                                        _reactBootstrap.Button,
+	                                        { className: 'open-larger-image-button' },
+	                                        _react2.default.createElement('i', { className: 'fa fa-image' }),
+	                                        ' View Full-size'
+	                                    )
+	                                ),
+	                                _react2.default.createElement('div', { className: 'clearfix' })
+	                            )
+	                        ));
+	                        tabs.push(_react2.default.createElement(
+	                            _reactBootstrap.Tab,
+	                            { key: 'data', eventKey: 2, title: 'Data' },
+	                            this.renderDataTable(this.props.featureProperties, this.props.layerId)
+	                        ));
+	                        break;
+	                    }
+	                case "photos_dm_2016":
+	                    {
+	                        tabs.push(_react2.default.createElement(
+	                            _reactBootstrap.Tab,
+	                            { key: 'image', eventKey: 1, title: 'Image' },
+	                            _react2.default.createElement('img', { src: _config2.default.photos_2016.dm_urlBase + this.props.featureProperties.filename, onLoad: this.update }),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'photo-image-button-row' },
+	                                _react2.default.createElement(
+	                                    'a',
+	                                    { href: _config2.default.photos_2016.dm_urlBase + this.props.featureProperties.filename, key: 'open-larger-image-button', target: '_blank', rel: 'noopener noreferrer' },
+	                                    _react2.default.createElement(
+	                                        _reactBootstrap.Button,
+	                                        { className: 'open-larger-image-button' },
+	                                        _react2.default.createElement('i', { className: 'fa fa-image' }),
+	                                        ' View Full-size'
+	                                    )
+	                                ),
+	                                _react2.default.createElement('div', { className: 'clearfix' })
+	                            )
+	                        ));
+	                        tabs.push(_react2.default.createElement(
+	                            _reactBootstrap.Tab,
+	                            { key: 'data', eventKey: 2, title: 'Data' },
 	                            this.renderDataTable(this.props.featureProperties, this.props.layerId)
 	                        ));
 	                        break;
