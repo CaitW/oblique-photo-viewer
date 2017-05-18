@@ -249,6 +249,28 @@ var LAYER_STYLES_BY_ID = {
                 break;
         }
         return addToLegendStyles("profiles", propertyName, style, feature.geometry.type);
+    },
+    photos_obl_2016: function (feature) {
+        let style = {
+            radius: 3,
+            color: COLORS.PURPLE,
+            strokeColor: COLORS.PURPLE,
+            weight: 0,
+            fillOpacity: 1,
+            className: "layer-photos-obl-2016"
+        };
+        return addToLegendStyles("photos_obl_2016", "photos", style, feature.geometry.type);
+    },
+    photos_dm_2016: function (feature) {
+        let style = {
+            radius: 3,
+            color: COLORS.PURPLE,
+            strokeColor: COLORS.PURPLE,
+            weight: 0,
+            fillOpacity: 1,
+            className: "layer-photos-dm-2016"
+        };
+        return addToLegendStyles("photos_dm_2016", "photos", style, feature.geometry.type);
     }
 }
 export default function LAYER_STYLE (layerId) {

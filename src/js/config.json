@@ -87,6 +87,23 @@
                     }
                 }
             },
+            "2016_photos": {
+                "name": "2016 Photos",
+                "layers": {
+                    "photos_obl_2016": {
+                        "name": "Oblique",
+                        "type": "geojson",
+                        "dataLocation": "./data/layers/photos_obl_2016.json",
+                        "active": true
+                    },
+                    "photos_dm_2016": {
+                        "name": "DM",
+                        "type": "geojson",
+                        "dataLocation": "./data/layers/photos_dm_2016.json",
+                        "active": false
+                    }
+                }
+            },
             "bluff_profiles": {
                 "name": "Bluff Profiles",
                 "layers": {
@@ -94,7 +111,7 @@
                         "name": "Profile Lines",
                         "type": "geojson",
                         "dataLocation": "./data/layers/profiles.json",
-                        "active": true
+                        "active": false
                     }
                 }
             },

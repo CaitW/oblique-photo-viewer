@@ -113,6 +113,17 @@ const DISPLAY_PROPERTIES = {
         "bathy_png": false,
         "notes": "Notes",
         "type": "Type"
+    },
+    photos_obl_2016: {
+        "name": "Name",
+        "filename": false,
+        "date": "Date"
+    },
+    photos_dm_2016: {
+        "name": "Name",
+        "filename": false,
+        "date": "Date",
+        "altitude": "Altitude (m)"
     }
 };
 
