@@ -38,8 +38,34 @@ function addToLegendStyles(layerId, propertyName, style, geometryType) {
         LEGEND_STYLES[layerId][propertyName] = true;
         store.dispatch(legendStyleUpdate(layerId, propertyName, style, geometryType))
     }
+    let layerIdClass = "layer-" + layerId;
+    let layerTypeClass = "layer-type-" + geometryType;
+    style.className = [layerTypeClass, layerIdClass].join(" ");
     return style;
 }
+var DEFAULT_STYLES = {
+    LineString: {
+        weight: 5,
+        opacity: 1,
+        lineCap: "round",
+        lineJoin: "round",
+        color: COLORS.BLACK
+    },
+    Point: {
+        radius: 3,
+        color: COLORS.BLACK,
+        strokeColor: COLORS.BLACK,
+        weight: 0,
+        fillOpacity: 1
+    },
+    MultiLineString: {
+        weight: 5,
+        opacity: 1,
+        lineCap: "round",
+        lineJoin: "round",
+        color: COLORS.BLACK
+    }
+};
 // Individual layer styles are added below, as referenced by ID in config.json
 var LAYER_STYLES_BY_ID = {
     backshore_1976: function(feature) {
@@ -47,8 +73,7 @@ var LAYER_STYLES_BY_ID = {
             weight: 5,
             opacity: 1,
             lineCap: "round",
-            lineJoin: "round",
-            className: "layer-backshore-1976"
+            lineJoin: "round"
         };
         switch (feature.properties["Bluff Condition Classification"]) {
             case "Moderately Stable":
@@ -74,8 +99,7 @@ var LAYER_STYLES_BY_ID = {
             weight: 5,
             opacity: 1,
             lineCap: "round",
-            lineJoin: "round",
-            className: "layer-backshore-2007"
+            lineJoin: "round"
         };
         switch (feature.properties["Bluff Condition Classification"]) {
             case "Moderately Stable":
@@ -102,8 +126,7 @@ var LAYER_STYLES_BY_ID = {
             color: COLORS.PURPLE,
             strokeColor: COLORS.PURPLE,
             weight: 0,
-            fillOpacity: 1,
-            className: "layer-photos-1976"
+            fillOpacity: 1
         };
         return addToLegendStyles("photos_2007", "photos", style, feature.geometry.type);
     },
@@ -113,8 +136,7 @@ var LAYER_STYLES_BY_ID = {
             color: COLORS.CYAN,
             strokeColor: COLORS.CYAN,
             weight: 0,
-            fillOpacity: 1,
-            className: "layer-photos-2007"
+            fillOpacity: 1
         };
         return addToLegendStyles("photos_2007", "photos", style, feature.geometry.type);
     },
@@ -124,8 +146,7 @@ var LAYER_STYLES_BY_ID = {
             color: COLORS.BLACK,
             fillColor: COLORS.BLACK,
             weight: 0,
-            fillOpacity: 1,
-            className: "layer-structure-1976"
+            fillOpacity: 1
         };
         return addToLegendStyles("structure_1976", "structures", style, feature.geometry.type);
     },
@@ -135,8 +156,7 @@ var LAYER_STYLES_BY_ID = {
             color: COLORS.BLACK,
             fillColor: COLORS.BLACK,
             weight: 0,
-            fillOpacity: 1,
-            className: "layer-structure-2007"
+            fillOpacity: 1
         };
         return addToLegendStyles("structure_2007", "structures", style, feature.geometry.type);
     },
@@ -145,8 +165,7 @@ var LAYER_STYLES_BY_ID = {
             weight: 5,
             opacity: 1,
             lineCap: "round",
-            lineJoin: "round",
-            className: "layer-beachclass-1976"
+            lineJoin: "round"
         };
         switch (feature.properties["Shore Protection Classification"]) {
             case "None":
@@ -190,8 +209,7 @@ var LAYER_STYLES_BY_ID = {
             weight: 5,
             opacity: 1,
             lineCap: "round",
-            lineJoin: "round",
-            className: "layer-beachclass-2007"
+            lineJoin: "round"
         };
         switch (feature.properties["Shore Protection Classification"]) {
             case "None":
@@ -236,7 +254,6 @@ var LAYER_STYLES_BY_ID = {
             opacity: 1,
             lineCap: "round",
             lineJoin: "round",
-            className: "layer-profiles",
             color: COLORS.BLACK
         };
         let propertyName = "Bluff Profile";
@@ -256,8 +273,7 @@ var LAYER_STYLES_BY_ID = {
             color: COLORS.PURPLE,
             strokeColor: COLORS.PURPLE,
             weight: 0,
-            fillOpacity: 1,
-            className: "layer-photos-obl-2016"
+            fillOpacity: 1
         };
         return addToLegendStyles("photos_obl_2016", "photos", style, feature.geometry.type);
     },
@@ -267,8 +283,7 @@ var LAYER_STYLES_BY_ID = {
             color: COLORS.PURPLE,
             strokeColor: COLORS.PURPLE,
             weight: 0,
-            fillOpacity: 1,
-            className: "layer-photos-dm-2016"
+            fillOpacity: 1
         };
         return addToLegendStyles("photos_dm_2016", "photos", style, feature.geometry.type);
     }
@@ -277,5 +292,14 @@ export default function LAYER_STYLE (layerId) {
     if(typeof LAYER_STYLES_BY_ID[layerId] !== "undefined") {
         return LAYER_STYLES_BY_ID[layerId];
     }
-    return null;
+    // default, if no layer style is specified
+    return function (feature) {
+        if(typeof DEFAULT_STYLES[feature.geometry.type] !== "undefined") {
+            let layerIdClass = "layer-" + layerId;
+            let layerTypeClass = "layer-type-" + feature.geometry.type;
+            DEFAULT_STYLES[feature.geometry.type].className = [layerTypeClass, layerIdClass].join(" ");
+            return addToLegendStyles(layerId, layerId, DEFAULT_STYLES[feature.geometry.type], feature.geometry.type);
+        }
+        return null;
+    };
 }
