@@ -136,7 +136,6 @@ export default class PopupTabs extends React.Component {
                 );
                 break;
             }
-            console.log(tabs);
         }
         return (
             <Tabs onSelect={this.update} id={"tabs" + this.props.featureProperties.OBJECTID}>
