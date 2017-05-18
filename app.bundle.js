@@ -53026,7 +53026,6 @@
 	                        ));
 	                        break;
 	                    }
-	                    console.log(tabs);
 	            }
 	            return _react2.default.createElement(
 	                _reactBootstrap.Tabs,
