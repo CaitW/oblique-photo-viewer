@@ -49889,6 +49889,23 @@
 						}
 					}
 				},
+				"2016_photos": {
+					"name": "2016 Photos",
+					"layers": {
+						"photos_obl_2016": {
+							"name": "Oblique",
+							"type": "geojson",
+							"dataLocation": "./data/layers/photos_obl_2016.json",
+							"active": true
+						},
+						"photos_dm_2016": {
+							"name": "DM",
+							"type": "geojson",
+							"dataLocation": "./data/layers/photos_dm_2016.json",
+							"active": false
+						}
+					}
+				},
 				"bluff_profiles": {
 					"name": "Bluff Profiles",
 					"layers": {
@@ -49896,7 +49913,7 @@
 							"name": "Profile Lines",
 							"type": "geojson",
 							"dataLocation": "./data/layers/profiles.json",
-							"active": true
+							"active": false
 						}
 					}
 				},
@@ -52571,6 +52588,28 @@
 	                break;
 	        }
 	        return addToLegendStyles("profiles", propertyName, style, feature.geometry.type);
+	    },
+	    photos_obl_2016: function photos_obl_2016(feature) {
+	        var style = {
+	            radius: 3,
+	            color: COLORS.PURPLE,
+	            strokeColor: COLORS.PURPLE,
+	            weight: 0,
+	            fillOpacity: 1,
+	            className: "layer-photos-obl-2016"
+	        };
+	        return addToLegendStyles("photos_obl_2016", "photos", style, feature.geometry.type);
+	    },
+	    photos_dm_2016: function photos_dm_2016(feature) {
+	        var style = {
+	            radius: 3,
+	            color: COLORS.PURPLE,
+	            strokeColor: COLORS.PURPLE,
+	            weight: 0,
+	            fillOpacity: 1,
+	            className: "layer-photos-dm-2016"
+	        };
+	        return addToLegendStyles("photos_dm_2016", "photos", style, feature.geometry.type);
 	    }
 	};
 	function LAYER_STYLE(layerId) {
@@ -53200,6 +53239,17 @@
 	        "bathy_png": false,
 	        "notes": "Notes",
 	        "type": "Type"
+	    },
+	    photos_obl_2016: {
+	        "name": "Name",
+	        "filename": false,
+	        "date": "Date"
+	    },
+	    photos_dm_2016: {
+	        "name": "Name",
+	        "filename": false,
+	        "date": "Date",
+	        "altitude": "Altitude (m)"
 	    }
 	};
 
