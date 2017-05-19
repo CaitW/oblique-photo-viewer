@@ -1,8 +1,8 @@
 import React from 'react';
 import { Table, Tabs, Tab, Button } from 'react-bootstrap';
 import { getPhotoURLs } from '../../../util.js';
-import { DISPLAY_PROPERTIES } from '../../../layers/dataTables.js';
 import CONFIG from '../../../config.json';
+import store from '../../../store.js';
 
 export default class PopupTabs extends React.Component {
     constructor (props) {
@@ -10,40 +10,45 @@ export default class PopupTabs extends React.Component {
         if(typeof this.props.update !== "undefined") {
             this.update = this.props.update;
         }
+        this.renderDataTable = this.renderDataTable.bind(this);
     }
     update () {
         // do nothing unless reassigned by the constructor
         // Applies to popups within the Leaflet map scope, which
         // need to update their dimensions once images have loaded
     }
-    renderDataTable (featureProperties, layerId) {
+    renderRow (property, value) {
+        return (
+            <tr key={property}>
+                <td><strong>{property}</strong></td>
+                <td>{value}</td>
+            </tr>
+        );
+    }
+    renderDataTable () {
         let rows = [];
-        let renderRow = (property, value) => {
-            return (
-                <tr key={property}>
-                    <td><strong>{property}</strong></td>
-                    <td>{value}</td>
-                </tr>
-            );
-        };
-        if(typeof DISPLAY_PROPERTIES[layerId] !== "undefined") {
-            let displayProperties = DISPLAY_PROPERTIES[layerId];
-            for (let property in this.props.featureProperties) {
+        let featureProperties = this.props.featureProperties;
+        let layerId = this.props.layerId;
+        let layerData = store.getState().layers.layersById[layerId];
+
+        if(typeof layerData !== "undefined" && typeof layerData.tableProperties !== "undefined") {
+            let displayProperties = layerData.tableProperties;
+            for (let property in featureProperties) {
                 if (typeof displayProperties[property] === "undefined" || displayProperties[property] !== false) {
-                    let value = this.props.featureProperties[property];
+                    let value = featureProperties[property];
                     if(typeof displayProperties[property] === "string") {
                         property = displayProperties[property];
                     }
                     rows.push(
-                        renderRow(property, value)
+                        this.renderRow(property, value)
                     );
                 }
             }
         } else {
-            for (let property in this.props.featureProperties) {
-                let value = this.props.featureProperties[property];
+            for (let property in featureProperties) {
+                let value = featureProperties[property];
                 rows.push(
-                    renderRow(property, value)
+                    this.renderRow(property, value)
                 );
             }
         }
@@ -76,7 +81,7 @@ export default class PopupTabs extends React.Component {
                 );
                 tabs.push(
                     <Tab key="data" eventKey={2} title="Data">
-                        {this.renderDataTable(this.props.featureProperties, this.props.layerId)}
+                        {this.renderDataTable()}
                     </Tab>
                 );
                 break;
@@ -123,7 +128,7 @@ export default class PopupTabs extends React.Component {
                 }
                 tabs.push(
                     <Tab key="data" eventKey={eventKeyIndex} title="Data">
-                        {this.renderDataTable(this.props.featureProperties, this.props.layerId)}
+                        {this.renderDataTable()}
                     </Tab>
                 );
                 break;
@@ -144,7 +149,7 @@ export default class PopupTabs extends React.Component {
                 );
                 tabs.push(
                     <Tab key="data" eventKey={2} title="Data">
-                        {this.renderDataTable(this.props.featureProperties, this.props.layerId)}
+                        {this.renderDataTable()}
                     </Tab>
                 );
                 break;
@@ -165,7 +170,7 @@ export default class PopupTabs extends React.Component {
                 );
                 tabs.push(
                     <Tab key="data" eventKey={2} title="Data">
-                        {this.renderDataTable(this.props.featureProperties, this.props.layerId)}
+                        {this.renderDataTable()}
                     </Tab>
                 );
                 break;
@@ -173,7 +178,7 @@ export default class PopupTabs extends React.Component {
             default: {
                 tabs.push(
                     <Tab key="data" eventKey={1} title="Data">
-                        {this.renderDataTable(this.props.featureProperties, this.props.layerId)}
+                        {this.renderDataTable()}
                     </Tab>
                 );
                 break;
