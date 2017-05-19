@@ -27,6 +27,7 @@ let COLORS = {
     LIGHT_GRAY: "#E0E0E0",
     LIGHT_PINK: "#F48FB1"
 };
+
 // Keeps track of current styles for legend.
 // Each layer can have multiple style types cached, depending on what type of features it contains.
 // i.e. when a layer has different colors assigned to unique bluff types, each differing style
@@ -38,11 +39,9 @@ function addToLegendStyles(layerId, propertyName, style, geometryType) {
         LEGEND_STYLES[layerId][propertyName] = true;
         store.dispatch(legendStyleUpdate(layerId, propertyName, style, geometryType))
     }
-    let layerIdClass = "layer-" + layerId;
-    let layerTypeClass = "layer-type-" + geometryType;
-    style.className = [layerTypeClass, layerIdClass].join(" ");
-    return style;
 }
+
+// Default styles, if no style is specified for a particular layer
 var DEFAULT_STYLES = {
     LineString: {
         weight: 5,
@@ -66,6 +65,7 @@ var DEFAULT_STYLES = {
         color: COLORS.BLACK
     }
 };
+
 // Individual layer styles are added below, as referenced by ID in config.json
 var LAYER_STYLES_BY_ID = {
     backshore_1976: function(feature) {
@@ -73,7 +73,8 @@ var LAYER_STYLES_BY_ID = {
             weight: 5,
             opacity: 1,
             lineCap: "round",
-            lineJoin: "round"
+            lineJoin: "round",
+            legendDisplayProperty: feature.properties["Bluff Condition Classification"]
         };
         switch (feature.properties["Bluff Condition Classification"]) {
             case "Moderately Stable":
@@ -92,14 +93,15 @@ var LAYER_STYLES_BY_ID = {
                 style.color = COLORS.BLACK;
                 break;
         }
-        return addToLegendStyles("backshore_1976", feature.properties["Bluff Condition Classification"], style, feature.geometry.type);
+        return style;
     },
     backshore_2007: function(feature) {
         let style = {
             weight: 5,
             opacity: 1,
             lineCap: "round",
-            lineJoin: "round"
+            lineJoin: "round",
+            legendDisplayProperty: feature.properties["Bluff Condition Classification"]
         };
         switch (feature.properties["Bluff Condition Classification"]) {
             case "Moderately Stable":
@@ -118,54 +120,55 @@ var LAYER_STYLES_BY_ID = {
                 style.color = COLORS.BLACK;
                 break;
         }
-        return addToLegendStyles("backshore_2007", feature.properties["Bluff Condition Classification"], style, feature.geometry.type);
+        return style;
     },
     photos_1976: function(feature) {
-        let style = {
+        return {
             radius: 3,
             color: COLORS.PURPLE,
             strokeColor: COLORS.PURPLE,
             weight: 0,
-            fillOpacity: 1
+            fillOpacity: 1,
+            legendDisplayProperty: "photos"
         };
-        return addToLegendStyles("photos_2007", "photos", style, feature.geometry.type);
     },
     photos_2007: function(feature) {
-        let style = {
+        return {
             radius: 3,
             color: COLORS.CYAN,
             strokeColor: COLORS.CYAN,
             weight: 0,
-            fillOpacity: 1
+            fillOpacity: 1,
+            legendDisplayProperty: "photos"
         };
-        return addToLegendStyles("photos_2007", "photos", style, feature.geometry.type);
     },
     structure_1976: function(feature) {
-        let style = {
+        return {
             radius: 3,
             color: COLORS.BLACK,
             fillColor: COLORS.BLACK,
             weight: 0,
-            fillOpacity: 1
+            fillOpacity: 1,
+            legendDisplayProperty: "structures"
         };
-        return addToLegendStyles("structure_1976", "structures", style, feature.geometry.type);
     },
     structure_2007: function(feature) {
-        let style = {
+        return {
             radius: 3,
             color: COLORS.BLACK,
             fillColor: COLORS.BLACK,
             weight: 0,
-            fillOpacity: 1
+            fillOpacity: 1,
+            legendDisplayProperty: "structures"
         };
-        return addToLegendStyles("structure_2007", "structures", style, feature.geometry.type);
     },
     beachclass_1976: function(feature) {
         let style = {
             weight: 5,
             opacity: 1,
             lineCap: "round",
-            lineJoin: "round"
+            lineJoin: "round",
+            legendDisplayProperty: feature.properties["Shore Protection Classification"]
         };
         switch (feature.properties["Shore Protection Classification"]) {
             case "None":
@@ -202,14 +205,15 @@ var LAYER_STYLES_BY_ID = {
                 style.color = COLORS.BLACK;
                 break;
         }
-        return addToLegendStyles("beachclass_1976", feature.properties["Shore Protection Classification"], style, feature.geometry.type);
+        return style;
     },
     beachclass_2007: function(feature) {
         let style = {
             weight: 5,
             opacity: 1,
             lineCap: "round",
-            lineJoin: "round"
+            lineJoin: "round",
+            legendDisplayProperty: feature.properties["Shore Protection Classification"]
         };
         switch (feature.properties["Shore Protection Classification"]) {
             case "None":
@@ -246,7 +250,7 @@ var LAYER_STYLES_BY_ID = {
                 style.color = COLORS.BLACK;
                 break;
         }
-        return addToLegendStyles("beachclass_2007", feature.properties["Shore Protection Classification"], style, feature.geometry.type);
+        return style;
     },
     profiles: function (feature) {
         let style = {
@@ -254,52 +258,68 @@ var LAYER_STYLES_BY_ID = {
             opacity: 1,
             lineCap: "round",
             lineJoin: "round",
-            color: COLORS.BLACK
+            color: COLORS.BLACK,
+            legendDisplayProperty: "Bluff Profile"
         };
-        let propertyName = "Bluff Profile";
         switch (feature.properties.type) {
             case "bathymetry":
-                propertyName = "Bathymetric Profile";
+                style.displayProperty = "Bathymetric Profile";
                 style.color = COLORS.LIGHT_BLUE;
                 break;
             default:
                 break;
         }
-        return addToLegendStyles("profiles", propertyName, style, feature.geometry.type);
+        return style;
     },
     photos_obl_2016: function (feature) {
-        let style = {
+        return {
             radius: 3,
             color: COLORS.PURPLE,
             strokeColor: COLORS.PURPLE,
             weight: 0,
-            fillOpacity: 1
+            fillOpacity: 1,
+            legendDisplayProperty: "photos"
         };
-        return addToLegendStyles("photos_obl_2016", "photos", style, feature.geometry.type);
     },
     photos_dm_2016: function (feature) {
-        let style = {
+        return {
             radius: 3,
             color: COLORS.PURPLE,
             strokeColor: COLORS.PURPLE,
             weight: 0,
-            fillOpacity: 1
+            fillOpacity: 1,
+            legendDisplayProperty: "photos"
         };
-        return addToLegendStyles("photos_dm_2016", "photos", style, feature.geometry.type);
     }
 }
+
+/**
+ * Returns a style function that references the above styles
+ * - Take the layer ID passed from ObliquePhotoMap.js. Retrieve either the layer's specific style
+ *     (specified in LAYER_STYLES_BY_ID), or the default style for that geometry type (DEFAULT_STYLES)
+ * - Assign each returned style a className property
+ * - Get "legendDisplayProperty" and pass it to legend style caching function
+ *     - layerId by default, or as specified in style
+ */
 export default function LAYER_STYLE (layerId) {
-    if(typeof LAYER_STYLES_BY_ID[layerId] !== "undefined") {
-        return LAYER_STYLES_BY_ID[layerId];
-    }
-    // default, if no layer style is specified
     return function (feature) {
-        if(typeof DEFAULT_STYLES[feature.geometry.type] !== "undefined") {
-            let layerIdClass = "layer-" + layerId;
-            let layerTypeClass = "layer-type-" + feature.geometry.type;
-            DEFAULT_STYLES[feature.geometry.type].className = [layerTypeClass, layerIdClass].join(" ");
-            return addToLegendStyles(layerId, layerId, DEFAULT_STYLES[feature.geometry.type], feature.geometry.type);
+        let style = null;
+        if (typeof LAYER_STYLES_BY_ID[layerId] !== "undefined") {
+            style = LAYER_STYLES_BY_ID[layerId](feature);
+        } else if (typeof DEFAULT_STYLES[feature.geometry.type] !== "undefined") {
+            style = DEFAULT_STYLES[feature.geometry.type];
         }
-        return null;
+        // assign the classname property of every style
+        let layerIdClass = "layer-" + layerId;
+        let layerTypeClass = "layer-type-" + feature.geometry.type;
+        style.className = [layerTypeClass, layerIdClass].join(" ");
+        // either get the legend display property or the layer ID
+        let legendDisplayProperty = layerId;
+        if(style !== null && typeof style.legendDisplayProperty !== "undefined") {
+            legendDisplayProperty = style.legendDisplayProperty;
+        }
+        // add the style to the legend
+        addToLegendStyles(layerId, legendDisplayProperty, style, feature.geometry.type);
+        return style;
     };
 }

@@ -8639,23 +8639,23 @@ button.close {
     stroke-width: 2.2; }
 
 .wiscviewer-map-zoom-levels[data-zoom='1'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='1'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='1'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='1'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='1'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='1'] .layer-backshore_2007 {
   stroke-width: 5.1; }
   .wiscviewer-map-zoom-levels[data-zoom='1'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='1'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='1'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='1'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='1'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='1'] .layer-backshore_2007:hover {
     stroke-width: 7.1;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='1'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='1'] .layer-profiles {
   stroke-width: 1.2; }
-  .wiscviewer-map-zoom-levels[data-zoom='1'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='1'] .layer-profiles:hover {
     stroke-width: 3.2; }
 
@@ -8673,23 +8673,23 @@ button.close {
     stroke-width: 2.4; }
 
 .wiscviewer-map-zoom-levels[data-zoom='2'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='2'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='2'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='2'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='2'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='2'] .layer-backshore_2007 {
   stroke-width: 5.2; }
   .wiscviewer-map-zoom-levels[data-zoom='2'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='2'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='2'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='2'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='2'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='2'] .layer-backshore_2007:hover {
     stroke-width: 7.2;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='2'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='2'] .layer-profiles {
   stroke-width: 1.4; }
-  .wiscviewer-map-zoom-levels[data-zoom='2'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='2'] .layer-profiles:hover {
     stroke-width: 3.4; }
 
@@ -8707,23 +8707,23 @@ button.close {
     stroke-width: 2.6; }
 
 .wiscviewer-map-zoom-levels[data-zoom='3'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='3'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='3'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='3'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='3'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='3'] .layer-backshore_2007 {
   stroke-width: 5.3; }
   .wiscviewer-map-zoom-levels[data-zoom='3'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='3'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='3'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='3'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='3'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='3'] .layer-backshore_2007:hover {
     stroke-width: 7.3;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='3'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='3'] .layer-profiles {
   stroke-width: 1.6; }
-  .wiscviewer-map-zoom-levels[data-zoom='3'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='3'] .layer-profiles:hover {
     stroke-width: 3.6; }
 
@@ -8741,23 +8741,23 @@ button.close {
     stroke-width: 2.8; }
 
 .wiscviewer-map-zoom-levels[data-zoom='4'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='4'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='4'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='4'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='4'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='4'] .layer-backshore_2007 {
   stroke-width: 5.4; }
   .wiscviewer-map-zoom-levels[data-zoom='4'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='4'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='4'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='4'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='4'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='4'] .layer-backshore_2007:hover {
     stroke-width: 7.4;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='4'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='4'] .layer-profiles {
   stroke-width: 1.8; }
-  .wiscviewer-map-zoom-levels[data-zoom='4'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='4'] .layer-profiles:hover {
     stroke-width: 3.8; }
 
@@ -8775,23 +8775,23 @@ button.close {
     stroke-width: 3; }
 
 .wiscviewer-map-zoom-levels[data-zoom='5'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='5'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='5'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='5'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='5'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='5'] .layer-backshore_2007 {
   stroke-width: 5.5; }
   .wiscviewer-map-zoom-levels[data-zoom='5'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='5'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='5'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='5'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='5'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='5'] .layer-backshore_2007:hover {
     stroke-width: 7.5;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='5'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='5'] .layer-profiles {
   stroke-width: 2; }
-  .wiscviewer-map-zoom-levels[data-zoom='5'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='5'] .layer-profiles:hover {
     stroke-width: 4; }
 
@@ -8809,23 +8809,23 @@ button.close {
     stroke-width: 3.2; }
 
 .wiscviewer-map-zoom-levels[data-zoom='6'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='6'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='6'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='6'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='6'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='6'] .layer-backshore_2007 {
   stroke-width: 5.6; }
   .wiscviewer-map-zoom-levels[data-zoom='6'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='6'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='6'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='6'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='6'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='6'] .layer-backshore_2007:hover {
     stroke-width: 7.6;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='6'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='6'] .layer-profiles {
   stroke-width: 2.2; }
-  .wiscviewer-map-zoom-levels[data-zoom='6'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='6'] .layer-profiles:hover {
     stroke-width: 4.2; }
 
@@ -8843,23 +8843,23 @@ button.close {
     stroke-width: 3.4; }
 
 .wiscviewer-map-zoom-levels[data-zoom='7'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='7'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='7'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='7'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='7'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='7'] .layer-backshore_2007 {
   stroke-width: 5.7; }
   .wiscviewer-map-zoom-levels[data-zoom='7'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='7'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='7'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='7'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='7'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='7'] .layer-backshore_2007:hover {
     stroke-width: 7.7;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='7'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='7'] .layer-profiles {
   stroke-width: 2.4; }
-  .wiscviewer-map-zoom-levels[data-zoom='7'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='7'] .layer-profiles:hover {
     stroke-width: 4.4; }
 
@@ -8877,23 +8877,23 @@ button.close {
     stroke-width: 3.6; }
 
 .wiscviewer-map-zoom-levels[data-zoom='8'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='8'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='8'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='8'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='8'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='8'] .layer-backshore_2007 {
   stroke-width: 5.8; }
   .wiscviewer-map-zoom-levels[data-zoom='8'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='8'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='8'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='8'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='8'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='8'] .layer-backshore_2007:hover {
     stroke-width: 7.8;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='8'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='8'] .layer-profiles {
   stroke-width: 2.6; }
-  .wiscviewer-map-zoom-levels[data-zoom='8'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='8'] .layer-profiles:hover {
     stroke-width: 4.6; }
 
@@ -8911,23 +8911,23 @@ button.close {
     stroke-width: 3.8; }
 
 .wiscviewer-map-zoom-levels[data-zoom='9'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='9'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='9'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='9'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='9'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='9'] .layer-backshore_2007 {
   stroke-width: 5.9; }
   .wiscviewer-map-zoom-levels[data-zoom='9'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='9'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='9'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='9'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='9'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='9'] .layer-backshore_2007:hover {
     stroke-width: 7.9;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='9'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='9'] .layer-profiles {
   stroke-width: 2.8; }
-  .wiscviewer-map-zoom-levels[data-zoom='9'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='9'] .layer-profiles:hover {
     stroke-width: 4.8; }
 
@@ -8945,23 +8945,23 @@ button.close {
     stroke-width: 4; }
 
 .wiscviewer-map-zoom-levels[data-zoom='10'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='10'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='10'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='10'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='10'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='10'] .layer-backshore_2007 {
   stroke-width: 6; }
   .wiscviewer-map-zoom-levels[data-zoom='10'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='10'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='10'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='10'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='10'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='10'] .layer-backshore_2007:hover {
     stroke-width: 8;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='10'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='10'] .layer-profiles {
   stroke-width: 3; }
-  .wiscviewer-map-zoom-levels[data-zoom='10'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='10'] .layer-profiles:hover {
     stroke-width: 5; }
 
@@ -8979,23 +8979,23 @@ button.close {
     stroke-width: 4.2; }
 
 .wiscviewer-map-zoom-levels[data-zoom='11'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='11'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='11'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='11'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='11'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='11'] .layer-backshore_2007 {
   stroke-width: 6.1; }
   .wiscviewer-map-zoom-levels[data-zoom='11'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='11'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='11'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='11'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='11'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='11'] .layer-backshore_2007:hover {
     stroke-width: 8.1;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='11'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='11'] .layer-profiles {
   stroke-width: 3.2; }
-  .wiscviewer-map-zoom-levels[data-zoom='11'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='11'] .layer-profiles:hover {
     stroke-width: 5.2; }
 
@@ -9013,23 +9013,23 @@ button.close {
     stroke-width: 4.4; }
 
 .wiscviewer-map-zoom-levels[data-zoom='12'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='12'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='12'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='12'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='12'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='12'] .layer-backshore_2007 {
   stroke-width: 6.2; }
   .wiscviewer-map-zoom-levels[data-zoom='12'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='12'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='12'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='12'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='12'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='12'] .layer-backshore_2007:hover {
     stroke-width: 8.2;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='12'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='12'] .layer-profiles {
   stroke-width: 3.4; }
-  .wiscviewer-map-zoom-levels[data-zoom='12'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='12'] .layer-profiles:hover {
     stroke-width: 5.4; }
 
@@ -9047,23 +9047,23 @@ button.close {
     stroke-width: 4.6; }
 
 .wiscviewer-map-zoom-levels[data-zoom='13'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='13'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='13'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='13'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='13'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='13'] .layer-backshore_2007 {
   stroke-width: 6.3; }
   .wiscviewer-map-zoom-levels[data-zoom='13'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='13'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='13'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='13'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='13'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='13'] .layer-backshore_2007:hover {
     stroke-width: 8.3;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='13'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='13'] .layer-profiles {
   stroke-width: 3.6; }
-  .wiscviewer-map-zoom-levels[data-zoom='13'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='13'] .layer-profiles:hover {
     stroke-width: 5.6; }
 
@@ -9081,24 +9081,24 @@ button.close {
     stroke-width: 4.8; }
 
 .wiscviewer-map-zoom-levels[data-zoom='14'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='14'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='14'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='14'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='14'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='14'] .layer-backshore_2007 {
   stroke-width: 6.4;
   stroke-linecap: butt; }
   .wiscviewer-map-zoom-levels[data-zoom='14'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='14'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='14'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='14'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='14'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='14'] .layer-backshore_2007:hover {
     stroke-width: 8.4;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='14'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='14'] .layer-profiles {
   stroke-width: 3.8; }
-  .wiscviewer-map-zoom-levels[data-zoom='14'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='14'] .layer-profiles:hover {
     stroke-width: 5.8; }
 
@@ -9116,24 +9116,24 @@ button.close {
     stroke-width: 5; }
 
 .wiscviewer-map-zoom-levels[data-zoom='15'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='15'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='15'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='15'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='15'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='15'] .layer-backshore_2007 {
   stroke-width: 6.5;
   stroke-linecap: butt; }
   .wiscviewer-map-zoom-levels[data-zoom='15'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='15'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='15'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='15'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='15'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='15'] .layer-backshore_2007:hover {
     stroke-width: 8.5;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='15'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='15'] .layer-profiles {
   stroke-width: 4; }
-  .wiscviewer-map-zoom-levels[data-zoom='15'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='15'] .layer-profiles:hover {
     stroke-width: 6; }
 
@@ -9151,24 +9151,24 @@ button.close {
     stroke-width: 5.2; }
 
 .wiscviewer-map-zoom-levels[data-zoom='16'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='16'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='16'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='16'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='16'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='16'] .layer-backshore_2007 {
   stroke-width: 6.6;
   stroke-linecap: butt; }
   .wiscviewer-map-zoom-levels[data-zoom='16'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='16'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='16'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='16'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='16'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='16'] .layer-backshore_2007:hover {
     stroke-width: 8.6;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='16'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='16'] .layer-profiles {
   stroke-width: 4.2; }
-  .wiscviewer-map-zoom-levels[data-zoom='16'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='16'] .layer-profiles:hover {
     stroke-width: 6.2; }
 
@@ -9186,24 +9186,24 @@ button.close {
     stroke-width: 5.4; }
 
 .wiscviewer-map-zoom-levels[data-zoom='17'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='17'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='17'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='17'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='17'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='17'] .layer-backshore_2007 {
   stroke-width: 6.7;
   stroke-linecap: butt; }
   .wiscviewer-map-zoom-levels[data-zoom='17'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='17'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='17'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='17'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='17'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='17'] .layer-backshore_2007:hover {
     stroke-width: 8.7;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='17'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='17'] .layer-profiles {
   stroke-width: 4.4; }
-  .wiscviewer-map-zoom-levels[data-zoom='17'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='17'] .layer-profiles:hover {
     stroke-width: 6.4; }
 
@@ -9221,24 +9221,24 @@ button.close {
     stroke-width: 5.6; }
 
 .wiscviewer-map-zoom-levels[data-zoom='18'] .layer-type-MultiLineString,
-.wiscviewer-map-zoom-levels[data-zoom='18'] .layer-beachclass_1976,
+.wiscviewer-map-zoom-levels[data-zoom='18'] .layer-type-LineString
+.layer-beachclass_1976,
 .wiscviewer-map-zoom-levels[data-zoom='18'] .layer-beachclass_2007,
 .wiscviewer-map-zoom-levels[data-zoom='18'] .layer-backshore_1976,
 .wiscviewer-map-zoom-levels[data-zoom='18'] .layer-backshore_2007 {
   stroke-width: 6.8;
   stroke-linecap: butt; }
   .wiscviewer-map-zoom-levels[data-zoom='18'] .layer-type-MultiLineString:hover,
-  .wiscviewer-map-zoom-levels[data-zoom='18'] .layer-beachclass_1976:hover,
+  .wiscviewer-map-zoom-levels[data-zoom='18'] .layer-type-LineString
+.layer-beachclass_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='18'] .layer-beachclass_2007:hover,
   .wiscviewer-map-zoom-levels[data-zoom='18'] .layer-backshore_1976:hover,
   .wiscviewer-map-zoom-levels[data-zoom='18'] .layer-backshore_2007:hover {
     stroke-width: 8.8;
     stroke-linecap: round; }
 
-.wiscviewer-map-zoom-levels[data-zoom='18'] .layer-type-LineString,
 .wiscviewer-map-zoom-levels[data-zoom='18'] .layer-profiles {
   stroke-width: 4.6; }
-  .wiscviewer-map-zoom-levels[data-zoom='18'] .layer-type-LineString:hover,
   .wiscviewer-map-zoom-levels[data-zoom='18'] .layer-profiles:hover {
     stroke-width: 6.6; }
 

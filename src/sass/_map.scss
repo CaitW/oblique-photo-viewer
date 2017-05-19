@@ -29,6 +29,7 @@
         }
       }
       .layer-type-MultiLineString,
+      .layer-type-LineString
       .layer-beachclass_1976,
       .layer-beachclass_2007,
       .layer-backshore_1976,
@@ -42,7 +43,6 @@
           stroke-linecap: round;
         }
       }
-      .layer-type-LineString,
       .layer-profiles {
         stroke-width: $profile-width;
         &:hover {
