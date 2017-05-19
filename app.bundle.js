@@ -8214,23 +8214,23 @@
 
 	var _MapContainer2 = _interopRequireDefault(_MapContainer);
 
-	var _MobileLayerList = __webpack_require__(820);
+	var _MobileLayerList = __webpack_require__(819);
 
 	var _MobileLayerList2 = _interopRequireDefault(_MobileLayerList);
 
-	var _AboutModal = __webpack_require__(826);
+	var _AboutModal = __webpack_require__(825);
 
 	var _AboutModal2 = _interopRequireDefault(_AboutModal);
 
-	var _PinnedFeaturePopupContainer = __webpack_require__(827);
+	var _PinnedFeaturePopupContainer = __webpack_require__(826);
 
 	var _PinnedFeaturePopupContainer2 = _interopRequireDefault(_PinnedFeaturePopupContainer);
 
-	var _LayerList = __webpack_require__(821);
+	var _LayerList = __webpack_require__(820);
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
 
-	var _Legend = __webpack_require__(830);
+	var _Legend = __webpack_require__(829);
 
 	var _Legend2 = _interopRequireDefault(_Legend);
 
@@ -49838,25 +49838,71 @@
 							"name": "Bluff Condition",
 							"type": "geojson",
 							"dataLocation": "./data/layers/backshore_1976.json",
-							"active": false
+							"active": false,
+							"tableProperties": {
+								"OBJECTID": false,
+								"Backshore Type": true,
+								"Notes": true,
+								"County": true,
+								"FIPS": true,
+								"Segment Length (miles)": true,
+								"Vegetation Classification": true,
+								"Bluff Condition Classification": true,
+								"Bluff Modified Classification": true,
+								"Bluff Failure Classification": true,
+								"Non-Bluff Classification": true,
+								"Confidence Level Classification": true
+							}
 						},
 						"beachclass_1976": {
 							"name": "Beach Protection",
 							"type": "geojson",
 							"dataLocation": "./data/layers/beachclass_1976.json",
-							"active": false
+							"active": false,
+							"tableProperties": {
+								"OBJECTID": false,
+								"Shore Type": true,
+								"Notes": true,
+								"County": true,
+								"FIPS": true,
+								"Segment Length (miles)": true,
+								"Beach Classification": true,
+								"Shore Protection Classification": true
+							}
 						},
 						"structure_1976": {
 							"name": "Shore Structures",
 							"type": "geojson",
 							"dataLocation": "./data/layers/structure_1976.json",
-							"active": false
+							"active": false,
+							"tableProperties": {
+								"OBJECTID": false,
+								"Notes": true,
+								"County": true,
+								"FIPS": true,
+								"Structure Type": true
+							}
 						},
 						"photos_1976": {
 							"name": "Photos",
 							"type": "geojson",
 							"dataLocation": "./data/layers/photos_1976.json",
-							"active": false
+							"active": false,
+							"tableProperties": {
+								"OBJECTID": false,
+								"Original File Name": true,
+								"Longitude": true,
+								"Latitude": true,
+								"Easting": true,
+								"Northing": true,
+								"UTM Zone": true,
+								"Great Lake": true,
+								"County FIPS": true,
+								"County": true,
+								"State": true,
+								"File Name": true,
+								"Year": true
+							}
 						}
 					}
 				},
@@ -49867,25 +49913,71 @@
 							"name": "Bluff Condition",
 							"type": "geojson",
 							"dataLocation": "./data/layers/backshore_2007.json",
-							"active": false
+							"active": false,
+							"tableProperties": {
+								"OBJECTID": false,
+								"Backshore Type": true,
+								"Notes": true,
+								"County": true,
+								"FIPS": true,
+								"Segment Length (miles)": true,
+								"Vegetation Classification": true,
+								"Bluff Condition Classification": true,
+								"Bluff Modified Classification": true,
+								"Bluff Failure Classification": true,
+								"Non-Bluff Classification": true,
+								"Confidence Level Classification": true
+							}
 						},
 						"beachclass_2007": {
 							"name": "Beach Protection",
 							"type": "geojson",
 							"dataLocation": "./data/layers/beachclass_2007.json",
-							"active": false
+							"active": false,
+							"tableProperties": {
+								"OBJECTID": false,
+								"Shore Type": true,
+								"Notes": true,
+								"County": true,
+								"FIPS": true,
+								"Segment Length (miles)": true,
+								"Beach Classification": true,
+								"Shore Protection Classification": true
+							}
 						},
 						"structure_2007": {
 							"name": "Shore Structures",
 							"type": "geojson",
 							"dataLocation": "./data/layers/structure_2007.json",
-							"active": false
+							"active": false,
+							"tableProperties": {
+								"OBJECTID": false,
+								"Notes": true,
+								"County": true,
+								"FIPS": true,
+								"Structure Type": true
+							}
 						},
 						"photos_2007": {
 							"name": "Photos",
 							"type": "geojson",
 							"dataLocation": "./data/layers/photos_2007.json",
-							"active": false
+							"active": false,
+							"tableProperties": {
+								"OBJECTID": false,
+								"Original File Name": true,
+								"Longitude": true,
+								"Latitude": true,
+								"Easting": true,
+								"Northing": true,
+								"UTM Zone": true,
+								"Great Lake": true,
+								"County FIPS": true,
+								"County": true,
+								"State": true,
+								"File Name": true,
+								"Year": true
+							}
 						}
 					}
 				},
@@ -49896,13 +49988,24 @@
 							"name": "Oblique",
 							"type": "geojson",
 							"dataLocation": "./data/layers/photos_obl_2016.json",
-							"active": true
+							"active": true,
+							"tableProperties": {
+								"name": "Name",
+								"filename": false,
+								"date": "Date"
+							}
 						},
 						"photos_dm_2016": {
 							"name": "DM",
 							"type": "geojson",
 							"dataLocation": "./data/layers/photos_dm_2016.json",
-							"active": false
+							"active": false,
+							"tableProperties": {
+								"name": "Name",
+								"filename": false,
+								"date": "Date",
+								"altitude": "Altitude (m)"
+							}
 						}
 					}
 				},
@@ -49913,7 +50016,18 @@
 							"name": "Profile Lines",
 							"type": "geojson",
 							"dataLocation": "./data/layers/profiles.json",
-							"active": false
+							"active": false,
+							"tableProperties": {
+								"ID": false,
+								"ProfileNo": "Profile Number",
+								"county": "County",
+								"bluff_xls": false,
+								"bathy_xls": false,
+								"bluff_jpg": false,
+								"bathy_png": false,
+								"notes": "Notes",
+								"type": "Type"
+							}
 						}
 					}
 				},
@@ -50853,7 +50967,7 @@
 
 	var _LeafletMap2 = _interopRequireDefault(_LeafletMap);
 
-	var _MobileFeaturePopup = __webpack_require__(817);
+	var _MobileFeaturePopup = __webpack_require__(816);
 
 	var _MobileFeaturePopup2 = _interopRequireDefault(_MobileFeaturePopup);
 
@@ -50865,7 +50979,7 @@
 
 	var _mobile = __webpack_require__(755);
 
-	var _selectors = __webpack_require__(818);
+	var _selectors = __webpack_require__(817);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52204,7 +52318,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _axios = __webpack_require__(792);
+	var _axios = __webpack_require__(791);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -52787,11 +52901,11 @@
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
-	var _PopupTitle = __webpack_require__(790);
+	var _PopupTitle = __webpack_require__(789);
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _PopupFooter = __webpack_require__(791);
+	var _PopupFooter = __webpack_require__(790);
 
 	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
 
@@ -52920,11 +53034,13 @@
 
 	var _util = __webpack_require__(788);
 
-	var _dataTables = __webpack_require__(789);
-
 	var _config = __webpack_require__(752);
 
 	var _config2 = _interopRequireDefault(_config);
+
+	var _store = __webpack_require__(729);
+
+	var _store2 = _interopRequireDefault(_store);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52945,6 +53061,7 @@
 	        if (typeof _this.props.update !== "undefined") {
 	            _this.update = _this.props.update;
 	        }
+	        _this.renderDataTable = _this.renderDataTable.bind(_this);
 	        return _this;
 	    }
 
@@ -52956,44 +53073,50 @@
 	            // need to update their dimensions once images have loaded
 	        }
 	    }, {
-	        key: 'renderDataTable',
-	        value: function renderDataTable(featureProperties, layerId) {
-	            var rows = [];
-	            var renderRow = function renderRow(property, value) {
-	                return _react2.default.createElement(
-	                    'tr',
-	                    { key: property },
+	        key: 'renderRow',
+	        value: function renderRow(property, value) {
+	            return _react2.default.createElement(
+	                'tr',
+	                { key: property },
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
 	                    _react2.default.createElement(
-	                        'td',
+	                        'strong',
 	                        null,
-	                        _react2.default.createElement(
-	                            'strong',
-	                            null,
-	                            property
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'td',
-	                        null,
-	                        value
+	                        property
 	                    )
-	                );
-	            };
-	            if (typeof _dataTables.DISPLAY_PROPERTIES[layerId] !== "undefined") {
-	                var displayProperties = _dataTables.DISPLAY_PROPERTIES[layerId];
-	                for (var property in this.props.featureProperties) {
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    value
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'renderDataTable',
+	        value: function renderDataTable() {
+	            var rows = [];
+	            var featureProperties = this.props.featureProperties;
+	            var layerId = this.props.layerId;
+	            var layerData = _store2.default.getState().layers.layersById[layerId];
+
+	            if (typeof layerData !== "undefined" && typeof layerData.tableProperties !== "undefined") {
+	                var displayProperties = layerData.tableProperties;
+	                for (var property in featureProperties) {
 	                    if (typeof displayProperties[property] === "undefined" || displayProperties[property] !== false) {
-	                        var value = this.props.featureProperties[property];
+	                        var value = featureProperties[property];
 	                        if (typeof displayProperties[property] === "string") {
 	                            property = displayProperties[property];
 	                        }
-	                        rows.push(renderRow(property, value));
+	                        rows.push(this.renderRow(property, value));
 	                    }
 	                }
 	            } else {
-	                for (var _property in this.props.featureProperties) {
-	                    var _value = this.props.featureProperties[_property];
-	                    rows.push(renderRow(_property, _value));
+	                for (var _property in featureProperties) {
+	                    var _value = featureProperties[_property];
+	                    rows.push(this.renderRow(_property, _value));
 	                }
 	            }
 	            return _react2.default.createElement(
@@ -53038,7 +53161,7 @@
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
 	                            { key: 'data', eventKey: 2, title: 'Data' },
-	                            this.renderDataTable(this.props.featureProperties, this.props.layerId)
+	                            this.renderDataTable()
 	                        ));
 	                        break;
 	                    }
@@ -53100,7 +53223,7 @@
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
 	                            { key: 'data', eventKey: eventKeyIndex, title: 'Data' },
-	                            this.renderDataTable(this.props.featureProperties, this.props.layerId)
+	                            this.renderDataTable()
 	                        ));
 	                        break;
 	                    }
@@ -53129,7 +53252,7 @@
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
 	                            { key: 'data', eventKey: 2, title: 'Data' },
-	                            this.renderDataTable(this.props.featureProperties, this.props.layerId)
+	                            this.renderDataTable()
 	                        ));
 	                        break;
 	                    }
@@ -53158,7 +53281,7 @@
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
 	                            { key: 'data', eventKey: 2, title: 'Data' },
-	                            this.renderDataTable(this.props.featureProperties, this.props.layerId)
+	                            this.renderDataTable()
 	                        ));
 	                        break;
 	                    }
@@ -53167,7 +53290,7 @@
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
 	                            { key: 'data', eventKey: 1, title: 'Data' },
-	                            this.renderDataTable(this.props.featureProperties, this.props.layerId)
+	                            this.renderDataTable()
 	                        ));
 	                        break;
 	                    }
@@ -53223,146 +53346,6 @@
 
 /***/ },
 /* 789 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	/**
-	 * dataTables.js
-	 *
-	 * Describes which properties to display and which to hide in the data table
-	 * - On a per-layer basis
-	 * - Possible Property Values:
-	 *   - `true`: display the property in the data table
-	 *   - `false`: don't display the property in the data table
-	 *   - <String>: display the property, but display the property name as the specified <String>
-	 *
-	 */
-
-	var DISPLAY_PROPERTIES = {
-	    backshore_1976: {
-	        "OBJECTID": false,
-	        "Backshore Type": true,
-	        "Notes": true,
-	        "County": true,
-	        "FIPS": true,
-	        "Segment Length (miles)": true,
-	        "Vegetation Classification": true,
-	        "Bluff Condition Classification": true,
-	        "Bluff Modified Classification": true,
-	        "Bluff Failure Classification": true,
-	        "Non-Bluff Classification": true,
-	        "Confidence Level Classification": true
-	    },
-	    backshore_2007: {
-	        "OBJECTID": false,
-	        "Backshore Type": true,
-	        "Notes": true,
-	        "County": true,
-	        "FIPS": true,
-	        "Segment Length (miles)": true,
-	        "Vegetation Classification": true,
-	        "Bluff Condition Classification": true,
-	        "Bluff Modified Classification": true,
-	        "Bluff Failure Classification": true,
-	        "Non-Bluff Classification": true,
-	        "Confidence Level Classification": true
-	    },
-	    beachclass_1976: {
-	        "OBJECTID": false,
-	        "Shore Type": true,
-	        "Notes": true,
-	        "County": true,
-	        "FIPS": true,
-	        "Segment Length (miles)": true,
-	        "Beach Classification": true,
-	        "Shore Protection Classification": true
-	    },
-	    beachclass_2007: {
-	        "OBJECTID": false,
-	        "Shore Type": true,
-	        "Notes": true,
-	        "County": true,
-	        "FIPS": true,
-	        "Segment Length (miles)": true,
-	        "Beach Classification": true,
-	        "Shore Protection Classification": true
-	    },
-	    photos_1976: {
-	        "OBJECTID": false,
-	        "Original File Name": true,
-	        "Longitude": true,
-	        "Latitude": true,
-	        "Easting": true,
-	        "Northing": true,
-	        "UTM Zone": true,
-	        "Great Lake": true,
-	        "County FIPS": true,
-	        "County": true,
-	        "State": true,
-	        "File Name": true,
-	        "Year": true
-	    },
-	    photos_2007: {
-	        "OBJECTID": false,
-	        "Original File Name": true,
-	        "Longitude": true,
-	        "Latitude": true,
-	        "Easting": true,
-	        "Northing": true,
-	        "UTM Zone": true,
-	        "Great Lake": true,
-	        "County FIPS": true,
-	        "County": true,
-	        "State": true,
-	        "File Name": true,
-	        "Year": true
-	    },
-	    structure_1976: {
-	        "OBJECTID": false,
-	        "Notes": true,
-	        "County": true,
-	        "FIPS": true,
-	        "Structure Type": true
-	    },
-	    structure_2007: {
-	        "OBJECTID": false,
-	        "Notes": true,
-	        "County": true,
-	        "FIPS": true,
-	        "Structure Type": true
-	    },
-	    profiles: {
-	        "ID": false,
-	        "ProfileNo": "Profile Number",
-	        "county": "County",
-	        "bluff_xls": false,
-	        "bathy_xls": false,
-	        "bluff_jpg": false,
-	        "bathy_png": false,
-	        "notes": "Notes",
-	        "type": "Type"
-	    },
-	    photos_obl_2016: {
-	        "name": "Name",
-	        "filename": false,
-	        "date": "Date"
-	    },
-	    photos_dm_2016: {
-	        "name": "Name",
-	        "filename": false,
-	        "date": "Date",
-	        "altitude": "Altitude (m)"
-	    }
-	};
-
-	exports.DISPLAY_PROPERTIES = DISPLAY_PROPERTIES;
-
-/***/ },
-/* 790 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -53397,7 +53380,7 @@
 	exports.default = PopupTitle;
 
 /***/ },
-/* 791 */
+/* 790 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53466,21 +53449,21 @@
 	exports.default = PopupFooter;
 
 /***/ },
-/* 792 */
+/* 791 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(793);
+	module.exports = __webpack_require__(792);
 
 /***/ },
-/* 793 */
+/* 792 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
-	var bind = __webpack_require__(795);
-	var Axios = __webpack_require__(796);
-	var defaults = __webpack_require__(797);
+	var utils = __webpack_require__(793);
+	var bind = __webpack_require__(794);
+	var Axios = __webpack_require__(795);
+	var defaults = __webpack_require__(796);
 
 	/**
 	 * Create an instance of Axios
@@ -53513,15 +53496,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(814);
-	axios.CancelToken = __webpack_require__(815);
-	axios.isCancel = __webpack_require__(811);
+	axios.Cancel = __webpack_require__(813);
+	axios.CancelToken = __webpack_require__(814);
+	axios.isCancel = __webpack_require__(810);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(816);
+	axios.spread = __webpack_require__(815);
 
 	module.exports = axios;
 
@@ -53530,12 +53513,12 @@
 
 
 /***/ },
-/* 794 */
+/* 793 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(795);
+	var bind = __webpack_require__(794);
 
 	/*global toString:true*/
 
@@ -53835,7 +53818,7 @@
 
 
 /***/ },
-/* 795 */
+/* 794 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53852,17 +53835,17 @@
 
 
 /***/ },
-/* 796 */
+/* 795 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(797);
-	var utils = __webpack_require__(794);
-	var InterceptorManager = __webpack_require__(808);
-	var dispatchRequest = __webpack_require__(809);
-	var isAbsoluteURL = __webpack_require__(812);
-	var combineURLs = __webpack_require__(813);
+	var defaults = __webpack_require__(796);
+	var utils = __webpack_require__(793);
+	var InterceptorManager = __webpack_require__(807);
+	var dispatchRequest = __webpack_require__(808);
+	var isAbsoluteURL = __webpack_require__(811);
+	var combineURLs = __webpack_require__(812);
 
 	/**
 	 * Create a new instance of Axios
@@ -53943,13 +53926,13 @@
 
 
 /***/ },
-/* 797 */
+/* 796 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(794);
-	var normalizeHeaderName = __webpack_require__(798);
+	var utils = __webpack_require__(793);
+	var normalizeHeaderName = __webpack_require__(797);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -53966,10 +53949,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(799);
+	    adapter = __webpack_require__(798);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(799);
+	    adapter = __webpack_require__(798);
 	  }
 	  return adapter;
 	}
@@ -54043,12 +54026,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 798 */
+/* 797 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
+	var utils = __webpack_require__(793);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -54061,18 +54044,18 @@
 
 
 /***/ },
-/* 799 */
+/* 798 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(794);
-	var settle = __webpack_require__(800);
-	var buildURL = __webpack_require__(803);
-	var parseHeaders = __webpack_require__(804);
-	var isURLSameOrigin = __webpack_require__(805);
-	var createError = __webpack_require__(801);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(806);
+	var utils = __webpack_require__(793);
+	var settle = __webpack_require__(799);
+	var buildURL = __webpack_require__(802);
+	var parseHeaders = __webpack_require__(803);
+	var isURLSameOrigin = __webpack_require__(804);
+	var createError = __webpack_require__(800);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(805);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -54168,7 +54151,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(807);
+	      var cookies = __webpack_require__(806);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -54245,12 +54228,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 800 */
+/* 799 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(801);
+	var createError = __webpack_require__(800);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -54276,12 +54259,12 @@
 
 
 /***/ },
-/* 801 */
+/* 800 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(802);
+	var enhanceError = __webpack_require__(801);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -54299,7 +54282,7 @@
 
 
 /***/ },
-/* 802 */
+/* 801 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54324,12 +54307,12 @@
 
 
 /***/ },
-/* 803 */
+/* 802 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
+	var utils = __webpack_require__(793);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -54398,12 +54381,12 @@
 
 
 /***/ },
-/* 804 */
+/* 803 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
+	var utils = __webpack_require__(793);
 
 	/**
 	 * Parse headers into an object
@@ -54441,12 +54424,12 @@
 
 
 /***/ },
-/* 805 */
+/* 804 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
+	var utils = __webpack_require__(793);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54515,7 +54498,7 @@
 
 
 /***/ },
-/* 806 */
+/* 805 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54557,12 +54540,12 @@
 
 
 /***/ },
-/* 807 */
+/* 806 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
+	var utils = __webpack_require__(793);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54616,12 +54599,12 @@
 
 
 /***/ },
-/* 808 */
+/* 807 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
+	var utils = __webpack_require__(793);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -54674,15 +54657,15 @@
 
 
 /***/ },
-/* 809 */
+/* 808 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
-	var transformData = __webpack_require__(810);
-	var isCancel = __webpack_require__(811);
-	var defaults = __webpack_require__(797);
+	var utils = __webpack_require__(793);
+	var transformData = __webpack_require__(809);
+	var isCancel = __webpack_require__(810);
+	var defaults = __webpack_require__(796);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -54759,12 +54742,12 @@
 
 
 /***/ },
-/* 810 */
+/* 809 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(794);
+	var utils = __webpack_require__(793);
 
 	/**
 	 * Transform the data for a request or a response
@@ -54785,7 +54768,7 @@
 
 
 /***/ },
-/* 811 */
+/* 810 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54796,7 +54779,7 @@
 
 
 /***/ },
-/* 812 */
+/* 811 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54816,7 +54799,7 @@
 
 
 /***/ },
-/* 813 */
+/* 812 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54834,7 +54817,7 @@
 
 
 /***/ },
-/* 814 */
+/* 813 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54859,12 +54842,12 @@
 
 
 /***/ },
-/* 815 */
+/* 814 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(814);
+	var Cancel = __webpack_require__(813);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -54922,7 +54905,7 @@
 
 
 /***/ },
-/* 816 */
+/* 815 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54955,7 +54938,7 @@
 
 
 /***/ },
-/* 817 */
+/* 816 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54974,11 +54957,11 @@
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
-	var _PopupTitle = __webpack_require__(790);
+	var _PopupTitle = __webpack_require__(789);
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _PopupFooter = __webpack_require__(791);
+	var _PopupFooter = __webpack_require__(790);
 
 	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
 
@@ -55031,7 +55014,7 @@
 	exports.default = MobileFeaturePopup;
 
 /***/ },
-/* 818 */
+/* 817 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -55043,7 +55026,7 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _reselect = __webpack_require__(819);
+	var _reselect = __webpack_require__(818);
 
 	var getLayers = function getLayers(state) {
 	    return state.layers;
@@ -55187,7 +55170,7 @@
 	});
 
 /***/ },
-/* 819 */
+/* 818 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55303,7 +55286,7 @@
 	}
 
 /***/ },
-/* 820 */
+/* 819 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55318,7 +55301,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _LayerList = __webpack_require__(821);
+	var _LayerList = __webpack_require__(820);
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
 
@@ -55413,7 +55396,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MobileLayerList);
 
 /***/ },
-/* 821 */
+/* 820 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55428,11 +55411,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _LayerGroup = __webpack_require__(822);
+	var _LayerGroup = __webpack_require__(821);
 
 	var _LayerGroup2 = _interopRequireDefault(_LayerGroup);
 
-	var _BasemapList = __webpack_require__(824);
+	var _BasemapList = __webpack_require__(823);
 
 	var _BasemapList2 = _interopRequireDefault(_BasemapList);
 
@@ -55448,7 +55431,7 @@
 
 	var _basemaps = __webpack_require__(753);
 
-	var _selectors = __webpack_require__(818);
+	var _selectors = __webpack_require__(817);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55549,7 +55532,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LayerList);
 
 /***/ },
-/* 822 */
+/* 821 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55562,7 +55545,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Layer = __webpack_require__(823);
+	var _Layer = __webpack_require__(822);
 
 	var _Layer2 = _interopRequireDefault(_Layer);
 
@@ -55618,7 +55601,7 @@
 	exports.default = LayerGroup;
 
 /***/ },
-/* 823 */
+/* 822 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55652,7 +55635,7 @@
 	exports.default = Layer;
 
 /***/ },
-/* 824 */
+/* 823 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55667,7 +55650,7 @@
 
 	var _reactBootstrap = __webpack_require__(476);
 
-	var _Basemap = __webpack_require__(825);
+	var _Basemap = __webpack_require__(824);
 
 	var _Basemap2 = _interopRequireDefault(_Basemap);
 
@@ -55719,7 +55702,7 @@
 	exports.default = BasemapList;
 
 /***/ },
-/* 825 */
+/* 824 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55753,7 +55736,7 @@
 	exports.default = Basemap;
 
 /***/ },
-/* 826 */
+/* 825 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55861,7 +55844,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AboutModal);
 
 /***/ },
-/* 827 */
+/* 826 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55884,7 +55867,7 @@
 
 	var _pinnedFeatures = __webpack_require__(757);
 
-	var _PinnedFeaturePopup = __webpack_require__(828);
+	var _PinnedFeaturePopup = __webpack_require__(827);
 
 	var _PinnedFeaturePopup2 = _interopRequireDefault(_PinnedFeaturePopup);
 
@@ -56030,7 +56013,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(PinnedFeaturePopupContainer);
 
 /***/ },
-/* 828 */
+/* 827 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56049,15 +56032,15 @@
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
-	var _PopupTitle = __webpack_require__(790);
+	var _PopupTitle = __webpack_require__(789);
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _PopupFooter = __webpack_require__(791);
+	var _PopupFooter = __webpack_require__(790);
 
 	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
 
-	var _reactDraggable = __webpack_require__(829);
+	var _reactDraggable = __webpack_require__(828);
 
 	var _reactDraggable2 = _interopRequireDefault(_reactDraggable);
 
@@ -56159,7 +56142,7 @@
 	exports.default = PinnedFeaturePopup;
 
 /***/ },
-/* 829 */
+/* 828 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -57771,7 +57754,7 @@
 	//# sourceMappingURL=react-draggable.js.map
 
 /***/ },
-/* 830 */
+/* 829 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57788,7 +57771,7 @@
 
 	var _reactRedux = __webpack_require__(767);
 
-	var _selectors = __webpack_require__(818);
+	var _selectors = __webpack_require__(817);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
