@@ -37,7 +37,6 @@ for (let layerGroupId in CONFIG.map.layers) {
             active: layer.active,
             legendStyles
         };
-        let layerGroupProperties = CONFIG.map.layers[layerGroupId];
         if (typeof layerGroupsById[layerGroupId] === "undefined") {
             layerGroupsById[layerGroupId] = [];
         }

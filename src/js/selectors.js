@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect';
 import { LAYERS_BY_ID, LAYER_GROUPS_BY_ID, BASEMAPS_BY_ID } from './util.js';
 
-const getLayers = (state) => state.layers;
 const getLayersById = (state) => state.layers.layersById;
 const getBasemapsById = (state) => state.basemaps;
 const getLayerGroupsById = (state) => state.layers.layerGroupsById;

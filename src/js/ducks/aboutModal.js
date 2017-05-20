@@ -1,6 +1,6 @@
 /**
  * aboutModal.js Ducks
- * 
+ *
  * Contains the actions and reducer part that controls the About modal
  */
 export function closeAboutModal () {

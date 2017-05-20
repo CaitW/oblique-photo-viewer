@@ -122,7 +122,7 @@ var LAYER_STYLES_BY_ID = {
         }
         return style;
     },
-    photos_1976: function(feature) {
+    photos_1976: function() {
         return {
             radius: 3,
             color: COLORS.PURPLE,
@@ -132,7 +132,7 @@ var LAYER_STYLES_BY_ID = {
             legendDisplayProperty: "photos"
         };
     },
-    photos_2007: function(feature) {
+    photos_2007: function() {
         return {
             radius: 3,
             color: COLORS.CYAN,
@@ -142,7 +142,7 @@ var LAYER_STYLES_BY_ID = {
             legendDisplayProperty: "photos"
         };
     },
-    structure_1976: function(feature) {
+    structure_1976: function() {
         return {
             radius: 3,
             color: COLORS.BLACK,
@@ -152,7 +152,7 @@ var LAYER_STYLES_BY_ID = {
             legendDisplayProperty: "structures"
         };
     },
-    structure_2007: function(feature) {
+    structure_2007: function() {
         return {
             radius: 3,
             color: COLORS.BLACK,
@@ -271,7 +271,7 @@ var LAYER_STYLES_BY_ID = {
         }
         return style;
     },
-    photos_obl_2016: function (feature) {
+    photos_obl_2016: function () {
         return {
             radius: 3,
             color: COLORS.PURPLE,
@@ -281,7 +281,7 @@ var LAYER_STYLES_BY_ID = {
             legendDisplayProperty: "photos"
         };
     },
-    photos_dm_2016: function (feature) {
+    photos_dm_2016: function () {
         return {
             radius: 3,
             color: COLORS.PURPLE,

@@ -39,6 +39,6 @@ const LayerGroup = (props) => {
                 </ListGroup>
             </div>
         </div>
-    ); 
+    );
 }
 export default LayerGroup;
