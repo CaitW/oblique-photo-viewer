@@ -53038,10 +53038,6 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _store = __webpack_require__(729);
-
-	var _store2 = _interopRequireDefault(_store);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53100,7 +53096,7 @@
 	            var rows = [];
 	            var featureProperties = this.props.featureProperties;
 	            var layerId = this.props.layerId;
-	            var layerData = _store2.default.getState().layers.layersById[layerId];
+	            var layerData = _util.LAYERS_BY_ID[layerId];
 
 	            if (typeof layerData !== "undefined" && typeof layerData.tableProperties !== "undefined") {
 	                var displayProperties = layerData.tableProperties;
@@ -53317,6 +53313,10 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.BASEMAPS_BY_ID = exports.LAYER_GROUPS_BY_ID = exports.LAYERS_BY_ID = undefined;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	exports.getPhotoURLs = getPhotoURLs;
 
 	var _config = __webpack_require__(752);
@@ -53324,6 +53324,26 @@
 	var _config2 = _interopRequireDefault(_config);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var LAYERS_BY_ID = {};
+	var LAYER_GROUPS_BY_ID = {};
+	var BASEMAPS_BY_ID = _config2.default.map.basemaps;
+
+	for (var layerGroupId in _config2.default.map.layers) {
+	    var layerGroupLayers = _config2.default.map.layers[layerGroupId].layers;
+	    for (var layerId in layerGroupLayers) {
+	        var layer = layerGroupLayers[layerId];
+	        layer.layerGroupId = layerGroupId;
+	        layer.id = layerId;
+	        LAYERS_BY_ID[layerId] = layer;
+	        var layerGroupProperties = _config2.default.map.layers[layerGroupId];
+	        if (typeof LAYER_GROUPS_BY_ID[layerGroupId] === "undefined") {
+	            LAYER_GROUPS_BY_ID[layerGroupId] = _extends({}, layerGroupProperties);
+	            LAYER_GROUPS_BY_ID[layerGroupId].layers = [];
+	        }
+	        LAYER_GROUPS_BY_ID[layerGroupId].layers.push(layerId);
+	    }
+	}
 
 	function getPhotoURLs(photoProperties) {
 	    var base = _config2.default.photos.urlBase;
@@ -53343,6 +53363,10 @@
 	    }
 	    return urls;
 	}
+
+	exports.LAYERS_BY_ID = LAYERS_BY_ID;
+	exports.LAYER_GROUPS_BY_ID = LAYER_GROUPS_BY_ID;
+	exports.BASEMAPS_BY_ID = BASEMAPS_BY_ID;
 
 /***/ },
 /* 789 */
