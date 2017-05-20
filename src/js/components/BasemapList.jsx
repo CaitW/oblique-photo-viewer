@@ -22,21 +22,23 @@ const BasemapList = (props) => {
     }
     let bodyClassNames = ["panel-body", "pullDown"];
     let headerClassNames = ["panel-heading"];
-    let iconClassNames = ["fa"];
+    let iconClassNames = ["fa", "wiscviewer-layer-group-left-icon"];
     if (props.panelVisible === false) {
         bodyClassNames.push("hidden");
-        iconClassNames.push("fa-plus");
+        iconClassNames.push("fa-folder");
     } else {
         headerClassNames.push("active");
-        iconClassNames.push("fa-chevron-up");
+        iconClassNames.push("fa-folder-open");
     }
     return (
         <div className="panel panel-default">
           <div className={ headerClassNames.join(" ") }
             role="button"
             tabIndex={0}
-            onClick={ props.onPanelClick.bind(null, "Basemaps") }>
-            Basemaps <i className={ iconClassNames.join(" ") }></i>
+            onClick={ props.onPanelClick.bind(null, "Basemaps") }
+            >
+              <i className={ iconClassNames.join(" ") }></i>
+              Basemaps
           </div>
           <div className={ bodyClassNames.join(" ") }>
             <ListGroup>

@@ -23,13 +23,13 @@ const LayerGroup = (props) => {
     }
     let bodyClassNames = ["panel-body", "pullDown"];
     let headerClassNames = ["panel-heading"];
-    let iconClassNames = ["fa"];
+    let iconClassNames = ["fa", "wiscviewer-layer-group-left-icon"];
     if(props.panelVisible === false) {
         bodyClassNames.push("hidden");
-        iconClassNames.push("fa-plus");
+        iconClassNames.push("fa-folder");
     } else {
         headerClassNames.push("active");
-        iconClassNames.push("fa-chevron-up");
+        iconClassNames.push("fa-folder-open");
     }
     let boundOnLayerClick = props.onPanelClick.bind(null, props.layerGroupId);
     return (
@@ -39,8 +39,8 @@ const LayerGroup = (props) => {
                 role="button"
                 tabIndex={0}
                 >
-                {props.layerGroupName}
                 <i className={iconClassNames.join(" ")}></i>
+                {props.layerGroupName}
             </div>
             <div className={bodyClassNames.join(" ")}>
                 <ListGroup>

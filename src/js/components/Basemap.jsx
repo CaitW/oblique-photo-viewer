@@ -10,6 +10,7 @@ const Basemap = (props) => (
         href="#"
         active={props.active}
         onClick={props.onBasemapClick.bind(null, props.basemapID)}>
+        <i className="fa fa-file wiscviewer-layer-left-icon"></i>
         {props.basemapName}
     </ListGroupItem>);
 export default Basemap;

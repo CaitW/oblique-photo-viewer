@@ -10,6 +10,7 @@ const Layer = (props) => (
         href="#"
         active={props.active}
         onClick={props.onLayerClick.bind(null, props.layerID)}>
+        <i className="fa fa-file wiscviewer-layer-left-icon"></i>
         {props.layerName}
     </ListGroupItem>
 );

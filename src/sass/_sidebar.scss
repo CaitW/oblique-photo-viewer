@@ -19,7 +19,6 @@
       padding: 5px 10px;
 
       i {
-        float: right;
         line-height: inherit;
         color: $primary_100;
       }
@@ -88,4 +87,14 @@
       }
     }
   }
+}
+
+.wiscviewer-layer-left-icon {
+  margin-right: 10px;
+  color: $primary_300;
+}
+
+.wiscviewer-layer-group-left-icon {
+  margin-right: 10px;
+  color: $primary_300;
 }

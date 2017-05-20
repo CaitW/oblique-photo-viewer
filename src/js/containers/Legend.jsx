@@ -54,7 +54,7 @@ class Legend extends React.Component {
     render() {
         let bodyClassNames = ["panel-body", "pullDown"];
         let headerClassNames = ["panel-heading"];
-        let iconClassNames = ["fa"];
+        let iconClassNames = ["fa", "pull-right"];
         if (this.state.panelVisible === false) {
             bodyClassNames.push("hidden");
             iconClassNames.push("fa-plus");

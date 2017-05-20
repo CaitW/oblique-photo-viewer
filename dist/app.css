@@ -8556,7 +8556,6 @@ button.close {
       border: 0;
       padding: 5px 10px; }
       .wiscviewer-sidebar .panel .panel-heading i {
-        float: right;
         line-height: inherit;
         color: #cfd8dc; }
       .wiscviewer-sidebar .panel .panel-heading:hover {
@@ -8598,6 +8597,14 @@ button.close {
         margin-right: 10px; }
         .wiscviewer-sidebar .wiscviewer-legend .panel-body .legend-list i.fa-circle {
           font-size: 10px; }
+
+.wiscviewer-layer-left-icon {
+  margin-right: 10px;
+  color: #90a4ae; }
+
+.wiscviewer-layer-group-left-icon {
+  margin-right: 10px;
+  color: #90a4ae; }
 
 .pullDown {
   animation-name: pullDown;

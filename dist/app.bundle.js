@@ -55721,13 +55721,13 @@
 	    }
 	    var bodyClassNames = ["panel-body", "pullDown"];
 	    var headerClassNames = ["panel-heading"];
-	    var iconClassNames = ["fa"];
+	    var iconClassNames = ["fa", "wiscviewer-layer-group-left-icon"];
 	    if (props.panelVisible === false) {
 	        bodyClassNames.push("hidden");
-	        iconClassNames.push("fa-plus");
+	        iconClassNames.push("fa-folder");
 	    } else {
 	        headerClassNames.push("active");
-	        iconClassNames.push("fa-chevron-up");
+	        iconClassNames.push("fa-folder-open");
 	    }
 	    var boundOnLayerClick = props.onPanelClick.bind(null, props.layerGroupId);
 	    return _react2.default.createElement(
@@ -55740,8 +55740,8 @@
 	                role: 'button',
 	                tabIndex: 0
 	            },
-	            props.layerGroupName,
-	            _react2.default.createElement('i', { className: iconClassNames.join(" ") })
+	            _react2.default.createElement('i', { className: iconClassNames.join(" ") }),
+	            props.layerGroupName
 	        ),
 	        _react2.default.createElement(
 	            'div',
@@ -55789,6 +55789,7 @@
 	            href: '#',
 	            active: props.active,
 	            onClick: props.onLayerClick.bind(null, props.layerID) },
+	        _react2.default.createElement('i', { className: 'fa fa-file wiscviewer-layer-left-icon' }),
 	        props.layerName
 	    );
 	};
@@ -55828,13 +55829,13 @@
 	    }
 	    var bodyClassNames = ["panel-body", "pullDown"];
 	    var headerClassNames = ["panel-heading"];
-	    var iconClassNames = ["fa"];
+	    var iconClassNames = ["fa", "wiscviewer-layer-group-left-icon"];
 	    if (props.panelVisible === false) {
 	        bodyClassNames.push("hidden");
-	        iconClassNames.push("fa-plus");
+	        iconClassNames.push("fa-folder");
 	    } else {
 	        headerClassNames.push("active");
-	        iconClassNames.push("fa-chevron-up");
+	        iconClassNames.push("fa-folder-open");
 	    }
 	    return _react2.default.createElement(
 	        'div',
@@ -55844,9 +55845,10 @@
 	            { className: headerClassNames.join(" "),
 	                role: 'button',
 	                tabIndex: 0,
-	                onClick: props.onPanelClick.bind(null, "Basemaps") },
-	            'Basemaps ',
-	            _react2.default.createElement('i', { className: iconClassNames.join(" ") })
+	                onClick: props.onPanelClick.bind(null, "Basemaps")
+	            },
+	            _react2.default.createElement('i', { className: iconClassNames.join(" ") }),
+	            'Basemaps'
 	        ),
 	        _react2.default.createElement(
 	            'div',
@@ -55894,6 +55896,7 @@
 	            href: '#',
 	            active: props.active,
 	            onClick: props.onBasemapClick.bind(null, props.basemapID) },
+	        _react2.default.createElement('i', { className: 'fa fa-file wiscviewer-layer-left-icon' }),
 	        props.basemapName
 	    );
 	};
@@ -58063,7 +58066,7 @@
 	        value: function render() {
 	            var bodyClassNames = ["panel-body", "pullDown"];
 	            var headerClassNames = ["panel-heading"];
-	            var iconClassNames = ["fa"];
+	            var iconClassNames = ["fa", "pull-right"];
 	            if (this.state.panelVisible === false) {
 	                bodyClassNames.push("hidden");
 	                iconClassNames.push("fa-plus");
