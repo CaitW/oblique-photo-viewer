@@ -1,5 +1,27 @@
 import CONFIG from './config.json';
 
+const LAYERS_BY_ID = {};
+const LAYER_GROUPS_BY_ID = {}
+const BASEMAPS_BY_ID = CONFIG.map.basemaps;
+
+for (let layerGroupId in CONFIG.map.layers) {
+    let layerGroupLayers = CONFIG.map.layers[layerGroupId].layers;
+    for (let layerId in layerGroupLayers) {
+        let layer = layerGroupLayers[layerId];
+        layer.layerGroupId = layerGroupId;
+        layer.id = layerId;
+        LAYERS_BY_ID[layerId] = layer;
+        let layerGroupProperties = CONFIG.map.layers[layerGroupId];
+        if (typeof LAYER_GROUPS_BY_ID[layerGroupId] === "undefined") {
+            LAYER_GROUPS_BY_ID[layerGroupId] = {
+                ...layerGroupProperties
+            };
+            LAYER_GROUPS_BY_ID[layerGroupId].layers = [];
+        }
+        LAYER_GROUPS_BY_ID[layerGroupId].layers.push(layerId);
+    }
+}
+
 export function getPhotoURLs (photoProperties) {
     let base = CONFIG.photos.urlBase;
     let lakeName = photoProperties["Great Lake"].replace(/ /gi, "");
@@ -19,3 +41,4 @@ export function getPhotoURLs (photoProperties) {
     return urls;
 }
 
+export { LAYERS_BY_ID, LAYER_GROUPS_BY_ID, BASEMAPS_BY_ID };

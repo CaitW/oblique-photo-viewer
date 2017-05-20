@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Tabs, Tab, Button } from 'react-bootstrap';
 import { getPhotoURLs } from '../../../util.js';
 import CONFIG from '../../../config.json';
-import store from '../../../store.js';
+import { LAYERS_BY_ID } from '../../../util.js';
 
 export default class PopupTabs extends React.Component {
     constructor (props) {
@@ -29,7 +29,7 @@ export default class PopupTabs extends React.Component {
         let rows = [];
         let featureProperties = this.props.featureProperties;
         let layerId = this.props.layerId;
-        let layerData = store.getState().layers.layersById[layerId];
+        let layerData = LAYERS_BY_ID[layerId];
 
         if(typeof layerData !== "undefined" && typeof layerData.tableProperties !== "undefined") {
             let displayProperties = layerData.tableProperties;
