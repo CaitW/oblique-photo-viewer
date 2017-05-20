@@ -12,12 +12,9 @@ import { closeMobileFeatureModal } from '../ducks/mobile.js';
 import { getMobileFeaturePopupProps } from '../selectors.js';
 
 const mapStateToProps = function(store) {
-    let props = getMobileFeaturePopupProps(store);
     return {
-        mobileFeatureModal: {
-            ...props
-        }
-    };
+        mobileFeatureModal: getMobileFeaturePopupProps(store)
+    }
 }
 class MapContainer extends React.Component {
     constructor() {

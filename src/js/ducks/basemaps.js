@@ -6,7 +6,13 @@
  */
 import CONFIG from '../config.json';
 
-const initialbasemaps = CONFIG.map.basemaps;
+const initialBasemaps = {};
+
+for(let basemapId in CONFIG.map.basemaps) {
+    initialBasemaps[basemapId] = {
+        active: CONFIG.map.basemaps[basemapId].active
+    }
+}
 
 export function toggleBasemap(basemapId) {
     return {
@@ -15,7 +21,7 @@ export function toggleBasemap(basemapId) {
     }
 }
 
-export default function basemaps(state = initialbasemaps, action) {
+export default function basemaps(state = initialBasemaps, action) {
     let newState = {
         ...state
     };

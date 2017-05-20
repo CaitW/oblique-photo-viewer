@@ -2,7 +2,14 @@ import CONFIG from './config.json';
 
 const LAYERS_BY_ID = {};
 const LAYER_GROUPS_BY_ID = {}
-const BASEMAPS_BY_ID = CONFIG.map.basemaps;
+const BASEMAPS_BY_ID = {};
+
+for (let basemapId in CONFIG.map.basemaps) {
+    BASEMAPS_BY_ID[basemapId] = {
+        ...CONFIG.map.basemaps[basemapId]
+    }
+    delete BASEMAPS_BY_ID.active;
+}
 
 for (let layerGroupId in CONFIG.map.layers) {
     let layerGroupLayers = CONFIG.map.layers[layerGroupId].layers;
@@ -10,6 +17,7 @@ for (let layerGroupId in CONFIG.map.layers) {
         let layer = layerGroupLayers[layerId];
         layer.layerGroupId = layerGroupId;
         layer.id = layerId;
+        delete layer.active;
         LAYERS_BY_ID[layerId] = layer;
         let layerGroupProperties = CONFIG.map.layers[layerGroupId];
         if (typeof LAYER_GROUPS_BY_ID[layerGroupId] === "undefined") {

@@ -7,11 +7,12 @@ import { connect } from 'react-redux';
 import store from '../store.js';
 import { closePinnedFeature } from '../ducks/pinnedFeatures.js';
 import PinnedFeaturePopup from '../components/FeaturePopups/PinnedFeaturePopup.jsx';
+import { getLayersByIdWithData } from '../selectors.js';
 
 const mapStateToProps = function(store) {
     return {
         pinnedFeatures: store.pinnedFeatures,
-        layers: store.layers.layersById
+        layers: getLayersByIdWithData(store)
     }
 }
 class PinnedFeaturePopupContainer extends React.Component {

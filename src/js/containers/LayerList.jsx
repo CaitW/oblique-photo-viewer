@@ -10,12 +10,12 @@ import { connect } from 'react-redux';
 import store from '../store.js';
 import { toggleLayer } from '../ducks/layers.js';
 import { toggleBasemap } from '../ducks/basemaps.js';
-import { mapLayerGroupsToLayers } from '../selectors.js';
+import { mapLayerGroupsToLayers, getBasemapsByIdWithData } from '../selectors.js';
 
 const mapStateToProps = function(store) {
     return {
         layers: mapLayerGroupsToLayers(store),
-        basemaps: store.basemaps
+        basemaps: getBasemapsByIdWithData(store)
     };
 }
 class LayerList extends React.Component {

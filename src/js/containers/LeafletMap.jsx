@@ -1,6 +1,6 @@
 /**
  * LeafletMap.jsx
- * Container with Leaflet map. References the primary map object (ObliquePhotoMap), 
+ * Container with Leaflet map. References the primary map object (ObliquePhotoMap),
  * and facilitates communication between the map and interface.
  */
 
@@ -9,11 +9,12 @@ import { connect } from 'react-redux';
 import store from '../store.js';
 import ObliquePhotoMap from '../classes/ObliquePhotoMap.js';
 import { doneZooming } from '../ducks/map.js';
+import { getLayersByIdWithData, getBasemapsByIdWithData } from '../selectors.js';
 
 const mapStateToProps = function(store) {
     return {
-        layers: store.layers.layersById,
-        basemaps: store.basemaps,
+        layers: getLayersByIdWithData(store),
+        basemaps: getBasemapsByIdWithData(store),
         map: store.map
     };
 }

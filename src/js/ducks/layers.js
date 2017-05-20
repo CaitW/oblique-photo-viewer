@@ -32,18 +32,16 @@ for (let layerGroupId in CONFIG.map.layers) {
     let layerGroupLayers = CONFIG.map.layers[layerGroupId].layers;
     for (let layerId in layerGroupLayers) {
         let layer = layerGroupLayers[layerId];
-        layer.legendStyles = layer.legendStyles || {};
-        layer.layerGroupId = layerGroupId;
-        layer.id = layerId;
-        layersById[layerId] = layer;
+        let legendStyles = layer.legendStyles || {};
+        layersById[layerId] = {
+            active: layer.active,
+            legendStyles
+        };
         let layerGroupProperties = CONFIG.map.layers[layerGroupId];
         if (typeof layerGroupsById[layerGroupId] === "undefined") {
-            layerGroupsById[layerGroupId] = {
-                ...layerGroupProperties
-            };
-            layerGroupsById[layerGroupId].layers = [];
+            layerGroupsById[layerGroupId] = [];
         }
-        layerGroupsById[layerGroupId].layers.push(layerId);
+        layerGroupsById[layerGroupId].push(layerId);
     }
 }
 

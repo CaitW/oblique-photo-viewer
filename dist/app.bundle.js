@@ -49734,16 +49734,16 @@
 	    var layerGroupLayers = _config2.default.map.layers[layerGroupId].layers;
 	    for (var layerId in layerGroupLayers) {
 	        var layer = layerGroupLayers[layerId];
-	        layer.legendStyles = layer.legendStyles || {};
-	        layer.layerGroupId = layerGroupId;
-	        layer.id = layerId;
-	        layersById[layerId] = layer;
+	        var legendStyles = layer.legendStyles || {};
+	        layersById[layerId] = {
+	            active: layer.active,
+	            legendStyles: legendStyles
+	        };
 	        var layerGroupProperties = _config2.default.map.layers[layerGroupId];
 	        if (typeof layerGroupsById[layerGroupId] === "undefined") {
-	            layerGroupsById[layerGroupId] = _extends({}, layerGroupProperties);
-	            layerGroupsById[layerGroupId].layers = [];
+	            layerGroupsById[layerGroupId] = [];
 	        }
-	        layerGroupsById[layerGroupId].layers.push(layerId);
+	        layerGroupsById[layerGroupId].push(layerId);
 	    }
 	}
 
@@ -50256,7 +50256,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var initialbasemaps = _config2.default.map.basemaps;
+	var initialBasemaps = {};
+
+	for (var basemapId in _config2.default.map.basemaps) {
+	    initialBasemaps[basemapId] = {
+	        active: _config2.default.map.basemaps[basemapId].active
+	    };
+	}
 
 	function toggleBasemap(basemapId) {
 	    return {
@@ -50266,7 +50272,7 @@
 	}
 
 	function basemaps() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialbasemaps;
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialBasemaps;
 	    var action = arguments[1];
 
 	    var newState = _extends({}, state);
@@ -50274,13 +50280,13 @@
 	        case "MAP:TOGGLE_BASEMAP":
 	            {
 	                var basemapIdToToggle = action.basemapId;
-	                for (var basemapId in newState) {
-	                    if (basemapId === basemapIdToToggle) {
-	                        newState[basemapId] = _extends({}, newState[basemapId], {
+	                for (var _basemapId in newState) {
+	                    if (_basemapId === basemapIdToToggle) {
+	                        newState[_basemapId] = _extends({}, newState[_basemapId], {
 	                            active: true
 	                        });
 	                    } else {
-	                        newState[basemapId] = _extends({}, newState[basemapId], {
+	                        newState[_basemapId] = _extends({}, newState[_basemapId], {
 	                            active: false
 	                        });
 	                    }
@@ -50951,12 +50957,6 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
-	                                                                                                                                                                                                                                                                   * MapContainer.jsx
-	                                                                                                                                                                                                                                                                   * This component contains the primary map container (LeafletMap), as well as additional modals that appear over the map.
-	                                                                                                                                                                                                                                                                   */
-
-
 	var _react = __webpack_require__(299);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -50967,7 +50967,7 @@
 
 	var _LeafletMap2 = _interopRequireDefault(_LeafletMap);
 
-	var _MobileFeaturePopup = __webpack_require__(816);
+	var _MobileFeaturePopup = __webpack_require__(818);
 
 	var _MobileFeaturePopup2 = _interopRequireDefault(_MobileFeaturePopup);
 
@@ -50979,7 +50979,7 @@
 
 	var _mobile = __webpack_require__(755);
 
-	var _selectors = __webpack_require__(817);
+	var _selectors = __webpack_require__(816);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50987,12 +50987,15 @@
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * MapContainer.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component contains the primary map container (LeafletMap), as well as additional modals that appear over the map.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
 
 	var mapStateToProps = function mapStateToProps(store) {
-	    var props = (0, _selectors.getMobileFeaturePopupProps)(store);
 	    return {
-	        mobileFeatureModal: _extends({}, props)
+	        mobileFeatureModal: (0, _selectors.getMobileFeaturePopupProps)(store)
 	    };
 	};
 
@@ -51063,6 +51066,8 @@
 
 	var _map = __webpack_require__(754);
 
+	var _selectors = __webpack_require__(816);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -51071,14 +51076,14 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * LeafletMap.jsx
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Container with Leaflet map. References the primary map object (ObliquePhotoMap), 
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Container with Leaflet map. References the primary map object (ObliquePhotoMap),
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * and facilitates communication between the map and interface.
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
-	        layers: store.layers.layersById,
-	        basemaps: store.basemaps,
+	        layers: (0, _selectors.getLayersByIdWithData)(store),
+	        basemaps: (0, _selectors.getBasemapsByIdWithData)(store),
 	        map: store.map
 	    };
 	};
@@ -52913,6 +52918,8 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
+	var _util = __webpack_require__(788);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52970,9 +52977,9 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var layerGroupId = _store2.default.getState().layers.layersById[this.props.layerId].layerGroupId;
-	            var layerGroupName = _store2.default.getState().layers.layerGroupsById[layerGroupId].name;
-	            var layerName = _store2.default.getState().layers.layersById[this.props.layerId].name;
+	            var layerGroupId = _util.LAYERS_BY_ID[this.props.layerId].layerGroupId;
+	            var layerGroupName = _util.LAYER_GROUPS_BY_ID[layerGroupId].name;
+	            var layerName = _util.LAYERS_BY_ID[this.props.layerId].name;
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'wiscviewer-feature-popup', onClick: this.bringToFront },
@@ -53327,7 +53334,12 @@
 
 	var LAYERS_BY_ID = {};
 	var LAYER_GROUPS_BY_ID = {};
-	var BASEMAPS_BY_ID = _config2.default.map.basemaps;
+	var BASEMAPS_BY_ID = {};
+
+	for (var basemapId in _config2.default.map.basemaps) {
+	    BASEMAPS_BY_ID[basemapId] = _extends({}, _config2.default.map.basemaps[basemapId]);
+	    delete BASEMAPS_BY_ID.active;
+	}
 
 	for (var layerGroupId in _config2.default.map.layers) {
 	    var layerGroupLayers = _config2.default.map.layers[layerGroupId].layers;
@@ -53335,6 +53347,7 @@
 	        var layer = layerGroupLayers[layerId];
 	        layer.layerGroupId = layerGroupId;
 	        layer.id = layerId;
+	        delete layer.active;
 	        LAYERS_BY_ID[layerId] = layer;
 	        var layerGroupProperties = _config2.default.map.layers[layerGroupId];
 	        if (typeof LAYER_GROUPS_BY_ID[layerGroupId] === "undefined") {
@@ -54968,89 +54981,15 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactBootstrap = __webpack_require__(476);
-
-	var _PopupTabs = __webpack_require__(787);
-
-	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
-
-	var _PopupTitle = __webpack_require__(789);
-
-	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
-
-	var _PopupFooter = __webpack_require__(790);
-
-	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var MobileFeaturePopup = function MobileFeaturePopup(props) {
-	  var classNames = ["wiscviewer-modal", "wiscviewer-mobile-modal", "wiscviewer-mobile-feature-popup", "static-modal"];
-	  if (props.visible === false) {
-	    classNames.push("hidden");
-	  }
-	  return _react2.default.createElement(
-	    'div',
-	    { className: classNames.join(" ") },
-	    _react2.default.createElement(
-	      _reactBootstrap.Modal.Dialog,
-	      null,
-	      _react2.default.createElement(
-	        _reactBootstrap.Modal.Header,
-	        null,
-	        _react2.default.createElement(_PopupTitle2.default, {
-	          featureProperties: props.featureProperties,
-	          layerGroupName: props.layerGroupName,
-	          layerName: props.layerName
-	        })
-	      ),
-	      _react2.default.createElement(
-	        _reactBootstrap.Modal.Body,
-	        null,
-	        _react2.default.createElement(_PopupTabs2.default, { layerId: props.layerId, featureProperties: props.featureProperties })
-	      ),
-	      _react2.default.createElement(
-	        _reactBootstrap.Modal.Footer,
-	        null,
-	        _react2.default.createElement(
-	          _PopupFooter2.default,
-	          { layerId: props.layerId, featureProperties: props.featureProperties },
-	          _react2.default.createElement(
-	            _reactBootstrap.Button,
-	            { key: 'close', onClick: props.onCloseClick },
-	            'Close'
-	          )
-	        )
-	      )
-	    )
-	  );
-	}; /**
-	    * FeatureModal.jsx
-	    * This creates the modal that's displayed when a user clicks on an object in the map
-	    */
-	exports.default = MobileFeaturePopup;
-
-/***/ },
-/* 817 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.getMobileFeaturePopupProps = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = undefined;
+	exports.getMobileFeaturePopupProps = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = exports.getLayerGroupsByIdWithData = exports.getLayersByIdWithData = exports.getBasemapsByIdWithData = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _reselect = __webpack_require__(818);
+	var _reselect = __webpack_require__(817);
+
+	var _util = __webpack_require__(788);
 
 	var getLayers = function getLayers(state) {
 	    return state.layers;
@@ -55058,29 +54997,55 @@
 	var getLayersById = function getLayersById(state) {
 	    return state.layers.layersById;
 	};
+	var getBasemapsById = function getBasemapsById(state) {
+	    return state.basemaps;
+	};
+	var getLayerGroupsById = function getLayerGroupsById(state) {
+	    return state.layers.layerGroupsById;
+	};
 	var getMobileFeatureModal = function getMobileFeatureModal(state) {
 	    return state.mobile.featureModal;
 	};
 
-	var mapLayerGroupsToLayers = exports.mapLayerGroupsToLayers = (0, _reselect.createSelector)([getLayers], function (layers) {
-	    var layersById = layers.layersById;
-	    var layerGroupsById = layers.layerGroupsById;
+	var getBasemapsByIdWithData = exports.getBasemapsByIdWithData = (0, _reselect.createSelector)([getBasemapsById], function (basemaps) {
+	    var basemapsWithData = {};
+	    for (var basemapId in basemaps) {
+	        basemapsWithData[basemapId] = _extends({}, _util.BASEMAPS_BY_ID[basemapId], basemaps[basemapId]);
+	    }
+	    return basemapsWithData;
+	});
+
+	var getLayersByIdWithData = exports.getLayersByIdWithData = (0, _reselect.createSelector)([getLayersById], function (layers) {
+	    var layersWithData = {};
+	    for (var layerId in layers) {
+	        layersWithData[layerId] = _extends({}, _util.LAYERS_BY_ID[layerId], layers[layerId]);
+	    }
+	    return layersWithData;
+	});
+
+	var getLayerGroupsByIdWithData = exports.getLayerGroupsByIdWithData = (0, _reselect.createSelector)([getLayerGroupsById], function (layerGroups) {
+	    var layersGroupsWithData = {};
+	    for (var layerGroupId in layerGroups) {
+	        layersGroupsWithData[layerGroupId] = _extends({}, _util.LAYER_GROUPS_BY_ID[layerGroupId]);
+	    }
+	    return layersGroupsWithData;
+	});
+
+	var mapLayerGroupsToLayers = exports.mapLayerGroupsToLayers = (0, _reselect.createSelector)([getLayerGroupsByIdWithData, getLayersByIdWithData], function (layerGroups, layers) {
 	    var mappedLayerGroups = {};
-	    for (var layerGroupName in layerGroupsById) {
-	        if (typeof mappedLayerGroups[layerGroupName] === "undefined") {
-	            mappedLayerGroups[layerGroupName] = _extends({}, layerGroupsById[layerGroupName], {
-	                layers: {}
-	            });
-	        }
+	    for (var layerGroupId in layerGroups) {
+	        mappedLayerGroups[layerGroupId] = _extends({}, layerGroups[layerGroupId], {
+	            layers: {}
+	        });
 	        var _iteratorNormalCompletion = true;
 	        var _didIteratorError = false;
 	        var _iteratorError = undefined;
 
 	        try {
-	            for (var _iterator = layerGroupsById[layerGroupName].layers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	            for (var _iterator = layerGroups[layerGroupId].layers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 	                var layerId = _step.value;
 
-	                mappedLayerGroups[layerGroupName].layers[layerId] = layersById[layerId];
+	                mappedLayerGroups[layerGroupId].layers[layerId] = layers[layerId];
 	            }
 	        } catch (err) {
 	            _didIteratorError = true;
@@ -55110,7 +55075,7 @@
 	    return activeLayers;
 	});
 
-	var getActiveLayerStyleTypes = exports.getActiveLayerStyleTypes = (0, _reselect.createSelector)([getLayers, getActiveLayers], function (layers, activeLayers) {
+	var getActiveLayerStyleTypes = exports.getActiveLayerStyleTypes = (0, _reselect.createSelector)([getLayersByIdWithData, getLayerGroupsByIdWithData, getActiveLayers], function (layers, layerGroups, activeLayers) {
 	    var stylesByLayerId = {};
 	    var _iteratorNormalCompletion2 = true;
 	    var _didIteratorError2 = false;
@@ -55120,10 +55085,10 @@
 	        for (var _iterator2 = activeLayers[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
 	            var layerId = _step2.value;
 
-	            var layer = layers.layersById[layerId];
+	            var layer = layers[layerId];
 	            var layerName = layer.name;
 	            var layerGroupId = layer.layerGroupId;
-	            var layerGroupName = layers.layerGroupsById[layerGroupId].name;
+	            var layerGroupName = layerGroups[layerGroupId].name;
 	            var legendStyles = layer.legendStyles;
 	            var styles = [];
 	            for (var styleName in legendStyles) {
@@ -55176,12 +55141,12 @@
 	    return stylesByLayerId;
 	});
 
-	var getMobileFeaturePopupProps = exports.getMobileFeaturePopupProps = (0, _reselect.createSelector)([getLayers, getMobileFeatureModal], function (layers, featureModal) {
+	var getMobileFeaturePopupProps = exports.getMobileFeaturePopupProps = (0, _reselect.createSelector)([getLayersByIdWithData, getLayerGroupsByIdWithData, getMobileFeatureModal], function (layers, layerGroups, featureModal) {
 	    if (typeof featureModal.layerId !== "undefined" && featureModal.layerId !== false) {
 	        var layerId = featureModal.layerId;
-	        var layerName = layers.layersById[layerId].name;
-	        var layerGroupId = layers.layersById[layerId].layerGroupId;
-	        var layerGroupName = layers.layerGroupsById[layerGroupId].name;
+	        var layerName = layers[layerId].name;
+	        var layerGroupId = layers[layerId].layerGroupId;
+	        var layerGroupName = layerGroups[layerGroupId].name;
 	        return _extends({}, featureModal, {
 	            layerName: layerName,
 	            layerGroupName: layerGroupName
@@ -55194,7 +55159,7 @@
 	});
 
 /***/ },
-/* 818 */
+/* 817 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55308,6 +55273,82 @@
 	    }, {});
 	  });
 	}
+
+/***/ },
+/* 818 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(476);
+
+	var _PopupTabs = __webpack_require__(787);
+
+	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
+
+	var _PopupTitle = __webpack_require__(789);
+
+	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
+
+	var _PopupFooter = __webpack_require__(790);
+
+	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var MobileFeaturePopup = function MobileFeaturePopup(props) {
+	  var classNames = ["wiscviewer-modal", "wiscviewer-mobile-modal", "wiscviewer-mobile-feature-popup", "static-modal"];
+	  if (props.visible === false) {
+	    classNames.push("hidden");
+	  }
+	  return _react2.default.createElement(
+	    'div',
+	    { className: classNames.join(" ") },
+	    _react2.default.createElement(
+	      _reactBootstrap.Modal.Dialog,
+	      null,
+	      _react2.default.createElement(
+	        _reactBootstrap.Modal.Header,
+	        null,
+	        _react2.default.createElement(_PopupTitle2.default, {
+	          featureProperties: props.featureProperties,
+	          layerGroupName: props.layerGroupName,
+	          layerName: props.layerName
+	        })
+	      ),
+	      _react2.default.createElement(
+	        _reactBootstrap.Modal.Body,
+	        null,
+	        _react2.default.createElement(_PopupTabs2.default, { layerId: props.layerId, featureProperties: props.featureProperties })
+	      ),
+	      _react2.default.createElement(
+	        _reactBootstrap.Modal.Footer,
+	        null,
+	        _react2.default.createElement(
+	          _PopupFooter2.default,
+	          { layerId: props.layerId, featureProperties: props.featureProperties },
+	          _react2.default.createElement(
+	            _reactBootstrap.Button,
+	            { key: 'close', onClick: props.onCloseClick },
+	            'Close'
+	          )
+	        )
+	      )
+	    )
+	  );
+	}; /**
+	    * FeatureModal.jsx
+	    * This creates the modal that's displayed when a user clicks on an object in the map
+	    */
+	exports.default = MobileFeaturePopup;
 
 /***/ },
 /* 819 */
@@ -55455,7 +55496,7 @@
 
 	var _basemaps = __webpack_require__(753);
 
-	var _selectors = __webpack_require__(817);
+	var _selectors = __webpack_require__(816);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55472,7 +55513,7 @@
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
 	        layers: (0, _selectors.mapLayerGroupsToLayers)(store),
-	        basemaps: store.basemaps
+	        basemaps: (0, _selectors.getBasemapsByIdWithData)(store)
 	    };
 	};
 
@@ -55895,6 +55936,8 @@
 
 	var _PinnedFeaturePopup2 = _interopRequireDefault(_PinnedFeaturePopup);
 
+	var _selectors = __webpack_require__(816);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -55912,7 +55955,7 @@
 	var mapStateToProps = function mapStateToProps(store) {
 	    return {
 	        pinnedFeatures: store.pinnedFeatures,
-	        layers: store.layers.layersById
+	        layers: (0, _selectors.getLayersByIdWithData)(store)
 	    };
 	};
 
@@ -57795,7 +57838,7 @@
 
 	var _reactRedux = __webpack_require__(767);
 
-	var _selectors = __webpack_require__(817);
+	var _selectors = __webpack_require__(816);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

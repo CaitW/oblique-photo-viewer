@@ -8,6 +8,7 @@ import PopupTabs from './components/PopupTabs.jsx';
 import PopupTitle from './components/PopupTitle.jsx';
 import PopupFooter from './components/PopupFooter.jsx';
 import store from '../../store.js';
+import { LAYERS_BY_ID, LAYER_GROUPS_BY_ID } from '../../util.js';
 
 export default class FeaturePopup extends React.Component {
     constructor(props) {
@@ -35,9 +36,9 @@ export default class FeaturePopup extends React.Component {
         this.close();
     }
     render() {
-        let layerGroupId = store.getState().layers.layersById[this.props.layerId].layerGroupId;
-        let layerGroupName = store.getState().layers.layerGroupsById[layerGroupId].name;
-        let layerName = store.getState().layers.layersById[this.props.layerId].name;
+        let layerGroupId = LAYERS_BY_ID[this.props.layerId].layerGroupId;
+        let layerGroupName = LAYER_GROUPS_BY_ID[layerGroupId].name;
+        let layerName = LAYERS_BY_ID[this.props.layerId].name;
         return (
             <div className="wiscviewer-feature-popup" onClick={this.bringToFront}>
                 <div className="feature-popup-header">

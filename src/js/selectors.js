@@ -1,22 +1,53 @@
 import { createSelector } from 'reselect';
+import { LAYERS_BY_ID, LAYER_GROUPS_BY_ID, BASEMAPS_BY_ID } from './util.js';
 
 const getLayers = (state) => state.layers;
 const getLayersById = (state) => state.layers.layersById;
+const getBasemapsById = (state) => state.basemaps;
+const getLayerGroupsById = (state) => state.layers.layerGroupsById;
 const getMobileFeatureModal = (state) => state.mobile.featureModal;
 
-export const mapLayerGroupsToLayers = createSelector([getLayers], layers => {
-    let layersById = layers.layersById;
-    let layerGroupsById = layers.layerGroupsById;
-    let mappedLayerGroups = {};
-    for (let layerGroupName in layerGroupsById) {
-        if (typeof mappedLayerGroups[layerGroupName] === "undefined") {
-            mappedLayerGroups[layerGroupName] = {
-                ...layerGroupsById[layerGroupName],
-                layers: {}
-            };
+export const getBasemapsByIdWithData = createSelector([getBasemapsById], basemaps => {
+    let basemapsWithData = {};
+    for(let basemapId in basemaps) {
+        basemapsWithData[basemapId] = {
+            ...BASEMAPS_BY_ID[basemapId],
+            ...basemaps[basemapId]
         }
-        for (let layerId of layerGroupsById[layerGroupName].layers) {
-            mappedLayerGroups[layerGroupName].layers[layerId] = layersById[layerId];
+    }
+    return basemapsWithData;
+});
+
+export const getLayersByIdWithData = createSelector([getLayersById], layers => {
+    let layersWithData = {};
+    for (let layerId in layers) {
+        layersWithData[layerId] = {
+            ...LAYERS_BY_ID[layerId],
+            ...layers[layerId]
+        };
+    }
+    return layersWithData;
+});
+
+export const getLayerGroupsByIdWithData = createSelector([getLayerGroupsById], layerGroups => {
+    let layersGroupsWithData = {};
+    for (let layerGroupId in layerGroups) {
+        layersGroupsWithData[layerGroupId] = {
+            ...LAYER_GROUPS_BY_ID[layerGroupId]
+        };
+    }
+    return layersGroupsWithData;
+});
+
+export const mapLayerGroupsToLayers = createSelector([getLayerGroupsByIdWithData, getLayersByIdWithData], (layerGroups, layers) => {
+    let mappedLayerGroups = {};
+    for (let layerGroupId in layerGroups) {
+        mappedLayerGroups[layerGroupId] = {
+            ...layerGroups[layerGroupId],
+            layers: {}
+        };
+        for (let layerId of layerGroups[layerGroupId].layers) {
+            mappedLayerGroups[layerGroupId].layers[layerId] = layers[layerId];
         }
     }
     return mappedLayerGroups;
@@ -32,13 +63,13 @@ export const getActiveLayers = createSelector(getLayersById, layers => {
     return activeLayers;
 });
 
-export const getActiveLayerStyleTypes = createSelector([getLayers, getActiveLayers], (layers, activeLayers) => {
+export const getActiveLayerStyleTypes = createSelector([getLayersByIdWithData, getLayerGroupsByIdWithData, getActiveLayers], (layers, layerGroups, activeLayers) => {
     let stylesByLayerId = {};
     for (let layerId of activeLayers) {
-        let layer = layers.layersById[layerId];
+        let layer = layers[layerId];
         let layerName = layer.name;
         let layerGroupId = layer.layerGroupId;
-        let layerGroupName = layers.layerGroupsById[layerGroupId].name;
+        let layerGroupName = layerGroups[layerGroupId].name;
         let legendStyles = layer.legendStyles;
         let styles = [];
         for (let styleName in legendStyles) {
@@ -76,12 +107,12 @@ export const getActiveLayerStyleTypes = createSelector([getLayers, getActiveLaye
     return stylesByLayerId;
 });
 
-export const getMobileFeaturePopupProps = createSelector([getLayers, getMobileFeatureModal], (layers, featureModal) => {
+export const getMobileFeaturePopupProps = createSelector([getLayersByIdWithData, getLayerGroupsByIdWithData, getMobileFeatureModal], (layers, layerGroups, featureModal) => {
     if (typeof featureModal.layerId !== "undefined" && featureModal.layerId !== false) {
         let layerId = featureModal.layerId;
-        let layerName = layers.layersById[layerId].name;
-        let layerGroupId = layers.layersById[layerId].layerGroupId;
-        let layerGroupName = layers.layerGroupsById[layerGroupId].name;
+        let layerName = layers[layerId].name;
+        let layerGroupId = layers[layerId].layerGroupId;
+        let layerGroupName = layerGroups[layerGroupId].name;
         return {
             ...featureModal,
             layerName,
