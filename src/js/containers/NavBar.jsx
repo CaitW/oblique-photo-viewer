@@ -8,20 +8,18 @@
  */
 import React from 'react';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
-import ZoomToCounty from './ZoomToCounty.jsx';
-import ResetView from '../components/ResetView.jsx';
-import { openMobileLayerList } from '../ducks/mobile.js';
-import { openAboutModal } from '../ducks/aboutModal.js';
-import store from '../store.js';
+
+import store from '../store';
+import ZoomToCounty from './ZoomToCounty';
+import ResetView from '../components/ResetView';
+import { openMobileLayerList } from '../ducks/mobile';
+import { openAboutModal } from '../ducks/aboutModal';
 
 export default class NavBar extends React.Component {
-    constructor() {
-        super();
-    }
-    onMobileLayersClick() {
+    static onMobileLayersClick() {
         store.dispatch(openMobileLayerList());
     }
-    onAboutClick() {
+    static onAboutClick() {
         store.dispatch(openAboutModal());
     }
     render() {
@@ -30,22 +28,21 @@ export default class NavBar extends React.Component {
               <Navbar.Header>
                 <img src="img/wisconsin.svg" alt="Wisconsin Logo" className="hidden-xs" />
                 <Navbar.Brand>
-                  <a href="#">Wisconsin Shoreline Inventory and Oblique Viewer</a>
+                  Wisconsin Shoreline Inventory and Oblique Viewer
                 </Navbar.Brand>
                 <Navbar.Toggle />
               </Navbar.Header>
               <Navbar.Collapse>
                 <Nav pullRight>
                   <NavItem eventKey={ 1 }
-                    href="#"
                     className='visible-xs-block'
-                    onClick={ this.onMobileLayersClick }
+                    onClick={ this.constructor.onMobileLayersClick }
                   >
                     Layers
                   </NavItem>
                   <ZoomToCounty />
                   <ResetView />
-                  <NavItem eventKey={ 3 } href="#" onClick={ this.onAboutClick }>
+                  <NavItem eventKey={ 3 } onClick={ this.constructor.onAboutClick }>
                     About
                   </NavItem>
                 </Nav>

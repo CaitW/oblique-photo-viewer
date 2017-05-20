@@ -3,12 +3,13 @@
  * This creates the modal that's displayed when a user clicks on an object in the map
  */
 import React from 'react';
-import { newPinnedFeature } from '../../ducks/pinnedFeatures.js';
-import PopupTabs from './components/PopupTabs.jsx';
-import PopupTitle from './components/PopupTitle.jsx';
-import PopupFooter from './components/PopupFooter.jsx';
-import store from '../../store.js';
-import { LAYERS_BY_ID, LAYER_GROUPS_BY_ID } from '../../util.js';
+
+import store from '../../store';
+import PopupTabs from './components/PopupTabs';
+import PopupTitle from './components/PopupTitle';
+import PopupFooter from './components/PopupFooter';
+import { newPinnedFeature } from '../../ducks/pinnedFeatures';
+import { LAYERS_BY_ID, LAYER_GROUPS_BY_ID } from '../../util';
 
 export default class FeaturePopup extends React.Component {
     constructor(props) {
@@ -32,7 +33,9 @@ export default class FeaturePopup extends React.Component {
     }
     pin () {
         let position = this.props.getPosition();
-        store.dispatch(newPinnedFeature(this.props.layerId, this.props.featureProperties, position));
+        store.dispatch(
+            newPinnedFeature(this.props.layerId, this.props.featureProperties, position)
+        );
         this.close();
     }
     render() {
@@ -40,21 +43,39 @@ export default class FeaturePopup extends React.Component {
         let layerGroupName = LAYER_GROUPS_BY_ID[layerGroupId].name;
         let layerName = LAYERS_BY_ID[this.props.layerId].name;
         return (
-            <div className="wiscviewer-feature-popup" onClick={this.bringToFront}>
+            <div className="wiscviewer-feature-popup"
+                onClick={this.bringToFront}
+                role="button"
+                tabIndex={0}>
                 <div className="feature-popup-header">
                     <div className="feature-popup-title">
-                        <PopupTitle featureProperties={this.props.featureProperties} layerGroupName={layerGroupName} layerName={layerName} />
+                        <PopupTitle featureProperties={this.props.featureProperties}
+                            layerGroupName={layerGroupName}
+                            layerName={layerName}
+                        />
                     </div>
                     <div className="feature-popup-controls">
-                        <i className="fa fa-thumb-tack feature-popup-pin" onClick={this.pin}></i>
-                        <i className="fa fa-times feature-popup-close-button" onClick={this.close}></i>
+                        <i className="fa fa-thumb-tack feature-popup-pin"
+                            onClick={this.pin}
+                            role="button"
+                            tabIndex={-1}>
+                        </i>
+                        <i className="fa fa-times feature-popup-close-button"
+                            onClick={this.close}
+                            role="button"
+                            tabIndex={-1}>
+                        </i>
                     </div>
                 </div>
                 <div className="feature-popup-body">
-                    <PopupTabs layerId={this.props.layerId} featureProperties={this.props.featureProperties} update={this.update} />
+                    <PopupTabs layerId={this.props.layerId}
+                        featureProperties={this.props.featureProperties}
+                        update={this.update}
+                    />
                 </div>
                 <div className="feature-popup-footer">
-                    <PopupFooter layerId={this.props.layerId} featureProperties={this.props.featureProperties}>
+                    <PopupFooter layerId={this.props.layerId}
+                        featureProperties={this.props.featureProperties}>
                         <div key="clearfix" className="clearfix"></div>
                     </PopupFooter>
                 </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+
 import CONFIG from '../../../config.json';
 
 const PopupFooter = (props) => {
@@ -12,7 +13,10 @@ const PopupFooter = (props) => {
             let hasBathyXls = (typeof bathyXls !== "undefined" && bathyXls !== false);
             if(hasBluffXls) {
                 footer.push(
-                  <a href={CONFIG.profiles.pathToXls.bluff + bluffXls} key="download-bluff-excel-button" target="_blank" rel="noopener noreferrer" >
+                  <a href={CONFIG.profiles.pathToXls.bluff + bluffXls}
+                    key="download-bluff-excel-button"
+                    target="_blank"
+                    rel="noopener noreferrer" >
                     <Button className="download-excel-button">
                       <i className="fa fa-table"></i> Bluff Profile
                     </Button>
@@ -21,7 +25,10 @@ const PopupFooter = (props) => {
             }
             if(hasBathyXls) {
                 footer.push(
-                  <a href={CONFIG.profiles.pathToXls.bathy + bathyXls} key="download-bathy-excel-button" target="_blank" rel="noopener noreferrer" >
+                  <a href={CONFIG.profiles.pathToXls.bathy + bathyXls}
+                    key="download-bathy-excel-button"
+                    target="_blank"
+                    rel="noopener noreferrer" >
                     <Button className="download-excel-button">
                       <i className="fa fa-table"></i> Bathymetry Profile
                     </Button>

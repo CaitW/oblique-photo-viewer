@@ -5,22 +5,26 @@
  */
 import React from 'react';
 import { MenuItem, NavDropdown } from 'react-bootstrap';
-import store from '../store.js';
+
+import store from '../store';
 import CONFIG from '../config.json';
-import { zoomToCounty } from '../ducks/map.js';
+import { zoomToCounty } from '../ducks/map';
 
 export default class ZoomToCounty extends React.Component {
-    constructor() {
-        super();
-    }
-    onMenuItemClick (countyName) {
+    static onMenuItemClick (countyName) {
         store.dispatch(zoomToCounty(countyName));
     }
     render() {
         var self = this;
         var counties = [];
         for(let countyName in CONFIG.map.county_shorelines) {
-            counties.push(<MenuItem className="shoreline" key={countyName} onClick={self.onMenuItemClick.bind(null, countyName)}>{countyName.replace(/\_/g, " - ")}</MenuItem>);
+            counties.push(
+                <MenuItem className="shoreline"
+                    key={countyName}
+                    onClick={self.constructor.onMenuItemClick.bind(null, countyName)}>
+                        {countyName.replace(/_/g, " - ")}
+                </MenuItem>
+            );
         }
         return (
             <NavDropdown title="Zoom To Shoreline" id="zoom-to-county">

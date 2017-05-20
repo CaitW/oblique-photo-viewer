@@ -1,9 +1,10 @@
-import CONFIG from '../config.json';
-import LAYER_STYLE from '../layers/layerStyles.js';
-import ON_EACH_FEATURE from '../layers/onEachFeature.jsx';
-import { mapNewZoomLevel } from '../ducks/map.js';
-import store from '../store.js';
 import axios from 'axios';
+
+import CONFIG from '../config.json';
+import LAYER_STYLE from '../layers/layerStyles';
+import ON_EACH_FEATURE from '../layers/onEachFeature';
+import { mapNewZoomLevel } from '../ducks/map';
+import store from '../store';
 
 export default class ObliquePhotoMap {
     constructor(map) {
@@ -47,6 +48,7 @@ export default class ObliquePhotoMap {
                 } else {
                     let layerOptions = {
                         pointToLayer: function (feature, latlng) {
+                            // eslint-disable-next-line
                             return new L.circleMarker(latlng, {
                                 layerId
                             });

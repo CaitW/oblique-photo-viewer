@@ -5,26 +5,31 @@
  * It displays the LayerList component
  */
 import React from 'react';
-import LayerList from '../containers/LayerList.jsx';
 import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import store from '../store.js';
-import { closeMobileLayerList } from '../ducks/mobile.js';
 
-const mapStateToProps = function(store) {
+import store from '../store';
+import LayerList from '../containers/LayerList';
+import { closeMobileLayerList } from '../ducks/mobile';
+
+const mapStateToProps = (state) => {
     return {
-        active: store.mobile.layersPopup.visible
+        active: state.mobile.layersPopup.visible
     };
 }
 class MobileLayerList extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    closeModal () {
+    static closeModal () {
         store.dispatch(closeMobileLayerList());
     }
     render() {
-        let classNames = ['wiscviewer-modal', 'wiscviewer-mobile-modal',"wiscviewer-mobile-layers-list", 'hidden-sm', 'hidden-md', 'hidden-lg'];
+        let classNames = [
+            'wiscviewer-modal',
+            'wiscviewer-mobile-modal',
+            "wiscviewer-mobile-layers-list",
+            'hidden-sm',
+            'hidden-md',
+            'hidden-lg'
+        ];
         if(this.props.active === false) {
             classNames.push('hidden');
         }
@@ -38,7 +43,7 @@ class MobileLayerList extends React.Component {
                         <LayerList />
                       </Modal.Body>
                       <Modal.Footer>
-                            <Button onClick={this.closeModal}>Close</Button>
+                            <Button onClick={this.constructor.closeModal}>Close</Button>
                       </Modal.Footer>
                 </Modal.Dialog>
             </div>

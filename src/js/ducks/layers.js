@@ -6,7 +6,7 @@
  * - For each unique layer style present in ech layer, it creates a cache of that style
  *     so it can be presented in the legend.
  */
-import CONFIG from '../config.json';
+import { LAYERS_BY_ID, LAYER_GROUPS_BY_ID } from '../util'
 
 export function toggleLayer(layerId) {
     return {
@@ -28,19 +28,19 @@ export function legendStyleUpdate(layerId, propertyName, style, geometryType) {
 let layerGroupsById = {};
 let layersById = {};
 
-for (let layerGroupId in CONFIG.map.layers) {
-    let layerGroupLayers = CONFIG.map.layers[layerGroupId].layers;
-    for (let layerId in layerGroupLayers) {
-        let layer = layerGroupLayers[layerId];
-        let legendStyles = layer.legendStyles || {};
-        layersById[layerId] = {
-            active: layer.active,
-            legendStyles
-        };
-        if (typeof layerGroupsById[layerGroupId] === "undefined") {
-            layerGroupsById[layerGroupId] = [];
-        }
-        layerGroupsById[layerGroupId].push(layerId);
+// set up our layer group state
+for (let layerGroupId in LAYER_GROUPS_BY_ID) {
+    layerGroupsById[layerGroupId] = {
+        layers: LAYER_GROUPS_BY_ID[layerGroupId].layers
+    }
+}
+
+// set up our layers state
+for (let layerId in LAYERS_BY_ID) {
+    let legendStyles = LAYERS_BY_ID.legendStyles || {};
+    layersById[layerId] = {
+        active: LAYERS_BY_ID[layerId].defaultActive,
+        legendStyles
     }
 }
 
@@ -50,42 +50,39 @@ let initialLayers = {
 };
 
 export default function layers(state = initialLayers, action) {
-    let newState = state;
+    let newState = {
+        ...state
+    };
     switch (action.type) {
-        case "MAP:TOGGLE_LAYER":
-            {
-                newState = {
-                    ...state,
-                    layersById: {
-                        ...state.layersById,
-                        [action.layerId]: {
-                            ...state.layersById[action.layerId],
-                            active: !state.layersById[action.layerId].active
-                        }
+        case "MAP:TOGGLE_LAYER": {
+            newState.layersById = {
+                ...state.layersById,
+                [action.layerId]: {
+                    ...state.layersById[action.layerId],
+                    active: !state.layersById[action.layerId].active
+                }
+            }
+            break;
+        }
+        case "LAYER:LEGEND_STYLE_UPDATE": {
+            let legendStyle = {
+                style: action.style,
+                geometryType: action.geometryType
+            };
+            newState.layersById = {
+                ...state.layersById,
+                [action.layerId]: {
+                    ...state.layersById[action.layerId],
+                    legendStyles: {
+                        ...state.layersById[action.layerId].legendStyles,
+                        [action.propertyName]: legendStyle
                     }
                 }
-                break;
             }
-        case "LAYER:LEGEND_STYLE_UPDATE":
-            {
-                let legendStyle = {
-                    style: action.style,
-                    geometryType: action.geometryType
-                };
-                newState = { ...state,
-                    layersById: {
-                        ...state.layersById,
-                        [action.layerId]: {
-                            ...state.layersById[action.layerId],
-                            legendStyles: {
-                                ...state.layersById[action.layerId].legendStyles,
-                                [action.propertyName]: legendStyle
-                            }
-                        }
-                    }
-                }
-                break;
-            }
+            break;
+        }
+        default:
+            break;
     }
     return newState;
 }

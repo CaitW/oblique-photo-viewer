@@ -4,35 +4,29 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
-import store from '../store.js';
-import { closePinnedFeature } from '../ducks/pinnedFeatures.js';
-import PinnedFeaturePopup from '../components/FeaturePopups/PinnedFeaturePopup.jsx';
-import { getLayersByIdWithData } from '../selectors.js';
 
-const mapStateToProps = function(store) {
+import store from '../store';
+import { closePinnedFeature } from '../ducks/pinnedFeatures';
+import PinnedFeaturePopup from '../components/FeaturePopups/PinnedFeaturePopup';
+import { getLayersByIdWithData } from '../selectors';
+import { LAYER_GROUPS_BY_ID } from '../util'
+
+const mapStateToProps = (state) => {
     return {
-        pinnedFeatures: store.pinnedFeatures,
-        layers: getLayersByIdWithData(store)
+        pinnedFeatures: state.pinnedFeatures,
+        layers: getLayersByIdWithData(state)
     }
 }
 class PinnedFeaturePopupContainer extends React.Component {
+    static closePopup (featureId) {
+        store.dispatch(closePinnedFeature(featureId));
+    }
     constructor() {
         super();
         this.state = {
             order: []
         };
         this.bringToFront = this.bringToFront.bind(this);
-    }
-    closePopup (featureId) {
-        store.dispatch(closePinnedFeature(featureId));
-    }
-    bringToFront (featureId) {
-        let newOrder = [...this.state.order];
-        newOrder.splice(newOrder.indexOf(featureId), 1);
-        newOrder.push(featureId);
-        this.setState({
-            order: newOrder
-        });
     }
     componentWillReceiveProps (nextProps) {
         let newOrder = [...this.state.order];
@@ -52,6 +46,14 @@ class PinnedFeaturePopupContainer extends React.Component {
             order: newOrder
         });
     }
+    bringToFront (featureId) {
+        let newOrder = [...this.state.order];
+        newOrder.splice(newOrder.indexOf(featureId), 1);
+        newOrder.push(featureId);
+        this.setState({
+            order: newOrder
+        });
+    }
     render() {
         let pinnedFeatures = [];
         for(let featureId in this.props.pinnedFeatures) {
@@ -59,7 +61,7 @@ class PinnedFeaturePopupContainer extends React.Component {
             let layerId = pinnedFeature.layerId;
             let layerName = this.props.layers[layerId].name;
             let layerGroupId = this.props.layers[layerId].layerGroupId;
-            let layerGroupName = store.getState().layers.layerGroupsById[layerGroupId].name;
+            let layerGroupName = LAYER_GROUPS_BY_ID[layerGroupId].name;
             let zIndex = this.state.order.indexOf(featureId);
             pinnedFeatures.push(
                 <PinnedFeaturePopup
@@ -69,7 +71,7 @@ class PinnedFeaturePopupContainer extends React.Component {
                     layerName={layerName}
                     layerGroupName={layerGroupName}
                     featureId={featureId}
-                    closePopup={() => {this.closePopup(featureId)}}
+                    closePopup={() => {this.constructor.closePopup(featureId)}}
                     key={featureId}
                     onClick={() => {this.bringToFront(featureId)}}
                     zIndex={zIndex}

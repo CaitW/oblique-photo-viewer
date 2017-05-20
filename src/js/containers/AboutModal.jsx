@@ -5,20 +5,18 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import store from '../store.js';
-import { closeAboutModal } from '../ducks/aboutModal.js';
+
+import store from '../store';
+import { closeAboutModal } from '../ducks/aboutModal';
 import CONFIG from '../config.json';
 
-const mapStateToProps = function(store) {
+const mapStateToProps = (state) => {
     return {
-        visible: store.aboutModal.visible
+        visible: state.aboutModal.visible
     };
 }
 class AboutModal extends React.Component {
-    constructor() {
-        super();
-    }
-    onCloseClick() {
+    static onCloseClick() {
         store.dispatch(closeAboutModal());
     }
     render() {
@@ -35,7 +33,7 @@ class AboutModal extends React.Component {
                           {CONFIG.meta.aboutText}
                       </Modal.Body>
                       <Modal.Footer>
-                            <Button onClick={this.onCloseClick}>Close</Button>
+                            <Button onClick={this.constructor.onCloseClick}>Close</Button>
                       </Modal.Footer>
                 </Modal.Dialog>
             </div>);

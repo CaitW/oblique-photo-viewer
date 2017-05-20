@@ -9,22 +9,39 @@ module.exports = {
         }
     },
     rules: {
-        'indent': ['error', 4, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
+        'indent': ['error', 4, {
+            SwitchCase: 1,
+            VariableDeclarator: 1,
+            outerIIFEBody: 1,
+            FunctionDeclaration: {
+                parameters: 1,
+                body: 1
+            },
+            FunctionExpression: {
+                parameters: 1,
+                body: 1
+            }
+        }],
+        'arrow-parens': ['error', 'as-needed'],
+        'guard-for-in': 0,
         'no-console': ['error', {allow: ['error']}],
-        'object-curly-spacing': ["error", "always"],
-        'no-trailing-spaces': 2,
-        // TODO:
+        // TODO
         'react/prop-types': 0,
-        'import/newline-after-import': 2,
-        'eqeqeq': 2,
-        'no-eq-null': 2,
-        'no-multi-spaces': 2
+        // TODO: for in loops, for of loops
+        'no-restricted-syntax': ['error', {
+            selector: 'LabeledStatement',
+            message: 'Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.',
+        }, {
+            selector: 'WithStatement',
+            message: '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
+        }],
+        'max-len': ['error', 120]
     },
     env: {
         "browser": true
     },
-    plugins: ["react","import"],
-    extends: ["airbnb","plugin:import/recommended"],
+    plugins: ["react", "import"],
+    extends: ["airbnb"],
     globals: {
         "L": false
     }

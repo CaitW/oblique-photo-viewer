@@ -6,21 +6,28 @@
  * and Leaflet passes the layer's data to that function on load. It is used here to
  * apply click handling functions to each feature in each layer.
  */
-import store from '../store.js';
 import React from 'react';
-import { mobileClickFeature } from '../ducks/mobile.js';
 import { render, unmountComponentAtNode } from 'react-dom';
-import FeaturePopup from '../components/FeaturePopups/FeaturePopup.jsx';
 
-// Function that takes layer information and creates a popup.
-// The popup's content is handled by React (<FeaturePopup />), however Leaflet is not controlled by React.
-// Therefore, the popup's content must mount/unmount the React component manually whenever it is opened/closed.
+import store from '../store';
+import { mobileClickFeature } from '../ducks/mobile';
+import FeaturePopup from '../components/FeaturePopups/FeaturePopup';
+
+/**
+ * Function that takes layer information and creates a popup.
+ * The popup's content is handled by React (<FeaturePopup />),
+ * however, Leaflet is not controlled by React.
+ * Therefore, the popup's content must mount/unmount the React component
+ * manually whenever it is opened/closed.
+ */
 function handleClick(feature, layer, layerId, map) {
     var popup = false;
     // on click, create and open popup
-    layer.on('mouseup', function() {
-        // if the screen is small, open the popup as a full modal
-        // if the screen is large, open the popup as a leaflet-based in-map popup
+    layer.on('mouseup', function mouseUp () {
+        /**
+         * if the screen is small, open the popup as a full modal
+         * if the screen is large, open the popup as a leaflet-based in-map popup
+         */
         if (store.getState().mobile.window.width < 992) {
             store.dispatch(mobileClickFeature(feature.properties, layerId));
         } else if (popup === false) {
@@ -33,7 +40,7 @@ function handleClick(feature, layer, layerId, map) {
                 closeButton: false
             });
             let container = document.createElement("div");
-            let getPopupPosition = function () {
+            let getPopupPosition = () => {
                 let popupPosition = popup.getLatLng();
                 let positionInMap = map.latLngToContainerPoint(popupPosition);
                 let mapElement = document.getElementById("map");
@@ -44,15 +51,18 @@ function handleClick(feature, layer, layerId, map) {
                 }
                 return positionInDocument;
             }
-            let closePopup = function () {
-                // setTimeout hack to get around this current issue with React:
-                // https://github.com/facebook/react/issues/3298
+            let closePopup = () => {
+                /**
+                 * setTimeout hack to get around this current issue with React:
+                 * https://github.com/facebook/react/issues/3298
+                 */
                 setTimeout(function () {
                     unmountComponentAtNode(container);
+                    // eslint-disable-next-line no-underscore-dangle
                     popup._close();
                 },10);
             };
-            popup.on("add", function () {
+            popup.on("add", function addPopup () {
                 render(
                     <FeaturePopup
                         layerId={layerId}
@@ -70,7 +80,7 @@ function handleClick(feature, layer, layerId, map) {
     });
 }
 export default function ON_EACH_FEATURE (layerId, map) {
-    return function (feature, layer) {
+    return (feature, layer) => {
         handleClick(feature, layer, layerId, map);
     }
 }

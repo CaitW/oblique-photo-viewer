@@ -1,10 +1,12 @@
 /**
  * LayerGroup.jsx
- * This creates the group container that holds each non-basemap layer list item, in the sidebar and mobile layer list
+ * This creates the group container that holds each non-basemap layer list item,
+ * in the sidebar and mobile layer list
  */
 import React from 'react';
-import Layer from './Layer.jsx';
 import { ListGroup } from 'react-bootstrap';
+
+import Layer from './Layer';
 
 const LayerGroup = (props) => {
     let layers = [];
@@ -32,7 +34,14 @@ const LayerGroup = (props) => {
     let boundOnLayerClick = props.onPanelClick.bind(null, props.layerGroupId);
     return (
         <div className="panel panel-default">
-            <div className={headerClassNames.join(" ")} onClick={boundOnLayerClick}>{props.layerGroupName}<i className={iconClassNames.join(" ")}></i></div>
+            <div className={headerClassNames.join(" ")}
+                onClick={boundOnLayerClick}
+                role="button"
+                tabIndex={0}
+                >
+                {props.layerGroupName}
+                <i className={iconClassNames.join(" ")}></i>
+            </div>
             <div className={bodyClassNames.join(" ")}>
                 <ListGroup>
                     {layers}

@@ -5,11 +5,12 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
-import { getActiveLayerStyleTypes } from '../selectors.js';
 
-const mapStateToProps = function(store) {
+import { getActiveLayerStyleTypes } from '../selectors';
+
+const mapStateToProps = (state) => {
     return {
-        activeLayerStyleTypes: getActiveLayerStyleTypes(store)
+        activeLayerStyleTypes: getActiveLayerStyleTypes(state)
     };
 }
 class Legend extends React.Component {
@@ -32,7 +33,12 @@ class Legend extends React.Component {
         for (let layerKey in activeLayerStyleTypes) {
             let styles = [];
             for(let style of activeLayerStyleTypes[layerKey]) {
-                styles.push(<li key={style.styleName}><i style={style.iconStyle} className={style.styleIconClassNames.join(" ")}></i>{style.styleName}</li>);
+                styles.push(
+                    <li key={style.styleName}>
+                        <i style={style.iconStyle} className={style.styleIconClassNames.join(" ")}></i>
+                        {style.styleName}
+                    </li>
+                );
             }
             layers.push(
                 <div key={layerKey}>
@@ -58,7 +64,14 @@ class Legend extends React.Component {
         }
         return (
             <div className="wiscviewer-legend panel panel-default">
-                <div className={headerClassNames.join(" ")} onClick={this.onPanelClick}>Legend<i className={iconClassNames.join(" ")}></i></div>
+                <div className={headerClassNames.join(" ")}
+                    onClick={this.onPanelClick}
+                    role="button"
+                    tabIndex={0}
+                    >
+                    Legend
+                    <i className={iconClassNames.join(" ")}></i>
+                </div>
                 <div className={bodyClassNames.join(" ")}>
                     {this.renderLayerStyleTypes()}
                 </div>

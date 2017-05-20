@@ -1,26 +1,25 @@
 /**
  * MapContainer.jsx
- * This component contains the primary map container (LeafletMap), as well as additional modals that appear over the map.
+ * This component contains the primary map container (LeafletMap),
+ * as well as additional modals that appear over the map.
  */
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import LeafletMap from './LeafletMap.jsx';
-import MobileFeaturePopup from '../components/FeaturePopups/MobileFeaturePopup.jsx';
 import { connect } from 'react-redux';
-import store from '../store.js';
-import { closeMobileFeatureModal } from '../ducks/mobile.js';
-import { getMobileFeaturePopupProps } from '../selectors.js';
 
-const mapStateToProps = function(store) {
+import store from '../store';
+import LeafletMap from './LeafletMap';
+import MobileFeaturePopup from '../components/FeaturePopups/MobileFeaturePopup';
+import { closeMobileFeatureModal } from '../ducks/mobile';
+import { getMobileFeaturePopupProps } from '../selectors';
+
+const mapStateToProps = (state) => {
     return {
-        mobileFeatureModal: getMobileFeaturePopupProps(store)
+        mobileFeatureModal: getMobileFeaturePopupProps(state)
     }
 }
 class MapContainer extends React.Component {
-    constructor() {
-        super();
-    }
-    closeMobileFeatureModal () {
+    static closeMobileFeatureModal () {
         store.dispatch(closeMobileFeatureModal());
     }
     render() {
@@ -32,7 +31,7 @@ class MapContainer extends React.Component {
                     layerId={this.props.mobileFeatureModal.layerId}
                     layerName={this.props.mobileFeatureModal.layerName}
                     layerGroupName={this.props.mobileFeatureModal.layerGroupName}
-                    onCloseClick={this.closeMobileFeatureModal}
+                    onCloseClick={this.constructor.closeMobileFeatureModal}
                     title={this.props.mobileFeatureModal.title}
                 />
                 <LeafletMap />

@@ -4,8 +4,8 @@
  * Additionally, this file caches the styles applied by each layer, so that when
  * the user activates them in the map, the legend can display all the associated styles.
  */
-import store from '../store.js';
-import { legendStyleUpdate } from '../ducks/layers.js';
+import store from '../store';
+import { legendStyleUpdate } from '../ducks/layers';
 
 let COLORS = {
     RED: "#F44336",
@@ -296,13 +296,14 @@ var LAYER_STYLES_BY_ID = {
 /**
  * Returns a style function that references the above styles
  * - Take the layer ID passed from ObliquePhotoMap.js. Retrieve either the layer's specific style
- *     (specified in LAYER_STYLES_BY_ID), or the default style for that geometry type (DEFAULT_STYLES)
+ *     (specified in LAYER_STYLES_BY_ID), or the default style for that geometry type,
+ *     (DEFAULT_STYLES)
  * - Assign each returned style a className property
  * - Get "legendDisplayProperty" and pass it to legend style caching function
  *     - layerId by default, or as specified in style
  */
 export default function LAYER_STYLE (layerId) {
-    return function (feature) {
+    return function layerStyle (feature) {
         let style = null;
         if (typeof LAYER_STYLES_BY_ID[layerId] !== "undefined") {
             style = LAYER_STYLES_BY_ID[layerId](feature);

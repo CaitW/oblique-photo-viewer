@@ -4,13 +4,13 @@
  * Contains the actions and reducer part that controls basemaps in the map.
  * - Controls adding and removing basemaps
  */
-import CONFIG from '../config.json';
+import { BASEMAPS_BY_ID } from '../util'
 
 const initialBasemaps = {};
 
-for(let basemapId in CONFIG.map.basemaps) {
+for(let basemapId in BASEMAPS_BY_ID) {
     initialBasemaps[basemapId] = {
-        active: CONFIG.map.basemaps[basemapId].active
+        active: BASEMAPS_BY_ID[basemapId].defaultActive
     }
 }
 

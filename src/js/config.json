@@ -15,17 +15,17 @@
             "light": {
                 "name": "Light",
                 "url": "https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
-                "active": true
+                "defaultActive": true
             },
             "streets": {
                 "name": "Streets",
                 "url": "https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
-                "active": false
+                "defaultActive": false
             },
             "satellite": {
                 "name": "Satellite",
                 "url": "https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
-                "active": false
+                "defaultActive": false
             }
         },
         "layers": {
@@ -36,7 +36,7 @@
                         "name": "Bluff Condition",
                         "type": "geojson",
                         "dataLocation": "./data/layers/backshore_1976.json",
-                        "active": false,
+                        "defaultActive": false,
                         "tableProperties": {
                             "OBJECTID": false,
                             "Backshore Type": true,
@@ -56,7 +56,7 @@
                         "name": "Beach Protection",
                         "type": "geojson",
                         "dataLocation": "./data/layers/beachclass_1976.json",
-                        "active": false,
+                        "defaultActive": false,
                         "tableProperties": {
                             "OBJECTID": false,
                             "Shore Type": true,
@@ -72,7 +72,7 @@
                         "name": "Shore Structures",
                         "type": "geojson",
                         "dataLocation": "./data/layers/structure_1976.json",
-                        "active": false,
+                        "defaultActive": false,
                         "tableProperties": {
                             "OBJECTID": false,
                             "Notes": true,
@@ -85,7 +85,7 @@
                         "name": "Photos",
                         "type": "geojson",
                         "dataLocation": "./data/layers/photos_1976.json",
-                        "active": false,
+                        "defaultActive": false,
                         "tableProperties": {
                             "OBJECTID": false,
                             "Original File Name": true,
@@ -111,7 +111,7 @@
                         "name": "Bluff Condition",
                         "type": "geojson",
                         "dataLocation": "./data/layers/backshore_2007.json",
-                        "active": false,
+                        "defaultActive": false,
                         "tableProperties": {
                             "OBJECTID": false,
                             "Backshore Type": true,
@@ -131,7 +131,7 @@
                         "name": "Beach Protection",
                         "type": "geojson",
                         "dataLocation": "./data/layers/beachclass_2007.json",
-                        "active": false,
+                        "defaultActive": false,
                         "tableProperties": {
                             "OBJECTID": false,
                             "Shore Type": true,
@@ -147,7 +147,7 @@
                         "name": "Shore Structures",
                         "type": "geojson",
                         "dataLocation": "./data/layers/structure_2007.json",
-                        "active": false,
+                        "defaultActive": false,
                         "tableProperties": {
                             "OBJECTID": false,
                             "Notes": true,
@@ -160,7 +160,7 @@
                         "name": "Photos",
                         "type": "geojson",
                         "dataLocation": "./data/layers/photos_2007.json",
-                        "active": false,
+                        "defaultActive": false,
                         "tableProperties": {
                             "OBJECTID": false,
                             "Original File Name": true,
@@ -186,7 +186,7 @@
                         "name": "Oblique",
                         "type": "geojson",
                         "dataLocation": "./data/layers/photos_obl_2016.json",
-                        "active": true,
+                        "defaultActive": true,
                         "tableProperties": {
                             "name": "Name",
                             "filename": false,
@@ -197,7 +197,7 @@
                         "name": "DM",
                         "type": "geojson",
                         "dataLocation": "./data/layers/photos_dm_2016.json",
-                        "active": false,
+                        "defaultActive": false,
                         "tableProperties": {
                             "name": "Name",
                             "filename": false,
@@ -214,7 +214,7 @@
                         "name": "Profile Lines",
                         "type": "geojson",
                         "dataLocation": "./data/layers/profiles.json",
-                        "active": false,
+                        "defaultActive": false,
                         "tableProperties": {
                             "ID": false,
                             "ProfileNo": "Profile Number",
@@ -236,7 +236,7 @@
                         "name": "County Boundaries",
                         "type": "tileLayer",
                         "url": "https://api.mapbox.com/styles/v1/asfpm/ciyudtx3u00262sll3x184fnb/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
-                        "active": true,
+                        "defaultActive": true,
                         "legendStyles": {
                             "County Boundaries": {
                                 "geometryType": "LineString",

@@ -8,24 +8,38 @@ for (let basemapId in CONFIG.map.basemaps) {
     BASEMAPS_BY_ID[basemapId] = {
         ...CONFIG.map.basemaps[basemapId]
     }
-    delete BASEMAPS_BY_ID.active;
+    BASEMAPS_BY_ID[basemapId].name = BASEMAPS_BY_ID[basemapId].name || basemapId;
 }
 
+// Set up layer groups, default values
 for (let layerGroupId in CONFIG.map.layers) {
+    let layerGroupProperties = CONFIG.map.layers[layerGroupId];
+    // reassign some values
+    let name = layerGroupProperties.name || layerGroupId;
+    let layers = [];
+    LAYER_GROUPS_BY_ID[layerGroupId] = {
+        ...layerGroupProperties,
+        name,
+        layers
+    };
+}
+
+// set up layers, default values
+for (let layerGroupId in LAYER_GROUPS_BY_ID) {
     let layerGroupLayers = CONFIG.map.layers[layerGroupId].layers;
     for (let layerId in layerGroupLayers) {
         let layer = layerGroupLayers[layerId];
-        layer.layerGroupId = layerGroupId;
-        layer.id = layerId;
-        delete layer.active;
-        LAYERS_BY_ID[layerId] = layer;
-        let layerGroupProperties = CONFIG.map.layers[layerGroupId];
-        if (typeof LAYER_GROUPS_BY_ID[layerGroupId] === "undefined") {
-            LAYER_GROUPS_BY_ID[layerGroupId] = {
-                ...layerGroupProperties
-            };
-            LAYER_GROUPS_BY_ID[layerGroupId].layers = [];
-        }
+        // reassign some values
+        let name = layer.name || layerId;
+        let id = layerId;
+        // assign new layer
+        LAYERS_BY_ID[layerId] = {
+            ...layer,
+            id,
+            name,
+            layerGroupId
+        };
+        // add layer ID to layer groups
         LAYER_GROUPS_BY_ID[layerGroupId].layers.push(layerId);
     }
 }

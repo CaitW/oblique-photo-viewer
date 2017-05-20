@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
-import { LAYERS_BY_ID, LAYER_GROUPS_BY_ID, BASEMAPS_BY_ID } from './util.js';
+import { LAYERS_BY_ID, LAYER_GROUPS_BY_ID, BASEMAPS_BY_ID } from './util';
 
-const getLayersById = (state) => state.layers.layersById;
-const getBasemapsById = (state) => state.basemaps;
-const getLayerGroupsById = (state) => state.layers.layerGroupsById;
-const getMobileFeatureModal = (state) => state.mobile.featureModal;
+const getLayersById = state => state.layers.layersById;
+const getBasemapsById = state => state.basemaps;
+const getLayerGroupsById = state => state.layers.layerGroupsById;
+const getMobileFeatureModal = state => state.mobile.featureModal;
 
 export const getBasemapsByIdWithData = createSelector([getBasemapsById], basemaps => {
     let basemapsWithData = {};
@@ -38,19 +38,22 @@ export const getLayerGroupsByIdWithData = createSelector([getLayerGroupsById], l
     return layersGroupsWithData;
 });
 
-export const mapLayerGroupsToLayers = createSelector([getLayerGroupsByIdWithData, getLayersByIdWithData], (layerGroups, layers) => {
-    let mappedLayerGroups = {};
-    for (let layerGroupId in layerGroups) {
-        mappedLayerGroups[layerGroupId] = {
-            ...layerGroups[layerGroupId],
-            layers: {}
-        };
-        for (let layerId of layerGroups[layerGroupId].layers) {
-            mappedLayerGroups[layerGroupId].layers[layerId] = layers[layerId];
+export const mapLayerGroupsToLayers = createSelector(
+    [getLayerGroupsByIdWithData, getLayersByIdWithData],
+    (layerGroups, layers) => {
+        let mappedLayerGroups = {};
+        for (let layerGroupId in layerGroups) {
+            mappedLayerGroups[layerGroupId] = {
+                ...layerGroups[layerGroupId],
+                layers: {}
+            };
+            for (let layerId of layerGroups[layerGroupId].layers) {
+                mappedLayerGroups[layerGroupId].layers[layerId] = layers[layerId];
+            }
         }
+        return mappedLayerGroups;
     }
-    return mappedLayerGroups;
-});
+);
 
 export const getActiveLayers = createSelector(getLayersById, layers => {
     let activeLayers = [];
@@ -62,65 +65,77 @@ export const getActiveLayers = createSelector(getLayersById, layers => {
     return activeLayers;
 });
 
-export const getActiveLayerStyleTypes = createSelector([getLayersByIdWithData, getLayerGroupsByIdWithData, getActiveLayers], (layers, layerGroups, activeLayers) => {
-    let stylesByLayerId = {};
-    for (let layerId of activeLayers) {
-        let layer = layers[layerId];
-        let layerName = layer.name;
-        let layerGroupId = layer.layerGroupId;
-        let layerGroupName = layerGroups[layerGroupId].name;
-        let legendStyles = layer.legendStyles;
-        let styles = [];
-        for (let styleName in legendStyles) {
-            let styleIconClassNames = ["fa"];
-            let iconStyle = {
-                color: "#000000"
-            };
-            if (legendStyles[styleName].geometryType === "LineString" || legendStyles[styleName].geometryType === "MultiLineString") {
-                styleIconClassNames.push("fa-minus");
-                iconStyle.color = legendStyles[styleName].style.color;
-            } else if (legendStyles[styleName].geometryType === "Point") {
-                styleIconClassNames.push("fa-circle");
-                iconStyle.color = legendStyles[styleName].style.strokeColor;
+export const getActiveLayerStyleTypes = createSelector(
+    [getLayersByIdWithData, getLayerGroupsByIdWithData, getActiveLayers],
+    (layers, layerGroups, activeLayers) => {
+        let stylesByLayerId = {};
+        for (let layerId of activeLayers) {
+            let layer = layers[layerId];
+            let layerName = layer.name || "";
+            let layerGroupId = layer.layerGroupId;
+            let layerGroupName = "";
+            if (typeof layerGroups[layerGroupId] !== "undefined") {
+                layerGroupName = layerGroups[layerGroupId].name
             }
-            if (styleName === "null") {
-                styleName = "(No Value)";
+            let legendStyles = layer.legendStyles;
+            let styles = [];
+            for (let styleName in legendStyles) {
+                let styleIconClassNames = ["fa"];
+                let iconStyle = {
+                    color: "#000000"
+                };
+                if (
+                    legendStyles[styleName].geometryType === "LineString"
+                    || legendStyles[styleName].geometryType === "MultiLineString"
+                ) {
+                    styleIconClassNames.push("fa-minus");
+                    iconStyle.color = legendStyles[styleName].style.color;
+                } else if (legendStyles[styleName].geometryType === "Point") {
+                    styleIconClassNames.push("fa-circle");
+                    iconStyle.color = legendStyles[styleName].style.strokeColor;
+                }
+                if (styleName === "null") {
+                    styleName = "(No Value)";
+                }
+                styles.push({
+                    styleName,
+                    iconStyle,
+                    styleIconClassNames
+                });
             }
-            styles.push({
-                styleName,
-                iconStyle,
-                styleIconClassNames
+            styles = styles.sort(function(a, b) {
+                if (a.styleName < b.styleName) {
+                    return -1;
+                }
+                if (a.styleName > b.styleName) {
+                    return 1;
+                }
+                return 0;
             });
+            stylesByLayerId[layerGroupName + " - " + layerName] = styles;
         }
-        styles = styles.sort(function(a, b) {
-            if (a.styleName < b.styleName) {
-                return -1;
-            }
-            if (a.styleName > b.styleName) {
-                return 1;
-            }
-            return 0;
-        });
-        stylesByLayerId[layerGroupName + " - " + layerName] = styles;
+        return stylesByLayerId;
     }
-    return stylesByLayerId;
-});
+);
 
-export const getMobileFeaturePopupProps = createSelector([getLayersByIdWithData, getLayerGroupsByIdWithData, getMobileFeatureModal], (layers, layerGroups, featureModal) => {
-    if (typeof featureModal.layerId !== "undefined" && featureModal.layerId !== false) {
-        let layerId = featureModal.layerId;
-        let layerName = layers[layerId].name;
-        let layerGroupId = layers[layerId].layerGroupId;
-        let layerGroupName = layerGroups[layerGroupId].name;
+export const getMobileFeaturePopupProps = createSelector(
+    [getLayersByIdWithData, getLayerGroupsByIdWithData, getMobileFeatureModal],
+    (layers, layerGroups, featureModal) => {
+        if (typeof featureModal.layerId !== "undefined" && featureModal.layerId !== false) {
+            let layerId = featureModal.layerId;
+            let layerName = layers[layerId].name;
+            let layerGroupId = layers[layerId].layerGroupId;
+            let layerGroupName = layerGroups[layerGroupId].name;
+            return {
+                ...featureModal,
+                layerName,
+                layerGroupName
+            }
+        }
         return {
             ...featureModal,
-            layerName,
-            layerGroupName
-        }
+            layerName: "",
+            layerGroupName: ""
+        };
     }
-    return {
-        ...featureModal,
-        layerName: "",
-        layerGroupName: ""
-    };
-});
+);

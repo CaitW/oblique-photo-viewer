@@ -1,10 +1,12 @@
 /**
  * BasemapList.jsx
- * This creates the group container that holds each Basemap list item, in the sidebar and mobile layer list
+ * This creates the group container that holds each Basemap list item,
+ * in the sidebar and mobile layer list
  */
 import React from 'react';
 import { ListGroup } from 'react-bootstrap';
-import Basemap from './Basemap.jsx';
+
+import Basemap from './Basemap';
 
 const BasemapList = (props) => {
     let basemaps = [];
@@ -30,8 +32,11 @@ const BasemapList = (props) => {
     }
     return (
         <div className="panel panel-default">
-          <div className={ headerClassNames.join(" ") } onClick={ props.onPanelClick.bind(null, "Basemaps") }>
-            Basemaps<i className={ iconClassNames.join(" ") }></i>
+          <div className={ headerClassNames.join(" ") }
+            role="button"
+            tabIndex={0}
+            onClick={ props.onPanelClick.bind(null, "Basemaps") }>
+            Basemaps <i className={ iconClassNames.join(" ") }></i>
           </div>
           <div className={ bodyClassNames.join(" ") }>
             <ListGroup>

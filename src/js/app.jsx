@@ -3,34 +3,31 @@
   */
 import React from 'react';
 import { render } from 'react-dom';
-// containers
-import NavBar from './containers/NavBar.jsx';
-import SideBar from './components/SideBar.jsx';
-import MapContainer from './containers/MapContainer.jsx';
-import MobileLayerList from './containers/MobileLayerList.jsx';
-import AboutModal from './containers/AboutModal.jsx';
-import PinnedFeaturePopupContainer from './containers/PinnedFeaturePopupContainer.jsx';
-import LayerList from './containers/LayerList.jsx';
-import Legend from './containers/Legend.jsx';
 // layout components
 import { Grid, Row } from 'react-bootstrap';
 import { Provider } from 'react-redux';
+// containers
+import NavBar from './containers/NavBar';
+import SideBar from './components/SideBar';
+import MapContainer from './containers/MapContainer';
+import MobileLayerList from './containers/MobileLayerList';
+import AboutModal from './containers/AboutModal';
+import PinnedFeaturePopupContainer from './containers/PinnedFeaturePopupContainer';
+import LayerList from './containers/LayerList';
+import Legend from './containers/Legend';
 // Redux
-import store from './store.js';
-import { updateWindowDimensions } from './ducks/mobile.js';
+import store from './store';
+import { updateWindowDimensions } from './ducks/mobile';
 
 class App extends React.Component {
-    constructor() {
-        super();
-    }
-    updateDimensions () {
+    static updateDimensions () {
         let height = window.innerHeight;
         let width = window.innerWidth;
         store.dispatch(updateWindowDimensions(height, width));
     }
     componentDidMount () {
-        this.updateDimensions();
-        window.addEventListener("resize", this.updateDimensions);
+        this.constructor.updateDimensions();
+        window.addEventListener("resize", this.constructor.updateDimensions);
     }
     render() {
         return (

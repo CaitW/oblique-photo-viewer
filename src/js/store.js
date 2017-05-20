@@ -1,10 +1,10 @@
 import { createStore, combineReducers } from 'redux';
-import layers from './ducks/layers.js';
-import basemaps from './ducks/basemaps.js';
-import map from './ducks/map.js';
-import mobile from './ducks/mobile.js';
-import aboutModal from './ducks/aboutModal.js';
-import pinnedFeatures from './ducks/pinnedFeatures.js';
+import layers from './ducks/layers';
+import basemaps from './ducks/basemaps';
+import map from './ducks/map';
+import mobile from './ducks/mobile';
+import aboutModal from './ducks/aboutModal';
+import pinnedFeatures from './ducks/pinnedFeatures';
 
 const theReducer = combineReducers({
     layers,
@@ -14,5 +14,9 @@ const theReducer = combineReducers({
     aboutModal,
     pinnedFeatures
 });
-const store = createStore(theReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(
+    theReducer,
+    // eslint-disable-next-line no-underscore-dangle
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 export default store;

@@ -4,12 +4,18 @@
  */
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import PopupTabs from './components/PopupTabs.jsx';
-import PopupTitle from './components/PopupTitle.jsx';
-import PopupFooter from './components/PopupFooter.jsx';
+
+import PopupTabs from './components/PopupTabs';
+import PopupTitle from './components/PopupTitle';
+import PopupFooter from './components/PopupFooter';
 
 const MobileFeaturePopup = (props) => {
-    let classNames = ["wiscviewer-modal", "wiscviewer-mobile-modal", "wiscviewer-mobile-feature-popup", "static-modal"];
+    let classNames = [
+      "wiscviewer-modal",
+      "wiscviewer-mobile-modal",
+      "wiscviewer-mobile-feature-popup",
+      "static-modal"
+    ];
     if (props.visible === false) {
         classNames.push("hidden");
     }
