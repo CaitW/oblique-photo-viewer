@@ -7,8 +7,8 @@ import { ListGroupItem } from 'react-bootstrap';
 
 const Layer = (props) => (
     <ListGroupItem
-        href="#" 
-        active={props.active} 
+        href="#"
+        active={props.active}
         onClick={props.onLayerClick.bind(null, props.layerID)}>
         {props.layerName}
     </ListGroupItem>
