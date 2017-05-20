@@ -55527,8 +55527,18 @@
 
 	        var groups = {};
 	        groups["Basemaps"] = false;
+	        var hasOpenedLayerGroup = false;
 	        for (var layerGroupId in _this.props.layers) {
 	            groups[layerGroupId] = false;
+	            // open the first layer group that has an active layer
+	            for (var layerId in _this.props.layers[layerGroupId].layers) {
+	                var layerIsActive = _this.props.layers[layerGroupId].layers[layerId].active === true;
+	                var firstLayerGroupToHaveActiveLayer = hasOpenedLayerGroup === false;
+	                if (layerIsActive && firstLayerGroupToHaveActiveLayer) {
+	                    groups[layerGroupId] = true;
+	                    hasOpenedLayerGroup = true;
+	                }
+	            }
 	        }
 	        _this.state = groups;
 	        _this.onPanelClick = _this.onPanelClick.bind(_this);
