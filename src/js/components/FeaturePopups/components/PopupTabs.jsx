@@ -115,7 +115,7 @@ export default class PopupTabs extends React.Component {
                         <Tab key="bathy_graph" eventKey={eventKeyIndex} title="Bathy Profile">
                             <img src={filePath} onLoad={this.update}/>
                             <div className="profile-image-button-row">
-                                <a href="" key="open-larger-bathy-graph-button" target="_blank" rel="noopener noreferrer" >
+                                <a href={filePath} key="open-larger-bathy-graph-button" target="_blank" rel="noopener noreferrer" >
                                     <Button className="open-larger-graph-button">
                                         <i className="fa fa-image"></i> Open in New Window
                                     </Button>

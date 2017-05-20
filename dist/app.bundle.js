@@ -53210,7 +53210,7 @@
 	                                    { className: 'profile-image-button-row' },
 	                                    _react2.default.createElement(
 	                                        'a',
-	                                        { href: '', key: 'open-larger-bathy-graph-button', target: '_blank', rel: 'noopener noreferrer' },
+	                                        { href: _filePath, key: 'open-larger-bathy-graph-button', target: '_blank', rel: 'noopener noreferrer' },
 	                                        _react2.default.createElement(
 	                                            _reactBootstrap.Button,
 	                                            { className: 'open-larger-graph-button' },
