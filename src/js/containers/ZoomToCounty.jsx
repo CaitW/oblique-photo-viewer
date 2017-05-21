@@ -19,7 +19,7 @@ export default class ZoomToCounty extends React.Component {
         var counties = [];
         for(let countyName in CONFIG.map.county_shorelines) {
             counties.push(
-                <MenuItem className="shoreline"
+                <MenuItem className="wiscviewer-dropdown-item"
                     key={countyName}
                     onClick={self.constructor.onMenuItemClick.bind(null, countyName)}>
                         {countyName.replace(/_/g, " - ")}
@@ -27,7 +27,7 @@ export default class ZoomToCounty extends React.Component {
             );
         }
         return (
-            <NavDropdown title="Zoom To Shoreline" id="zoom-to-county">
+            <NavDropdown title="Zoom To Shoreline" id="zoom-to-county" className="wiscviewer-nav-dropdown">
                 {counties}
             </NavDropdown>
         )

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Tabs, Tab, Button } from 'react-bootstrap';
+import uuid from 'uuid';
 
 import { getPhotoURLs, LAYERS_BY_ID } from '../../../util';
 import CONFIG from '../../../config.json';
@@ -55,7 +56,7 @@ export default class PopupTabs extends React.Component {
             }
         }
         return (
-            <Table striped bordered condensed hover>
+            <Table striped bordered condensed hover className="wiscviewer-data-table">
                 <tbody>
                     {rows}
                 </tbody>
@@ -207,7 +208,7 @@ export default class PopupTabs extends React.Component {
             }
         }
         return (
-            <Tabs onSelect={this.update} id={"tabs" + this.props.featureProperties.OBJECTID}>
+            <Tabs onSelect={this.update} id={uuid.v4()}>
                 {tabs}
             </Tabs>
         )

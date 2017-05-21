@@ -30,7 +30,11 @@ const MobileFeaturePopup = (props) => {
                     />
                   </Modal.Header>
                   <Modal.Body>
-                    <PopupTabs layerId={props.layerId} featureProperties={props.featureProperties} />
+                    <PopupTabs
+                      className="wiscviewer-modal-tabs"
+                      layerId={props.layerId}
+                      featureProperties={props.featureProperties}
+                    />
                   </Modal.Body>
                   <Modal.Footer>
                     <PopupFooter layerId={props.layerId} featureProperties={props.featureProperties}>

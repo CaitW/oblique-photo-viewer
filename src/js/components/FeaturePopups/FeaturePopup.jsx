@@ -47,14 +47,14 @@ export default class FeaturePopup extends React.Component {
                 onClick={this.bringToFront}
                 role="button"
                 tabIndex={0}>
-                <div className="feature-popup-header">
-                    <div className="feature-popup-title">
+                <div className="wiscviewer-feature-popup-header">
+                    <div className="wiscviewer-feature-popup-title">
                         <PopupTitle featureProperties={this.props.featureProperties}
                             layerGroupName={layerGroupName}
                             layerName={layerName}
                         />
                     </div>
-                    <div className="feature-popup-controls">
+                    <div className="wiscviewer-feature-popup-controls">
                         <i className="fa fa-thumb-tack feature-popup-pin"
                             onClick={this.pin}
                             role="button"
@@ -67,13 +67,13 @@ export default class FeaturePopup extends React.Component {
                         </i>
                     </div>
                 </div>
-                <div className="feature-popup-body">
+                <div className="wiscviewer-feature-popup-body">
                     <PopupTabs layerId={this.props.layerId}
                         featureProperties={this.props.featureProperties}
                         update={this.update}
                     />
                 </div>
-                <div className="feature-popup-footer">
+                <div className="wiscviewer-feature-popup-footer">
                     <PopupFooter layerId={this.props.layerId}
                         featureProperties={this.props.featureProperties}>
                         <div key="clearfix" className="clearfix"></div>

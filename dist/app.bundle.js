@@ -50632,17 +50632,17 @@
 	        _react2.default.createElement(
 	          _reactBootstrap.Navbar.Header,
 	          null,
-	          _react2.default.createElement('img', { src: 'img/wisconsin.svg', alt: 'Wisconsin Logo', className: 'hidden-xs' }),
+	          _react2.default.createElement('img', { src: 'img/wisconsin.svg', alt: 'Wisconsin Logo', className: 'hidden-xs wiscviewer-logo' }),
 	          _react2.default.createElement(
 	            _reactBootstrap.Navbar.Brand,
-	            null,
+	            { className: 'wiscviewer-brand' },
 	            'Wisconsin Shoreline Inventory and Oblique Viewer'
 	          ),
 	          _react2.default.createElement(_reactBootstrap.Navbar.Toggle, null)
 	        ),
 	        _react2.default.createElement(
 	          _reactBootstrap.Navbar.Collapse,
-	          null,
+	          { className: 'wiscviewer-nav-tools' },
 	          _react2.default.createElement(
 	            _reactBootstrap.Nav,
 	            { pullRight: true },
@@ -52041,7 +52041,7 @@
 	            for (var countyName in _config2.default.map.county_shorelines) {
 	                counties.push(_react2.default.createElement(
 	                    _reactBootstrap.MenuItem,
-	                    { className: 'shoreline',
+	                    { className: 'wiscviewer-dropdown-item',
 	                        key: countyName,
 	                        onClick: self.constructor.onMenuItemClick.bind(null, countyName) },
 	                    countyName.replace(/_/g, " - ")
@@ -52049,7 +52049,7 @@
 	            }
 	            return _react2.default.createElement(
 	                _reactBootstrap.NavDropdown,
-	                { title: 'Zoom To Shoreline', id: 'zoom-to-county' },
+	                { title: 'Zoom To Shoreline', id: 'zoom-to-county', className: 'wiscviewer-nav-dropdown' },
 	                counties
 	            );
 	        }
@@ -54577,10 +54577,10 @@
 	                    tabIndex: 0 },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'feature-popup-header' },
+	                    { className: 'wiscviewer-feature-popup-header' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'feature-popup-title' },
+	                        { className: 'wiscviewer-feature-popup-title' },
 	                        _react2.default.createElement(_PopupTitle2.default, { featureProperties: this.props.featureProperties,
 	                            layerGroupName: layerGroupName,
 	                            layerName: layerName
@@ -54588,7 +54588,7 @@
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'feature-popup-controls' },
+	                        { className: 'wiscviewer-feature-popup-controls' },
 	                        _react2.default.createElement('i', { className: 'fa fa-thumb-tack feature-popup-pin',
 	                            onClick: this.pin,
 	                            role: 'button',
@@ -54601,7 +54601,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'feature-popup-body' },
+	                    { className: 'wiscviewer-feature-popup-body' },
 	                    _react2.default.createElement(_PopupTabs2.default, { layerId: this.props.layerId,
 	                        featureProperties: this.props.featureProperties,
 	                        update: this.update
@@ -54609,7 +54609,7 @@
 	                ),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'feature-popup-footer' },
+	                    { className: 'wiscviewer-feature-popup-footer' },
 	                    _react2.default.createElement(
 	                        _PopupFooter2.default,
 	                        { layerId: this.props.layerId,
@@ -54643,6 +54643,10 @@
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactBootstrap = __webpack_require__(475);
+
+	var _uuid = __webpack_require__(774);
+
+	var _uuid2 = _interopRequireDefault(_uuid);
 
 	var _util = __webpack_require__(767);
 
@@ -54733,7 +54737,7 @@
 	            }
 	            return _react2.default.createElement(
 	                _reactBootstrap.Table,
-	                { striped: true, bordered: true, condensed: true, hover: true },
+	                { striped: true, bordered: true, condensed: true, hover: true, className: 'wiscviewer-data-table' },
 	                _react2.default.createElement(
 	                    'tbody',
 	                    null,
@@ -54929,7 +54933,7 @@
 	            }
 	            return _react2.default.createElement(
 	                _reactBootstrap.Tabs,
-	                { onSelect: this.update, id: "tabs" + this.props.featureProperties.OBJECTID },
+	                { onSelect: this.update, id: _uuid2.default.v4() },
 	                tabs
 	            );
 	        }
@@ -55403,7 +55407,11 @@
 	      _react2.default.createElement(
 	        _reactBootstrap.Modal.Body,
 	        null,
-	        _react2.default.createElement(_PopupTabs2.default, { layerId: props.layerId, featureProperties: props.featureProperties })
+	        _react2.default.createElement(_PopupTabs2.default, {
+	          className: 'wiscviewer-modal-tabs',
+	          layerId: props.layerId,
+	          featureProperties: props.featureProperties
+	        })
 	      ),
 	      _react2.default.createElement(
 	        _reactBootstrap.Modal.Footer,
@@ -55719,8 +55727,8 @@
 	            onLayerClick: props.onLayerClick
 	        }));
 	    }
-	    var bodyClassNames = ["panel-body", "pullDown"];
-	    var headerClassNames = ["panel-heading"];
+	    var bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
+	    var headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
 	    var iconClassNames = ["fa", "wiscviewer-layer-group-left-icon"];
 	    if (props.panelVisible === false) {
 	        bodyClassNames.push("hidden");
@@ -55732,7 +55740,7 @@
 	    var boundOnLayerClick = props.onPanelClick.bind(null, props.layerGroupId);
 	    return _react2.default.createElement(
 	        'div',
-	        { className: 'panel panel-default' },
+	        { className: 'panel panel-default wiscviewer-sidebar-panel' },
 	        _react2.default.createElement(
 	            'div',
 	            { className: headerClassNames.join(" "),
@@ -55748,7 +55756,7 @@
 	            { className: bodyClassNames.join(" ") },
 	            _react2.default.createElement(
 	                _reactBootstrap.ListGroup,
-	                null,
+	                { className: 'wiscviewer-layer-list-group' },
 	                layers
 	            )
 	        )
@@ -55827,8 +55835,8 @@
 	            onBasemapClick: props.onBasemapClick
 	        }));
 	    }
-	    var bodyClassNames = ["panel-body", "pullDown"];
-	    var headerClassNames = ["panel-heading"];
+	    var bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
+	    var headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
 	    var iconClassNames = ["fa", "wiscviewer-layer-group-left-icon"];
 	    if (props.panelVisible === false) {
 	        bodyClassNames.push("hidden");
@@ -55839,7 +55847,7 @@
 	    }
 	    return _react2.default.createElement(
 	        'div',
-	        { className: 'panel panel-default' },
+	        { className: 'panel panel-default wiscviewer-sidebar-panel' },
 	        _react2.default.createElement(
 	            'div',
 	            { className: headerClassNames.join(" "),
@@ -56289,10 +56297,10 @@
 	                    },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'feature-popup-header handle' },
+	                        { className: 'wiscviewer-feature-popup-header handle' },
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'feature-popup-title' },
+	                            { className: 'wiscviewer-feature-popup-title' },
 	                            _react2.default.createElement(_PopupTitle2.default, { featureProperties: this.props.featureProperties,
 	                                layerGroupName: this.props.layerGroupName,
 	                                layerName: this.props.layerName
@@ -56300,7 +56308,7 @@
 	                        ),
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'feature-popup-controls' },
+	                            { className: 'wiscviewer-feature-popup-controls' },
 	                            _react2.default.createElement('i', { className: 'fa fa-times feature-popup-close-button',
 	                                onClick: this.props.closePopup,
 	                                role: 'button',
@@ -56309,13 +56317,13 @@
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'feature-popup-body' },
+	                        { className: 'wiscviewer-feature-popup-body' },
 	                        _react2.default.createElement(_PopupTabs2.default, { layerId: this.props.layerId,
 	                            featureProperties: this.props.featureProperties })
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'feature-popup-footer' },
+	                        { className: 'wiscviewer-feature-popup-footer' },
 	                        _react2.default.createElement(
 	                            _PopupFooter2.default,
 	                            { layerId: this.props.layerId,
@@ -58049,12 +58057,12 @@
 	                    { key: layerKey },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'layerName' },
+	                        { className: 'wiscviewer-legend-layer' },
 	                        layerKey
 	                    ),
 	                    _react2.default.createElement(
 	                        'ul',
-	                        { className: 'legend-list' },
+	                        { className: 'wiscviewer-legend-list' },
 	                        styles
 	                    )
 	                ));
@@ -58064,8 +58072,8 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var bodyClassNames = ["panel-body", "pullDown"];
-	            var headerClassNames = ["panel-heading"];
+	            var bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
+	            var headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
 	            var iconClassNames = ["fa", "pull-right"];
 	            if (this.state.panelVisible === false) {
 	                bodyClassNames.push("hidden");
@@ -58076,7 +58084,7 @@
 	            }
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'wiscviewer-legend panel panel-default' },
+	                { className: 'wiscviewer-legend panel panel-default wiscviewer-sidebar-panel' },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: headerClassNames.join(" "),

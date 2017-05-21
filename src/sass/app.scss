@@ -1,41 +1,53 @@
 // Libraries
+
 @import 'lib/bootstrap';
+
 @import 'lib/leaflet';
+
 @import 'lib/L.Control.MousePosition';
+
 @import 'lib/font-awesome/font-awesome';
 // Partials
+
 @import 'colors';
+
 @import 'modals';
+
 @import 'nav';
+
 @import 'sidebar';
+
 @import 'animations';
+
 @import 'map';
+
 @import 'popups';
+
 // CSS
 html {
   height: 100%;
 
   body {
     height: 100%;
-    font-family: "Roboto";
+    font-family: 'Roboto';
   }
 }
 
 #react-root {
   height: 100%;
+}
 
-  .wiscviewer-grid {
-    height: 100%;
+.wiscviewer-grid {
+  height: 100%;
+}
 
-    .wiscviewer-content-container {
-      height: 100%;
-      margin-top: -52px;
-      padding-top: 52px;
+.wiscviewer-content-container {
+  height: 100%;
+  margin-top: -52px;
+  padding-top: 52px;
+}
 
-      .wiscviewer-map-container {
-        height: 100%;
-        padding: 0;
-      }
-    }
-  }
+.wiscviewer-map-container {
+  height: 100%;
+  padding: 0;
 }

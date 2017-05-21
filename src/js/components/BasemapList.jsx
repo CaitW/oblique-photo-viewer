@@ -20,8 +20,8 @@ const BasemapList = (props) => {
             />
         );
     }
-    let bodyClassNames = ["panel-body", "pullDown"];
-    let headerClassNames = ["panel-heading"];
+    let bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
+    let headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
     let iconClassNames = ["fa", "wiscviewer-layer-group-left-icon"];
     if (props.panelVisible === false) {
         bodyClassNames.push("hidden");
@@ -31,7 +31,7 @@ const BasemapList = (props) => {
         iconClassNames.push("fa-folder-open");
     }
     return (
-        <div className="panel panel-default">
+        <div className="panel panel-default wiscviewer-sidebar-panel">
           <div className={ headerClassNames.join(" ") }
             role="button"
             tabIndex={0}
@@ -41,7 +41,7 @@ const BasemapList = (props) => {
               Basemaps
           </div>
           <div className={ bodyClassNames.join(" ") }>
-            <ListGroup>
+            <ListGroup className="wiscviewer-layer-list-group">
               { basemaps }
             </ListGroup>
           </div>

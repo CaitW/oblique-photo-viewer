@@ -42,8 +42,8 @@ class Legend extends React.Component {
             }
             layers.push(
                 <div key={layerKey}>
-                    <div className="layerName">{layerKey}</div>
-                    <ul className="legend-list">
+                    <div className="wiscviewer-legend-layer">{layerKey}</div>
+                    <ul className="wiscviewer-legend-list">
                         {styles}
                     </ul>
                 </div>
@@ -52,8 +52,8 @@ class Legend extends React.Component {
         return layers;
     }
     render() {
-        let bodyClassNames = ["panel-body", "pullDown"];
-        let headerClassNames = ["panel-heading"];
+        let bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
+        let headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
         let iconClassNames = ["fa", "pull-right"];
         if (this.state.panelVisible === false) {
             bodyClassNames.push("hidden");
@@ -63,7 +63,7 @@ class Legend extends React.Component {
             iconClassNames.push("fa-chevron-up");
         }
         return (
-            <div className="wiscviewer-legend panel panel-default">
+            <div className="wiscviewer-legend panel panel-default wiscviewer-sidebar-panel">
                 <div className={headerClassNames.join(" ")}
                     onClick={this.onPanelClick}
                     role="button"

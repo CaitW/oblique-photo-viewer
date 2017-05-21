@@ -26,13 +26,13 @@ export default class NavBar extends React.Component {
         return (
             <Navbar collapseOnSelect fluid className="wiscviewer-nav">
               <Navbar.Header>
-                <img src="img/wisconsin.svg" alt="Wisconsin Logo" className="hidden-xs" />
-                <Navbar.Brand>
+                <img src="img/wisconsin.svg" alt="Wisconsin Logo" className="hidden-xs wiscviewer-logo" />
+                <Navbar.Brand className="wiscviewer-brand">
                   Wisconsin Shoreline Inventory and Oblique Viewer
                 </Navbar.Brand>
                 <Navbar.Toggle />
               </Navbar.Header>
-              <Navbar.Collapse>
+              <Navbar.Collapse className="wiscviewer-nav-tools">
                 <Nav pullRight>
                   <NavItem eventKey={ 1 }
                     className='visible-xs-block'

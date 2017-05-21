@@ -5,80 +5,75 @@
     border-radius: 0;
     background-color: $primary_700;
     margin-bottom: 0;
+  }
 
-    .navbar-header {
-      img {
-        width: 50px;
-        height: 50px;
-        float: left;
-      }
+  .navbar-toggle {
+    border-radius: 3px;
+    border-color: $primary_300;
+  }
+}
 
-      .navbar-brand {
-        color: inherit;
-        font-family: "Fjalla One";
-      }
+.wiscviewer-logo {
+  width: 50px;
+  height: 50px;
+  float: left;
+}
 
-      .navbar-toggle {
-        border-radius: 3px;
-        border-color: $primary_300;
-      }
+.wiscviewer-brand {
+  color: $primary_50 !important;
+  font-family: 'Fjalla One';
+}
+
+.wiscviewer-nav-tools {
+  li {
+    color: $primary_100;
+
+    &:hover {
+      color: $primary_100;
+      background-color: $primary_800;
     }
 
-    .navbar-collapse {
-      .navbar-nav {
-        color: $primary_100;
+    a,
+    a:hover {
+      color: $primary_100 !important;
+    }
+  }
+}
 
-        li {
-          &:hover {
-            background-color: $primary_800;
-          }
+.wiscviewer-nav-dropdown {
+  &.open {
+    a {
+      background-color: $primary_800 !important;
 
-          a {
-            color: inherit;
-          }
-        }
-
-        .dropdown {
-          &.open {
-            a {
-              background-color: $primary_800;
-
-              &:active,
-              &:focus {
-                color: $primary_50;
-              }
-            }
-          }
-
-          .dropdown-menu {
-            z-index: 500;
-            background-color: $primary_800;
-
-            li {
-              background-color: $primary_800;
-
-              a {
-                color: $primary_100;
-                background-color: $primary_800;
-
-                &:hover {
-                  background-color: $primary_700;
-                }
-              }
-            }
-
-            .shoreline {
-              text-transform: capitalize;
-            }
-          }
-        }
+      &:active,
+      &:focus {
+        color: $primary_50;
       }
+    }
+  }
+
+  .dropdown-menu {
+    z-index: 500;
+    background-color: $primary_800;
+  }
+}
+
+.wiscviewer-dropdown-item {
+  text-transform: capitalize;
+  background-color: $primary_800;
+
+  a {
+    color: $primary_100;
+    background-color: $primary_800;
+
+    &:hover {
+      background-color: $primary_700;
     }
   }
 }
 
 @media (max-width: 767px) {
-  .wiscviewer-nav-container nav .navbar-collapse .navbar-nav {
+  .wiscviewer-nav-tools .navbar-nav {
     font-size: 20px;
 
     .dropdown .dropdown-menu li {

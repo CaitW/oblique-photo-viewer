@@ -25,173 +25,166 @@
   * {
     pointer-events: auto;
   }
+}
 
-  .wiscviewer-pinned-feature-popup {
-    position: absolute;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    background-color: $primary_50;
-    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+.wiscviewer-pinned-feature-popup {
+  position: absolute;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: $primary_50;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
 
-    .feature-popup-header {
-      cursor: move;
-    }
+  .wiscviewer-feature-popup-header {
+    cursor: move;
   }
 }
 
 // Both Leaflet Popups and Pinned Popups
 .wiscviewer-feature-popup {
   font-size: 12px;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   min-width: 300px;
 
-  .feature-popup-header {
-    height: 30px;
-    background-color: $primary_300;
-    color: $primary_900;
-    font-family: "Roboto";
-    font-size: 14px;
-    padding: 5px 10px;
-    border-radius: 3px 3px 0 0;
+  a {
+    margin-left: 5px;
 
-    .fa-chevron-right {
-      font-size: 10px;
-      margin: 0 5px;
-    }
+    button {
+      font-size: inherit;
+      padding: 5px 10px;
+      border: 0;
+      background-color: $primary_200;
+      color: $primary_900;
 
-    .feature-popup-title {
-      float: left;
-    }
-
-    .feature-popup-controls {
-      color: $primary_100;
-      float: right;
-
-      i {
-        margin-left: 10px;
-
-        &:hover {
-          color: $primary_50;
-          cursor: pointer;
-        }
+      &:hover {
+        background-color: $primary_300;
       }
     }
   }
+}
 
-  .feature-popup-body {
-    padding: 5px;
+.wiscviewer-feature-popup-header {
+  height: 30px;
+  background-color: $primary_300;
+  color: $primary_900;
+  font-family: 'Roboto';
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 3px 3px 0 0;
 
-    .nav-tabs {
-      border-bottom: 1px solid $primary_600;
+  .fa-chevron-right {
+    font-size: 10px;
+    margin: 0 5px;
+  }
+}
 
-      li {
-        a {
-          padding: 5px 10px;
-          border: 0;
+.wiscviewer-feature-popup-title {
+  float: left;
+}
 
-          &[aria-selected=true] {
-            background-color: $primary_600;
-            color: $primary_50;
-          }
+.wiscviewer-feature-popup-controls {
+  color: $primary_100;
+  float: right;
 
-          &[aria-selected=false] {
-            background-color: $primary_100;
-            color: $primary_900;
-            border-bottom: 1px solid $primary_600;
+  i {
+    margin-left: 10px;
 
-            &:hover {
-              background-color: $primary_300;
-            }
-          }
-        }
-      }
-    }
-
-    .tab-content {
-      border: 1px solid $primary_600;
-      background-color: $primary_100;
-      border-width: 3px 0 4px;
-      padding: 10px;
-
-      img {
-        max-width: 100%;
-        display: block;
-        margin: 0 auto;
-      }
-
-      table {
-        min-width: 350px;
-        margin-bottom: 0;
-
-        tr {
-          &:hover {
-            background-color: $primary_200;
-          }
-
-          td {
-            border: 1px solid $primary_400;
-          }
-        }
-      }
-
-      .profile-image-button-row,
-      .photo-image-button-row {
-        padding: 10px 0 0;
-        text-align: center;
-
-        a {
-          margin-left: 5px;
-
-          button {
-            font-size: inherit;
-            padding: 5px 10px;
-            border: 0;
-            background-color: $primary_200;
-            color: $primary_900;
-
-            &:hover {
-              background-color: $primary_300;
-            }
-          }
-        }
-      }
-    }
-
-    .table-striped > tbody > tr:nth-of-type(odd) {
-      background-color: #fff;
-
-      &:hover {
-        background-color: $primary_200;
-      }
-    }
-
-    .table-striped > tbody > tr:nth-of-type(even) {
-      background-color: $primary_50;
-
-      &:hover {
-        background-color: $primary_200;
-      }
+    &:hover {
+      color: $primary_50;
+      cursor: pointer;
     }
   }
+}
 
-  .feature-popup-footer {
-    padding: 0 5px 5px;
+.wiscviewer-feature-popup-body {
+  padding: 5px;
 
-    a {
-      float: right;
-      margin-left: 5px;
+  .nav-tabs {
+    border-bottom: 1px solid $primary_600;
 
-      button {
-        font-size: inherit;
+    li {
+      a {
         padding: 5px 10px;
         border: 0;
-        background-color: $primary_100;
-        color: $primary_900;
 
-        &:hover {
-          background-color: $primary_300;
+        &[aria-selected=true] {
+          background-color: $primary_600;
+          color: $primary_50;
+
+          &:hover {
+            border: none;
+          }
+        }
+
+        &[aria-selected=false] {
+          background-color: $primary_100;
+          color: $primary_900;
+          border-bottom: 1px solid $primary_600;
+
+          &:hover {
+            border: none;
+            border-bottom: 1px solid $primary_600;
+            background-color: $primary_300;
+          }
         }
       }
     }
   }
+
+  .tab-content {
+    border: 1px solid $primary_600;
+    background-color: $primary_100;
+    border-width: 3px 0 4px;
+    padding: 10px;
+
+    img {
+      max-width: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.wiscviewer-data-table {
+  min-width: 350px;
+  margin-bottom: 0;
+
+  tr {
+    &:hover {
+      background-color: $primary_200;
+    }
+
+    td {
+      border: 1px solid $primary_400;
+    }
+  }
+
+  tr:nth-of-type(odd) {
+    background-color: #ffffff;
+
+    &:hover {
+      background-color: $primary_200;
+    }
+  }
+
+  tr:nth-of-type(even) {
+    background-color: $primary_50;
+
+    &:hover {
+      background-color: $primary_200;
+    }
+  }
+}
+
+.wiscviewer-feature-popup-footer {
+  padding: 0 5px 5px;
+
+  a {
+    float: right;
+  }
+}
+
+.profile-image-button-row,
+.photo-image-button-row {
+  padding: 10px 0 0;
+  text-align: center;
 }
