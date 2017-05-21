@@ -50786,7 +50786,7 @@
 
 	// set up our layers state
 	for (var layerId in _util.LAYERS_BY_ID) {
-	    var legendStyles = _util.LAYERS_BY_ID.legendStyles || {};
+	    var legendStyles = _util.LAYERS_BY_ID[layerId].legendStyles || {};
 	    layersById[layerId] = {
 	        active: _util.LAYERS_BY_ID[layerId].defaultActive,
 	        legendStyles: legendStyles
@@ -54300,7 +54300,7 @@
 	        };
 	        switch (feature.properties.type) {
 	            case "bathymetry":
-	                style.displayProperty = "Bathymetric Profile";
+	                style.legendDisplayProperty = "Bathymetric Profile";
 	                style.color = COLORS.LIGHT_BLUE;
 	                break;
 	            default:
