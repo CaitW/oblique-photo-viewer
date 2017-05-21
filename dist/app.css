@@ -8518,7 +8518,9 @@ button.close {
 
 .wiscviewer-brand {
   color: #eceff1 !important;
-  font-family: 'Fjalla One'; }
+  font-family: 'Fjalla One';
+  font-size: 18px;
+  padding: 18px 15px 12px 15px; }
   .wiscviewer-brand:before {
     content: 'WI Shoreline Inventory'; }
 
@@ -8556,6 +8558,18 @@ button.close {
     background-color: #37474f; }
     .wiscviewer-dropdown-item a:hover {
       background-color: #455a64; }
+
+.wiscviewer-mobile-toggle {
+  border: 0;
+  font-size: 30px;
+  padding: 5px 20px;
+  height: 50px;
+  margin: 0; }
+  .wiscviewer-mobile-toggle:hover, .wiscviewer-mobile-toggle:focus {
+    color: #ffffff;
+    background-color: #455a64 !important; }
+  .wiscviewer-mobile-toggle:active {
+    background-color: #37474f !important; }
 
 @media (max-width: 767px) {
   .wiscviewer-nav-tools .navbar-nav {
@@ -8639,8 +8653,8 @@ button.close {
   margin-right: 10px;
   color: #90a4ae; }
 
-.wiscviewer-layer-group-left-icon {
-  margin-right: 10px;
+.wiscviewer-layer-group-icon {
+  float: right;
   color: #90a4ae; }
 
 .pullDown {

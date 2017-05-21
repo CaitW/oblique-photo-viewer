@@ -12,6 +12,7 @@ import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import store from '../store';
 import ZoomToCounty from './ZoomToCounty';
 import ResetView from '../components/ResetView';
+import MobileToggle from '../components/MobileToggle';
 import { openMobileLayerList } from '../ducks/mobile';
 import { openAboutModal } from '../ducks/aboutModal';
 
@@ -29,7 +30,7 @@ export default class NavBar extends React.Component {
                 <img src="img/wisconsin.svg" alt="Wisconsin Logo" className="wiscviewer-logo" />
                 <Navbar.Brand className="wiscviewer-brand">
                 </Navbar.Brand>
-                <Navbar.Toggle />
+                <MobileToggle />
               </Navbar.Header>
               <Navbar.Collapse className="wiscviewer-nav-tools">
                 <Nav pullRight>

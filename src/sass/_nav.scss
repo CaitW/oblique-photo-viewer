@@ -22,6 +22,8 @@
 .wiscviewer-brand {
   color: $primary_50 !important;
   font-family: 'Fjalla One';
+  font-size: 18px;
+  padding: 18px 15px 12px 15px;
   &:before {
     content: 'WI Shoreline Inventory';
   }
@@ -84,6 +86,22 @@
     &:hover {
       background-color: $primary_700;
     }
+  }
+}
+
+.wiscviewer-mobile-toggle {
+  border: 0;
+  font-size: 30px;
+  padding: 5px 20px;
+  height: 50px;
+  margin: 0;
+  &:hover,
+  &:focus {
+    color: $white;
+    background-color: $primary_700 !important;
+  }
+  &:active {
+    background-color: $primary_800 !important;
   }
 }
 

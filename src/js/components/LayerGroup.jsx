@@ -23,7 +23,7 @@ const LayerGroup = (props) => {
     }
     let bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
     let headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
-    let iconClassNames = ["fa", "wiscviewer-layer-group-left-icon"];
+    let iconClassNames = ["fa", "wiscviewer-layer-group-icon"];
     if(props.panelVisible === false) {
         bodyClassNames.push("hidden");
         iconClassNames.push("fa-folder");
