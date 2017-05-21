@@ -50632,12 +50632,8 @@
 	        _react2.default.createElement(
 	          _reactBootstrap.Navbar.Header,
 	          null,
-	          _react2.default.createElement('img', { src: 'img/wisconsin.svg', alt: 'Wisconsin Logo', className: 'hidden-xs wiscviewer-logo' }),
-	          _react2.default.createElement(
-	            _reactBootstrap.Navbar.Brand,
-	            { className: 'wiscviewer-brand' },
-	            'Wisconsin Shoreline Inventory and Oblique Viewer'
-	          ),
+	          _react2.default.createElement('img', { src: 'img/wisconsin.svg', alt: 'Wisconsin Logo', className: 'wiscviewer-logo' }),
+	          _react2.default.createElement(_reactBootstrap.Navbar.Brand, { className: 'wiscviewer-brand' }),
 	          _react2.default.createElement(_reactBootstrap.Navbar.Toggle, null)
 	        ),
 	        _react2.default.createElement(
@@ -55863,7 +55859,7 @@
 	            { className: bodyClassNames.join(" ") },
 	            _react2.default.createElement(
 	                _reactBootstrap.ListGroup,
-	                null,
+	                { className: 'wiscviewer-layer-list-group' },
 	                basemaps
 	            )
 	        )

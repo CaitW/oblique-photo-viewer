@@ -22,6 +22,21 @@
 .wiscviewer-brand {
   color: $primary_50 !important;
   font-family: 'Fjalla One';
+  &:before {
+    content: 'WI Shoreline Inventory';
+  }
+}
+
+@media (min-width: 768px) {
+  .wiscviewer-brand:before {
+    content: 'Wisconsin Shoreline Inventory';
+  }
+}
+
+@media (min-width: 992px) {
+  .wiscviewer-brand:before {
+    content: 'Wisconsin Shoreline Inventory and Oblique Viewer';
+  }
 }
 
 .wiscviewer-nav-tools {
@@ -75,13 +90,13 @@
 @media (max-width: 767px) {
   .wiscviewer-nav-tools .navbar-nav {
     font-size: 20px;
+  }
 
-    .dropdown .dropdown-menu li {
-      font-size: 18px;
+  .wiscviewer-dropdown-item {
+    font-size: 18px;
 
-      a {
-        line-height: 30px;
-      }
+    a {
+      line-height: 30px;
     }
   }
 }
