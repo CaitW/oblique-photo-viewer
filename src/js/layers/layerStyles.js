@@ -263,7 +263,7 @@ var LAYER_STYLES_BY_ID = {
         };
         switch (feature.properties.type) {
             case "bathymetry":
-                style.displayProperty = "Bathymetric Profile";
+                style.legendDisplayProperty = "Bathymetric Profile";
                 style.color = COLORS.LIGHT_BLUE;
                 break;
             default:

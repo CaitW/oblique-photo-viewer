@@ -37,7 +37,7 @@ for (let layerGroupId in LAYER_GROUPS_BY_ID) {
 
 // set up our layers state
 for (let layerId in LAYERS_BY_ID) {
-    let legendStyles = LAYERS_BY_ID.legendStyles || {};
+    let legendStyles = LAYERS_BY_ID[layerId].legendStyles || {};
     layersById[layerId] = {
         active: LAYERS_BY_ID[layerId].defaultActive,
         legendStyles
