@@ -25,7 +25,8 @@
   border-radius: 0;
   margin-bottom: 0;
 
-  .list-group-item {
+  .list-group-item,
+  .list-group-item:focus {
     background-color: $primary_100;
     border-color: $primary_200;
     color: $primary_800;
