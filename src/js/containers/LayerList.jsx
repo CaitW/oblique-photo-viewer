@@ -31,17 +31,13 @@ class LayerList extends React.Component {
         super(props);
         let groups = {};
         groups["Basemaps"] = false;
-        let hasOpenedLayerGroup = false;
         for(let layerGroupId in this.props.layers) {
             groups[layerGroupId] = false;
             let layerGroupLayers = this.props.layers[layerGroupId].layers;
             // open the first layer group that has an active layer
             for (let layerId in layerGroupLayers) {
-                let layerIsActive = (layerGroupLayers[layerId].active === true);
-                let firstLayerGroupToHaveActiveLayer = (hasOpenedLayerGroup === false);
-                if(layerIsActive && firstLayerGroupToHaveActiveLayer) {
+                if(layerGroupLayers[layerId].active === true) {
                     groups[layerGroupId] = true;
-                    hasOpenedLayerGroup = true;
                 }
             }
         }
@@ -50,12 +46,12 @@ class LayerList extends React.Component {
     }
     onPanelClick(panelName) {
         let self = this;
-        let newState = Object.assign({}, self.state);
+        let newState = {
+            ...self.state
+        }
         for(let layerGroup in newState) {
             if(panelName === layerGroup) {
                 newState[panelName] = !newState[panelName];
-            } else {
-                newState[layerGroup] = false;
             }
         }
         this.setState(newState);
