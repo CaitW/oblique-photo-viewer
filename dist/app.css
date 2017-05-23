@@ -9346,7 +9346,9 @@ button.close {
 .wiscviewer-feature-popup {
   font-size: 12px;
   font-family: 'Roboto';
-  min-width: 300px; }
+  min-width: 300px;
+  max-width: 500px;
+  max-height: 500px; }
   .wiscviewer-feature-popup a {
     margin-left: 5px; }
     .wiscviewer-feature-popup a button {
