@@ -9354,8 +9354,8 @@ button.close {
   font-size: 12px;
   font-family: 'Roboto';
   min-width: 300px;
-  max-width: 500px;
-  max-height: 500px; }
+  max-width: 400px;
+  max-height: 400px; }
   .wiscviewer-feature-popup a {
     margin-left: 5px; }
     .wiscviewer-feature-popup a button {
@@ -9442,8 +9442,7 @@ button.close {
   .wiscviewer-feature-popup-footer a {
     float: right; }
 
-.profile-image-button-row,
-.photo-image-button-row {
+.wiscviewer-popup-image-button-row {
   padding: 10px 0 0;
   text-align: center; }
 
