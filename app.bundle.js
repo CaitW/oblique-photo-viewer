@@ -56263,6 +56263,8 @@
 	    value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(299);
@@ -56333,17 +56335,13 @@
 
 	        var groups = {};
 	        groups["Basemaps"] = false;
-	        var hasOpenedLayerGroup = false;
 	        for (var layerGroupId in _this.props.layers) {
 	            groups[layerGroupId] = false;
 	            var layerGroupLayers = _this.props.layers[layerGroupId].layers;
 	            // open the first layer group that has an active layer
 	            for (var layerId in layerGroupLayers) {
-	                var layerIsActive = layerGroupLayers[layerId].active === true;
-	                var firstLayerGroupToHaveActiveLayer = hasOpenedLayerGroup === false;
-	                if (layerIsActive && firstLayerGroupToHaveActiveLayer) {
+	                if (layerGroupLayers[layerId].active === true) {
 	                    groups[layerGroupId] = true;
-	                    hasOpenedLayerGroup = true;
 	                }
 	            }
 	        }
@@ -56356,12 +56354,10 @@
 	        key: 'onPanelClick',
 	        value: function onPanelClick(panelName) {
 	            var self = this;
-	            var newState = Object.assign({}, self.state);
+	            var newState = _extends({}, self.state);
 	            for (var layerGroup in newState) {
 	                if (panelName === layerGroup) {
 	                    newState[panelName] = !newState[panelName];
-	                } else {
-	                    newState[layerGroup] = false;
 	                }
 	            }
 	            this.setState(newState);
