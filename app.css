@@ -9392,7 +9392,7 @@ button.close {
       .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=true] {
         background-color: #546e7a;
         color: #eceff1; }
-        .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=true]:hover {
+        .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=true]:hover, .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=true]:focus {
           border: none; }
       .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=false] {
         background-color: #cfd8dc;
