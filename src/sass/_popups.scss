@@ -110,7 +110,8 @@
           background-color: $primary_600;
           color: $primary_50;
 
-          &:hover {
+          &:hover,
+          &:focus {
             border: none;
           }
         }
