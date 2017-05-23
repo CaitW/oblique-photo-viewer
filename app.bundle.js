@@ -56338,7 +56338,7 @@
 	        for (var layerGroupId in _this.props.layers) {
 	            groups[layerGroupId] = false;
 	            var layerGroupLayers = _this.props.layers[layerGroupId].layers;
-	            // open the first layer group that has an active layer
+	            // open layer groups with an active layer
 	            for (var layerId in layerGroupLayers) {
 	                if (layerGroupLayers[layerId].active === true) {
 	                    groups[layerGroupId] = true;
@@ -56501,6 +56501,7 @@
 	        {
 	            href: '#',
 	            active: props.active,
+	            className: 'wiscviewer-layer-item',
 	            onClick: props.onLayerClick.bind(null, props.layerID) },
 	        _react2.default.createElement('i', { className: 'fa fa-file wiscviewer-layer-left-icon' }),
 	        props.layerName
@@ -56608,8 +56609,9 @@
 	        {
 	            href: '#',
 	            active: props.active,
+	            className: 'wiscviewer-layer-item',
 	            onClick: props.onBasemapClick.bind(null, props.basemapID) },
-	        _react2.default.createElement('i', { className: 'fa fa-file wiscviewer-layer-left-icon' }),
+	        _react2.default.createElement('i', { className: 'fa fa-map wiscviewer-layer-left-icon' }),
 	        props.basemapName
 	    );
 	};
