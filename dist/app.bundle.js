@@ -52929,7 +52929,11 @@
 	    return _react2.default.createElement(
 	        _reactBootstrap.Col,
 	        { xsHidden: true, sm: 5, md: 4, lg: 3, className: 'wiscviewer-sidebar' },
-	        props.children
+	        _react2.default.createElement(
+	            'div',
+	            { className: 'wiscviewer-sidebar-inner-container' },
+	            props.children
+	        )
 	    );
 	};
 	exports.default = SideBar;

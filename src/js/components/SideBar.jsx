@@ -9,7 +9,9 @@ import { Col } from 'react-bootstrap';
 
 const SideBar = (props)  => (
     <Col xsHidden sm={5} md={4} lg={3} className="wiscviewer-sidebar">
-        {props.children}
+        <div className="wiscviewer-sidebar-inner-container">
+            {props.children}
+        </div>
     </Col>
 )
 export default SideBar;

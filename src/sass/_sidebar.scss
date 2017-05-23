@@ -4,8 +4,16 @@
   background-color: $primary_50;
   padding-top: 20px;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
+}
+
+.wiscviewer-sidebar-inner-container {
+  width: calc(100% + 40px);
+  padding-right: 40px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .wiscviewer-sidebar-panel {
