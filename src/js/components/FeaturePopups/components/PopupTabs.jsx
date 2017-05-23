@@ -20,12 +20,31 @@ export default class PopupTabs extends React.Component {
             this.update = this.props.update;
         }
         this.renderDataTable = this.renderDataTable.bind(this);
+        this.renderImage = this.renderImage.bind(this);
     }
     // eslint-disable-next-line class-methods-use-this
     update () {
         // do nothing unless reassigned by the constructor
         // Applies to popups within the Leaflet map scope, which
         // need to update their dimensions once images have loaded
+    }
+    renderImage (imgPath, fullSizePath, alt) {
+        return (
+            <div>
+                <img src={imgPath} onLoad={this.update} alt={alt}/>
+                <div className="wiscviewer-popup-image-button-row">
+                    <a href={fullSizePath}
+                        key="open-larger-image-button"
+                        target="_blank"
+                        rel="noopener noreferrer" >
+                        <Button className="open-larger-image-button">
+                            <i className="fa fa-image"></i> View Full-size
+                        </Button>
+                    </a>
+                    <div className="clearfix"></div>
+                </div>
+            </div>
+        );
     }
     renderDataTable () {
         let rows = [];
@@ -71,18 +90,7 @@ export default class PopupTabs extends React.Component {
                 let photoURLs = getPhotoURLs(this.props.featureProperties);
                 tabs.push(
                     <Tab key="image" eventKey={1} title="Image">
-                        <img src={photoURLs.popup} onLoad={this.update} alt="Oblique"/>
-                        <div className="photo-image-button-row">
-                            <a href={photoURLs.original}
-                                key="open-larger-image-button"
-                                target="_blank"
-                                rel="noopener noreferrer" >
-                                <Button className="open-larger-image-button">
-                                    <i className="fa fa-image"></i> View Full-size
-                                </Button>
-                            </a>
-                            <div className="clearfix"></div>
-                        </div>
+                        {this.renderImage(photoURLs.popup, photoURLs.original, "Oblique")}
                     </Tab>
                 );
                 tabs.push(
@@ -102,18 +110,7 @@ export default class PopupTabs extends React.Component {
                     let filePath = CONFIG.profiles.pathToGraphs.bluff + this.props.featureProperties.bluff_jpg;
                     tabs.push(
                         <Tab key="bluff_graph" eventKey={eventKeyIndex} title="Bluff Profile">
-                            <img src={filePath} onLoad={this.update} alt="Bluff Profile"/>
-                            <div className="profile-image-button-row">
-                                <a href=""
-                                    key="open-larger-bluff-graph-button"
-                                    target="_blank"
-                                    rel="noopener noreferrer" >
-                                    <Button className="open-larger-graph-button">
-                                        <i className="fa fa-image"></i> Open in New Window
-                                    </Button>
-                                </a>
-                                <div className="clearfix"></div>
-                            </div>
+                            {this.renderImage(filePath, filePath, "Bluff Profile")}
                         </Tab>
                     );
                     eventKeyIndex += 1;
@@ -122,18 +119,7 @@ export default class PopupTabs extends React.Component {
                     let filePath = CONFIG.profiles.pathToGraphs.bathy + this.props.featureProperties.bathy_png;
                     tabs.push(
                         <Tab key="bathy_graph" eventKey={eventKeyIndex} title="Bathy Profile">
-                            <img src={filePath} onLoad={this.update} alt="Bathy Profile"/>
-                            <div className="profile-image-button-row">
-                                <a href={filePath}
-                                    key="open-larger-bathy-graph-button"
-                                    target="_blank"
-                                    rel="noopener noreferrer" >
-                                    <Button className="open-larger-graph-button">
-                                        <i className="fa fa-image"></i> Open in New Window
-                                    </Button>
-                                </a>
-                                <div className="clearfix"></div>
-                            </div>
+                            {this.renderImage(filePath, filePath, "Bathy Profile")}
                         </Tab>
                     );
                     eventKeyIndex += 1;
@@ -146,23 +132,10 @@ export default class PopupTabs extends React.Component {
                 break;
             }
             case "photos_obl_2016": {
+                let filePath = CONFIG.photos_2016.obl_urlBase + this.props.featureProperties.filename;
                 tabs.push(
                     <Tab key="image" eventKey={1} title="Image">
-                        <img src={CONFIG.photos_2016.obl_urlBase + this.props.featureProperties.filename}
-                            onLoad={this.update}
-                            alt="Oblique"
-                        />
-                        <div className="photo-image-button-row">
-                            <a href={CONFIG.photos_2016.obl_urlBase + this.props.featureProperties.filename}
-                                key="open-larger-image-button"
-                                target="_blank"
-                                rel="noopener noreferrer">
-                                <Button className="open-larger-image-button">
-                                    <i className="fa fa-image"></i> View Full-size
-                                </Button>
-                            </a>
-                            <div className="clearfix"></div>
-                        </div>
+                        {this.renderImage(filePath, filePath, "Oblique")}
                     </Tab>
                 );
                 tabs.push(
@@ -173,22 +146,10 @@ export default class PopupTabs extends React.Component {
                 break;
             }
             case "photos_dm_2016": {
+                let filePath = CONFIG.photos_2016.dm_urlBase + this.props.featureProperties.filename;
                 tabs.push(
                     <Tab key="image" eventKey={1} title="Image">
-                        <img src={CONFIG.photos_2016.dm_urlBase + this.props.featureProperties.filename}
-                            onLoad={this.update}
-                            alt="Oblique"/>
-                        <div className="photo-image-button-row">
-                            <a href={CONFIG.photos_2016.dm_urlBase + this.props.featureProperties.filename}
-                                key="open-larger-image-button"
-                                target="_blank"
-                                rel="noopener noreferrer" >
-                                <Button className="open-larger-image-button">
-                                    <i className="fa fa-image"></i> View Full-size
-                                </Button>
-                            </a>
-                            <div className="clearfix"></div>
-                        </div>
+                        {this.renderImage(filePath, filePath, "Oblique")}
                     </Tab>
                 );
                 tabs.push(

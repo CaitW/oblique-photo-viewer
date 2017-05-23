@@ -55472,6 +55472,7 @@
 	            _this.update = _this.props.update;
 	        }
 	        _this.renderDataTable = _this.renderDataTable.bind(_this);
+	        _this.renderImage = _this.renderImage.bind(_this);
 	        return _this;
 	    }
 	    // eslint-disable-next-line class-methods-use-this
@@ -55483,6 +55484,33 @@
 	            // do nothing unless reassigned by the constructor
 	            // Applies to popups within the Leaflet map scope, which
 	            // need to update their dimensions once images have loaded
+	        }
+	    }, {
+	        key: 'renderImage',
+	        value: function renderImage(imgPath, fullSizePath, alt) {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement('img', { src: imgPath, onLoad: this.update, alt: alt }),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'wiscviewer-popup-image-button-row' },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: fullSizePath,
+	                            key: 'open-larger-image-button',
+	                            target: '_blank',
+	                            rel: 'noopener noreferrer' },
+	                        _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { className: 'open-larger-image-button' },
+	                            _react2.default.createElement('i', { className: 'fa fa-image' }),
+	                            ' View Full-size'
+	                        )
+	                    ),
+	                    _react2.default.createElement('div', { className: 'clearfix' })
+	                )
+	            );
 	        }
 	    }, {
 	        key: 'renderDataTable',
@@ -55531,25 +55559,7 @@
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
 	                            { key: 'image', eventKey: 1, title: 'Image' },
-	                            _react2.default.createElement('img', { src: photoURLs.popup, onLoad: this.update, alt: 'Oblique' }),
-	                            _react2.default.createElement(
-	                                'div',
-	                                { className: 'photo-image-button-row' },
-	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: photoURLs.original,
-	                                        key: 'open-larger-image-button',
-	                                        target: '_blank',
-	                                        rel: 'noopener noreferrer' },
-	                                    _react2.default.createElement(
-	                                        _reactBootstrap.Button,
-	                                        { className: 'open-larger-image-button' },
-	                                        _react2.default.createElement('i', { className: 'fa fa-image' }),
-	                                        ' View Full-size'
-	                                    )
-	                                ),
-	                                _react2.default.createElement('div', { className: 'clearfix' })
-	                            )
+	                            this.renderImage(photoURLs.popup, photoURLs.original, "Oblique")
 	                        ));
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
@@ -55570,25 +55580,7 @@
 	                            tabs.push(_react2.default.createElement(
 	                                _reactBootstrap.Tab,
 	                                { key: 'bluff_graph', eventKey: eventKeyIndex, title: 'Bluff Profile' },
-	                                _react2.default.createElement('img', { src: filePath, onLoad: this.update, alt: 'Bluff Profile' }),
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'profile-image-button-row' },
-	                                    _react2.default.createElement(
-	                                        'a',
-	                                        { href: '',
-	                                            key: 'open-larger-bluff-graph-button',
-	                                            target: '_blank',
-	                                            rel: 'noopener noreferrer' },
-	                                        _react2.default.createElement(
-	                                            _reactBootstrap.Button,
-	                                            { className: 'open-larger-graph-button' },
-	                                            _react2.default.createElement('i', { className: 'fa fa-image' }),
-	                                            ' Open in New Window'
-	                                        )
-	                                    ),
-	                                    _react2.default.createElement('div', { className: 'clearfix' })
-	                                )
+	                                this.renderImage(filePath, filePath, "Bluff Profile")
 	                            ));
 	                            eventKeyIndex += 1;
 	                        }
@@ -55597,25 +55589,7 @@
 	                            tabs.push(_react2.default.createElement(
 	                                _reactBootstrap.Tab,
 	                                { key: 'bathy_graph', eventKey: eventKeyIndex, title: 'Bathy Profile' },
-	                                _react2.default.createElement('img', { src: _filePath, onLoad: this.update, alt: 'Bathy Profile' }),
-	                                _react2.default.createElement(
-	                                    'div',
-	                                    { className: 'profile-image-button-row' },
-	                                    _react2.default.createElement(
-	                                        'a',
-	                                        { href: _filePath,
-	                                            key: 'open-larger-bathy-graph-button',
-	                                            target: '_blank',
-	                                            rel: 'noopener noreferrer' },
-	                                        _react2.default.createElement(
-	                                            _reactBootstrap.Button,
-	                                            { className: 'open-larger-graph-button' },
-	                                            _react2.default.createElement('i', { className: 'fa fa-image' }),
-	                                            ' Open in New Window'
-	                                        )
-	                                    ),
-	                                    _react2.default.createElement('div', { className: 'clearfix' })
-	                                )
+	                                this.renderImage(_filePath, _filePath, "Bathy Profile")
 	                            ));
 	                            eventKeyIndex += 1;
 	                        }
@@ -55628,31 +55602,11 @@
 	                    }
 	                case "photos_obl_2016":
 	                    {
+	                        var _filePath2 = _config2.default.photos_2016.obl_urlBase + this.props.featureProperties.filename;
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
 	                            { key: 'image', eventKey: 1, title: 'Image' },
-	                            _react2.default.createElement('img', { src: _config2.default.photos_2016.obl_urlBase + this.props.featureProperties.filename,
-	                                onLoad: this.update,
-	                                alt: 'Oblique'
-	                            }),
-	                            _react2.default.createElement(
-	                                'div',
-	                                { className: 'photo-image-button-row' },
-	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: _config2.default.photos_2016.obl_urlBase + this.props.featureProperties.filename,
-	                                        key: 'open-larger-image-button',
-	                                        target: '_blank',
-	                                        rel: 'noopener noreferrer' },
-	                                    _react2.default.createElement(
-	                                        _reactBootstrap.Button,
-	                                        { className: 'open-larger-image-button' },
-	                                        _react2.default.createElement('i', { className: 'fa fa-image' }),
-	                                        ' View Full-size'
-	                                    )
-	                                ),
-	                                _react2.default.createElement('div', { className: 'clearfix' })
-	                            )
+	                            this.renderImage(_filePath2, _filePath2, "Oblique")
 	                        ));
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
@@ -55663,30 +55617,11 @@
 	                    }
 	                case "photos_dm_2016":
 	                    {
+	                        var _filePath3 = _config2.default.photos_2016.dm_urlBase + this.props.featureProperties.filename;
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
 	                            { key: 'image', eventKey: 1, title: 'Image' },
-	                            _react2.default.createElement('img', { src: _config2.default.photos_2016.dm_urlBase + this.props.featureProperties.filename,
-	                                onLoad: this.update,
-	                                alt: 'Oblique' }),
-	                            _react2.default.createElement(
-	                                'div',
-	                                { className: 'photo-image-button-row' },
-	                                _react2.default.createElement(
-	                                    'a',
-	                                    { href: _config2.default.photos_2016.dm_urlBase + this.props.featureProperties.filename,
-	                                        key: 'open-larger-image-button',
-	                                        target: '_blank',
-	                                        rel: 'noopener noreferrer' },
-	                                    _react2.default.createElement(
-	                                        _reactBootstrap.Button,
-	                                        { className: 'open-larger-image-button' },
-	                                        _react2.default.createElement('i', { className: 'fa fa-image' }),
-	                                        ' View Full-size'
-	                                    )
-	                                ),
-	                                _react2.default.createElement('div', { className: 'clearfix' })
-	                            )
+	                            this.renderImage(_filePath3, _filePath3, "Oblique")
 	                        ));
 	                        tabs.push(_react2.default.createElement(
 	                            _reactBootstrap.Tab,
