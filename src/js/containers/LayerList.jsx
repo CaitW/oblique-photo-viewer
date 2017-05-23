@@ -34,7 +34,7 @@ class LayerList extends React.Component {
         for(let layerGroupId in this.props.layers) {
             groups[layerGroupId] = false;
             let layerGroupLayers = this.props.layers[layerGroupId].layers;
-            // open the first layer group that has an active layer
+            // open layer groups with an active layer
             for (let layerId in layerGroupLayers) {
                 if(layerGroupLayers[layerId].active === true) {
                     groups[layerGroupId] = true;
