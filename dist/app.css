@@ -8609,19 +8609,19 @@ button.close {
   border-width: 0;
   border-radius: 0;
   margin-bottom: 0; }
-  .wiscviewer-layer-list-group .list-group-item,
-  .wiscviewer-layer-list-group .list-group-item:focus {
+  .wiscviewer-layer-list-group .wiscviewer-layer-item,
+  .wiscviewer-layer-list-group .wiscviewer-layer-item:focus {
     background-color: #cfd8dc;
     border-color: #b0bec5;
     color: #37474f;
     border-width: 1px 0 0;
     border-radius: 0;
     padding: 5px 10px; }
-    .wiscviewer-layer-list-group .list-group-item:hover,
-    .wiscviewer-layer-list-group .list-group-item:focus:hover {
+    .wiscviewer-layer-list-group .wiscviewer-layer-item:hover,
+    .wiscviewer-layer-list-group .wiscviewer-layer-item:focus:hover {
       background-color: #b0bec5; }
-    .wiscviewer-layer-list-group .list-group-item.active,
-    .wiscviewer-layer-list-group .list-group-item:focus.active {
+    .wiscviewer-layer-list-group .wiscviewer-layer-item.active,
+    .wiscviewer-layer-list-group .wiscviewer-layer-item:focus.active {
       background-color: #455a64;
       border-color: #78909c;
       color: #eceff1; }
