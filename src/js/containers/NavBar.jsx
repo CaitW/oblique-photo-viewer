@@ -15,7 +15,7 @@ import ResetView from '../components/ResetView';
 import MobileToggle from '../components/MobileToggle';
 import { openMobileLayerList } from '../ducks/mobile';
 import { openAboutModal } from '../ducks/aboutModal';
-import { zoomToCounty } from '../ducks/map';
+import { zoomToCounty, resetMapView } from '../ducks/map';
 
 export default class NavBar extends React.Component {
     static onMobileLayersClick() {
@@ -27,6 +27,10 @@ export default class NavBar extends React.Component {
     static onZoomShorelineClick (countyName) {
       store.dispatch(zoomToCounty(countyName));
     }
+    static onResetViewClick () {
+        store.dispatch(resetMapView());
+    }
+    static onResetView
     render() {
         return (
             <Navbar collapseOnSelect fluid className="wiscviewer-nav">
@@ -44,8 +48,8 @@ export default class NavBar extends React.Component {
                   >
                     Layers
                   </NavItem>
-                  <ZoomToCounty onZoomShorelineClick={this.constructor.onZoomShorelineClick}/>
-                  <ResetView />
+                  <ZoomToCounty onZoomShorelineClick={this.constructor.onZoomShorelineClick} />
+                  <ResetView onResetViewClick={this.constructor.onResetViewClick} />
                   <NavItem eventKey={ 3 } onClick={ this.constructor.onAboutClick }>
                     About
                   </NavItem>

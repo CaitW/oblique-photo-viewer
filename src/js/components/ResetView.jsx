@@ -5,16 +5,8 @@
 import React from 'react';
 import { NavItem } from 'react-bootstrap';
 
-import store from '../store';
-import { resetMapView } from '../ducks/map';
+const ResetView = (props) => (
+    <NavItem onClick={props.onResetViewClick} href="#">Reset View</NavItem>
+);
 
-export default class ResetView extends React.Component {
-    static onButtonClick () {
-        store.dispatch(resetMapView());
-    }
-    render() {
-        return (
-            <NavItem onClick={this.constructor.onButtonClick} href="#">Reset View</NavItem>
-        )
-    }
-}
+export default ResetView;
