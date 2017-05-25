@@ -5,6 +5,7 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { getActiveLayerStyleTypes } from '../selectors';
 
@@ -79,4 +80,9 @@ class Legend extends React.Component {
         );
     }
 }
+
+Legend.PropTypes = {
+    activeLayerStyleTypes: PropTypes.object.isRequired
+}
+
 export default connect(mapStateToProps)(Legend);

@@ -4,6 +4,7 @@
  * as well as additional modals that appear over the map.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
@@ -38,4 +39,9 @@ class MapContainer extends React.Component {
         );
     }
 }
+
+MapContainer.propTypes = {
+    mobileFeatureModal: PropTypes.object.isRequired
+}
+
 export default connect(mapStateToProps)(MapContainer);

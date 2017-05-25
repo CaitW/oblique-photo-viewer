@@ -3,6 +3,7 @@
  * This creates the modal displaying "about" information
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
@@ -39,4 +40,9 @@ class AboutModal extends React.Component {
             </div>);
     }
 }
+
+AboutModal.propTypes = {
+  visible: PropTypes.bool.isRequired
+}
+
 export default connect(mapStateToProps)(AboutModal);

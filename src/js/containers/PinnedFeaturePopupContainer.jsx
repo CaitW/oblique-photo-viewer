@@ -4,6 +4,7 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import store from '../store';
 import { closePinnedFeature } from '../ducks/pinnedFeatures';
@@ -84,4 +85,10 @@ class PinnedFeaturePopupContainer extends React.Component {
         );
     }
 }
+
+PinnedFeaturePopupContainer.propTypes = {
+    pinnedFeatures: PropTypes.object.isRequired,
+    layers: PropTypes.object.isRequired
+}
+
 export default connect(mapStateToProps)(PinnedFeaturePopupContainer);

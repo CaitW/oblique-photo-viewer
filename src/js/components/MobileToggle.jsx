@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MobileToggle = () => (
-    <button
-      type="button"
-      onClick={this.context.$bs_navbar.onToggle}
-      className="navbar-toggle collapsed wiscviewer-mobile-toggle">
-      <i className="fa fa-bars"></i>
-    </button>
-)
+class MobileToggle extends React.Component {
+    render() {
+        return (
+          <button type="button"
+            onClick={this.context.$bs_navbar.onToggle}
+            className="navbar-toggle collapsed wiscviewer-mobile-toggle">
+            <i className="fa fa-bars"></i>
+          </button>
+        );
+    }
+}
 
 MobileToggle.contextTypes = {
   $bs_navbar: PropTypes.shape({

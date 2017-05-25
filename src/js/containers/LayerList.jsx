@@ -4,6 +4,7 @@
  * grouped by type, in the sidebar and mobile layers list.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { PanelGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
@@ -87,4 +88,10 @@ class LayerList extends React.Component {
         );
     }
 }
+
+LayerList.propTypes = {
+    layers: PropTypes.object.isRequired,
+    basemaps: PropTypes.object.isRequired
+}
+
 export default connect(mapStateToProps)(LayerList);

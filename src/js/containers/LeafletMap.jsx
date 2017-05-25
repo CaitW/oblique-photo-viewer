@@ -5,6 +5,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import store from '../store';
@@ -67,4 +68,11 @@ class LeafletMap extends React.Component {
         );
     }
 }
+
+LeafletMap.propTypes = {
+    layers: PropTypes.object.isRequired,
+    basemaps: PropTypes.object.isRequired,
+    map: PropTypes.object.isRequired
+}
+
 export default connect(mapStateToProps)(LeafletMap);

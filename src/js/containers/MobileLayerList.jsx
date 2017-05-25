@@ -5,6 +5,7 @@
  * It displays the LayerList component
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
@@ -50,6 +51,11 @@ class MobileLayerList extends React.Component {
         );
     }
 }
+
+MobileLayerList.propTypes = {
+    active: PropTypes.bool.isRequired
+}
+
 export default connect(mapStateToProps)(MobileLayerList);
 
 

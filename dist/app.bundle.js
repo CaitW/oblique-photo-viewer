@@ -52840,7 +52840,9 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'button',
-	        { type: 'button', onClick: this.context.$bs_navbar.onToggle, className: 'navbar-toggle collapsed wiscviewer-mobile-toggle' },
+	        { type: 'button',
+	          onClick: this.context.$bs_navbar.onToggle,
+	          className: 'navbar-toggle collapsed wiscviewer-mobile-toggle' },
 	        _react2.default.createElement('i', { className: 'fa fa-bars' })
 	      );
 	    }
@@ -52921,6 +52923,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
 	var _reactBootstrap = __webpack_require__(475);
 
 	var _reactRedux = __webpack_require__(727);
@@ -52996,6 +53002,10 @@
 	    return MapContainer;
 	}(_react2.default.Component);
 
+	MapContainer.propTypes = {
+	    mobileFeatureModal: _propTypes2.default.object.isRequired
+	};
+
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MapContainer);
 
 /***/ },
@@ -53013,6 +53023,10 @@
 	var _react = __webpack_require__(299);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
 
 	var _reactRedux = __webpack_require__(727);
 
@@ -53119,6 +53133,12 @@
 
 	    return LeafletMap;
 	}(_react2.default.Component);
+
+	LeafletMap.propTypes = {
+	    layers: _propTypes2.default.object.isRequired,
+	    basemaps: _propTypes2.default.object.isRequired,
+	    map: _propTypes2.default.object.isRequired
+	};
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LeafletMap);
 
@@ -55370,8 +55390,8 @@
 
 	FeaturePopup.propTypes = {
 	    layerId: _propTypes2.default.string.isRequired,
-	    featureProperties: _propTypes2.default.object,
-	    popup: _propTypes2.default.instanceOf(L.Popup),
+	    featureProperties: _propTypes2.default.object.isRequired,
+	    popup: _propTypes2.default.instanceOf(L.Popup).isRequired,
 	    closePopup: _propTypes2.default.func.isRequired,
 	    getPosition: _propTypes2.default.func.isRequired
 	};
@@ -56182,6 +56202,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
 	var _reactBootstrap = __webpack_require__(475);
 
 	var _reactRedux = __webpack_require__(727);
@@ -56274,6 +56298,10 @@
 	    return MobileLayerList;
 	}(_react2.default.Component);
 
+	MobileLayerList.propTypes = {
+	    active: _propTypes2.default.bool.isRequired
+	};
+
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MobileLayerList);
 
 /***/ },
@@ -56293,6 +56321,10 @@
 	var _react = __webpack_require__(299);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
 
 	var _reactBootstrap = __webpack_require__(475);
 
@@ -56419,6 +56451,11 @@
 
 	    return LayerList;
 	}(_react2.default.Component);
+
+	LayerList.propTypes = {
+	    layers: _propTypes2.default.object.isRequired,
+	    basemaps: _propTypes2.default.object.isRequired
+	};
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LayerList);
 
@@ -56675,6 +56712,10 @@
 	  eventKey: _propTypes2.default.string
 	};
 
+	BasemapList.defaultProps = {
+	  eventKey: '1'
+	};
+
 	exports.default = BasemapList;
 
 /***/ },
@@ -56739,6 +56780,10 @@
 	var _react = __webpack_require__(299);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
 
 	var _reactBootstrap = __webpack_require__(475);
 
@@ -56830,6 +56875,10 @@
 	    return AboutModal;
 	}(_react2.default.Component);
 
+	AboutModal.propTypes = {
+	    visible: _propTypes2.default.bool.isRequired
+	};
+
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AboutModal);
 
 /***/ },
@@ -56849,6 +56898,10 @@
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactRedux = __webpack_require__(727);
+
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
 
 	var _store = __webpack_require__(765);
 
@@ -56979,7 +57032,6 @@
 	                    initialPosition: pinnedFeature.position,
 	                    layerName: layerName,
 	                    layerGroupName: layerGroupName,
-	                    featureId: featureId,
 	                    closePopup: function closePopup() {
 	                        _this2.constructor.closePopup(featureId);
 	                    },
@@ -57004,6 +57056,11 @@
 
 	    return PinnedFeaturePopupContainer;
 	}(_react2.default.Component);
+
+	PinnedFeaturePopupContainer.propTypes = {
+	    pinnedFeatures: _propTypes2.default.object.isRequired,
+	    layers: _propTypes2.default.object.isRequired
+	};
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(PinnedFeaturePopupContainer);
 
@@ -57163,7 +57220,6 @@
 	    initialPosition: _propTypes2.default.object.isRequired,
 	    layerName: _propTypes2.default.string.isRequired,
 	    layerGroupName: _propTypes2.default.string.isRequired,
-	    featureId: _propTypes2.default.string.isRequired,
 	    closePopup: _propTypes2.default.func.isRequired,
 	    onClick: _propTypes2.default.func.isRequired,
 	    zIndex: _propTypes2.default.number.isRequired
@@ -58801,6 +58857,10 @@
 
 	var _reactRedux = __webpack_require__(727);
 
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
 	var _selectors = __webpack_require__(822);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -58936,6 +58996,10 @@
 
 	    return Legend;
 	}(_react2.default.Component);
+
+	Legend.PropTypes = {
+	    activeLayerStyleTypes: _propTypes2.default.object.isRequired
+	};
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Legend);
 
