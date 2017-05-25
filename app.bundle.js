@@ -50602,6 +50602,8 @@
 
 	var _aboutModal = __webpack_require__(772);
 
+	var _map = __webpack_require__(770);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -50654,7 +50656,7 @@
 	              },
 	              'Layers'
 	            ),
-	            _react2.default.createElement(_ZoomToCounty2.default, null),
+	            _react2.default.createElement(_ZoomToCounty2.default, { onZoomShorelineClick: this.constructor.onZoomShorelineClick }),
 	            _react2.default.createElement(_ResetView2.default, null),
 	            _react2.default.createElement(
 	              _reactBootstrap.NavItem,
@@ -50674,6 +50676,11 @@
 	    key: 'onAboutClick',
 	    value: function onAboutClick() {
 	      _store2.default.dispatch((0, _aboutModal.openAboutModal)());
+	    }
+	  }, {
+	    key: 'onZoomShorelineClick',
+	    value: function onZoomShorelineClick(countyName) {
+	      _store2.default.dispatch((0, _map.zoomToCounty)(countyName));
 	    }
 	  }]);
 
@@ -51993,76 +52000,46 @@
 	    value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(299);
 
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactBootstrap = __webpack_require__(475);
 
-	var _store = __webpack_require__(765);
-
-	var _store2 = _interopRequireDefault(_store);
-
 	var _config = __webpack_require__(768);
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _map = __webpack_require__(770);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var ZoomToCounty = function ZoomToCounty(props) {
+	    var counties = [];
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	    var _loop = function _loop(countyName) {
+	        counties.push(_react2.default.createElement(
+	            _reactBootstrap.MenuItem,
+	            { className: 'wiscviewer-dropdown-item',
+	                key: countyName,
+	                onClick: function onClick() {
+	                    return props.onZoomShorelineClick(countyName);
+	                } },
+	            countyName.replace(/_/g, " - ")
+	        ));
+	    };
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * ZoomToCounty.jsx
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This creates the dropdown that contains each county with a shoreline.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Upon clicking that county, the map will zoom to that county's shoreline.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-
-	var ZoomToCounty = function (_React$Component) {
-	    _inherits(ZoomToCounty, _React$Component);
-
-	    function ZoomToCounty() {
-	        _classCallCheck(this, ZoomToCounty);
-
-	        return _possibleConstructorReturn(this, (ZoomToCounty.__proto__ || Object.getPrototypeOf(ZoomToCounty)).apply(this, arguments));
+	    for (var countyName in _config2.default.map.county_shorelines) {
+	        _loop(countyName);
 	    }
-
-	    _createClass(ZoomToCounty, [{
-	        key: 'render',
-	        value: function render() {
-	            var self = this;
-	            var counties = [];
-	            for (var countyName in _config2.default.map.county_shorelines) {
-	                counties.push(_react2.default.createElement(
-	                    _reactBootstrap.MenuItem,
-	                    { className: 'wiscviewer-dropdown-item',
-	                        key: countyName,
-	                        onClick: self.constructor.onMenuItemClick.bind(null, countyName) },
-	                    countyName.replace(/_/g, " - ")
-	                ));
-	            }
-	            return _react2.default.createElement(
-	                _reactBootstrap.NavDropdown,
-	                { title: 'Zoom To Shoreline', id: 'zoom-to-county', className: 'wiscviewer-nav-dropdown' },
-	                counties
-	            );
-	        }
-	    }], [{
-	        key: 'onMenuItemClick',
-	        value: function onMenuItemClick(countyName) {
-	            _store2.default.dispatch((0, _map.zoomToCounty)(countyName));
-	        }
-	    }]);
-
-	    return ZoomToCounty;
-	}(_react2.default.Component);
-
+	    return _react2.default.createElement(
+	        _reactBootstrap.NavDropdown,
+	        { title: 'Zoom To Shoreline', id: 'zoom-to-county', className: 'wiscviewer-nav-dropdown' },
+	        counties
+	    );
+	}; /**
+	    * ZoomToCounty.jsx
+	    * This creates the dropdown that contains each county with a shoreline.
+	    * Upon clicking that county, the map will zoom to that county's shoreline.
+	    */
 	exports.default = ZoomToCounty;
 
 /***/ },
