@@ -89,7 +89,6 @@ PinnedFeaturePopup.propTypes = {
     initialPosition: PropTypes.object.isRequired,
     layerName: PropTypes.string.isRequired,
     layerGroupName: PropTypes.string.isRequired,
-    featureId: PropTypes.string.isRequired,
     closePopup: PropTypes.func.isRequired,
     onClick: PropTypes.func.isRequired,
     zIndex: PropTypes.number.isRequired

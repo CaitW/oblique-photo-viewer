@@ -87,8 +87,8 @@ class FeaturePopup extends React.Component {
 
 FeaturePopup.propTypes = {
     layerId: PropTypes.string.isRequired,
-    featureProperties: PropTypes.object,
-    popup: PropTypes.instanceOf(L.Popup),
+    featureProperties: PropTypes.object.isRequired,
+    popup: PropTypes.instanceOf(L.Popup).isRequired,
     closePopup: PropTypes.func.isRequired,
     getPosition: PropTypes.func.isRequired
 }

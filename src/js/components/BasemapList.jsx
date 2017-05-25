@@ -69,4 +69,8 @@ BasemapList.propTypes = {
     eventKey: PropTypes.string
 }
 
+BasemapList.defaultProps = {
+  eventKey: '1'
+}
+
 export default BasemapList;

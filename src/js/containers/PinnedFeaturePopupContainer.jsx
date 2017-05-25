@@ -70,7 +70,6 @@ class PinnedFeaturePopupContainer extends React.Component {
                     initialPosition={pinnedFeature.position}
                     layerName={layerName}
                     layerGroupName={layerGroupName}
-                    featureId={featureId}
                     closePopup={() => {this.constructor.closePopup(featureId)}}
                     key={featureId}
                     onClick={() => {this.bringToFront(featureId)}}
