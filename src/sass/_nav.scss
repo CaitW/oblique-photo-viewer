@@ -21,7 +21,7 @@
 
 .wiscviewer-brand {
   color: $primary_50 !important;
-  font-family: 'Fjalla One';
+  font-family: $font_header;
   font-size: 18px;
   padding: 18px 15px 12px 15px;
   &:before {

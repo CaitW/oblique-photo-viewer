@@ -1,26 +1,23 @@
+// Fonts
+@import 'fonts';
+@import 'lib/font-awesome/font-awesome';
+
+$font_header: 'Fjalla One', sans-serif;
+$font_body: 'Roboto', sans-serif;
+$font_icons: 'Font Awesome';
+
 // Libraries
-
 @import 'lib/bootstrap';
-
 @import 'lib/leaflet';
-
 @import 'lib/L.Control.MousePosition';
 
-@import 'lib/font-awesome/font-awesome';
 // Partials
-
 @import 'colors';
-
 @import 'modals';
-
 @import 'nav';
-
 @import 'sidebar';
-
 @import 'animations';
-
 @import 'map';
-
 @import 'popups';
 
 // CSS
@@ -29,7 +26,7 @@ html {
 
   body {
     height: 100%;
-    font-family: 'Roboto';
+    font-family: $font_body;
   }
 }
 
