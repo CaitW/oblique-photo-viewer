@@ -52936,6 +52936,10 @@
 
 	var _reactRedux = __webpack_require__(727);
 
+	var _store = __webpack_require__(765);
+
+	var _store2 = _interopRequireDefault(_store);
+
 	var _selectors = __webpack_require__(789);
 
 	var _mobile = __webpack_require__(771);
@@ -53003,7 +53007,6 @@
 	            _reactBootstrap.Modal.Body,
 	            null,
 	            _react2.default.createElement(_PopupTabs2.default, {
-	              className: 'wiscviewer-modal-tabs',
 	              layerId: this.props.layerId,
 	              featureProperties: this.props.featureProperties
 	            })
@@ -53027,7 +53030,7 @@
 	  }], [{
 	    key: 'close',
 	    value: function close() {
-	      store.dispatch((0, _mobile.closeMobileFeatureModal)());
+	      _store2.default.dispatch((0, _mobile.closeMobileFeatureModal)());
 	    }
 	  }]);
 
