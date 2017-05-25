@@ -6,6 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import store from '../../store';
 
 import { getMobileFeaturePopupProps } from '../../selectors';
 import { closeMobileFeatureModal } from '../../ducks/mobile';
@@ -19,9 +20,9 @@ const mapStateToProps = (state) => {
 }
 
 class MobileFeaturePopup extends React.Component {
-    static close () {
-        store.dispatch(closeMobileFeatureModal());
-    }
+  static close () {
+      store.dispatch(closeMobileFeatureModal());
+  }
   render () {
     let classNames = [
       "wiscviewer-modal",
@@ -44,7 +45,6 @@ class MobileFeaturePopup extends React.Component {
                   </Modal.Header>
                   <Modal.Body>
                     <PopupTabs
-                      className="wiscviewer-modal-tabs"
                       layerId={this.props.layerId}
                       featureProperties={this.props.featureProperties}
                     />

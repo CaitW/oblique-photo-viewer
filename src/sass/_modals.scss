@@ -1,10 +1,11 @@
 .wiscviewer-modal {
   .modal-dialog {
     z-index: 600;
+    max-height: calc(100% - 20px);
   }
 
   .modal-content {
-    background-color: $primary_300;
+    background-color: $primary_50;
   }
 
   .modal-header {
@@ -13,13 +14,8 @@
     border: 0;
   }
 
-  .modal-body {
-    background-color: $primary_50;
-    overflow-y: scroll;
-  }
-
   .modal-footer {
-    background-color: $primary_50;
+    background-color: $primary_100;
     border: 0;
     color: $primary_50;
   }
@@ -38,13 +34,32 @@
 .wiscviewer-mobile-modal {
   font-size: 18px;
 
-  button.btn {
-    font-size: 18px;
+  .modal-dialog {
+    height: calc(100% - 20px);
   }
 
-  .modal-dialog {
+  .modal-content {
     height: 100%;
-    overflow: scroll;
+  }
+
+  .modal-header {
+    height: 50px;
+  }
+
+  .modal-body {
+    height: calc(100% - 110px);
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .modal-footer {
+    height: 60px;
+    padding: 10px;
+  }
+
+  button.btn {
+    font-size: 18px;
   }
 
   .modal-header {
@@ -72,6 +87,10 @@
         &[aria-selected=true] {
           background-color: $primary_600;
           color: $primary_50;
+          &:hover,
+          &:focus {
+            border: 0;
+          }
         }
 
         &[aria-selected=false] {
@@ -92,6 +111,7 @@
     background-color: $primary_100;
     border-width: 3px 0 0;
     padding: 10px;
+    overflow-x: auto;
 
     img {
       max-width: 100%;
