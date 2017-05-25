@@ -7,7 +7,6 @@ import { ListGroupItem } from 'react-bootstrap';
 
 const Basemap = (props) => (
     <ListGroupItem
-        href="#"
         active={props.active}
         className="wiscviewer-layer-item"
         onClick={props.onBasemapClick.bind(null, props.basemapID)}>

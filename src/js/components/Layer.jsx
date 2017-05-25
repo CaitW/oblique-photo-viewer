@@ -7,7 +7,6 @@ import { ListGroupItem } from 'react-bootstrap';
 
 const Layer = (props) => (
     <ListGroupItem
-        href="#"
         active={props.active}
         className="wiscviewer-layer-item"
         onClick={props.onLayerClick.bind(null, props.layerID)}>
