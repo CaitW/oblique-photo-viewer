@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 // containers
 import NavBar from './containers/NavBar';
 import SideBar from './components/SideBar';
+import MobileFeaturePopup from './components/FeaturePopups/MobileFeaturePopup';
 import MapContainer from './containers/MapContainer';
 import MobileLayerList from './containers/MobileLayerList';
 import AboutModal from './containers/AboutModal';
@@ -34,6 +35,7 @@ class App extends React.Component {
             <Provider store={store}>
                 <Grid fluid={true} className="wiscviewer-grid">
                     <AboutModal />
+                    <MobileFeaturePopup />
                     <MobileLayerList />
                     <Row className="wiscviewer-nav-container">
                         <NavBar />

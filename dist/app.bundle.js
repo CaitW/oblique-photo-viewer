@@ -8214,7 +8214,11 @@
 
 	var _SideBar2 = _interopRequireDefault(_SideBar);
 
-	var _MapContainer = __webpack_require__(788);
+	var _MobileFeaturePopup = __webpack_require__(788);
+
+	var _MobileFeaturePopup2 = _interopRequireDefault(_MobileFeaturePopup);
+
+	var _MapContainer = __webpack_require__(794);
 
 	var _MapContainer2 = _interopRequireDefault(_MapContainer);
 
@@ -8286,6 +8290,7 @@
 	                    _reactBootstrap.Grid,
 	                    { fluid: true, className: 'wiscviewer-grid' },
 	                    _react2.default.createElement(_AboutModal2.default, null),
+	                    _react2.default.createElement(_MobileFeaturePopup2.default, null),
 	                    _react2.default.createElement(_MobileLayerList2.default, null),
 	                    _react2.default.createElement(
 	                        _reactBootstrap.Row,
@@ -52914,7 +52919,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -52931,21 +52936,832 @@
 
 	var _reactRedux = __webpack_require__(727);
 
-	var _store = __webpack_require__(765);
-
-	var _store2 = _interopRequireDefault(_store);
-
-	var _LeafletMap = __webpack_require__(789);
-
-	var _LeafletMap2 = _interopRequireDefault(_LeafletMap);
-
-	var _MobileFeaturePopup = __webpack_require__(824);
-
-	var _MobileFeaturePopup2 = _interopRequireDefault(_MobileFeaturePopup);
+	var _selectors = __webpack_require__(789);
 
 	var _mobile = __webpack_require__(771);
 
-	var _selectors = __webpack_require__(822);
+	var _PopupTabs = __webpack_require__(791);
+
+	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
+
+	var _PopupTitle = __webpack_require__(792);
+
+	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
+
+	var _PopupFooter = __webpack_require__(793);
+
+	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * FeatureModal.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This creates the modal that's displayed when a user clicks on an object in the map
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  return (0, _selectors.getMobileFeaturePopupProps)(state);
+	};
+
+	var MobileFeaturePopup = function (_React$Component) {
+	  _inherits(MobileFeaturePopup, _React$Component);
+
+	  function MobileFeaturePopup() {
+	    _classCallCheck(this, MobileFeaturePopup);
+
+	    return _possibleConstructorReturn(this, (MobileFeaturePopup.__proto__ || Object.getPrototypeOf(MobileFeaturePopup)).apply(this, arguments));
+	  }
+
+	  _createClass(MobileFeaturePopup, [{
+	    key: 'render',
+	    value: function render() {
+	      var classNames = ["wiscviewer-modal", "wiscviewer-mobile-modal", "wiscviewer-mobile-feature-popup", "static-modal"];
+	      if (this.props.visible === false) {
+	        classNames.push("hidden");
+	      }
+	      return _react2.default.createElement(
+	        'div',
+	        { className: classNames.join(" ") },
+	        _react2.default.createElement(
+	          _reactBootstrap.Modal.Dialog,
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Header,
+	            null,
+	            _react2.default.createElement(_PopupTitle2.default, {
+	              featureProperties: this.props.featureProperties,
+	              layerGroupName: this.props.layerGroupName,
+	              layerName: this.props.layerName
+	            })
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Body,
+	            null,
+	            _react2.default.createElement(_PopupTabs2.default, {
+	              className: 'wiscviewer-modal-tabs',
+	              layerId: this.props.layerId,
+	              featureProperties: this.props.featureProperties
+	            })
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Footer,
+	            null,
+	            _react2.default.createElement(
+	              _PopupFooter2.default,
+	              { layerId: this.props.layerId, featureProperties: this.props.featureProperties },
+	              _react2.default.createElement(
+	                _reactBootstrap.Button,
+	                { key: 'close', onClick: this.constructor.close },
+	                'Close'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }], [{
+	    key: 'close',
+	    value: function close() {
+	      store.dispatch((0, _mobile.closeMobileFeatureModal)());
+	    }
+	  }]);
+
+	  return MobileFeaturePopup;
+	}(_react2.default.Component);
+
+	MobileFeaturePopup.propTypes = {
+	  visible: _propTypes2.default.bool.isRequired,
+	  featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired,
+	  layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	  layerName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	  layerGroupName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MobileFeaturePopup);
+
+/***/ },
+/* 789 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.getMobileFeaturePopupProps = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = exports.getLayerGroupsByIdWithData = exports.getLayersByIdWithData = exports.getBasemapsByIdWithData = undefined;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _reselect = __webpack_require__(790);
+
+	var _util = __webpack_require__(767);
+
+	var getLayersById = function getLayersById(state) {
+	    return state.layers.layersById;
+	};
+	var getBasemapsById = function getBasemapsById(state) {
+	    return state.basemaps;
+	};
+	var getLayerGroupsById = function getLayerGroupsById(state) {
+	    return state.layers.layerGroupsById;
+	};
+	var getMobileFeatureModal = function getMobileFeatureModal(state) {
+	    return state.mobile.featureModal;
+	};
+
+	var getBasemapsByIdWithData = exports.getBasemapsByIdWithData = (0, _reselect.createSelector)([getBasemapsById], function (basemaps) {
+	    var basemapsWithData = {};
+	    for (var basemapId in basemaps) {
+	        basemapsWithData[basemapId] = _extends({}, _util.BASEMAPS_BY_ID[basemapId], basemaps[basemapId]);
+	    }
+	    return basemapsWithData;
+	});
+
+	var getLayersByIdWithData = exports.getLayersByIdWithData = (0, _reselect.createSelector)([getLayersById], function (layers) {
+	    var layersWithData = {};
+	    for (var layerId in layers) {
+	        layersWithData[layerId] = _extends({}, _util.LAYERS_BY_ID[layerId], layers[layerId]);
+	    }
+	    return layersWithData;
+	});
+
+	var getLayerGroupsByIdWithData = exports.getLayerGroupsByIdWithData = (0, _reselect.createSelector)([getLayerGroupsById], function (layerGroups) {
+	    var layersGroupsWithData = {};
+	    for (var layerGroupId in layerGroups) {
+	        layersGroupsWithData[layerGroupId] = _extends({}, _util.LAYER_GROUPS_BY_ID[layerGroupId]);
+	    }
+	    return layersGroupsWithData;
+	});
+
+	var mapLayerGroupsToLayers = exports.mapLayerGroupsToLayers = (0, _reselect.createSelector)([getLayerGroupsByIdWithData, getLayersByIdWithData], function (layerGroups, layers) {
+	    var mappedLayerGroups = {};
+	    for (var layerGroupId in layerGroups) {
+	        mappedLayerGroups[layerGroupId] = _extends({}, layerGroups[layerGroupId], {
+	            layers: {}
+	        });
+	        var _iteratorNormalCompletion = true;
+	        var _didIteratorError = false;
+	        var _iteratorError = undefined;
+
+	        try {
+	            for (var _iterator = layerGroups[layerGroupId].layers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	                var layerId = _step.value;
+
+	                mappedLayerGroups[layerGroupId].layers[layerId] = layers[layerId];
+	            }
+	        } catch (err) {
+	            _didIteratorError = true;
+	            _iteratorError = err;
+	        } finally {
+	            try {
+	                if (!_iteratorNormalCompletion && _iterator.return) {
+	                    _iterator.return();
+	                }
+	            } finally {
+	                if (_didIteratorError) {
+	                    throw _iteratorError;
+	                }
+	            }
+	        }
+	    }
+	    return mappedLayerGroups;
+	});
+
+	var getActiveLayers = exports.getActiveLayers = (0, _reselect.createSelector)(getLayersById, function (layers) {
+	    var activeLayers = [];
+	    for (var layerId in layers) {
+	        if (layers[layerId].active === true) {
+	            activeLayers.push(layerId);
+	        }
+	    }
+	    return activeLayers;
+	});
+
+	var getActiveLayerStyleTypes = exports.getActiveLayerStyleTypes = (0, _reselect.createSelector)([getLayersByIdWithData, getLayerGroupsByIdWithData, getActiveLayers], function (layers, layerGroups, activeLayers) {
+	    var stylesByLayerId = {};
+	    var _iteratorNormalCompletion2 = true;
+	    var _didIteratorError2 = false;
+	    var _iteratorError2 = undefined;
+
+	    try {
+	        for (var _iterator2 = activeLayers[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+	            var layerId = _step2.value;
+
+	            var layer = layers[layerId];
+	            var layerName = layer.name || "";
+	            var layerGroupId = layer.layerGroupId;
+	            var layerGroupName = "";
+	            if (typeof layerGroups[layerGroupId] !== "undefined") {
+	                layerGroupName = layerGroups[layerGroupId].name;
+	            }
+	            var legendStyles = layer.legendStyles;
+	            var styles = [];
+	            for (var styleName in legendStyles) {
+	                var styleIconClassNames = ["fa"];
+	                var iconStyle = {
+	                    color: "#000000"
+	                };
+	                if (legendStyles[styleName].geometryType === "LineString" || legendStyles[styleName].geometryType === "MultiLineString") {
+	                    styleIconClassNames.push("fa-minus");
+	                    iconStyle.color = legendStyles[styleName].style.color;
+	                } else if (legendStyles[styleName].geometryType === "Point") {
+	                    styleIconClassNames.push("fa-circle");
+	                    iconStyle.color = legendStyles[styleName].style.strokeColor;
+	                }
+	                if (styleName === "null") {
+	                    styleName = "(No Value)";
+	                }
+	                styles.push({
+	                    styleName: styleName,
+	                    iconStyle: iconStyle,
+	                    styleIconClassNames: styleIconClassNames
+	                });
+	            }
+	            styles = styles.sort(function (a, b) {
+	                if (a.styleName < b.styleName) {
+	                    return -1;
+	                }
+	                if (a.styleName > b.styleName) {
+	                    return 1;
+	                }
+	                return 0;
+	            });
+	            stylesByLayerId[layerGroupName + " - " + layerName] = styles;
+	        }
+	    } catch (err) {
+	        _didIteratorError2 = true;
+	        _iteratorError2 = err;
+	    } finally {
+	        try {
+	            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+	                _iterator2.return();
+	            }
+	        } finally {
+	            if (_didIteratorError2) {
+	                throw _iteratorError2;
+	            }
+	        }
+	    }
+
+	    return stylesByLayerId;
+	});
+
+	var getMobileFeaturePopupProps = exports.getMobileFeaturePopupProps = (0, _reselect.createSelector)([getLayersByIdWithData, getLayerGroupsByIdWithData, getMobileFeatureModal], function (layers, layerGroups, featureModal) {
+	    if (typeof featureModal.layerId !== "undefined" && featureModal.layerId !== false) {
+	        var layerId = featureModal.layerId;
+	        var layerName = layers[layerId].name;
+	        var layerGroupId = layers[layerId].layerGroupId;
+	        var layerGroupName = layerGroups[layerGroupId].name;
+	        return _extends({}, featureModal, {
+	            layerName: layerName,
+	            layerGroupName: layerGroupName
+	        });
+	    }
+	    return _extends({}, featureModal, {
+	        layerName: "",
+	        layerGroupName: ""
+	    });
+	});
+
+/***/ },
+/* 790 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.defaultMemoize = defaultMemoize;
+	exports.createSelectorCreator = createSelectorCreator;
+	exports.createStructuredSelector = createStructuredSelector;
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	function defaultEqualityCheck(a, b) {
+	  return a === b;
+	}
+
+	function defaultMemoize(func) {
+	  var equalityCheck = arguments.length <= 1 || arguments[1] === undefined ? defaultEqualityCheck : arguments[1];
+
+	  var lastArgs = null;
+	  var lastResult = null;
+	  return function () {
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    if (lastArgs === null || lastArgs.length !== args.length || !args.every(function (value, index) {
+	      return equalityCheck(value, lastArgs[index]);
+	    })) {
+	      lastResult = func.apply(undefined, args);
+	    }
+	    lastArgs = args;
+	    return lastResult;
+	  };
+	}
+
+	function getDependencies(funcs) {
+	  var dependencies = Array.isArray(funcs[0]) ? funcs[0] : funcs;
+
+	  if (!dependencies.every(function (dep) {
+	    return typeof dep === 'function';
+	  })) {
+	    var dependencyTypes = dependencies.map(function (dep) {
+	      return typeof dep;
+	    }).join(', ');
+	    throw new Error('Selector creators expect all input-selectors to be functions, ' + ('instead received the following types: [' + dependencyTypes + ']'));
+	  }
+
+	  return dependencies;
+	}
+
+	function createSelectorCreator(memoize) {
+	  for (var _len2 = arguments.length, memoizeOptions = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+	    memoizeOptions[_key2 - 1] = arguments[_key2];
+	  }
+
+	  return function () {
+	    for (var _len3 = arguments.length, funcs = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+	      funcs[_key3] = arguments[_key3];
+	    }
+
+	    var recomputations = 0;
+	    var resultFunc = funcs.pop();
+	    var dependencies = getDependencies(funcs);
+
+	    var memoizedResultFunc = memoize.apply(undefined, [function () {
+	      recomputations++;
+	      return resultFunc.apply(undefined, arguments);
+	    }].concat(memoizeOptions));
+
+	    var selector = function selector(state, props) {
+	      for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
+	        args[_key4 - 2] = arguments[_key4];
+	      }
+
+	      var params = dependencies.map(function (dependency) {
+	        return dependency.apply(undefined, [state, props].concat(args));
+	      });
+	      return memoizedResultFunc.apply(undefined, _toConsumableArray(params));
+	    };
+
+	    selector.resultFunc = resultFunc;
+	    selector.recomputations = function () {
+	      return recomputations;
+	    };
+	    selector.resetRecomputations = function () {
+	      return recomputations = 0;
+	    };
+	    return selector;
+	  };
+	}
+
+	var createSelector = exports.createSelector = createSelectorCreator(defaultMemoize);
+
+	function createStructuredSelector(selectors) {
+	  var selectorCreator = arguments.length <= 1 || arguments[1] === undefined ? createSelector : arguments[1];
+
+	  if (typeof selectors !== 'object') {
+	    throw new Error('createStructuredSelector expects first argument to be an object ' + ('where each property is a selector, instead received a ' + typeof selectors));
+	  }
+	  var objectKeys = Object.keys(selectors);
+	  return selectorCreator(objectKeys.map(function (key) {
+	    return selectors[key];
+	  }), function () {
+	    for (var _len5 = arguments.length, values = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+	      values[_key5] = arguments[_key5];
+	    }
+
+	    return values.reduce(function (composition, value, index) {
+	      composition[objectKeys[index]] = value;
+	      return composition;
+	    }, {});
+	  });
+	}
+
+/***/ },
+/* 791 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _reactBootstrap = __webpack_require__(475);
+
+	var _uuid = __webpack_require__(774);
+
+	var _uuid2 = _interopRequireDefault(_uuid);
+
+	var _util = __webpack_require__(767);
+
+	var _config = __webpack_require__(768);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var PopupTabs = function (_React$Component) {
+	    _inherits(PopupTabs, _React$Component);
+
+	    _createClass(PopupTabs, null, [{
+	        key: 'renderRow',
+	        value: function renderRow(property, value) {
+	            return _react2.default.createElement(
+	                'tr',
+	                { key: property },
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    _react2.default.createElement(
+	                        'strong',
+	                        null,
+	                        property
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    value
+	                )
+	            );
+	        }
+	    }]);
+
+	    function PopupTabs(props) {
+	        _classCallCheck(this, PopupTabs);
+
+	        var _this = _possibleConstructorReturn(this, (PopupTabs.__proto__ || Object.getPrototypeOf(PopupTabs)).call(this, props));
+
+	        if (typeof _this.props.update !== "undefined") {
+	            _this.update = _this.props.update;
+	        }
+	        _this.renderDataTable = _this.renderDataTable.bind(_this);
+	        _this.renderImage = _this.renderImage.bind(_this);
+	        return _this;
+	    }
+	    // eslint-disable-next-line class-methods-use-this
+
+
+	    _createClass(PopupTabs, [{
+	        key: 'update',
+	        value: function update() {
+	            // do nothing unless reassigned by the constructor
+	            // Applies to popups within the Leaflet map scope, which
+	            // need to update their dimensions once images have loaded
+	        }
+	    }, {
+	        key: 'renderImage',
+	        value: function renderImage(imgPath, fullSizePath, alt) {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement('img', { src: imgPath, onLoad: this.update, alt: alt }),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'wiscviewer-popup-image-button-row' },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: fullSizePath,
+	                            key: 'open-larger-image-button',
+	                            target: '_blank',
+	                            rel: 'noopener noreferrer' },
+	                        _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { className: 'open-larger-image-button' },
+	                            _react2.default.createElement('i', { className: 'fa fa-image' }),
+	                            ' View Full-size'
+	                        )
+	                    ),
+	                    _react2.default.createElement('div', { className: 'clearfix' })
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'renderDataTable',
+	        value: function renderDataTable() {
+	            var rows = [];
+	            var featureProperties = this.props.featureProperties;
+	            var layerId = this.props.layerId;
+	            var layerData = _util.LAYERS_BY_ID[layerId];
+
+	            if (typeof layerData !== "undefined" && typeof layerData.tableProperties !== "undefined") {
+	                var displayProperties = layerData.tableProperties;
+	                for (var property in featureProperties) {
+	                    if (typeof displayProperties[property] === "undefined" || displayProperties[property] !== false) {
+	                        var value = featureProperties[property];
+	                        if (typeof displayProperties[property] === "string") {
+	                            property = displayProperties[property];
+	                        }
+	                        rows.push(this.constructor.renderRow(property, value));
+	                    }
+	                }
+	            } else {
+	                for (var _property in featureProperties) {
+	                    var _value = featureProperties[_property];
+	                    rows.push(this.constructor.renderRow(_property, _value));
+	                }
+	            }
+	            return _react2.default.createElement(
+	                _reactBootstrap.Table,
+	                { striped: true, bordered: true, condensed: true, hover: true, className: 'wiscviewer-data-table' },
+	                _react2.default.createElement(
+	                    'tbody',
+	                    null,
+	                    rows
+	                )
+	            );
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var tabs = [];
+	            switch (this.props.layerId) {
+	                case "photos_1976":
+	                case "photos_2007":
+	                    {
+	                        var photoURLs = (0, _util.getPhotoURLs)(this.props.featureProperties);
+	                        tabs.push(_react2.default.createElement(
+	                            _reactBootstrap.Tab,
+	                            { key: 'image', eventKey: 1, title: 'Image' },
+	                            this.renderImage(photoURLs.popup, photoURLs.original, "Oblique")
+	                        ));
+	                        tabs.push(_react2.default.createElement(
+	                            _reactBootstrap.Tab,
+	                            { key: 'data', eventKey: 2, title: 'Data' },
+	                            this.renderDataTable()
+	                        ));
+	                        break;
+	                    }
+	                case "profiles":
+	                    {
+	                        var eventKeyIndex = 1;
+	                        var bluffImg = this.props.featureProperties.bluff_jpg;
+	                        var bathyImg = this.props.featureProperties.bathy_png;
+	                        var hasBluffImg = typeof bluffImg !== "undefined" && bluffImg !== false;
+	                        var hasBathyImg = typeof bathyImg !== "undefined" && bathyImg !== false;
+	                        if (hasBluffImg) {
+	                            var filePath = _config2.default.profiles.pathToGraphs.bluff + this.props.featureProperties.bluff_jpg;
+	                            tabs.push(_react2.default.createElement(
+	                                _reactBootstrap.Tab,
+	                                { key: 'bluff_graph', eventKey: eventKeyIndex, title: 'Bluff Profile' },
+	                                this.renderImage(filePath, filePath, "Bluff Profile")
+	                            ));
+	                            eventKeyIndex += 1;
+	                        }
+	                        if (hasBathyImg) {
+	                            var _filePath = _config2.default.profiles.pathToGraphs.bathy + this.props.featureProperties.bathy_png;
+	                            tabs.push(_react2.default.createElement(
+	                                _reactBootstrap.Tab,
+	                                { key: 'bathy_graph', eventKey: eventKeyIndex, title: 'Bathy Profile' },
+	                                this.renderImage(_filePath, _filePath, "Bathy Profile")
+	                            ));
+	                            eventKeyIndex += 1;
+	                        }
+	                        tabs.push(_react2.default.createElement(
+	                            _reactBootstrap.Tab,
+	                            { key: 'data', eventKey: eventKeyIndex, title: 'Data' },
+	                            this.renderDataTable()
+	                        ));
+	                        break;
+	                    }
+	                case "photos_obl_2016":
+	                    {
+	                        var _filePath2 = _config2.default.photos_2016.obl_urlBase + this.props.featureProperties.filename;
+	                        tabs.push(_react2.default.createElement(
+	                            _reactBootstrap.Tab,
+	                            { key: 'image', eventKey: 1, title: 'Image' },
+	                            this.renderImage(_filePath2, _filePath2, "Oblique")
+	                        ));
+	                        tabs.push(_react2.default.createElement(
+	                            _reactBootstrap.Tab,
+	                            { key: 'data', eventKey: 2, title: 'Data' },
+	                            this.renderDataTable()
+	                        ));
+	                        break;
+	                    }
+	                case "photos_dm_2016":
+	                    {
+	                        var _filePath3 = _config2.default.photos_2016.dm_urlBase + this.props.featureProperties.filename;
+	                        tabs.push(_react2.default.createElement(
+	                            _reactBootstrap.Tab,
+	                            { key: 'image', eventKey: 1, title: 'Image' },
+	                            this.renderImage(_filePath3, _filePath3, "Oblique")
+	                        ));
+	                        tabs.push(_react2.default.createElement(
+	                            _reactBootstrap.Tab,
+	                            { key: 'data', eventKey: 2, title: 'Data' },
+	                            this.renderDataTable()
+	                        ));
+	                        break;
+	                    }
+	                default:
+	                    {
+	                        tabs.push(_react2.default.createElement(
+	                            _reactBootstrap.Tab,
+	                            { key: 'data', eventKey: 1, title: 'Data' },
+	                            this.renderDataTable()
+	                        ));
+	                        break;
+	                    }
+	            }
+	            return _react2.default.createElement(
+	                _reactBootstrap.Tabs,
+	                { onSelect: this.update, id: _uuid2.default.v4() },
+	                tabs
+	            );
+	        }
+	    }]);
+
+	    return PopupTabs;
+	}(_react2.default.Component);
+
+	PopupTabs.propTypes = {
+	    layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired
+	};
+
+	exports.default = PopupTabs;
+
+/***/ },
+/* 792 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var PopupTitle = function PopupTitle(props) {
+	    var featureName = "";
+	    if (typeof props.featureProperties.OBJECTID === "number") {
+	        featureName += "#" + props.featureProperties.OBJECTID;
+	    } else {
+	        featureName += "Feature";
+	    }
+	    return _react2.default.createElement(
+	        'div',
+	        null,
+	        props.layerGroupName,
+	        _react2.default.createElement('i', { className: 'fa fa-chevron-right' }),
+	        props.layerName,
+	        _react2.default.createElement('i', { className: 'fa fa-chevron-right' }),
+	        featureName
+	    );
+	};
+
+	PopupTitle.propTypes = {
+	    layerGroupName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	    layerName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired
+	};
+
+	exports.default = PopupTitle;
+
+/***/ },
+/* 793 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _reactBootstrap = __webpack_require__(475);
+
+	var _config = __webpack_require__(768);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var PopupFooter = function PopupFooter(props) {
+	    var footer = [];
+	    switch (props.layerId) {
+	        case "profiles":
+	            {
+	                var bluffXls = props.featureProperties.bluff_xls;
+	                var bathyXls = props.featureProperties.bathy_xls;
+	                var hasBluffXls = typeof bluffXls !== "undefined" && bluffXls !== false;
+	                var hasBathyXls = typeof bathyXls !== "undefined" && bathyXls !== false;
+	                if (hasBluffXls) {
+	                    footer.push(_react2.default.createElement(
+	                        'a',
+	                        { href: _config2.default.profiles.pathToXls.bluff + bluffXls,
+	                            key: 'download-bluff-excel-button',
+	                            target: '_blank',
+	                            rel: 'noopener noreferrer' },
+	                        _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { className: 'download-excel-button' },
+	                            _react2.default.createElement('i', { className: 'fa fa-table' }),
+	                            ' Bluff Profile'
+	                        )
+	                    ));
+	                }
+	                if (hasBathyXls) {
+	                    footer.push(_react2.default.createElement(
+	                        'a',
+	                        { href: _config2.default.profiles.pathToXls.bathy + bathyXls,
+	                            key: 'download-bathy-excel-button',
+	                            target: '_blank',
+	                            rel: 'noopener noreferrer' },
+	                        _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { className: 'download-excel-button' },
+	                            _react2.default.createElement('i', { className: 'fa fa-table' }),
+	                            ' Bathymetry Profile'
+	                        )
+	                    ));
+	                }
+	                break;
+	            }
+	        default:
+	            break;
+	    }
+	    return _react2.default.createElement(
+	        'div',
+	        null,
+	        footer,
+	        props.children
+	    );
+	};
+
+	PopupFooter.propTypes = {
+	    layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired
+	};
+
+	exports.default = PopupFooter;
+
+/***/ },
+/* 794 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _reactBootstrap = __webpack_require__(475);
+
+	var _LeafletMap = __webpack_require__(795);
+
+	var _LeafletMap2 = _interopRequireDefault(_LeafletMap);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52955,16 +53771,9 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * MapContainer.jsx
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component contains the primary map container (LeafletMap),
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * as well as additional modals that appear over the map.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component contains the primary map container (LeafletMap)
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
-
-	var mapStateToProps = function mapStateToProps(state) {
-	    return {
-	        mobileFeatureModal: (0, _selectors.getMobileFeaturePopupProps)(state)
-	    };
-	};
 
 	var MapContainer = function (_React$Component) {
 	    _inherits(MapContainer, _React$Component);
@@ -52981,35 +53790,18 @@
 	            return _react2.default.createElement(
 	                _reactBootstrap.Col,
 	                { xs: 12, sm: 7, md: 8, lg: 9, className: 'wiscviewer-map-container' },
-	                _react2.default.createElement(_MobileFeaturePopup2.default, {
-	                    visible: this.props.mobileFeatureModal.visible,
-	                    featureProperties: this.props.mobileFeatureModal.featureProperties,
-	                    layerId: this.props.mobileFeatureModal.layerId,
-	                    layerName: this.props.mobileFeatureModal.layerName,
-	                    layerGroupName: this.props.mobileFeatureModal.layerGroupName,
-	                    onCloseClick: this.constructor.closeMobileFeatureModal
-	                }),
 	                _react2.default.createElement(_LeafletMap2.default, null)
 	            );
-	        }
-	    }], [{
-	        key: 'closeMobileFeatureModal',
-	        value: function closeMobileFeatureModal() {
-	            _store2.default.dispatch((0, _mobile.closeMobileFeatureModal)());
 	        }
 	    }]);
 
 	    return MapContainer;
 	}(_react2.default.Component);
 
-	MapContainer.propTypes = {
-	    mobileFeatureModal: _propTypes2.default.object.isRequired
-	};
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MapContainer);
+	exports.default = MapContainer;
 
 /***/ },
-/* 789 */
+/* 795 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53034,13 +53826,13 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _ObliquePhotoMap = __webpack_require__(790);
+	var _ObliquePhotoMap = __webpack_require__(796);
 
 	var _ObliquePhotoMap2 = _interopRequireDefault(_ObliquePhotoMap);
 
 	var _map = __webpack_require__(770);
 
-	var _selectors = __webpack_require__(822);
+	var _selectors = __webpack_require__(789);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53143,7 +53935,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LeafletMap);
 
 /***/ },
-/* 790 */
+/* 796 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53154,7 +53946,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _axios = __webpack_require__(791);
+	var _axios = __webpack_require__(797);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -53162,11 +53954,11 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _layerStyles = __webpack_require__(816);
+	var _layerStyles = __webpack_require__(822);
 
 	var _layerStyles2 = _interopRequireDefault(_layerStyles);
 
-	var _onEachFeature = __webpack_require__(817);
+	var _onEachFeature = __webpack_require__(823);
 
 	var _onEachFeature2 = _interopRequireDefault(_onEachFeature);
 
@@ -53295,21 +54087,21 @@
 	exports.default = ObliquePhotoMap;
 
 /***/ },
-/* 791 */
+/* 797 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(792);
+	module.exports = __webpack_require__(798);
 
 /***/ },
-/* 792 */
+/* 798 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
-	var bind = __webpack_require__(794);
-	var Axios = __webpack_require__(795);
-	var defaults = __webpack_require__(796);
+	var utils = __webpack_require__(799);
+	var bind = __webpack_require__(800);
+	var Axios = __webpack_require__(801);
+	var defaults = __webpack_require__(802);
 
 	/**
 	 * Create an instance of Axios
@@ -53342,15 +54134,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(813);
-	axios.CancelToken = __webpack_require__(814);
-	axios.isCancel = __webpack_require__(810);
+	axios.Cancel = __webpack_require__(819);
+	axios.CancelToken = __webpack_require__(820);
+	axios.isCancel = __webpack_require__(816);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(815);
+	axios.spread = __webpack_require__(821);
 
 	module.exports = axios;
 
@@ -53359,12 +54151,12 @@
 
 
 /***/ },
-/* 793 */
+/* 799 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(794);
+	var bind = __webpack_require__(800);
 
 	/*global toString:true*/
 
@@ -53664,7 +54456,7 @@
 
 
 /***/ },
-/* 794 */
+/* 800 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -53681,17 +54473,17 @@
 
 
 /***/ },
-/* 795 */
+/* 801 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(796);
-	var utils = __webpack_require__(793);
-	var InterceptorManager = __webpack_require__(807);
-	var dispatchRequest = __webpack_require__(808);
-	var isAbsoluteURL = __webpack_require__(811);
-	var combineURLs = __webpack_require__(812);
+	var defaults = __webpack_require__(802);
+	var utils = __webpack_require__(799);
+	var InterceptorManager = __webpack_require__(813);
+	var dispatchRequest = __webpack_require__(814);
+	var isAbsoluteURL = __webpack_require__(817);
+	var combineURLs = __webpack_require__(818);
 
 	/**
 	 * Create a new instance of Axios
@@ -53772,13 +54564,13 @@
 
 
 /***/ },
-/* 796 */
+/* 802 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(793);
-	var normalizeHeaderName = __webpack_require__(797);
+	var utils = __webpack_require__(799);
+	var normalizeHeaderName = __webpack_require__(803);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -53795,10 +54587,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(798);
+	    adapter = __webpack_require__(804);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(798);
+	    adapter = __webpack_require__(804);
 	  }
 	  return adapter;
 	}
@@ -53872,12 +54664,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 797 */
+/* 803 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(799);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -53890,18 +54682,18 @@
 
 
 /***/ },
-/* 798 */
+/* 804 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(793);
-	var settle = __webpack_require__(799);
-	var buildURL = __webpack_require__(802);
-	var parseHeaders = __webpack_require__(803);
-	var isURLSameOrigin = __webpack_require__(804);
-	var createError = __webpack_require__(800);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(805);
+	var utils = __webpack_require__(799);
+	var settle = __webpack_require__(805);
+	var buildURL = __webpack_require__(808);
+	var parseHeaders = __webpack_require__(809);
+	var isURLSameOrigin = __webpack_require__(810);
+	var createError = __webpack_require__(806);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(811);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -53997,7 +54789,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(806);
+	      var cookies = __webpack_require__(812);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -54074,12 +54866,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 799 */
+/* 805 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(800);
+	var createError = __webpack_require__(806);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -54105,12 +54897,12 @@
 
 
 /***/ },
-/* 800 */
+/* 806 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(801);
+	var enhanceError = __webpack_require__(807);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -54128,7 +54920,7 @@
 
 
 /***/ },
-/* 801 */
+/* 807 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54153,12 +54945,12 @@
 
 
 /***/ },
-/* 802 */
+/* 808 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(799);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -54227,12 +55019,12 @@
 
 
 /***/ },
-/* 803 */
+/* 809 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(799);
 
 	/**
 	 * Parse headers into an object
@@ -54270,12 +55062,12 @@
 
 
 /***/ },
-/* 804 */
+/* 810 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(799);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54344,7 +55136,7 @@
 
 
 /***/ },
-/* 805 */
+/* 811 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54386,12 +55178,12 @@
 
 
 /***/ },
-/* 806 */
+/* 812 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(799);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -54445,12 +55237,12 @@
 
 
 /***/ },
-/* 807 */
+/* 813 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(799);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -54503,15 +55295,15 @@
 
 
 /***/ },
-/* 808 */
+/* 814 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
-	var transformData = __webpack_require__(809);
-	var isCancel = __webpack_require__(810);
-	var defaults = __webpack_require__(796);
+	var utils = __webpack_require__(799);
+	var transformData = __webpack_require__(815);
+	var isCancel = __webpack_require__(816);
+	var defaults = __webpack_require__(802);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -54588,12 +55380,12 @@
 
 
 /***/ },
-/* 809 */
+/* 815 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(793);
+	var utils = __webpack_require__(799);
 
 	/**
 	 * Transform the data for a request or a response
@@ -54614,7 +55406,7 @@
 
 
 /***/ },
-/* 810 */
+/* 816 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54625,7 +55417,7 @@
 
 
 /***/ },
-/* 811 */
+/* 817 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54645,7 +55437,7 @@
 
 
 /***/ },
-/* 812 */
+/* 818 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54663,7 +55455,7 @@
 
 
 /***/ },
-/* 813 */
+/* 819 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54688,12 +55480,12 @@
 
 
 /***/ },
-/* 814 */
+/* 820 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(813);
+	var Cancel = __webpack_require__(819);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -54751,7 +55543,7 @@
 
 
 /***/ },
-/* 815 */
+/* 821 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54784,7 +55576,7 @@
 
 
 /***/ },
-/* 816 */
+/* 822 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55127,7 +55919,7 @@
 	}
 
 /***/ },
-/* 817 */
+/* 823 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55149,7 +55941,7 @@
 
 	var _mobile = __webpack_require__(771);
 
-	var _FeaturePopup = __webpack_require__(818);
+	var _FeaturePopup = __webpack_require__(824);
 
 	var _FeaturePopup2 = _interopRequireDefault(_FeaturePopup);
 
@@ -55234,7 +56026,7 @@
 	}
 
 /***/ },
-/* 818 */
+/* 824 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55257,15 +56049,15 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _PopupTabs = __webpack_require__(819);
+	var _PopupTabs = __webpack_require__(791);
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
-	var _PopupTitle = __webpack_require__(820);
+	var _PopupTitle = __webpack_require__(792);
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _PopupFooter = __webpack_require__(821);
+	var _PopupFooter = __webpack_require__(793);
 
 	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
 
@@ -55397,794 +56189,6 @@
 	};
 
 	exports.default = FeaturePopup;
-
-/***/ },
-/* 819 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _propTypes = __webpack_require__(780);
-
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-
-	var _reactBootstrap = __webpack_require__(475);
-
-	var _uuid = __webpack_require__(774);
-
-	var _uuid2 = _interopRequireDefault(_uuid);
-
-	var _util = __webpack_require__(767);
-
-	var _config = __webpack_require__(768);
-
-	var _config2 = _interopRequireDefault(_config);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var PopupTabs = function (_React$Component) {
-	    _inherits(PopupTabs, _React$Component);
-
-	    _createClass(PopupTabs, null, [{
-	        key: 'renderRow',
-	        value: function renderRow(property, value) {
-	            return _react2.default.createElement(
-	                'tr',
-	                { key: property },
-	                _react2.default.createElement(
-	                    'td',
-	                    null,
-	                    _react2.default.createElement(
-	                        'strong',
-	                        null,
-	                        property
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'td',
-	                    null,
-	                    value
-	                )
-	            );
-	        }
-	    }]);
-
-	    function PopupTabs(props) {
-	        _classCallCheck(this, PopupTabs);
-
-	        var _this = _possibleConstructorReturn(this, (PopupTabs.__proto__ || Object.getPrototypeOf(PopupTabs)).call(this, props));
-
-	        if (typeof _this.props.update !== "undefined") {
-	            _this.update = _this.props.update;
-	        }
-	        _this.renderDataTable = _this.renderDataTable.bind(_this);
-	        _this.renderImage = _this.renderImage.bind(_this);
-	        return _this;
-	    }
-	    // eslint-disable-next-line class-methods-use-this
-
-
-	    _createClass(PopupTabs, [{
-	        key: 'update',
-	        value: function update() {
-	            // do nothing unless reassigned by the constructor
-	            // Applies to popups within the Leaflet map scope, which
-	            // need to update their dimensions once images have loaded
-	        }
-	    }, {
-	        key: 'renderImage',
-	        value: function renderImage(imgPath, fullSizePath, alt) {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement('img', { src: imgPath, onLoad: this.update, alt: alt }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'wiscviewer-popup-image-button-row' },
-	                    _react2.default.createElement(
-	                        'a',
-	                        { href: fullSizePath,
-	                            key: 'open-larger-image-button',
-	                            target: '_blank',
-	                            rel: 'noopener noreferrer' },
-	                        _react2.default.createElement(
-	                            _reactBootstrap.Button,
-	                            { className: 'open-larger-image-button' },
-	                            _react2.default.createElement('i', { className: 'fa fa-image' }),
-	                            ' View Full-size'
-	                        )
-	                    ),
-	                    _react2.default.createElement('div', { className: 'clearfix' })
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'renderDataTable',
-	        value: function renderDataTable() {
-	            var rows = [];
-	            var featureProperties = this.props.featureProperties;
-	            var layerId = this.props.layerId;
-	            var layerData = _util.LAYERS_BY_ID[layerId];
-
-	            if (typeof layerData !== "undefined" && typeof layerData.tableProperties !== "undefined") {
-	                var displayProperties = layerData.tableProperties;
-	                for (var property in featureProperties) {
-	                    if (typeof displayProperties[property] === "undefined" || displayProperties[property] !== false) {
-	                        var value = featureProperties[property];
-	                        if (typeof displayProperties[property] === "string") {
-	                            property = displayProperties[property];
-	                        }
-	                        rows.push(this.constructor.renderRow(property, value));
-	                    }
-	                }
-	            } else {
-	                for (var _property in featureProperties) {
-	                    var _value = featureProperties[_property];
-	                    rows.push(this.constructor.renderRow(_property, _value));
-	                }
-	            }
-	            return _react2.default.createElement(
-	                _reactBootstrap.Table,
-	                { striped: true, bordered: true, condensed: true, hover: true, className: 'wiscviewer-data-table' },
-	                _react2.default.createElement(
-	                    'tbody',
-	                    null,
-	                    rows
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var tabs = [];
-	            switch (this.props.layerId) {
-	                case "photos_1976":
-	                case "photos_2007":
-	                    {
-	                        var photoURLs = (0, _util.getPhotoURLs)(this.props.featureProperties);
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'image', eventKey: 1, title: 'Image' },
-	                            this.renderImage(photoURLs.popup, photoURLs.original, "Oblique")
-	                        ));
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'data', eventKey: 2, title: 'Data' },
-	                            this.renderDataTable()
-	                        ));
-	                        break;
-	                    }
-	                case "profiles":
-	                    {
-	                        var eventKeyIndex = 1;
-	                        var bluffImg = this.props.featureProperties.bluff_jpg;
-	                        var bathyImg = this.props.featureProperties.bathy_png;
-	                        var hasBluffImg = typeof bluffImg !== "undefined" && bluffImg !== false;
-	                        var hasBathyImg = typeof bathyImg !== "undefined" && bathyImg !== false;
-	                        if (hasBluffImg) {
-	                            var filePath = _config2.default.profiles.pathToGraphs.bluff + this.props.featureProperties.bluff_jpg;
-	                            tabs.push(_react2.default.createElement(
-	                                _reactBootstrap.Tab,
-	                                { key: 'bluff_graph', eventKey: eventKeyIndex, title: 'Bluff Profile' },
-	                                this.renderImage(filePath, filePath, "Bluff Profile")
-	                            ));
-	                            eventKeyIndex += 1;
-	                        }
-	                        if (hasBathyImg) {
-	                            var _filePath = _config2.default.profiles.pathToGraphs.bathy + this.props.featureProperties.bathy_png;
-	                            tabs.push(_react2.default.createElement(
-	                                _reactBootstrap.Tab,
-	                                { key: 'bathy_graph', eventKey: eventKeyIndex, title: 'Bathy Profile' },
-	                                this.renderImage(_filePath, _filePath, "Bathy Profile")
-	                            ));
-	                            eventKeyIndex += 1;
-	                        }
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'data', eventKey: eventKeyIndex, title: 'Data' },
-	                            this.renderDataTable()
-	                        ));
-	                        break;
-	                    }
-	                case "photos_obl_2016":
-	                    {
-	                        var _filePath2 = _config2.default.photos_2016.obl_urlBase + this.props.featureProperties.filename;
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'image', eventKey: 1, title: 'Image' },
-	                            this.renderImage(_filePath2, _filePath2, "Oblique")
-	                        ));
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'data', eventKey: 2, title: 'Data' },
-	                            this.renderDataTable()
-	                        ));
-	                        break;
-	                    }
-	                case "photos_dm_2016":
-	                    {
-	                        var _filePath3 = _config2.default.photos_2016.dm_urlBase + this.props.featureProperties.filename;
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'image', eventKey: 1, title: 'Image' },
-	                            this.renderImage(_filePath3, _filePath3, "Oblique")
-	                        ));
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'data', eventKey: 2, title: 'Data' },
-	                            this.renderDataTable()
-	                        ));
-	                        break;
-	                    }
-	                default:
-	                    {
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'data', eventKey: 1, title: 'Data' },
-	                            this.renderDataTable()
-	                        ));
-	                        break;
-	                    }
-	            }
-	            return _react2.default.createElement(
-	                _reactBootstrap.Tabs,
-	                { onSelect: this.update, id: _uuid2.default.v4() },
-	                tabs
-	            );
-	        }
-	    }]);
-
-	    return PopupTabs;
-	}(_react2.default.Component);
-
-	PopupTabs.propTypes = {
-	    layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
-	    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired
-	};
-
-	exports.default = PopupTabs;
-
-/***/ },
-/* 820 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _propTypes = __webpack_require__(780);
-
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var PopupTitle = function PopupTitle(props) {
-	    var featureName = "";
-	    if (typeof props.featureProperties.OBJECTID === "number") {
-	        featureName += "#" + props.featureProperties.OBJECTID;
-	    } else {
-	        featureName += "Feature";
-	    }
-	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        props.layerGroupName,
-	        _react2.default.createElement('i', { className: 'fa fa-chevron-right' }),
-	        props.layerName,
-	        _react2.default.createElement('i', { className: 'fa fa-chevron-right' }),
-	        featureName
-	    );
-	};
-
-	PopupTitle.propTypes = {
-	    layerGroupName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
-	    layerName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
-	    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired
-	};
-
-	exports.default = PopupTitle;
-
-/***/ },
-/* 821 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _propTypes = __webpack_require__(780);
-
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-
-	var _reactBootstrap = __webpack_require__(475);
-
-	var _config = __webpack_require__(768);
-
-	var _config2 = _interopRequireDefault(_config);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var PopupFooter = function PopupFooter(props) {
-	    var footer = [];
-	    switch (props.layerId) {
-	        case "profiles":
-	            {
-	                var bluffXls = props.featureProperties.bluff_xls;
-	                var bathyXls = props.featureProperties.bathy_xls;
-	                var hasBluffXls = typeof bluffXls !== "undefined" && bluffXls !== false;
-	                var hasBathyXls = typeof bathyXls !== "undefined" && bathyXls !== false;
-	                if (hasBluffXls) {
-	                    footer.push(_react2.default.createElement(
-	                        'a',
-	                        { href: _config2.default.profiles.pathToXls.bluff + bluffXls,
-	                            key: 'download-bluff-excel-button',
-	                            target: '_blank',
-	                            rel: 'noopener noreferrer' },
-	                        _react2.default.createElement(
-	                            _reactBootstrap.Button,
-	                            { className: 'download-excel-button' },
-	                            _react2.default.createElement('i', { className: 'fa fa-table' }),
-	                            ' Bluff Profile'
-	                        )
-	                    ));
-	                }
-	                if (hasBathyXls) {
-	                    footer.push(_react2.default.createElement(
-	                        'a',
-	                        { href: _config2.default.profiles.pathToXls.bathy + bathyXls,
-	                            key: 'download-bathy-excel-button',
-	                            target: '_blank',
-	                            rel: 'noopener noreferrer' },
-	                        _react2.default.createElement(
-	                            _reactBootstrap.Button,
-	                            { className: 'download-excel-button' },
-	                            _react2.default.createElement('i', { className: 'fa fa-table' }),
-	                            ' Bathymetry Profile'
-	                        )
-	                    ));
-	                }
-	                break;
-	            }
-	        default:
-	            break;
-	    }
-	    return _react2.default.createElement(
-	        'div',
-	        null,
-	        footer,
-	        props.children
-	    );
-	};
-
-	PopupFooter.propTypes = {
-	    layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
-	    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired
-	};
-
-	exports.default = PopupFooter;
-
-/***/ },
-/* 822 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.getMobileFeaturePopupProps = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = exports.getLayerGroupsByIdWithData = exports.getLayersByIdWithData = exports.getBasemapsByIdWithData = undefined;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _reselect = __webpack_require__(823);
-
-	var _util = __webpack_require__(767);
-
-	var getLayersById = function getLayersById(state) {
-	    return state.layers.layersById;
-	};
-	var getBasemapsById = function getBasemapsById(state) {
-	    return state.basemaps;
-	};
-	var getLayerGroupsById = function getLayerGroupsById(state) {
-	    return state.layers.layerGroupsById;
-	};
-	var getMobileFeatureModal = function getMobileFeatureModal(state) {
-	    return state.mobile.featureModal;
-	};
-
-	var getBasemapsByIdWithData = exports.getBasemapsByIdWithData = (0, _reselect.createSelector)([getBasemapsById], function (basemaps) {
-	    var basemapsWithData = {};
-	    for (var basemapId in basemaps) {
-	        basemapsWithData[basemapId] = _extends({}, _util.BASEMAPS_BY_ID[basemapId], basemaps[basemapId]);
-	    }
-	    return basemapsWithData;
-	});
-
-	var getLayersByIdWithData = exports.getLayersByIdWithData = (0, _reselect.createSelector)([getLayersById], function (layers) {
-	    var layersWithData = {};
-	    for (var layerId in layers) {
-	        layersWithData[layerId] = _extends({}, _util.LAYERS_BY_ID[layerId], layers[layerId]);
-	    }
-	    return layersWithData;
-	});
-
-	var getLayerGroupsByIdWithData = exports.getLayerGroupsByIdWithData = (0, _reselect.createSelector)([getLayerGroupsById], function (layerGroups) {
-	    var layersGroupsWithData = {};
-	    for (var layerGroupId in layerGroups) {
-	        layersGroupsWithData[layerGroupId] = _extends({}, _util.LAYER_GROUPS_BY_ID[layerGroupId]);
-	    }
-	    return layersGroupsWithData;
-	});
-
-	var mapLayerGroupsToLayers = exports.mapLayerGroupsToLayers = (0, _reselect.createSelector)([getLayerGroupsByIdWithData, getLayersByIdWithData], function (layerGroups, layers) {
-	    var mappedLayerGroups = {};
-	    for (var layerGroupId in layerGroups) {
-	        mappedLayerGroups[layerGroupId] = _extends({}, layerGroups[layerGroupId], {
-	            layers: {}
-	        });
-	        var _iteratorNormalCompletion = true;
-	        var _didIteratorError = false;
-	        var _iteratorError = undefined;
-
-	        try {
-	            for (var _iterator = layerGroups[layerGroupId].layers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	                var layerId = _step.value;
-
-	                mappedLayerGroups[layerGroupId].layers[layerId] = layers[layerId];
-	            }
-	        } catch (err) {
-	            _didIteratorError = true;
-	            _iteratorError = err;
-	        } finally {
-	            try {
-	                if (!_iteratorNormalCompletion && _iterator.return) {
-	                    _iterator.return();
-	                }
-	            } finally {
-	                if (_didIteratorError) {
-	                    throw _iteratorError;
-	                }
-	            }
-	        }
-	    }
-	    return mappedLayerGroups;
-	});
-
-	var getActiveLayers = exports.getActiveLayers = (0, _reselect.createSelector)(getLayersById, function (layers) {
-	    var activeLayers = [];
-	    for (var layerId in layers) {
-	        if (layers[layerId].active === true) {
-	            activeLayers.push(layerId);
-	        }
-	    }
-	    return activeLayers;
-	});
-
-	var getActiveLayerStyleTypes = exports.getActiveLayerStyleTypes = (0, _reselect.createSelector)([getLayersByIdWithData, getLayerGroupsByIdWithData, getActiveLayers], function (layers, layerGroups, activeLayers) {
-	    var stylesByLayerId = {};
-	    var _iteratorNormalCompletion2 = true;
-	    var _didIteratorError2 = false;
-	    var _iteratorError2 = undefined;
-
-	    try {
-	        for (var _iterator2 = activeLayers[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-	            var layerId = _step2.value;
-
-	            var layer = layers[layerId];
-	            var layerName = layer.name || "";
-	            var layerGroupId = layer.layerGroupId;
-	            var layerGroupName = "";
-	            if (typeof layerGroups[layerGroupId] !== "undefined") {
-	                layerGroupName = layerGroups[layerGroupId].name;
-	            }
-	            var legendStyles = layer.legendStyles;
-	            var styles = [];
-	            for (var styleName in legendStyles) {
-	                var styleIconClassNames = ["fa"];
-	                var iconStyle = {
-	                    color: "#000000"
-	                };
-	                if (legendStyles[styleName].geometryType === "LineString" || legendStyles[styleName].geometryType === "MultiLineString") {
-	                    styleIconClassNames.push("fa-minus");
-	                    iconStyle.color = legendStyles[styleName].style.color;
-	                } else if (legendStyles[styleName].geometryType === "Point") {
-	                    styleIconClassNames.push("fa-circle");
-	                    iconStyle.color = legendStyles[styleName].style.strokeColor;
-	                }
-	                if (styleName === "null") {
-	                    styleName = "(No Value)";
-	                }
-	                styles.push({
-	                    styleName: styleName,
-	                    iconStyle: iconStyle,
-	                    styleIconClassNames: styleIconClassNames
-	                });
-	            }
-	            styles = styles.sort(function (a, b) {
-	                if (a.styleName < b.styleName) {
-	                    return -1;
-	                }
-	                if (a.styleName > b.styleName) {
-	                    return 1;
-	                }
-	                return 0;
-	            });
-	            stylesByLayerId[layerGroupName + " - " + layerName] = styles;
-	        }
-	    } catch (err) {
-	        _didIteratorError2 = true;
-	        _iteratorError2 = err;
-	    } finally {
-	        try {
-	            if (!_iteratorNormalCompletion2 && _iterator2.return) {
-	                _iterator2.return();
-	            }
-	        } finally {
-	            if (_didIteratorError2) {
-	                throw _iteratorError2;
-	            }
-	        }
-	    }
-
-	    return stylesByLayerId;
-	});
-
-	var getMobileFeaturePopupProps = exports.getMobileFeaturePopupProps = (0, _reselect.createSelector)([getLayersByIdWithData, getLayerGroupsByIdWithData, getMobileFeatureModal], function (layers, layerGroups, featureModal) {
-	    if (typeof featureModal.layerId !== "undefined" && featureModal.layerId !== false) {
-	        var layerId = featureModal.layerId;
-	        var layerName = layers[layerId].name;
-	        var layerGroupId = layers[layerId].layerGroupId;
-	        var layerGroupName = layerGroups[layerGroupId].name;
-	        return _extends({}, featureModal, {
-	            layerName: layerName,
-	            layerGroupName: layerGroupName
-	        });
-	    }
-	    return _extends({}, featureModal, {
-	        layerName: "",
-	        layerGroupName: ""
-	    });
-	});
-
-/***/ },
-/* 823 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports.defaultMemoize = defaultMemoize;
-	exports.createSelectorCreator = createSelectorCreator;
-	exports.createStructuredSelector = createStructuredSelector;
-
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-	function defaultEqualityCheck(a, b) {
-	  return a === b;
-	}
-
-	function defaultMemoize(func) {
-	  var equalityCheck = arguments.length <= 1 || arguments[1] === undefined ? defaultEqualityCheck : arguments[1];
-
-	  var lastArgs = null;
-	  var lastResult = null;
-	  return function () {
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-
-	    if (lastArgs === null || lastArgs.length !== args.length || !args.every(function (value, index) {
-	      return equalityCheck(value, lastArgs[index]);
-	    })) {
-	      lastResult = func.apply(undefined, args);
-	    }
-	    lastArgs = args;
-	    return lastResult;
-	  };
-	}
-
-	function getDependencies(funcs) {
-	  var dependencies = Array.isArray(funcs[0]) ? funcs[0] : funcs;
-
-	  if (!dependencies.every(function (dep) {
-	    return typeof dep === 'function';
-	  })) {
-	    var dependencyTypes = dependencies.map(function (dep) {
-	      return typeof dep;
-	    }).join(', ');
-	    throw new Error('Selector creators expect all input-selectors to be functions, ' + ('instead received the following types: [' + dependencyTypes + ']'));
-	  }
-
-	  return dependencies;
-	}
-
-	function createSelectorCreator(memoize) {
-	  for (var _len2 = arguments.length, memoizeOptions = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-	    memoizeOptions[_key2 - 1] = arguments[_key2];
-	  }
-
-	  return function () {
-	    for (var _len3 = arguments.length, funcs = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-	      funcs[_key3] = arguments[_key3];
-	    }
-
-	    var recomputations = 0;
-	    var resultFunc = funcs.pop();
-	    var dependencies = getDependencies(funcs);
-
-	    var memoizedResultFunc = memoize.apply(undefined, [function () {
-	      recomputations++;
-	      return resultFunc.apply(undefined, arguments);
-	    }].concat(memoizeOptions));
-
-	    var selector = function selector(state, props) {
-	      for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
-	        args[_key4 - 2] = arguments[_key4];
-	      }
-
-	      var params = dependencies.map(function (dependency) {
-	        return dependency.apply(undefined, [state, props].concat(args));
-	      });
-	      return memoizedResultFunc.apply(undefined, _toConsumableArray(params));
-	    };
-
-	    selector.resultFunc = resultFunc;
-	    selector.recomputations = function () {
-	      return recomputations;
-	    };
-	    selector.resetRecomputations = function () {
-	      return recomputations = 0;
-	    };
-	    return selector;
-	  };
-	}
-
-	var createSelector = exports.createSelector = createSelectorCreator(defaultMemoize);
-
-	function createStructuredSelector(selectors) {
-	  var selectorCreator = arguments.length <= 1 || arguments[1] === undefined ? createSelector : arguments[1];
-
-	  if (typeof selectors !== 'object') {
-	    throw new Error('createStructuredSelector expects first argument to be an object ' + ('where each property is a selector, instead received a ' + typeof selectors));
-	  }
-	  var objectKeys = Object.keys(selectors);
-	  return selectorCreator(objectKeys.map(function (key) {
-	    return selectors[key];
-	  }), function () {
-	    for (var _len5 = arguments.length, values = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
-	      values[_key5] = arguments[_key5];
-	    }
-
-	    return values.reduce(function (composition, value, index) {
-	      composition[objectKeys[index]] = value;
-	      return composition;
-	    }, {});
-	  });
-	}
-
-/***/ },
-/* 824 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _propTypes = __webpack_require__(780);
-
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-
-	var _reactBootstrap = __webpack_require__(475);
-
-	var _PopupTabs = __webpack_require__(819);
-
-	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
-
-	var _PopupTitle = __webpack_require__(820);
-
-	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
-
-	var _PopupFooter = __webpack_require__(821);
-
-	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * FeatureModal.jsx
-	 * This creates the modal that's displayed when a user clicks on an object in the map
-	 */
-	var MobileFeaturePopup = function MobileFeaturePopup(props) {
-	  var classNames = ["wiscviewer-modal", "wiscviewer-mobile-modal", "wiscviewer-mobile-feature-popup", "static-modal"];
-	  if (props.visible === false) {
-	    classNames.push("hidden");
-	  }
-	  return _react2.default.createElement(
-	    'div',
-	    { className: classNames.join(" ") },
-	    _react2.default.createElement(
-	      _reactBootstrap.Modal.Dialog,
-	      null,
-	      _react2.default.createElement(
-	        _reactBootstrap.Modal.Header,
-	        null,
-	        _react2.default.createElement(_PopupTitle2.default, {
-	          featureProperties: props.featureProperties,
-	          layerGroupName: props.layerGroupName,
-	          layerName: props.layerName
-	        })
-	      ),
-	      _react2.default.createElement(
-	        _reactBootstrap.Modal.Body,
-	        null,
-	        _react2.default.createElement(_PopupTabs2.default, {
-	          className: 'wiscviewer-modal-tabs',
-	          layerId: props.layerId,
-	          featureProperties: props.featureProperties
-	        })
-	      ),
-	      _react2.default.createElement(
-	        _reactBootstrap.Modal.Footer,
-	        null,
-	        _react2.default.createElement(
-	          _PopupFooter2.default,
-	          { layerId: props.layerId, featureProperties: props.featureProperties },
-	          _react2.default.createElement(
-	            _reactBootstrap.Button,
-	            { key: 'close', onClick: props.onCloseClick },
-	            'Close'
-	          )
-	        )
-	      )
-	    )
-	  );
-	};
-
-	MobileFeaturePopup.propTypes = {
-	  visible: _propTypes2.default.bool.isRequired,
-	  featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired,
-	  layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
-	  layerName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
-	  layerGroupName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
-	  onCloseClick: _propTypes2.default.func.isRequired
-	};
-
-	exports.default = MobileFeaturePopup;
 
 /***/ },
 /* 825 */
@@ -56346,7 +56350,7 @@
 
 	var _basemaps = __webpack_require__(769);
 
-	var _selectors = __webpack_require__(822);
+	var _selectors = __webpack_require__(789);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -56913,7 +56917,7 @@
 
 	var _PinnedFeaturePopup2 = _interopRequireDefault(_PinnedFeaturePopup);
 
-	var _selectors = __webpack_require__(822);
+	var _selectors = __webpack_require__(789);
 
 	var _util = __webpack_require__(767);
 
@@ -57088,15 +57092,15 @@
 
 	var _reactDraggable2 = _interopRequireDefault(_reactDraggable);
 
-	var _PopupTabs = __webpack_require__(819);
+	var _PopupTabs = __webpack_require__(791);
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
-	var _PopupTitle = __webpack_require__(820);
+	var _PopupTitle = __webpack_require__(792);
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _PopupFooter = __webpack_require__(821);
+	var _PopupFooter = __webpack_require__(793);
 
 	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
 
@@ -58861,7 +58865,7 @@
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _selectors = __webpack_require__(822);
+	var _selectors = __webpack_require__(789);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

@@ -1,47 +1,21 @@
 /**
  * MapContainer.jsx
- * This component contains the primary map container (LeafletMap),
- * as well as additional modals that appear over the map.
+ * This component contains the primary map container (LeafletMap)
  */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col } from 'react-bootstrap';
-import { connect } from 'react-redux';
 
-import store from '../store';
 import LeafletMap from './LeafletMap';
-import MobileFeaturePopup from '../components/FeaturePopups/MobileFeaturePopup';
-import { closeMobileFeatureModal } from '../ducks/mobile';
-import { getMobileFeaturePopupProps } from '../selectors';
 
-const mapStateToProps = (state) => {
-    return {
-        mobileFeatureModal: getMobileFeaturePopupProps(state)
-    }
-}
 class MapContainer extends React.Component {
-    static closeMobileFeatureModal () {
-        store.dispatch(closeMobileFeatureModal());
-    }
     render() {
         return (
             <Col xs={12} sm={7} md={8} lg={9} className="wiscviewer-map-container">
-                <MobileFeaturePopup
-                    visible={this.props.mobileFeatureModal.visible}
-                    featureProperties={this.props.mobileFeatureModal.featureProperties}
-                    layerId={this.props.mobileFeatureModal.layerId}
-                    layerName={this.props.mobileFeatureModal.layerName}
-                    layerGroupName={this.props.mobileFeatureModal.layerGroupName}
-                    onCloseClick={this.constructor.closeMobileFeatureModal}
-                />
                 <LeafletMap />
             </Col>
         );
     }
 }
 
-MapContainer.propTypes = {
-    mobileFeatureModal: PropTypes.object.isRequired
-}
-
-export default connect(mapStateToProps)(MapContainer);
+export default MapContainer;
