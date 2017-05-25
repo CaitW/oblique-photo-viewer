@@ -50657,7 +50657,7 @@
 	              'Layers'
 	            ),
 	            _react2.default.createElement(_ZoomToCounty2.default, { onZoomShorelineClick: this.constructor.onZoomShorelineClick }),
-	            _react2.default.createElement(_ResetView2.default, null),
+	            _react2.default.createElement(_ResetView2.default, { onResetViewClick: this.constructor.onResetViewClick }),
 	            _react2.default.createElement(
 	              _reactBootstrap.NavItem,
 	              { eventKey: 3, onClick: this.constructor.onAboutClick },
@@ -50681,6 +50681,11 @@
 	    key: 'onZoomShorelineClick',
 	    value: function onZoomShorelineClick(countyName) {
 	      _store2.default.dispatch((0, _map.zoomToCounty)(countyName));
+	    }
+	  }, {
+	    key: 'onResetViewClick',
+	    value: function onResetViewClick() {
+	      _store2.default.dispatch((0, _map.resetMapView)());
 	    }
 	  }]);
 
@@ -52049,10 +52054,8 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(299);
 
@@ -52060,51 +52063,19 @@
 
 	var _reactBootstrap = __webpack_require__(475);
 
-	var _store = __webpack_require__(765);
-
-	var _store2 = _interopRequireDefault(_store);
-
-	var _map = __webpack_require__(770);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * ResetView.jsx
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This creates the button that resets the map view
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-
-	var ResetView = function (_React$Component) {
-	    _inherits(ResetView, _React$Component);
-
-	    function ResetView() {
-	        _classCallCheck(this, ResetView);
-
-	        return _possibleConstructorReturn(this, (ResetView.__proto__ || Object.getPrototypeOf(ResetView)).apply(this, arguments));
-	    }
-
-	    _createClass(ResetView, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                _reactBootstrap.NavItem,
-	                { onClick: this.constructor.onButtonClick, href: '#' },
-	                'Reset View'
-	            );
-	        }
-	    }], [{
-	        key: 'onButtonClick',
-	        value: function onButtonClick() {
-	            _store2.default.dispatch((0, _map.resetMapView)());
-	        }
-	    }]);
-
-	    return ResetView;
-	}(_react2.default.Component);
+	/**
+	 * ResetView.jsx
+	 * This creates the button that resets the map view
+	 */
+	var ResetView = function ResetView(props) {
+	  return _react2.default.createElement(
+	    _reactBootstrap.NavItem,
+	    { onClick: props.onResetViewClick, href: '#' },
+	    'Reset View'
+	  );
+	};
 
 	exports.default = ResetView;
 
