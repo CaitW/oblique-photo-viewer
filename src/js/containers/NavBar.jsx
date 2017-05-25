@@ -10,18 +10,22 @@ import React from 'react';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 
 import store from '../store';
-import ZoomToCounty from './ZoomToCounty';
+import ZoomToCounty from '../components/ZoomToCounty';
 import ResetView from '../components/ResetView';
 import MobileToggle from '../components/MobileToggle';
 import { openMobileLayerList } from '../ducks/mobile';
 import { openAboutModal } from '../ducks/aboutModal';
+import { zoomToCounty } from '../ducks/map';
 
 export default class NavBar extends React.Component {
     static onMobileLayersClick() {
-        store.dispatch(openMobileLayerList());
+      store.dispatch(openMobileLayerList());
     }
     static onAboutClick() {
-        store.dispatch(openAboutModal());
+      store.dispatch(openAboutModal());
+    }
+    static onZoomShorelineClick (countyName) {
+      store.dispatch(zoomToCounty(countyName));
     }
     render() {
         return (
@@ -40,7 +44,7 @@ export default class NavBar extends React.Component {
                   >
                     Layers
                   </NavItem>
-                  <ZoomToCounty />
+                  <ZoomToCounty onZoomShorelineClick={this.constructor.onZoomShorelineClick}/>
                   <ResetView />
                   <NavItem eventKey={ 3 } onClick={ this.constructor.onAboutClick }>
                     About
