@@ -50951,9 +50951,9 @@
 					"url": "https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
 					"defaultActive": true
 				},
-				"streets": {
+				"Streets": {
 					"name": "Streets",
-					"url": "https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
+					"url": "https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
 					"defaultActive": false
 				},
 				"satellite": {
@@ -56499,7 +56499,6 @@
 	    return _react2.default.createElement(
 	        _reactBootstrap.ListGroupItem,
 	        {
-	            href: '#',
 	            active: props.active,
 	            className: 'wiscviewer-layer-item',
 	            onClick: props.onLayerClick.bind(null, props.layerID) },
@@ -56607,7 +56606,6 @@
 	    return _react2.default.createElement(
 	        _reactBootstrap.ListGroupItem,
 	        {
-	            href: '#',
 	            active: props.active,
 	            className: 'wiscviewer-layer-item',
 	            onClick: props.onBasemapClick.bind(null, props.basemapID) },
