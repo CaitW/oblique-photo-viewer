@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Table, Tabs, Tab, Button } from 'react-bootstrap';
 import uuid from 'uuid';
 
 import { getPhotoURLs, LAYERS_BY_ID } from '../../../util';
 import CONFIG from '../../../config.json';
 
-export default class PopupTabs extends React.Component {
+class PopupTabs extends React.Component {
     static renderRow (property, value) {
         return (
             <tr key={property}>
@@ -175,3 +176,16 @@ export default class PopupTabs extends React.Component {
         )
     }
 }
+
+PopupTabs.propTypes = {
+    layerId: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool
+    ]).isRequired,
+    featureProperties: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.bool
+    ]).isRequired
+}
+
+export default PopupTabs;

@@ -3,6 +3,7 @@
  * This creates the modal that's displayed when a user clicks on an object in the map
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import store from '../../store';
 import PopupTabs from './components/PopupTabs';
@@ -11,7 +12,7 @@ import PopupFooter from './components/PopupFooter';
 import { newPinnedFeature } from '../../ducks/pinnedFeatures';
 import { LAYERS_BY_ID, LAYER_GROUPS_BY_ID } from '../../util';
 
-export default class FeaturePopup extends React.Component {
+class FeaturePopup extends React.Component {
     constructor(props) {
         super(props);
         this.update = this.update.bind(this);
@@ -83,3 +84,13 @@ export default class FeaturePopup extends React.Component {
         );
     }
 }
+
+FeaturePopup.propTypes = {
+    layerId: PropTypes.string.isRequired,
+    featureProperties: PropTypes.object,
+    popup: PropTypes.instanceOf(L.Popup),
+    closePopup: PropTypes.func.isRequired,
+    getPosition: PropTypes.func.isRequired
+}
+
+export default FeaturePopup;

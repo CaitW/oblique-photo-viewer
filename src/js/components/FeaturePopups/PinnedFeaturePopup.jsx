@@ -3,13 +3,14 @@
  * This creates the modal that's displayed when a user clicks on an object in the map
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import Draggable from 'react-draggable';
 
 import PopupTabs from './components/PopupTabs';
 import PopupTitle from './components/PopupTitle';
 import PopupFooter from './components/PopupFooter';
 
-export default class PinnedFeaturePopup extends React.Component {
+class PinnedFeaturePopup extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -81,4 +82,18 @@ export default class PinnedFeaturePopup extends React.Component {
         );
     }
 }
+
+PinnedFeaturePopup.propTypes = {
+    layerId: PropTypes.string.isRequired,
+    featureProperties: PropTypes.object.isRequired,
+    initialPosition: PropTypes.object.isRequired,
+    layerName: PropTypes.string.isRequired,
+    layerGroupName: PropTypes.string.isRequired,
+    featureId: PropTypes.string.isRequired,
+    closePopup: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired,
+    zIndex: PropTypes.number.isRequired
+}
+
+export default PinnedFeaturePopup;
 

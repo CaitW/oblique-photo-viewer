@@ -32,7 +32,6 @@ class MapContainer extends React.Component {
                     layerName={this.props.mobileFeatureModal.layerName}
                     layerGroupName={this.props.mobileFeatureModal.layerGroupName}
                     onCloseClick={this.constructor.closeMobileFeatureModal}
-                    title={this.props.mobileFeatureModal.title}
                 />
                 <LeafletMap />
             </Col>

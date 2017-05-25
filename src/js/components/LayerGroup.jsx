@@ -4,6 +4,7 @@
  * in the sidebar and mobile layer list
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ListGroup } from 'react-bootstrap';
 
 import Layer from './Layer';
@@ -14,7 +15,7 @@ const LayerGroup = (props) => {
         layers.push(
             <Layer
                 key={layerId}
-                layerID={layerId}
+                layerId={layerId}
                 layerName={props.layers[layerId].name}
                 active={props.layers[layerId].active}
                 onLayerClick={props.onLayerClick}
@@ -50,4 +51,14 @@ const LayerGroup = (props) => {
         </div>
     );
 }
+
+LayerGroup.propTypes = {
+    layerGroupId: PropTypes.string.isRequired,
+    layerGroupName: PropTypes.string.isRequired,
+    layers: PropTypes.object.isRequired,
+    onLayerClick: PropTypes.func.isRequired,
+    onPanelClick: PropTypes.func.isRequired,
+    panelVisible: PropTypes.bool.isRequired
+}
+
 export default LayerGroup;

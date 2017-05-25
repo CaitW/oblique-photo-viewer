@@ -50590,11 +50590,11 @@
 
 	var _ZoomToCounty2 = _interopRequireDefault(_ZoomToCounty);
 
-	var _ResetView = __webpack_require__(780);
+	var _ResetView = __webpack_require__(785);
 
 	var _ResetView2 = _interopRequireDefault(_ResetView);
 
-	var _MobileToggle = __webpack_require__(781);
+	var _MobileToggle = __webpack_require__(786);
 
 	var _MobileToggle2 = _interopRequireDefault(_MobileToggle);
 
@@ -52009,6 +52009,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
 	var _reactBootstrap = __webpack_require__(475);
 
 	var _config = __webpack_require__(768);
@@ -52017,6 +52021,11 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * ZoomToCounty.jsx
+	 * This creates the dropdown that contains each county with a shoreline.
+	 * Upon clicking that county, the map will zoom to that county's shoreline.
+	 */
 	var ZoomToCounty = function ZoomToCounty(props) {
 	    var counties = [];
 
@@ -52040,108 +52049,16 @@
 	        { title: 'Zoom To Shoreline', id: 'zoom-to-county', className: 'wiscviewer-nav-dropdown' },
 	        counties
 	    );
-	}; /**
-	    * ZoomToCounty.jsx
-	    * This creates the dropdown that contains each county with a shoreline.
-	    * Upon clicking that county, the map will zoom to that county's shoreline.
-	    */
+	};
+
+	ZoomToCounty.propTypes = {
+	    onZoomShorelineClick: _propTypes2.default.func.isRequired
+	};
+
 	exports.default = ZoomToCounty;
 
 /***/ },
 /* 780 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactBootstrap = __webpack_require__(475);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * ResetView.jsx
-	 * This creates the button that resets the map view
-	 */
-	var ResetView = function ResetView(props) {
-	  return _react2.default.createElement(
-	    _reactBootstrap.NavItem,
-	    { onClick: props.onResetViewClick, href: '#' },
-	    'Reset View'
-	  );
-	};
-
-	exports.default = ResetView;
-
-/***/ },
-/* 781 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(299);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _propTypes = __webpack_require__(782);
-
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var MobileToggle = function (_React$Component) {
-	  _inherits(MobileToggle, _React$Component);
-
-	  function MobileToggle() {
-	    _classCallCheck(this, MobileToggle);
-
-	    return _possibleConstructorReturn(this, (MobileToggle.__proto__ || Object.getPrototypeOf(MobileToggle)).apply(this, arguments));
-	  }
-
-	  _createClass(MobileToggle, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'button',
-	        { type: 'button', onClick: this.context.$bs_navbar.onToggle, className: 'navbar-toggle collapsed wiscviewer-mobile-toggle' },
-	        _react2.default.createElement('i', { className: 'fa fa-bars' })
-	      );
-	    }
-	  }]);
-
-	  return MobileToggle;
-	}(_react2.default.Component);
-
-	MobileToggle.contextTypes = {
-	  $bs_navbar: _propTypes2.default.shape({
-	    bsClass: _propTypes2.default.string,
-	    expanded: _propTypes2.default.bool,
-	    onToggle: _propTypes2.default.func.isRequired
-	  })
-	};
-
-	exports.default = MobileToggle;
-
-/***/ },
-/* 782 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -52168,17 +52085,17 @@
 	  // By explicitly using `prop-types` you are opting into new development behavior.
 	  // http://fb.me/prop-types-in-prod
 	  var throwOnDirectAccess = true;
-	  module.exports = __webpack_require__(783)(isValidElement, throwOnDirectAccess);
+	  module.exports = __webpack_require__(781)(isValidElement, throwOnDirectAccess);
 	} else {
 	  // By explicitly using `prop-types` you are opting into new production behavior.
 	  // http://fb.me/prop-types-in-prod
-	  module.exports = __webpack_require__(786)();
+	  module.exports = __webpack_require__(784)();
 	}
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 783 */
+/* 781 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -52196,8 +52113,8 @@
 	var invariant = __webpack_require__(305);
 	var warning = __webpack_require__(308);
 
-	var ReactPropTypesSecret = __webpack_require__(784);
-	var checkPropTypes = __webpack_require__(785);
+	var ReactPropTypesSecret = __webpack_require__(782);
+	var checkPropTypes = __webpack_require__(783);
 
 	module.exports = function(isValidElement, throwOnDirectAccess) {
 	  /* global Symbol */
@@ -52697,7 +52614,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 784 */
+/* 782 */
 /***/ function(module, exports) {
 
 	/**
@@ -52717,7 +52634,7 @@
 
 
 /***/ },
-/* 785 */
+/* 783 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -52734,7 +52651,7 @@
 	if (process.env.NODE_ENV !== 'production') {
 	  var invariant = __webpack_require__(305);
 	  var warning = __webpack_require__(308);
-	  var ReactPropTypesSecret = __webpack_require__(784);
+	  var ReactPropTypesSecret = __webpack_require__(782);
 	  var loggedTypeFailures = {};
 	}
 
@@ -52785,7 +52702,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 786 */
+/* 784 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -52801,7 +52718,7 @@
 
 	var emptyFunction = __webpack_require__(309);
 	var invariant = __webpack_require__(305);
-	var ReactPropTypesSecret = __webpack_require__(784);
+	var ReactPropTypesSecret = __webpack_require__(782);
 
 	module.exports = function() {
 	  function shim(props, propName, componentName, location, propFullName, secret) {
@@ -52850,6 +52767,99 @@
 
 
 /***/ },
+/* 785 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(475);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * ResetView.jsx
+	 * This creates the button that resets the map view
+	 */
+	var ResetView = function ResetView(props) {
+	  return _react2.default.createElement(
+	    _reactBootstrap.NavItem,
+	    { onClick: props.onResetViewClick, href: '#' },
+	    'Reset View'
+	  );
+	};
+
+	exports.default = ResetView;
+
+/***/ },
+/* 786 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var MobileToggle = function (_React$Component) {
+	  _inherits(MobileToggle, _React$Component);
+
+	  function MobileToggle() {
+	    _classCallCheck(this, MobileToggle);
+
+	    return _possibleConstructorReturn(this, (MobileToggle.__proto__ || Object.getPrototypeOf(MobileToggle)).apply(this, arguments));
+	  }
+
+	  _createClass(MobileToggle, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'button',
+	        { type: 'button', onClick: this.context.$bs_navbar.onToggle, className: 'navbar-toggle collapsed wiscviewer-mobile-toggle' },
+	        _react2.default.createElement('i', { className: 'fa fa-bars' })
+	      );
+	    }
+	  }]);
+
+	  return MobileToggle;
+	}(_react2.default.Component);
+
+	MobileToggle.contextTypes = {
+	  $bs_navbar: _propTypes2.default.shape({
+	    bsClass: _propTypes2.default.string,
+	    expanded: _propTypes2.default.bool,
+	    onToggle: _propTypes2.default.func.isRequired
+	  })
+	};
+
+	exports.default = MobileToggle;
+
+/***/ },
 /* 787 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -52865,14 +52875,12 @@
 
 	var _reactBootstrap = __webpack_require__(475);
 
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	/**
-	 * Sidebar.jsx
-	 * This component creates the sidebar, which contains:
-	 * - Layers List
-	 * - Legend
-	 */
 	var SideBar = function SideBar(props) {
 	    return _react2.default.createElement(
 	        _reactBootstrap.Col,
@@ -52883,7 +52891,18 @@
 	            props.children
 	        )
 	    );
+	}; /**
+	    * Sidebar.jsx
+	    * This component creates the sidebar, which contains:
+	    * - Layers List
+	    * - Legend
+	    */
+
+
+	SideBar.propTypes = {
+	    children: _propTypes2.default.node.isRequired
 	};
+
 	exports.default = SideBar;
 
 /***/ },
@@ -52962,8 +52981,7 @@
 	                    layerId: this.props.mobileFeatureModal.layerId,
 	                    layerName: this.props.mobileFeatureModal.layerName,
 	                    layerGroupName: this.props.mobileFeatureModal.layerGroupName,
-	                    onCloseClick: this.constructor.closeMobileFeatureModal,
-	                    title: this.props.mobileFeatureModal.title
+	                    onCloseClick: this.constructor.closeMobileFeatureModal
 	                }),
 	                _react2.default.createElement(_LeafletMap2.default, null)
 	            );
@@ -55211,6 +55229,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
 	var _store = __webpack_require__(765);
 
 	var _store2 = _interopRequireDefault(_store);
@@ -55346,6 +55368,14 @@
 	    return FeaturePopup;
 	}(_react2.default.Component);
 
+	FeaturePopup.propTypes = {
+	    layerId: _propTypes2.default.string.isRequired,
+	    featureProperties: _propTypes2.default.object,
+	    popup: _propTypes2.default.instanceOf(L.Popup),
+	    closePopup: _propTypes2.default.func.isRequired,
+	    getPosition: _propTypes2.default.func.isRequired
+	};
+
 	exports.default = FeaturePopup;
 
 /***/ },
@@ -55363,6 +55393,10 @@
 	var _react = __webpack_require__(299);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
 
 	var _reactBootstrap = __webpack_require__(475);
 
@@ -55599,13 +55633,18 @@
 	    return PopupTabs;
 	}(_react2.default.Component);
 
+	PopupTabs.propTypes = {
+	    layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired
+	};
+
 	exports.default = PopupTabs;
 
 /***/ },
 /* 820 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -55614,6 +55653,10 @@
 	var _react = __webpack_require__(299);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55625,15 +55668,22 @@
 	        featureName += "Feature";
 	    }
 	    return _react2.default.createElement(
-	        "div",
+	        'div',
 	        null,
 	        props.layerGroupName,
-	        _react2.default.createElement("i", { className: "fa fa-chevron-right" }),
+	        _react2.default.createElement('i', { className: 'fa fa-chevron-right' }),
 	        props.layerName,
-	        _react2.default.createElement("i", { className: "fa fa-chevron-right" }),
+	        _react2.default.createElement('i', { className: 'fa fa-chevron-right' }),
 	        featureName
 	    );
 	};
+
+	PopupTitle.propTypes = {
+	    layerGroupName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	    layerName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired
+	};
+
 	exports.default = PopupTitle;
 
 /***/ },
@@ -55649,6 +55699,10 @@
 	var _react = __webpack_require__(299);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
 
 	var _reactBootstrap = __webpack_require__(475);
 
@@ -55709,6 +55763,12 @@
 	        props.children
 	    );
 	};
+
+	PopupFooter.propTypes = {
+	    layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired
+	};
+
 	exports.default = PopupFooter;
 
 /***/ },
@@ -56025,6 +56085,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
 	var _reactBootstrap = __webpack_require__(475);
 
 	var _PopupTabs = __webpack_require__(819);
@@ -56041,6 +56105,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * FeatureModal.jsx
+	 * This creates the modal that's displayed when a user clicks on an object in the map
+	 */
 	var MobileFeaturePopup = function MobileFeaturePopup(props) {
 	  var classNames = ["wiscviewer-modal", "wiscviewer-mobile-modal", "wiscviewer-mobile-feature-popup", "static-modal"];
 	  if (props.visible === false) {
@@ -56085,10 +56153,17 @@
 	      )
 	    )
 	  );
-	}; /**
-	    * FeatureModal.jsx
-	    * This creates the modal that's displayed when a user clicks on an object in the map
-	    */
+	};
+
+	MobileFeaturePopup.propTypes = {
+	  visible: _propTypes2.default.bool.isRequired,
+	  featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired,
+	  layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	  layerName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	  layerGroupName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	  onCloseClick: _propTypes2.default.func.isRequired
+	};
+
 	exports.default = MobileFeaturePopup;
 
 /***/ },
@@ -56361,6 +56436,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
 	var _reactBootstrap = __webpack_require__(475);
 
 	var _Layer = __webpack_require__(828);
@@ -56369,12 +56448,17 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * LayerGroup.jsx
+	 * This creates the group container that holds each non-basemap layer list item,
+	 * in the sidebar and mobile layer list
+	 */
 	var LayerGroup = function LayerGroup(props) {
 	    var layers = [];
 	    for (var layerId in props.layers) {
 	        layers.push(_react2.default.createElement(_Layer2.default, {
 	            key: layerId,
-	            layerID: layerId,
+	            layerId: layerId,
 	            layerName: props.layers[layerId].name,
 	            active: props.layers[layerId].active,
 	            onLayerClick: props.onLayerClick
@@ -56414,11 +56498,17 @@
 	            )
 	        )
 	    );
-	}; /**
-	    * LayerGroup.jsx
-	    * This creates the group container that holds each non-basemap layer list item,
-	    * in the sidebar and mobile layer list
-	    */
+	};
+
+	LayerGroup.propTypes = {
+	    layerGroupId: _propTypes2.default.string.isRequired,
+	    layerGroupName: _propTypes2.default.string.isRequired,
+	    layers: _propTypes2.default.object.isRequired,
+	    onLayerClick: _propTypes2.default.func.isRequired,
+	    onPanelClick: _propTypes2.default.func.isRequired,
+	    panelVisible: _propTypes2.default.bool.isRequired
+	};
+
 	exports.default = LayerGroup;
 
 /***/ },
@@ -56435,25 +56525,37 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
 	var _reactBootstrap = __webpack_require__(475);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	/**
-	 * Layer.jsx
-	 * This builds the list item representing a non-basemap layer in the sidebar and mobile layer list
-	 */
 	var Layer = function Layer(props) {
 	    return _react2.default.createElement(
 	        _reactBootstrap.ListGroupItem,
 	        {
 	            active: props.active,
 	            className: 'wiscviewer-layer-item',
-	            onClick: props.onLayerClick.bind(null, props.layerID) },
+	            onClick: props.onLayerClick.bind(null, props.layerId) },
 	        _react2.default.createElement('i', { className: 'fa fa-file wiscviewer-layer-left-icon' }),
 	        props.layerName
 	    );
+	}; /**
+	    * Layer.jsx
+	    * This builds the list item representing a non-basemap layer in the sidebar and mobile layer list
+	    */
+
+
+	Layer.propTypes = {
+	    active: _propTypes2.default.bool.isRequired,
+	    onLayerClick: _propTypes2.default.func.isRequired,
+	    layerName: _propTypes2.default.string.isRequired,
+	    layerId: _propTypes2.default.string.isRequired
 	};
+
 	exports.default = Layer;
 
 /***/ },
@@ -56463,12 +56565,18 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(299);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
 
 	var _reactBootstrap = __webpack_require__(475);
 
@@ -56478,54 +56586,95 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var BasemapList = function BasemapList(props) {
-	    var basemaps = [];
-	    for (var basemapID in props.basemaps) {
-	        basemaps.push(_react2.default.createElement(_Basemap2.default, { key: basemapID,
-	            basemapID: basemapID,
-	            basemapName: props.basemaps[basemapID].name,
-	            active: props.basemaps[basemapID].active,
-	            onBasemapClick: props.onBasemapClick
-	        }));
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * BasemapList.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This creates the group container that holds each Basemap list item,
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * in the sidebar and mobile layer list
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var BasemapList = function (_React$Component) {
+	  _inherits(BasemapList, _React$Component);
+
+	  function BasemapList(props) {
+	    _classCallCheck(this, BasemapList);
+
+	    var _this = _possibleConstructorReturn(this, (BasemapList.__proto__ || Object.getPrototypeOf(BasemapList)).call(this, props));
+
+	    _this.renderBasemap = _this.renderBasemap.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(BasemapList, [{
+	    key: 'renderBasemap',
+	    value: function renderBasemap(id, basemap) {
+	      return _react2.default.createElement(_Basemap2.default, { key: id,
+	        basemapId: id,
+	        basemapName: basemap.name,
+	        active: basemap.active,
+	        onBasemapClick: this.props.onBasemapClick
+	      });
 	    }
-	    var bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
-	    var headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
-	    var iconClassNames = ["fa", "wiscviewer-layer-group-icon"];
-	    if (props.panelVisible === false) {
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var basemaps = [];
+	      for (var basemapId in this.props.basemaps) {
+	        basemaps.push(this.renderBasemap(basemapId, this.props.basemaps[basemapId]));
+	      }
+	      var bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
+	      var headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
+	      var iconClassNames = ["fa", "wiscviewer-layer-group-icon"];
+	      if (this.props.panelVisible === false) {
 	        bodyClassNames.push("hidden");
 	        iconClassNames.push("fa-folder");
-	    } else {
+	      } else {
 	        headerClassNames.push("active");
 	        iconClassNames.push("fa-folder-open");
-	    }
-	    return _react2.default.createElement(
+	      }
+	      return _react2.default.createElement(
 	        'div',
 	        { className: 'panel panel-default wiscviewer-sidebar-panel' },
 	        _react2.default.createElement(
-	            'div',
-	            { className: headerClassNames.join(" "),
-	                role: 'button',
-	                tabIndex: 0,
-	                onClick: props.onPanelClick.bind(null, "Basemaps")
-	            },
-	            _react2.default.createElement('i', { className: iconClassNames.join(" ") }),
-	            'Basemaps'
+	          'div',
+	          { className: headerClassNames.join(" "),
+	            role: 'button',
+	            tabIndex: 0,
+	            onClick: this.props.onPanelClick.bind(null, "Basemaps")
+	          },
+	          _react2.default.createElement('i', { className: iconClassNames.join(" ") }),
+	          'Basemaps'
 	        ),
 	        _react2.default.createElement(
-	            'div',
-	            { className: bodyClassNames.join(" ") },
-	            _react2.default.createElement(
-	                _reactBootstrap.ListGroup,
-	                { className: 'wiscviewer-layer-list-group' },
-	                basemaps
-	            )
+	          'div',
+	          { className: bodyClassNames.join(" ") },
+	          _react2.default.createElement(
+	            _reactBootstrap.ListGroup,
+	            { className: 'wiscviewer-layer-list-group' },
+	            basemaps
+	          )
 	        )
-	    );
-	}; /**
-	    * BasemapList.jsx
-	    * This creates the group container that holds each Basemap list item,
-	    * in the sidebar and mobile layer list
-	    */
+	      );
+	    }
+	  }]);
+
+	  return BasemapList;
+	}(_react2.default.Component);
+
+	;
+
+	BasemapList.propTypes = {
+	  basemaps: _propTypes2.default.object.isRequired,
+	  panelVisible: _propTypes2.default.bool.isRequired,
+	  onBasemapClick: _propTypes2.default.func.isRequired,
+	  onPanelClick: _propTypes2.default.func.isRequired,
+	  eventKey: _propTypes2.default.string
+	};
+
 	exports.default = BasemapList;
 
 /***/ },
@@ -56542,25 +56691,37 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
 	var _reactBootstrap = __webpack_require__(475);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	/**
-	 * Basemap.jsx
-	 * This builds the list item representing basemaps in the sidebar and mobile layer list
-	 */
 	var Basemap = function Basemap(props) {
 	    return _react2.default.createElement(
 	        _reactBootstrap.ListGroupItem,
 	        {
 	            active: props.active,
 	            className: 'wiscviewer-layer-item',
-	            onClick: props.onBasemapClick.bind(null, props.basemapID) },
+	            onClick: props.onBasemapClick.bind(null, props.basemapId) },
 	        _react2.default.createElement('i', { className: 'fa fa-map wiscviewer-layer-left-icon' }),
 	        props.basemapName
 	    );
+	}; /**
+	    * Basemap.jsx
+	    * This builds the list item representing basemaps in the sidebar and mobile layer list
+	    */
+
+
+	Basemap.propTypes = {
+	    active: _propTypes2.default.bool.isRequired,
+	    onBasemapClick: _propTypes2.default.func.isRequired,
+	    basemapName: _propTypes2.default.string.isRequired,
+	    basemapId: _propTypes2.default.string.isRequired
 	};
+
 	exports.default = Basemap;
 
 /***/ },
@@ -56862,6 +57023,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
 	var _reactDraggable = __webpack_require__(834);
 
 	var _reactDraggable2 = _interopRequireDefault(_reactDraggable);
@@ -56991,6 +57156,18 @@
 
 	    return PinnedFeaturePopup;
 	}(_react2.default.Component);
+
+	PinnedFeaturePopup.propTypes = {
+	    layerId: _propTypes2.default.string.isRequired,
+	    featureProperties: _propTypes2.default.object.isRequired,
+	    initialPosition: _propTypes2.default.object.isRequired,
+	    layerName: _propTypes2.default.string.isRequired,
+	    layerGroupName: _propTypes2.default.string.isRequired,
+	    featureId: _propTypes2.default.string.isRequired,
+	    closePopup: _propTypes2.default.func.isRequired,
+	    onClick: _propTypes2.default.func.isRequired,
+	    zIndex: _propTypes2.default.number.isRequired
+	};
 
 	exports.default = PinnedFeaturePopup;
 

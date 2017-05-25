@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
 import CONFIG from '../../../config.json';
@@ -47,4 +48,16 @@ const PopupFooter = (props) => {
         </div>
     )
 };
+
+PopupFooter.propTypes = {
+    layerId: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool
+    ]).isRequired,
+    featureProperties: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.bool
+    ]).isRequired
+}
+
 export default PopupFooter;

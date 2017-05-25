@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const PopupTitle = (props) => {
     let featureName = "";
@@ -17,4 +18,20 @@ const PopupTitle = (props) => {
         </div>
     )
 };
+
+PopupTitle.propTypes = {
+    layerGroupName: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool
+    ]).isRequired,
+    layerName: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.bool
+    ]).isRequired,
+    featureProperties: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.bool
+    ]).isRequired
+}
+
 export default PopupTitle;

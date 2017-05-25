@@ -3,6 +3,7 @@
  * This creates the modal that's displayed when a user clicks on an object in the map
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
 
 import PopupTabs from './components/PopupTabs';
@@ -45,4 +46,26 @@ const MobileFeaturePopup = (props) => {
         </div>
     );
 }
+
+MobileFeaturePopup.propTypes = {
+  visible: PropTypes.bool.isRequired,
+  featureProperties: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.bool
+  ]).isRequired,
+  layerId: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool
+  ]).isRequired,
+  layerName: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool
+  ]).isRequired,
+  layerGroupName: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool
+  ]).isRequired,
+  onCloseClick: PropTypes.func.isRequired
+}
+
 export default MobileFeaturePopup;

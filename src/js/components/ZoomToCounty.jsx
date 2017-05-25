@@ -4,6 +4,7 @@
  * Upon clicking that county, the map will zoom to that county's shoreline.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { MenuItem, NavDropdown } from 'react-bootstrap';
 
 import CONFIG from '../config.json';
@@ -24,6 +25,10 @@ const ZoomToCounty = (props) => {
             {counties}
         </NavDropdown>
     )
+}
+
+ZoomToCounty.propTypes = {
+    onZoomShorelineClick: PropTypes.func.isRequired
 }
 
 export default ZoomToCounty;
