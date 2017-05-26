@@ -10,6 +10,11 @@ import { MenuItem, NavDropdown } from 'react-bootstrap';
 import CONFIG from '../config.json';
 
 const ZoomToCounty = (props) => {
+    let title = (
+        <span className="wiscviewer-tool-title">
+            <i className="fa fa-search wiscviewer-nav-tool-icon"></i>
+        </span>
+    );
     var counties = [];
     for(let countyName in CONFIG.map.county_shorelines) {
         counties.push(
@@ -21,7 +26,9 @@ const ZoomToCounty = (props) => {
         );
     }
     return (
-        <NavDropdown title="Zoom To Shoreline" id="zoom-to-county" className="wiscviewer-nav-dropdown">
+        <NavDropdown title={title}
+            id="zoom-to-county"
+            className="wiscviewer-nav-dropdown wiscviewer-nav-tool wiscviewer-nav-tool-zoom">
             {counties}
         </NavDropdown>
     )

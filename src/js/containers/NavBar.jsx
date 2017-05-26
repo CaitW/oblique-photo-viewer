@@ -43,15 +43,17 @@ export default class NavBar extends React.Component {
               <Navbar.Collapse className="wiscviewer-nav-tools">
                 <Nav pullRight>
                   <NavItem eventKey={ 1 }
-                    className='visible-xs-block'
+                    className='visible-xs-block wiscviewer-nav-tool wiscviewer-nav-tool-layers'
                     onClick={ this.constructor.onMobileLayersClick }
                   >
-                    Layers
+                    <i className="fa fa-clone wiscviewer-nav-tool-icon"></i>Layers
                   </NavItem>
                   <ZoomToCounty onZoomShorelineClick={this.constructor.onZoomShorelineClick} />
                   <ResetView onResetViewClick={this.constructor.onResetViewClick} />
-                  <NavItem eventKey={ 3 } onClick={ this.constructor.onAboutClick }>
-                    About
+                  <NavItem eventKey={ 3 }
+                    onClick={ this.constructor.onAboutClick }
+                    className="wiscviewer-nav-tool wiscviewer-nav-tool-about">
+                    <i className="fa fa-info-circle wiscviewer-nav-tool-icon"></i>
                   </NavItem>
                 </Nav>
               </Navbar.Collapse>

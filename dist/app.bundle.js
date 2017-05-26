@@ -50656,17 +50656,20 @@
 	            _react2.default.createElement(
 	              _reactBootstrap.NavItem,
 	              { eventKey: 1,
-	                className: 'visible-xs-block',
+	                className: 'visible-xs-block wiscviewer-nav-tool wiscviewer-nav-tool-layers',
 	                onClick: this.constructor.onMobileLayersClick
 	              },
+	              _react2.default.createElement('i', { className: 'fa fa-clone wiscviewer-nav-tool-icon' }),
 	              'Layers'
 	            ),
 	            _react2.default.createElement(_ZoomToCounty2.default, { onZoomShorelineClick: this.constructor.onZoomShorelineClick }),
 	            _react2.default.createElement(_ResetView2.default, { onResetViewClick: this.constructor.onResetViewClick }),
 	            _react2.default.createElement(
 	              _reactBootstrap.NavItem,
-	              { eventKey: 3, onClick: this.constructor.onAboutClick },
-	              'About'
+	              { eventKey: 3,
+	                onClick: this.constructor.onAboutClick,
+	                className: 'wiscviewer-nav-tool wiscviewer-nav-tool-about' },
+	              _react2.default.createElement('i', { className: 'fa fa-info-circle wiscviewer-nav-tool-icon' })
 	            )
 	          )
 	        )
@@ -52032,6 +52035,11 @@
 	 * Upon clicking that county, the map will zoom to that county's shoreline.
 	 */
 	var ZoomToCounty = function ZoomToCounty(props) {
+	    var title = _react2.default.createElement(
+	        'span',
+	        { className: 'wiscviewer-tool-title' },
+	        _react2.default.createElement('i', { className: 'fa fa-search wiscviewer-nav-tool-icon' })
+	    );
 	    var counties = [];
 
 	    var _loop = function _loop(countyName) {
@@ -52051,7 +52059,9 @@
 	    }
 	    return _react2.default.createElement(
 	        _reactBootstrap.NavDropdown,
-	        { title: 'Zoom To Shoreline', id: 'zoom-to-county', className: 'wiscviewer-nav-dropdown' },
+	        { title: title,
+	            id: 'zoom-to-county',
+	            className: 'wiscviewer-nav-dropdown wiscviewer-nav-tool wiscviewer-nav-tool-zoom' },
 	        counties
 	    );
 	};
@@ -52778,7 +52788,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _react = __webpack_require__(299);
@@ -52794,11 +52804,12 @@
 	 * This creates the button that resets the map view
 	 */
 	var ResetView = function ResetView(props) {
-	  return _react2.default.createElement(
-	    _reactBootstrap.NavItem,
-	    { onClick: props.onResetViewClick, href: '#' },
-	    'Reset View'
-	  );
+	    return _react2.default.createElement(
+	        _reactBootstrap.NavItem,
+	        { onClick: props.onResetViewClick,
+	            className: 'wiscviewer-nav-tool wiscviewer-nav-tool-reset' },
+	        _react2.default.createElement('i', { className: 'fa fa-undo wiscviewer-nav-tool-icon' })
+	    );
 	};
 
 	exports.default = ResetView;

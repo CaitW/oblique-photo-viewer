@@ -105,16 +105,76 @@
   }
 }
 
-@media (max-width: 767px) {
-  .wiscviewer-nav-tools .navbar-nav {
+.wiscviewer-nav-tool-icon {
+  margin-right: 10px;
+  color: $primary_200;
+}
+
+.wiscviewer-nav-tool-zoom {
+  .wiscviewer-tool-title:after {
+    content: "Zoom to Shoreline"
+  }
+}
+
+.wiscviewer-nav-tool-reset {
+  a:after {
+    content: "Reset View"
+  }
+}
+
+.wiscviewer-nav-tool-about {
+  a:after {
+    content: "About"
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .wiscviewer-nav-tool {
     font-size: 20px;
+  }
+
+  .wiscviewer-nav-tool-zoom {
+    .wiscviewer-tool-title:after {
+      content: ""
+    }
+    .caret {
+      display: none;
+    }
+  }
+
+  .wiscviewer-nav-tool-reset {
+    a:after {
+      content: ""
+    }
+  }
+
+  .wiscviewer-nav-tool-about {
+    a:after {
+      content: ""
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .wiscviewer-nav-tools {
+    border: 0px solid $primary_300;
+    height: calc(100% - 50px);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    .navbar-nav {
+      font-size: 20px;
+      height: 100%;
+      margin: 0 -15px;
+      overflow-y: auto;
+    }
   }
 
   .wiscviewer-dropdown-item {
     font-size: 18px;
+    padding: 5px 0;
+  }
 
-    a {
-      line-height: 30px;
-    }
+  .wiscviewer-nav-tool-icon {
+    margin-right: 20px;
   }
 }
