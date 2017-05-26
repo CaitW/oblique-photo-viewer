@@ -53649,7 +53649,7 @@
 	    }
 	    return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'wiscviewer-popup-title' },
 	        props.layerGroupName,
 	        _react2.default.createElement('i', { className: 'fa fa-chevron-right' }),
 	        props.layerName,

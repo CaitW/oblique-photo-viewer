@@ -8524,6 +8524,12 @@ button.close {
   .wiscviewer-mobile-feature-popup .table-striped > tbody > tr:nth-of-type(even):hover {
     background-color: #b0bec5; }
 
+.wiscviewer-mobile-feature-popup .wiscviewer-popup-title {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
 .wiscviewer-mobile-layers-list .panel {
   background-color: #cfd8dc;
   border: 0; }
