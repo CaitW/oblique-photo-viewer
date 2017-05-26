@@ -8559,6 +8559,11 @@ button.close {
     border-color: #78909c;
     color: #eceff1; }
 
+.wiscviewer-about-modal-icon {
+  font-size: 20px;
+  margin-right: 10px;
+  color: #455a64; }
+
 .wiscviewer-nav-container nav {
   color: #eceff1;
   border-width: 0;

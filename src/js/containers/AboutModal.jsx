@@ -28,7 +28,10 @@ class AboutModal extends React.Component {
         return (<div className={classNames.join(" ")}>
                 <Modal.Dialog>
                       <Modal.Header>
-                            <Modal.Title>About</Modal.Title>
+                            <Modal.Title>
+                              <i className="fa fa-info-circle wiscviewer-about-modal-icon"></i>
+                                About
+                              </Modal.Title>
                       </Modal.Header>
                       <Modal.Body>
                           {CONFIG.meta.aboutText}

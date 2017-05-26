@@ -56863,6 +56863,7 @@
 	                        _react2.default.createElement(
 	                            _reactBootstrap.Modal.Title,
 	                            null,
+	                            _react2.default.createElement('i', { className: 'fa fa-info-circle wiscviewer-about-modal-icon' }),
 	                            'About'
 	                        )
 	                    ),
