@@ -8630,13 +8630,47 @@ button.close {
   .wiscviewer-mobile-toggle:active {
     background-color: #37474f !important; }
 
-@media (max-width: 767px) {
-  .wiscviewer-nav-tools .navbar-nav {
+.wiscviewer-nav-tool-icon {
+  margin-right: 10px;
+  color: #b0bec5; }
+
+.wiscviewer-nav-tool-zoom .wiscviewer-tool-title:after {
+  content: "Zoom to Shoreline"; }
+
+.wiscviewer-nav-tool-reset a:after {
+  content: "Reset View"; }
+
+.wiscviewer-nav-tool-about a:after {
+  content: "About"; }
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .wiscviewer-nav-tool {
     font-size: 20px; }
+  .wiscviewer-nav-tool-zoom .wiscviewer-tool-title:after {
+    content: ""; }
+  .wiscviewer-nav-tool-zoom .caret {
+    display: none; }
+  .wiscviewer-nav-tool-reset a:after {
+    content: ""; }
+  .wiscviewer-nav-tool-about a:after {
+    content: ""; } }
+
+@media (max-width: 767px) {
+  .wiscviewer-nav-tools {
+    border: 0px solid #90a4ae;
+    height: calc(100% - 50px);
+    overflow-x: hidden;
+    overflow-y: hidden; }
+    .wiscviewer-nav-tools .navbar-nav {
+      font-size: 20px;
+      height: 100%;
+      margin: 0 -15px;
+      overflow-y: auto; }
   .wiscviewer-dropdown-item {
-    font-size: 18px; }
-    .wiscviewer-dropdown-item a {
-      line-height: 30px; } }
+    font-size: 18px;
+    padding: 5px 0; }
+  .wiscviewer-nav-tool-icon {
+    margin-right: 20px; } }
 
 .wiscviewer-sidebar {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
