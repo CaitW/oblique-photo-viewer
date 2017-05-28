@@ -8218,27 +8218,27 @@
 
 	var _MobileFeaturePopup2 = _interopRequireDefault(_MobileFeaturePopup);
 
-	var _MapContainer = __webpack_require__(794);
+	var _MapContainer = __webpack_require__(796);
 
 	var _MapContainer2 = _interopRequireDefault(_MapContainer);
 
-	var _MobileLayerList = __webpack_require__(825);
+	var _MobileLayerList = __webpack_require__(827);
 
 	var _MobileLayerList2 = _interopRequireDefault(_MobileLayerList);
 
-	var _AboutModal = __webpack_require__(831);
+	var _AboutModal = __webpack_require__(833);
 
 	var _AboutModal2 = _interopRequireDefault(_AboutModal);
 
-	var _PinnedFeaturePopupContainer = __webpack_require__(832);
+	var _PinnedFeaturePopupContainer = __webpack_require__(834);
 
 	var _PinnedFeaturePopupContainer2 = _interopRequireDefault(_PinnedFeaturePopupContainer);
 
-	var _LayerList = __webpack_require__(826);
+	var _LayerList = __webpack_require__(828);
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
 
-	var _Legend = __webpack_require__(835);
+	var _Legend = __webpack_require__(837);
 
 	var _Legend2 = _interopRequireDefault(_Legend);
 
@@ -51140,7 +51140,7 @@
 							"name": "Oblique",
 							"type": "geojson",
 							"dataLocation": "./data/layers/photos_obl_2016.json",
-							"defaultActive": true,
+							"defaultActive": false,
 							"tableProperties": {
 								"name": "Name",
 								"filename": false,
@@ -51157,6 +51157,22 @@
 								"filename": false,
 								"date": "Date",
 								"altitude": "Altitude (m)"
+							}
+						}
+					}
+				},
+				"2017_photos": {
+					"name": "2017 Photos",
+					"layers": {
+						"photos_2017": {
+							"name": "Photos",
+							"type": "geojson",
+							"dataLocation": "./data/layers/photos_2017.json",
+							"defaultActive": true,
+							"tableProperties": {
+								"id": "Name",
+								"altitude": "Altitude",
+								"date": "Date"
 							}
 						}
 					}
@@ -51378,6 +51394,10 @@
 		"photos_2016": {
 			"dm_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_dm/",
 			"obl_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_lz/"
+		},
+		"photos_2017": {
+			"urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/ALL_FILES",
+			"extension": ".JPG"
 		}
 	};
 
@@ -52959,11 +52979,11 @@
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
-	var _PopupTitle = __webpack_require__(792);
+	var _PopupTitle = __webpack_require__(794);
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _PopupFooter = __webpack_require__(793);
+	var _PopupFooter = __webpack_require__(795);
 
 	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
 
@@ -53384,6 +53404,14 @@
 
 	var _uuid2 = _interopRequireDefault(_uuid);
 
+	var _ImageTab = __webpack_require__(792);
+
+	var _ImageTab2 = _interopRequireDefault(_ImageTab);
+
+	var _DataTab = __webpack_require__(793);
+
+	var _DataTab2 = _interopRequireDefault(_DataTab);
+
 	var _util = __webpack_require__(767);
 
 	var _config = __webpack_require__(768);
@@ -53401,30 +53429,6 @@
 	var PopupTabs = function (_React$Component) {
 	    _inherits(PopupTabs, _React$Component);
 
-	    _createClass(PopupTabs, null, [{
-	        key: 'renderRow',
-	        value: function renderRow(property, value) {
-	            return _react2.default.createElement(
-	                'tr',
-	                { key: property },
-	                _react2.default.createElement(
-	                    'td',
-	                    null,
-	                    _react2.default.createElement(
-	                        'strong',
-	                        null,
-	                        property
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'td',
-	                    null,
-	                    value
-	                )
-	            );
-	        }
-	    }]);
-
 	    function PopupTabs(props) {
 	        _classCallCheck(this, PopupTabs);
 
@@ -53433,8 +53437,6 @@
 	        if (typeof _this.props.update !== "undefined") {
 	            _this.update = _this.props.update;
 	        }
-	        _this.renderDataTable = _this.renderDataTable.bind(_this);
-	        _this.renderImage = _this.renderImage.bind(_this);
 	        return _this;
 	    }
 	    // eslint-disable-next-line class-methods-use-this
@@ -53448,86 +53450,31 @@
 	            // need to update their dimensions once images have loaded
 	        }
 	    }, {
-	        key: 'renderImage',
-	        value: function renderImage(imgPath, fullSizePath, alt) {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement('img', { src: imgPath, onLoad: this.update, alt: alt }),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'wiscviewer-popup-image-button-row' },
-	                    _react2.default.createElement(
-	                        'a',
-	                        { href: fullSizePath,
-	                            key: 'open-larger-image-button',
-	                            target: '_blank',
-	                            rel: 'noopener noreferrer' },
-	                        _react2.default.createElement(
-	                            _reactBootstrap.Button,
-	                            { className: 'open-larger-image-button' },
-	                            _react2.default.createElement('i', { className: 'fa fa-image' }),
-	                            ' View Full-size'
-	                        )
-	                    ),
-	                    _react2.default.createElement('div', { className: 'clearfix' })
-	                )
-	            );
-	        }
-	    }, {
-	        key: 'renderDataTable',
-	        value: function renderDataTable() {
-	            var rows = [];
-	            var featureProperties = this.props.featureProperties;
-	            var layerId = this.props.layerId;
-	            var layerData = _util.LAYERS_BY_ID[layerId];
-
-	            if (typeof layerData !== "undefined" && typeof layerData.tableProperties !== "undefined") {
-	                var displayProperties = layerData.tableProperties;
-	                for (var property in featureProperties) {
-	                    if (typeof displayProperties[property] === "undefined" || displayProperties[property] !== false) {
-	                        var value = featureProperties[property];
-	                        if (typeof displayProperties[property] === "string") {
-	                            property = displayProperties[property];
-	                        }
-	                        rows.push(this.constructor.renderRow(property, value));
-	                    }
-	                }
-	            } else {
-	                for (var _property in featureProperties) {
-	                    var _value = featureProperties[_property];
-	                    rows.push(this.constructor.renderRow(_property, _value));
-	                }
-	            }
-	            return _react2.default.createElement(
-	                _reactBootstrap.Table,
-	                { striped: true, bordered: true, condensed: true, hover: true, className: 'wiscviewer-data-table' },
-	                _react2.default.createElement(
-	                    'tbody',
-	                    null,
-	                    rows
-	                )
-	            );
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var tabs = [];
+	            var featureProperties = this.props.featureProperties;
+	            var layerId = this.props.layerId;
+
 	            switch (this.props.layerId) {
 	                case "photos_1976":
 	                case "photos_2007":
 	                    {
 	                        var photoURLs = (0, _util.getPhotoURLs)(this.props.featureProperties);
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'image', eventKey: 1, title: 'Image' },
-	                            this.renderImage(photoURLs.popup, photoURLs.original, "Oblique")
-	                        ));
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'data', eventKey: 2, title: 'Data' },
-	                            this.renderDataTable()
-	                        ));
+	                        tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'image',
+	                            eventKey: 1,
+	                            title: 'Image',
+	                            imgPath: photoURLs.popup,
+	                            fullSizePath: photoURLs.original,
+	                            alt: 'Oblique',
+	                            update: this.update
+	                        }));
+	                        tabs.push(_react2.default.createElement(_DataTab2.default, { key: 'data',
+	                            eventKey: 2,
+	                            title: 'Data',
+	                            layerId: layerId,
+	                            featureProperties: featureProperties
+	                        }));
 	                        break;
 	                    }
 	                case "profiles":
@@ -53539,66 +53486,82 @@
 	                        var hasBathyImg = typeof bathyImg !== "undefined" && bathyImg !== false;
 	                        if (hasBluffImg) {
 	                            var filePath = _config2.default.profiles.pathToGraphs.bluff + this.props.featureProperties.bluff_jpg;
-	                            tabs.push(_react2.default.createElement(
-	                                _reactBootstrap.Tab,
-	                                { key: 'bluff_graph', eventKey: eventKeyIndex, title: 'Bluff Profile' },
-	                                this.renderImage(filePath, filePath, "Bluff Profile")
-	                            ));
+	                            tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'bluff_graph',
+	                                eventKey: eventKeyIndex,
+	                                title: 'Bluff Profile',
+	                                imgPath: filePath,
+	                                fullSizePath: filePath,
+	                                alt: 'Bluff Profile',
+	                                update: this.update
+	                            }));
 	                            eventKeyIndex += 1;
 	                        }
 	                        if (hasBathyImg) {
 	                            var _filePath = _config2.default.profiles.pathToGraphs.bathy + this.props.featureProperties.bathy_png;
-	                            tabs.push(_react2.default.createElement(
-	                                _reactBootstrap.Tab,
-	                                { key: 'bathy_graph', eventKey: eventKeyIndex, title: 'Bathy Profile' },
-	                                this.renderImage(_filePath, _filePath, "Bathy Profile")
-	                            ));
+	                            tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'bathy_graph',
+	                                eventKey: eventKeyIndex,
+	                                title: 'Bathy Profile',
+	                                imgPath: _filePath,
+	                                fullSizePath: _filePath,
+	                                alt: 'Bathy Profile',
+	                                update: this.update
+	                            }));
 	                            eventKeyIndex += 1;
 	                        }
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'data', eventKey: eventKeyIndex, title: 'Data' },
-	                            this.renderDataTable()
-	                        ));
+	                        tabs.push(_react2.default.createElement(_DataTab2.default, { key: 'data',
+	                            eventKey: eventKeyIndex,
+	                            title: 'Data',
+	                            layerId: layerId,
+	                            featureProperties: featureProperties
+	                        }));
 	                        break;
 	                    }
 	                case "photos_obl_2016":
 	                    {
 	                        var _filePath2 = _config2.default.photos_2016.obl_urlBase + this.props.featureProperties.filename;
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'image', eventKey: 1, title: 'Image' },
-	                            this.renderImage(_filePath2, _filePath2, "Oblique")
-	                        ));
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'data', eventKey: 2, title: 'Data' },
-	                            this.renderDataTable()
-	                        ));
+	                        tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'image',
+	                            eventKey: 1,
+	                            title: 'Oblique',
+	                            imgPath: _filePath2,
+	                            fullSizePath: _filePath2,
+	                            alt: 'Oblique',
+	                            update: this.update
+	                        }));
+	                        tabs.push(_react2.default.createElement(_DataTab2.default, { key: 'data',
+	                            eventKey: 2,
+	                            title: 'Data',
+	                            layerId: layerId,
+	                            featureProperties: featureProperties
+	                        }));
 	                        break;
 	                    }
 	                case "photos_dm_2016":
 	                    {
 	                        var _filePath3 = _config2.default.photos_2016.dm_urlBase + this.props.featureProperties.filename;
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'image', eventKey: 1, title: 'Image' },
-	                            this.renderImage(_filePath3, _filePath3, "Oblique")
-	                        ));
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'data', eventKey: 2, title: 'Data' },
-	                            this.renderDataTable()
-	                        ));
+	                        tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'image',
+	                            eventKey: 1,
+	                            title: 'Oblique',
+	                            imgPath: _filePath3,
+	                            fullSizePath: _filePath3,
+	                            alt: 'Oblique',
+	                            update: this.update
+	                        }));
+	                        tabs.push(_react2.default.createElement(_DataTab2.default, { key: 'data',
+	                            eventKey: 2,
+	                            title: 'Data',
+	                            layerId: layerId,
+	                            featureProperties: featureProperties
+	                        }));
 	                        break;
 	                    }
 	                default:
 	                    {
-	                        tabs.push(_react2.default.createElement(
-	                            _reactBootstrap.Tab,
-	                            { key: 'data', eventKey: 1, title: 'Data' },
-	                            this.renderDataTable()
-	                        ));
+	                        tabs.push(_react2.default.createElement(_DataTab2.default, { key: 'data',
+	                            eventKey: 1,
+	                            title: 'Data',
+	                            layerId: layerId,
+	                            featureProperties: featureProperties
+	                        }));
 	                        break;
 	                    }
 	            }
@@ -53622,6 +53585,212 @@
 
 /***/ },
 /* 792 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _reactBootstrap = __webpack_require__(475);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ImageTab = function (_React$Component) {
+	    _inherits(ImageTab, _React$Component);
+
+	    function ImageTab() {
+	        _classCallCheck(this, ImageTab);
+
+	        return _possibleConstructorReturn(this, (ImageTab.__proto__ || Object.getPrototypeOf(ImageTab)).apply(this, arguments));
+	    }
+
+	    _createClass(ImageTab, [{
+	        key: 'render',
+	        value: function render() {
+	            var tabProps = _extends({}, this.props);
+	            delete tabProps.imgPath;
+	            delete tabProps.update;
+	            delete tabProps.alt;
+	            delete tabProps.fullSizePath;
+	            return _react2.default.createElement(
+	                _reactBootstrap.Tab,
+	                tabProps,
+	                _react2.default.createElement('img', { src: this.props.imgPath, onLoad: this.props.update, alt: this.props.alt }),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'wiscviewer-popup-image-button-row' },
+	                    _react2.default.createElement(
+	                        'a',
+	                        { href: this.props.fullSizePath,
+	                            key: 'open-larger-image-button',
+	                            target: '_blank',
+	                            rel: 'noopener noreferrer' },
+	                        _react2.default.createElement(
+	                            _reactBootstrap.Button,
+	                            { className: 'open-larger-image-button' },
+	                            _react2.default.createElement('i', { className: 'fa fa-image' }),
+	                            ' View Full-size'
+	                        )
+	                    ),
+	                    _react2.default.createElement('div', { className: 'clearfix' })
+	                )
+	            );
+	        }
+	    }]);
+
+	    return ImageTab;
+	}(_react2.default.Component);
+
+	ImageTab.propTypes = {
+	    imgPath: _propTypes2.default.string.isRequired,
+	    update: _propTypes2.default.func.isRequired,
+	    alt: _propTypes2.default.string.isRequired,
+	    fullSizePath: _propTypes2.default.string.isRequired
+	};
+
+	exports.default = ImageTab;
+
+/***/ },
+/* 793 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(780);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _reactBootstrap = __webpack_require__(475);
+
+	var _util = __webpack_require__(767);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var DataTab = function (_React$Component) {
+	    _inherits(DataTab, _React$Component);
+
+	    function DataTab() {
+	        _classCallCheck(this, DataTab);
+
+	        return _possibleConstructorReturn(this, (DataTab.__proto__ || Object.getPrototypeOf(DataTab)).apply(this, arguments));
+	    }
+
+	    _createClass(DataTab, [{
+	        key: 'render',
+	        value: function render() {
+	            var layerData = _util.LAYERS_BY_ID[this.props.layerId];
+	            var tabProps = _extends({}, this.props);
+	            delete tabProps.layerId;
+	            delete tabProps.featureProperties;
+
+	            var rows = [];
+
+	            if (typeof layerData !== "undefined" && typeof layerData.tableProperties !== "undefined") {
+	                var displayProperties = layerData.tableProperties;
+	                for (var property in this.props.featureProperties) {
+	                    if (typeof displayProperties[property] === "undefined" || displayProperties[property] !== false) {
+	                        var value = this.props.featureProperties[property];
+	                        if (typeof displayProperties[property] === "string") {
+	                            property = displayProperties[property];
+	                        }
+	                        rows.push(this.constructor.renderRow(property, value));
+	                    }
+	                }
+	            } else {
+	                for (var _property in this.props.featureProperties) {
+	                    var _value = this.props.featureProperties[_property];
+	                    rows.push(this.constructor.renderRow(_property, _value));
+	                }
+	            }
+
+	            return _react2.default.createElement(
+	                _reactBootstrap.Tab,
+	                tabProps,
+	                _react2.default.createElement(
+	                    _reactBootstrap.Table,
+	                    { striped: true, bordered: true, condensed: true, hover: true, className: 'wiscviewer-data-table' },
+	                    _react2.default.createElement(
+	                        'tbody',
+	                        null,
+	                        rows
+	                    )
+	                )
+	            );
+	        }
+	    }], [{
+	        key: 'renderRow',
+	        value: function renderRow(property, value) {
+	            return _react2.default.createElement(
+	                'tr',
+	                { key: property },
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    _react2.default.createElement(
+	                        'strong',
+	                        null,
+	                        property
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    value
+	                )
+	            );
+	        }
+	    }]);
+
+	    return DataTab;
+	}(_react2.default.Component);
+
+	DataTab.propTypes = {
+	    layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired
+	};
+
+	exports.default = DataTab;
+
+/***/ },
+/* 794 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53667,7 +53836,7 @@
 	exports.default = PopupTitle;
 
 /***/ },
-/* 793 */
+/* 795 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53752,7 +53921,7 @@
 	exports.default = PopupFooter;
 
 /***/ },
-/* 794 */
+/* 796 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53773,7 +53942,7 @@
 
 	var _reactBootstrap = __webpack_require__(475);
 
-	var _LeafletMap = __webpack_require__(795);
+	var _LeafletMap = __webpack_require__(797);
 
 	var _LeafletMap2 = _interopRequireDefault(_LeafletMap);
 
@@ -53815,7 +53984,7 @@
 	exports.default = MapContainer;
 
 /***/ },
-/* 795 */
+/* 797 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53840,7 +54009,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _ObliquePhotoMap = __webpack_require__(796);
+	var _ObliquePhotoMap = __webpack_require__(798);
 
 	var _ObliquePhotoMap2 = _interopRequireDefault(_ObliquePhotoMap);
 
@@ -53949,7 +54118,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LeafletMap);
 
 /***/ },
-/* 796 */
+/* 798 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53960,7 +54129,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _axios = __webpack_require__(797);
+	var _axios = __webpack_require__(799);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -53968,11 +54137,11 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _layerStyles = __webpack_require__(822);
+	var _layerStyles = __webpack_require__(824);
 
 	var _layerStyles2 = _interopRequireDefault(_layerStyles);
 
-	var _onEachFeature = __webpack_require__(823);
+	var _onEachFeature = __webpack_require__(825);
 
 	var _onEachFeature2 = _interopRequireDefault(_onEachFeature);
 
@@ -54101,21 +54270,21 @@
 	exports.default = ObliquePhotoMap;
 
 /***/ },
-/* 797 */
+/* 799 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(798);
+	module.exports = __webpack_require__(800);
 
 /***/ },
-/* 798 */
+/* 800 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(799);
-	var bind = __webpack_require__(800);
-	var Axios = __webpack_require__(801);
-	var defaults = __webpack_require__(802);
+	var utils = __webpack_require__(801);
+	var bind = __webpack_require__(802);
+	var Axios = __webpack_require__(803);
+	var defaults = __webpack_require__(804);
 
 	/**
 	 * Create an instance of Axios
@@ -54148,15 +54317,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(819);
-	axios.CancelToken = __webpack_require__(820);
-	axios.isCancel = __webpack_require__(816);
+	axios.Cancel = __webpack_require__(821);
+	axios.CancelToken = __webpack_require__(822);
+	axios.isCancel = __webpack_require__(818);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(821);
+	axios.spread = __webpack_require__(823);
 
 	module.exports = axios;
 
@@ -54165,12 +54334,12 @@
 
 
 /***/ },
-/* 799 */
+/* 801 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(800);
+	var bind = __webpack_require__(802);
 
 	/*global toString:true*/
 
@@ -54470,7 +54639,7 @@
 
 
 /***/ },
-/* 800 */
+/* 802 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54487,17 +54656,17 @@
 
 
 /***/ },
-/* 801 */
+/* 803 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(802);
-	var utils = __webpack_require__(799);
-	var InterceptorManager = __webpack_require__(813);
-	var dispatchRequest = __webpack_require__(814);
-	var isAbsoluteURL = __webpack_require__(817);
-	var combineURLs = __webpack_require__(818);
+	var defaults = __webpack_require__(804);
+	var utils = __webpack_require__(801);
+	var InterceptorManager = __webpack_require__(815);
+	var dispatchRequest = __webpack_require__(816);
+	var isAbsoluteURL = __webpack_require__(819);
+	var combineURLs = __webpack_require__(820);
 
 	/**
 	 * Create a new instance of Axios
@@ -54578,13 +54747,13 @@
 
 
 /***/ },
-/* 802 */
+/* 804 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(799);
-	var normalizeHeaderName = __webpack_require__(803);
+	var utils = __webpack_require__(801);
+	var normalizeHeaderName = __webpack_require__(805);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -54601,10 +54770,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(804);
+	    adapter = __webpack_require__(806);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(804);
+	    adapter = __webpack_require__(806);
 	  }
 	  return adapter;
 	}
@@ -54678,12 +54847,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 803 */
+/* 805 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(799);
+	var utils = __webpack_require__(801);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -54696,18 +54865,18 @@
 
 
 /***/ },
-/* 804 */
+/* 806 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(799);
-	var settle = __webpack_require__(805);
-	var buildURL = __webpack_require__(808);
-	var parseHeaders = __webpack_require__(809);
-	var isURLSameOrigin = __webpack_require__(810);
-	var createError = __webpack_require__(806);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(811);
+	var utils = __webpack_require__(801);
+	var settle = __webpack_require__(807);
+	var buildURL = __webpack_require__(810);
+	var parseHeaders = __webpack_require__(811);
+	var isURLSameOrigin = __webpack_require__(812);
+	var createError = __webpack_require__(808);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(813);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -54803,7 +54972,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(812);
+	      var cookies = __webpack_require__(814);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -54880,12 +55049,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(294)))
 
 /***/ },
-/* 805 */
+/* 807 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(806);
+	var createError = __webpack_require__(808);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -54911,12 +55080,12 @@
 
 
 /***/ },
-/* 806 */
+/* 808 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(807);
+	var enhanceError = __webpack_require__(809);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -54934,7 +55103,7 @@
 
 
 /***/ },
-/* 807 */
+/* 809 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -54959,12 +55128,12 @@
 
 
 /***/ },
-/* 808 */
+/* 810 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(799);
+	var utils = __webpack_require__(801);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -55033,12 +55202,12 @@
 
 
 /***/ },
-/* 809 */
+/* 811 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(799);
+	var utils = __webpack_require__(801);
 
 	/**
 	 * Parse headers into an object
@@ -55076,12 +55245,12 @@
 
 
 /***/ },
-/* 810 */
+/* 812 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(799);
+	var utils = __webpack_require__(801);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -55150,7 +55319,7 @@
 
 
 /***/ },
-/* 811 */
+/* 813 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55192,12 +55361,12 @@
 
 
 /***/ },
-/* 812 */
+/* 814 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(799);
+	var utils = __webpack_require__(801);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -55251,12 +55420,12 @@
 
 
 /***/ },
-/* 813 */
+/* 815 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(799);
+	var utils = __webpack_require__(801);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -55309,15 +55478,15 @@
 
 
 /***/ },
-/* 814 */
+/* 816 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(799);
-	var transformData = __webpack_require__(815);
-	var isCancel = __webpack_require__(816);
-	var defaults = __webpack_require__(802);
+	var utils = __webpack_require__(801);
+	var transformData = __webpack_require__(817);
+	var isCancel = __webpack_require__(818);
+	var defaults = __webpack_require__(804);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -55394,12 +55563,12 @@
 
 
 /***/ },
-/* 815 */
+/* 817 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(799);
+	var utils = __webpack_require__(801);
 
 	/**
 	 * Transform the data for a request or a response
@@ -55420,7 +55589,7 @@
 
 
 /***/ },
-/* 816 */
+/* 818 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55431,7 +55600,7 @@
 
 
 /***/ },
-/* 817 */
+/* 819 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55451,7 +55620,7 @@
 
 
 /***/ },
-/* 818 */
+/* 820 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55469,7 +55638,7 @@
 
 
 /***/ },
-/* 819 */
+/* 821 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55494,12 +55663,12 @@
 
 
 /***/ },
-/* 820 */
+/* 822 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(819);
+	var Cancel = __webpack_require__(821);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -55557,7 +55726,7 @@
 
 
 /***/ },
-/* 821 */
+/* 823 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -55590,7 +55759,7 @@
 
 
 /***/ },
-/* 822 */
+/* 824 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55933,7 +56102,7 @@
 	}
 
 /***/ },
-/* 823 */
+/* 825 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55955,7 +56124,7 @@
 
 	var _mobile = __webpack_require__(771);
 
-	var _FeaturePopup = __webpack_require__(824);
+	var _FeaturePopup = __webpack_require__(826);
 
 	var _FeaturePopup2 = _interopRequireDefault(_FeaturePopup);
 
@@ -56040,7 +56209,7 @@
 	}
 
 /***/ },
-/* 824 */
+/* 826 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56067,11 +56236,11 @@
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
-	var _PopupTitle = __webpack_require__(792);
+	var _PopupTitle = __webpack_require__(794);
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _PopupFooter = __webpack_require__(793);
+	var _PopupFooter = __webpack_require__(795);
 
 	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
 
@@ -56205,7 +56374,7 @@
 	exports.default = FeaturePopup;
 
 /***/ },
-/* 825 */
+/* 827 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56232,7 +56401,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _LayerList = __webpack_require__(826);
+	var _LayerList = __webpack_require__(828);
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
 
@@ -56323,7 +56492,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MobileLayerList);
 
 /***/ },
-/* 826 */
+/* 828 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56352,11 +56521,11 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _LayerGroup = __webpack_require__(827);
+	var _LayerGroup = __webpack_require__(829);
 
 	var _LayerGroup2 = _interopRequireDefault(_LayerGroup);
 
-	var _BasemapList = __webpack_require__(829);
+	var _BasemapList = __webpack_require__(831);
 
 	var _BasemapList2 = _interopRequireDefault(_BasemapList);
 
@@ -56478,7 +56647,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LayerList);
 
 /***/ },
-/* 827 */
+/* 829 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56497,7 +56666,7 @@
 
 	var _reactBootstrap = __webpack_require__(475);
 
-	var _Layer = __webpack_require__(828);
+	var _Layer = __webpack_require__(830);
 
 	var _Layer2 = _interopRequireDefault(_Layer);
 
@@ -56567,7 +56736,7 @@
 	exports.default = LayerGroup;
 
 /***/ },
-/* 828 */
+/* 830 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56614,7 +56783,7 @@
 	exports.default = Layer;
 
 /***/ },
-/* 829 */
+/* 831 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56635,7 +56804,7 @@
 
 	var _reactBootstrap = __webpack_require__(475);
 
-	var _Basemap = __webpack_require__(830);
+	var _Basemap = __webpack_require__(832);
 
 	var _Basemap2 = _interopRequireDefault(_Basemap);
 
@@ -56737,7 +56906,7 @@
 	exports.default = BasemapList;
 
 /***/ },
-/* 830 */
+/* 832 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56784,7 +56953,7 @@
 	exports.default = Basemap;
 
 /***/ },
-/* 831 */
+/* 833 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56901,7 +57070,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AboutModal);
 
 /***/ },
-/* 832 */
+/* 834 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -56928,7 +57097,7 @@
 
 	var _pinnedFeatures = __webpack_require__(773);
 
-	var _PinnedFeaturePopup = __webpack_require__(833);
+	var _PinnedFeaturePopup = __webpack_require__(835);
 
 	var _PinnedFeaturePopup2 = _interopRequireDefault(_PinnedFeaturePopup);
 
@@ -57084,7 +57253,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(PinnedFeaturePopupContainer);
 
 /***/ },
-/* 833 */
+/* 835 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57103,7 +57272,7 @@
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _reactDraggable = __webpack_require__(834);
+	var _reactDraggable = __webpack_require__(836);
 
 	var _reactDraggable2 = _interopRequireDefault(_reactDraggable);
 
@@ -57111,11 +57280,11 @@
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
-	var _PopupTitle = __webpack_require__(792);
+	var _PopupTitle = __webpack_require__(794);
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _PopupFooter = __webpack_require__(793);
+	var _PopupFooter = __webpack_require__(795);
 
 	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
 
@@ -57247,7 +57416,7 @@
 	exports.default = PinnedFeaturePopup;
 
 /***/ },
-/* 834 */
+/* 836 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -58859,7 +59028,7 @@
 	//# sourceMappingURL=react-draggable.js.map
 
 /***/ },
-/* 835 */
+/* 837 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
