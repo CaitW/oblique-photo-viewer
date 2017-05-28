@@ -50914,7 +50914,7 @@
 	}
 
 	function getPhotoURLs(photoProperties) {
-	    var base = _config2.default.photos.urlBase;
+	    var base = _config2.default.resources.photos.urlBase;
 	    var lakeName = photoProperties["Great Lake"].replace(/ /gi, "");
 	    var year = photoProperties["Year"];
 	    var fileName = photoProperties["File Name"];
@@ -51372,32 +51372,34 @@
 				]
 			}
 		},
-		"photos": {
-			"urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/1976_2007_inventories/",
-			"sizes": {
-				"popup": "pop",
-				"medium": "med",
-				"original": "orig",
-				"thumbnail": "thumb"
-			}
-		},
-		"profiles": {
-			"pathToGraphs": {
-				"bluff": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bluff_profile/",
-				"bathy": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bathy_profile/"
+		"resources": {
+			"photos": {
+				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/1976_2007_inventories/",
+				"sizes": {
+					"popup": "pop",
+					"medium": "med",
+					"original": "orig",
+					"thumbnail": "thumb"
+				}
 			},
-			"pathToXls": {
-				"bluff": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bluff_spreadsheets/",
-				"bathy": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bathy_spreadsheets/"
+			"profiles": {
+				"pathToGraphs": {
+					"bluff": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bluff_profile/",
+					"bathy": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bathy_profile/"
+				},
+				"pathToXls": {
+					"bluff": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bluff_spreadsheets/",
+					"bathy": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bathy_spreadsheets/"
+				}
+			},
+			"photos_2016": {
+				"dm_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_dm/",
+				"obl_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_lz/"
+			},
+			"photos_2017": {
+				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/ALL_FILES/",
+				"extension": ".JPG"
 			}
-		},
-		"photos_2016": {
-			"dm_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_dm/",
-			"obl_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_lz/"
-		},
-		"photos_2017": {
-			"urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/ALL_FILES",
-			"extension": ".JPG"
 		}
 	};
 
@@ -53460,7 +53462,7 @@
 	                case "photos_1976":
 	                case "photos_2007":
 	                    {
-	                        var photoURLs = (0, _util.getPhotoURLs)(this.props.featureProperties);
+	                        var photoURLs = (0, _util.getPhotoURLs)(featureProperties);
 	                        tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'image',
 	                            eventKey: 1,
 	                            title: 'Image',
@@ -53477,15 +53479,34 @@
 	                        }));
 	                        break;
 	                    }
+	                case "photos_2017":
+	                    {
+	                        var photoURL = _config2.default.resources.photos_2017.urlBase + featureProperties.id + _config2.default.resources.photos_2017.extension;
+	                        tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'image',
+	                            eventKey: 1,
+	                            title: 'Image',
+	                            imgPath: photoURL,
+	                            fullSizePath: photoURL,
+	                            alt: 'Oblique',
+	                            update: this.update
+	                        }));
+	                        tabs.push(_react2.default.createElement(_DataTab2.default, { key: 'data',
+	                            eventKey: 2,
+	                            title: 'Data',
+	                            layerId: layerId,
+	                            featureProperties: featureProperties
+	                        }));
+	                        break;
+	                    }
 	                case "profiles":
 	                    {
 	                        var eventKeyIndex = 1;
-	                        var bluffImg = this.props.featureProperties.bluff_jpg;
-	                        var bathyImg = this.props.featureProperties.bathy_png;
+	                        var bluffImg = featureProperties.bluff_jpg;
+	                        var bathyImg = featureProperties.bathy_png;
 	                        var hasBluffImg = typeof bluffImg !== "undefined" && bluffImg !== false;
 	                        var hasBathyImg = typeof bathyImg !== "undefined" && bathyImg !== false;
 	                        if (hasBluffImg) {
-	                            var filePath = _config2.default.profiles.pathToGraphs.bluff + this.props.featureProperties.bluff_jpg;
+	                            var filePath = _config2.default.resources.profiles.pathToGraphs.bluff + featureProperties.bluff_jpg;
 	                            tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'bluff_graph',
 	                                eventKey: eventKeyIndex,
 	                                title: 'Bluff Profile',
@@ -53497,7 +53518,7 @@
 	                            eventKeyIndex += 1;
 	                        }
 	                        if (hasBathyImg) {
-	                            var _filePath = _config2.default.profiles.pathToGraphs.bathy + this.props.featureProperties.bathy_png;
+	                            var _filePath = _config2.default.resources.profiles.pathToGraphs.bathy + this.props.featureProperties.bathy_png;
 	                            tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'bathy_graph',
 	                                eventKey: eventKeyIndex,
 	                                title: 'Bathy Profile',
@@ -53518,7 +53539,7 @@
 	                    }
 	                case "photos_obl_2016":
 	                    {
-	                        var _filePath2 = _config2.default.photos_2016.obl_urlBase + this.props.featureProperties.filename;
+	                        var _filePath2 = _config2.default.resources.photos_2016.obl_urlBase + this.props.featureProperties.filename;
 	                        tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'image',
 	                            eventKey: 1,
 	                            title: 'Oblique',
@@ -53537,7 +53558,7 @@
 	                    }
 	                case "photos_dm_2016":
 	                    {
-	                        var _filePath3 = _config2.default.photos_2016.dm_urlBase + this.props.featureProperties.filename;
+	                        var _filePath3 = _config2.default.resources.photos_2016.dm_urlBase + featureProperties.filename;
 	                        tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'image',
 	                            eventKey: 1,
 	                            title: 'Oblique',
@@ -53634,7 +53655,7 @@
 	            delete tabProps.fullSizePath;
 	            return _react2.default.createElement(
 	                _reactBootstrap.Tab,
-	                tabProps,
+	                _extends({}, tabProps, { className: 'wiscviewer-image-tab' }),
 	                _react2.default.createElement('img', { src: this.props.imgPath, onLoad: this.props.update, alt: this.props.alt }),
 	                _react2.default.createElement(
 	                    'div',
@@ -53743,7 +53764,7 @@
 
 	            return _react2.default.createElement(
 	                _reactBootstrap.Tab,
-	                tabProps,
+	                _extends({}, tabProps, { className: 'wiscviewer-data-tab' }),
 	                _react2.default.createElement(
 	                    _reactBootstrap.Table,
 	                    { striped: true, bordered: true, condensed: true, hover: true, className: 'wiscviewer-data-table' },
