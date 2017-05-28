@@ -4,7 +4,7 @@
   "description": "Oblique Photo Viewer",
   "main": "dist/app.bundle.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp build"
   },
   "keywords": [
     "Oblique",
@@ -33,6 +33,8 @@
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-eslint": "^3.0.1",
+    "gulp-json-minify": "^1.2.0",
+    "gulp-jsonminify": "^1.0.0",
     "gulp-livereload": "^3.8.1",
     "gulp-sass": "^3.1.0",
     "gulp-stylelint": "^3.9.0",
@@ -46,6 +48,8 @@
     "stylelint-config-standard": "^16.0.0",
     "stylelint-scss": "^1.4.4",
     "stylelint-selector-bem-pattern": "^1.0.0",
+    "uglify-js": "^3.0.12",
+    "uglifyjs-webpack-plugin": "^0.4.3",
     "webpack": "^2.2.1"
   },
   "dependencies": {
