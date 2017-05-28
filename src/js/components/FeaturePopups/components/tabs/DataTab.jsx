@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Tab, Table } from 'react-bootstrap';
 
-import { LAYERS_BY_ID } from '../../../util';
+import { LAYERS_BY_ID } from '../../../../util';
 
 class DataTab extends React.Component {
     static renderRow (property, value) {
@@ -47,7 +47,7 @@ class DataTab extends React.Component {
         }
 
         return (
-            <Tab {...tabProps}>
+            <Tab {...tabProps} className="wiscviewer-data-tab">
                 <Table striped bordered condensed hover className="wiscviewer-data-table">
                     <tbody>
                         {rows}

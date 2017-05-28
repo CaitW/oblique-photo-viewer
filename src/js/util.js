@@ -45,7 +45,7 @@ for (let layerGroupId in LAYER_GROUPS_BY_ID) {
 }
 
 export function getPhotoURLs (photoProperties) {
-    let base = CONFIG.photos.urlBase;
+    let base = CONFIG.resources.photos.urlBase;
     let lakeName = photoProperties["Great Lake"].replace(/ /gi, "");
     let year = photoProperties["Year"];
     let fileName = photoProperties["File Name"];

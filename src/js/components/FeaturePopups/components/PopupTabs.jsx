@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Table, Tabs, Tab, Button } from 'react-bootstrap';
 import uuid from 'uuid';
 
-import ImageTab from './ImageTab';
-import DataTab from './DataTab';
+import ImageTab from './Tabs/ImageTab';
+import DataTab from './Tabs/DataTab';
 import { getPhotoURLs, LAYERS_BY_ID } from '../../../util';
 import CONFIG from '../../../config.json';
 
@@ -30,7 +30,7 @@ class PopupTabs extends React.Component {
         switch (this.props.layerId) {
             case "photos_1976":
             case "photos_2007": {
-                let photoURLs = getPhotoURLs(this.props.featureProperties);
+                let photoURLs = getPhotoURLs(featureProperties);
                 tabs.push(
                     <ImageTab key="image"
                         eventKey={1}
@@ -51,14 +51,36 @@ class PopupTabs extends React.Component {
                 );
                 break;
             }
+            case "photos_2017": {
+                let photoURL = CONFIG.resources.photos_2017.urlBase + featureProperties.id + CONFIG.resources.photos_2017.extension;
+                tabs.push(
+                    <ImageTab key="image"
+                        eventKey={1}
+                        title="Image"
+                        imgPath={photoURL}
+                        fullSizePath={photoURL}
+                        alt="Oblique"
+                        update={this.update}
+                    />
+                );
+                tabs.push(
+                    <DataTab key="data"
+                        eventKey={2}
+                        title="Data"
+                        layerId={layerId}
+                        featureProperties={featureProperties}
+                    />
+                );
+                break;
+            }
             case "profiles": {
                 let eventKeyIndex = 1;
-                let bluffImg = this.props.featureProperties.bluff_jpg;
-                let bathyImg = this.props.featureProperties.bathy_png;
+                let bluffImg = featureProperties.bluff_jpg;
+                let bathyImg = featureProperties.bathy_png;
                 let hasBluffImg = (typeof bluffImg !== "undefined" && bluffImg !== false);
                 let hasBathyImg = (typeof bathyImg !== "undefined" && bathyImg !== false);
                 if(hasBluffImg) {
-                    let filePath = CONFIG.profiles.pathToGraphs.bluff + this.props.featureProperties.bluff_jpg;
+                    let filePath = CONFIG.resources.profiles.pathToGraphs.bluff + featureProperties.bluff_jpg;
                     tabs.push(
                         <ImageTab key="bluff_graph"
                             eventKey={eventKeyIndex}
@@ -72,7 +94,7 @@ class PopupTabs extends React.Component {
                     eventKeyIndex += 1;
                 }
                 if(hasBathyImg) {
-                    let filePath = CONFIG.profiles.pathToGraphs.bathy + this.props.featureProperties.bathy_png;
+                    let filePath = CONFIG.resources.profiles.pathToGraphs.bathy + this.props.featureProperties.bathy_png;
                     tabs.push(
                         <ImageTab key="bathy_graph"
                             eventKey={eventKeyIndex}
@@ -96,7 +118,7 @@ class PopupTabs extends React.Component {
                 break;
             }
             case "photos_obl_2016": {
-                let filePath = CONFIG.photos_2016.obl_urlBase + this.props.featureProperties.filename;
+                let filePath = CONFIG.resources.photos_2016.obl_urlBase + this.props.featureProperties.filename;
                 tabs.push(
                     <ImageTab key="image"
                         eventKey={1}
@@ -118,7 +140,7 @@ class PopupTabs extends React.Component {
                 break;
             }
             case "photos_dm_2016": {
-                let filePath = CONFIG.photos_2016.dm_urlBase + this.props.featureProperties.filename;
+                let filePath = CONFIG.resources.photos_2016.dm_urlBase + featureProperties.filename;
                 tabs.push(
                     <ImageTab key="image"
                         eventKey={1}

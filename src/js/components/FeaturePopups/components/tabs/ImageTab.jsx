@@ -12,7 +12,7 @@ class ImageTab extends React.Component {
         delete tabProps.alt;
         delete tabProps.fullSizePath;
         return (
-            <Tab {...tabProps}>
+            <Tab {...tabProps} className="wiscviewer-image-tab">
                 <img src={this.props.imgPath} onLoad={this.props.update} alt={this.props.alt}/>
                 <div className="wiscviewer-popup-image-button-row">
                     <a href={this.props.fullSizePath}
