@@ -186,7 +186,7 @@
                         "name": "Oblique",
                         "type": "geojson",
                         "dataLocation": "./data/layers/photos_obl_2016.json",
-                        "defaultActive": true,
+                        "defaultActive": false,
                         "tableProperties": {
                             "name": "Name",
                             "filename": false,
@@ -203,6 +203,22 @@
                             "filename": false,
                             "date": "Date",
                             "altitude": "Altitude (m)"
+                        }
+                    }
+                }
+            },
+            "2017_photos": {
+                "name": "2017 Photos",
+                "layers": {
+                    "photos_2017": {
+                        "name": "Photos",
+                        "type": "geojson",
+                        "dataLocation": "./data/layers/photos_2017.json",
+                        "defaultActive": true,
+                        "tableProperties": {
+                            "id": "Name",
+                            "altitude": "Altitude",
+                            "date": "Date"
                         }
                     }
                 }
@@ -334,5 +350,9 @@
     "photos_2016": {
         "dm_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_dm/",
         "obl_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_lz/"
+    },
+    "photos_2017": {
+        "urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/ALL_FILES",
+        "extension": ".JPG"
     }
 }
