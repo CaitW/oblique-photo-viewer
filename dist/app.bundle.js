@@ -50919,8 +50919,8 @@
 	    var year = photoProperties["Year"];
 	    var fileName = photoProperties["File Name"];
 	    var urls = {};
-	    for (var size in _config2.default.photos.sizes) {
-	        var sizeDir = _config2.default.photos.sizes[size];
+	    for (var size in _config2.default.resources.photos.sizes) {
+	        var sizeDir = _config2.default.resources.photos.sizes[size];
 	        var modifiedFilename = fileName;
 	        if (size !== "original") {
 	            var parts = fileName.split(".");
@@ -51394,10 +51394,13 @@
 			},
 			"photos_2016": {
 				"dm_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_dm/",
-				"obl_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_lz/"
+				"obl_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_lz/",
+				"sizes": {
+					"popup": "popup"
+				}
 			},
 			"photos_2017": {
-				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/ALL_FILES/",
+				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2017_photos/",
 				"extension": ".JPG"
 			}
 		}
@@ -53539,11 +53542,12 @@
 	                    }
 	                case "photos_obl_2016":
 	                    {
+	                        var popupPath = _config2.default.resources.photos_2016.obl_urlBase + "/popup/" + this.props.featureProperties.filename;
 	                        var _filePath2 = _config2.default.resources.photos_2016.obl_urlBase + this.props.featureProperties.filename;
 	                        tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'image',
 	                            eventKey: 1,
 	                            title: 'Oblique',
-	                            imgPath: _filePath2,
+	                            imgPath: popupPath,
 	                            fullSizePath: _filePath2,
 	                            alt: 'Oblique',
 	                            update: this.update
@@ -53558,11 +53562,12 @@
 	                    }
 	                case "photos_dm_2016":
 	                    {
+	                        var _popupPath = _config2.default.resources.photos_2016.dm_urlBase + "/popup/" + this.props.featureProperties.filename;
 	                        var _filePath3 = _config2.default.resources.photos_2016.dm_urlBase + featureProperties.filename;
 	                        tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'image',
 	                            eventKey: 1,
 	                            title: 'Oblique',
-	                            imgPath: _filePath3,
+	                            imgPath: _popupPath,
 	                            fullSizePath: _filePath3,
 	                            alt: 'Oblique',
 	                            update: this.update

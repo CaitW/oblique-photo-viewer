@@ -50,8 +50,8 @@ export function getPhotoURLs (photoProperties) {
     let year = photoProperties["Year"];
     let fileName = photoProperties["File Name"];
     let urls = {};
-    for (let size in CONFIG.photos.sizes) {
-        let sizeDir = CONFIG.photos.sizes[size];
+    for (let size in CONFIG.resources.photos.sizes) {
+        let sizeDir = CONFIG.resources.photos.sizes[size];
         let modifiedFilename = fileName;
         if(size !== "original") {
             let parts = fileName.split(".");

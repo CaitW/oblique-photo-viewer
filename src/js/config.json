@@ -350,10 +350,13 @@
         },
         "photos_2016": {
             "dm_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_dm/",
-            "obl_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_lz/"
+            "obl_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_lz/",
+            "sizes": {
+                "popup": "popup"
+            }
         },
         "photos_2017": {
-            "urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/ALL_FILES/",
+            "urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2017_photos/",
             "extension": ".JPG"
         }
     }

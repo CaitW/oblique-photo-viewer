@@ -118,12 +118,13 @@ class PopupTabs extends React.Component {
                 break;
             }
             case "photos_obl_2016": {
+                let popupPath = CONFIG.resources.photos_2016.obl_urlBase + "/popup/" + this.props.featureProperties.filename;
                 let filePath = CONFIG.resources.photos_2016.obl_urlBase + this.props.featureProperties.filename;
                 tabs.push(
                     <ImageTab key="image"
                         eventKey={1}
                         title="Oblique"
-                        imgPath={filePath}
+                        imgPath={popupPath}
                         fullSizePath={filePath}
                         alt="Oblique"
                         update={this.update}
@@ -140,12 +141,13 @@ class PopupTabs extends React.Component {
                 break;
             }
             case "photos_dm_2016": {
+                let popupPath = CONFIG.resources.photos_2016.dm_urlBase + "/popup/" + this.props.featureProperties.filename;
                 let filePath = CONFIG.resources.photos_2016.dm_urlBase + featureProperties.filename;
                 tabs.push(
                     <ImageTab key="image"
                         eventKey={1}
                         title="Oblique"
-                        imgPath={filePath}
+                        imgPath={popupPath}
                         fullSizePath={filePath}
                         alt="Oblique"
                         update={this.update}
