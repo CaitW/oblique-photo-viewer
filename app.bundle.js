@@ -51010,7 +51010,7 @@
 							"name": "Beach Protection",
 							"type": "geojson",
 							"dataLocation": "./data/layers/beachclass_1976.json",
-							"defaultActive": false,
+							"defaultActive": true,
 							"tableProperties": {
 								"OBJECTID": false,
 								"Shore Type": true,
@@ -51168,7 +51168,7 @@
 							"name": "Photos",
 							"type": "geojson",
 							"dataLocation": "./data/layers/photos_2017.json",
-							"defaultActive": true,
+							"defaultActive": false,
 							"tableProperties": {
 								"id": "Name",
 								"altitude": "Altitude",
@@ -55818,7 +55818,7 @@
 	    BLACK: "#000000",
 	    CYAN: "#00BCD4",
 	    LIGHT_RED: "#EF9A9A",
-	    LIGHT_REDPURPLE: "#CE93D8",
+	    LIGHT_PINKPURPLE: "#CE93D8",
 	    LIGHT_PURPLE: "#B39DDB",
 	    LIGHT_BLUE: "#90CAF9",
 	    LIGHT_TEAL: "#4DB6AC",
@@ -55827,7 +55827,18 @@
 	    LIGHT_ORANGE: "#FFCC80",
 	    LIGHT_BROWN: "#BCAAA4",
 	    LIGHT_GRAY: "#E0E0E0",
-	    LIGHT_PINK: "#F48FB1"
+	    LIGHT_PINK: "#F48FB1",
+	    DARK_RED: "#B71C1C",
+	    DARK_PINK: "#AD1457",
+	    DARK_PURPLE: "#6A1B9A",
+	    DARK_INDIGO: "#283593",
+	    DARK_BLUE: "#1565C0",
+	    DARK_CYAN: "#00838F",
+	    DARK_TEAL: "#00695C",
+	    DARK_GREEN: "#2E7D32",
+	    DARK_YELLOW: "#F9A825",
+	    DARK_BROWN: "#4E342E",
+	    DARK_GRAY: "#424242"
 	};
 
 	// Keeps track of current styles for legend.
@@ -55846,8 +55857,8 @@
 	// Default styles, if no style is specified for a particular layer
 	var DEFAULT_STYLES = {
 	    LineString: {
-	        weight: 5,
-	        opacity: 1,
+	        weight: 4,
+	        opacity: 0.8,
 	        lineCap: "round",
 	        lineJoin: "round",
 	        color: COLORS.BLACK
@@ -55857,11 +55868,11 @@
 	        color: COLORS.BLACK,
 	        strokeColor: COLORS.BLACK,
 	        weight: 0,
-	        fillOpacity: 1
+	        fillOpacity: 0.7
 	    },
 	    MultiLineString: {
-	        weight: 5,
-	        opacity: 1,
+	        weight: 4,
+	        opacity: 0.8,
 	        lineCap: "round",
 	        lineJoin: "round",
 	        color: COLORS.BLACK
@@ -55966,8 +55977,8 @@
 	    },
 	    beachclass_1976: function beachclass_1976(feature) {
 	        var style = {
-	            weight: 5,
-	            opacity: 1,
+	            weight: 4,
+	            opacity: 0.8,
 	            lineCap: "round",
 	            lineJoin: "round",
 	            legendDisplayProperty: feature.properties["Shore Protection Classification"]
@@ -55977,10 +55988,10 @@
 	                style.color = COLORS.LIGHT_GRAY;
 	                break;
 	            case 'Commercial / Industrial Dock':
-	                style.color = COLORS.LIGHT_BROWN;
+	                style.color = COLORS.DARK_BROWN;
 	                break;
 	            case 'Groin / Jetty / Offshore Breakwater':
-	                style.color = COLORS.LIGHT_YELLOW;
+	                style.color = COLORS.LIGHT_BROWN;
 	                break;
 	            case 'Offshore Breakwater':
 	                style.color = COLORS.LIGHT_TEAL;
@@ -55989,30 +56000,30 @@
 	                style.color = COLORS.LIGHT_BLUE;
 	                break;
 	            case 'Poorly Organized Rip-Rap / Rubble':
-	                style.color = COLORS.LIGHT_PURPLE;
+	                style.color = COLORS.DARK_PURPLE;
 	                break;
 	            case 'Public Marina':
-	                style.color = COLORS.LIGHT_GREEN;
+	                style.color = COLORS.DARK_GREEN;
 	                break;
 	            case 'Revetment':
-	                style.color = COLORS.LIGHT_ORANGE;
+	                style.color = COLORS.DARK_YELLOW;
 	                break;
 	            case 'Seawall / Bulkhead':
-	                style.color = COLORS.LIGHT_PINK;
+	                style.color = COLORS.DARK_CYAN;
 	                break;
 	            case 'Small Boat Dock':
-	                style.color = COLORS.LIGHT_REDPURPLE;
+	                style.color = COLORS.DARK_PINK;
 	                break;
 	            default:
-	                style.color = COLORS.BLACK;
+	                style.opacity = 0;
 	                break;
 	        }
 	        return style;
 	    },
 	    beachclass_2007: function beachclass_2007(feature) {
 	        var style = {
-	            weight: 5,
-	            opacity: 1,
+	            weight: 4,
+	            opacity: 0.8,
 	            lineCap: "round",
 	            lineJoin: "round",
 	            legendDisplayProperty: feature.properties["Shore Protection Classification"]
@@ -56022,10 +56033,10 @@
 	                style.color = COLORS.LIGHT_GRAY;
 	                break;
 	            case 'Commercial / Industrial Dock':
-	                style.color = COLORS.LIGHT_BROWN;
+	                style.color = COLORS.DARK_BROWN;
 	                break;
 	            case 'Groin / Jetty / Offshore Breakwater':
-	                style.color = COLORS.LIGHT_YELLOW;
+	                style.color = COLORS.LIGHT_BROWN;
 	                break;
 	            case 'Offshore Breakwater':
 	                style.color = COLORS.LIGHT_TEAL;
@@ -56034,22 +56045,22 @@
 	                style.color = COLORS.LIGHT_BLUE;
 	                break;
 	            case 'Poorly Organized Rip-Rap / Rubble':
-	                style.color = COLORS.LIGHT_PURPLE;
+	                style.color = COLORS.DARK_PURPLE;
 	                break;
 	            case 'Public Marina':
-	                style.color = COLORS.LIGHT_GREEN;
+	                style.color = COLORS.DARK_GREEN;
 	                break;
 	            case 'Revetment':
-	                style.color = COLORS.LIGHT_ORANGE;
+	                style.color = COLORS.DARK_YELLOW;
 	                break;
 	            case 'Seawall / Bulkhead':
-	                style.color = COLORS.LIGHT_PINK;
+	                style.color = COLORS.DARK_CYAN;
 	                break;
 	            case 'Small Boat Dock':
-	                style.color = COLORS.LIGHT_REDPURPLE;
+	                style.color = COLORS.DARK_PINK;
 	                break;
 	            default:
-	                style.color = COLORS.BLACK;
+	                style.opacity = 0;
 	                break;
 	        }
 	        return style;
@@ -56057,16 +56068,16 @@
 	    profiles: function profiles(feature) {
 	        var style = {
 	            weight: 5,
-	            opacity: 1,
+	            opacity: 0.8,
 	            lineCap: "round",
 	            lineJoin: "round",
-	            color: COLORS.BLACK,
+	            color: COLORS.DARK_BROWN,
 	            legendDisplayProperty: "Bluff Profile"
 	        };
 	        switch (feature.properties.type) {
 	            case "bathymetry":
 	                style.legendDisplayProperty = "Bathymetric Profile";
-	                style.color = COLORS.LIGHT_BLUE;
+	                style.color = COLORS.DARK_CYAN;
 	                break;
 	            default:
 	                break;
@@ -56096,8 +56107,8 @@
 	    photos_2017: function photos_2017() {
 	        return {
 	            radius: 1,
-	            color: COLORS.PURPLE,
-	            strokeColor: COLORS.PURPLE,
+	            color: COLORS.DARK_PURPLE,
+	            strokeColor: COLORS.DARK_PURPLE,
 	            weight: 0,
 	            opacity: 0.7,
 	            fillOpacity: 0,
@@ -56126,7 +56137,10 @@
 	        // assign the classname property of every style
 	        var layerIdClass = "layer-" + layerId;
 	        var layerTypeClass = "layer-type-" + feature.geometry.type;
-	        style.className = [layerTypeClass, layerIdClass].join(" ");
+	        if (typeof style.className === "undefined") {
+	            style.className = "";
+	        }
+	        style.className += " " + [layerTypeClass, layerIdClass].join(" ");
 	        // either get the legend display property or the layer ID
 	        var legendDisplayProperty = layerId;
 	        if (style !== null && typeof style.legendDisplayProperty !== "undefined") {
