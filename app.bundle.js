@@ -55853,7 +55853,7 @@
 	        color: COLORS.BLACK
 	    },
 	    Point: {
-	        radius: 3,
+	        radius: 1,
 	        color: COLORS.BLACK,
 	        strokeColor: COLORS.BLACK,
 	        weight: 0,
@@ -55926,41 +55926,41 @@
 	    },
 	    photos_1976: function photos_1976() {
 	        return {
-	            radius: 3,
+	            radius: 1,
 	            color: COLORS.PURPLE,
 	            strokeColor: COLORS.PURPLE,
 	            weight: 0,
-	            fillOpacity: 1,
+	            fillOpacity: 0,
 	            legendDisplayProperty: "photos"
 	        };
 	    },
 	    photos_2007: function photos_2007() {
 	        return {
-	            radius: 3,
+	            radius: 1,
 	            color: COLORS.CYAN,
 	            strokeColor: COLORS.CYAN,
 	            weight: 0,
-	            fillOpacity: 1,
+	            fillOpacity: 0,
 	            legendDisplayProperty: "photos"
 	        };
 	    },
 	    structure_1976: function structure_1976() {
 	        return {
-	            radius: 3,
+	            radius: 1,
 	            color: COLORS.BLACK,
 	            fillColor: COLORS.BLACK,
 	            weight: 0,
-	            fillOpacity: 1,
+	            fillOpacity: 0,
 	            legendDisplayProperty: "structures"
 	        };
 	    },
 	    structure_2007: function structure_2007() {
 	        return {
-	            radius: 3,
+	            radius: 1,
 	            color: COLORS.BLACK,
 	            fillColor: COLORS.BLACK,
 	            weight: 0,
-	            fillOpacity: 1,
+	            fillOpacity: 0,
 	            legendDisplayProperty: "structures"
 	        };
 	    },
@@ -56075,21 +56075,32 @@
 	    },
 	    photos_obl_2016: function photos_obl_2016() {
 	        return {
-	            radius: 3,
+	            radius: 1,
 	            color: COLORS.PURPLE,
 	            strokeColor: COLORS.PURPLE,
 	            weight: 0,
-	            fillOpacity: 1,
+	            fillOpacity: 0,
 	            legendDisplayProperty: "photos"
 	        };
 	    },
 	    photos_dm_2016: function photos_dm_2016() {
 	        return {
-	            radius: 3,
+	            radius: 1,
 	            color: COLORS.PURPLE,
 	            strokeColor: COLORS.PURPLE,
 	            weight: 0,
-	            fillOpacity: 1,
+	            fillOpacity: 0,
+	            legendDisplayProperty: "photos"
+	        };
+	    },
+	    photos_2017: function photos_2017() {
+	        return {
+	            radius: 1,
+	            color: COLORS.PURPLE,
+	            strokeColor: COLORS.PURPLE,
+	            weight: 0,
+	            opacity: 0.7,
+	            fillOpacity: 0,
 	            legendDisplayProperty: "photos"
 	        };
 	    }
