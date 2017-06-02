@@ -57,7 +57,12 @@ PopupFooter.propTypes = {
     featureProperties: PropTypes.oneOfType([
         PropTypes.object,
         PropTypes.bool
-    ]).isRequired
+    ]).isRequired,
+    children: PropTypes.object
+}
+
+PopupFooter.defaultProps = {
+    children: {}
 }
 
 export default PopupFooter;

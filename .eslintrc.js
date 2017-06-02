@@ -25,8 +25,6 @@ module.exports = {
         'arrow-parens': ['error', 'as-needed'],
         'guard-for-in': 0,
         'no-console': ['error', {allow: ['error']}],
-        // TODO
-        'react/prop-types': 0,
         // TODO: for in loops, for of loops
         'no-restricted-syntax': ['error', {
             selector: 'LabeledStatement',
@@ -35,7 +33,8 @@ module.exports = {
             selector: 'WithStatement',
             message: '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
         }],
-        'max-len': ['error', 120]
+        'max-len': ['error', 120],
+        'react/forbid-prop-types': 0
     },
     env: {
         "browser": true

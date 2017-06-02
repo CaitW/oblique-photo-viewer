@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table, Tabs, Tab, Button } from 'react-bootstrap';
+import { Tabs } from 'react-bootstrap';
 import uuid from 'uuid';
 
-import ImageTab from './Tabs/ImageTab';
-import DataTab from './Tabs/DataTab';
-import { getPhotoURLs, LAYERS_BY_ID } from '../../../util';
+import ImageTab from './tabs/ImageTab';
+import DataTab from './tabs/DataTab';
+
+import { getPhotoURLs } from '../../../util';
 import CONFIG from '../../../config.json';
 
 class PopupTabs extends React.Component {
@@ -26,6 +27,7 @@ class PopupTabs extends React.Component {
         let tabs = [];
         let featureProperties = this.props.featureProperties;
         let layerId = this.props.layerId;
+        let urls = CONFIG.resources;
 
         switch (this.props.layerId) {
             case "photos_1976":
@@ -52,7 +54,9 @@ class PopupTabs extends React.Component {
                 break;
             }
             case "photos_2017": {
-                let photoURL = CONFIG.resources.photos_2017.urlBase + featureProperties.id + CONFIG.resources.photos_2017.extension;
+                let photoURL = urls.photos_2017.urlBase
+                    + featureProperties.id
+                    + urls.photos_2017.extension;
                 tabs.push(
                     <ImageTab key="image"
                         eventKey={1}
@@ -80,7 +84,7 @@ class PopupTabs extends React.Component {
                 let hasBluffImg = (typeof bluffImg !== "undefined" && bluffImg !== false);
                 let hasBathyImg = (typeof bathyImg !== "undefined" && bathyImg !== false);
                 if(hasBluffImg) {
-                    let filePath = CONFIG.resources.profiles.pathToGraphs.bluff + featureProperties.bluff_jpg;
+                    let filePath = urls.profiles.pathToGraphs.bluff + featureProperties.bluff_jpg;
                     tabs.push(
                         <ImageTab key="bluff_graph"
                             eventKey={eventKeyIndex}
@@ -94,7 +98,8 @@ class PopupTabs extends React.Component {
                     eventKeyIndex += 1;
                 }
                 if(hasBathyImg) {
-                    let filePath = CONFIG.resources.profiles.pathToGraphs.bathy + this.props.featureProperties.bathy_png;
+                    let filePath = urls.profiles.pathToGraphs.bathy
+                        + featureProperties.bathy_png;
                     tabs.push(
                         <ImageTab key="bathy_graph"
                             eventKey={eventKeyIndex}
@@ -118,8 +123,11 @@ class PopupTabs extends React.Component {
                 break;
             }
             case "photos_obl_2016": {
-                let popupPath = CONFIG.resources.photos_2016.obl_urlBase + "/popup/" + this.props.featureProperties.filename;
-                let filePath = CONFIG.resources.photos_2016.obl_urlBase + this.props.featureProperties.filename;
+                let popupPath = urls.photos_2016.obl_urlBase
+                    + "/popup/"
+                    + featureProperties.filename;
+                let filePath = urls.photos_2016.obl_urlBase
+                    + featureProperties.filename;
                 tabs.push(
                     <ImageTab key="image"
                         eventKey={1}
@@ -141,8 +149,11 @@ class PopupTabs extends React.Component {
                 break;
             }
             case "photos_dm_2016": {
-                let popupPath = CONFIG.resources.photos_2016.dm_urlBase + "/popup/" + this.props.featureProperties.filename;
-                let filePath = CONFIG.resources.photos_2016.dm_urlBase + featureProperties.filename;
+                let popupPath = urls.photos_2016.dm_urlBase
+                    + "/popup/"
+                    + featureProperties.filename;
+                let filePath = urls.photos_2016.dm_urlBase
+                    + featureProperties.filename;
                 tabs.push(
                     <ImageTab key="image"
                         eventKey={1}
@@ -191,7 +202,12 @@ PopupTabs.propTypes = {
     featureProperties: PropTypes.oneOfType([
         PropTypes.object,
         PropTypes.bool
-    ]).isRequired
+    ]).isRequired,
+    update: PropTypes.func
+}
+
+PopupTabs.defaultProps = {
+    update: function () {}
 }
 
 export default PopupTabs;

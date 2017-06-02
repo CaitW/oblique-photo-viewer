@@ -10,7 +10,7 @@ const Layer = (props) => (
     <ListGroupItem
         active={props.active}
         className="wiscviewer-layer-item"
-        onClick={props.onLayerClick.bind(null, props.layerId)}>
+        onClick={props.onLayerClick}>
         <i className="fa fa-file wiscviewer-layer-left-icon"></i>
         {props.layerName}
     </ListGroupItem>
@@ -19,8 +19,7 @@ const Layer = (props) => (
 Layer.propTypes = {
     active: PropTypes.bool.isRequired,
     onLayerClick: PropTypes.func.isRequired,
-    layerName: PropTypes.string.isRequired,
-    layerId: PropTypes.string.isRequired
+    layerName: PropTypes.string.isRequired
 }
 
 export default Layer;

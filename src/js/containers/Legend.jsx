@@ -81,7 +81,7 @@ class Legend extends React.Component {
     }
 }
 
-Legend.PropTypes = {
+Legend.propTypes = {
     activeLayerStyleTypes: PropTypes.object.isRequired
 }
 

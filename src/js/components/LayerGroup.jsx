@@ -15,10 +15,9 @@ const LayerGroup = (props) => {
         layers.push(
             <Layer
                 key={layerId}
-                layerId={layerId}
                 layerName={props.layers[layerId].name}
                 active={props.layers[layerId].active}
-                onLayerClick={props.onLayerClick}
+                onLayerClick={props.onLayerClick.bind(null, layerId)}
             />
         );
     }

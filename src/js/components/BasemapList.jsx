@@ -9,68 +9,53 @@ import { ListGroup } from 'react-bootstrap';
 
 import Basemap from './Basemap';
 
-class BasemapList extends React.Component {
-  constructor (props) {
-    super(props);
-    this.renderBasemap = this.renderBasemap.bind(this);
+const BasemapList = (props) => {
+  let basemaps = [];
+  for (let basemapId in props.basemaps) {
+      let basemap = props.basemaps[basemapId];
+      basemaps.push(
+        <Basemap key={ basemapId }
+          basemapName={ basemap.name }
+          active={ basemap.active }
+          onBasemapClick={ props.onBasemapClick.bind(null, basemapId) }
+        />
+      );
   }
-  renderBasemap (id, basemap) {
-    return (
-      <Basemap key={ id }
-        basemapId={ id }
-        basemapName={ basemap.name }
-        active={ basemap.active }
-        onBasemapClick={ this.props.onBasemapClick }
-      />
-    )
+
+  let bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
+  let headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
+  let iconClassNames = ["fa", "wiscviewer-layer-group-icon"];
+  if (props.panelVisible === false) {
+      bodyClassNames.push("hidden");
+      iconClassNames.push("fa-folder");
+  } else {
+      headerClassNames.push("active");
+      iconClassNames.push("fa-folder-open");
   }
-  render () {
-    let basemaps = [];
-    for (let basemapId in this.props.basemaps) {
-        basemaps.push(
-          this.renderBasemap(basemapId, this.props.basemaps[basemapId])
-        );
-    }
-    let bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
-    let headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
-    let iconClassNames = ["fa", "wiscviewer-layer-group-icon"];
-    if (this.props.panelVisible === false) {
-        bodyClassNames.push("hidden");
-        iconClassNames.push("fa-folder");
-    } else {
-        headerClassNames.push("active");
-        iconClassNames.push("fa-folder-open");
-    }
-    return (
-        <div className="panel panel-default wiscviewer-sidebar-panel">
-          <div className={ headerClassNames.join(" ") }
-            role="button"
-            tabIndex={0}
-            onClick={ this.props.onPanelClick.bind(null, "Basemaps") }
-            >
-              <i className={ iconClassNames.join(" ") }></i>
-              Basemaps
-          </div>
-          <div className={ bodyClassNames.join(" ") }>
-            <ListGroup className="wiscviewer-layer-list-group">
-              { basemaps }
-            </ListGroup>
-          </div>
+  return (
+      <div className="panel panel-default wiscviewer-sidebar-panel">
+        <div className={ headerClassNames.join(" ") }
+          role="button"
+          tabIndex={0}
+          onClick={ props.onPanelClick.bind(null, "Basemaps") }
+          >
+            <i className={ iconClassNames.join(" ") }></i>
+            Basemaps
         </div>
-    );
-  }
+        <div className={ bodyClassNames.join(" ") }>
+          <ListGroup className="wiscviewer-layer-list-group">
+            { basemaps }
+          </ListGroup>
+        </div>
+      </div>
+  );
 };
 
 BasemapList.propTypes = {
     basemaps: PropTypes.object.isRequired,
     panelVisible: PropTypes.bool.isRequired,
     onBasemapClick: PropTypes.func.isRequired,
-    onPanelClick: PropTypes.func.isRequired,
-    eventKey: PropTypes.string
-}
-
-BasemapList.defaultProps = {
-  eventKey: '1'
+    onPanelClick: PropTypes.func.isRequired
 }
 
 export default BasemapList;

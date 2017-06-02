@@ -8,14 +8,15 @@ import { Grid, Row } from 'react-bootstrap';
 import { Provider } from 'react-redux';
 // containers
 import NavBar from './containers/NavBar';
-import SideBar from './components/SideBar';
+import SidebarWrapper from './wrappers/SidebarWrapper';
 import MobileFeaturePopup from './components/FeaturePopups/MobileFeaturePopup';
-import MapContainer from './containers/MapContainer';
+import MapWrapper from './wrappers/MapWrapper';
 import MobileLayerList from './containers/MobileLayerList';
 import AboutModal from './containers/AboutModal';
 import PinnedFeaturePopupContainer from './containers/PinnedFeaturePopupContainer';
 import LayerList from './containers/LayerList';
 import Legend from './containers/Legend';
+import LeafletMap from './containers/LeafletMap';
 // Redux
 import store from './store';
 import { updateWindowDimensions } from './ducks/mobile';
@@ -41,11 +42,13 @@ class App extends React.Component {
                         <NavBar />
                     </Row>
                     <Row className="wiscviewer-content-container">
-                        <SideBar>
+                        <SidebarWrapper>
                             <LayerList />
                             <Legend />
-                        </SideBar>
-                        <MapContainer />
+                        </SidebarWrapper>
+                        <MapWrapper>
+                            <LeafletMap />
+                        </MapWrapper>
                         <PinnedFeaturePopupContainer />
                     </Row>
                 </Grid>

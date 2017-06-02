@@ -8,7 +8,7 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-const SideBar = (props)  => (
+const SidebarWrapper = (props)  => (
     <Col xsHidden sm={5} md={4} lg={3} className="wiscviewer-sidebar">
         <div className="wiscviewer-sidebar-inner-container">
             {props.children}
@@ -16,8 +16,8 @@ const SideBar = (props)  => (
     </Col>
 );
 
-SideBar.propTypes = {
+SidebarWrapper.propTypes = {
     children: PropTypes.node.isRequired
 }
 
-export default SideBar;
+export default SidebarWrapper;
