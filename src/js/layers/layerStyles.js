@@ -51,7 +51,7 @@ var DEFAULT_STYLES = {
         color: COLORS.BLACK
     },
     Point: {
-        radius: 3,
+        radius: 1,
         color: COLORS.BLACK,
         strokeColor: COLORS.BLACK,
         weight: 0,
@@ -124,41 +124,41 @@ var LAYER_STYLES_BY_ID = {
     },
     photos_1976: function() {
         return {
-            radius: 3,
+            radius: 1,
             color: COLORS.PURPLE,
             strokeColor: COLORS.PURPLE,
             weight: 0,
-            fillOpacity: 1,
+            fillOpacity: 0,
             legendDisplayProperty: "photos"
         };
     },
     photos_2007: function() {
         return {
-            radius: 3,
+            radius: 1,
             color: COLORS.CYAN,
             strokeColor: COLORS.CYAN,
             weight: 0,
-            fillOpacity: 1,
+            fillOpacity: 0,
             legendDisplayProperty: "photos"
         };
     },
     structure_1976: function() {
         return {
-            radius: 3,
+            radius: 1,
             color: COLORS.BLACK,
             fillColor: COLORS.BLACK,
             weight: 0,
-            fillOpacity: 1,
+            fillOpacity: 0,
             legendDisplayProperty: "structures"
         };
     },
     structure_2007: function() {
         return {
-            radius: 3,
+            radius: 1,
             color: COLORS.BLACK,
             fillColor: COLORS.BLACK,
             weight: 0,
-            fillOpacity: 1,
+            fillOpacity: 0,
             legendDisplayProperty: "structures"
         };
     },
@@ -273,21 +273,32 @@ var LAYER_STYLES_BY_ID = {
     },
     photos_obl_2016: function () {
         return {
-            radius: 3,
+            radius: 1,
             color: COLORS.PURPLE,
             strokeColor: COLORS.PURPLE,
             weight: 0,
-            fillOpacity: 1,
+            fillOpacity: 0,
             legendDisplayProperty: "photos"
         };
     },
     photos_dm_2016: function () {
         return {
-            radius: 3,
+            radius: 1,
             color: COLORS.PURPLE,
             strokeColor: COLORS.PURPLE,
             weight: 0,
-            fillOpacity: 1,
+            fillOpacity: 0,
+            legendDisplayProperty: "photos"
+        };
+    },
+    photos_2017: function () {
+        return {
+            radius: 1,
+            color: COLORS.PURPLE,
+            strokeColor: COLORS.PURPLE,
+            weight: 0,
+            opacity: 0.7,
+            fillOpacity: 0,
             legendDisplayProperty: "photos"
         };
     }

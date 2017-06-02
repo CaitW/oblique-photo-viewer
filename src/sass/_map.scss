@@ -15,7 +15,7 @@
   @for $zoom-level from 1 through 18 {
     $profile-width: 1 + (0.2 * $zoom-level);
     $line-width: 5 + (0.1 * $zoom-level);
-    $dot-stroke: 0 + (0.2 * $zoom-level);
+    $dot-stroke: 1 + (0.4 * $zoom-level);
     $zoom-selector: 'data-zoom=\'' + $zoom-level + '\'';
 
     &[#{$zoom-selector}] {
@@ -58,6 +58,7 @@
       }
     }
   }
+
 }
 
 // Leaflet Modifications

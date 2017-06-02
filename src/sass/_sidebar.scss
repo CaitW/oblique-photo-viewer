@@ -106,3 +106,10 @@
   float: right;
   color: $primary_300;
 }
+
+.wiscviewer-sidebar-panel-header,
+.wiscviewer-layer-item {
+  &:focus {
+    outline: none;
+  }
+}
