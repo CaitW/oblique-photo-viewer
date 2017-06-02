@@ -56,7 +56,7 @@
                         "name": "Beach Protection",
                         "type": "geojson",
                         "dataLocation": "./data/layers/beachclass_1976.json",
-                        "defaultActive": false,
+                        "defaultActive": true,
                         "tableProperties": {
                             "OBJECTID": false,
                             "Shore Type": true,
@@ -214,7 +214,7 @@
                         "name": "Photos",
                         "type": "geojson",
                         "dataLocation": "./data/layers/photos_2017.json",
-                        "defaultActive": true,
+                        "defaultActive": false,
                         "tableProperties": {
                             "id": "Name",
                             "altitude": "Altitude",

@@ -13,8 +13,8 @@
 .wiscviewer-map-zoom-levels {
 
   @for $zoom-level from 1 through 18 {
-    $profile-width: 1 + (0.2 * $zoom-level);
-    $line-width: 5 + (0.1 * $zoom-level);
+    $profile-width: 1 + (0.3 * $zoom-level);
+    $line-width: 4 + (0.6 * $zoom-level);
     $dot-stroke: 1 + (0.4 * $zoom-level);
     $zoom-selector: 'data-zoom=\'' + $zoom-level + '\'';
 
@@ -39,8 +39,9 @@
       .layer-backshore_2007 {
         stroke-width: $line-width;
 
-        @if $zoom-level > 13 {
+        @if $zoom-level > 10 {
           stroke-linecap: butt;
+          filter: drop-shadow( -5px -5px 5px #000 );
         }
 
         &:hover {
@@ -51,6 +52,7 @@
 
       .layer-profiles {
         stroke-width: $profile-width;
+        stroke-linecap: round !important;
 
         &:hover {
           stroke-width: $profile-width + 2;
