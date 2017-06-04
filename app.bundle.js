@@ -51409,7 +51409,10 @@
 			},
 			"photos_2017": {
 				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2017_photos/",
-				"extension": ".JPG"
+				"extension": ".JPG",
+				"sizes": {
+					"popup": "popup"
+				}
 			}
 		}
 	};
@@ -53478,11 +53481,12 @@
 	                    }
 	                case "photos_2017":
 	                    {
+	                        var popupPhotoURL = urls.photos_2017.urlBase + "/" + urls.photos_2017.sizes.popup + "/" + featureProperties.id + urls.photos_2017.extension;
 	                        var photoURL = urls.photos_2017.urlBase + featureProperties.id + urls.photos_2017.extension;
 	                        tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'image',
 	                            eventKey: 1,
 	                            title: 'Image',
-	                            imgPath: photoURL,
+	                            imgPath: popupPhotoURL,
 	                            fullSizePath: photoURL,
 	                            alt: 'Oblique',
 	                            update: this.update
@@ -53875,7 +53879,7 @@
 	                if (hasBluffXls) {
 	                    footer.push(_react2.default.createElement(
 	                        'a',
-	                        { href: _config2.default.profiles.pathToXls.bluff + bluffXls,
+	                        { href: _config2.default.resources.profiles.pathToXls.bluff + bluffXls,
 	                            key: 'download-bluff-excel-button',
 	                            target: '_blank',
 	                            rel: 'noopener noreferrer' },
@@ -53890,7 +53894,7 @@
 	                if (hasBathyXls) {
 	                    footer.push(_react2.default.createElement(
 	                        'a',
-	                        { href: _config2.default.profiles.pathToXls.bathy + bathyXls,
+	                        { href: _config2.default.resources.profiles.pathToXls.bathy + bathyXls,
 	                            key: 'download-bathy-excel-button',
 	                            target: '_blank',
 	                            rel: 'noopener noreferrer' },
