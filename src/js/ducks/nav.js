@@ -20,6 +20,9 @@ export default function nav(state = initialState, action) {
         case "NAV:SET_EXPANDED":
                 newState.expanded = action.expanded;
             break;
+        case "MAP:ZOOM_TO_COUNTY":
+                newState.expanded = false;
+            break;
         default:
             break;
     }
