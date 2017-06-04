@@ -14,7 +14,7 @@ const PopupFooter = (props) => {
             let hasBathyXls = (typeof bathyXls !== "undefined" && bathyXls !== false);
             if(hasBluffXls) {
                 footer.push(
-                  <a href={CONFIG.profiles.pathToXls.bluff + bluffXls}
+                  <a href={CONFIG.resources.profiles.pathToXls.bluff + bluffXls}
                     key="download-bluff-excel-button"
                     target="_blank"
                     rel="noopener noreferrer" >
@@ -26,7 +26,7 @@ const PopupFooter = (props) => {
             }
             if(hasBathyXls) {
                 footer.push(
-                  <a href={CONFIG.profiles.pathToXls.bathy + bathyXls}
+                  <a href={CONFIG.resources.profiles.pathToXls.bathy + bathyXls}
                     key="download-bathy-excel-button"
                     target="_blank"
                     rel="noopener noreferrer" >

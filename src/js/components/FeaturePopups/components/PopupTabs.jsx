@@ -54,6 +54,10 @@ class PopupTabs extends React.Component {
                 break;
             }
             case "photos_2017": {
+                let popupPhotoURL = urls.photos_2017.urlBase
+                    + "/" + urls.photos_2017.sizes.popup + "/"
+                    + featureProperties.id
+                    + urls.photos_2017.extension;
                 let photoURL = urls.photos_2017.urlBase
                     + featureProperties.id
                     + urls.photos_2017.extension;
@@ -61,7 +65,7 @@ class PopupTabs extends React.Component {
                     <ImageTab key="image"
                         eventKey={1}
                         title="Image"
-                        imgPath={photoURL}
+                        imgPath={popupPhotoURL}
                         fullSizePath={photoURL}
                         alt="Oblique"
                         update={this.update}

@@ -357,7 +357,10 @@
         },
         "photos_2017": {
             "urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2017_photos/",
-            "extension": ".JPG"
+            "extension": ".JPG",
+            "sizes": {
+                "popup": "popup"
+            }
         }
     }
 }
