@@ -27,6 +27,11 @@ export function mapNewZoomLevel(zoomLevel) {
         zoomLevel
     }
 }
+export function mapMousedown() {
+    return {
+        type: "MAP:MOUSEDOWN"
+    }
+}
 const initialMapState = {
     state: {
         action: "none"

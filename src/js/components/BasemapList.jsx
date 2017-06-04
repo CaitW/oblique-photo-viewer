@@ -13,11 +13,12 @@ const BasemapList = (props) => {
   let basemaps = [];
   for (let basemapId in props.basemaps) {
       let basemap = props.basemaps[basemapId];
+      let boundOnBasemapClick = props.onBasemapClick.bind(null, basemapId);
       basemaps.push(
         <Basemap key={ basemapId }
           basemapName={ basemap.name }
           active={ basemap.active }
-          onBasemapClick={ props.onBasemapClick.bind(null, basemapId) }
+          onBasemapClick={ boundOnBasemapClick }
         />
       );
   }
@@ -32,12 +33,13 @@ const BasemapList = (props) => {
       headerClassNames.push("active");
       iconClassNames.push("fa-folder-open");
   }
+  let boundOnPanelClick = props.onPanelClick.bind(null, "Basemaps");
   return (
       <div className="panel panel-default wiscviewer-sidebar-panel">
         <div className={ headerClassNames.join(" ") }
           role="button"
           tabIndex={0}
-          onClick={ props.onPanelClick.bind(null, "Basemaps") }
+          onClick={ boundOnPanelClick }
           >
             <i className={ iconClassNames.join(" ") }></i>
             Basemaps

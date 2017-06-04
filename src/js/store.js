@@ -5,6 +5,7 @@ import map from './ducks/map';
 import mobile from './ducks/mobile';
 import aboutModal from './ducks/aboutModal';
 import pinnedFeatures from './ducks/pinnedFeatures';
+import nav from './ducks/nav';
 
 const theReducer = combineReducers({
     layers,
@@ -12,7 +13,8 @@ const theReducer = combineReducers({
     map,
     mobile,
     aboutModal,
-    pinnedFeatures
+    pinnedFeatures,
+    nav
 });
 const store = createStore(
     theReducer,

@@ -12,12 +12,13 @@ import Layer from './Layer';
 const LayerGroup = (props) => {
     let layers = [];
     for (let layerId in props.layers) {
+        let boundOnLayerClick = props.onLayerClick.bind(null, layerId);
         layers.push(
             <Layer
                 key={layerId}
                 layerName={props.layers[layerId].name}
                 active={props.layers[layerId].active}
-                onLayerClick={props.onLayerClick.bind(null, layerId)}
+                onLayerClick={boundOnLayerClick}
             />
         );
     }
@@ -31,11 +32,11 @@ const LayerGroup = (props) => {
         headerClassNames.push("active");
         iconClassNames.push("fa-folder-open");
     }
-    let boundOnLayerClick = props.onPanelClick.bind(null, props.layerGroupId);
+    let boundOnPanelClick = props.onPanelClick.bind(null, props.layerGroupId);
     return (
         <div className="panel panel-default wiscviewer-sidebar-panel">
             <div className={headerClassNames.join(" ")}
-                onClick={boundOnLayerClick}
+                onClick={boundOnPanelClick}
                 role="button"
                 tabIndex={0}
                 >

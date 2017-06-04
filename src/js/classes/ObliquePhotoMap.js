@@ -3,7 +3,7 @@ import axios from 'axios';
 import CONFIG from '../config.json';
 import LAYER_STYLE from '../layers/layerStyles';
 import ON_EACH_FEATURE from '../layers/onEachFeature';
-import { mapNewZoomLevel } from '../ducks/map';
+import { mapNewZoomLevel, mapMousedown } from '../ducks/map';
 import store from '../store';
 
 export default class ObliquePhotoMap {
@@ -24,7 +24,11 @@ export default class ObliquePhotoMap {
         this.layerIndex = {};
         this.dispatchZoom = this.dispatchZoom.bind(this);
         this.map.on('zoomend', self.dispatchZoom);
+        this.map.on('mousedown', self.onMapMousedown);
         this.dispatchZoom();
+    }
+    onMapMousedown () {
+        store.dispatch(mapMousedown());
     }
     dispatchZoom () {
         let currentZoom = this.map.getZoom();
