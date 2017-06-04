@@ -10,9 +10,14 @@ const ImageTab = (props) => {
     delete tabProps.update;
     delete tabProps.alt;
     delete tabProps.fullSizePath;
+    let style = {
+        "minHeight": "200px",
+        "minWidth": "300px",
+        "backgroundColor": "#90a4ae"
+    }
     return (
         <Tab {...tabProps} className="wiscviewer-image-tab">
-            <img src={props.imgPath} onLoad={props.update} alt={props.alt}/>
+            <img src={props.imgPath} onLoad={props.update} alt={props.alt} style={style}/>
             <div className="wiscviewer-popup-image-button-row">
                 <a href={props.fullSizePath}
                     key="open-larger-image-button"
