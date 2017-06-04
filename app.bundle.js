@@ -53435,9 +53435,7 @@
 
 	        var _this = _possibleConstructorReturn(this, (PopupTabs.__proto__ || Object.getPrototypeOf(PopupTabs)).call(this, props));
 
-	        if (typeof _this.props.update !== "undefined") {
-	            _this.update = _this.props.update;
-	        }
+	        _this.update = _this.update.bind(_this);
 	        return _this;
 	    }
 	    // eslint-disable-next-line class-methods-use-this
@@ -53446,9 +53444,11 @@
 	    _createClass(PopupTabs, [{
 	        key: 'update',
 	        value: function update() {
-	            // do nothing unless reassigned by the constructor
 	            // Applies to popups within the Leaflet map scope, which
 	            // need to update their dimensions once images have loaded
+	            if (typeof this.props.update !== "undefined") {
+	                this.props.update();
+	            }
 	        }
 	    }, {
 	        key: 'render',
@@ -53642,10 +53642,15 @@
 	    delete tabProps.update;
 	    delete tabProps.alt;
 	    delete tabProps.fullSizePath;
+	    var style = {
+	        "minHeight": "200px",
+	        "minWidth": "300px",
+	        "backgroundColor": "#90a4ae"
+	    };
 	    return _react2.default.createElement(
 	        _reactBootstrap.Tab,
 	        _extends({}, tabProps, { className: 'wiscviewer-image-tab' }),
-	        _react2.default.createElement('img', { src: props.imgPath, onLoad: props.update, alt: props.alt }),
+	        _react2.default.createElement('img', { src: props.imgPath, onLoad: props.update, alt: props.alt, style: style }),
 	        _react2.default.createElement(
 	            'div',
 	            { className: 'wiscviewer-popup-image-button-row' },
