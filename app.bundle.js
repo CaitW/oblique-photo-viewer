@@ -51023,7 +51023,7 @@
 					"url": "https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
 					"defaultActive": true
 				},
-				"Streets": {
+				"streets": {
 					"name": "Streets",
 					"url": "https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
 					"defaultActive": false
@@ -52127,7 +52127,7 @@
 	            newState.expanded = action.expanded;
 	            break;
 	        case "MAP:ZOOM_TO_COUNTY":
-	            newState.expanded = action.expanded;
+	            newState.expanded = false;
 	            break;
 	        default:
 	            break;
@@ -53184,7 +53184,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.getMobileFeaturePopupProps = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.mapLayerGroupsToLayers = exports.getLayerGroupsByIdWithData = exports.getLayersByIdWithData = exports.getBasemapsByIdWithData = undefined;
+	exports.getMobileFeaturePopupProps = exports.getActiveLayerStyleTypes = exports.getActiveLayers = exports.getActiveBasemapId = exports.mapLayerGroupsToLayers = exports.getLayerGroupsByIdWithData = exports.getLayersByIdWithData = exports.getBasemapsByIdWithData = undefined;
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -53261,6 +53261,16 @@
 	        }
 	    }
 	    return mappedLayerGroups;
+	});
+
+	var getActiveBasemapId = exports.getActiveBasemapId = (0, _reselect.createSelector)([getBasemapsById], function (basemaps) {
+	    var activeBasemapId = "";
+	    for (var basemapId in basemaps) {
+	        if (basemaps[basemapId].active === true) {
+	            activeBasemapId = basemapId;
+	        }
+	    }
+	    return activeBasemapId;
 	});
 
 	var getActiveLayers = exports.getActiveLayers = (0, _reselect.createSelector)(getLayersById, function (layers) {
@@ -56907,7 +56917,8 @@
 	    return {
 	        layers: (0, _selectors.getLayersByIdWithData)(state),
 	        basemaps: (0, _selectors.getBasemapsByIdWithData)(state),
-	        map: state.map
+	        map: state.map,
+	        activeBasemap: (0, _selectors.getActiveBasemapId)(state)
 	    };
 	};
 
@@ -56975,7 +56986,8 @@
 	                },
 	                id: 'map',
 	                className: 'wiscviewer-map wiscviewer-map-zoom-levels',
-	                'data-zoom': this.props.map.zoom
+	                'data-zoom': this.props.map.zoom,
+	                'data-basemap': this.props.activeBasemap
 	            });
 	        }
 	    }]);
@@ -56986,7 +56998,8 @@
 	LeafletMap.propTypes = {
 	    layers: _propTypes2.default.object.isRequired,
 	    basemaps: _propTypes2.default.object.isRequired,
-	    map: _propTypes2.default.object.isRequired
+	    map: _propTypes2.default.object.isRequired,
+	    activeBasemap: _propTypes2.default.string.isRequired
 	};
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LeafletMap);
