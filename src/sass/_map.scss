@@ -10,12 +10,21 @@
  * Skin
  */
 
-.wiscviewer-map-zoom-levels {
+.wiscviewer-map {
 
   @for $zoom-level from 1 through 18 {
     $profile-width: 1 + (0.3 * $zoom-level);
     $line-width: 4 + (0.6 * $zoom-level);
+    @if $zoom-level > 15 {
+      $line-width: 4 + (0.8 * $zoom-level);
+    }
     $dot-stroke: 1 + (0.4 * $zoom-level);
+    @if $zoom-level > 13 {
+      $dot-stroke: 1 + (0.6 * $zoom-level);
+    }
+    @if $zoom-level > 15 {
+      $dot-stroke: 1 + (0.8 * $zoom-level);
+    }
     $zoom-selector: 'data-zoom=\'' + $zoom-level + '\'';
 
     &[#{$zoom-selector}] {
