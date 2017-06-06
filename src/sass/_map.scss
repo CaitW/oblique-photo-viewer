@@ -34,7 +34,6 @@
       .layer-structure_1976,
       .layer-structure_2007 {
         stroke-width: $dot-stroke;
-
         &:hover {
           stroke-width: $dot-stroke + 2;
         }
@@ -50,7 +49,6 @@
 
         @if $zoom-level > 10 {
           stroke-linecap: butt;
-          filter: drop-shadow( -5px -5px 5px #000 );
         }
 
         &:hover {
