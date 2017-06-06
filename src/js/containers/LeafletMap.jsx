@@ -11,13 +11,14 @@ import { connect } from 'react-redux';
 import store from '../store';
 import ObliquePhotoMap from '../classes/ObliquePhotoMap';
 import { doneZooming } from '../ducks/map';
-import { getLayersByIdWithData, getBasemapsByIdWithData } from '../selectors';
+import { getLayersByIdWithData, getBasemapsByIdWithData, getActiveBasemapId } from '../selectors';
 
 const mapStateToProps = (state) => {
     return {
         layers: getLayersByIdWithData(state),
         basemaps: getBasemapsByIdWithData(state),
-        map: state.map
+        map: state.map,
+        activeBasemap: getActiveBasemapId(state)
     };
 }
 class LeafletMap extends React.Component {
@@ -63,6 +64,7 @@ class LeafletMap extends React.Component {
                 id="map"
                 className="wiscviewer-map wiscviewer-map-zoom-levels"
                 data-zoom={this.props.map.zoom}
+                data-basemap={this.props.activeBasemap}
             >
             </div>
         );
@@ -72,7 +74,8 @@ class LeafletMap extends React.Component {
 LeafletMap.propTypes = {
     layers: PropTypes.object.isRequired,
     basemaps: PropTypes.object.isRequired,
-    map: PropTypes.object.isRequired
+    map: PropTypes.object.isRequired,
+    activeBasemap: PropTypes.string.isRequired
 }
 
 export default connect(mapStateToProps)(LeafletMap);

@@ -55,6 +55,16 @@ export const mapLayerGroupsToLayers = createSelector(
     }
 );
 
+export const getActiveBasemapId = createSelector([getBasemapsById], basemaps => {
+    let activeBasemapId = "";
+    for(let basemapId in basemaps) {
+        if(basemaps[basemapId].active === true) {
+            activeBasemapId = basemapId;
+        }
+    }
+    return activeBasemapId;
+});
+
 export const getActiveLayers = createSelector(getLayersById, layers => {
     let activeLayers = [];
     for (let layerId in layers) {
