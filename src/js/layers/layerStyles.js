@@ -66,7 +66,8 @@ var DEFAULT_STYLES = {
         color: COLORS.BLACK,
         strokeColor: COLORS.BLACK,
         weight: 0,
-        fillOpacity: 0.7
+        opacity: 0.8,
+        fillOpacity: 0
     },
     MultiLineString: {
         weight: 4,
@@ -81,10 +82,7 @@ var DEFAULT_STYLES = {
 var LAYER_STYLES_BY_ID = {
     backshore_1976: function(feature) {
         let style = {
-            weight: 5,
-            opacity: 1,
-            lineCap: "round",
-            lineJoin: "round",
+            ...DEFAULT_STYLES.LineString,
             legendDisplayProperty: feature.properties["Bluff Condition Classification"]
         };
         switch (feature.properties["Bluff Condition Classification"]) {
@@ -108,10 +106,7 @@ var LAYER_STYLES_BY_ID = {
     },
     backshore_2007: function(feature) {
         let style = {
-            weight: 5,
-            opacity: 1,
-            lineCap: "round",
-            lineJoin: "round",
+            ...DEFAULT_STYLES.LineString,
             legendDisplayProperty: feature.properties["Bluff Condition Classification"]
         };
         switch (feature.properties["Bluff Condition Classification"]) {
@@ -135,50 +130,39 @@ var LAYER_STYLES_BY_ID = {
     },
     photos_1976: function() {
         return {
-            radius: 1,
+            ...DEFAULT_STYLES.Point,
             color: COLORS.PURPLE,
             strokeColor: COLORS.PURPLE,
-            weight: 0,
-            fillOpacity: 0,
             legendDisplayProperty: "photos"
         };
     },
     photos_2007: function() {
         return {
-            radius: 1,
+            ...DEFAULT_STYLES.Point,
             color: COLORS.CYAN,
             strokeColor: COLORS.CYAN,
-            weight: 0,
-            fillOpacity: 0,
             legendDisplayProperty: "photos"
         };
     },
     structure_1976: function() {
         return {
-            radius: 1,
+            ...DEFAULT_STYLES.Point,
             color: COLORS.BLACK,
             fillColor: COLORS.BLACK,
-            weight: 0,
-            fillOpacity: 0,
             legendDisplayProperty: "structures"
         };
     },
     structure_2007: function() {
         return {
-            radius: 1,
+            ...DEFAULT_STYLES.Point,
             color: COLORS.BLACK,
             fillColor: COLORS.BLACK,
-            weight: 0,
-            fillOpacity: 0,
             legendDisplayProperty: "structures"
         };
     },
     beachclass_1976: function(feature) {
         let style = {
-            weight: 4,
-            opacity: 0.8,
-            lineCap: "round",
-            lineJoin: "round",
+            ...DEFAULT_STYLES.LineString,
             legendDisplayProperty: feature.properties["Shore Protection Classification"]
         };
         switch (feature.properties["Shore Protection Classification"]) {
@@ -220,10 +204,7 @@ var LAYER_STYLES_BY_ID = {
     },
     beachclass_2007: function(feature) {
         let style = {
-            weight: 4,
-            opacity: 0.8,
-            lineCap: "round",
-            lineJoin: "round",
+            ...DEFAULT_STYLES.LineString,
             legendDisplayProperty: feature.properties["Shore Protection Classification"]
         };
         switch (feature.properties["Shore Protection Classification"]) {
@@ -265,10 +246,7 @@ var LAYER_STYLES_BY_ID = {
     },
     profiles: function (feature) {
         let style = {
-            weight: 5,
-            opacity: 0.8,
-            lineCap: "round",
-            lineJoin: "round",
+            ...DEFAULT_STYLES.LineString,
             color: COLORS.DARK_BROWN,
             legendDisplayProperty: "Bluff Profile"
         };
@@ -284,32 +262,25 @@ var LAYER_STYLES_BY_ID = {
     },
     photos_obl_2016: function () {
         return {
-            radius: 1,
+            ...DEFAULT_STYLES.Point,
             color: COLORS.PURPLE,
             strokeColor: COLORS.PURPLE,
-            weight: 0,
-            fillOpacity: 0,
             legendDisplayProperty: "photos"
         };
     },
     photos_dm_2016: function () {
         return {
-            radius: 1,
+            ...DEFAULT_STYLES.Point,
             color: COLORS.PURPLE,
             strokeColor: COLORS.PURPLE,
-            weight: 0,
-            fillOpacity: 0,
             legendDisplayProperty: "photos"
         };
     },
     photos_2017: function () {
         return {
-            radius: 1,
+            ...DEFAULT_STYLES.Point,
             color: COLORS.DARK_PURPLE,
             strokeColor: COLORS.DARK_PURPLE,
-            weight: 0,
-            opacity: 0.7,
-            fillOpacity: 0,
             legendDisplayProperty: "photos"
         };
     }

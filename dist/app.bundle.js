@@ -56985,7 +56985,7 @@
 	                    _this2.mapComponent = map;
 	                },
 	                id: 'map',
-	                className: 'wiscviewer-map wiscviewer-map-zoom-levels',
+	                className: 'wiscviewer-map',
 	                'data-zoom': this.props.map.zoom,
 	                'data-basemap': this.props.activeBasemap
 	            });
@@ -58660,6 +58660,15 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
+	                                                                                                                                                                                                                                                                   * styles.js
+	                                                                                                                                                                                                                                                                   * This contains style functions that are applied to each layer when they are loaded.
+	                                                                                                                                                                                                                                                                   * Additionally, this file caches the styles applied by each layer, so that when
+	                                                                                                                                                                                                                                                                   * the user activates them in the map, the legend can display all the associated styles.
+	                                                                                                                                                                                                                                                                   */
+
+
 	exports.default = LAYER_STYLE;
 
 	var _store = __webpack_require__(765);
@@ -58670,12 +58679,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	/**
-	 * styles.js
-	 * This contains style functions that are applied to each layer when they are loaded.
-	 * Additionally, this file caches the styles applied by each layer, so that when
-	 * the user activates them in the map, the legend can display all the associated styles.
-	 */
 	var COLORS = {
 	    RED: "#F44336",
 	    GREEN: "#8BC34A",
@@ -58735,7 +58738,8 @@
 	        color: COLORS.BLACK,
 	        strokeColor: COLORS.BLACK,
 	        weight: 0,
-	        fillOpacity: 0.7
+	        opacity: 0.8,
+	        fillOpacity: 0
 	    },
 	    MultiLineString: {
 	        weight: 4,
@@ -58749,13 +58753,9 @@
 	// Individual layer styles are added below, as referenced by ID in config.json
 	var LAYER_STYLES_BY_ID = {
 	    backshore_1976: function backshore_1976(feature) {
-	        var style = {
-	            weight: 5,
-	            opacity: 1,
-	            lineCap: "round",
-	            lineJoin: "round",
+	        var style = _extends({}, DEFAULT_STYLES.LineString, {
 	            legendDisplayProperty: feature.properties["Bluff Condition Classification"]
-	        };
+	        });
 	        switch (feature.properties["Bluff Condition Classification"]) {
 	            case "Moderately Stable":
 	                style.color = COLORS.GREEN;
@@ -58776,13 +58776,9 @@
 	        return style;
 	    },
 	    backshore_2007: function backshore_2007(feature) {
-	        var style = {
-	            weight: 5,
-	            opacity: 1,
-	            lineCap: "round",
-	            lineJoin: "round",
+	        var style = _extends({}, DEFAULT_STYLES.LineString, {
 	            legendDisplayProperty: feature.properties["Bluff Condition Classification"]
-	        };
+	        });
 	        switch (feature.properties["Bluff Condition Classification"]) {
 	            case "Moderately Stable":
 	                style.color = COLORS.GREEN;
@@ -58803,53 +58799,37 @@
 	        return style;
 	    },
 	    photos_1976: function photos_1976() {
-	        return {
-	            radius: 1,
+	        return _extends({}, DEFAULT_STYLES.Point, {
 	            color: COLORS.PURPLE,
 	            strokeColor: COLORS.PURPLE,
-	            weight: 0,
-	            fillOpacity: 0,
 	            legendDisplayProperty: "photos"
-	        };
+	        });
 	    },
 	    photos_2007: function photos_2007() {
-	        return {
-	            radius: 1,
+	        return _extends({}, DEFAULT_STYLES.Point, {
 	            color: COLORS.CYAN,
 	            strokeColor: COLORS.CYAN,
-	            weight: 0,
-	            fillOpacity: 0,
 	            legendDisplayProperty: "photos"
-	        };
+	        });
 	    },
 	    structure_1976: function structure_1976() {
-	        return {
-	            radius: 1,
+	        return _extends({}, DEFAULT_STYLES.Point, {
 	            color: COLORS.BLACK,
 	            fillColor: COLORS.BLACK,
-	            weight: 0,
-	            fillOpacity: 0,
 	            legendDisplayProperty: "structures"
-	        };
+	        });
 	    },
 	    structure_2007: function structure_2007() {
-	        return {
-	            radius: 1,
+	        return _extends({}, DEFAULT_STYLES.Point, {
 	            color: COLORS.BLACK,
 	            fillColor: COLORS.BLACK,
-	            weight: 0,
-	            fillOpacity: 0,
 	            legendDisplayProperty: "structures"
-	        };
+	        });
 	    },
 	    beachclass_1976: function beachclass_1976(feature) {
-	        var style = {
-	            weight: 4,
-	            opacity: 0.8,
-	            lineCap: "round",
-	            lineJoin: "round",
+	        var style = _extends({}, DEFAULT_STYLES.LineString, {
 	            legendDisplayProperty: feature.properties["Shore Protection Classification"]
-	        };
+	        });
 	        switch (feature.properties["Shore Protection Classification"]) {
 	            case "None":
 	                style.color = COLORS.LIGHT_GRAY;
@@ -58888,13 +58868,9 @@
 	        return style;
 	    },
 	    beachclass_2007: function beachclass_2007(feature) {
-	        var style = {
-	            weight: 4,
-	            opacity: 0.8,
-	            lineCap: "round",
-	            lineJoin: "round",
+	        var style = _extends({}, DEFAULT_STYLES.LineString, {
 	            legendDisplayProperty: feature.properties["Shore Protection Classification"]
-	        };
+	        });
 	        switch (feature.properties["Shore Protection Classification"]) {
 	            case "None":
 	                style.color = COLORS.LIGHT_GRAY;
@@ -58933,14 +58909,10 @@
 	        return style;
 	    },
 	    profiles: function profiles(feature) {
-	        var style = {
-	            weight: 5,
-	            opacity: 0.8,
-	            lineCap: "round",
-	            lineJoin: "round",
+	        var style = _extends({}, DEFAULT_STYLES.LineString, {
 	            color: COLORS.DARK_BROWN,
 	            legendDisplayProperty: "Bluff Profile"
-	        };
+	        });
 	        switch (feature.properties.type) {
 	            case "bathymetry":
 	                style.legendDisplayProperty = "Bathymetric Profile";
@@ -58952,35 +58924,25 @@
 	        return style;
 	    },
 	    photos_obl_2016: function photos_obl_2016() {
-	        return {
-	            radius: 1,
+	        return _extends({}, DEFAULT_STYLES.Point, {
 	            color: COLORS.PURPLE,
 	            strokeColor: COLORS.PURPLE,
-	            weight: 0,
-	            fillOpacity: 0,
 	            legendDisplayProperty: "photos"
-	        };
+	        });
 	    },
 	    photos_dm_2016: function photos_dm_2016() {
-	        return {
-	            radius: 1,
+	        return _extends({}, DEFAULT_STYLES.Point, {
 	            color: COLORS.PURPLE,
 	            strokeColor: COLORS.PURPLE,
-	            weight: 0,
-	            fillOpacity: 0,
 	            legendDisplayProperty: "photos"
-	        };
+	        });
 	    },
 	    photos_2017: function photos_2017() {
-	        return {
-	            radius: 1,
+	        return _extends({}, DEFAULT_STYLES.Point, {
 	            color: COLORS.DARK_PURPLE,
 	            strokeColor: COLORS.DARK_PURPLE,
-	            weight: 0,
-	            opacity: 0.7,
-	            fillOpacity: 0,
 	            legendDisplayProperty: "photos"
-	        };
+	        });
 	    }
 	};
 
