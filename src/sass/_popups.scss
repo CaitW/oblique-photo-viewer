@@ -3,6 +3,7 @@
   margin: 0;
   border-radius: 3px;
   background-color: $primary_50;
+  padding: 1px 0 1px 1px;
 
   .leaflet-popup-content {
     margin: -1px;
@@ -33,9 +34,16 @@
   border-top-right-radius: 3px;
   background-color: $primary_50;
   box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
-
+  &:focus {
+    .wiscviewer-feature-popup-header {
+      background-color: $primary_400;
+    }
+  }
   .wiscviewer-feature-popup-header {
     cursor: move;
+    &:active {
+      background-color: $primary_500;
+    }
   }
 }
 
@@ -45,7 +53,9 @@
   font-family: 'Roboto';
   min-width: 300px;
   max-width: 400px;
-
+  &:focus {
+    outline: none;
+  }
   a {
     margin-left: 5px;
 
@@ -71,7 +81,6 @@
   font-size: 14px;
   padding: 5px 10px;
   border-radius: 3px 3px 0 0;
-
   .fa-chevron-right {
     font-size: 10px;
     margin: 0 5px;
@@ -80,11 +89,19 @@
 
 .wiscviewer-feature-popup-title {
   float: left;
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .wiscviewer-feature-popup-controls {
   color: $primary_100;
   float: right;
+  font-size: 18px;
+  position: absolute;
+  right: 10px;
+  top: 2px;
 
   i {
     margin-left: 10px;

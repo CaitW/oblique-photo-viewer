@@ -8446,7 +8446,8 @@ button.close {
 .wiscviewer-modal .btn {
   border: 0;
   background-color: #546e7a;
-  color: #eceff1; }
+  color: #eceff1;
+  font-size: 18px; }
   .wiscviewer-modal .btn:hover {
     background-color: #455a64; }
 
@@ -8455,7 +8456,8 @@ button.close {
   .wiscviewer-mobile-modal .modal-dialog {
     height: calc(100% - 20px); }
   .wiscviewer-mobile-modal .modal-content {
-    height: 100%; }
+    height: 100%;
+    max-height: 800px; }
   .wiscviewer-mobile-modal .modal-header {
     height: 50px; }
   .wiscviewer-mobile-modal .modal-body {
@@ -8466,8 +8468,6 @@ button.close {
   .wiscviewer-mobile-modal .modal-footer {
     height: 60px;
     padding: 10px; }
-  .wiscviewer-mobile-modal button.btn {
-    font-size: 18px; }
   .wiscviewer-mobile-modal .modal-header i {
     margin: 0 10px; }
   .wiscviewer-mobile-modal .modal-footer button:not(:first-child) {
@@ -8602,18 +8602,15 @@ button.close {
   .wiscviewer-brand:before {
     content: 'Wisconsin Shoreline Inventory and Oblique Viewer'; } }
 
-.wiscviewer-nav-tools li {
+.wiscviewer-nav-tools > ul > li {
   color: #cfd8dc; }
-  .wiscviewer-nav-tools li:hover {
-    color: #cfd8dc;
-    background-color: #37474f; }
-  .wiscviewer-nav-tools li a,
-  .wiscviewer-nav-tools li a:hover {
+  .wiscviewer-nav-tools > ul > li a,
+  .wiscviewer-nav-tools > ul > li a:hover {
     color: #cfd8dc !important; }
 
-.wiscviewer-nav-dropdown.open a {
+.wiscviewer-nav-dropdown.open > a {
   background-color: #37474f !important; }
-  .wiscviewer-nav-dropdown.open a:active, .wiscviewer-nav-dropdown.open a:focus {
+  .wiscviewer-nav-dropdown.open > a:active, .wiscviewer-nav-dropdown.open > a:focus {
     color: #eceff1; }
 
 .wiscviewer-nav-dropdown .dropdown-menu {
@@ -8622,12 +8619,19 @@ button.close {
 
 .wiscviewer-dropdown-item {
   text-transform: capitalize;
-  background-color: #37474f; }
-  .wiscviewer-dropdown-item a {
-    color: #cfd8dc;
-    background-color: #37474f; }
-    .wiscviewer-dropdown-item a:hover {
-      background-color: #455a64; }
+  background-color: #37474f;
+  padding: 5px 0px; }
+  .wiscviewer-dropdown-item:not(:last-child) {
+    border: 0px solid #455a64;
+    border-bottom-width: 1px; }
+  .wiscviewer-dropdown-item:active, .wiscviewer-dropdown-item:hover {
+    outline: none;
+    background-color: #263238 !important; }
+    .wiscviewer-dropdown-item:active a, .wiscviewer-dropdown-item:hover a {
+      outline: none;
+      background-color: #263238 !important; }
+  .wiscviewer-dropdown-item:focus {
+    outline: none; }
 
 .wiscviewer-mobile-toggle {
   border: 0;
@@ -9453,7 +9457,8 @@ button.close {
 .leaflet-popup-content-wrapper {
   margin: 0;
   border-radius: 3px;
-  background-color: #eceff1; }
+  background-color: #eceff1;
+  padding: 1px 0 1px 1px; }
   .leaflet-popup-content-wrapper .leaflet-popup-content {
     margin: -1px; }
 
@@ -9476,14 +9481,20 @@ button.close {
   border-top-right-radius: 3px;
   background-color: #eceff1;
   box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4); }
+  .wiscviewer-pinned-feature-popup:focus .wiscviewer-feature-popup-header {
+    background-color: #78909c; }
   .wiscviewer-pinned-feature-popup .wiscviewer-feature-popup-header {
     cursor: move; }
+    .wiscviewer-pinned-feature-popup .wiscviewer-feature-popup-header:active {
+      background-color: #607d8b; }
 
 .wiscviewer-feature-popup {
   font-size: 12px;
   font-family: 'Roboto';
   min-width: 300px;
   max-width: 400px; }
+  .wiscviewer-feature-popup:focus {
+    outline: none; }
   .wiscviewer-feature-popup a {
     margin-left: 5px; }
     .wiscviewer-feature-popup a button {
@@ -9508,11 +9519,19 @@ button.close {
     margin: 0 5px; }
 
 .wiscviewer-feature-popup-title {
-  float: left; }
+  float: left;
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 .wiscviewer-feature-popup-controls {
   color: #cfd8dc;
-  float: right; }
+  float: right;
+  font-size: 18px;
+  position: absolute;
+  right: 10px;
+  top: 2px; }
   .wiscviewer-feature-popup-controls i {
     margin-left: 10px; }
     .wiscviewer-feature-popup-controls i:hover {

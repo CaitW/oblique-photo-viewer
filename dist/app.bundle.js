@@ -53935,7 +53935,7 @@
 	    }
 	    return _react2.default.createElement(
 	        'div',
-	        { className: 'wiscviewer-popup-title' },
+	        { className: 'wiscviewer-feature-popup-title' },
 	        props.layerGroupName,
 	        _react2.default.createElement('i', { className: 'fa fa-chevron-right' }),
 	        props.layerName,
@@ -59197,14 +59197,10 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'wiscviewer-feature-popup-header' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'wiscviewer-feature-popup-title' },
-	                        _react2.default.createElement(_PopupTitle2.default, { featureProperties: this.props.featureProperties,
-	                            layerGroupName: layerGroupName,
-	                            layerName: layerName
-	                        })
-	                    ),
+	                    _react2.default.createElement(_PopupTitle2.default, { featureProperties: this.props.featureProperties,
+	                        layerGroupName: layerGroupName,
+	                        layerName: layerName
+	                    }),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'wiscviewer-feature-popup-controls' },

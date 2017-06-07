@@ -49,12 +49,10 @@ class FeaturePopup extends React.Component {
                 role="button"
                 tabIndex={0}>
                 <div className="wiscviewer-feature-popup-header">
-                    <div className="wiscviewer-feature-popup-title">
-                        <PopupTitle featureProperties={this.props.featureProperties}
-                            layerGroupName={layerGroupName}
-                            layerName={layerName}
-                        />
-                    </div>
+                    <PopupTitle featureProperties={this.props.featureProperties}
+                        layerGroupName={layerGroupName}
+                        layerName={layerName}
+                    />
                     <div className="wiscviewer-feature-popup-controls">
                         <i className="fa fa-thumb-tack feature-popup-pin"
                             onClick={this.pin}

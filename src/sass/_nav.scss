@@ -42,14 +42,8 @@
 }
 
 .wiscviewer-nav-tools {
-  li {
+  > ul > li {
     color: $primary_100;
-
-    &:hover {
-      color: $primary_100;
-      background-color: $primary_800;
-    }
-
     a,
     a:hover {
       color: $primary_100 !important;
@@ -59,7 +53,7 @@
 
 .wiscviewer-nav-dropdown {
   &.open {
-    a {
+    > a {
       background-color: $primary_800 !important;
 
       &:active,
@@ -78,14 +72,22 @@
 .wiscviewer-dropdown-item {
   text-transform: capitalize;
   background-color: $primary_800;
-
-  a {
-    color: $primary_100;
-    background-color: $primary_800;
-
-    &:hover {
-      background-color: $primary_700;
+  padding: 5px 0px;
+  &:not(:last-child) {
+    border: 0px solid $primary_700;
+    border-bottom-width: 1px;
+  }
+  &:active,
+  &:hover {
+    outline: none;
+    background-color: $primary_900 !important;
+    a {
+      outline: none;
+      background-color: $primary_900 !important;
     }
+  }
+  &:focus {
+    outline: none;
   }
 }
 
