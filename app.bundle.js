@@ -51185,11 +51185,23 @@
 						}
 					}
 				},
-				"2016_photos": {
-					"name": "2016 Photos",
+				"Aerial Photos": {
+					"name": "Aerial Photos",
 					"layers": {
+						"photos_2012": {
+							"name": "2012 Photos",
+							"type": "geojson",
+							"dataLocation": "./data/layers/photos_2012.json",
+							"defaultActive": false,
+							"tableProperties": {
+								"imageId": "Image ID",
+								"altitude": "Altutude",
+								"date": "Date",
+								"imageUrl": false
+							}
+						},
 						"photos_obl_2016": {
-							"name": "Oblique",
+							"name": "2016 Photos Set #1",
 							"type": "geojson",
 							"dataLocation": "./data/layers/photos_obl_2016.json",
 							"defaultActive": false,
@@ -51200,7 +51212,7 @@
 							}
 						},
 						"photos_dm_2016": {
-							"name": "DM",
+							"name": "2016 Photos Set #2",
 							"type": "geojson",
 							"dataLocation": "./data/layers/photos_dm_2016.json",
 							"defaultActive": false,
@@ -51210,14 +51222,9 @@
 								"date": "Date",
 								"altitude": "Altitude (m)"
 							}
-						}
-					}
-				},
-				"2017_photos": {
-					"name": "2017 Photos",
-					"layers": {
+						},
 						"photos_2017": {
-							"name": "Photos",
+							"name": "2017 Photos",
 							"type": "geojson",
 							"dataLocation": "./data/layers/photos_2017.json",
 							"defaultActive": false,
