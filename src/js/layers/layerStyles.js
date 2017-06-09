@@ -39,21 +39,8 @@ let COLORS = {
     DARK_GRAY: "#424242"
 };
 
-// Keeps track of current styles for legend.
-// Each layer can have multiple style types cached, depending on what type of features it contains.
-// i.e. when a layer has different colors assigned to unique bluff types, each differing style
-// is cached using the `propertyName` attribute
-var LEGEND_STYLES = {};
-function addToLegendStyles(layerId, propertyName, style, geometryType) {
-    LEGEND_STYLES[layerId] = LEGEND_STYLES[layerId] || {};
-    if (typeof LEGEND_STYLES[layerId][propertyName] === "undefined") {
-        LEGEND_STYLES[layerId][propertyName] = true;
-        store.dispatch(legendStyleUpdate(layerId, propertyName, style, geometryType))
-    }
-}
-
 // Default styles, if no style is specified for a particular layer
-var DEFAULT_STYLES = {
+const DEFAULT_STYLES = {
     LineString: {
         weight: 4,
         opacity: 0.8,
@@ -79,13 +66,12 @@ var DEFAULT_STYLES = {
 };
 
 // Individual layer styles are added below, as referenced by ID in config.json
-var LAYER_STYLES_BY_ID = {
-    backshore_1976: function(feature) {
+const LAYER_STYLES_BY_ID = {
+    backshore_1976: function(subStyleName) {
         let style = {
-            ...DEFAULT_STYLES.LineString,
-            legendDisplayProperty: feature.properties["Bluff Condition Classification"]
+            ...DEFAULT_STYLES.LineString
         };
-        switch (feature.properties["Bluff Condition Classification"]) {
+        switch (subStyleName) {
             case "Moderately Stable":
                 style.color = COLORS.GREEN;
                 break;
@@ -104,12 +90,11 @@ var LAYER_STYLES_BY_ID = {
         }
         return style;
     },
-    backshore_2007: function(feature) {
+    backshore_2007: function(subStyleName) {
         let style = {
-            ...DEFAULT_STYLES.LineString,
-            legendDisplayProperty: feature.properties["Bluff Condition Classification"]
+            ...DEFAULT_STYLES.LineString
         };
-        switch (feature.properties["Bluff Condition Classification"]) {
+        switch (subStyleName) {
             case "Moderately Stable":
                 style.color = COLORS.GREEN;
                 break;
@@ -132,40 +117,35 @@ var LAYER_STYLES_BY_ID = {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.PURPLE,
-            strokeColor: COLORS.PURPLE,
-            legendDisplayProperty: "photos"
+            strokeColor: COLORS.PURPLE
         };
     },
     photos_2007: function() {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.CYAN,
-            strokeColor: COLORS.CYAN,
-            legendDisplayProperty: "photos"
+            strokeColor: COLORS.CYAN
         };
     },
     structure_1976: function() {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.BLACK,
-            fillColor: COLORS.BLACK,
-            legendDisplayProperty: "structures"
+            fillColor: COLORS.BLACK
         };
     },
     structure_2007: function() {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.BLACK,
-            fillColor: COLORS.BLACK,
-            legendDisplayProperty: "structures"
+            fillColor: COLORS.BLACK
         };
     },
-    beachclass_1976: function(feature) {
+    beachclass_1976: function(subStyleName) {
         let style = {
-            ...DEFAULT_STYLES.LineString,
-            legendDisplayProperty: feature.properties["Shore Protection Classification"]
+            ...DEFAULT_STYLES.LineString
         };
-        switch (feature.properties["Shore Protection Classification"]) {
+        switch (subStyleName) {
             case "None":
                 style.color = COLORS.LIGHT_GRAY;
                 break;
@@ -202,12 +182,11 @@ var LAYER_STYLES_BY_ID = {
         }
         return style;
     },
-    beachclass_2007: function(feature) {
+    beachclass_2007: function(subStyleName) {
         let style = {
-            ...DEFAULT_STYLES.LineString,
-            legendDisplayProperty: feature.properties["Shore Protection Classification"]
+            ...DEFAULT_STYLES.LineString
         };
-        switch (feature.properties["Shore Protection Classification"]) {
+        switch (subStyleName) {
             case "None":
                 style.color = COLORS.LIGHT_GRAY;
                 break;
@@ -244,15 +223,13 @@ var LAYER_STYLES_BY_ID = {
         }
         return style;
     },
-    profiles: function (feature) {
+    profiles: function (subStyleName) {
         let style = {
             ...DEFAULT_STYLES.LineString,
-            color: COLORS.DARK_BROWN,
-            legendDisplayProperty: "Bluff Profile"
+            color: COLORS.DARK_BROWN
         };
-        switch (feature.properties.type) {
-            case "bathymetry":
-                style.legendDisplayProperty = "Bathymetric Profile";
+        switch (subStyleName) {
+            case "Bathymetric Profile":
                 style.color = COLORS.DARK_CYAN;
                 break;
             default:
@@ -264,59 +241,117 @@ var LAYER_STYLES_BY_ID = {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.PURPLE,
-            strokeColor: COLORS.PURPLE,
-            legendDisplayProperty: "photos"
+            strokeColor: COLORS.PURPLE
         };
     },
     photos_dm_2016: function () {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.PURPLE,
-            strokeColor: COLORS.PURPLE,
-            legendDisplayProperty: "photos"
+            strokeColor: COLORS.PURPLE
         };
     },
     photos_2017: function () {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.DARK_PURPLE,
-            strokeColor: COLORS.DARK_PURPLE,
-            legendDisplayProperty: "photos"
+            strokeColor: COLORS.DARK_PURPLE
         };
     }
 }
 
-/**
- * Returns a style function that references the above styles
- * - Take the layer ID passed from ObliquePhotoMap.js. Retrieve either the layer's specific style
- *     (specified in LAYER_STYLES_BY_ID), or the default style for that geometry type,
- *     (DEFAULT_STYLES)
- * - Assign each returned style a className property
- * - Get "legendDisplayProperty" and pass it to legend style caching function
- *     - layerId by default, or as specified in style
- */
+// Individual layer sub-style names should be specified here. If one name, return <string>,
+// if a layer has multiple styles based on a feature's properties, that property value should
+// be returned instead
+function getLayerSubStyleName (layerId, feature) {
+    let subStyleName = layerId;
+    switch (layerId) {
+        case "backshore_1976":
+            subStyleName = feature.properties["Bluff Condition Classification"];
+            break;
+        case "backshore_2007":
+            subStyleName = feature.properties["Bluff Condition Classification"];
+            break;
+        case "photos_1976":
+            subStyleName = "1976 Photos";
+            break;
+        case "photos_2007":
+            subStyleName = "2007 Photos";
+            break;
+        case "structure_1976":
+            subStyleName = "Structures";
+            break;
+        case "structure_2007":
+            subStyleName = "Structures";
+            break;
+        case "beachclass_1976":
+            subStyleName = feature.properties["Shore Protection Classification"];
+            break;
+        case "beachclass_2007":
+            subStyleName = feature.properties["Shore Protection Classification"];
+            break;
+        case "profiles":
+            if(feature.properties.type === "bathymetry") {
+                subStyleName = "Bathymetric Profile";
+            } else {
+                subStyleName = "Bluff Profile";
+            }
+            break;
+        case "photos_obl_2016":
+            subStyleName = "2016 Photos";
+            break;
+        case "photos_dm_2016":
+            subStyleName = "2016 Photos";
+            break;
+        case "photos_2017":
+            subStyleName = "2017 Photos";
+            break;
+        default:
+            break;
+    }
+    return subStyleName;
+}
+
+const CACHE = {};
+
+function getCachedStyle (layerId, feature) {
+    if(typeof CACHE[layerId] !== "undefined") {
+        let subStyleName = getLayerSubStyleName(layerId, feature);
+        if (typeof CACHE[layerId][subStyleName] !== "undefined") {
+            return CACHE[layerId][subStyleName];
+        }
+    }
+    return false;
+}
+
+function createNewStyle (layerId, feature) {
+    let style = null;
+    // Get either the singular name for the layer's style or the name of the sub-style for this feature
+    let subStyleName = getLayerSubStyleName(layerId, feature);
+    // If there's a style set for a particular Layer ID, fetch that style
+    // Otherwise, get the default style for that geometry type
+    if (typeof LAYER_STYLES_BY_ID[layerId] !== "undefined") {
+        style = LAYER_STYLES_BY_ID[layerId](subStyleName);
+    } else if (typeof DEFAULT_STYLES[feature.geometry.type] !== "undefined") {
+        style = DEFAULT_STYLES[feature.geometry.type];
+    }
+    // assign the classname property of every style
+    let layerIdClass = "layer-" + layerId;
+    let layerTypeClass = "layer-type-" + feature.geometry.type;
+    if(typeof style.className === "undefined") {
+        style.className = "";
+    }
+    style.className += " " + [layerTypeClass, layerIdClass].join(" ");
+    // add the style to the legend
+    store.dispatch(legendStyleUpdate(layerId, subStyleName, style, feature.geometry.type));
+    // add style to cache
+    CACHE[layerId] = CACHE[layerId] || {};
+    CACHE[layerId][subStyleName] = style;
+    return style;
+}
+
 export default function LAYER_STYLE (layerId) {
     return function layerStyle (feature) {
-        let style = null;
-        if (typeof LAYER_STYLES_BY_ID[layerId] !== "undefined") {
-            style = LAYER_STYLES_BY_ID[layerId](feature);
-        } else if (typeof DEFAULT_STYLES[feature.geometry.type] !== "undefined") {
-            style = DEFAULT_STYLES[feature.geometry.type];
-        }
-        // assign the classname property of every style
-        let layerIdClass = "layer-" + layerId;
-        let layerTypeClass = "layer-type-" + feature.geometry.type;
-        if(typeof style.className === "undefined") {
-            style.className = "";
-        }
-        style.className += " " + [layerTypeClass, layerIdClass].join(" ");
-        // either get the legend display property or the layer ID
-        let legendDisplayProperty = layerId;
-        if(style !== null && typeof style.legendDisplayProperty !== "undefined") {
-            legendDisplayProperty = style.legendDisplayProperty;
-        }
-        // add the style to the legend
-        addToLegendStyles(layerId, legendDisplayProperty, style, feature.geometry.type);
-        return style;
+        return getCachedStyle(layerId, feature) || createNewStyle(layerId, feature)
     };
 }
