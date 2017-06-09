@@ -254,6 +254,13 @@ const LAYER_STYLES_BY_ID = {
     photos_2017: function () {
         return {
             ...DEFAULT_STYLES.Point,
+            color: COLORS.DARK_PINK,
+            strokeColor: COLORS.DARK_PINK
+        };
+    },
+    photos_2012: function () {
+        return {
+            ...DEFAULT_STYLES.Point,
             color: COLORS.DARK_PURPLE,
             strokeColor: COLORS.DARK_PURPLE
         };
@@ -306,6 +313,9 @@ function getLayerSubStyleName (layerId, feature) {
         case "photos_2017":
             subStyleName = "2017 Photos";
             break;
+        case "photos_2012":
+            subStyleName = "2012 Photos";
+            break;
         default:
             break;
     }
@@ -352,6 +362,6 @@ function createNewStyle (layerId, feature) {
 
 export default function LAYER_STYLE (layerId) {
     return function layerStyle (feature) {
-        return getCachedStyle(layerId, feature) || createNewStyle(layerId, feature)
+        return getCachedStyle(layerId, feature) || createNewStyle(layerId, feature);
     };
 }

@@ -56,7 +56,7 @@
                         "name": "Beach Protection",
                         "type": "geojson",
                         "dataLocation": "./data/layers/beachclass_1976.json",
-                        "defaultActive": true,
+                        "defaultActive": false,
                         "tableProperties": {
                             "OBJECTID": false,
                             "Shore Type": true,
@@ -186,7 +186,7 @@
                         "name": "2012 Photos",
                         "type": "geojson",
                         "dataLocation": "./data/layers/photos_2012.json",
-                        "defaultActive": false,
+                        "defaultActive": true,
                         "tableProperties": {
                             "imageId": "Image ID",
                             "altitude": "Altutude",
@@ -365,6 +365,13 @@
         "photos_2017": {
             "urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2017_photos/",
             "extension": ".JPG",
+            "sizes": {
+                "popup": "popup"
+            }
+        },
+        "photos_2012": {
+            "urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2012_photos/",
+            "extension": ".jpg",
             "sizes": {
                 "popup": "popup"
             }

@@ -55,7 +55,7 @@ class PopupTabs extends React.Component {
             }
             case "photos_2017": {
                 let popupPhotoURL = urls.photos_2017.urlBase
-                    + "/" + urls.photos_2017.sizes.popup + "/"
+                    + urls.photos_2017.sizes.popup + "/"
                     + featureProperties.id
                     + urls.photos_2017.extension;
                 let photoURL = urls.photos_2017.urlBase
@@ -66,6 +66,34 @@ class PopupTabs extends React.Component {
                         eventKey={1}
                         title="Image"
                         imgPath={popupPhotoURL}
+                        fullSizePath={photoURL}
+                        alt="Oblique"
+                        update={this.update}
+                    />
+                );
+                tabs.push(
+                    <DataTab key="data"
+                        eventKey={2}
+                        title="Data"
+                        layerId={layerId}
+                        featureProperties={featureProperties}
+                    />
+                );
+                break;
+            }
+            case "photos_2012": {
+                // let popupPhotoURL = urls.photos_2017.urlBase
+                //     + urls.photos_2017.sizes.popup + "/"
+                //     + featureProperties.id
+                //     + urls.photos_2017.extension;
+                let photoURL = urls.photos_2012.urlBase
+                    + featureProperties.imageId
+                    + urls.photos_2012.extension;
+                tabs.push(
+                    <ImageTab key="image"
+                        eventKey={1}
+                        title="Image"
+                        imgPath={photoURL}
                         fullSizePath={photoURL}
                         alt="Oblique"
                         update={this.update}
