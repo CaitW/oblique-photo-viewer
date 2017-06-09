@@ -51062,7 +51062,7 @@
 							"name": "Beach Protection",
 							"type": "geojson",
 							"dataLocation": "./data/layers/beachclass_1976.json",
-							"defaultActive": true,
+							"defaultActive": false,
 							"tableProperties": {
 								"OBJECTID": false,
 								"Shore Type": true,
@@ -51192,7 +51192,7 @@
 							"name": "2012 Photos",
 							"type": "geojson",
 							"dataLocation": "./data/layers/photos_2012.json",
-							"defaultActive": false,
+							"defaultActive": true,
 							"tableProperties": {
 								"imageId": "Image ID",
 								"altitude": "Altutude",
@@ -51461,6 +51461,13 @@
 			"photos_2017": {
 				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2017_photos/",
 				"extension": ".JPG",
+				"sizes": {
+					"popup": "popup"
+				}
+			},
+			"photos_2012": {
+				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2012_photos/",
+				"extension": ".jpg",
 				"sizes": {
 					"popup": "popup"
 				}
@@ -53594,13 +53601,36 @@
 	                    }
 	                case "photos_2017":
 	                    {
-	                        var popupPhotoURL = urls.photos_2017.urlBase + "/" + urls.photos_2017.sizes.popup + "/" + featureProperties.id + urls.photos_2017.extension;
+	                        var popupPhotoURL = urls.photos_2017.urlBase + urls.photos_2017.sizes.popup + "/" + featureProperties.id + urls.photos_2017.extension;
 	                        var photoURL = urls.photos_2017.urlBase + featureProperties.id + urls.photos_2017.extension;
 	                        tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'image',
 	                            eventKey: 1,
 	                            title: 'Image',
 	                            imgPath: popupPhotoURL,
 	                            fullSizePath: photoURL,
+	                            alt: 'Oblique',
+	                            update: this.update
+	                        }));
+	                        tabs.push(_react2.default.createElement(_DataTab2.default, { key: 'data',
+	                            eventKey: 2,
+	                            title: 'Data',
+	                            layerId: layerId,
+	                            featureProperties: featureProperties
+	                        }));
+	                        break;
+	                    }
+	                case "photos_2012":
+	                    {
+	                        // let popupPhotoURL = urls.photos_2017.urlBase
+	                        //     + urls.photos_2017.sizes.popup + "/"
+	                        //     + featureProperties.id
+	                        //     + urls.photos_2017.extension;
+	                        var _photoURL = urls.photos_2012.urlBase + featureProperties.imageId + urls.photos_2012.extension;
+	                        tabs.push(_react2.default.createElement(_ImageTab2.default, { key: 'image',
+	                            eventKey: 1,
+	                            title: 'Image',
+	                            imgPath: _photoURL,
+	                            fullSizePath: _photoURL,
 	                            alt: 'Oblique',
 	                            update: this.update
 	                        }));
@@ -58917,6 +58947,12 @@
 	    },
 	    photos_2017: function photos_2017() {
 	        return _extends({}, DEFAULT_STYLES.Point, {
+	            color: COLORS.DARK_PINK,
+	            strokeColor: COLORS.DARK_PINK
+	        });
+	    },
+	    photos_2012: function photos_2012() {
+	        return _extends({}, DEFAULT_STYLES.Point, {
 	            color: COLORS.DARK_PURPLE,
 	            strokeColor: COLORS.DARK_PURPLE
 	        });
@@ -58968,6 +59004,9 @@
 	            break;
 	        case "photos_2017":
 	            subStyleName = "2017 Photos";
+	            break;
+	        case "photos_2012":
+	            subStyleName = "2012 Photos";
 	            break;
 	        default:
 	            break;
