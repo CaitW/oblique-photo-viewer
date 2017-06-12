@@ -44,21 +44,85 @@ for (let layerGroupId in LAYER_GROUPS_BY_ID) {
     }
 }
 
-export function getPhotoURLs (photoProperties) {
-    let base = CONFIG.resources.photos.urlBase;
-    let lakeName = photoProperties["Great Lake"].replace(/ /gi, "");
-    let year = photoProperties["Year"];
-    let fileName = photoProperties["File Name"];
+export function getPhotoURLs (layerId, photoProperties) {
     let urls = {};
-    for (let size in CONFIG.resources.photos.sizes) {
-        let sizeDir = CONFIG.resources.photos.sizes[size];
-        let modifiedFilename = fileName;
-        if(size !== "original") {
-            let parts = fileName.split(".");
-            parts[0] += "_" + sizeDir;
-            modifiedFilename = parts.join(".");
+    switch (layerId) {
+        case "photos_1976":
+        case "photos_2007": {
+            let base = CONFIG.resources.photos.urlBase;
+            let lakeName = photoProperties["Great Lake"].replace(/ /gi, "");
+            let year = photoProperties["Year"];
+            let fileName = photoProperties["File Name"];
+            for (let size in CONFIG.resources.photos.sizes) {
+                let sizeDir = CONFIG.resources.photos.sizes[size];
+                let modifiedFilename = fileName;
+                if(size !== "original") {
+                    let parts = fileName.split(".");
+                    parts[0] += "_" + sizeDir;
+                    modifiedFilename = parts.join(".");
+                }
+                urls[size] = [base,lakeName,year,sizeDir,modifiedFilename].join("/");
+            }
+            break;
         }
-        urls[size] = [base,lakeName,year,sizeDir,modifiedFilename].join("/");
+        case "photos_obl_2016": {
+            let base = CONFIG.resources.photos_2016.obl_urlBase;
+            let fileName = photoProperties.filename;
+            urls.original = [base,fileName].join("/");
+            urls.popup = [base,"popup",fileName].join("/");
+            break;
+        }
+        case "photos_dm_2016": {
+            let base = CONFIG.resources.photos_2016.dm_urlBase;
+            let fileName = photoProperties.filename;
+            urls.original = [base,fileName].join("/");
+            urls.popup = [base,"popup",fileName].join("/");
+            break;
+        }
+        case "photos_2017": {
+            let base = CONFIG.resources.photos_2017.urlBase;
+            let fileName = photoProperties.id;
+            let ext = CONFIG.resources.photos_2017.extension;
+            urls.original = [base,fileName].join("/") + ext;
+            urls.popup = [base,"popup",fileName].join("/") + ext;
+            break;
+        }
+        case "photos_2012": {
+            let base = CONFIG.resources.photos_2012.urlBase;
+            let fileName = photoProperties.imageId;
+            let ext = CONFIG.resources.photos_2012.extension;
+            urls.original = [base,fileName].join("/") + ext;
+            urls.popup = [base,"popup",fileName].join("/") + ext;
+            break;
+        }
+        default:
+        break;
+    }
+    return urls;
+}
+
+export function getProfileURLs (featureProperties) {
+    let bluffGraph = CONFIG.resources.profiles.pathToGraphs.bluff;
+    let bathyGraph = CONFIG.resources.profiles.pathToGraphs.bathy;
+    let bluffXls = CONFIG.resources.profiles.pathToXls.bluff;
+    let bathyXls = CONFIG.resources.profiles.pathToXls.bathy;
+    let urls = {
+        bluffGraph: false,
+        bathyGraph: false,
+        bluffXls: false,
+        bathyXls: false
+    };
+    if(featureProperties.bluff_jpg) {
+        urls.bluffGraph = bluffGraph + featureProperties.bluff_jpg;
+    }
+    if(featureProperties.bathy_png) {
+        urls.bathyGraph = bathyGraph + featureProperties.bathy_png;
+    }
+    if(featureProperties.bluff_xls) {
+        urls.bluffXls = bluffXls + featureProperties.bluff_xls;
+    }
+    if(featureProperties.bathy_xls) {
+        urls.bathyXls = bathyXls +  featureProperties.bathy_xls;
     }
     return urls;
 }

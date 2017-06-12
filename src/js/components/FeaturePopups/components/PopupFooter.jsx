@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
 import CONFIG from '../../../config.json';
+import { getProfileURLs } from '../../../util';
 
 const PopupFooter = (props) => {
     let footer = [];
     switch (props.layerId) {
         case "profiles": {
-            let bluffXls = props.featureProperties.bluff_xls;
-            let bathyXls = props.featureProperties.bathy_xls;
-            let hasBluffXls = (typeof bluffXls !== "undefined" && bluffXls !== false);
-            let hasBathyXls = (typeof bathyXls !== "undefined" && bathyXls !== false);
-            if(hasBluffXls) {
+            let urls = getProfileURLs(props.featureProperties);
+            if(urls.bluffXls) {
                 footer.push(
-                  <a href={CONFIG.resources.profiles.pathToXls.bluff + bluffXls}
+                  <a href={urls.bluffXls}
                     key="download-bluff-excel-button"
                     target="_blank"
                     rel="noopener noreferrer" >
@@ -24,9 +22,9 @@ const PopupFooter = (props) => {
                   </a>
                 );
             }
-            if(hasBathyXls) {
+            if(urls.bathyXls) {
                 footer.push(
-                  <a href={CONFIG.resources.profiles.pathToXls.bathy + bathyXls}
+                  <a href={urls.bathyXls}
                     key="download-bathy-excel-button"
                     target="_blank"
                     rel="noopener noreferrer" >
