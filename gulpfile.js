@@ -11,7 +11,6 @@ var fs = require('fs');
 var runSequence = require('run-sequence');
 var eslint = require('gulp-eslint');
 var gulpStylelint = require('gulp-stylelint');
-var jsonMinify = require('gulp-json-minify');
 var util = require('gulp-util');
 
 /**
@@ -34,12 +33,6 @@ gulp.task('copy-html', function() {
 gulp.task('copy-data', function() {
     gulp.src('./src/data/**/*')
         .pipe(gulp.dest('./dist/data'));
-});
-gulp.task('minify-copy-data', function () {
-    return gulp.src(['./src/data/**/*.json'])
-        .pipe(jsonMinify())
-        .pipe(gulp.dest('dist/data/'))
-        .on('error', util.log);
 });
 gulp.task('copy-content', function() {
     gulp.src('./src/fonts/**/*')
@@ -168,5 +161,5 @@ gulp.task('watch', ['default', 'watch-files']);
 gulp.task('pre-deploy', ['clean','lint-js','lint-css']);
 
 // production
-gulp.task('build', ['copy-html', 'copy-content', 'sass', 'scripts', 'webpack-prod', 'compress-libraries', 'minify-copy-data']);
+gulp.task('build', ['copy-html', 'copy-content', 'sass', 'scripts', 'webpack-prod', 'compress-libraries', 'copy-data']);
 
