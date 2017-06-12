@@ -1,0 +1,45 @@
+// Fonts
+@import 'fonts';
+@import 'lib/font-awesome/font-awesome';
+
+$font_header: 'Fjalla One', sans-serif;
+$font_body: 'Roboto', sans-serif;
+$font_icons: 'Font Awesome';
+
+// Libraries
+@import 'lib/bootstrap';
+
+// Partials
+@import 'colors';
+
+// CSS
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: $font_body;
+  font-size: 18px;
+  background-color: $primary_50;
+  color: $primary_900;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font_header;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  color: $primary_800;
+}
+
+
+

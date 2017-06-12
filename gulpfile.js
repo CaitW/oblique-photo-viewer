@@ -27,7 +27,7 @@ gulp.task('clean', function () {
  * Copy Files
  */
 gulp.task('copy-html', function() {
-    return gulp.src('src/index.html')
+    return gulp.src(['src/index.html','src/about.html'])
         .pipe(gulp.dest('dist/'))
         .pipe(livereload());
 });
@@ -55,6 +55,14 @@ gulp.task('copy-content', function() {
  */
 gulp.task('sass', function() {
     return gulp.src('src/sass/app.scss')
+        .pipe(sass.sync()
+            .on('error', sass.logError))
+        .pipe(gulp.dest('./dist/'))
+        .pipe(livereload());
+});
+
+gulp.task('sass-about', function() {
+    return gulp.src('src/sass/about.scss')
         .pipe(sass.sync()
             .on('error', sass.logError))
         .pipe(gulp.dest('./dist/'))
@@ -100,7 +108,7 @@ gulp.task('watch-files', function() {
     gulp.watch('src/js/**/*.js', ['webpack-dev']);
     gulp.watch('src/js/**/*.jsx', ['webpack-dev']);
     gulp.watch('src/js/**/*.json', ['webpack-dev']);
-    gulp.watch('src/sass/**/*.scss', ['sass']);
+    gulp.watch('src/sass/**/*.scss', ['sass', 'sass-about']);
     gulp.watch('src/*.html', ['copy-html']);
     gulp.watch('src/js/lib/*.js', ['scripts']);
     gulp.watch('src/data/**/*', ['copy-data']);
@@ -153,7 +161,7 @@ gulp.task('lint-css', function () {
  * Tasks
  */
 // default task
-gulp.task('default', ['copy-html', 'copy-data', 'copy-content', 'sass', 'scripts', 'webpack-dev']);
+gulp.task('default', ['copy-html', 'copy-data', 'copy-content', 'sass', 'sass-about', 'scripts', 'webpack-dev']);
 // for active development
 gulp.task('watch', ['default', 'watch-files']);
 // pre-deploy tasks (for releases)

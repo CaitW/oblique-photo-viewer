@@ -12,7 +12,6 @@ import SidebarWrapper from './wrappers/SidebarWrapper';
 import MobileFeaturePopup from './components/FeaturePopups/MobileFeaturePopup';
 import MapWrapper from './wrappers/MapWrapper';
 import MobileLayerList from './containers/MobileLayerList';
-import AboutModal from './containers/AboutModal';
 import PinnedFeaturePopupContainer from './containers/PinnedFeaturePopupContainer';
 import LayerList from './containers/LayerList';
 import Legend from './containers/Legend';
@@ -35,7 +34,6 @@ class App extends React.Component {
         return (
             <Provider store={store}>
                 <Grid fluid={true} className="wiscviewer-grid">
-                    <AboutModal />
                     <MobileFeaturePopup />
                     <MobileLayerList />
                     <Row className="wiscviewer-nav-container">

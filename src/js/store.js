@@ -3,7 +3,6 @@ import layers from './ducks/layers';
 import basemaps from './ducks/basemaps';
 import map from './ducks/map';
 import mobile from './ducks/mobile';
-import aboutModal from './ducks/aboutModal';
 import pinnedFeatures from './ducks/pinnedFeatures';
 import nav from './ducks/nav';
 
@@ -12,7 +11,6 @@ const theReducer = combineReducers({
     basemaps,
     map,
     mobile,
-    aboutModal,
     pinnedFeatures,
     nav
 });
