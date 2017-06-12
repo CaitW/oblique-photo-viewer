@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import store from '../store';
 import ZoomToCounty from '../components/ZoomToCounty';
 import ResetView from '../components/ResetView';
+import AboutButton from '../components/AboutButton';
 import MobileToggle from '../components/MobileToggle';
 import { openMobileLayerList } from '../ducks/mobile';
 import { zoomToCounty, resetMapView } from '../ducks/map';
@@ -76,11 +77,7 @@ class NavBar extends React.Component {
                   </NavItem>
                   <ZoomToCounty onZoomShorelineClick={this.constructor.onZoomShorelineClick} />
                   <ResetView onResetViewClick={this.constructor.onResetViewClick} />
-                  <NavItem eventKey={ 3 }
-                    href="about.html"
-                    className="wiscviewer-nav-tool wiscviewer-nav-tool-about">
-                    <i className="fa fa-info-circle wiscviewer-nav-tool-icon"></i>
-                  </NavItem>
+                  <AboutButton />
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
