@@ -34,7 +34,7 @@ function handleClick(feature, layer, layerId, map) {
             popup = L.popup({
                 closeOnClick: false,
                 className: "feature-popup hidden-xs",
-                autoClose: false,
+                autoClose: true,
                 maxWidth: 500,
                 minWidth: 400,
                 closeButton: false
