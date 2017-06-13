@@ -73,6 +73,9 @@
 // Leaflet Modifications
 .leaflet-control-zoom.leaflet-bar {
   border: 0;
+  a {
+    background-color: $primary_50;
+  }
 
   .leaflet-control-zoom-in,
   .leaflet-control-zoom-out {

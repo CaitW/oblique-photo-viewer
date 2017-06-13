@@ -1,4 +1,5 @@
 .wiscviewer-modal {
+  color: $primary_100;
   .modal-dialog {
     z-index: 600;
     max-height: calc(100% - 20px);
@@ -9,20 +10,18 @@
   }
 
   .modal-header {
-    background-color: $primary_300;
-    color: $primary_900;
+    background-color: $primary_700;
     border: 0;
   }
 
   .modal-footer {
-    background-color: $primary_100;
+    background-color: $primary_600;
     border: 0;
-    color: $primary_50;
   }
 
   .btn {
     border: 0;
-    background-color: $primary_600;
+    background-color: $primary_400;
     color: $primary_50;
     font-size: 18px;
 
@@ -182,6 +181,10 @@
       line-height: inherit;
       color: $primary_100;
     }
+  }
+
+  .modal-body {
+    padding: 0;
   }
 
   .panel-body {

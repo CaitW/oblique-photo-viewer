@@ -25,23 +25,17 @@ const BasemapList = (props) => {
 
   let bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
   let headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
-  let iconClassNames = ["fa", "wiscviewer-layer-group-icon"];
   if (props.panelVisible === false) {
       bodyClassNames.push("hidden");
-      iconClassNames.push("fa-folder");
   } else {
       headerClassNames.push("active");
-      iconClassNames.push("fa-folder-open");
   }
-  let boundOnPanelClick = props.onPanelClick.bind(null, "Basemaps");
   return (
       <div className="panel panel-default wiscviewer-sidebar-panel">
         <div className={ headerClassNames.join(" ") }
           role="button"
           tabIndex={0}
-          onClick={ boundOnPanelClick }
           >
-            <i className={ iconClassNames.join(" ") }></i>
             Basemaps
         </div>
         <div className={ bodyClassNames.join(" ") }>
@@ -56,8 +50,7 @@ const BasemapList = (props) => {
 BasemapList.propTypes = {
     basemaps: PropTypes.object.isRequired,
     panelVisible: PropTypes.bool.isRequired,
-    onBasemapClick: PropTypes.func.isRequired,
-    onPanelClick: PropTypes.func.isRequired
+    onBasemapClick: PropTypes.func.isRequired
 }
 
 export default BasemapList;

@@ -28,35 +28,6 @@ class LayerList extends React.Component {
     static onBasemapClick(basemapID) {
         store.dispatch(toggleBasemap(basemapID));
     }
-    constructor(props) {
-        super(props);
-        let groups = {};
-        groups["Basemaps"] = false;
-        for(let layerGroupId in this.props.layers) {
-            groups[layerGroupId] = false;
-            let layerGroupLayers = this.props.layers[layerGroupId].layers;
-            // open layer groups with an active layer
-            for (let layerId in layerGroupLayers) {
-                if(layerGroupLayers[layerId].active === true) {
-                    groups[layerGroupId] = true;
-                }
-            }
-        }
-        this.state = groups;
-        this.onPanelClick = this.onPanelClick.bind(this);
-    }
-    onPanelClick(panelName) {
-        let self = this;
-        let newState = {
-            ...self.state
-        }
-        for(let layerGroup in newState) {
-            if(panelName === layerGroup) {
-                newState[panelName] = !newState[panelName];
-            }
-        }
-        this.setState(newState);
-    }
     render() {
         let layerGroups = [];
         let eventKey = 1;
@@ -69,8 +40,7 @@ class LayerList extends React.Component {
                     layers={this.props.layers[layerGroupId].layers}
                     onLayerClick={this.constructor.onLayerClick}
                     eventKey={eventKey.toString()}
-                    onPanelClick={this.onPanelClick}
-                    panelVisible={this.state[layerGroupId]}
+                    panelVisible={true}
                 />
             );
             eventKey += 1;
@@ -79,10 +49,9 @@ class LayerList extends React.Component {
             <PanelGroup className="wiscviewer-layer-list">
                 {layerGroups}
                 <BasemapList basemaps={this.props.basemaps}
-                    panelVisible={this.state["Basemaps"]}
+                    panelVisible={true}
                     onBasemapClick={this.constructor.onBasemapClick}
                     eventKey={eventKey.toString()}
-                    onPanelClick={this.onPanelClick}
                 />
             </PanelGroup>
         );

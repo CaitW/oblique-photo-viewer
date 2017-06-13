@@ -24,23 +24,17 @@ const LayerGroup = (props) => {
     }
     let bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
     let headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
-    let iconClassNames = ["fa", "wiscviewer-layer-group-icon"];
     if(props.panelVisible === false) {
         bodyClassNames.push("hidden");
-        iconClassNames.push("fa-folder");
     } else {
         headerClassNames.push("active");
-        iconClassNames.push("fa-folder-open");
     }
-    let boundOnPanelClick = props.onPanelClick.bind(null, props.layerGroupId);
     return (
         <div className="panel panel-default wiscviewer-sidebar-panel">
             <div className={headerClassNames.join(" ")}
-                onClick={boundOnPanelClick}
                 role="button"
                 tabIndex={0}
                 >
-                <i className={iconClassNames.join(" ")}></i>
                 {props.layerGroupName}
             </div>
             <div className={bodyClassNames.join(" ")}>
@@ -57,7 +51,6 @@ LayerGroup.propTypes = {
     layerGroupName: PropTypes.string.isRequired,
     layers: PropTypes.object.isRequired,
     onLayerClick: PropTypes.func.isRequired,
-    onPanelClick: PropTypes.func.isRequired,
     panelVisible: PropTypes.bool.isRequired
 }
 
