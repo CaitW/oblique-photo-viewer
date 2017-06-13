@@ -52186,9 +52186,6 @@
 /***/ function(module, exports) {
 
 	module.exports = {
-		"meta": {
-			"aboutText": "About text goes here"
-		},
 		"map": {
 			"wisconsinExtent": [
 				[
