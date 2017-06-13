@@ -8584,7 +8584,7 @@ button.close {
 .wiscviewer-brand {
   color: #eceff1 !important;
   font-family: "Fjalla One", sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   padding: 18px 15px 12px 15px; }
   .wiscviewer-brand:before {
     content: 'WI Shoreline Inventory'; }
@@ -8597,10 +8597,11 @@ button.close {
   .wiscviewer-brand:before {
     content: 'Wisconsin Shoreline Inventory and Oblique Viewer'; } }
 
-.wiscviewer-nav-tools > ul > li {
-  color: #cfd8dc; }
-  .wiscviewer-nav-tools > ul > li a,
-  .wiscviewer-nav-tools > ul > li a:hover {
+.wiscviewer-nav-tool {
+  color: #cfd8dc;
+  font-size: 16px; }
+  .wiscviewer-nav-tool a,
+  .wiscviewer-nav-tool a:hover {
     color: #cfd8dc !important; }
 
 .wiscviewer-nav-dropdown.open > a {
@@ -8733,7 +8734,8 @@ button.close {
   color: #eceff1 !important;
   background-color: #607d8b !important;
   border: 0;
-  padding: 5px 10px; }
+  padding: 5px 10px;
+  font-size: 16px; }
   .wiscviewer-sidebar-panel-header i {
     line-height: inherit;
     color: #cfd8dc; }
@@ -9523,7 +9525,7 @@ button.close {
 .wiscviewer-feature-popup-controls {
   color: #cfd8dc;
   float: right;
-  font-size: 18px;
+  font-size: 20px;
   position: absolute;
   right: 10px;
   top: 2px; }
@@ -9536,7 +9538,8 @@ button.close {
 .wiscviewer-feature-popup-body {
   padding: 5px; }
   .wiscviewer-feature-popup-body .nav-tabs {
-    border-bottom: 1px solid #546e7a; }
+    border-bottom: 1px solid #546e7a;
+    font-size: 14px; }
     .wiscviewer-feature-popup-body .nav-tabs li a {
       padding: 5px 10px;
       border: 0; }
@@ -9565,7 +9568,8 @@ button.close {
 
 .wiscviewer-data-table {
   min-width: 350px;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  font-size: 12px; }
   .wiscviewer-data-table tr:hover {
     background-color: #b0bec5; }
   .wiscviewer-data-table tr td {
