@@ -54629,8 +54629,6 @@
 	    value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(299);
@@ -54686,53 +54684,13 @@
 	var LayerList = function (_React$Component) {
 	    _inherits(LayerList, _React$Component);
 
-	    _createClass(LayerList, null, [{
-	        key: 'onLayerClick',
-	        value: function onLayerClick(layerId) {
-	            _store2.default.dispatch((0, _layers.toggleLayer)(layerId));
-	        }
-	    }, {
-	        key: 'onBasemapClick',
-	        value: function onBasemapClick(basemapID) {
-	            _store2.default.dispatch((0, _basemaps.toggleBasemap)(basemapID));
-	        }
-	    }]);
-
-	    function LayerList(props) {
+	    function LayerList() {
 	        _classCallCheck(this, LayerList);
 
-	        var _this = _possibleConstructorReturn(this, (LayerList.__proto__ || Object.getPrototypeOf(LayerList)).call(this, props));
-
-	        var groups = {};
-	        groups["Basemaps"] = false;
-	        for (var layerGroupId in _this.props.layers) {
-	            groups[layerGroupId] = false;
-	            var layerGroupLayers = _this.props.layers[layerGroupId].layers;
-	            // open layer groups with an active layer
-	            for (var layerId in layerGroupLayers) {
-	                if (layerGroupLayers[layerId].active === true) {
-	                    groups[layerGroupId] = true;
-	                }
-	            }
-	        }
-	        _this.state = groups;
-	        _this.onPanelClick = _this.onPanelClick.bind(_this);
-	        return _this;
+	        return _possibleConstructorReturn(this, (LayerList.__proto__ || Object.getPrototypeOf(LayerList)).apply(this, arguments));
 	    }
 
 	    _createClass(LayerList, [{
-	        key: 'onPanelClick',
-	        value: function onPanelClick(panelName) {
-	            var self = this;
-	            var newState = _extends({}, self.state);
-	            for (var layerGroup in newState) {
-	                if (panelName === layerGroup) {
-	                    newState[panelName] = !newState[panelName];
-	                }
-	            }
-	            this.setState(newState);
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var layerGroups = [];
@@ -54745,8 +54703,7 @@
 	                    layers: this.props.layers[layerGroupId].layers,
 	                    onLayerClick: this.constructor.onLayerClick,
 	                    eventKey: eventKey.toString(),
-	                    onPanelClick: this.onPanelClick,
-	                    panelVisible: this.state[layerGroupId]
+	                    panelVisible: true
 	                }));
 	                eventKey += 1;
 	            }
@@ -54755,12 +54712,21 @@
 	                { className: 'wiscviewer-layer-list' },
 	                layerGroups,
 	                _react2.default.createElement(_BasemapList2.default, { basemaps: this.props.basemaps,
-	                    panelVisible: this.state["Basemaps"],
+	                    panelVisible: true,
 	                    onBasemapClick: this.constructor.onBasemapClick,
-	                    eventKey: eventKey.toString(),
-	                    onPanelClick: this.onPanelClick
+	                    eventKey: eventKey.toString()
 	                })
 	            );
+	        }
+	    }], [{
+	        key: 'onLayerClick',
+	        value: function onLayerClick(layerId) {
+	            _store2.default.dispatch((0, _layers.toggleLayer)(layerId));
+	        }
+	    }, {
+	        key: 'onBasemapClick',
+	        value: function onBasemapClick(basemapID) {
+	            _store2.default.dispatch((0, _basemaps.toggleBasemap)(basemapID));
 	        }
 	    }]);
 
@@ -54818,26 +54784,20 @@
 	    }
 	    var bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
 	    var headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
-	    var iconClassNames = ["fa", "wiscviewer-layer-group-icon"];
 	    if (props.panelVisible === false) {
 	        bodyClassNames.push("hidden");
-	        iconClassNames.push("fa-folder");
 	    } else {
 	        headerClassNames.push("active");
-	        iconClassNames.push("fa-folder-open");
 	    }
-	    var boundOnPanelClick = props.onPanelClick.bind(null, props.layerGroupId);
 	    return _react2.default.createElement(
 	        'div',
 	        { className: 'panel panel-default wiscviewer-sidebar-panel' },
 	        _react2.default.createElement(
 	            'div',
 	            { className: headerClassNames.join(" "),
-	                onClick: boundOnPanelClick,
 	                role: 'button',
 	                tabIndex: 0
 	            },
-	            _react2.default.createElement('i', { className: iconClassNames.join(" ") }),
 	            props.layerGroupName
 	        ),
 	        _react2.default.createElement(
@@ -54857,7 +54817,6 @@
 	    layerGroupName: _propTypes2.default.string.isRequired,
 	    layers: _propTypes2.default.object.isRequired,
 	    onLayerClick: _propTypes2.default.func.isRequired,
-	    onPanelClick: _propTypes2.default.func.isRequired,
 	    panelVisible: _propTypes2.default.bool.isRequired
 	};
 
@@ -54886,13 +54845,23 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Layer = function Layer(props) {
+	    var iconClassNames = ["fa", "wiscviewer-layer-left-icon"];
+	    var layerClassNames = ["wiscviewer-layer-item"];
+	    if (props.active) {
+	        iconClassNames.push("fa-check");
+	        iconClassNames.push("active");
+	        layerClassNames.push("active");
+	    } else {
+	        iconClassNames.push("fa-plus");
+	    }
+
 	    return _react2.default.createElement(
 	        _reactBootstrap.ListGroupItem,
 	        {
 	            active: props.active,
-	            className: 'wiscviewer-layer-item',
+	            className: layerClassNames.join(" "),
 	            onClick: props.onLayerClick },
-	        _react2.default.createElement('i', { className: 'fa fa-file wiscviewer-layer-left-icon' }),
+	        _react2.default.createElement('i', { className: iconClassNames.join(" ") }),
 	        props.layerName
 	    );
 	}; /**
@@ -54954,15 +54923,11 @@
 
 	  var bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
 	  var headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
-	  var iconClassNames = ["fa", "wiscviewer-layer-group-icon"];
 	  if (props.panelVisible === false) {
 	    bodyClassNames.push("hidden");
-	    iconClassNames.push("fa-folder");
 	  } else {
 	    headerClassNames.push("active");
-	    iconClassNames.push("fa-folder-open");
 	  }
-	  var boundOnPanelClick = props.onPanelClick.bind(null, "Basemaps");
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'panel panel-default wiscviewer-sidebar-panel' },
@@ -54970,10 +54935,8 @@
 	      'div',
 	      { className: headerClassNames.join(" "),
 	        role: 'button',
-	        tabIndex: 0,
-	        onClick: boundOnPanelClick
+	        tabIndex: 0
 	      },
-	      _react2.default.createElement('i', { className: iconClassNames.join(" ") }),
 	      'Basemaps'
 	    ),
 	    _react2.default.createElement(
@@ -54991,8 +54954,7 @@
 	BasemapList.propTypes = {
 	  basemaps: _propTypes2.default.object.isRequired,
 	  panelVisible: _propTypes2.default.bool.isRequired,
-	  onBasemapClick: _propTypes2.default.func.isRequired,
-	  onPanelClick: _propTypes2.default.func.isRequired
+	  onBasemapClick: _propTypes2.default.func.isRequired
 	};
 
 	exports.default = BasemapList;
@@ -55020,13 +54982,19 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Basemap = function Basemap(props) {
+	    var iconClassNames = ["fa", "fa-map", "wiscviewer-layer-left-icon"];
+	    var layerClassNames = ["wiscviewer-layer-item"];
+	    if (props.active) {
+	        iconClassNames.push("active");
+	        layerClassNames.push("active");
+	    }
 	    return _react2.default.createElement(
 	        _reactBootstrap.ListGroupItem,
 	        {
 	            active: props.active,
-	            className: 'wiscviewer-layer-item',
+	            className: layerClassNames.join(" "),
 	            onClick: props.onBasemapClick },
-	        _react2.default.createElement('i', { className: 'fa fa-map wiscviewer-layer-left-icon' }),
+	        _react2.default.createElement('i', { className: iconClassNames.join(" ") }),
 	        props.basemapName
 	    );
 	}; /**
