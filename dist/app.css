@@ -8621,10 +8621,10 @@ button.close {
   color: #b0bec5; }
 
 .wiscviewer-nav-tool-zoom .wiscviewer-tool-title:after {
-  content: "Zoom to Shoreline"; }
+  content: "Shoreline"; }
 
 .wiscviewer-nav-tool-reset a:after {
-  content: "Reset View"; }
+  content: "Reset"; }
 
 .wiscviewer-nav-tool-about a:after {
   content: "About"; }
@@ -8709,7 +8709,7 @@ button.close {
       color: #eceff1; }
 
 .wiscviewer-sidebar-panel-header {
-  color: #eceff1 !important;
+  color: #cfd8dc !important;
   background-color: #263238 !important;
   border: 0;
   padding: 15px;
@@ -8717,6 +8717,9 @@ button.close {
   border-radius: 0; }
   .wiscviewer-sidebar-panel-header:hover {
     cursor: default; }
+
+.wiscviewer-legend .panel-heading {
+  cursor: pointer; }
 
 .wiscviewer-legend .panel-body {
   padding: 5px 10px; }
@@ -9421,7 +9424,8 @@ button.close {
     background-color: #eceff1; }
   .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-in,
   .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-out {
-    color: #263238; }
+    background-color: #455a64;
+    color: #cfd8dc; }
   .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-in {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;

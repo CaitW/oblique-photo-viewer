@@ -79,7 +79,8 @@
 
   .leaflet-control-zoom-in,
   .leaflet-control-zoom-out {
-    color: $primary_900;
+    background-color: $primary_700;
+    color: $primary_100;
   }
 
   .leaflet-control-zoom-in {

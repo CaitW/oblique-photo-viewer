@@ -58,7 +58,7 @@
 }
 
 .wiscviewer-sidebar-panel-header {
-  color: $primary_50 !important;
+  color: $primary_100 !important;
   background-color: $primary_900 !important;
   border: 0;
   padding: 15px;
@@ -71,6 +71,9 @@
 }
 
 .wiscviewer-legend {
+  .panel-heading {
+    cursor: pointer;
+  }
   .panel-body {
     padding: 5px 10px;
   }
