@@ -1,171 +1,106 @@
-.wiscviewer-modal {
+.wiscviewer-mobile-modal {
+  font-size: 18px;
   color: $primary_100;
   .modal-dialog {
     z-index: 600;
     max-height: calc(100% - 20px);
   }
-
   .modal-content {
-    background-color: $primary_50;
-  }
-
-  .modal-header {
     background-color: $primary_700;
-    border: 0;
-  }
-
-  .modal-footer {
-    background-color: $primary_600;
-    border: 0;
-  }
-
-  .btn {
-    border: 0;
-    background-color: $primary_400;
-    color: $primary_50;
-    font-size: 18px;
-
-    &:hover {
-      background-color: $primary_700;
-    }
-  }
-}
-
-.wiscviewer-mobile-modal {
-  font-size: 18px;
-
-  .modal-dialog {
-    height: calc(100% - 20px);
-  }
-
-  .modal-content {
     height: 100%;
-    max-height: 800px;
+    overflow-y: scroll;
   }
-
   .modal-header {
+    background-color: $primary_800;
+    border: 0;
     height: 50px;
+    font-size: 16px;
   }
-
   .modal-body {
-    height: calc(100% - 110px);
     width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
   }
-
   .modal-footer {
-    height: 60px;
+    background-color: $primary_700;
+    border: 0;
+    min-height: 60px;
     padding: 10px;
+    button:not(:first-child) {
+      margin-left: 10px;
+    }
   }
-
   .modal-header {
     i {
       margin: 0 10px;
     }
   }
-
-  .modal-footer {
-    button:not(:first-child) {
-      margin-left: 10px;
+  .btn {
+    border: 0;
+    background-color: $primary_900;
+    color: $primary_200;
+    font-size: 18px;
+    &:hover {
+      background-color: $primary_900;
     }
   }
 }
 
-.wiscviewer-mobile-feature-popup {
-  .nav-tabs {
-    border-bottom: 1px solid $primary_600;
 
+.wiscviewer-mobile-feature-popup {
+  img {
+    width: 100%;
+  }
+  .modal-body {
+    padding: 0;
+  }
+  .modal-footer {
+
+  }
+  .nav-tabs {
+    border: none;
     li {
       a {
         padding: 10px 20px;
-        border: 0;
-
-        &[aria-selected=true] {
-          background-color: $primary_600;
+        color: $primary_200;
+        border: none;
+        background-color: inherit !important;
+      }
+      &.active {
+        a {
           color: $primary_50;
-          &:hover,
-          &:focus {
-            border: 0;
-          }
-        }
-
-        &[aria-selected=false] {
-          background-color: $primary_100;
-          color: $primary_900;
-          border-bottom: 1px solid $primary_600;
-
-          &:hover {
-            background-color: $primary_300;
-          }
+          border: none;
         }
       }
     }
   }
-
   .tab-content {
-    border: 1px solid $primary_600;
-    background-color: $primary_100;
-    border-width: 3px 0 0;
-    padding: 10px;
+    padding: 0;
     overflow-x: auto;
-
-    img {
-      max-width: 100%;
-      display: block;
-      margin: 0 auto;
-    }
-
-    table {
-      margin-bottom: 0;
-
-      tr {
-        &:hover {
-          background-color: $primary_200;
-        }
-
-        td {
-          border: 1px solid $primary_400;
-        }
-      }
-    }
-
-    .profile-image-button-row,
-    .photo-image-button-row {
-      text-align: center;
-      padding: 10px 0 0;
-
-      button {
-        padding: 10px 20px;
-      }
-    }
+    border: none;
+    border: 0 solid $primary_900;
+    border-width: 4px 0 4px 0;
   }
-
-  .table-striped > tbody > tr:nth-of-type(odd) {
-    background-color: #ffffff;
-
-    &:hover {
-      background-color: $primary_200;
-    }
+  .wiscviewer-popup-downloads-row {
+    display: block;
+    margin: 0 0 5px 0;
+    padding: 0;
+    text-align: left;
   }
-
-  .table-striped > tbody > tr:nth-of-type(even) {
-    background-color: $primary_50;
-
-    &:hover {
-      background-color: $primary_200;
-    }
-  }
-
-  .wiscviewer-popup-title {
+  table {
     width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 14px;
+  }
+  button {
+    margin-left: 5px;
   }
 }
 
+
 .wiscviewer-mobile-layers-list {
+  .modal-dialog {
+    height: calc(100% - 20px);
+  }
   .panel {
     background-color: $primary_100;
     border: 0;

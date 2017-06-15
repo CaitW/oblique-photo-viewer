@@ -49,16 +49,9 @@ class PinnedFeaturePopup extends React.Component {
                     }
                     style={style}
                     onClick={this.props.onClick}
-                    role="button"
                     tabIndex={0}
                     >
                     <div className="wiscviewer-feature-popup-header handle">
-                        <div className="wiscviewer-feature-popup-title">
-                            <PopupTitle featureProperties={this.props.featureProperties}
-                                layerGroupName={this.props.layerGroupName}
-                                layerName={this.props.layerName}
-                            />
-                        </div>
                         <div className="wiscviewer-feature-popup-controls">
                             <i className="fa fa-times feature-popup-close-button"
                                 onClick={this.props.closePopup}
@@ -72,6 +65,10 @@ class PinnedFeaturePopup extends React.Component {
                             featureProperties={this.props.featureProperties} />
                     </div>
                     <div className="wiscviewer-feature-popup-footer">
+                        <PopupTitle featureProperties={this.props.featureProperties}
+                            layerGroupName={this.props.layerGroupName}
+                            layerName={this.props.layerName}
+                        />
                         <PopupFooter layerId={this.props.layerId}
                             featureProperties={this.props.featureProperties}>
                             <div key="clearfix" className="clearfix"></div>

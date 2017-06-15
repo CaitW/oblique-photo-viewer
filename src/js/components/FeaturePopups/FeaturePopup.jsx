@@ -46,13 +46,8 @@ class FeaturePopup extends React.Component {
         return (
             <div className="wiscviewer-feature-popup"
                 onClick={this.bringToFront}
-                role="button"
                 tabIndex={0}>
                 <div className="wiscviewer-feature-popup-header">
-                    <PopupTitle featureProperties={this.props.featureProperties}
-                        layerGroupName={layerGroupName}
-                        layerName={layerName}
-                    />
                     <div className="wiscviewer-feature-popup-controls">
                         <i className="fa fa-thumb-tack feature-popup-pin"
                             onClick={this.pin}
@@ -73,6 +68,10 @@ class FeaturePopup extends React.Component {
                     />
                 </div>
                 <div className="wiscviewer-feature-popup-footer">
+                    <PopupTitle featureProperties={this.props.featureProperties}
+                        layerGroupName={layerGroupName}
+                        layerName={layerName}
+                    />
                     <PopupFooter layerId={this.props.layerId}
                         featureProperties={this.props.featureProperties}>
                         <div key="clearfix" className="clearfix"></div>

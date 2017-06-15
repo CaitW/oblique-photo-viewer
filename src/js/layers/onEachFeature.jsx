@@ -35,8 +35,8 @@ function handleClick(feature, layer, layerId, map) {
                 closeOnClick: false,
                 className: "feature-popup hidden-xs",
                 autoClose: true,
-                maxWidth: 500,
-                minWidth: 400,
+                maxWidth: 350,
+                minWidth: 350,
                 closeButton: false
             });
             let container = document.createElement("div");

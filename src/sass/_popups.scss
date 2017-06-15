@@ -4,6 +4,7 @@
   border-radius: 3px;
   background-color: $primary_50;
   padding: 1px 0 1px 1px;
+  width: 350px;
 
   .leaflet-popup-content {
     margin: -1px;
@@ -11,7 +12,7 @@
 }
 
 .leaflet-popup-tip {
-  background-color: $primary_50;
+  background-color: $primary_800;
 }
 
 // Pinned Feature Popup Container
@@ -32,18 +33,9 @@
   position: absolute;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  background-color: $primary_50;
   box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
-  &:focus {
-    .wiscviewer-feature-popup-header {
-      background-color: $primary_400;
-    }
-  }
   .wiscviewer-feature-popup-header {
     cursor: move;
-    &:active {
-      background-color: $primary_500;
-    }
   }
 }
 
@@ -51,57 +43,55 @@
 .wiscviewer-feature-popup {
   font-size: 12px;
   font-family: 'Roboto';
-  min-width: 300px;
-  max-width: 400px;
+  width: 350px;
+  background-color: $primary_800;
+  color: $primary_100;
+  border-radius: 3px;
   &:focus {
     outline: none;
   }
   a {
-    margin-left: 5px;
-
     button {
       font-size: inherit;
       padding: 5px 10px;
       border: 0;
-      background-color: $primary_200;
-      color: $primary_900;
+      background-color: $primary_900;
+      color: $primary_200;
 
       &:hover {
-        background-color: $primary_300;
+        color: $primary_50;
+        background-color: $primary_900;
       }
     }
   }
 }
 
 .wiscviewer-feature-popup-header {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
   height: 30px;
-  background-color: $primary_300;
-  color: $primary_900;
-  font-family: 'Roboto';
-  font-size: 14px;
-  padding: 5px 10px;
-  border-radius: 3px 3px 0 0;
-  .fa-chevron-right {
-    font-size: 10px;
-    margin: 0 5px;
-  }
 }
 
 .wiscviewer-feature-popup-title {
-  float: left;
-  width: 90%;
+  width: 100%;
+  font-size: 16px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  .fa-chevron-right {
+    font-size: 10px;
+    margin: 0 5px;
+    color: $primary_300;
+  }
 }
 
 .wiscviewer-feature-popup-controls {
-  color: $primary_100;
-  float: right;
+  color: $primary_200;
+  margin: 2px 10px 0 0;
   font-size: 20px;
-  position: absolute;
-  right: 10px;
-  top: 2px;
+  float: right;
 
   i {
     margin-left: 10px;
@@ -114,19 +104,26 @@
 }
 
 .wiscviewer-feature-popup-body {
-  padding: 5px;
+  padding: 0 0 0 0;
+  border-radius: 3px;
 
   .nav-tabs {
-    border-bottom: 1px solid $primary_600;
+    padding-top: 2px;
+    border-bottom: 1px solid $primary_900;
     font-size: 14px;
 
     li {
       a {
         padding: 5px 10px;
         border: 0;
+        border-radius: 0;
+
+        &:first-child {
+          border-top-left-radius: 3px;
+        }
 
         &[aria-selected=true] {
-          background-color: $primary_600;
+          background-color: inherit;
           color: $primary_50;
 
           &:hover,
@@ -136,14 +133,14 @@
         }
 
         &[aria-selected=false] {
-          background-color: $primary_100;
-          color: $primary_900;
-          border-bottom: 1px solid $primary_600;
-
+          color: $primary_200;
+          border-bottom: 1px solid $primary_900;
+          background-color: inherit;
           &:hover {
             border: none;
-            border-bottom: 1px solid $primary_600;
-            background-color: $primary_300;
+            border-bottom: 1px solid $primary_900;
+            color: $primary_50;
+            background-color: $primary_800;
           }
         }
       }
@@ -151,23 +148,22 @@
   }
 
   .tab-content {
-    border: 1px solid $primary_600;
+    border: 1px solid $primary_900;
     background-color: $primary_100;
     border-width: 3px 0 4px;
-    padding: 10px;
 
     img {
-      max-width: 100%;
+      width: 100%;
       display: block;
-      margin: 0 auto;
     }
   }
 }
 
 .wiscviewer-data-table {
-  min-width: 350px;
+  width: 350px;
   margin-bottom: 0;
   font-size: 12px;
+  color: $primary_900;
 
   tr {
     &:hover {
@@ -197,14 +193,16 @@
 }
 
 .wiscviewer-feature-popup-footer {
-  padding: 0 5px 5px;
-
+  padding: 5px 10px;
+  background-color: $primary_800;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
   a {
-    float: right;
+    margin-left: 5px;
   }
 }
 
-.wiscviewer-popup-image-button-row {
+.wiscviewer-popup-downloads-row {
   padding: 10px 0 0;
-  text-align: center;
+  color: $primary_200;
 }

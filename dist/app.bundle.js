@@ -54172,25 +54172,7 @@
 	    return _react2.default.createElement(
 	        _reactBootstrap.Tab,
 	        _extends({}, tabProps, { className: 'wiscviewer-image-tab' }),
-	        _react2.default.createElement('img', { src: props.imgPath, onLoad: props.update, alt: props.alt, style: style }),
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'wiscviewer-popup-image-button-row' },
-	            _react2.default.createElement(
-	                'a',
-	                { href: props.fullSizePath,
-	                    key: 'open-larger-image-button',
-	                    target: '_blank',
-	                    rel: 'noopener noreferrer' },
-	                _react2.default.createElement(
-	                    _reactBootstrap.Button,
-	                    { className: 'open-larger-image-button' },
-	                    _react2.default.createElement('i', { className: 'fa fa-image' }),
-	                    ' View Full-size'
-	                )
-	            ),
-	            _react2.default.createElement('div', { className: 'clearfix' })
-	        )
+	        _react2.default.createElement('img', { src: props.imgPath, onLoad: props.update, alt: props.alt, style: style })
 	    );
 	};
 
@@ -54399,6 +54381,28 @@
 	var PopupFooter = function PopupFooter(props) {
 	    var footer = [];
 	    switch (props.layerId) {
+	        case "photos_1976":
+	        case "photos_2007":
+	        case "photos_2017":
+	        case "photos_obl_2016":
+	        case "photos_dm_2016":
+	        case "photos_2012":
+	            {
+	                var photoURLs = (0, _util.getPhotoURLs)(props.layerId, props.featureProperties);
+	                footer.push(_react2.default.createElement(
+	                    'a',
+	                    { href: photoURLs.original,
+	                        key: 'open-larger-image-button',
+	                        target: '_blank',
+	                        rel: 'noopener noreferrer' },
+	                    _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        { className: 'open-larger-image-button' },
+	                        _react2.default.createElement('i', { className: 'fa fa-image' }),
+	                        ' Full Size'
+	                    )
+	                ));
+	            }
 	        case "profiles":
 	            {
 	                var urls = (0, _util.getProfileURLs)(props.featureProperties);
@@ -54437,10 +54441,16 @@
 	        default:
 	            break;
 	    }
+
 	    return _react2.default.createElement(
 	        'div',
 	        null,
-	        footer,
+	        _react2.default.createElement(
+	            'div',
+	            { className: 'wiscviewer-popup-downloads-row' },
+	            'Downloads: ',
+	            footer
+	        ),
 	        props.children
 	    );
 	};
@@ -55297,20 +55307,11 @@
 	                        },
 	                        style: style,
 	                        onClick: this.props.onClick,
-	                        role: 'button',
 	                        tabIndex: 0
 	                    },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'wiscviewer-feature-popup-header handle' },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'wiscviewer-feature-popup-title' },
-	                            _react2.default.createElement(_PopupTitle2.default, { featureProperties: this.props.featureProperties,
-	                                layerGroupName: this.props.layerGroupName,
-	                                layerName: this.props.layerName
-	                            })
-	                        ),
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: 'wiscviewer-feature-popup-controls' },
@@ -55329,6 +55330,10 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'wiscviewer-feature-popup-footer' },
+	                        _react2.default.createElement(_PopupTitle2.default, { featureProperties: this.props.featureProperties,
+	                            layerGroupName: this.props.layerGroupName,
+	                            layerName: this.props.layerName
+	                        }),
 	                        _react2.default.createElement(
 	                            _PopupFooter2.default,
 	                            { layerId: this.props.layerId,
@@ -60185,8 +60190,8 @@
 	                closeOnClick: false,
 	                className: "feature-popup hidden-xs",
 	                autoClose: true,
-	                maxWidth: 500,
-	                minWidth: 400,
+	                maxWidth: 350,
+	                minWidth: 350,
 	                closeButton: false
 	            });
 	            var container = document.createElement("div");
@@ -60343,15 +60348,10 @@
 	                'div',
 	                { className: 'wiscviewer-feature-popup',
 	                    onClick: this.bringToFront,
-	                    role: 'button',
 	                    tabIndex: 0 },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'wiscviewer-feature-popup-header' },
-	                    _react2.default.createElement(_PopupTitle2.default, { featureProperties: this.props.featureProperties,
-	                        layerGroupName: layerGroupName,
-	                        layerName: layerName
-	                    }),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'wiscviewer-feature-popup-controls' },
@@ -60376,6 +60376,10 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'wiscviewer-feature-popup-footer' },
+	                    _react2.default.createElement(_PopupTitle2.default, { featureProperties: this.props.featureProperties,
+	                        layerGroupName: layerGroupName,
+	                        layerName: layerName
+	                    }),
 	                    _react2.default.createElement(
 	                        _PopupFooter2.default,
 	                        { layerId: this.props.layerId,

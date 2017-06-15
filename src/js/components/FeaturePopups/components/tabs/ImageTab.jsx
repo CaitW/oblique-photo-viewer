@@ -18,17 +18,6 @@ const ImageTab = (props) => {
     return (
         <Tab {...tabProps} className="wiscviewer-image-tab">
             <img src={props.imgPath} onLoad={props.update} alt={props.alt} style={style}/>
-            <div className="wiscviewer-popup-image-button-row">
-                <a href={props.fullSizePath}
-                    key="open-larger-image-button"
-                    target="_blank"
-                    rel="noopener noreferrer" >
-                    <Button className="open-larger-image-button">
-                        <i className="fa fa-image"></i> View Full-size
-                    </Button>
-                </a>
-                <div className="clearfix"></div>
-            </div>
         </Tab>
     )
 }
@@ -41,4 +30,3 @@ ImageTab.propTypes = {
 }
 
 export default ImageTab;
-
