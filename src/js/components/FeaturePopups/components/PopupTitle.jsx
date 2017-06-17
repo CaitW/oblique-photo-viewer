@@ -5,6 +5,14 @@ const PopupTitle = (props) => {
     let featureName = "";
     if(typeof props.featureProperties.OBJECTID === "number") {
         featureName += "#" + props.featureProperties.OBJECTID;
+    } else if (typeof props.featureProperties.ProfileNo === "string") {
+        featureName += props.featureProperties.ProfileNo;
+    } else if (typeof props.featureProperties.imageId === "string") {
+        featureName += props.featureProperties.imageId;
+    } else if (typeof props.featureProperties.id === "string") {
+        featureName += props.featureProperties.id;
+    } else if (typeof props.featureProperties.name === "string") {
+        featureName += props.featureProperties.name;
     } else {
         featureName += "Feature";
     }
