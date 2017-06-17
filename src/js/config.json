@@ -27,7 +27,7 @@
         },
         "layers": {
             "1976_inventory": {
-                "name": "1976 Inventory",
+                "name": "1976-78 Inventory",
                 "layers": {
                     "backshore_1976": {
                         "name": "Bluff Condition",
@@ -102,7 +102,7 @@
                 }
             },
             "2007_inventory": {
-                "name": "2007 Inventory",
+                "name": "2007-08 Inventory",
                 "layers": {
                     "backshore_2007": {
                         "name": "Bluff Condition",
