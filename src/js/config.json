@@ -183,7 +183,7 @@
                         "name": "2012 Photos",
                         "type": "geojson",
                         "dataLocation": "./data/layers/photos_2012.json",
-                        "defaultActive": true,
+                        "defaultActive": false,
                         "tableProperties": {
                             "imageId": "Image ID",
                             "altitude": "Altutude",
@@ -234,7 +234,7 @@
                         "name": "Profile Lines",
                         "type": "geojson",
                         "dataLocation": "./data/layers/profiles.json",
-                        "defaultActive": false,
+                        "defaultActive": true,
                         "tableProperties": {
                             "ID": false,
                             "ProfileNo": "Profile Number",
@@ -373,5 +373,16 @@
                 "popup": "popup"
             }
         }
+    },
+    "profileSummaryStatistics": {
+        "xMin": 0,
+        "xMax": 9530.166258,
+        "yMin": 522.0314105,
+        "yMax": 720.5
+    },
+    "lakeMichiganWaterLevel": {
+        "avg": 0,
+        "recordHigh": 0,
+        "recordLow": 0
     }
 }

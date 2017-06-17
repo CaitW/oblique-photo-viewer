@@ -5,6 +5,7 @@ import uuid from 'uuid';
 
 import ImageTab from './tabs/ImageTab';
 import DataTab from './tabs/DataTab';
+import ProfileTab from './tabs/ProfileTab';
 
 import { getPhotoURLs, getProfileURLs } from '../../../util';
 import CONFIG from '../../../config.json';
@@ -60,28 +61,22 @@ class PopupTabs extends React.Component {
             case "profiles": {
                 let eventKeyIndex = 1;
                 let urls = getProfileURLs(featureProperties);
-                if(urls.bluffGraph) {
+                if(urls.bluffJson) {
                     tabs.push(
-                        <ImageTab key="bluff_graph"
+                        <ProfileTab key="bluff_graph"
                             eventKey={eventKeyIndex}
                             title="Bluff Profile"
-                            imgPath={urls.bluffGraph}
-                            fullSizePath={urls.bluffGraph}
-                            alt="Bluff Profile"
-                            update={this.update}
+                            jsonLocation={urls.bluffJson}
                         />
                     );
                     eventKeyIndex += 1;
                 }
-                if(urls.bathyGraph) {
+                if(urls.bathyJson) {
                     tabs.push(
-                        <ImageTab key="bathy_graph"
+                        <ProfileTab key="bathy_graph"
                             eventKey={eventKeyIndex}
                             title="Bathy Profile"
-                            imgPath={urls.bathyGraph}
-                            fullSizePath={urls.bathyGraph}
-                            alt="Bathy Profile"
-                            update={this.update}
+                            jsonLocation={urls.bathyJson}
                         />
                     );
                     eventKeyIndex += 1;

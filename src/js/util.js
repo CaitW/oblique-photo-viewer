@@ -110,7 +110,9 @@ export function getProfileURLs (featureProperties) {
         bluffGraph: false,
         bathyGraph: false,
         bluffXls: false,
-        bathyXls: false
+        bathyXls: false,
+        bathyJson: false,
+        bluffJson: false
     };
     if(featureProperties.bluff_jpg) {
         urls.bluffGraph = bluffGraph + featureProperties.bluff_jpg;
@@ -120,9 +122,15 @@ export function getProfileURLs (featureProperties) {
     }
     if(featureProperties.bluff_xls) {
         urls.bluffXls = bluffXls + featureProperties.bluff_xls;
+        // bluff JSON is the same as the XLS name, but with a json extension
+        let fileName = featureProperties.bluff_xls.split(".")[0];
+        urls.bluffJson = "./data/profiles/bluff/" + fileName + ".json";
     }
     if(featureProperties.bathy_xls) {
         urls.bathyXls = bathyXls +  featureProperties.bathy_xls;
+        // bluff JSON is the same as the XLS name, but with a json extension
+        let fileName = featureProperties.bathy_xls.split(".")[0];
+        urls.bathyJson = "./data/profiles/bathy/" + fileName + ".json";
     }
     return urls;
 }

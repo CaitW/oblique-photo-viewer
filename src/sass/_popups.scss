@@ -206,3 +206,24 @@
   padding: 10px 0 0;
   color: $primary_200;
 }
+
+.wiscviewer-profile-tab {
+  .tick {
+    font-family: $font-body;
+  }
+  .domain {
+    stroke-width: 3px;
+    stroke: $primary_700;
+    stroke-linecap: round;
+  }
+  .line {
+    stroke: $secondary_800;
+    stroke-width: 2px;
+    fill: none;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .wiscviewer-profile-graph {
+    background-color: $primary_200;
+  }
+}
