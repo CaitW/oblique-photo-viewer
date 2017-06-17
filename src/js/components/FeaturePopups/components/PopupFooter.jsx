@@ -57,12 +57,16 @@ const PopupFooter = (props) => {
         default:
             break;
     }
-
+    if(footer.length > 0) {
+        footer.unshift(
+            <i className="fa fa-download"></i>
+        );
+    }
 
     return (
         <div>
             <div className="wiscviewer-popup-downloads-row">
-            Downloads: {footer}
+            {footer}
             </div>
             {props.children}
         </div>
