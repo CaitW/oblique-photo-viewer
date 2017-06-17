@@ -9578,6 +9578,24 @@ button.close {
   padding: 10px 0 0;
   color: #b0bec5; }
 
+.wiscviewer-profile-tab .tick {
+  font-family: "Roboto", sans-serif; }
+
+.wiscviewer-profile-tab .domain {
+  stroke-width: 3px;
+  stroke: #455a64;
+  stroke-linecap: round; }
+
+.wiscviewer-profile-tab .line {
+  stroke: #00838F;
+  stroke-width: 2px;
+  fill: none;
+  stroke-linejoin: round;
+  stroke-linecap: round; }
+
+.wiscviewer-profile-tab .wiscviewer-profile-graph {
+  background-color: #b0bec5; }
+
 html {
   height: 100%; }
   html body {
