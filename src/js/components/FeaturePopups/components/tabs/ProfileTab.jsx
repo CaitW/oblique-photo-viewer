@@ -33,7 +33,7 @@ class ProfileTab extends React.Component {
          * and will therefore vary depending on the profile being viewed
          */
         var x = scaleLinear()
-            .range([0, width]);
+            .range([width, 0]);
         var y = scaleLinear()
             .domain([CONFIG.profileSummaryStatistics.yMin, CONFIG.profileSummaryStatistics.yMax])
             .range([height, 0]);

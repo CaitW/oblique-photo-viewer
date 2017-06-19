@@ -54822,7 +54822,7 @@
 	             * remains consistent in popups, while x values are stretched according to each profile
 	             * and will therefore vary depending on the profile being viewed
 	             */
-	            var x = (0, _d3Scale.scaleLinear)().range([0, width]);
+	            var x = (0, _d3Scale.scaleLinear)().range([width, 0]);
 	            var y = (0, _d3Scale.scaleLinear)().domain([_config2.default.profileSummaryStatistics.yMin, _config2.default.profileSummaryStatistics.yMax]).range([height, 0]);
 	            // Define the axes
 	            var xAxis = (0, _d3Axis.axisBottom)(x).ticks(5);
