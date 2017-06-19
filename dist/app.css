@@ -8669,11 +8669,16 @@ button.close {
   overflow-x: hidden; }
 
 .wiscviewer-sidebar-inner-container {
-  width: calc(100% + 40px);
-  padding-right: 40px;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
   overflow-x: hidden;
-  overflow-y: auto; }
+  overflow-y: auto;
+  -ms-overflow-style: none; }
+  .wiscviewer-sidebar-inner-container::-webkit-scrollbar {
+    display: none; }
 
 .wiscviewer-sidebar-panel {
   background-color: #37474f;
@@ -9578,23 +9583,39 @@ button.close {
   padding: 10px 0 0;
   color: #b0bec5; }
 
+.wiscviewer-profile-tab .lake-stats {
+  stroke-width: 1px; }
+
+.wiscviewer-profile-tab .michigan-avg {
+  stroke: #455a64; }
+
+.wiscviewer-profile-tab .michigan-high {
+  stroke: #546e7a; }
+
+.wiscviewer-profile-tab .michigan-low {
+  stroke: #546e7a; }
+
 .wiscviewer-profile-tab .tick {
   font-family: "Roboto", sans-serif; }
+  .wiscviewer-profile-tab .tick line {
+    stroke: #546e7a; }
+  .wiscviewer-profile-tab .tick text {
+    fill: #78909c; }
 
 .wiscviewer-profile-tab .domain {
   stroke-width: 3px;
-  stroke: #455a64;
-  stroke-linecap: round; }
+  stroke: #546e7a;
+  stroke-linecap: butt; }
 
 .wiscviewer-profile-tab .line {
-  stroke: #00838F;
+  stroke: #4DD0E1;
   stroke-width: 2px;
   fill: none;
   stroke-linejoin: round;
   stroke-linecap: round; }
 
 .wiscviewer-profile-tab .wiscviewer-profile-graph {
-  background-color: #b0bec5; }
+  background-color: #263238; }
 
 html {
   height: 100%; }

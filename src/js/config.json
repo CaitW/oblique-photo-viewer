@@ -77,27 +77,6 @@
                             "FIPS": true,
                             "Structure Type": true
                         }
-                    },
-                    "photos_1976": {
-                        "name": "Photos",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/photos_1976.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "OBJECTID": false,
-                            "Original File Name": true,
-                            "Longitude": true,
-                            "Latitude": true,
-                            "Easting": true,
-                            "Northing": true,
-                            "UTM Zone": true,
-                            "Great Lake": true,
-                            "County FIPS": true,
-                            "County": true,
-                            "State": true,
-                            "File Name": true,
-                            "Year": true
-                        }
                     }
                 }
             },
@@ -152,9 +131,35 @@
                             "FIPS": true,
                             "Structure Type": true
                         }
+                    }
+                }
+            },
+            "Oblique Photos": {
+                "name": "Oblique Photos",
+                "layers": {
+                    "photos_1976": {
+                        "name": "1976-78 Photos",
+                        "type": "geojson",
+                        "dataLocation": "./data/layers/photos_1976.json",
+                        "defaultActive": false,
+                        "tableProperties": {
+                            "OBJECTID": false,
+                            "Original File Name": true,
+                            "Longitude": true,
+                            "Latitude": true,
+                            "Easting": true,
+                            "Northing": true,
+                            "UTM Zone": true,
+                            "Great Lake": true,
+                            "County FIPS": true,
+                            "County": true,
+                            "State": true,
+                            "File Name": true,
+                            "Year": true
+                        }
                     },
                     "photos_2007": {
-                        "name": "Photos",
+                        "name": "2007-08 Photos",
                         "type": "geojson",
                         "dataLocation": "./data/layers/photos_2007.json",
                         "defaultActive": false,
@@ -173,12 +178,7 @@
                             "File Name": true,
                             "Year": true
                         }
-                    }
-                }
-            },
-            "Aerial Photos": {
-                "name": "Aerial Photos",
-                "layers": {
+                    },
                     "photos_2012": {
                         "name": "2012 Photos",
                         "type": "geojson",
@@ -381,8 +381,8 @@
         "yMax": 720.5
     },
     "lakeMichiganWaterLevel": {
-        "avg": 0,
-        "recordHigh": 0,
-        "recordLow": 0
+        "avg": 578.02,
+        "recordHigh": 582.35,
+        "recordLow": 576.02
     }
 }
