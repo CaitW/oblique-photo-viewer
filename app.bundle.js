@@ -52302,8 +52302,8 @@
 	    }
 	  }, {
 	    key: 'onZoomShorelineClick',
-	    value: function onZoomShorelineClick(countyName) {
-	      _store2.default.dispatch(zoomToCounty(countyName));
+	    value: function onZoomShorelineClick(lakeName, countyName) {
+	      _store2.default.dispatch((0, _map.zoomToShoreline)(lakeName, countyName));
 	    }
 	  }, {
 	    key: 'onResetViewClick',
@@ -52917,8 +52917,8 @@
 				}
 			},
 			"county_shorelines": {
-				"Superior": {
-					"douglas": [
+				"Lake Superior": {
+					"Douglas County": [
 						[
 							46.64283679198892,
 							-92.3126220703125
@@ -52928,7 +52928,7 @@
 							-91.58477783203126
 						]
 					],
-					"bayfield": [
+					"bayfield County": [
 						[
 							46.54280504427768,
 							-91.58203125000001
@@ -52938,7 +52938,7 @@
 							-90.49575805664064
 						]
 					],
-					"ashland": [
+					"ashland County": [
 						[
 							46.55083326736553,
 							-90.96199035644533
@@ -52948,7 +52948,7 @@
 							-90.49850463867189
 						]
 					],
-					"iron": [
+					"iron County": [
 						[
 							46.56133900067355,
 							-90.55103302001953
@@ -52959,8 +52959,8 @@
 						]
 					]
 				},
-				"Michigan": {
-					"marinette": [
+				"Lake Michigan": {
+					"marinette County": [
 						[
 							44.95799590837475,
 							-87.8075408935547
@@ -52970,7 +52970,7 @@
 							-87.5328826904297
 						]
 					],
-					"oconto": [
+					"oconto County": [
 						[
 							44.67304768858752,
 							-88.03894042968751
@@ -52980,7 +52980,7 @@
 							-87.74574279785158
 						]
 					],
-					"brown": [
+					"brown County": [
 						[
 							44.52049959138874,
 							-88.05953979492189
@@ -52990,7 +52990,7 @@
 							-87.7532958984375
 						]
 					],
-					"door": [
+					"door County": [
 						[
 							44.61979915773973,
 							-87.81646728515625
@@ -53000,7 +53000,7 @@
 							-86.71234130859375
 						]
 					],
-					"kewaunee": [
+					"kewaunee County": [
 						[
 							44.276671273775186,
 							-87.77801513671876
@@ -53010,7 +53010,7 @@
 							-87.22869873046876
 						]
 					],
-					"manitowoc": [
+					"manitowoc County": [
 						[
 							43.79389779242341,
 							-87.9400634765625
@@ -53020,7 +53020,7 @@
 							-87.33444213867189
 						]
 					],
-					"sheboygan": [
+					"sheboygan County": [
 						[
 							43.5326204268101,
 							-88.00048828125001
@@ -53030,7 +53030,7 @@
 							-87.45117187500001
 						]
 					],
-					"ozaukee": [
+					"ozaukee County": [
 						[
 							43.180145655844626,
 							-88.15841674804688
@@ -53040,7 +53040,7 @@
 							-87.60910034179689
 						]
 					],
-					"milwaukee": [
+					"milwaukee County": [
 						[
 							42.83267430318037,
 							-88.16665649414064
@@ -53050,7 +53050,7 @@
 							-87.61734008789064
 						]
 					],
-					"racine": [
+					"racine County": [
 						[
 							42.65466692646942,
 							-87.93045043945314
@@ -53060,7 +53060,7 @@
 							-87.65579223632814
 						]
 					],
-					"kenosha": [
+					"kenosha County": [
 						[
 							42.481212777716166,
 							-87.95997619628908
@@ -53216,9 +53216,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function zoomToShoreline(countyName) {
+	function zoomToShoreline(lakeName, countyName) {
 	    return {
 	        type: "MAP:ZOOM_TO_SHORELINE",
+	        lakeName: lakeName,
 	        countyName: countyName
 	    };
 	} /**
@@ -53261,7 +53262,7 @@
 	    switch (action.type) {
 	        case "MAP:ZOOM_TO_SHORELINE":
 	            {
-	                var shorelineExtent = _config2.default.map.county_shorelines[action.countyName];
+	                var shorelineExtent = _config2.default.map.county_shorelines[action.lakeName][action.countyName];
 	                newState.state = {
 	                    action: "willZoom",
 	                    extent: shorelineExtent
@@ -53786,29 +53787,43 @@
 	        { className: 'wiscviewer-tool-title' },
 	        _react2.default.createElement('i', { className: 'fa fa-search wiscviewer-nav-tool-icon' })
 	    );
-	    var counties = [];
+	    var shorelines = [];
 
-	    var _loop = function _loop(countyName) {
-	        counties.push(_react2.default.createElement(
+	    var _loop = function _loop(lakeName) {
+	        var shorelinesForLake = _config2.default.map.county_shorelines[lakeName];
+	        shorelines.push(_react2.default.createElement(
 	            _reactBootstrap.MenuItem,
-	            { className: 'wiscviewer-dropdown-item',
-	                key: countyName,
-	                onClick: function onClick() {
-	                    return props.onZoomShorelineClick(countyName);
-	                } },
-	            countyName.replace(/_/g, " - ")
+	            { className: 'wiscviewer-dropdown-header',
+	                key: lakeName },
+	            lakeName
 	        ));
+
+	        var _loop2 = function _loop2(shorelineName) {
+	            shorelines.push(_react2.default.createElement(
+	                _reactBootstrap.MenuItem,
+	                { className: 'wiscviewer-dropdown-item',
+	                    key: shorelineName,
+	                    onClick: function onClick() {
+	                        return props.onZoomShorelineClick(lakeName, shorelineName);
+	                    } },
+	                shorelineName
+	            ));
+	        };
+
+	        for (var shorelineName in shorelinesForLake) {
+	            _loop2(shorelineName);
+	        }
 	    };
 
-	    for (var countyName in _config2.default.map.county_shorelines) {
-	        _loop(countyName);
+	    for (var lakeName in _config2.default.map.county_shorelines) {
+	        _loop(lakeName);
 	    }
 	    return _react2.default.createElement(
 	        _reactBootstrap.NavDropdown,
 	        { title: title,
-	            id: 'zoom-to-county',
+	            id: 'zoom-to-shoreline',
 	            className: 'wiscviewer-nav-dropdown wiscviewer-nav-tool wiscviewer-nav-tool-zoom' },
-	        counties
+	        shorelines
 	    );
 	};
 
@@ -62976,7 +62991,7 @@
 	            break;
 	    }
 	    if (footer.length > 0) {
-	        footer.unshift(_react2.default.createElement('i', { className: 'fa fa-download' }));
+	        footer.unshift(_react2.default.createElement('i', { key: 'download', className: 'fa fa-download' }));
 	    }
 
 	    return _react2.default.createElement(
