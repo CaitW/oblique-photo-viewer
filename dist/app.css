@@ -9630,6 +9630,9 @@ button.close {
 .wiscviewer-profile-tab .wiscviewer-profile-graph {
   background-color: #263238; }
 
+.wiscviewer-profile-tab .axis-label {
+  fill: #546e7a; }
+
 html {
   height: 100%; }
   html body {

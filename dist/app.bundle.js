@@ -52845,7 +52845,7 @@
 					}
 				},
 				"bluff_profiles": {
-					"name": "Bluff Profiles",
+					"name": "2012 Bluff Profiles",
 					"layers": {
 						"profiles": {
 							"name": "Profile Lines",
@@ -54823,7 +54823,7 @@
 	        key: 'createLineChart',
 	        value: function createLineChart() {
 	            // Set the dimensions of the canvas / graph
-	            var margin = { top: 10, right: 20, bottom: 30, left: 40 },
+	            var margin = { top: 10, right: 20, bottom: 40, left: 50 },
 	                width = 350 - margin.left - margin.right,
 	                height = 200 - margin.top - margin.bottom;
 	            /**
@@ -54886,8 +54886,11 @@
 	                svg.append("path").attr("class", "line").attr("d", valueline(data));
 	                // Add the X Axis
 	                svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis);
+	                svg.append("text").attr("transform", "translate(" + width / 2 + " ," + (height + margin.top + 25) + ")").style("text-anchor", "middle").attr("class", "axis-label").text("Distance (ft)");
 	                // Add the Y Axis
 	                svg.append("g").attr("class", "y axis").call(yAxis);
+	                // text label for the y axis
+	                svg.append("text").attr("transform", "rotate(-90)").attr("y", 0 - margin.left + 5).attr("x", 0 - height / 2).attr("dy", "1em").attr("class", "axis-label").style("text-anchor", "middle").text("Altitude (ft)");
 	            });
 	        }
 	    }, {
