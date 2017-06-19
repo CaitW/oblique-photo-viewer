@@ -54505,7 +54505,8 @@
 	                            eventKey: 2,
 	                            title: 'Data',
 	                            layerId: layerId,
-	                            featureProperties: featureProperties
+	                            featureProperties: featureProperties,
+	                            update: this.update
 	                        }));
 	                        break;
 	                    }
@@ -54517,7 +54518,8 @@
 	                            tabs.push(_react2.default.createElement(_ProfileTab2.default, { key: 'bluff_graph',
 	                                eventKey: eventKeyIndex,
 	                                title: 'Bluff Profile',
-	                                jsonLocation: _urls.bluffJson
+	                                jsonLocation: _urls.bluffJson,
+	                                update: this.update
 	                            }));
 	                            eventKeyIndex += 1;
 	                        }
@@ -54525,7 +54527,8 @@
 	                            tabs.push(_react2.default.createElement(_ProfileTab2.default, { key: 'bathy_graph',
 	                                eventKey: eventKeyIndex,
 	                                title: 'Bathy Profile',
-	                                jsonLocation: _urls.bathyJson
+	                                jsonLocation: _urls.bathyJson,
+	                                update: this.update
 	                            }));
 	                            eventKeyIndex += 1;
 	                        }
@@ -54533,7 +54536,8 @@
 	                            eventKey: eventKeyIndex,
 	                            title: 'Data',
 	                            layerId: layerId,
-	                            featureProperties: featureProperties
+	                            featureProperties: featureProperties,
+	                            update: this.update
 	                        }));
 	                        break;
 	                    }
@@ -54543,7 +54547,8 @@
 	                            eventKey: 1,
 	                            title: 'Data',
 	                            layerId: layerId,
-	                            featureProperties: featureProperties
+	                            featureProperties: featureProperties,
+	                            update: this.update
 	                        }));
 	                        break;
 	                    }
@@ -54666,12 +54671,18 @@
 	    }
 
 	    _createClass(DataTab, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.props.update();
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var layerData = _util.LAYERS_BY_ID[this.props.layerId];
 	            var tabProps = _extends({}, this.props);
 	            delete tabProps.layerId;
 	            delete tabProps.featureProperties;
+	            delete tabProps.update;
 
 	            var rows = [];
 
@@ -54736,7 +54747,8 @@
 
 	DataTab.propTypes = {
 	    layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
-	    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired
+	    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired,
+	    update: _propTypes2.default.func.isRequired
 	};
 
 	exports.default = DataTab;
@@ -54805,6 +54817,7 @@
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
 	            this.createLineChart();
+	            this.props.update();
 	        }
 	    }, {
 	        key: 'createLineChart',
@@ -54857,7 +54870,7 @@
 	            // get the profile's data from it's json file
 	            (0, _d3Request.json)(this.props.jsonLocation, function (error, data) {
 	                data = data.sort(function (a, b) {
-	                    return (0, _d3Array.ascending)(a.x, b.x);
+	                    return (0, _d3Array.descending)(a.x, b.x);
 	                });
 	                x.domain((0, _d3Array.extent)(data, function (d) {
 	                    return d.x;
@@ -54884,6 +54897,7 @@
 
 	            var tabProps = _extends({}, this.props);
 	            delete tabProps.jsonLocation;
+	            delete tabProps.update;
 	            var style = {
 	                "minHeight": "200px",
 	                "minWidth": "350px"
@@ -54902,7 +54916,8 @@
 	}(_react2.default.Component);
 
 	ProfileTab.propTypes = {
-	    jsonLocation: _propTypes2.default.string.isRequired
+	    jsonLocation: _propTypes2.default.string.isRequired,
+	    update: _propTypes2.default.func.isRequired
 	};
 
 	exports.default = ProfileTab;
