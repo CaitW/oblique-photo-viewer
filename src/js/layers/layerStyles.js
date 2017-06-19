@@ -39,6 +39,34 @@ let COLORS = {
     DARK_GRAY: "#424242"
 };
 
+COLORS.BEACH = [
+    "#E0E0E0",
+    '#a6cee3',
+    '#1f78b4',
+    '#b2df8a',
+    '#33a02c',
+    '#fb9a99',
+    '#e31a1c',
+    '#fdbf6f',
+    '#ff7f00',
+    '#cab2d6',
+    '#6a3d9a',
+    '#ffff99'
+]
+
+COLORS.PHOTOS = [
+    "#9575CD",
+    "#7E57C2",
+    "#673AB7",
+    "#512DA8",
+    "#311B92"
+];
+
+COLORS.STRUCTURES = [
+ "#6D4C41",
+ "#3E2723"
+];
+
 // Default styles, if no style is specified for a particular layer
 const DEFAULT_STYLES = {
     LineString: {
@@ -116,29 +144,31 @@ const LAYER_STYLES_BY_ID = {
     photos_1976: function() {
         return {
             ...DEFAULT_STYLES.Point,
-            color: COLORS.PURPLE,
-            strokeColor: COLORS.PURPLE
+            color: COLORS.PHOTOS[0],
+            strokeColor: COLORS.PHOTOS[0]
         };
     },
     photos_2007: function() {
         return {
             ...DEFAULT_STYLES.Point,
-            color: COLORS.CYAN,
-            strokeColor: COLORS.CYAN
+            color: COLORS.PHOTOS[1],
+            strokeColor: COLORS.PHOTOS[1],
         };
     },
     structure_1976: function() {
         return {
             ...DEFAULT_STYLES.Point,
-            color: COLORS.BLACK,
-            fillColor: COLORS.BLACK
+            color: COLORS.STRUCTURES[0],
+            fillColor: COLORS.STRUCTURES[0],
+            opacity: 1
         };
     },
     structure_2007: function() {
         return {
             ...DEFAULT_STYLES.Point,
-            color: COLORS.BLACK,
-            fillColor: COLORS.BLACK
+            color: COLORS.STRUCTURES[1],
+            fillColor: COLORS.STRUCTURES[1],
+            opacity: 1
         };
     },
     beachclass_1976: function(subStyleName) {
@@ -147,34 +177,34 @@ const LAYER_STYLES_BY_ID = {
         };
         switch (subStyleName) {
             case "None":
-                style.color = COLORS.LIGHT_GRAY;
+                style.color = COLORS.BEACH[0];
                 break;
             case 'Commercial / Industrial Dock':
-                style.color = COLORS.DARK_BROWN;
+                style.color = COLORS.BEACH[1];
                 break;
             case 'Groin / Jetty / Offshore Breakwater':
-                style.color = COLORS.LIGHT_BROWN;
+                style.color = COLORS.BEACH[2];
                 break;
             case 'Offshore Breakwater':
-                style.color = COLORS.LIGHT_TEAL;
+                style.color = COLORS.BEACH[3];
                 break;
             case 'Personal Marina':
-                style.color = COLORS.LIGHT_BLUE;
+                style.color = COLORS.BEACH[4];
                 break;
             case 'Poorly Organized Rip-Rap / Rubble':
-                style.color = COLORS.DARK_PURPLE;
+                style.color = COLORS.BEACH[5];
                 break;
             case 'Public Marina':
-                style.color = COLORS.DARK_GREEN;
+                style.color = COLORS.BEACH[6];
                 break;
             case 'Revetment':
-                style.color = COLORS.DARK_YELLOW;
+                style.color = COLORS.BEACH[6];
                 break;
             case 'Seawall / Bulkhead':
-                style.color = COLORS.DARK_CYAN;
+                style.color = COLORS.BEACH[7];
                 break;
             case 'Small Boat Dock':
-                style.color = COLORS.DARK_PINK;
+                style.color = COLORS.BEACH[8];
                 break;
             default:
                 style.opacity = 0;
@@ -188,34 +218,34 @@ const LAYER_STYLES_BY_ID = {
         };
         switch (subStyleName) {
             case "None":
-                style.color = COLORS.LIGHT_GRAY;
+                style.color = COLORS.BEACH[0];
                 break;
             case 'Commercial / Industrial Dock':
-                style.color = COLORS.DARK_BROWN;
+                style.color = COLORS.BEACH[1];
                 break;
             case 'Groin / Jetty / Offshore Breakwater':
-                style.color = COLORS.LIGHT_BROWN;
+                style.color = COLORS.BEACH[2];
                 break;
             case 'Offshore Breakwater':
-                style.color = COLORS.LIGHT_TEAL;
+                style.color = COLORS.BEACH[3];
                 break;
             case 'Personal Marina':
-                style.color = COLORS.LIGHT_BLUE;
+                style.color = COLORS.BEACH[4];
                 break;
             case 'Poorly Organized Rip-Rap / Rubble':
-                style.color = COLORS.DARK_PURPLE;
+                style.color = COLORS.BEACH[5];
                 break;
             case 'Public Marina':
-                style.color = COLORS.DARK_GREEN;
+                style.color = COLORS.BEACH[6];
                 break;
             case 'Revetment':
-                style.color = COLORS.DARK_YELLOW;
+                style.color = COLORS.BEACH[7];
                 break;
             case 'Seawall / Bulkhead':
-                style.color = COLORS.DARK_CYAN;
+                style.color = COLORS.BEACH[8];
                 break;
             case 'Small Boat Dock':
-                style.color = COLORS.DARK_PINK;
+                style.color = COLORS.BEACH[9];
                 break;
             default:
                 style.opacity = 0;
@@ -237,32 +267,25 @@ const LAYER_STYLES_BY_ID = {
         }
         return style;
     },
-    photos_obl_2016: function () {
+    photos_2016: function () {
         return {
             ...DEFAULT_STYLES.Point,
-            color: COLORS.PURPLE,
-            strokeColor: COLORS.PURPLE
-        };
-    },
-    photos_dm_2016: function () {
-        return {
-            ...DEFAULT_STYLES.Point,
-            color: COLORS.PURPLE,
-            strokeColor: COLORS.PURPLE
+            color: COLORS.PHOTOS[3],
+            strokeColor: COLORS.PHOTOS[3]
         };
     },
     photos_2017: function () {
         return {
             ...DEFAULT_STYLES.Point,
-            color: COLORS.DARK_PINK,
-            strokeColor: COLORS.DARK_PINK
+            color: COLORS.PHOTOS[4],
+            strokeColor: COLORS.PHOTOS[4]
         };
     },
     photos_2012: function () {
         return {
             ...DEFAULT_STYLES.Point,
-            color: COLORS.DARK_PURPLE,
-            strokeColor: COLORS.DARK_PURPLE
+            color: COLORS.PHOTOS[2],
+            strokeColor: COLORS.PHOTOS[2]
         };
     }
 }

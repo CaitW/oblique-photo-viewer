@@ -52551,38 +52551,30 @@
 	                }
 	                break;
 	            }
-	        case "photos_obl_2016":
+	        case "photos_2016":
 	            {
-	                var _base = _config2.default.resources.photos_2016.obl_urlBase;
+	                var _base = _config2.default.resources.photos_2016.urlBase;
 	                var _fileName = photoProperties.filename;
 	                urls.original = [_base, _fileName].join("/");
 	                urls.popup = [_base, "popup", _fileName].join("/");
 	                break;
 	            }
-	        case "photos_dm_2016":
-	            {
-	                var _base2 = _config2.default.resources.photos_2016.dm_urlBase;
-	                var _fileName2 = photoProperties.filename;
-	                urls.original = [_base2, _fileName2].join("/");
-	                urls.popup = [_base2, "popup", _fileName2].join("/");
-	                break;
-	            }
 	        case "photos_2017":
 	            {
-	                var _base3 = _config2.default.resources.photos_2017.urlBase;
-	                var _fileName3 = photoProperties.id;
+	                var _base2 = _config2.default.resources.photos_2017.urlBase;
+	                var _fileName2 = photoProperties.id;
 	                var ext = _config2.default.resources.photos_2017.extension;
-	                urls.original = [_base3, _fileName3].join("/") + ext;
-	                urls.popup = [_base3, "popup", _fileName3].join("/") + ext;
+	                urls.original = [_base2, _fileName2].join("/") + ext;
+	                urls.popup = [_base2, "popup", _fileName2].join("/") + ext;
 	                break;
 	            }
 	        case "photos_2012":
 	            {
-	                var _base4 = _config2.default.resources.photos_2012.urlBase;
-	                var _fileName4 = photoProperties.imageId;
+	                var _base3 = _config2.default.resources.photos_2012.urlBase;
+	                var _fileName3 = photoProperties.imageId;
 	                var _ext = _config2.default.resources.photos_2012.extension;
-	                urls.original = [_base4, _fileName4].join("/") + _ext;
-	                urls.popup = [_base4, "popup", _fileName4].join("/") + _ext;
+	                urls.original = [_base3, _fileName3].join("/") + _ext;
+	                urls.popup = [_base3, "popup", _fileName3].join("/") + _ext;
 	                break;
 	            }
 	        default:
@@ -52592,24 +52584,14 @@
 	}
 
 	function getProfileURLs(featureProperties) {
-	    var bluffGraph = _config2.default.resources.profiles.pathToGraphs.bluff;
-	    var bathyGraph = _config2.default.resources.profiles.pathToGraphs.bathy;
 	    var bluffXls = _config2.default.resources.profiles.pathToXls.bluff;
 	    var bathyXls = _config2.default.resources.profiles.pathToXls.bathy;
 	    var urls = {
-	        bluffGraph: false,
-	        bathyGraph: false,
 	        bluffXls: false,
 	        bathyXls: false,
 	        bathyJson: false,
 	        bluffJson: false
 	    };
-	    if (featureProperties.bluff_jpg) {
-	        urls.bluffGraph = bluffGraph + featureProperties.bluff_jpg;
-	    }
-	    if (featureProperties.bathy_png) {
-	        urls.bathyGraph = bathyGraph + featureProperties.bathy_png;
-	    }
 	    if (featureProperties.bluff_xls) {
 	        urls.bluffXls = bluffXls + featureProperties.bluff_xls;
 	        // bluff JSON is the same as the XLS name, but with a json extension
@@ -52619,8 +52601,8 @@
 	    if (featureProperties.bathy_xls) {
 	        urls.bathyXls = bathyXls + featureProperties.bathy_xls;
 	        // bluff JSON is the same as the XLS name, but with a json extension
-	        var _fileName5 = featureProperties.bathy_xls.split(".")[0];
-	        urls.bathyJson = "./data/profiles/bathy/" + _fileName5 + ".json";
+	        var _fileName4 = featureProperties.bathy_xls.split(".")[0];
+	        urls.bathyJson = "./data/profiles/bathy/" + _fileName4 + ".json";
 	    }
 	    return urls;
 	}
@@ -52838,27 +52820,15 @@
 								"imageUrl": false
 							}
 						},
-						"photos_obl_2016": {
-							"name": "2016 Photos Set #1",
+						"photos_2016": {
+							"name": "2016 Photos",
 							"type": "geojson",
-							"dataLocation": "./data/layers/photos_obl_2016.json",
+							"dataLocation": "./data/layers/photos_2016.json",
 							"defaultActive": false,
 							"tableProperties": {
 								"name": "Name",
 								"filename": false,
 								"date": "Date"
-							}
-						},
-						"photos_dm_2016": {
-							"name": "2016 Photos Set #2",
-							"type": "geojson",
-							"dataLocation": "./data/layers/photos_dm_2016.json",
-							"defaultActive": false,
-							"tableProperties": {
-								"name": "Name",
-								"filename": false,
-								"date": "Date",
-								"altitude": "Altitude (m)"
 							}
 						},
 						"photos_2017": {
@@ -53084,18 +53054,13 @@
 				}
 			},
 			"profiles": {
-				"pathToGraphs": {
-					"bluff": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bluff_profile/",
-					"bathy": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bathy_profile/"
-				},
 				"pathToXls": {
 					"bluff": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bluff_spreadsheets/",
 					"bathy": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bathy_spreadsheets/"
 				}
 			},
 			"photos_2016": {
-				"dm_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_dm/",
-				"obl_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_lz/",
+				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos/",
 				"sizes": {
 					"popup": "popup"
 				}
@@ -54524,8 +54489,7 @@
 	                case "photos_1976":
 	                case "photos_2007":
 	                case "photos_2017":
-	                case "photos_obl_2016":
-	                case "photos_dm_2016":
+	                case "photos_2016":
 	                case "photos_2012":
 	                    {
 	                        var photoURLs = (0, _util.getPhotoURLs)(layerId, featureProperties);
@@ -62933,8 +62897,7 @@
 	        case "photos_1976":
 	        case "photos_2007":
 	        case "photos_2017":
-	        case "photos_obl_2016":
-	        case "photos_dm_2016":
+	        case "photos_2016":
 	        case "photos_2012":
 	            {
 	                var photoURLs = (0, _util.getPhotoURLs)(props.layerId, props.featureProperties);
@@ -68381,6 +68344,12 @@
 	    DARK_GRAY: "#424242"
 	};
 
+	COLORS.BEACH = ["#E0E0E0", '#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#fb9a99', '#e31a1c', '#fdbf6f', '#ff7f00', '#cab2d6', '#6a3d9a', '#ffff99'];
+
+	COLORS.PHOTOS = ["#9575CD", "#7E57C2", "#673AB7", "#512DA8", "#311B92"];
+
+	COLORS.STRUCTURES = ["#6D4C41", "#3E2723"];
+
 	// Default styles, if no style is specified for a particular layer
 	var DEFAULT_STYLES = {
 	    LineString: {
@@ -68453,60 +68422,62 @@
 	    },
 	    photos_1976: function photos_1976() {
 	        return _extends({}, DEFAULT_STYLES.Point, {
-	            color: COLORS.PURPLE,
-	            strokeColor: COLORS.PURPLE
+	            color: COLORS.PHOTOS[0],
+	            strokeColor: COLORS.PHOTOS[0]
 	        });
 	    },
 	    photos_2007: function photos_2007() {
 	        return _extends({}, DEFAULT_STYLES.Point, {
-	            color: COLORS.CYAN,
-	            strokeColor: COLORS.CYAN
+	            color: COLORS.PHOTOS[1],
+	            strokeColor: COLORS.PHOTOS[1]
 	        });
 	    },
 	    structure_1976: function structure_1976() {
 	        return _extends({}, DEFAULT_STYLES.Point, {
-	            color: COLORS.BLACK,
-	            fillColor: COLORS.BLACK
+	            color: COLORS.STRUCTURES[0],
+	            fillColor: COLORS.STRUCTURES[0],
+	            opacity: 1
 	        });
 	    },
 	    structure_2007: function structure_2007() {
 	        return _extends({}, DEFAULT_STYLES.Point, {
-	            color: COLORS.BLACK,
-	            fillColor: COLORS.BLACK
+	            color: COLORS.STRUCTURES[1],
+	            fillColor: COLORS.STRUCTURES[1],
+	            opacity: 1
 	        });
 	    },
 	    beachclass_1976: function beachclass_1976(subStyleName) {
 	        var style = _extends({}, DEFAULT_STYLES.LineString);
 	        switch (subStyleName) {
 	            case "None":
-	                style.color = COLORS.LIGHT_GRAY;
+	                style.color = COLORS.BEACH[0];
 	                break;
 	            case 'Commercial / Industrial Dock':
-	                style.color = COLORS.DARK_BROWN;
+	                style.color = COLORS.BEACH[1];
 	                break;
 	            case 'Groin / Jetty / Offshore Breakwater':
-	                style.color = COLORS.LIGHT_BROWN;
+	                style.color = COLORS.BEACH[2];
 	                break;
 	            case 'Offshore Breakwater':
-	                style.color = COLORS.LIGHT_TEAL;
+	                style.color = COLORS.BEACH[3];
 	                break;
 	            case 'Personal Marina':
-	                style.color = COLORS.LIGHT_BLUE;
+	                style.color = COLORS.BEACH[4];
 	                break;
 	            case 'Poorly Organized Rip-Rap / Rubble':
-	                style.color = COLORS.DARK_PURPLE;
+	                style.color = COLORS.BEACH[5];
 	                break;
 	            case 'Public Marina':
-	                style.color = COLORS.DARK_GREEN;
+	                style.color = COLORS.BEACH[6];
 	                break;
 	            case 'Revetment':
-	                style.color = COLORS.DARK_YELLOW;
+	                style.color = COLORS.BEACH[6];
 	                break;
 	            case 'Seawall / Bulkhead':
-	                style.color = COLORS.DARK_CYAN;
+	                style.color = COLORS.BEACH[7];
 	                break;
 	            case 'Small Boat Dock':
-	                style.color = COLORS.DARK_PINK;
+	                style.color = COLORS.BEACH[8];
 	                break;
 	            default:
 	                style.opacity = 0;
@@ -68518,34 +68489,34 @@
 	        var style = _extends({}, DEFAULT_STYLES.LineString);
 	        switch (subStyleName) {
 	            case "None":
-	                style.color = COLORS.LIGHT_GRAY;
+	                style.color = COLORS.BEACH[0];
 	                break;
 	            case 'Commercial / Industrial Dock':
-	                style.color = COLORS.DARK_BROWN;
+	                style.color = COLORS.BEACH[1];
 	                break;
 	            case 'Groin / Jetty / Offshore Breakwater':
-	                style.color = COLORS.LIGHT_BROWN;
+	                style.color = COLORS.BEACH[2];
 	                break;
 	            case 'Offshore Breakwater':
-	                style.color = COLORS.LIGHT_TEAL;
+	                style.color = COLORS.BEACH[3];
 	                break;
 	            case 'Personal Marina':
-	                style.color = COLORS.LIGHT_BLUE;
+	                style.color = COLORS.BEACH[4];
 	                break;
 	            case 'Poorly Organized Rip-Rap / Rubble':
-	                style.color = COLORS.DARK_PURPLE;
+	                style.color = COLORS.BEACH[5];
 	                break;
 	            case 'Public Marina':
-	                style.color = COLORS.DARK_GREEN;
+	                style.color = COLORS.BEACH[6];
 	                break;
 	            case 'Revetment':
-	                style.color = COLORS.DARK_YELLOW;
+	                style.color = COLORS.BEACH[7];
 	                break;
 	            case 'Seawall / Bulkhead':
-	                style.color = COLORS.DARK_CYAN;
+	                style.color = COLORS.BEACH[8];
 	                break;
 	            case 'Small Boat Dock':
-	                style.color = COLORS.DARK_PINK;
+	                style.color = COLORS.BEACH[9];
 	                break;
 	            default:
 	                style.opacity = 0;
@@ -68566,28 +68537,22 @@
 	        }
 	        return style;
 	    },
-	    photos_obl_2016: function photos_obl_2016() {
+	    photos_2016: function photos_2016() {
 	        return _extends({}, DEFAULT_STYLES.Point, {
-	            color: COLORS.PURPLE,
-	            strokeColor: COLORS.PURPLE
-	        });
-	    },
-	    photos_dm_2016: function photos_dm_2016() {
-	        return _extends({}, DEFAULT_STYLES.Point, {
-	            color: COLORS.PURPLE,
-	            strokeColor: COLORS.PURPLE
+	            color: COLORS.PHOTOS[3],
+	            strokeColor: COLORS.PHOTOS[3]
 	        });
 	    },
 	    photos_2017: function photos_2017() {
 	        return _extends({}, DEFAULT_STYLES.Point, {
-	            color: COLORS.DARK_PINK,
-	            strokeColor: COLORS.DARK_PINK
+	            color: COLORS.PHOTOS[4],
+	            strokeColor: COLORS.PHOTOS[4]
 	        });
 	    },
 	    photos_2012: function photos_2012() {
 	        return _extends({}, DEFAULT_STYLES.Point, {
-	            color: COLORS.DARK_PURPLE,
-	            strokeColor: COLORS.DARK_PURPLE
+	            color: COLORS.PHOTOS[2],
+	            strokeColor: COLORS.PHOTOS[2]
 	        });
 	    }
 

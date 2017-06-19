@@ -65,15 +65,8 @@ export function getPhotoURLs (layerId, photoProperties) {
             }
             break;
         }
-        case "photos_obl_2016": {
-            let base = CONFIG.resources.photos_2016.obl_urlBase;
-            let fileName = photoProperties.filename;
-            urls.original = [base,fileName].join("/");
-            urls.popup = [base,"popup",fileName].join("/");
-            break;
-        }
-        case "photos_dm_2016": {
-            let base = CONFIG.resources.photos_2016.dm_urlBase;
+        case "photos_2016": {
+            let base = CONFIG.resources.photos_2016.urlBase;
             let fileName = photoProperties.filename;
             urls.original = [base,fileName].join("/");
             urls.popup = [base,"popup",fileName].join("/");
@@ -102,24 +95,14 @@ export function getPhotoURLs (layerId, photoProperties) {
 }
 
 export function getProfileURLs (featureProperties) {
-    let bluffGraph = CONFIG.resources.profiles.pathToGraphs.bluff;
-    let bathyGraph = CONFIG.resources.profiles.pathToGraphs.bathy;
     let bluffXls = CONFIG.resources.profiles.pathToXls.bluff;
     let bathyXls = CONFIG.resources.profiles.pathToXls.bathy;
     let urls = {
-        bluffGraph: false,
-        bathyGraph: false,
         bluffXls: false,
         bathyXls: false,
         bathyJson: false,
         bluffJson: false
     };
-    if(featureProperties.bluff_jpg) {
-        urls.bluffGraph = bluffGraph + featureProperties.bluff_jpg;
-    }
-    if(featureProperties.bathy_png) {
-        urls.bathyGraph = bathyGraph + featureProperties.bathy_png;
-    }
     if(featureProperties.bluff_xls) {
         urls.bluffXls = bluffXls + featureProperties.bluff_xls;
         // bluff JSON is the same as the XLS name, but with a json extension
