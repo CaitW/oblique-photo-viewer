@@ -59,7 +59,7 @@ const PopupFooter = (props) => {
     }
     if(footer.length > 0) {
         footer.unshift(
-            <i className="fa fa-download"></i>
+            <i key="download" className="fa fa-download"></i>
         );
     }
 
