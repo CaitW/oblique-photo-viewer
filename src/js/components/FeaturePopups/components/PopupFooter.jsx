@@ -11,8 +11,7 @@ const PopupFooter = (props) => {
         case "photos_1976":
         case "photos_2007":
         case "photos_2017":
-        case "photos_obl_2016":
-        case "photos_dm_2016":
+        case "photos_2016":
         case "photos_2012": {
             let photoURLs = getPhotoURLs(props.layerId, props.featureProperties);
             footer.push(

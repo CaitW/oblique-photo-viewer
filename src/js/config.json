@@ -191,27 +191,15 @@
                             "imageUrl": false
                         }
                     },
-                    "photos_obl_2016": {
-                        "name": "2016 Photos Set #1",
+                    "photos_2016": {
+                        "name": "2016 Photos",
                         "type": "geojson",
-                        "dataLocation": "./data/layers/photos_obl_2016.json",
+                        "dataLocation": "./data/layers/photos_2016.json",
                         "defaultActive": false,
                         "tableProperties": {
                             "name": "Name",
                             "filename": false,
                             "date": "Date"
-                        }
-                    },
-                    "photos_dm_2016": {
-                        "name": "2016 Photos Set #2",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/photos_dm_2016.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "name": "Name",
-                            "filename": false,
-                            "date": "Date",
-                            "altitude": "Altitude (m)"
                         }
                     },
                     "photos_2017": {
@@ -347,18 +335,13 @@
             }
         },
         "profiles": {
-            "pathToGraphs": {
-                "bluff": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bluff_profile/",
-                "bathy": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bathy_profile/"
-            },
             "pathToXls": {
                 "bluff": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bluff_spreadsheets/",
                 "bathy": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bathy_spreadsheets/"
             }
         },
         "photos_2016": {
-            "dm_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_dm/",
-            "obl_urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos_lz/",
+            "urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos/",
             "sizes": {
                 "popup": "popup"
             }
