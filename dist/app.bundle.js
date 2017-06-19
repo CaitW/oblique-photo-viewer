@@ -52178,9 +52178,9 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _ZoomToCounty = __webpack_require__(788);
+	var _ZoomToShoreline = __webpack_require__(788);
 
-	var _ZoomToCounty2 = _interopRequireDefault(_ZoomToCounty);
+	var _ZoomToShoreline2 = _interopRequireDefault(_ZoomToShoreline);
 
 	var _ResetView = __webpack_require__(789);
 
@@ -52288,7 +52288,7 @@
 	              _react2.default.createElement('i', { className: 'fa fa-clone wiscviewer-nav-tool-icon' }),
 	              'Layers'
 	            ),
-	            _react2.default.createElement(_ZoomToCounty2.default, { onZoomShorelineClick: this.constructor.onZoomShorelineClick }),
+	            _react2.default.createElement(_ZoomToShoreline2.default, { onZoomShorelineClick: this.constructor.onZoomShorelineClick }),
 	            _react2.default.createElement(_ResetView2.default, { onResetViewClick: this.constructor.onResetViewClick }),
 	            _react2.default.createElement(_AboutButton2.default, null)
 	          )
@@ -52303,7 +52303,7 @@
 	  }, {
 	    key: 'onZoomShorelineClick',
 	    value: function onZoomShorelineClick(countyName) {
-	      _store2.default.dispatch((0, _map.zoomToCounty)(countyName));
+	      _store2.default.dispatch(zoomToCounty(countyName));
 	    }
 	  }, {
 	    key: 'onResetViewClick',
@@ -52917,156 +52917,160 @@
 				}
 			},
 			"county_shorelines": {
-				"douglas_superior": [
-					[
-						46.64283679198892,
-						-92.3126220703125
+				"Superior": {
+					"douglas": [
+						[
+							46.64283679198892,
+							-92.3126220703125
+						],
+						[
+							46.76808718675661,
+							-91.58477783203126
+						]
 					],
-					[
-						46.76808718675661,
-						-91.58477783203126
-					]
-				],
-				"bayfield_superior": [
-					[
-						46.54280504427768,
-						-91.58203125000001
+					"bayfield": [
+						[
+							46.54280504427768,
+							-91.58203125000001
+						],
+						[
+							46.99430443309905,
+							-90.49575805664064
+						]
 					],
-					[
-						46.99430443309905,
-						-90.49575805664064
-					]
-				],
-				"ashland_superior": [
-					[
-						46.55083326736553,
-						-90.96199035644533
+					"ashland": [
+						[
+							46.55083326736553,
+							-90.96199035644533
+						],
+						[
+							46.74503658076334,
+							-90.49850463867189
+						]
 					],
-					[
-						46.74503658076334,
-						-90.49850463867189
+					"iron": [
+						[
+							46.56133900067355,
+							-90.55103302001953
+						],
+						[
+							46.59402360423837,
+							-90.41524887084961
+						]
 					]
-				],
-				"iron_superior": [
-					[
-						46.56133900067355,
-						-90.55103302001953
+				},
+				"Michigan": {
+					"marinette": [
+						[
+							44.95799590837475,
+							-87.8075408935547
+						],
+						[
+							45.101153694326484,
+							-87.5328826904297
+						]
 					],
-					[
-						46.59402360423837,
-						-90.41524887084961
-					]
-				],
-				"marinette_michigan": [
-					[
-						44.95799590837475,
-						-87.8075408935547
+					"oconto": [
+						[
+							44.67304768858752,
+							-88.03894042968751
+						],
+						[
+							44.97645666320777,
+							-87.74574279785158
+						]
 					],
-					[
-						45.101153694326484,
-						-87.5328826904297
-					]
-				],
-				"oconto_michigan": [
-					[
-						44.67304768858752,
-						-88.03894042968751
+					"brown": [
+						[
+							44.52049959138874,
+							-88.05953979492189
+						],
+						[
+							44.692088041727786,
+							-87.7532958984375
+						]
 					],
-					[
-						44.97645666320777,
-						-87.74574279785158
-					]
-				],
-				"brown_michigan": [
-					[
-						44.52049959138874,
-						-88.05953979492189
+					"door": [
+						[
+							44.61979915773973,
+							-87.81646728515625
+						],
+						[
+							45.50249699389715,
+							-86.71234130859375
+						]
 					],
-					[
-						44.692088041727786,
-						-87.7532958984375
-					]
-				],
-				"door_michigan": [
-					[
-						44.61979915773973,
-						-87.81646728515625
+					"kewaunee": [
+						[
+							44.276671273775186,
+							-87.77801513671876
+						],
+						[
+							44.728198689689535,
+							-87.22869873046876
+						]
 					],
-					[
-						45.50249699389715,
-						-86.71234130859375
-					]
-				],
-				"kewaunee_michigan": [
-					[
-						44.276671273775186,
-						-87.77801513671876
+					"manitowoc": [
+						[
+							43.79389779242341,
+							-87.9400634765625
+						],
+						[
+							44.40827836571936,
+							-87.33444213867189
+						]
 					],
-					[
-						44.728198689689535,
-						-87.22869873046876
-					]
-				],
-				"manitowoc_michigan": [
-					[
-						43.79389779242341,
-						-87.9400634765625
+					"sheboygan": [
+						[
+							43.5326204268101,
+							-88.00048828125001
+						],
+						[
+							43.923615428841146,
+							-87.45117187500001
+						]
 					],
-					[
-						44.40827836571936,
-						-87.33444213867189
-					]
-				],
-				"sheboygan_michigan": [
-					[
-						43.5326204268101,
-						-88.00048828125001
+					"ozaukee": [
+						[
+							43.180145655844626,
+							-88.15841674804688
+						],
+						[
+							43.5734266934657,
+							-87.60910034179689
+						]
 					],
-					[
-						43.923615428841146,
-						-87.45117187500001
-					]
-				],
-				"ozaukee_michigan": [
-					[
-						43.180145655844626,
-						-88.15841674804688
+					"milwaukee": [
+						[
+							42.83267430318037,
+							-88.16665649414064
+						],
+						[
+							43.22819449883485,
+							-87.61734008789064
+						]
 					],
-					[
-						43.5734266934657,
-						-87.60910034179689
-					]
-				],
-				"milwaukee_michigan": [
-					[
-						42.83267430318037,
-						-88.16665649414064
+					"racine": [
+						[
+							42.65466692646942,
+							-87.93045043945314
+						],
+						[
+							42.86338298693097,
+							-87.65579223632814
+						]
 					],
-					[
-						43.22819449883485,
-						-87.61734008789064
+					"kenosha": [
+						[
+							42.481212777716166,
+							-87.95997619628908
+						],
+						[
+							42.69051116998241,
+							-87.68531799316406
+						]
 					]
-				],
-				"racine_michigan": [
-					[
-						42.65466692646942,
-						-87.93045043945314
-					],
-					[
-						42.86338298693097,
-						-87.65579223632814
-					]
-				],
-				"kenosha_michigan": [
-					[
-						42.481212777716166,
-						-87.95997619628908
-					],
-					[
-						42.69051116998241,
-						-87.68531799316406
-					]
-				]
+				}
 			}
 		},
 		"resources": {
@@ -53199,7 +53203,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.zoomToCounty = zoomToCounty;
+	exports.zoomToShoreline = zoomToShoreline;
 	exports.doneZooming = doneZooming;
 	exports.resetMapView = resetMapView;
 	exports.mapNewZoomLevel = mapNewZoomLevel;
@@ -53212,9 +53216,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function zoomToCounty(countyName) {
+	function zoomToShoreline(countyName) {
 	    return {
-	        type: "MAP:ZOOM_TO_COUNTY",
+	        type: "MAP:ZOOM_TO_SHORELINE",
 	        countyName: countyName
 	    };
 	} /**
@@ -53255,7 +53259,7 @@
 
 	    var newState = Object.assign({}, state);
 	    switch (action.type) {
-	        case "MAP:ZOOM_TO_COUNTY":
+	        case "MAP:ZOOM_TO_SHORELINE":
 	            {
 	                var shorelineExtent = _config2.default.map.county_shorelines[action.countyName];
 	                newState.state = {
@@ -53776,7 +53780,7 @@
 	 * This creates the dropdown that contains each county with a shoreline.
 	 * Upon clicking that county, the map will zoom to that county's shoreline.
 	 */
-	var ZoomToCounty = function ZoomToCounty(props) {
+	var ZoomToShoreline = function ZoomToShoreline(props) {
 	    var title = _react2.default.createElement(
 	        'span',
 	        { className: 'wiscviewer-tool-title' },
@@ -53808,11 +53812,11 @@
 	    );
 	};
 
-	ZoomToCounty.propTypes = {
+	ZoomToShoreline.propTypes = {
 	    onZoomShorelineClick: _propTypes2.default.func.isRequired
 	};
 
-	exports.default = ZoomToCounty;
+	exports.default = ZoomToShoreline;
 
 /***/ }),
 /* 789 */

@@ -9,7 +9,7 @@ import { MenuItem, NavDropdown } from 'react-bootstrap';
 
 import CONFIG from '../config.json';
 
-const ZoomToCounty = (props) => {
+const ZoomToShoreline = (props) => {
     let title = (
         <span className="wiscviewer-tool-title">
             <i className="fa fa-search wiscviewer-nav-tool-icon"></i>
@@ -34,8 +34,8 @@ const ZoomToCounty = (props) => {
     )
 }
 
-ZoomToCounty.propTypes = {
+ZoomToShoreline.propTypes = {
     onZoomShorelineClick: PropTypes.func.isRequired
 }
 
-export default ZoomToCounty;
+export default ZoomToShoreline;

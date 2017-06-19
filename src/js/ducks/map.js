@@ -5,9 +5,9 @@
  */
 import CONFIG from '../config.json';
 
-export function zoomToCounty(countyName) {
+export function zoomToShoreline(countyName) {
     return {
-        type: "MAP:ZOOM_TO_COUNTY",
+        type: "MAP:ZOOM_TO_SHORELINE",
         countyName
     }
 }
@@ -41,7 +41,7 @@ const initialMapState = {
 export default function map(state = initialMapState, action) {
     let newState = Object.assign({}, state);
     switch (action.type) {
-        case "MAP:ZOOM_TO_COUNTY":
+        case "MAP:ZOOM_TO_SHORELINE":
             {
                 let shorelineExtent = CONFIG.map.county_shorelines[action.countyName];
                 newState.state = {

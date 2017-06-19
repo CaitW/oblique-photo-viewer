@@ -11,12 +11,12 @@ import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import store from '../store';
-import ZoomToCounty from '../components/ZoomToCounty';
+import ZoomToShoreline from '../components/ZoomToShoreline';
 import ResetView from '../components/ResetView';
 import AboutButton from '../components/AboutButton';
 import MobileToggle from '../components/MobileToggle';
 import { openMobileLayerList } from '../ducks/mobile';
-import { zoomToCounty, resetMapView } from '../ducks/map';
+import { zoomToShoreline, resetMapView } from '../ducks/map';
 import { setNavExpand } from '../ducks/nav';
 
 const mapStateToProps = (state) => {
@@ -75,7 +75,7 @@ class NavBar extends React.Component {
                   >
                     <i className="fa fa-clone wiscviewer-nav-tool-icon"></i>Layers
                   </NavItem>
-                  <ZoomToCounty onZoomShorelineClick={this.constructor.onZoomShorelineClick} />
+                  <ZoomToShoreline onZoomShorelineClick={this.constructor.onZoomShorelineClick} />
                   <ResetView onResetViewClick={this.constructor.onResetViewClick} />
                   <AboutButton />
                 </Nav>
