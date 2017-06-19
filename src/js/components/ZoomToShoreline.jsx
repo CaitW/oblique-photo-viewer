@@ -15,21 +15,31 @@ const ZoomToShoreline = (props) => {
             <i className="fa fa-search wiscviewer-nav-tool-icon"></i>
         </span>
     );
-    var counties = [];
-    for(let countyName in CONFIG.map.county_shorelines) {
-        counties.push(
-            <MenuItem className="wiscviewer-dropdown-item"
-                key={countyName}
-                onClick={() => props.onZoomShorelineClick(countyName)}>
-                    {countyName.replace(/_/g, " - ")}
-            </MenuItem>
-        );
+    var shorelines = [];
+    for(let lakeName in CONFIG.map.county_shorelines) {
+        let shorelinesForLake = CONFIG.map.county_shorelines[lakeName];
+            shorelines.push(
+                <MenuItem className="wiscviewer-dropdown-header"
+                    key={lakeName}>
+                    {lakeName}
+                </MenuItem>
+            );
+        for (let shorelineName in shorelinesForLake) {
+            shorelines.push(
+                <MenuItem className="wiscviewer-dropdown-item"
+                    key={shorelineName}
+                    onClick={() => props.onZoomShorelineClick(lakeName, shorelineName)}>
+                        {shorelineName}
+                </MenuItem>
+            );
+        }
+
     }
     return (
         <NavDropdown title={title}
-            id="zoom-to-county"
+            id="zoom-to-shoreline"
             className="wiscviewer-nav-dropdown wiscviewer-nav-tool wiscviewer-nav-tool-zoom">
-            {counties}
+            {shorelines}
         </NavDropdown>
     )
 }

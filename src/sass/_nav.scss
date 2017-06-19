@@ -65,28 +65,45 @@
   .dropdown-menu {
     z-index: 500;
     background-color: $primary_800;
+    padding: 0;
+  }
+}
+
+.wiscviewer-dropdown-header {
+  text-transform: capitalize;
+  background-color: $primary_900;
+  padding: 5px 0px;
+  &:hover {
+    outline: none;
+    background-color: $primary_900 !important;
+    cursor: default;
+    a {
+      outline: none;
+      background-color: $primary_900 !important;
+      &:hover {
+        cursor: default;
+      }
+    }
   }
 }
 
 .wiscviewer-dropdown-item {
   text-transform: capitalize;
   background-color: $primary_800;
-  padding: 5px 0px;
+  padding: 3px 0px;
   &:not(:last-child) {
     border: 0px solid $primary_700;
     border-bottom-width: 1px;
   }
   &:active,
-  &:hover {
+  &:hover,
+  &:focus {
     outline: none;
     background-color: $primary_900 !important;
     a {
       outline: none;
       background-color: $primary_900 !important;
     }
-  }
-  &:focus {
-    outline: none;
   }
 }
 

@@ -34,8 +34,8 @@ class NavBar extends React.Component {
     static onMobileLayersClick() {
       store.dispatch(openMobileLayerList());
     }
-    static onZoomShorelineClick (countyName) {
-      store.dispatch(zoomToCounty(countyName));
+    static onZoomShorelineClick (lakeName, countyName) {
+      store.dispatch(zoomToShoreline(lakeName, countyName));
     }
     static onResetViewClick () {
         store.dispatch(resetMapView());
