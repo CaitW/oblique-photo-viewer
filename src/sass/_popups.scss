@@ -208,22 +208,40 @@
 }
 
 .wiscviewer-profile-tab {
+  .lake-stats {
+    stroke-width: 1px;
+  }
+  .michigan-avg {
+    stroke: $primary_700;
+  }
+  .michigan-high {
+    stroke: $primary_600;
+  }
+  .michigan-low {
+    stroke: $primary_600;
+  }
   .tick {
     font-family: $font-body;
+    line {
+      stroke: $primary_600;
+    }
+    text {
+      fill: $primary_400;
+    }
   }
   .domain {
     stroke-width: 3px;
-    stroke: $primary_700;
-    stroke-linecap: round;
+    stroke: $primary_600;
+    stroke-linecap: butt;
   }
   .line {
-    stroke: $secondary_800;
+    stroke: $secondary_300;
     stroke-width: 2px;
     fill: none;
     stroke-linejoin: round;
     stroke-linecap: round;
   }
   .wiscviewer-profile-graph {
-    background-color: $primary_200;
+    background-color: $primary_900;
   }
 }

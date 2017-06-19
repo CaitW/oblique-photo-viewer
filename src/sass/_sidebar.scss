@@ -1,3 +1,5 @@
+$hide_scroll_padding: 17px;
+
 .wiscviewer-sidebar {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   z-index: 500;
@@ -10,11 +12,17 @@
 }
 
 .wiscviewer-sidebar-inner-container {
-  width: calc(100% + 40px);
-  padding-right: 40px;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
   overflow-x: hidden;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
 }
 
 .wiscviewer-sidebar-panel {

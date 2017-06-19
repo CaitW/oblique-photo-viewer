@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var webpack = require('gulp-webpack');
+var webpack = require('webpack-stream');
 var watch = require('gulp-watch');
 var livereload = require('gulp-livereload');
 var sass = require('gulp-sass');
@@ -12,6 +12,8 @@ var runSequence = require('run-sequence');
 var eslint = require('gulp-eslint');
 var gulpStylelint = require('gulp-stylelint');
 var util = require('gulp-util');
+var jsonMinify = require('gulp-jsonminify');
+var debug = require('gulp-debug');
 
 /**
  * Clean up dist/ directory
@@ -27,20 +29,26 @@ gulp.task('clean', function () {
  */
 gulp.task('copy-html', function() {
     return gulp.src(['src/index.html','src/about.html'])
+        .pipe(debug({title: 'copying:'}))
         .pipe(gulp.dest('dist/'))
         .pipe(livereload());
 });
 gulp.task('copy-data', function() {
-    gulp.src('./src/data/**/*')
+    return gulp.src('./src/data/**/*')
+        .pipe(debug({title: 'copying:'}))
         .pipe(gulp.dest('./dist/data'));
 });
 gulp.task('copy-content', function() {
     gulp.src('./src/fonts/**/*')
+        .pipe(debug({title: 'copying:'}))
         .pipe(gulp.dest('./dist/fonts'));
     gulp.src('./src/favicons/**/*')
+        .pipe(debug({title: 'copying:'}))
         .pipe(gulp.dest('./dist/'));
     gulp.src('./src/img/**/*')
+        .pipe(debug({title: 'copying:'}))
         .pipe(gulp.dest('./dist/img/'));
+    return;
 });
 
 /**
@@ -48,6 +56,7 @@ gulp.task('copy-content', function() {
  */
 gulp.task('sass', function() {
     return gulp.src('src/sass/app.scss')
+        .pipe(debug({title: 'processing stylesheet:'}))
         .pipe(sass.sync()
             .on('error', sass.logError))
         .pipe(gulp.dest('./dist/'))
@@ -56,6 +65,7 @@ gulp.task('sass', function() {
 
 gulp.task('sass-about', function() {
     return gulp.src('src/sass/about.scss')
+        .pipe(debug({title: 'processing stylesheet:'}))
         .pipe(sass.sync()
             .on('error', sass.logError))
         .pipe(gulp.dest('./dist/'))
@@ -67,12 +77,14 @@ gulp.task('sass-about', function() {
  */
 gulp.task('scripts', function() {
     return gulp.src(['src/js/lib/leaflet.js', 'src/js/lib/L.Control.MousePosition.js'])
+        .pipe(debug({title: 'concatenating:'}))
         .pipe(concat('lib.js'))
         .pipe(gulp.dest('./dist/'));
 });
 gulp.task('compress-libraries', ['scripts'], function(cb) {
     pump([
-        gulp.src('./dist/lib.js'),
+        gulp.src('./dist/lib.js')
+        .pipe(debug({title: 'compressing:'})),
         uglify(),
         gulp.dest('dist')
     ]);
@@ -83,12 +95,14 @@ gulp.task('compress-libraries', ['scripts'], function(cb) {
  */
 gulp.task('webpack-dev', function() {
     return gulp.src('src/js/app.jsx')
+        .pipe(debug({title: 'webpacking (dev) :'}))
         .pipe(webpack(require('./webpack.config.js')))
         .pipe(gulp.dest('dist/'))
         .pipe(livereload());
 });
 gulp.task('webpack-prod', function() {
     return gulp.src('src/js/app.jsx')
+        .pipe(debug({title: 'webpacking (prod) :'}))
         .pipe(webpack(require('./webpack.config.prod.js')))
         .pipe(gulp.dest('dist/'));
 });
@@ -126,6 +140,7 @@ gulp.task('lint-js', () => {
         '!src/js/lib/**',
         '!*.json'
         ])
+        .pipe(debug({title: 'linting js :'}))
         // eslint() attaches the lint output to the "eslint" property
         // of the file object so it can be used by other modules.
         .pipe(eslint({
@@ -143,6 +158,7 @@ gulp.task('lint-css', function () {
     // stylefmt -r "src/sass/*.scss"
   return gulp
     .src(['src/sass/*.scss','!src/sass/lib/**'])
+    .pipe(debug({title: 'linting css :'}))
     .pipe(gulpStylelint({
       reporters: [
         {formatter: 'string', console: true}
