@@ -52662,7 +52662,7 @@
 							"name": "Bluff Condition",
 							"type": "geojson",
 							"dataLocation": "./data/layers/backshore_1976.json",
-							"defaultActive": false,
+							"defaultActive": true,
 							"tableProperties": {
 								"OBJECTID": false,
 								"Backshore Type": true,
@@ -52770,7 +52770,7 @@
 							"name": "1976-78 Photos",
 							"type": "geojson",
 							"dataLocation": "./data/layers/photos_1976.json",
-							"defaultActive": false,
+							"defaultActive": true,
 							"tableProperties": {
 								"OBJECTID": false,
 								"Original File Name": true,
@@ -52851,7 +52851,7 @@
 							"name": "Profile Lines",
 							"type": "geojson",
 							"dataLocation": "./data/layers/profiles.json",
-							"defaultActive": true,
+							"defaultActive": false,
 							"tableProperties": {
 								"ID": false,
 								"ProfileNo": "Profile Number",
@@ -68317,31 +68317,7 @@
 	    GREEN: "#8BC34A",
 	    YELLOW: "#FFEB3B",
 	    GRAY: "#9E9E9E",
-	    PURPLE: "#9C27B0",
-	    BLACK: "#000000",
-	    CYAN: "#00BCD4",
-	    LIGHT_RED: "#EF9A9A",
-	    LIGHT_PINKPURPLE: "#CE93D8",
-	    LIGHT_PURPLE: "#B39DDB",
-	    LIGHT_BLUE: "#90CAF9",
-	    LIGHT_TEAL: "#4DB6AC",
-	    LIGHT_GREEN: "#C5E1A5",
-	    LIGHT_YELLOW: "#FFF59D",
-	    LIGHT_ORANGE: "#FFCC80",
-	    LIGHT_BROWN: "#BCAAA4",
-	    LIGHT_GRAY: "#E0E0E0",
-	    LIGHT_PINK: "#F48FB1",
-	    DARK_RED: "#B71C1C",
-	    DARK_PINK: "#AD1457",
-	    DARK_PURPLE: "#6A1B9A",
-	    DARK_INDIGO: "#283593",
-	    DARK_BLUE: "#1565C0",
-	    DARK_CYAN: "#00838F",
-	    DARK_TEAL: "#00695C",
-	    DARK_GREEN: "#2E7D32",
-	    DARK_YELLOW: "#F9A825",
-	    DARK_BROWN: "#4E342E",
-	    DARK_GRAY: "#424242"
+	    BLACK: "#000000"
 	};
 
 	COLORS.BEACH = ["#E0E0E0", '#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#fb9a99', '#e31a1c', '#fdbf6f', '#ff7f00', '#cab2d6', '#6a3d9a', '#ffff99'];
@@ -68350,11 +68326,16 @@
 
 	COLORS.STRUCTURES = ["#6D4C41", "#3E2723"];
 
+	COLORS.PROFILES = {
+	    bathy: "#00838F",
+	    bluff: "#4E342E"
+	};
+
 	// Default styles, if no style is specified for a particular layer
 	var DEFAULT_STYLES = {
 	    LineString: {
 	        weight: 4,
-	        opacity: 0.8,
+	        opacity: 0.9,
 	        lineCap: "round",
 	        lineJoin: "round",
 	        color: COLORS.BLACK
@@ -68369,7 +68350,7 @@
 	    },
 	    MultiLineString: {
 	        weight: 4,
-	        opacity: 0.8,
+	        opacity: 0.9,
 	        lineCap: "round",
 	        lineJoin: "round",
 	        color: COLORS.BLACK
@@ -68452,32 +68433,32 @@
 	            case "None":
 	                style.color = COLORS.BEACH[0];
 	                break;
-	            case 'Commercial / Industrial Dock':
+	            case 'Revetment':
 	                style.color = COLORS.BEACH[1];
 	                break;
-	            case 'Groin / Jetty / Offshore Breakwater':
+	            case 'Poorly Organized Rip-Rap / Rubble':
 	                style.color = COLORS.BEACH[2];
 	                break;
-	            case 'Offshore Breakwater':
+	            case 'Seawall / Bulkhead':
 	                style.color = COLORS.BEACH[3];
 	                break;
-	            case 'Personal Marina':
+	            case 'Groin / Jetty / Offshore Breakwater':
 	                style.color = COLORS.BEACH[4];
 	                break;
-	            case 'Poorly Organized Rip-Rap / Rubble':
+	            case 'Small Boat Dock':
 	                style.color = COLORS.BEACH[5];
 	                break;
 	            case 'Public Marina':
 	                style.color = COLORS.BEACH[6];
 	                break;
-	            case 'Revetment':
-	                style.color = COLORS.BEACH[6];
-	                break;
-	            case 'Seawall / Bulkhead':
+	            case 'Commercial / Industrial Dock':
 	                style.color = COLORS.BEACH[7];
 	                break;
-	            case 'Small Boat Dock':
+	            case 'Personal Marina':
 	                style.color = COLORS.BEACH[8];
+	                break;
+	            case 'Offshore Breakwater':
+	                style.color = COLORS.BEACH[9];
 	                break;
 	            default:
 	                style.opacity = 0;
@@ -68491,31 +68472,31 @@
 	            case "None":
 	                style.color = COLORS.BEACH[0];
 	                break;
-	            case 'Commercial / Industrial Dock':
+	            case 'Revetment':
 	                style.color = COLORS.BEACH[1];
 	                break;
-	            case 'Groin / Jetty / Offshore Breakwater':
+	            case 'Poorly Organized Rip-Rap / Rubble':
 	                style.color = COLORS.BEACH[2];
 	                break;
-	            case 'Offshore Breakwater':
+	            case 'Seawall / Bulkhead':
 	                style.color = COLORS.BEACH[3];
 	                break;
-	            case 'Personal Marina':
+	            case 'Groin / Jetty / Offshore Breakwater':
 	                style.color = COLORS.BEACH[4];
 	                break;
-	            case 'Poorly Organized Rip-Rap / Rubble':
+	            case 'Small Boat Dock':
 	                style.color = COLORS.BEACH[5];
 	                break;
 	            case 'Public Marina':
 	                style.color = COLORS.BEACH[6];
 	                break;
-	            case 'Revetment':
+	            case 'Commercial / Industrial Dock':
 	                style.color = COLORS.BEACH[7];
 	                break;
-	            case 'Seawall / Bulkhead':
+	            case 'Personal Marina':
 	                style.color = COLORS.BEACH[8];
 	                break;
-	            case 'Small Boat Dock':
+	            case 'Offshore Breakwater':
 	                style.color = COLORS.BEACH[9];
 	                break;
 	            default:
@@ -68526,11 +68507,11 @@
 	    },
 	    profiles: function profiles(subStyleName) {
 	        var style = _extends({}, DEFAULT_STYLES.LineString, {
-	            color: COLORS.DARK_BROWN
+	            color: COLORS.PROFILES.bluff
 	        });
 	        switch (subStyleName) {
 	            case "Bathymetric Profile":
-	                style.color = COLORS.DARK_CYAN;
+	                style.color = COLORS.PROFILES.bathy;
 	                break;
 	            default:
 	                break;

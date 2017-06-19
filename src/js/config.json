@@ -33,7 +33,7 @@
                         "name": "Bluff Condition",
                         "type": "geojson",
                         "dataLocation": "./data/layers/backshore_1976.json",
-                        "defaultActive": false,
+                        "defaultActive": true,
                         "tableProperties": {
                             "OBJECTID": false,
                             "Backshore Type": true,
@@ -141,7 +141,7 @@
                         "name": "1976-78 Photos",
                         "type": "geojson",
                         "dataLocation": "./data/layers/photos_1976.json",
-                        "defaultActive": false,
+                        "defaultActive": true,
                         "tableProperties": {
                             "OBJECTID": false,
                             "Original File Name": true,
@@ -222,7 +222,7 @@
                         "name": "Profile Lines",
                         "type": "geojson",
                         "dataLocation": "./data/layers/profiles.json",
-                        "defaultActive": true,
+                        "defaultActive": false,
                         "tableProperties": {
                             "ID": false,
                             "ProfileNo": "Profile Number",
