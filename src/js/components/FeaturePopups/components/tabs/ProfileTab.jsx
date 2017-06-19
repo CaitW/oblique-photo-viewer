@@ -8,7 +8,7 @@ import { axisBottom, axisLeft } from 'd3-axis';
 import { line } from 'd3-shape';
 import { json } from 'd3-request';
 import { select } from 'd3-selection';
-import { extent, ascending } from 'd3-array';
+import { extent, descending } from 'd3-array';
 
 class ProfileTab extends React.Component {
     constructor(props) {
@@ -17,6 +17,7 @@ class ProfileTab extends React.Component {
     }
     componentDidMount () {
         this.createLineChart();
+        this.props.update();
     }
     createLineChart() {
         // Set the dimensions of the canvas / graph
@@ -85,7 +86,7 @@ class ProfileTab extends React.Component {
         // get the profile's data from it's json file
         json(this.props.jsonLocation, function(error, data) {
             data = data.sort(function (a, b) {
-                return ascending(a.x, b.x)
+                return descending(a.x, b.x)
             });
             x.domain(extent(data, function(d) { return d.x }))
             svg.append("path")
@@ -117,6 +118,7 @@ class ProfileTab extends React.Component {
             ...this.props
         };
         delete tabProps.jsonLocation;
+        delete tabProps.update;
         let style = {
             "minHeight": "200px",
             "minWidth": "350px"
@@ -131,7 +133,8 @@ class ProfileTab extends React.Component {
 }
 
 ProfileTab.propTypes = {
-    jsonLocation: PropTypes.string.isRequired
+    jsonLocation: PropTypes.string.isRequired,
+    update: PropTypes.func.isRequired
 }
 
 export default ProfileTab;

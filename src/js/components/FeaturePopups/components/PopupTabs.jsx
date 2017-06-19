@@ -53,6 +53,7 @@ class PopupTabs extends React.Component {
                         title="Data"
                         layerId={layerId}
                         featureProperties={featureProperties}
+                        update={this.update}
                     />
                 );
                 break;
@@ -66,6 +67,7 @@ class PopupTabs extends React.Component {
                             eventKey={eventKeyIndex}
                             title="Bluff Profile"
                             jsonLocation={urls.bluffJson}
+                            update={this.update}
                         />
                     );
                     eventKeyIndex += 1;
@@ -76,6 +78,7 @@ class PopupTabs extends React.Component {
                             eventKey={eventKeyIndex}
                             title="Bathy Profile"
                             jsonLocation={urls.bathyJson}
+                            update={this.update}
                         />
                     );
                     eventKeyIndex += 1;
@@ -86,6 +89,7 @@ class PopupTabs extends React.Component {
                         title="Data"
                         layerId={layerId}
                         featureProperties={featureProperties}
+                        update={this.update}
                     />
                 );
                 break;
@@ -97,6 +101,7 @@ class PopupTabs extends React.Component {
                         title="Data"
                         layerId={layerId}
                         featureProperties={featureProperties}
+                        update={this.update}
                     />
                 );
                 break;

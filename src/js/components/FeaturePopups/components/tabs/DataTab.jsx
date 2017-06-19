@@ -13,6 +13,9 @@ class DataTab extends React.Component {
             </tr>
         );
     }
+    componentDidMount () {
+        this.props.update();
+    }
     render() {
         let layerData = LAYERS_BY_ID[this.props.layerId];
         let tabProps = {
@@ -20,6 +23,7 @@ class DataTab extends React.Component {
         };
         delete tabProps.layerId;
         delete tabProps.featureProperties;
+        delete tabProps.update;
 
         let rows = [];
 
@@ -66,7 +70,8 @@ DataTab.propTypes = {
     featureProperties: PropTypes.oneOfType([
         PropTypes.object,
         PropTypes.bool
-    ]).isRequired
+    ]).isRequired,
+    update: PropTypes.func.isRequired
 }
 
 export default DataTab;
