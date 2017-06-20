@@ -14,6 +14,35 @@ var gulpStylelint = require('gulp-stylelint');
 var util = require('gulp-util');
 var jsonMinify = require('gulp-jsonminify');
 var debug = require('gulp-debug');
+var zip = require('gulp-zip');
+var ogr2ogr = require('ogr2ogr');
+
+// List all files in a directory in Node.js recursively in a synchronous fashion
+function walkSync (dir, filelist) {
+    var path = path || require('path');
+    var fs = fs || require('fs'),
+        files = fs.readdirSync(dir);
+    filelist = filelist || [];
+    files.forEach(function(file) {
+        if (fs.statSync(path.join(dir, file))
+            .isDirectory()) {
+            filelist = walkSync(path.join(dir, file), filelist);
+        } else {
+            filelist.push(path.join(dir, file));
+        }
+    });
+    return filelist;
+};
+
+function returnGeoJsonFiles (fileList) {
+    let geoJsonFiles = [];
+    for (let file of fileList) {
+        if(file.split('.')[1] === 'json') {
+            geoJsonFiles.push(file);
+        }
+    }
+    return geoJsonFiles;
+}
 
 /**
  * Clean up dist/ directory
@@ -23,6 +52,62 @@ gulp.task('clean', function () {
     'dist/*'
   ]);
 });
+
+/**
+ * Make Data Downloads
+ */
+gulp.task('zip-geojson-layers', function() {
+    return gulp.src(['./src/data/layers/*.json'])
+        .pipe(debug({title: 'zipping:'}))
+        .pipe(zip('layers-geojson.zip'))
+        .pipe(gulp.dest('./dist/downloads'));
+});
+gulp.task('zip-json-profiles', function() {
+    return gulp.src(['./src/data/profiles/*.json'])
+        .pipe(debug({title: 'zipping:'}))
+        .pipe(zip('profiles-json.zip'))
+        .pipe(gulp.dest('./dist/downloads'));
+});
+gulp.task('convert-and-zip-layer-shapefiles', function(done) {
+    let geojsons = returnGeoJsonFiles(walkSync('./src/data/layers/'));
+
+    function convertToShapefile(index, fileList) {
+        if (index < fileList.length) {
+            let file = fileList[index];
+            let fileName = file.split(".")[0].replace('src/data/layers/', '') + ".zip";
+            console.log("starting " + fileName);
+            let ogr = ogr2ogr("./" + file)
+                .format('ESRI Shapefile')
+                .skipfailures();
+            ogr.exec(function(er, data) {
+                if (er) {
+                    console.error(er)
+                } else {
+                    if (!fs.existsSync('./temp/layer-shapefiles/')){
+                        if(!fs.existsSync('./temp')) {
+                            fs.mkdirSync('./temp');
+                        }
+                        fs.mkdirSync('./temp/layer-shapefiles/');
+                    }
+                    fs.writeFileSync('./temp/layer-shapefiles/' + fileName, data);
+                }
+                return convertToShapefile(index + 1, fileList);
+            });
+        } else {
+            gulp.src(['./temp/layer-shapefiles/**/*.zip'])
+                .pipe(debug({ title: 'zipping:' }))
+                .pipe(zip('layers-shp.zip'))
+                .pipe(gulp.dest('./dist/downloads'))
+                .on('end', function() {
+                    return del(['temp']);
+                    done();
+                });
+
+        }
+    }
+    return convertToShapefile(0, geojsons);
+});
+
 
 /**
  * Copy Files
@@ -169,13 +254,15 @@ gulp.task('lint-css', function () {
 /*
  * Tasks
  */
+ // make data downloads
+gulp.task('make-downloads', ['zip-geojson-layers', 'zip-json-profiles', 'convert-and-zip-layer-shapefiles']);
 // default task
-gulp.task('default', ['copy-html', 'copy-data', 'copy-content', 'sass', 'sass-about', 'scripts', 'webpack-dev']);
+gulp.task('default', ['copy-html', 'copy-data', 'copy-content', 'make-downloads', 'sass', 'sass-about', 'scripts', 'webpack-dev']);
 // for active development
 gulp.task('watch', ['default', 'watch-files']);
+
 // pre-deploy tasks (for releases)
 gulp.task('pre-deploy', ['clean','lint-js','lint-css']);
-
 // production
 gulp.task('build', ['copy-html', 'copy-content', 'sass', 'scripts', 'webpack-prod', 'compress-libraries', 'copy-data']);
 
