@@ -257,12 +257,12 @@ gulp.task('lint-css', function () {
  // make data downloads
 gulp.task('make-downloads', ['zip-geojson-layers', 'zip-json-profiles', 'convert-and-zip-layer-shapefiles']);
 // default task
-gulp.task('default', ['copy-html', 'copy-data', 'copy-content', 'make-downloads', 'sass', 'sass-about', 'scripts', 'webpack-dev']);
+gulp.task('default', ['copy-html', 'copy-data', 'copy-content', 'sass', 'sass-about', 'scripts', 'webpack-dev']);
 // for active development
 gulp.task('watch', ['default', 'watch-files']);
 
 // pre-deploy tasks (for releases)
 gulp.task('pre-deploy', ['clean','lint-js','lint-css']);
 // production
-gulp.task('build', ['copy-html', 'copy-content', 'sass', 'scripts', 'webpack-prod', 'compress-libraries', 'copy-data']);
+gulp.task('build', ['copy-html', 'copy-content', 'make-downloads', 'sass', 'scripts', 'webpack-prod', 'compress-libraries', 'copy-data']);
 

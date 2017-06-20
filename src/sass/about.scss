@@ -41,5 +41,25 @@ h6 {
   color: $primary_800;
 }
 
+.btn-group-vertical {
+    width: 100%;
+    text-align: left;
+}
+
+button {
+    background-color: $primary_400 !important;
+    color: $primary_900 !important;
+    border: 1px solid $primary_600 !important;
+    border-radius: 0 !important;
+    width: 100%;
+    text-align: left !important;
+    margin-bottom: 5px !important;
+    i {
+        float: left;
+        vertical-align: middle;
+        margin:3px 20px auto 0;
+    }
+}
+
 
 
