@@ -7851,3 +7851,20 @@ h4,
 h5,
 h6 {
   color: #37474f; }
+
+.btn-group-vertical {
+  width: 100%;
+  text-align: left; }
+
+button {
+  background-color: #78909c !important;
+  color: #263238 !important;
+  border: 1px solid #546e7a !important;
+  border-radius: 0 !important;
+  width: 100%;
+  text-align: left !important;
+  margin-bottom: 5px !important; }
+  button i {
+    float: left;
+    vertical-align: middle;
+    margin: 3px 20px auto 0; }
