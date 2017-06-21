@@ -97,6 +97,8 @@ export function getPhotoURLs (layerId, photoProperties) {
 export function getProfileURLs (featureProperties) {
     let bluffXls = CONFIG.resources.profiles.pathToXls.bluff;
     let bathyXls = CONFIG.resources.profiles.pathToXls.bathy;
+    let bluffJson = CONFIG.resources.profiles.pathToJson.bluff;
+    let bathyJson = CONFIG.resources.profiles.pathToJson.bathy;
     let urls = {
         bluffXls: false,
         bathyXls: false,
@@ -105,15 +107,11 @@ export function getProfileURLs (featureProperties) {
     };
     if(featureProperties.bluff_xls) {
         urls.bluffXls = bluffXls + featureProperties.bluff_xls;
-        // bluff JSON is the same as the XLS name, but with a json extension
-        let fileName = featureProperties.bluff_xls.split(".")[0];
-        urls.bluffJson = "./data/profiles/bluff/" + fileName + ".json";
+        urls.bluffJson = bluffXls + featureProperties.bluff_json;
     }
     if(featureProperties.bathy_xls) {
         urls.bathyXls = bathyXls +  featureProperties.bathy_xls;
-        // bluff JSON is the same as the XLS name, but with a json extension
-        let fileName = featureProperties.bathy_xls.split(".")[0];
-        urls.bathyJson = "./data/profiles/bathy/" + fileName + ".json";
+        urls.bathyJson = bathyXls + featureProperties.bathy_json;
     }
     return urls;
 }

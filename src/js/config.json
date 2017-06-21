@@ -338,6 +338,10 @@
             "pathToXls": {
                 "bluff": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bluff_spreadsheets/",
                 "bathy": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bathy_spreadsheets/"
+            },
+            "pathToJson": {
+                "bluff": "./data/profiles/bluff/",
+                "bathy": "./data/profiles/bathy/"
             }
         },
         "photos_2016": {
