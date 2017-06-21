@@ -124,6 +124,9 @@ gulp.task('copy-data', function() {
         .pipe(gulp.dest('./dist/data'));
 });
 gulp.task('copy-content', function() {
+    gulp.src('./src/downloads/**/*')
+        .pipe(debug({title: 'copying:'}))
+        .pipe(gulp.dest('./dist/downloads/'));
     gulp.src('./src/fonts/**/*')
         .pipe(debug({title: 'copying:'}))
         .pipe(gulp.dest('./dist/fonts'));
@@ -205,6 +208,9 @@ gulp.task('watch-files', function() {
     gulp.watch('src/js/lib/*.js', ['scripts']);
     gulp.watch('src/data/**/*', ['copy-data']);
     gulp.watch('src/fonts/**/*', ['copy-content']);
+    gulp.watch('src/downloads/**/*', ['copy-content']);
+    gulp.watch('src/favicons/**/*', ['copy-content']);
+    gulp.watch('src/img/**/*', ['copy-content']);
 });
 
 
