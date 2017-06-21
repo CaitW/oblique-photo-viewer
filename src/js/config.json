@@ -362,10 +362,10 @@
         }
     },
     "profileSummaryStatistics": {
-        "xMin": 0,
-        "xMax": 9530.166258,
-        "yMin": 522.0314105,
-        "yMax": 720.5
+      "xMin": 0,
+      "xMax": 9530.166258,
+      "yMin": 522.0314105,
+      "yMax": 698.784306
     },
     "lakeMichiganWaterLevel": {
         "avg": 578.02,
