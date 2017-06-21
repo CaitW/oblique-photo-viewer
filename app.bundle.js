@@ -52586,6 +52586,8 @@
 	function getProfileURLs(featureProperties) {
 	    var bluffXls = _config2.default.resources.profiles.pathToXls.bluff;
 	    var bathyXls = _config2.default.resources.profiles.pathToXls.bathy;
+	    var bluffJson = _config2.default.resources.profiles.pathToJson.bluff;
+	    var bathyJson = _config2.default.resources.profiles.pathToJson.bathy;
 	    var urls = {
 	        bluffXls: false,
 	        bathyXls: false,
@@ -52594,15 +52596,11 @@
 	    };
 	    if (featureProperties.bluff_xls) {
 	        urls.bluffXls = bluffXls + featureProperties.bluff_xls;
-	        // bluff JSON is the same as the XLS name, but with a json extension
-	        var fileName = featureProperties.bluff_xls.split(".")[0];
-	        urls.bluffJson = "./data/profiles/bluff/" + fileName + ".json";
+	        urls.bluffJson = bluffJson + featureProperties.bluff_json;
 	    }
 	    if (featureProperties.bathy_xls) {
 	        urls.bathyXls = bathyXls + featureProperties.bathy_xls;
-	        // bluff JSON is the same as the XLS name, but with a json extension
-	        var _fileName4 = featureProperties.bathy_xls.split(".")[0];
-	        urls.bathyJson = "./data/profiles/bathy/" + _fileName4 + ".json";
+	        urls.bathyJson = bathyJson + featureProperties.bathy_json;
 	    }
 	    return urls;
 	}
@@ -53055,8 +53053,12 @@
 			},
 			"profiles": {
 				"pathToXls": {
-					"bluff": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bluff_spreadsheets/",
-					"bathy": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bathy_spreadsheets/"
+					"bluff": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bluff/",
+					"bathy": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bathy/"
+				},
+				"pathToJson": {
+					"bluff": "./data/profiles/bluff/",
+					"bathy": "./data/profiles/bathy/"
 				}
 			},
 			"photos_2016": {
@@ -53084,7 +53086,7 @@
 			"xMin": 0,
 			"xMax": 9530.166258,
 			"yMin": 522.0314105,
-			"yMax": 720.5
+			"yMax": 698.784306
 		},
 		"lakeMichiganWaterLevel": {
 			"avg": 578.02,
