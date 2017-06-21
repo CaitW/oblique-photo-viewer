@@ -336,8 +336,8 @@
         },
         "profiles": {
             "pathToXls": {
-                "bluff": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bluff_spreadsheets/",
-                "bathy": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bathy_spreadsheets/"
+                "bluff": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bluff/",
+                "bathy": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bathy/"
             },
             "pathToJson": {
                 "bluff": "./data/profiles/bluff/",

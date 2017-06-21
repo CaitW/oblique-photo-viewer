@@ -107,11 +107,11 @@ export function getProfileURLs (featureProperties) {
     };
     if(featureProperties.bluff_xls) {
         urls.bluffXls = bluffXls + featureProperties.bluff_xls;
-        urls.bluffJson = bluffXls + featureProperties.bluff_json;
+        urls.bluffJson = bluffJson+ featureProperties.bluff_json;
     }
     if(featureProperties.bathy_xls) {
         urls.bathyXls = bathyXls +  featureProperties.bathy_xls;
-        urls.bathyJson = bathyXls + featureProperties.bathy_json;
+        urls.bathyJson = bathyJson + featureProperties.bathy_json;
     }
     return urls;
 }
