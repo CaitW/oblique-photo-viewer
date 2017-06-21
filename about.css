@@ -7868,3 +7868,5 @@ button {
     float: left;
     vertical-align: middle;
     margin: 3px 20px auto 0; }
+  button:hover {
+    background-color: #607d8b !important; }
