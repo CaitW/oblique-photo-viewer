@@ -49,6 +49,16 @@ class FeaturePopup extends React.Component {
                 tabIndex={0}>
                 <div className="wiscviewer-feature-popup-header">
                     <div className="wiscviewer-feature-popup-controls">
+                        <i className="fa fa-arrow-left feature-popup-previous-button"
+                            onClick={this.props.openPreviousFeature}
+                            role="button"
+                            tabIndex={-1}>
+                        </i>
+                        <i className="fa fa-arrow-right feature-popup-next-button"
+                            onClick={this.props.openNextFeature}
+                            role="button"
+                            tabIndex={-1}>
+                        </i>
                         <i className="fa fa-thumb-tack feature-popup-pin"
                             onClick={this.pin}
                             role="button"
@@ -87,6 +97,8 @@ FeaturePopup.propTypes = {
     featureProperties: PropTypes.object.isRequired,
     popup: PropTypes.instanceOf(L.Popup).isRequired,
     closePopup: PropTypes.func.isRequired,
+    openNextFeature: PropTypes.func.isRequired,
+    openPreviousFeature: PropTypes.func.isRequired,
     getPosition: PropTypes.func.isRequired
 }
 

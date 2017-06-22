@@ -52674,7 +52674,8 @@
 								"Bluff Failure Classification": true,
 								"Non-Bluff Classification": true,
 								"Confidence Level Classification": true
-							}
+							},
+							"idProperty": "OBJECTID"
 						},
 						"beachclass_1976": {
 							"name": "Beach Protection",
@@ -52690,7 +52691,8 @@
 								"Segment Length (miles)": true,
 								"Beach Classification": true,
 								"Shore Protection Classification": true
-							}
+							},
+							"idProperty": "OBJECTID"
 						},
 						"structure_1976": {
 							"name": "Shore Structures",
@@ -52703,7 +52705,8 @@
 								"County": true,
 								"FIPS": true,
 								"Structure Type": true
-							}
+							},
+							"idProperty": "OBJECTID"
 						}
 					}
 				},
@@ -52728,7 +52731,8 @@
 								"Bluff Failure Classification": true,
 								"Non-Bluff Classification": true,
 								"Confidence Level Classification": true
-							}
+							},
+							"idProperty": "OBJECTID"
 						},
 						"beachclass_2007": {
 							"name": "Beach Protection",
@@ -52744,7 +52748,8 @@
 								"Segment Length (miles)": true,
 								"Beach Classification": true,
 								"Shore Protection Classification": true
-							}
+							},
+							"idProperty": "OBJECTID"
 						},
 						"structure_2007": {
 							"name": "Shore Structures",
@@ -52757,7 +52762,8 @@
 								"County": true,
 								"FIPS": true,
 								"Structure Type": true
-							}
+							},
+							"idProperty": "OBJECTID"
 						}
 					}
 				},
@@ -52783,7 +52789,8 @@
 								"State": true,
 								"File Name": true,
 								"Year": true
-							}
+							},
+							"idProperty": "OBJECTID"
 						},
 						"photos_2007": {
 							"name": "2007-08 Photos",
@@ -52804,7 +52811,8 @@
 								"State": true,
 								"File Name": true,
 								"Year": true
-							}
+							},
+							"idProperty": "OBJECTID"
 						},
 						"photos_2012": {
 							"name": "2012 Photos",
@@ -52816,7 +52824,8 @@
 								"altitude": "Altutude",
 								"date": "Date",
 								"imageUrl": false
-							}
+							},
+							"idProperty": "imageId"
 						},
 						"photos_2016": {
 							"name": "2016 Photos",
@@ -52827,7 +52836,8 @@
 								"name": "Name",
 								"filename": false,
 								"date": "Date"
-							}
+							},
+							"idProperty": "name"
 						},
 						"photos_2017": {
 							"name": "2017 Photos",
@@ -52838,7 +52848,8 @@
 								"id": "Name",
 								"altitude": "Altitude",
 								"date": "Date"
-							}
+							},
+							"idProperty": "id"
 						}
 					}
 				},
@@ -52860,7 +52871,8 @@
 								"bathy_png": false,
 								"notes": "Notes",
 								"type": "Type"
-							}
+							},
+							"idProperty": "ID"
 						}
 					}
 				},
@@ -68683,19 +68695,94 @@
 
 	var _FeaturePopup2 = _interopRequireDefault(_FeaturePopup);
 
+	var _util = __webpack_require__(776);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
-	 * Function that takes layer information and creates a popup.
+	 * onEachFeature.jsx
+	 * This contains functions that are applied to each layer when they are loaded.
+	 *
+	 * Each property of the ON_EACH_FEATURE object (below) is applied to a specific layer,
+	 * and Leaflet passes the layer's data to that function on load. It is used here to
+	 * apply click handling functions to each feature in each layer.
+	 */
+	var LAYER_FEATURES = {};
+
+	/**
 	 * The popup's content is handled by React (<FeaturePopup />),
 	 * however, Leaflet is not controlled by React.
 	 * Therefore, the popup's content must mount/unmount the React component
 	 * manually whenever it is opened/closed.
 	 */
-	function handleClick(feature, layer, layerId, map) {
+	function createLeafletPopup(feature, featureLayer, layerId, map, featureIndex) {
+	    var popup = L.popup({
+	        closeOnClick: false,
+	        className: "feature-popup hidden-xs",
+	        autoClose: true,
+	        maxWidth: 350,
+	        minWidth: 350,
+	        closeButton: false
+	    });
+	    var container = document.createElement("div");
+	    var getPopupPosition = function getPopupPosition() {
+	        var popupPosition = popup.getLatLng();
+	        var positionInMap = map.latLngToContainerPoint(popupPosition);
+	        var mapElement = document.getElementById("map");
+	        var mapLocation = mapElement.getBoundingClientRect();
+	        var positionInDocument = {
+	            x: positionInMap.x + mapLocation.left,
+	            y: positionInMap.y + mapLocation.top
+	        };
+	        return positionInDocument;
+	    };
+	    var closePopup = function closePopup() {
+	        /**
+	         * setTimeout hack to get around this current issue with React:
+	         * https://github.com/facebook/react/issues/3298
+	         */
+	        setTimeout(function () {
+	            (0, _reactDom.unmountComponentAtNode)(container);
+	            // eslint-disable-next-line no-underscore-dangle
+	            popup._close();
+	        }, 10);
+	    };
+	    var openNextFeature = function openNextFeature() {
+	        var nextFeatureIndex = featureIndex + 1;
+	        if (nextFeatureIndex >= LAYER_FEATURES[layerId].length) {
+	            nextFeatureIndex = 0;
+	        }
+	        LAYER_FEATURES[layerId][nextFeatureIndex].togglePopup();
+	    };
+	    var openPreviousFeature = function openPreviousFeature() {
+	        var previousFeatureIndex = featureIndex - 1;
+	        if (previousFeatureIndex < 0) {
+	            previousFeatureIndex = LAYER_FEATURES[layerId].length - 1;
+	        }
+	        LAYER_FEATURES[layerId][previousFeatureIndex].togglePopup();
+	    };
+	    popup.on("add", function addPopup() {
+	        (0, _reactDom.render)(_react2.default.createElement(_FeaturePopup2.default, {
+	            layerId: layerId,
+	            featureProperties: feature.properties,
+	            popup: popup,
+	            closePopup: closePopup,
+	            getPosition: getPopupPosition,
+	            openNextFeature: openNextFeature,
+	            openPreviousFeature: openPreviousFeature
+	        }), container);
+	    });
+	    popup.setContent(container);
+	    featureLayer.bindPopup(popup).openPopup();
+	    return popup;
+	}
+
+	/**
+	 * Function that takes layer information and creates a popup.
+	 */
+	function handleClick(feature, featureLayer, layerId, map, featureIndex) {
 	    var popup = false;
-	    // on click, create and open popup
-	    layer.on('mouseup', function mouseUp() {
+	    function togglePopup() {
 	        /**
 	         * if the screen is small, open the popup as a full modal
 	         * if the screen is large, open the popup as a leaflet-based in-map popup
@@ -68703,61 +68790,34 @@
 	        if (_store2.default.getState().mobile.window.width < 992) {
 	            _store2.default.dispatch((0, _mobile.mobileClickFeature)(feature.properties, layerId));
 	        } else if (popup === false) {
-	            popup = L.popup({
-	                closeOnClick: false,
-	                className: "feature-popup hidden-xs",
-	                autoClose: true,
-	                maxWidth: 350,
-	                minWidth: 350,
-	                closeButton: false
-	            });
-	            var container = document.createElement("div");
-	            var getPopupPosition = function getPopupPosition() {
-	                var popupPosition = popup.getLatLng();
-	                var positionInMap = map.latLngToContainerPoint(popupPosition);
-	                var mapElement = document.getElementById("map");
-	                var mapLocation = mapElement.getBoundingClientRect();
-	                var positionInDocument = {
-	                    x: positionInMap.x + mapLocation.left,
-	                    y: positionInMap.y + mapLocation.top
-	                };
-	                return positionInDocument;
-	            };
-	            var closePopup = function closePopup() {
-	                /**
-	                 * setTimeout hack to get around this current issue with React:
-	                 * https://github.com/facebook/react/issues/3298
-	                 */
-	                setTimeout(function () {
-	                    (0, _reactDom.unmountComponentAtNode)(container);
-	                    // eslint-disable-next-line no-underscore-dangle
-	                    popup._close();
-	                }, 10);
-	            };
-	            popup.on("add", function addPopup() {
-	                (0, _reactDom.render)(_react2.default.createElement(_FeaturePopup2.default, {
-	                    layerId: layerId,
-	                    featureProperties: feature.properties,
-	                    popup: popup,
-	                    closePopup: closePopup,
-	                    getPosition: getPopupPosition
-	                }), container);
-	            });
-	            popup.setContent(container);
-	            layer.bindPopup(popup);
+	            popup = createLeafletPopup(feature, featureLayer, layerId, map, featureIndex);
+	        } else {
+	            featureLayer.openPopup();
 	        }
-	    });
-	} /**
-	   * onEachFeature.jsx
-	   * This contains functions that are applied to each layer when they are loaded.
-	   *
-	   * Each property of the ON_EACH_FEATURE object (below) is applied to a specific layer,
-	   * and Leaflet passes the layer's data to that function on load. It is used here to
-	   * apply click handling functions to each feature in each layer.
-	   */
+	    }
+
+	    // on click, create and open popup
+	    featureLayer.on('mouseup', togglePopup);
+	    featureLayer.togglePopup = togglePopup;
+	}
+	/**
+	 * Leaflet creates a "feature layer" for each feature (a "sub-layer") within a layer
+	 * - i.e. The 1976 Photos layer will have feature layers for each photo
+	 * - these layers handle the click events for that feature, which we want to be able to access programatically
+	 * - this function will let us access "previous" and "next" features for use with previous/next buttons
+	 *      in the feature popups
+	 */
+	function addFeatureLayerToList(featureLayer, layerId) {
+	    LAYER_FEATURES[layerId] = LAYER_FEATURES[layerId] || [];
+	    LAYER_FEATURES[layerId].push(featureLayer);
+	    return LAYER_FEATURES[layerId].length - 1;
+	};
+
 	function ON_EACH_FEATURE(layerId, map) {
-	    return function (feature, layer) {
-	        handleClick(feature, layer, layerId, map);
+	    var idProperty = _util.LAYERS_BY_ID[layerId].idProperty;
+	    return function (feature, featureLayer) {
+	        var featureIndex = addFeatureLayerToList(featureLayer, layerId);
+	        handleClick(feature, featureLayer, layerId, map, featureIndex);
 	    };
 	}
 
@@ -68872,6 +68932,14 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'wiscviewer-feature-popup-controls' },
+	                        _react2.default.createElement('i', { className: 'fa fa-arrow-left feature-popup-previous-button',
+	                            onClick: this.props.openPreviousFeature,
+	                            role: 'button',
+	                            tabIndex: -1 }),
+	                        _react2.default.createElement('i', { className: 'fa fa-arrow-right feature-popup-next-button',
+	                            onClick: this.props.openNextFeature,
+	                            role: 'button',
+	                            tabIndex: -1 }),
 	                        _react2.default.createElement('i', { className: 'fa fa-thumb-tack feature-popup-pin',
 	                            onClick: this.pin,
 	                            role: 'button',
@@ -68916,6 +68984,8 @@
 	    featureProperties: _propTypes2.default.object.isRequired,
 	    popup: _propTypes2.default.instanceOf(L.Popup).isRequired,
 	    closePopup: _propTypes2.default.func.isRequired,
+	    openNextFeature: _propTypes2.default.func.isRequired,
+	    openPreviousFeature: _propTypes2.default.func.isRequired,
 	    getPosition: _propTypes2.default.func.isRequired
 	};
 
