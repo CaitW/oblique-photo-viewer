@@ -8468,6 +8468,9 @@ button.close {
 .wiscviewer-mobile-feature-popup .modal-body {
   padding: 0; }
 
+.wiscviewer-mobile-feature-popup .modal-footer {
+  font-size: 30px; }
+
 .wiscviewer-mobile-feature-popup .nav-tabs {
   border: none; }
   .wiscviewer-mobile-feature-popup .nav-tabs li a {
@@ -8488,9 +8491,11 @@ button.close {
 
 .wiscviewer-mobile-feature-popup .wiscviewer-popup-downloads-row {
   display: block;
-  margin: 0 0 5px 0;
+  margin: 0 0 10px 0;
   padding: 0;
   text-align: left; }
+  .wiscviewer-mobile-feature-popup .wiscviewer-popup-downloads-row i {
+    display: none; }
 
 .wiscviewer-mobile-feature-popup table {
   width: 100%;
@@ -8498,6 +8503,16 @@ button.close {
 
 .wiscviewer-mobile-feature-popup button {
   margin-left: 5px; }
+
+.wiscviewer-feature-controls {
+  text-align: center; }
+  .wiscviewer-feature-controls .wiscviewer-feature-popup-previous-button {
+    float: left; }
+  .wiscviewer-feature-controls .wiscviewer-feature-popup-next-button {
+    float: right; }
+  .wiscviewer-feature-controls i {
+    font-size: 30px;
+    margin: 0 10px; }
 
 .wiscviewer-mobile-layers-list .modal-dialog {
   height: calc(100% - 20px); }

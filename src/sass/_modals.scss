@@ -55,7 +55,7 @@
     padding: 0;
   }
   .modal-footer {
-
+    font-size: 30px;
   }
   .nav-tabs {
     border: none;
@@ -83,9 +83,12 @@
   }
   .wiscviewer-popup-downloads-row {
     display: block;
-    margin: 0 0 5px 0;
+    margin: 0 0 10px 0;
     padding: 0;
     text-align: left;
+    i {
+      display: none;
+    }
   }
   table {
     width: 100%;
@@ -96,6 +99,19 @@
   }
 }
 
+.wiscviewer-feature-controls {
+  text-align: center;
+  .wiscviewer-feature-popup-previous-button {
+    float: left;
+  }
+  .wiscviewer-feature-popup-next-button {
+    float: right;
+  }
+  i {
+    font-size: 30px;
+    margin: 0 10px;
+  }
+}
 
 .wiscviewer-mobile-layers-list {
   .modal-dialog {
