@@ -27,11 +27,12 @@ export function updateWindowDimensions(height, width) {
         width
     }
 }
-export function mobileClickFeature(featureProperties, layerId) {
+export function mobileClickFeature(featureProperties, layerId, featureIndex) {
     return {
         type: "MOBILE:LAYER:CLICK_FEATURE",
         featureProperties,
-        layerId
+        layerId,
+        featureIndex
     }
 }
 export function closeMobileFeatureModal() {
@@ -50,7 +51,8 @@ let initialState = {
     featureModal: {
         visible: false,
         featureProperties: false,
-        layerId: false
+        layerId: false,
+        featureIndex: false
     }
 };
 export default function mobile(state = initialState, action) {
@@ -76,12 +78,14 @@ export default function mobile(state = initialState, action) {
             featureModalState.visible = true;
             featureModalState.featureProperties = action.featureProperties;
             featureModalState.layerId = action.layerId;
+            featureModalState.featureIndex = action.featureIndex;
             newState.featureModal = featureModalState;
             break;
         case "MOBILE:FEATURE_MODAL:CLOSE":
             featureModalState.visible = false;
             featureModalState.featureProperties = false;
             featureModalState.layerId = false;
+            featureModalState.featureIndex = false;
             newState.featureModal = featureModalState;
             break;
         default:

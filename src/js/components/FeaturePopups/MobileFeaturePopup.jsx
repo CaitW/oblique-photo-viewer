@@ -10,6 +10,7 @@ import store from '../../store';
 
 import { getMobileFeaturePopupProps } from '../../selectors';
 import { closeMobileFeatureModal } from '../../ducks/mobile';
+import { getFeatureLayer } from '../../layers/layerFeatures.jsx';
 
 import PopupTabs from './components/PopupTabs';
 import PopupTitle from './components/PopupTitle';
@@ -20,8 +21,19 @@ const mapStateToProps = (state) => {
 }
 
 class MobileFeaturePopup extends React.Component {
+  constructor (props) {
+    super(props);
+    this.openPreviousFeature = this.openPreviousFeature.bind(this);
+    this.openNextFeature = this.openNextFeature.bind(this);
+  }
   static close () {
       store.dispatch(closeMobileFeatureModal());
+  }
+  openPreviousFeature () {
+    getFeatureLayer(this.props.featureIndex, this.props.layerId).openPreviousFeature();
+  }
+  openNextFeature () {
+    getFeatureLayer(this.props.featureIndex, this.props.layerId).openPreviousFeature();
   }
   render () {
     let classNames = [
@@ -51,6 +63,16 @@ class MobileFeaturePopup extends React.Component {
                   </Modal.Body>
                   <Modal.Footer>
                     <PopupFooter layerId={this.props.layerId} featureProperties={this.props.featureProperties}>
+                        <i className="fa fa-arrow-left feature-popup-previous-button"
+                            onClick={this.openPreviousFeature}
+                            role="button"
+                            tabIndex={-1}>
+                        </i>
+                        <i className="fa fa-arrow-right feature-popup-next-button"
+                            onClick={this.openNextFeature}
+                            role="button"
+                            tabIndex={-1}>
+                        </i>
                         <Button key="close" onClick={this.constructor.close}>Close</Button>
                     </PopupFooter>
                   </Modal.Footer>

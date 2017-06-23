@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import CONFIG from '../config.json';
 import LAYER_STYLE from '../layers/layerStyles';
-import ON_EACH_FEATURE from '../layers/onEachFeature';
+import { onEachFeature } from '../layers/layerFeatures';
 import { mapNewZoomLevel, mapMousedown } from '../ducks/map';
 import store from '../store';
 
@@ -59,7 +59,7 @@ export default class ObliquePhotoMap {
                         },
                         layerId: layerId
                     };
-                    layerOptions.onEachFeature = ON_EACH_FEATURE(layerId, self.map);
+                    layerOptions.onEachFeature = onEachFeature(layerId, self.map);
                     layerOptions.style = LAYER_STYLE(layerId);
                     this.layerIndex[layerId] = L.geoJson(null, layerOptions);
                     axios.get(layer.dataLocation)

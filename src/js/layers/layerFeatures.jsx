@@ -22,7 +22,7 @@ const LAYER_FEATURES = {};
  * Therefore, the popup's content must mount/unmount the React component
  * manually whenever it is opened/closed.
  */
-function createLeafletPopup (feature, featureLayer, layerId, map, featureIndex) {
+function createLeafletPopup (feature, featureLayer, layerId, map) {
     let popup = L.popup({
         closeOnClick: false,
         className: "feature-popup hidden-xs",
@@ -54,20 +54,6 @@ function createLeafletPopup (feature, featureLayer, layerId, map, featureIndex) 
             popup._close();
         },10);
     };
-    let openNextFeature = () => {
-        let nextFeatureIndex = featureIndex + 1;
-        if(nextFeatureIndex >= LAYER_FEATURES[layerId].length) {
-            nextFeatureIndex = 0;
-        }
-        LAYER_FEATURES[layerId][nextFeatureIndex].togglePopup();
-    }
-    let openPreviousFeature = () => {
-        let previousFeatureIndex = featureIndex - 1;
-        if(previousFeatureIndex < 0) {
-            previousFeatureIndex = LAYER_FEATURES[layerId].length - 1;
-        }
-        LAYER_FEATURES[layerId][previousFeatureIndex].togglePopup();
-    }
     popup.on("add", function addPopup () {
         render(
             <FeaturePopup
@@ -76,8 +62,8 @@ function createLeafletPopup (feature, featureLayer, layerId, map, featureIndex) 
                 popup={popup}
                 closePopup={closePopup}
                 getPosition={getPopupPosition}
-                openNextFeature={openNextFeature}
-                openPreviousFeature={openPreviousFeature}
+                openNextFeature={featureLayer.openNextFeature}
+                openPreviousFeature={featureLayer.openPreviousFeature}
             />,
             container
         );
@@ -87,29 +73,19 @@ function createLeafletPopup (feature, featureLayer, layerId, map, featureIndex) 
     return popup;
 }
 
-/**
- * Function that takes layer information and creates a popup.
- */
-function handleClick(feature, featureLayer, layerId, map, featureIndex) {
-    var popup = false;
-    function togglePopup() {
-        /**
-         * if the screen is small, open the popup as a full modal
-         * if the screen is large, open the popup as a leaflet-based in-map popup
-         */
-        if (store.getState()
-            .mobile.window.width < 992) {
-            store.dispatch(mobileClickFeature(feature.properties, layerId));
-        } else if (popup === false) {
-            popup = createLeafletPopup(feature, featureLayer, layerId, map, featureIndex);
-        } else {
-            featureLayer.openPopup();
-        }
+function togglePopup (feature, featureLayer, layerId, map) {
+    let featureIndex = featureLayer.featureIndex;
+    let nextFeatureIndex = ((featureIndex + 1) >= LAYER_FEATURES[layerId].length) ? 0 : featureIndex + 1;
+    let previousFeatureIndex = ((featureIndex - 1) < 0) ? LAYER_FEATURES[layerId].length - 1 : featureIndex - 1;
+    featureLayer.openNextFeature = LAYER_FEATURES[layerId][nextFeatureIndex].togglePopup;
+    featureLayer.openPreviousFeature = LAYER_FEATURES[layerId][previousFeatureIndex].togglePopup;
+    if (store.getState().mobile.window.width < 992) {
+        store.dispatch(mobileClickFeature(feature.properties, layerId, featureIndex));
+    } else if (featureLayer.popup === false) {
+        featureLayer.popup = createLeafletPopup(feature, featureLayer, layerId, map, featureIndex);
+    } else {
+        featureLayer.openPopup();
     }
-
-    // on click, create and open popup
-    featureLayer.on('mouseup', togglePopup);
-    featureLayer.togglePopup = togglePopup;
 }
 /**
  * Leaflet creates a "feature layer" for each feature (a "sub-layer") within a layer
@@ -124,11 +100,22 @@ function addFeatureLayerToList (featureLayer, layerId) {
     return LAYER_FEATURES[layerId].length - 1;
 };
 
-export default function ON_EACH_FEATURE (layerId, map) {
+export function onEachFeature (layerId, map) {
     let idProperty = LAYERS_BY_ID[layerId].idProperty;
     return (feature, featureLayer) => {
         let featureIndex = addFeatureLayerToList(featureLayer, layerId);
-        handleClick(feature, featureLayer, layerId, map, featureIndex);
+        featureLayer.popup = false;
+        featureLayer.openNextFeature = false;
+        featureLayer.openPreviousFeature = false;
+        featureLayer.featureIndex = featureIndex;
+        featureLayer.togglePopup = function () {
+            togglePopup(feature, featureLayer, layerId, map);
+        };
+        featureLayer.on('mouseup', featureLayer.togglePopup);
     }
+}
+
+export function getFeatureLayer (featureIndex, layerId) {
+    return LAYER_FEATURES[layerId][featureIndex];
 }
 
