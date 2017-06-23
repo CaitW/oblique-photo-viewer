@@ -54096,18 +54096,22 @@
 	            _react2.default.createElement(
 	              _PopupFooter2.default,
 	              { layerId: this.props.layerId, featureProperties: this.props.featureProperties },
-	              _react2.default.createElement('i', { className: 'fa fa-arrow-left feature-popup-previous-button',
-	                onClick: this.openPreviousFeature,
-	                role: 'button',
-	                tabIndex: -1 }),
-	              _react2.default.createElement('i', { className: 'fa fa-arrow-right feature-popup-next-button',
-	                onClick: this.openNextFeature,
-	                role: 'button',
-	                tabIndex: -1 }),
 	              _react2.default.createElement(
-	                _reactBootstrap.Button,
-	                { key: 'close', onClick: this.constructor.close },
-	                'Close'
+	                'div',
+	                { className: 'wiscviewer-feature-controls' },
+	                _react2.default.createElement('i', { className: 'fa fa-arrow-left wiscviewer-feature-popup-previous-button',
+	                  onClick: this.openPreviousFeature,
+	                  role: 'button',
+	                  tabIndex: -1 }),
+	                _react2.default.createElement(
+	                  _reactBootstrap.Button,
+	                  { key: 'close', className: 'wiscviewer-mobile-feature-modal-close', onClick: this.constructor.close },
+	                  'Close'
+	                ),
+	                _react2.default.createElement('i', { className: 'fa fa-arrow-right wiscviewer-feature-popup-next-button',
+	                  onClick: this.openNextFeature,
+	                  role: 'button',
+	                  tabIndex: -1 })
 	              )
 	            )
 	          )
