@@ -8085,27 +8085,27 @@
 
 	var _MobileFeaturePopup2 = _interopRequireDefault(_MobileFeaturePopup);
 
-	var _MapWrapper = __webpack_require__(817);
+	var _MapWrapper = __webpack_require__(819);
 
 	var _MapWrapper2 = _interopRequireDefault(_MapWrapper);
 
-	var _MobileLayerList = __webpack_require__(818);
+	var _MobileLayerList = __webpack_require__(820);
 
 	var _MobileLayerList2 = _interopRequireDefault(_MobileLayerList);
 
-	var _PinnedFeaturePopupContainer = __webpack_require__(824);
+	var _PinnedFeaturePopupContainer = __webpack_require__(826);
 
 	var _PinnedFeaturePopupContainer2 = _interopRequireDefault(_PinnedFeaturePopupContainer);
 
-	var _LayerList = __webpack_require__(819);
+	var _LayerList = __webpack_require__(821);
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
 
-	var _Legend = __webpack_require__(827);
+	var _Legend = __webpack_require__(829);
 
 	var _Legend2 = _interopRequireDefault(_Legend);
 
-	var _LeafletMap = __webpack_require__(828);
+	var _LeafletMap = __webpack_require__(830);
 
 	var _LeafletMap2 = _interopRequireDefault(_LeafletMap);
 
@@ -53322,11 +53322,12 @@
 	        width: width
 	    };
 	}
-	function mobileClickFeature(featureProperties, layerId) {
+	function mobileClickFeature(featureProperties, layerId, featureIndex) {
 	    return {
 	        type: "MOBILE:LAYER:CLICK_FEATURE",
 	        featureProperties: featureProperties,
-	        layerId: layerId
+	        layerId: layerId,
+	        featureIndex: featureIndex
 	    };
 	}
 	function closeMobileFeatureModal() {
@@ -53345,7 +53346,8 @@
 	    featureModal: {
 	        visible: false,
 	        featureProperties: false,
-	        layerId: false
+	        layerId: false,
+	        featureIndex: false
 	    }
 	};
 	function mobile() {
@@ -53374,12 +53376,14 @@
 	            featureModalState.visible = true;
 	            featureModalState.featureProperties = action.featureProperties;
 	            featureModalState.layerId = action.layerId;
+	            featureModalState.featureIndex = action.featureIndex;
 	            newState.featureModal = featureModalState;
 	            break;
 	        case "MOBILE:FEATURE_MODAL:CLOSE":
 	            featureModalState.visible = false;
 	            featureModalState.featureProperties = false;
 	            featureModalState.layerId = false;
+	            featureModalState.featureIndex = false;
 	            newState.featureModal = featureModalState;
 	            break;
 	        default:
@@ -54003,15 +54007,17 @@
 
 	var _mobile = __webpack_require__(780);
 
-	var _PopupTabs = __webpack_require__(796);
+	var _layerFeatures = __webpack_require__(796);
+
+	var _PopupTabs = __webpack_require__(798);
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
-	var _PopupTitle = __webpack_require__(815);
+	var _PopupTitle = __webpack_require__(817);
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _PopupFooter = __webpack_require__(816);
+	var _PopupFooter = __webpack_require__(818);
 
 	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
 
@@ -54034,13 +54040,27 @@
 	var MobileFeaturePopup = function (_React$Component) {
 	  _inherits(MobileFeaturePopup, _React$Component);
 
-	  function MobileFeaturePopup() {
+	  function MobileFeaturePopup(props) {
 	    _classCallCheck(this, MobileFeaturePopup);
 
-	    return _possibleConstructorReturn(this, (MobileFeaturePopup.__proto__ || Object.getPrototypeOf(MobileFeaturePopup)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (MobileFeaturePopup.__proto__ || Object.getPrototypeOf(MobileFeaturePopup)).call(this, props));
+
+	    _this.openPreviousFeature = _this.openPreviousFeature.bind(_this);
+	    _this.openNextFeature = _this.openNextFeature.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(MobileFeaturePopup, [{
+	    key: 'openPreviousFeature',
+	    value: function openPreviousFeature() {
+	      (0, _layerFeatures.getFeatureLayer)(this.props.featureIndex, this.props.layerId).openPreviousFeature();
+	    }
+	  }, {
+	    key: 'openNextFeature',
+	    value: function openNextFeature() {
+	      (0, _layerFeatures.getFeatureLayer)(this.props.featureIndex, this.props.layerId).openPreviousFeature();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var classNames = ["wiscviewer-modal", "wiscviewer-mobile-modal", "wiscviewer-mobile-feature-popup", "static-modal"];
@@ -54076,6 +54096,14 @@
 	            _react2.default.createElement(
 	              _PopupFooter2.default,
 	              { layerId: this.props.layerId, featureProperties: this.props.featureProperties },
+	              _react2.default.createElement('i', { className: 'fa fa-arrow-left feature-popup-previous-button',
+	                onClick: this.openPreviousFeature,
+	                role: 'button',
+	                tabIndex: -1 }),
+	              _react2.default.createElement('i', { className: 'fa fa-arrow-right feature-popup-next-button',
+	                onClick: this.openNextFeature,
+	                role: 'button',
+	                tabIndex: -1 }),
 	              _react2.default.createElement(
 	                _reactBootstrap.Button,
 	                { key: 'close', onClick: this.constructor.close },
@@ -54425,6 +54453,318 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.onEachFeature = onEachFeature;
+	exports.getFeatureLayer = getFeatureLayer;
+
+	var _react = __webpack_require__(298);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(334);
+
+	var _store = __webpack_require__(774);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	var _mobile = __webpack_require__(780);
+
+	var _FeaturePopup = __webpack_require__(797);
+
+	var _FeaturePopup2 = _interopRequireDefault(_FeaturePopup);
+
+	var _util = __webpack_require__(776);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * onEachFeature.jsx
+	 * This contains functions that are applied to each layer when they are loaded.
+	 *
+	 * Each property of the ON_EACH_FEATURE object (below) is applied to a specific layer,
+	 * and Leaflet passes the layer's data to that function on load. It is used here to
+	 * apply click handling functions to each feature in each layer.
+	 */
+	var LAYER_FEATURES = {};
+
+	/**
+	 * The popup's content is handled by React (<FeaturePopup />),
+	 * however, Leaflet is not controlled by React.
+	 * Therefore, the popup's content must mount/unmount the React component
+	 * manually whenever it is opened/closed.
+	 */
+	function createLeafletPopup(feature, featureLayer, layerId, map) {
+	    var popup = L.popup({
+	        closeOnClick: false,
+	        className: "feature-popup hidden-xs",
+	        autoClose: true,
+	        maxWidth: 350,
+	        minWidth: 350,
+	        closeButton: false
+	    });
+	    var container = document.createElement("div");
+	    var getPopupPosition = function getPopupPosition() {
+	        var popupPosition = popup.getLatLng();
+	        var positionInMap = map.latLngToContainerPoint(popupPosition);
+	        var mapElement = document.getElementById("map");
+	        var mapLocation = mapElement.getBoundingClientRect();
+	        var positionInDocument = {
+	            x: positionInMap.x + mapLocation.left,
+	            y: positionInMap.y + mapLocation.top
+	        };
+	        return positionInDocument;
+	    };
+	    var closePopup = function closePopup() {
+	        /**
+	         * setTimeout hack to get around this current issue with React:
+	         * https://github.com/facebook/react/issues/3298
+	         */
+	        setTimeout(function () {
+	            (0, _reactDom.unmountComponentAtNode)(container);
+	            // eslint-disable-next-line no-underscore-dangle
+	            popup._close();
+	        }, 10);
+	    };
+	    popup.on("add", function addPopup() {
+	        (0, _reactDom.render)(_react2.default.createElement(_FeaturePopup2.default, {
+	            layerId: layerId,
+	            featureProperties: feature.properties,
+	            popup: popup,
+	            closePopup: closePopup,
+	            getPosition: getPopupPosition,
+	            openNextFeature: featureLayer.openNextFeature,
+	            openPreviousFeature: featureLayer.openPreviousFeature
+	        }), container);
+	    });
+	    popup.setContent(container);
+	    featureLayer.bindPopup(popup).openPopup();
+	    return popup;
+	}
+
+	function togglePopup(feature, featureLayer, layerId, map) {
+	    var featureIndex = featureLayer.featureIndex;
+	    var nextFeatureIndex = featureIndex + 1 >= LAYER_FEATURES[layerId].length ? 0 : featureIndex + 1;
+	    var previousFeatureIndex = featureIndex - 1 < 0 ? LAYER_FEATURES[layerId].length - 1 : featureIndex - 1;
+	    featureLayer.openNextFeature = LAYER_FEATURES[layerId][nextFeatureIndex].togglePopup;
+	    featureLayer.openPreviousFeature = LAYER_FEATURES[layerId][previousFeatureIndex].togglePopup;
+	    if (_store2.default.getState().mobile.window.width < 992) {
+	        _store2.default.dispatch((0, _mobile.mobileClickFeature)(feature.properties, layerId, featureIndex));
+	    } else if (featureLayer.popup === false) {
+	        featureLayer.popup = createLeafletPopup(feature, featureLayer, layerId, map, featureIndex);
+	    } else {
+	        featureLayer.openPopup();
+	    }
+	}
+	/**
+	 * Leaflet creates a "feature layer" for each feature (a "sub-layer") within a layer
+	 * - i.e. The 1976 Photos layer will have feature layers for each photo
+	 * - these layers handle the click events for that feature, which we want to be able to access programatically
+	 * - this function will let us access "previous" and "next" features for use with previous/next buttons
+	 *      in the feature popups
+	 */
+	function addFeatureLayerToList(featureLayer, layerId) {
+	    LAYER_FEATURES[layerId] = LAYER_FEATURES[layerId] || [];
+	    LAYER_FEATURES[layerId].push(featureLayer);
+	    return LAYER_FEATURES[layerId].length - 1;
+	};
+
+	function onEachFeature(layerId, map) {
+	    var idProperty = _util.LAYERS_BY_ID[layerId].idProperty;
+	    return function (feature, featureLayer) {
+	        var featureIndex = addFeatureLayerToList(featureLayer, layerId);
+	        featureLayer.popup = false;
+	        featureLayer.openNextFeature = false;
+	        featureLayer.openPreviousFeature = false;
+	        featureLayer.featureIndex = featureIndex;
+	        featureLayer.togglePopup = function () {
+	            togglePopup(feature, featureLayer, layerId, map);
+	        };
+	        featureLayer.on('mouseup', featureLayer.togglePopup);
+	    };
+	}
+
+	function getFeatureLayer(featureIndex, layerId) {
+	    return LAYER_FEATURES[layerId][featureIndex];
+	}
+
+/***/ }),
+/* 797 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(298);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(569);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _store = __webpack_require__(774);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	var _PopupTabs = __webpack_require__(798);
+
+	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
+
+	var _PopupTitle = __webpack_require__(817);
+
+	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
+
+	var _PopupFooter = __webpack_require__(818);
+
+	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
+
+	var _pinnedFeatures = __webpack_require__(781);
+
+	var _util = __webpack_require__(776);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * FeatureModal.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This creates the modal that's displayed when a user clicks on an object in the map
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var FeaturePopup = function (_React$Component) {
+	    _inherits(FeaturePopup, _React$Component);
+
+	    function FeaturePopup(props) {
+	        _classCallCheck(this, FeaturePopup);
+
+	        var _this = _possibleConstructorReturn(this, (FeaturePopup.__proto__ || Object.getPrototypeOf(FeaturePopup)).call(this, props));
+
+	        _this.update = _this.update.bind(_this);
+	        _this.bringToFront = _this.bringToFront.bind(_this);
+	        _this.close = _this.close.bind(_this);
+	        _this.pin = _this.pin.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(FeaturePopup, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.update();
+	        }
+	    }, {
+	        key: 'update',
+	        value: function update() {
+	            this.props.popup.update();
+	        }
+	    }, {
+	        key: 'bringToFront',
+	        value: function bringToFront() {
+	            this.props.popup.bringToFront();
+	        }
+	    }, {
+	        key: 'close',
+	        value: function close() {
+	            this.props.closePopup();
+	        }
+	    }, {
+	        key: 'pin',
+	        value: function pin() {
+	            var position = this.props.getPosition();
+	            _store2.default.dispatch((0, _pinnedFeatures.newPinnedFeature)(this.props.layerId, this.props.featureProperties, position));
+	            this.close();
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var layerGroupId = _util.LAYERS_BY_ID[this.props.layerId].layerGroupId;
+	            var layerGroupName = _util.LAYER_GROUPS_BY_ID[layerGroupId].name;
+	            var layerName = _util.LAYERS_BY_ID[this.props.layerId].name;
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'wiscviewer-feature-popup',
+	                    onClick: this.bringToFront,
+	                    tabIndex: 0 },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'wiscviewer-feature-popup-header' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'wiscviewer-feature-popup-controls' },
+	                        _react2.default.createElement('i', { className: 'fa fa-arrow-left feature-popup-previous-button',
+	                            onClick: this.props.openPreviousFeature,
+	                            role: 'button',
+	                            tabIndex: -1 }),
+	                        _react2.default.createElement('i', { className: 'fa fa-arrow-right feature-popup-next-button',
+	                            onClick: this.props.openNextFeature,
+	                            role: 'button',
+	                            tabIndex: -1 }),
+	                        _react2.default.createElement('i', { className: 'fa fa-thumb-tack feature-popup-pin',
+	                            onClick: this.pin,
+	                            role: 'button',
+	                            tabIndex: -1 }),
+	                        _react2.default.createElement('i', { className: 'fa fa-times feature-popup-close-button',
+	                            onClick: this.close,
+	                            role: 'button',
+	                            tabIndex: -1 })
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'wiscviewer-feature-popup-body' },
+	                    _react2.default.createElement(_PopupTabs2.default, { layerId: this.props.layerId,
+	                        featureProperties: this.props.featureProperties,
+	                        update: this.update
+	                    })
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'wiscviewer-feature-popup-footer' },
+	                    _react2.default.createElement(_PopupTitle2.default, { featureProperties: this.props.featureProperties,
+	                        layerGroupName: layerGroupName,
+	                        layerName: layerName
+	                    }),
+	                    _react2.default.createElement(
+	                        _PopupFooter2.default,
+	                        { layerId: this.props.layerId,
+	                            featureProperties: this.props.featureProperties },
+	                        _react2.default.createElement('div', { key: 'clearfix', className: 'clearfix' })
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return FeaturePopup;
+	}(_react2.default.Component);
+
+	FeaturePopup.propTypes = {
+	    layerId: _propTypes2.default.string.isRequired,
+	    featureProperties: _propTypes2.default.object.isRequired,
+	    popup: _propTypes2.default.instanceOf(L.Popup).isRequired,
+	    closePopup: _propTypes2.default.func.isRequired,
+	    openNextFeature: _propTypes2.default.func.isRequired,
+	    openPreviousFeature: _propTypes2.default.func.isRequired,
+	    getPosition: _propTypes2.default.func.isRequired
+	};
+
+	exports.default = FeaturePopup;
+
+/***/ }),
+/* 798 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -54442,15 +54782,15 @@
 
 	var _uuid2 = _interopRequireDefault(_uuid);
 
-	var _ImageTab = __webpack_require__(797);
+	var _ImageTab = __webpack_require__(799);
 
 	var _ImageTab2 = _interopRequireDefault(_ImageTab);
 
-	var _DataTab = __webpack_require__(798);
+	var _DataTab = __webpack_require__(800);
 
 	var _DataTab2 = _interopRequireDefault(_DataTab);
 
-	var _ProfileTab = __webpack_require__(799);
+	var _ProfileTab = __webpack_require__(801);
 
 	var _ProfileTab2 = _interopRequireDefault(_ProfileTab);
 
@@ -54591,7 +54931,7 @@
 	exports.default = PopupTabs;
 
 /***/ }),
-/* 797 */
+/* 799 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54642,7 +54982,7 @@
 	exports.default = ImageTab;
 
 /***/ }),
-/* 798 */
+/* 800 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54768,7 +55108,7 @@
 	exports.default = DataTab;
 
 /***/ }),
-/* 799 */
+/* 801 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54795,17 +55135,17 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _d3Scale = __webpack_require__(800);
+	var _d3Scale = __webpack_require__(802);
 
-	var _d3Axis = __webpack_require__(808);
+	var _d3Axis = __webpack_require__(810);
 
-	var _d3Shape = __webpack_require__(809);
+	var _d3Shape = __webpack_require__(811);
 
-	var _d3Request = __webpack_require__(811);
+	var _d3Request = __webpack_require__(813);
 
-	var _d3Selection = __webpack_require__(814);
+	var _d3Selection = __webpack_require__(816);
 
-	var _d3Array = __webpack_require__(801);
+	var _d3Array = __webpack_require__(803);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54940,12 +55280,12 @@
 	exports.default = ProfileTab;
 
 /***/ }),
-/* 800 */
+/* 802 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-scale/ Version 1.0.6. Copyright 2017 Mike Bostock.
 	(function (global, factory) {
-		 true ? factory(exports, __webpack_require__(801), __webpack_require__(802), __webpack_require__(803), __webpack_require__(805), __webpack_require__(806), __webpack_require__(807), __webpack_require__(804)) :
+		 true ? factory(exports, __webpack_require__(803), __webpack_require__(804), __webpack_require__(805), __webpack_require__(807), __webpack_require__(808), __webpack_require__(809), __webpack_require__(806)) :
 		typeof define === 'function' && define.amd ? define(['exports', 'd3-array', 'd3-collection', 'd3-interpolate', 'd3-format', 'd3-time', 'd3-time-format', 'd3-color'], factory) :
 		(factory((global.d3 = global.d3 || {}),global.d3,global.d3,global.d3,global.d3,global.d3,global.d3,global.d3));
 	}(this, (function (exports,d3Array,d3Collection,d3Interpolate,d3Format,d3Time,d3TimeFormat,d3Color) { 'use strict';
@@ -55871,7 +56211,7 @@
 
 
 /***/ }),
-/* 801 */
+/* 803 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-array/ Version 1.2.0. Copyright 2017 Mike Bostock.
@@ -56466,7 +56806,7 @@
 
 
 /***/ }),
-/* 802 */
+/* 804 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-collection/ Version 1.0.3. Copyright 2017 Mike Bostock.
@@ -56689,12 +57029,12 @@
 
 
 /***/ }),
-/* 803 */
+/* 805 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-interpolate/ Version 1.1.5. Copyright 2017 Mike Bostock.
 	(function (global, factory) {
-		 true ? factory(exports, __webpack_require__(804)) :
+		 true ? factory(exports, __webpack_require__(806)) :
 		typeof define === 'function' && define.amd ? define(['exports', 'd3-color'], factory) :
 		(factory((global.d3 = global.d3 || {}),global.d3));
 	}(this, (function (exports,d3Color) { 'use strict';
@@ -57240,7 +57580,7 @@
 
 
 /***/ }),
-/* 804 */
+/* 806 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-color/ Version 1.0.3. Copyright 2017 Mike Bostock.
@@ -57769,7 +58109,7 @@
 
 
 /***/ }),
-/* 805 */
+/* 807 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-format/ Version 1.2.0. Copyright 2017 Mike Bostock.
@@ -58106,7 +58446,7 @@
 
 
 /***/ }),
-/* 806 */
+/* 808 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-time/ Version 1.0.6. Copyright 2017 Mike Bostock.
@@ -58490,12 +58830,12 @@
 
 
 /***/ }),
-/* 807 */
+/* 809 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-time-format/ Version 2.0.5. Copyright 2017 Mike Bostock.
 	(function (global, factory) {
-		 true ? factory(exports, __webpack_require__(806)) :
+		 true ? factory(exports, __webpack_require__(808)) :
 		typeof define === 'function' && define.amd ? define(['exports', 'd3-time'], factory) :
 		(factory((global.d3 = global.d3 || {}),global.d3));
 	}(this, (function (exports,d3Time) { 'use strict';
@@ -59084,7 +59424,7 @@
 
 
 /***/ }),
-/* 808 */
+/* 810 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-axis/ Version 1.0.7. Copyright 2017 Mike Bostock.
@@ -59277,12 +59617,12 @@
 
 
 /***/ }),
-/* 809 */
+/* 811 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-shape/ Version 1.1.1. Copyright 2017 Mike Bostock.
 	(function (global, factory) {
-		 true ? factory(exports, __webpack_require__(810)) :
+		 true ? factory(exports, __webpack_require__(812)) :
 		typeof define === 'function' && define.amd ? define(['exports', 'd3-path'], factory) :
 		(factory((global.d3 = global.d3 || {}),global.d3));
 	}(this, (function (exports,d3Path) { 'use strict';
@@ -61215,7 +61555,7 @@
 
 
 /***/ }),
-/* 810 */
+/* 812 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-path/ Version 1.0.5. Copyright 2017 Mike Bostock.
@@ -61362,12 +61702,12 @@
 
 
 /***/ }),
-/* 811 */
+/* 813 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-request/ Version 1.0.5. Copyright 2017 Mike Bostock.
 	(function (global, factory) {
-		 true ? factory(exports, __webpack_require__(802), __webpack_require__(812), __webpack_require__(813)) :
+		 true ? factory(exports, __webpack_require__(804), __webpack_require__(814), __webpack_require__(815)) :
 		typeof define === 'function' && define.amd ? define(['exports', 'd3-collection', 'd3-dispatch', 'd3-dsv'], factory) :
 		(factory((global.d3 = global.d3 || {}),global.d3,global.d3,global.d3));
 	}(this, (function (exports,d3Collection,d3Dispatch,d3Dsv) { 'use strict';
@@ -61584,7 +61924,7 @@
 
 
 /***/ }),
-/* 812 */
+/* 814 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-dispatch/ Version 1.0.3. Copyright 2017 Mike Bostock.
@@ -61685,7 +62025,7 @@
 
 
 /***/ }),
-/* 813 */
+/* 815 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-dsv/ Version 1.0.5. Copyright 2017 Mike Bostock.
@@ -61860,7 +62200,7 @@
 
 
 /***/ }),
-/* 814 */
+/* 816 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-selection/ Version 1.1.0. Copyright 2017 Mike Bostock.
@@ -62842,7 +63182,7 @@
 
 
 /***/ }),
-/* 815 */
+/* 817 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62896,7 +63236,7 @@
 	exports.default = PopupTitle;
 
 /***/ }),
-/* 816 */
+/* 818 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63004,7 +63344,7 @@
 	PopupFooter.propTypes = {
 	    layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
 	    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired,
-	    children: _propTypes2.default.object
+	    children: _propTypes2.default.array
 	};
 
 	PopupFooter.defaultProps = {
@@ -63014,7 +63354,7 @@
 	exports.default = PopupFooter;
 
 /***/ }),
-/* 817 */
+/* 819 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63058,7 +63398,7 @@
 	exports.default = MapWrapper;
 
 /***/ }),
-/* 818 */
+/* 820 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63085,7 +63425,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _LayerList = __webpack_require__(819);
+	var _LayerList = __webpack_require__(821);
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
 
@@ -63176,7 +63516,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MobileLayerList);
 
 /***/ }),
-/* 819 */
+/* 821 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63203,11 +63543,11 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _LayerGroup = __webpack_require__(820);
+	var _LayerGroup = __webpack_require__(822);
 
 	var _LayerGroup2 = _interopRequireDefault(_LayerGroup);
 
-	var _BasemapList = __webpack_require__(822);
+	var _BasemapList = __webpack_require__(824);
 
 	var _BasemapList2 = _interopRequireDefault(_BasemapList);
 
@@ -63297,7 +63637,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LayerList);
 
 /***/ }),
-/* 820 */
+/* 822 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63316,7 +63656,7 @@
 
 	var _reactBootstrap = __webpack_require__(481);
 
-	var _Layer = __webpack_require__(821);
+	var _Layer = __webpack_require__(823);
 
 	var _Layer2 = _interopRequireDefault(_Layer);
 
@@ -63379,7 +63719,7 @@
 	exports.default = LayerGroup;
 
 /***/ }),
-/* 821 */
+/* 823 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63435,7 +63775,7 @@
 	exports.default = Layer;
 
 /***/ }),
-/* 822 */
+/* 824 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63454,7 +63794,7 @@
 
 	var _reactBootstrap = __webpack_require__(481);
 
-	var _Basemap = __webpack_require__(823);
+	var _Basemap = __webpack_require__(825);
 
 	var _Basemap2 = _interopRequireDefault(_Basemap);
 
@@ -63516,7 +63856,7 @@
 	exports.default = BasemapList;
 
 /***/ }),
-/* 823 */
+/* 825 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63568,7 +63908,7 @@
 	exports.default = Basemap;
 
 /***/ }),
-/* 824 */
+/* 826 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63595,7 +63935,7 @@
 
 	var _pinnedFeatures = __webpack_require__(781);
 
-	var _PinnedFeaturePopup = __webpack_require__(825);
+	var _PinnedFeaturePopup = __webpack_require__(827);
 
 	var _PinnedFeaturePopup2 = _interopRequireDefault(_PinnedFeaturePopup);
 
@@ -63751,7 +64091,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(PinnedFeaturePopupContainer);
 
 /***/ }),
-/* 825 */
+/* 827 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63770,19 +64110,19 @@
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _reactDraggable = __webpack_require__(826);
+	var _reactDraggable = __webpack_require__(828);
 
 	var _reactDraggable2 = _interopRequireDefault(_reactDraggable);
 
-	var _PopupTabs = __webpack_require__(796);
+	var _PopupTabs = __webpack_require__(798);
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
-	var _PopupTitle = __webpack_require__(815);
+	var _PopupTitle = __webpack_require__(817);
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _PopupFooter = __webpack_require__(816);
+	var _PopupFooter = __webpack_require__(818);
 
 	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
 
@@ -63909,7 +64249,7 @@
 	exports.default = PinnedFeaturePopup;
 
 /***/ }),
-/* 826 */
+/* 828 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -66369,7 +66709,7 @@
 	//# sourceMappingURL=react-draggable.js.map
 
 /***/ }),
-/* 827 */
+/* 829 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66533,7 +66873,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Legend);
 
 /***/ }),
-/* 828 */
+/* 830 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66558,7 +66898,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _ObliquePhotoMap = __webpack_require__(829);
+	var _ObliquePhotoMap = __webpack_require__(831);
 
 	var _ObliquePhotoMap2 = _interopRequireDefault(_ObliquePhotoMap);
 
@@ -66670,7 +67010,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LeafletMap);
 
 /***/ }),
-/* 829 */
+/* 831 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66681,7 +67021,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _axios = __webpack_require__(830);
+	var _axios = __webpack_require__(832);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
@@ -66689,13 +67029,11 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _layerStyles = __webpack_require__(855);
+	var _layerStyles = __webpack_require__(857);
 
 	var _layerStyles2 = _interopRequireDefault(_layerStyles);
 
-	var _onEachFeature = __webpack_require__(856);
-
-	var _onEachFeature2 = _interopRequireDefault(_onEachFeature);
+	var _layerFeatures = __webpack_require__(796);
 
 	var _map = __webpack_require__(779);
 
@@ -66768,7 +67106,7 @@
 	                            },
 	                            layerId: layerId
 	                        };
-	                        layerOptions.onEachFeature = (0, _onEachFeature2.default)(layerId, self.map);
+	                        layerOptions.onEachFeature = (0, _layerFeatures.onEachFeature)(layerId, self.map);
 	                        layerOptions.style = (0, _layerStyles2.default)(layerId);
 	                        this.layerIndex[layerId] = L.geoJson(null, layerOptions);
 	                        _axios2.default.get(layer.dataLocation).then(function (response) {
@@ -66828,21 +67166,21 @@
 	exports.default = ObliquePhotoMap;
 
 /***/ }),
-/* 830 */
+/* 832 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(831);
+	module.exports = __webpack_require__(833);
 
 /***/ }),
-/* 831 */
+/* 833 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(832);
-	var bind = __webpack_require__(833);
-	var Axios = __webpack_require__(834);
-	var defaults = __webpack_require__(835);
+	var utils = __webpack_require__(834);
+	var bind = __webpack_require__(835);
+	var Axios = __webpack_require__(836);
+	var defaults = __webpack_require__(837);
 
 	/**
 	 * Create an instance of Axios
@@ -66875,15 +67213,15 @@
 	};
 
 	// Expose Cancel & CancelToken
-	axios.Cancel = __webpack_require__(852);
-	axios.CancelToken = __webpack_require__(853);
-	axios.isCancel = __webpack_require__(849);
+	axios.Cancel = __webpack_require__(854);
+	axios.CancelToken = __webpack_require__(855);
+	axios.isCancel = __webpack_require__(851);
 
 	// Expose all/spread
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(854);
+	axios.spread = __webpack_require__(856);
 
 	module.exports = axios;
 
@@ -66892,12 +67230,12 @@
 
 
 /***/ }),
-/* 832 */
+/* 834 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(833);
+	var bind = __webpack_require__(835);
 
 	/*global toString:true*/
 
@@ -67197,7 +67535,7 @@
 
 
 /***/ }),
-/* 833 */
+/* 835 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -67214,17 +67552,17 @@
 
 
 /***/ }),
-/* 834 */
+/* 836 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(835);
-	var utils = __webpack_require__(832);
-	var InterceptorManager = __webpack_require__(846);
-	var dispatchRequest = __webpack_require__(847);
-	var isAbsoluteURL = __webpack_require__(850);
-	var combineURLs = __webpack_require__(851);
+	var defaults = __webpack_require__(837);
+	var utils = __webpack_require__(834);
+	var InterceptorManager = __webpack_require__(848);
+	var dispatchRequest = __webpack_require__(849);
+	var isAbsoluteURL = __webpack_require__(852);
+	var combineURLs = __webpack_require__(853);
 
 	/**
 	 * Create a new instance of Axios
@@ -67305,13 +67643,13 @@
 
 
 /***/ }),
-/* 835 */
+/* 837 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(832);
-	var normalizeHeaderName = __webpack_require__(836);
+	var utils = __webpack_require__(834);
+	var normalizeHeaderName = __webpack_require__(838);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -67328,10 +67666,10 @@
 	  var adapter;
 	  if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(837);
+	    adapter = __webpack_require__(839);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(837);
+	    adapter = __webpack_require__(839);
 	  }
 	  return adapter;
 	}
@@ -67405,12 +67743,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(300)))
 
 /***/ }),
-/* 836 */
+/* 838 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(832);
+	var utils = __webpack_require__(834);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -67423,18 +67761,18 @@
 
 
 /***/ }),
-/* 837 */
+/* 839 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(832);
-	var settle = __webpack_require__(838);
-	var buildURL = __webpack_require__(841);
-	var parseHeaders = __webpack_require__(842);
-	var isURLSameOrigin = __webpack_require__(843);
-	var createError = __webpack_require__(839);
-	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(844);
+	var utils = __webpack_require__(834);
+	var settle = __webpack_require__(840);
+	var buildURL = __webpack_require__(843);
+	var parseHeaders = __webpack_require__(844);
+	var isURLSameOrigin = __webpack_require__(845);
+	var createError = __webpack_require__(841);
+	var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(846);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -67530,7 +67868,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(845);
+	      var cookies = __webpack_require__(847);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -67607,12 +67945,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(300)))
 
 /***/ }),
-/* 838 */
+/* 840 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(839);
+	var createError = __webpack_require__(841);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -67638,12 +67976,12 @@
 
 
 /***/ }),
-/* 839 */
+/* 841 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(840);
+	var enhanceError = __webpack_require__(842);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -67661,7 +67999,7 @@
 
 
 /***/ }),
-/* 840 */
+/* 842 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -67686,12 +68024,12 @@
 
 
 /***/ }),
-/* 841 */
+/* 843 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(832);
+	var utils = __webpack_require__(834);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -67760,12 +68098,12 @@
 
 
 /***/ }),
-/* 842 */
+/* 844 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(832);
+	var utils = __webpack_require__(834);
 
 	/**
 	 * Parse headers into an object
@@ -67803,12 +68141,12 @@
 
 
 /***/ }),
-/* 843 */
+/* 845 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(832);
+	var utils = __webpack_require__(834);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -67877,7 +68215,7 @@
 
 
 /***/ }),
-/* 844 */
+/* 846 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -67919,12 +68257,12 @@
 
 
 /***/ }),
-/* 845 */
+/* 847 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(832);
+	var utils = __webpack_require__(834);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -67978,12 +68316,12 @@
 
 
 /***/ }),
-/* 846 */
+/* 848 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(832);
+	var utils = __webpack_require__(834);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -68036,15 +68374,15 @@
 
 
 /***/ }),
-/* 847 */
+/* 849 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(832);
-	var transformData = __webpack_require__(848);
-	var isCancel = __webpack_require__(849);
-	var defaults = __webpack_require__(835);
+	var utils = __webpack_require__(834);
+	var transformData = __webpack_require__(850);
+	var isCancel = __webpack_require__(851);
+	var defaults = __webpack_require__(837);
 
 	/**
 	 * Throws a `Cancel` if cancellation has been requested.
@@ -68121,12 +68459,12 @@
 
 
 /***/ }),
-/* 848 */
+/* 850 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(832);
+	var utils = __webpack_require__(834);
 
 	/**
 	 * Transform the data for a request or a response
@@ -68147,7 +68485,7 @@
 
 
 /***/ }),
-/* 849 */
+/* 851 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -68158,7 +68496,7 @@
 
 
 /***/ }),
-/* 850 */
+/* 852 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -68178,7 +68516,7 @@
 
 
 /***/ }),
-/* 851 */
+/* 853 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -68196,7 +68534,7 @@
 
 
 /***/ }),
-/* 852 */
+/* 854 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -68221,12 +68559,12 @@
 
 
 /***/ }),
-/* 853 */
+/* 855 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var Cancel = __webpack_require__(852);
+	var Cancel = __webpack_require__(854);
 
 	/**
 	 * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -68284,7 +68622,7 @@
 
 
 /***/ }),
-/* 854 */
+/* 856 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -68317,7 +68655,7 @@
 
 
 /***/ }),
-/* 855 */
+/* 857 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68667,329 +69005,6 @@
 	        return getCachedStyle(layerId, feature) || createNewStyle(layerId, feature);
 	    };
 	}
-
-/***/ }),
-/* 856 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.default = ON_EACH_FEATURE;
-
-	var _react = __webpack_require__(298);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(334);
-
-	var _store = __webpack_require__(774);
-
-	var _store2 = _interopRequireDefault(_store);
-
-	var _mobile = __webpack_require__(780);
-
-	var _FeaturePopup = __webpack_require__(857);
-
-	var _FeaturePopup2 = _interopRequireDefault(_FeaturePopup);
-
-	var _util = __webpack_require__(776);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * onEachFeature.jsx
-	 * This contains functions that are applied to each layer when they are loaded.
-	 *
-	 * Each property of the ON_EACH_FEATURE object (below) is applied to a specific layer,
-	 * and Leaflet passes the layer's data to that function on load. It is used here to
-	 * apply click handling functions to each feature in each layer.
-	 */
-	var LAYER_FEATURES = {};
-
-	/**
-	 * The popup's content is handled by React (<FeaturePopup />),
-	 * however, Leaflet is not controlled by React.
-	 * Therefore, the popup's content must mount/unmount the React component
-	 * manually whenever it is opened/closed.
-	 */
-	function createLeafletPopup(feature, featureLayer, layerId, map, featureIndex) {
-	    var popup = L.popup({
-	        closeOnClick: false,
-	        className: "feature-popup hidden-xs",
-	        autoClose: true,
-	        maxWidth: 350,
-	        minWidth: 350,
-	        closeButton: false
-	    });
-	    var container = document.createElement("div");
-	    var getPopupPosition = function getPopupPosition() {
-	        var popupPosition = popup.getLatLng();
-	        var positionInMap = map.latLngToContainerPoint(popupPosition);
-	        var mapElement = document.getElementById("map");
-	        var mapLocation = mapElement.getBoundingClientRect();
-	        var positionInDocument = {
-	            x: positionInMap.x + mapLocation.left,
-	            y: positionInMap.y + mapLocation.top
-	        };
-	        return positionInDocument;
-	    };
-	    var closePopup = function closePopup() {
-	        /**
-	         * setTimeout hack to get around this current issue with React:
-	         * https://github.com/facebook/react/issues/3298
-	         */
-	        setTimeout(function () {
-	            (0, _reactDom.unmountComponentAtNode)(container);
-	            // eslint-disable-next-line no-underscore-dangle
-	            popup._close();
-	        }, 10);
-	    };
-	    var openNextFeature = function openNextFeature() {
-	        var nextFeatureIndex = featureIndex + 1;
-	        if (nextFeatureIndex >= LAYER_FEATURES[layerId].length) {
-	            nextFeatureIndex = 0;
-	        }
-	        LAYER_FEATURES[layerId][nextFeatureIndex].togglePopup();
-	    };
-	    var openPreviousFeature = function openPreviousFeature() {
-	        var previousFeatureIndex = featureIndex - 1;
-	        if (previousFeatureIndex < 0) {
-	            previousFeatureIndex = LAYER_FEATURES[layerId].length - 1;
-	        }
-	        LAYER_FEATURES[layerId][previousFeatureIndex].togglePopup();
-	    };
-	    popup.on("add", function addPopup() {
-	        (0, _reactDom.render)(_react2.default.createElement(_FeaturePopup2.default, {
-	            layerId: layerId,
-	            featureProperties: feature.properties,
-	            popup: popup,
-	            closePopup: closePopup,
-	            getPosition: getPopupPosition,
-	            openNextFeature: openNextFeature,
-	            openPreviousFeature: openPreviousFeature
-	        }), container);
-	    });
-	    popup.setContent(container);
-	    featureLayer.bindPopup(popup).openPopup();
-	    return popup;
-	}
-
-	/**
-	 * Function that takes layer information and creates a popup.
-	 */
-	function handleClick(feature, featureLayer, layerId, map, featureIndex) {
-	    var popup = false;
-	    function togglePopup() {
-	        /**
-	         * if the screen is small, open the popup as a full modal
-	         * if the screen is large, open the popup as a leaflet-based in-map popup
-	         */
-	        if (_store2.default.getState().mobile.window.width < 992) {
-	            _store2.default.dispatch((0, _mobile.mobileClickFeature)(feature.properties, layerId));
-	        } else if (popup === false) {
-	            popup = createLeafletPopup(feature, featureLayer, layerId, map, featureIndex);
-	        } else {
-	            featureLayer.openPopup();
-	        }
-	    }
-
-	    // on click, create and open popup
-	    featureLayer.on('mouseup', togglePopup);
-	    featureLayer.togglePopup = togglePopup;
-	}
-	/**
-	 * Leaflet creates a "feature layer" for each feature (a "sub-layer") within a layer
-	 * - i.e. The 1976 Photos layer will have feature layers for each photo
-	 * - these layers handle the click events for that feature, which we want to be able to access programatically
-	 * - this function will let us access "previous" and "next" features for use with previous/next buttons
-	 *      in the feature popups
-	 */
-	function addFeatureLayerToList(featureLayer, layerId) {
-	    LAYER_FEATURES[layerId] = LAYER_FEATURES[layerId] || [];
-	    LAYER_FEATURES[layerId].push(featureLayer);
-	    return LAYER_FEATURES[layerId].length - 1;
-	};
-
-	function ON_EACH_FEATURE(layerId, map) {
-	    var idProperty = _util.LAYERS_BY_ID[layerId].idProperty;
-	    return function (feature, featureLayer) {
-	        var featureIndex = addFeatureLayerToList(featureLayer, layerId);
-	        handleClick(feature, featureLayer, layerId, map, featureIndex);
-	    };
-	}
-
-/***/ }),
-/* 857 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(298);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _propTypes = __webpack_require__(569);
-
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-
-	var _store = __webpack_require__(774);
-
-	var _store2 = _interopRequireDefault(_store);
-
-	var _PopupTabs = __webpack_require__(796);
-
-	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
-
-	var _PopupTitle = __webpack_require__(815);
-
-	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
-
-	var _PopupFooter = __webpack_require__(816);
-
-	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
-
-	var _pinnedFeatures = __webpack_require__(781);
-
-	var _util = __webpack_require__(776);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * FeatureModal.jsx
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This creates the modal that's displayed when a user clicks on an object in the map
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-
-	var FeaturePopup = function (_React$Component) {
-	    _inherits(FeaturePopup, _React$Component);
-
-	    function FeaturePopup(props) {
-	        _classCallCheck(this, FeaturePopup);
-
-	        var _this = _possibleConstructorReturn(this, (FeaturePopup.__proto__ || Object.getPrototypeOf(FeaturePopup)).call(this, props));
-
-	        _this.update = _this.update.bind(_this);
-	        _this.bringToFront = _this.bringToFront.bind(_this);
-	        _this.close = _this.close.bind(_this);
-	        _this.pin = _this.pin.bind(_this);
-	        return _this;
-	    }
-
-	    _createClass(FeaturePopup, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            this.update();
-	        }
-	    }, {
-	        key: 'update',
-	        value: function update() {
-	            this.props.popup.update();
-	        }
-	    }, {
-	        key: 'bringToFront',
-	        value: function bringToFront() {
-	            this.props.popup.bringToFront();
-	        }
-	    }, {
-	        key: 'close',
-	        value: function close() {
-	            this.props.closePopup();
-	        }
-	    }, {
-	        key: 'pin',
-	        value: function pin() {
-	            var position = this.props.getPosition();
-	            _store2.default.dispatch((0, _pinnedFeatures.newPinnedFeature)(this.props.layerId, this.props.featureProperties, position));
-	            this.close();
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var layerGroupId = _util.LAYERS_BY_ID[this.props.layerId].layerGroupId;
-	            var layerGroupName = _util.LAYER_GROUPS_BY_ID[layerGroupId].name;
-	            var layerName = _util.LAYERS_BY_ID[this.props.layerId].name;
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'wiscviewer-feature-popup',
-	                    onClick: this.bringToFront,
-	                    tabIndex: 0 },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'wiscviewer-feature-popup-header' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'wiscviewer-feature-popup-controls' },
-	                        _react2.default.createElement('i', { className: 'fa fa-arrow-left feature-popup-previous-button',
-	                            onClick: this.props.openPreviousFeature,
-	                            role: 'button',
-	                            tabIndex: -1 }),
-	                        _react2.default.createElement('i', { className: 'fa fa-arrow-right feature-popup-next-button',
-	                            onClick: this.props.openNextFeature,
-	                            role: 'button',
-	                            tabIndex: -1 }),
-	                        _react2.default.createElement('i', { className: 'fa fa-thumb-tack feature-popup-pin',
-	                            onClick: this.pin,
-	                            role: 'button',
-	                            tabIndex: -1 }),
-	                        _react2.default.createElement('i', { className: 'fa fa-times feature-popup-close-button',
-	                            onClick: this.close,
-	                            role: 'button',
-	                            tabIndex: -1 })
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'wiscviewer-feature-popup-body' },
-	                    _react2.default.createElement(_PopupTabs2.default, { layerId: this.props.layerId,
-	                        featureProperties: this.props.featureProperties,
-	                        update: this.update
-	                    })
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'wiscviewer-feature-popup-footer' },
-	                    _react2.default.createElement(_PopupTitle2.default, { featureProperties: this.props.featureProperties,
-	                        layerGroupName: layerGroupName,
-	                        layerName: layerName
-	                    }),
-	                    _react2.default.createElement(
-	                        _PopupFooter2.default,
-	                        { layerId: this.props.layerId,
-	                            featureProperties: this.props.featureProperties },
-	                        _react2.default.createElement('div', { key: 'clearfix', className: 'clearfix' })
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return FeaturePopup;
-	}(_react2.default.Component);
-
-	FeaturePopup.propTypes = {
-	    layerId: _propTypes2.default.string.isRequired,
-	    featureProperties: _propTypes2.default.object.isRequired,
-	    popup: _propTypes2.default.instanceOf(L.Popup).isRequired,
-	    closePopup: _propTypes2.default.func.isRequired,
-	    openNextFeature: _propTypes2.default.func.isRequired,
-	    openPreviousFeature: _propTypes2.default.func.isRequired,
-	    getPosition: _propTypes2.default.func.isRequired
-	};
-
-	exports.default = FeaturePopup;
 
 /***/ })
 /******/ ]);
