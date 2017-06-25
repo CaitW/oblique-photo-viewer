@@ -19,6 +19,7 @@ class FeaturePopup extends React.Component {
         this.bringToFront = this.bringToFront.bind(this);
         this.close = this.close.bind(this);
         this.pin = this.pin.bind(this);
+        this.popupType = "leaflet";
     }
     componentDidMount() {
         this.update();
@@ -75,7 +76,7 @@ class FeaturePopup extends React.Component {
                     <PopupTabs layerId={this.props.layerId}
                         featureProperties={this.props.featureProperties}
                         update={this.update}
-                        popupType="leaflet"
+                        popupType={this.popupType}
                     />
                 </div>
                 <div className="wiscviewer-feature-popup-footer">

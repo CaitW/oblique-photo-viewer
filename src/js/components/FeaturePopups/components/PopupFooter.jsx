@@ -81,7 +81,10 @@ PopupFooter.propTypes = {
         PropTypes.object,
         PropTypes.bool
     ]).isRequired,
-    children: PropTypes.array
+    children: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.array
+    ])
 }
 
 PopupFooter.defaultProps = {

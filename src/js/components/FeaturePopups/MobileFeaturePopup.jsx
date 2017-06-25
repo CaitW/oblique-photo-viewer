@@ -25,6 +25,7 @@ class MobileFeaturePopup extends React.Component {
     super(props);
     this.openPreviousFeature = this.openPreviousFeature.bind(this);
     this.openNextFeature = this.openNextFeature.bind(this);
+    this.popupType = "modal";
   }
   static close () {
       store.dispatch(closeMobileFeatureModal());
@@ -59,7 +60,7 @@ class MobileFeaturePopup extends React.Component {
                     <PopupTabs
                       layerId={this.props.layerId}
                       featureProperties={this.props.featureProperties}
-                      popupType="modal"
+                      popupType={this.popupType}
                     />
                   </Modal.Body>
                   <Modal.Footer>

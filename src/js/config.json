@@ -242,6 +242,8 @@
                             "bathy_xls": false,
                             "bluff_jpg": false,
                             "bathy_png": false,
+                            "bluff_json": false,
+                            "bathy_json": false,
                             "notes": "Notes",
                             "type": "Type"
                         },
@@ -384,8 +386,6 @@
       "yMax": 698.784306
     },
     "lakeMichiganWaterLevel": {
-        "avg": 578.02,
-        "recordHigh": 582.35,
-        "recordLow": 576.02
+        "avg": 578.02
     }
 }

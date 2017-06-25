@@ -16,7 +16,8 @@ class PinnedFeaturePopup extends React.Component {
         this.state = {
             height: 300,
             width: 300
-        }
+        };
+        this.popupType = "pinned";
     }
     componentDidMount () {
         let height = this.content.clientHeight;
@@ -63,7 +64,7 @@ class PinnedFeaturePopup extends React.Component {
                     <div className="wiscviewer-feature-popup-body">
                         <PopupTabs layerId={this.props.layerId}
                             featureProperties={this.props.featureProperties}
-                            popupType="pinned"
+                            popupType={this.popupType}
                         />
                     </div>
                     <div className="wiscviewer-feature-popup-footer">

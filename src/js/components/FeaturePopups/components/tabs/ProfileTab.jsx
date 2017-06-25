@@ -82,20 +82,6 @@ class ProfileTab extends React.Component {
             .y(function (d) {
                 return y(CONFIG.lakeMichiganWaterLevel.avg)
             });
-        var michigan_high = line()
-            .x(function(d) {
-                return (x(d.x))
-            })
-            .y(function (d) {
-                return y(CONFIG.lakeMichiganWaterLevel.recordHigh)
-            });
-        var michigan_low = line()
-            .x(function(d) {
-                return (x(d.x))
-            })
-            .y(function (d) {
-                return y(CONFIG.lakeMichiganWaterLevel.recordLow)
-            });
         // Adds the svg canvas
         var svg = select(this.profileDiv)
             .append("svg")
@@ -112,12 +98,6 @@ class ProfileTab extends React.Component {
             svg.append("path")
                 .attr("class", "lake-stats michigan-avg")
                 .attr("d", michigan_avg(data));
-            // svg.append("path")
-            //     .attr("class", "lake-stats michigan-low")
-            //     .attr("d", michigan_low(data));
-            // svg.append("path")
-            //     .attr("class", "lake-stats michigan-high")
-            //     .attr("d", michigan_high(data));
             // Add the valueline path.
             svg.append("path")
                 .attr("class", "line")
