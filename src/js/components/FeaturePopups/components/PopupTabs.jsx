@@ -68,6 +68,7 @@ class PopupTabs extends React.Component {
                             title="Bluff Profile"
                             jsonLocation={urls.bluffJson}
                             update={this.update}
+                            popupType={this.props.popupType}
                         />
                     );
                     eventKeyIndex += 1;
@@ -79,6 +80,7 @@ class PopupTabs extends React.Component {
                             title="Bathy Profile"
                             jsonLocation={urls.bathyJson}
                             update={this.update}
+                            popupType={this.props.popupType}
                         />
                     );
                     eventKeyIndex += 1;
@@ -124,7 +126,8 @@ PopupTabs.propTypes = {
         PropTypes.object,
         PropTypes.bool
     ]).isRequired,
-    update: PropTypes.func
+    update: PropTypes.func,
+    popupType: PropTypes.string.isRequired
 }
 
 PopupTabs.defaultProps = {

@@ -20,10 +20,30 @@ class ProfileTab extends React.Component {
         this.props.update();
     }
     createLineChart() {
+        let popupWidth = this.profileDiv.clientWidth;
+        let popupHeight = this.profileDiv.clientHeight;
         // Set the dimensions of the canvas / graph
-        var margin = { top: 10, right: 20, bottom: 40, left: 50 },
-            width = 350 - margin.left - margin.right,
-            height = 200 - margin.top - margin.bottom;
+        let margin = { top: 10, right: 20, bottom: 40, left: 50 };
+        if(this.props.popupType === "modal") {
+            margin.left = 70;
+            margin.bottom = 60;
+        }
+        let width = popupWidth - margin.left - margin.right;
+        let height = popupHeight - margin.top - margin.bottom;
+        let xAxisLabel = {
+            x: (width / 2),
+            y: (height + margin.top + 25)
+        };
+        if(this.props.popupType === "modal") {
+            xAxisLabel.y = xAxisLabel.y + 10;
+        }
+        let yAxisLabel = {
+            x: 0 - (height / 2),
+            y: 0 - margin.left + 5
+        }
+        if(this.props.popupType === "modal") {
+            yAxisLabel.y = yAxisLabel.y + 5;
+        }
         /**
          * Scale Functions
          * - Create the functions that accept a profile's data and scale each value
@@ -108,7 +128,7 @@ class ProfileTab extends React.Component {
                 .attr("transform", "translate(0," + height + ")")
                 .call(xAxis);
             svg.append("text")
-                .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.top + 25) + ")")
+                .attr("transform", "translate(" + xAxisLabel.x + " ," + xAxisLabel.y + ")")
                 .style("text-anchor", "middle")
                 .attr("class", "axis-label")
                 .text("Distance (ft)");
@@ -119,8 +139,8 @@ class ProfileTab extends React.Component {
             // text label for the y axis
             svg.append("text")
                 .attr("transform", "rotate(-90)")
-                .attr("y", 0 - margin.left + 5)
-                .attr("x", 0 - (height / 2))
+                .attr("y", yAxisLabel.y)
+                .attr("x", yAxisLabel.x)
                 .attr("dy", "1em")
                 .attr("class", "axis-label")
                 .style("text-anchor", "middle")
@@ -134,9 +154,14 @@ class ProfileTab extends React.Component {
         };
         delete tabProps.jsonLocation;
         delete tabProps.update;
+        delete tabProps.popupType;
         let style = {
-            "minHeight": "200px",
-            "minWidth": "350px"
+            "height": "200px",
+            "width": "350px"
+        }
+        if(this.props.popupType === "modal") {
+            style.width = "100%";
+            style.height = "300px";
         }
         return (
             <Tab {...tabProps} className="wiscviewer-profile-tab">
@@ -149,7 +174,8 @@ class ProfileTab extends React.Component {
 
 ProfileTab.propTypes = {
     jsonLocation: PropTypes.string.isRequired,
-    update: PropTypes.func.isRequired
+    update: PropTypes.func.isRequired,
+    popupType: PropTypes.string.isRequired
 }
 
 export default ProfileTab;

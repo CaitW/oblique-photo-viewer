@@ -8504,6 +8504,18 @@ button.close {
 .wiscviewer-mobile-feature-popup button {
   margin-left: 5px; }
 
+.wiscviewer-mobile-feature-popup .wiscviewer-profile-tab .lake-stats {
+  stroke-width: 2px; }
+
+.wiscviewer-mobile-feature-popup .wiscviewer-profile-tab .domain {
+  stroke-width: 4px; }
+
+.wiscviewer-mobile-feature-popup .wiscviewer-profile-tab .line {
+  stroke-width: 3px; }
+
+.wiscviewer-mobile-feature-popup .wiscviewer-profile-tab .axis-label {
+  font-size: 16px; }
+
 .wiscviewer-feature-controls {
   text-align: center; }
   .wiscviewer-feature-controls .wiscviewer-feature-popup-previous-button {

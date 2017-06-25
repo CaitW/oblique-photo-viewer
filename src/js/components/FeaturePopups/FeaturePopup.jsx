@@ -75,6 +75,7 @@ class FeaturePopup extends React.Component {
                     <PopupTabs layerId={this.props.layerId}
                         featureProperties={this.props.featureProperties}
                         update={this.update}
+                        popupType="leaflet"
                     />
                 </div>
                 <div className="wiscviewer-feature-popup-footer">
