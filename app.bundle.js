@@ -54087,7 +54087,8 @@
 	            null,
 	            _react2.default.createElement(_PopupTabs2.default, {
 	              layerId: this.props.layerId,
-	              featureProperties: this.props.featureProperties
+	              featureProperties: this.props.featureProperties,
+	              popupType: 'modal'
 	            })
 	          ),
 	          _react2.default.createElement(
@@ -54724,7 +54725,8 @@
 	                    { className: 'wiscviewer-feature-popup-body' },
 	                    _react2.default.createElement(_PopupTabs2.default, { layerId: this.props.layerId,
 	                        featureProperties: this.props.featureProperties,
-	                        update: this.update
+	                        update: this.update,
+	                        popupType: 'leaflet'
 	                    })
 	                ),
 	                _react2.default.createElement(
@@ -54877,7 +54879,8 @@
 	                                eventKey: eventKeyIndex,
 	                                title: 'Bluff Profile',
 	                                jsonLocation: _urls.bluffJson,
-	                                update: this.update
+	                                update: this.update,
+	                                popupType: this.props.popupType
 	                            }));
 	                            eventKeyIndex += 1;
 	                        }
@@ -54886,7 +54889,8 @@
 	                                eventKey: eventKeyIndex,
 	                                title: 'Bathy Profile',
 	                                jsonLocation: _urls.bathyJson,
-	                                update: this.update
+	                                update: this.update,
+	                                popupType: this.props.popupType
 	                            }));
 	                            eventKeyIndex += 1;
 	                        }
@@ -54925,7 +54929,8 @@
 	PopupTabs.propTypes = {
 	    layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
 	    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired,
-	    update: _propTypes2.default.func
+	    update: _propTypes2.default.func,
+	    popupType: _propTypes2.default.string.isRequired
 	};
 
 	PopupTabs.defaultProps = {
@@ -55180,10 +55185,30 @@
 	    }, {
 	        key: 'createLineChart',
 	        value: function createLineChart() {
+	            var popupWidth = this.profileDiv.clientWidth;
+	            var popupHeight = this.profileDiv.clientHeight;
 	            // Set the dimensions of the canvas / graph
-	            var margin = { top: 10, right: 20, bottom: 40, left: 50 },
-	                width = 350 - margin.left - margin.right,
-	                height = 200 - margin.top - margin.bottom;
+	            var margin = { top: 10, right: 20, bottom: 40, left: 50 };
+	            if (this.props.popupType === "modal") {
+	                margin.left = 70;
+	                margin.bottom = 60;
+	            }
+	            var width = popupWidth - margin.left - margin.right;
+	            var height = popupHeight - margin.top - margin.bottom;
+	            var xAxisLabel = {
+	                x: width / 2,
+	                y: height + margin.top + 25
+	            };
+	            if (this.props.popupType === "modal") {
+	                xAxisLabel.y = xAxisLabel.y + 10;
+	            }
+	            var yAxisLabel = {
+	                x: 0 - height / 2,
+	                y: 0 - margin.left + 5
+	            };
+	            if (this.props.popupType === "modal") {
+	                yAxisLabel.y = yAxisLabel.y + 5;
+	            }
 	            /**
 	             * Scale Functions
 	             * - Create the functions that accept a profile's data and scale each value
@@ -55244,11 +55269,11 @@
 	                svg.append("path").attr("class", "line").attr("d", valueline(data));
 	                // Add the X Axis
 	                svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis);
-	                svg.append("text").attr("transform", "translate(" + width / 2 + " ," + (height + margin.top + 25) + ")").style("text-anchor", "middle").attr("class", "axis-label").text("Distance (ft)");
+	                svg.append("text").attr("transform", "translate(" + xAxisLabel.x + " ," + xAxisLabel.y + ")").style("text-anchor", "middle").attr("class", "axis-label").text("Distance (ft)");
 	                // Add the Y Axis
 	                svg.append("g").attr("class", "y axis").call(yAxis);
 	                // text label for the y axis
-	                svg.append("text").attr("transform", "rotate(-90)").attr("y", 0 - margin.left + 5).attr("x", 0 - height / 2).attr("dy", "1em").attr("class", "axis-label").style("text-anchor", "middle").text("Altitude (ft)");
+	                svg.append("text").attr("transform", "rotate(-90)").attr("y", yAxisLabel.y).attr("x", yAxisLabel.x).attr("dy", "1em").attr("class", "axis-label").style("text-anchor", "middle").text("Altitude (ft)");
 	            });
 	        }
 	    }, {
@@ -55259,10 +55284,15 @@
 	            var tabProps = _extends({}, this.props);
 	            delete tabProps.jsonLocation;
 	            delete tabProps.update;
+	            delete tabProps.popupType;
 	            var style = {
-	                "minHeight": "200px",
-	                "minWidth": "350px"
+	                "height": "200px",
+	                "width": "350px"
 	            };
+	            if (this.props.popupType === "modal") {
+	                style.width = "100%";
+	                style.height = "300px";
+	            }
 	            return _react2.default.createElement(
 	                _reactBootstrap.Tab,
 	                _extends({}, tabProps, { className: 'wiscviewer-profile-tab' }),
@@ -55278,7 +55308,8 @@
 
 	ProfileTab.propTypes = {
 	    jsonLocation: _propTypes2.default.string.isRequired,
-	    update: _propTypes2.default.func.isRequired
+	    update: _propTypes2.default.func.isRequired,
+	    popupType: _propTypes2.default.string.isRequired
 	};
 
 	exports.default = ProfileTab;
@@ -64215,7 +64246,9 @@
 	                        'div',
 	                        { className: 'wiscviewer-feature-popup-body' },
 	                        _react2.default.createElement(_PopupTabs2.default, { layerId: this.props.layerId,
-	                            featureProperties: this.props.featureProperties })
+	                            featureProperties: this.props.featureProperties,
+	                            popupType: 'pinned'
+	                        })
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
