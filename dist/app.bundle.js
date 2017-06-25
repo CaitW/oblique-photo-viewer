@@ -54514,6 +54514,16 @@
 	 */
 	var LAYER_FEATURES = {};
 
+	/**
+	 * When we open a popup, we want to make sure that popup opens at the
+	 * center of feature that's clicked (rather than the leaflet default,
+	 * opening the popup wherever the user clicks within the feature)
+	 * This app includes two types of features:
+	 * - linestrings
+	 * - points
+	 * Points are easy. Center the popup on the coordinate of the point.
+	 * For linestrings, the popup is centered on the median coordinate.
+	 */
 	function getFeatureMidpoint(featureLayer) {
 
 	    function toCoordFeature(latLng) {
@@ -54621,6 +54631,12 @@
 	    return popup;
 	}
 
+	/**
+	 * Determine whether to:
+	 *  - show the mobile feature popup
+	 *  - create a popup for a particular feature layer, and then show it
+	 *  - toggle an already-created popup
+	 */
 	function togglePopup(feature, featureLayer, layerId, map) {
 	    var featureIndex = featureLayer.featureIndex;
 	    var nextFeatureIndex = featureIndex + 1 >= LAYER_FEATURES[layerId].length ? 0 : featureIndex + 1;
@@ -54635,6 +54651,7 @@
 	        featureLayer.openPopup();
 	    }
 	}
+
 	/**
 	 * Leaflet creates a "feature layer" for each feature (a "sub-layer") within a layer
 	 * - i.e. The 1976 Photos layer will have feature layers for each photo
@@ -54650,6 +54667,14 @@
 	    return LAYER_FEATURES[layerId].length - 1;
 	};
 
+	/**
+	 * This is the primary exported function from layerFeatures.js
+	 * It's used to:
+	 *  - attach click handling to featureLayers (features)
+	 * Click handlers then:
+	 *  - create a popup for that feature
+	 *  - attach the popup to the featureLayer
+	 */
 	function onEachFeature(layerId, map) {
 	    return function (feature, featureLayer) {
 	        var featureIndex = addFeatureLayerToList(featureLayer, layerId);
@@ -54664,6 +54689,11 @@
 	    };
 	}
 
+	/**
+	 * For the mobile version of the feature popup (MobileFeaturePopup.jsx)
+	 * we need to access the index of layer features so we can utilize the "next"
+	 * and "previous" button functionality
+	 */
 	function getFeatureLayer(featureIndex, layerId) {
 	    return LAYER_FEATURES[layerId][featureIndex];
 	}
