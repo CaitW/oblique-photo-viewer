@@ -107,4 +107,7 @@ export default class ObliquePhotoMap {
             padding: [10, 10]
         });
     }
+    panAndZoom(zoom, coordinates) {
+        this.map.setView(coordinates, zoom);
+    }
 }

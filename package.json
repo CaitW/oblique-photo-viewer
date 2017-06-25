@@ -55,6 +55,8 @@
     "webpack-stream": "^3.2.0"
   },
   "dependencies": {
+    "@turf/helpers": "^4.4.0",
+    "@turf/midpoint": "^4.4.0",
     "axios": "^0.15.3",
     "d3": "^4.9.1",
     "prop-types": "^15.5.10",

@@ -56,6 +56,10 @@ class LeafletMap extends React.Component {
                 this.map.zoomToExtent(newMapProps.state.extent);
                 store.dispatch(doneZooming());
             }
+            if(newMapProps.state.action === "willPanAndZoom") {
+                this.map.panAndZoom(newMapProps.state.zoom, newMapProps.state.coordinates);
+                store.dispatch(doneZooming());
+            }
         }
     }
     render() {

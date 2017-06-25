@@ -1,20 +1,70 @@
 /**
- * onEachFeature.jsx
- * This contains functions that are applied to each layer when they are loaded.
+ * layerFeatures.jsx
+ * This module contains functions that are applied to each layer's features
  *
- * Each property of the ON_EACH_FEATURE object (below) is applied to a specific layer,
+ * onEachFeature() (below) is applied to a specific layer's features,
  * and Leaflet passes the layer's data to that function on load. It is used here to
  * apply click handling functions to each feature in each layer.
  */
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
+import { midpoint, point } from 'turf';
 
 import store from '../store';
 import { mobileClickFeature } from '../ducks/mobile';
+import { leafletPopupOpened } from '../ducks/map';
 import FeaturePopup from '../components/FeaturePopups/FeaturePopup';
-import { LAYERS_BY_ID } from '../util.js';
+import { LAYERS_BY_ID } from '../util';
 
 const LAYER_FEATURES = {};
+
+function getFeatureMidpoint (featureLayer) {
+
+    function toCoordFeature (latLng) {
+        return point([latLng.lng,latLng.lat]);
+    }
+
+    function getLineMidpoint (latLngs) {
+        let lowerMiddle = false;
+        let upperMiddle = false;
+        let middlePoint = false;
+        // if there are more than two coordinates
+        if(latLngs.length > 2) {
+            // if the number of coordinates is even, find the
+            // average of the two middle coordinates
+            if (latLngs.length % 2 === 0) {
+                let firstIndex = (latLngs.length / 2) - 1;
+                let lastIndex = latLngs.length / 2;
+                lowerMiddle = toCoordFeature(latLngs[firstIndex]);
+                upperMiddle = toCoordFeature(latLngs[lastIndex]);
+                middlePoint = midpoint(lowerMiddle, upperMiddle);
+            // if the number of coordinates is odd, get the median value
+            } else {
+                let middleIndex = Math.ceil(latLngs.length / 2);
+                middlePoint = toCoordFeature(latLngs[(middleIndex)]);
+            }
+        // if there are exactly 2 coordinates
+        } else if (latLngs.length === 2) {
+            lowerMiddle = toCoordFeature(latLngs[0]);
+            upperMiddle = toCoordFeature(latLngs[1]);
+            middlePoint = midpoint(lowerMiddle, upperMiddle);
+        // if there is exactly 1 coordinate
+        } else if (latLngs.length === 1) {
+            middlePoint = toCoordFeature(latLngs[0]);
+        }
+        return middlePoint.geometry.coordinates;
+    }
+
+    function getPointCoords (latLng) {
+        return toCoordFeature(latLng).geometry.coordinates;
+    }
+
+    if(typeof featureLayer.getLatLngs !== "undefined") {
+        return getLineMidpoint(featureLayer.getLatLngs());
+    } else if (typeof featureLayer.getLatLng !== "undefined") {
+        return getPointCoords(featureLayer.getLatLng());
+    }
+}
 
 /**
  * The popup's content is handled by React (<FeaturePopup />),
@@ -23,6 +73,7 @@ const LAYER_FEATURES = {};
  * manually whenever it is opened/closed.
  */
 function createLeafletPopup (feature, featureLayer, layerId, map) {
+    let featureMiddlePoint = getFeatureMidpoint(featureLayer);
     let popup = L.popup({
         closeOnClick: false,
         className: "feature-popup hidden-xs",
@@ -30,7 +81,7 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
         maxWidth: 350,
         minWidth: 350,
         closeButton: false
-    });
+    }).setLatLng(L.latLng(featureMiddlePoint[1], featureMiddlePoint[0]));
     let container = document.createElement("div");
     let getPopupPosition = () => {
         let popupPosition = popup.getLatLng();
@@ -67,9 +118,15 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
             />,
             container
         );
+        store.dispatch(
+            leafletPopupOpened([featureMiddlePoint[1], featureMiddlePoint[0]])
+        );
+    });
+    popup.on("remove", function removePopup () {
+        unmountComponentAtNode(container);
     });
     popup.setContent(container);
-    featureLayer.bindPopup(popup).openPopup();
+    popup.openOn(map);
     return popup;
 }
 
@@ -91,8 +148,10 @@ function togglePopup (feature, featureLayer, layerId, map) {
  * Leaflet creates a "feature layer" for each feature (a "sub-layer") within a layer
  * - i.e. The 1976 Photos layer will have feature layers for each photo
  * - these layers handle the click events for that feature, which we want to be able to access programatically
+ * - this function creates an index of all those feature layers
  * - this function will let us access "previous" and "next" features for use with previous/next buttons
  *      in the feature popups
+ * - returns an index value for each feature layer added
  */
 function addFeatureLayerToList (featureLayer, layerId) {
     LAYER_FEATURES[layerId] = LAYER_FEATURES[layerId] || [];
@@ -101,7 +160,6 @@ function addFeatureLayerToList (featureLayer, layerId) {
 };
 
 export function onEachFeature (layerId, map) {
-    let idProperty = LAYERS_BY_ID[layerId].idProperty;
     return (feature, featureLayer) => {
         let featureIndex = addFeatureLayerToList(featureLayer, layerId);
         featureLayer.popup = false;

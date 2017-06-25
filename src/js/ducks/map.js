@@ -33,6 +33,12 @@ export function mapMousedown() {
         type: "MAP:MOUSEDOWN"
     }
 }
+export function leafletPopupOpened(coordinates) {
+    return {
+        type: "MAP:LEAFLET_POPUP_OPENED",
+        coordinates
+    }
+}
 const initialMapState = {
     state: {
         action: "none"
@@ -70,6 +76,17 @@ export default function map(state = initialMapState, action) {
         case "MAP:NEW_ZOOM_LEVEL":
             {
                 newState.zoom = action.zoomLevel;
+                break;
+            }
+        case "MAP:LEAFLET_POPUP_OPENED":
+            {
+                if(state.zoom < 10) {
+                    newState.state = {
+                        action: "willPanAndZoom",
+                        zoom: 10,
+                        coordinates: action.coordinates
+                    };
+                }
                 break;
             }
         default:
