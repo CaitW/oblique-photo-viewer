@@ -52869,6 +52869,8 @@
 								"bathy_xls": false,
 								"bluff_jpg": false,
 								"bathy_png": false,
+								"bluff_json": false,
+								"bathy_json": false,
 								"notes": "Notes",
 								"type": "Type"
 							},
@@ -53101,9 +53103,7 @@
 			"yMax": 698.784306
 		},
 		"lakeMichiganWaterLevel": {
-			"avg": 578.02,
-			"recordHigh": 582.35,
-			"recordLow": 576.02
+			"avg": 578.02
 		}
 	};
 
@@ -54047,6 +54047,7 @@
 
 	    _this.openPreviousFeature = _this.openPreviousFeature.bind(_this);
 	    _this.openNextFeature = _this.openNextFeature.bind(_this);
+	    _this.popupType = "modal";
 	    return _this;
 	  }
 
@@ -54088,7 +54089,7 @@
 	            _react2.default.createElement(_PopupTabs2.default, {
 	              layerId: this.props.layerId,
 	              featureProperties: this.props.featureProperties,
-	              popupType: 'modal'
+	              popupType: this.popupType
 	            })
 	          ),
 	          _react2.default.createElement(
@@ -54655,6 +54656,7 @@
 	        _this.bringToFront = _this.bringToFront.bind(_this);
 	        _this.close = _this.close.bind(_this);
 	        _this.pin = _this.pin.bind(_this);
+	        _this.popupType = "leaflet";
 	        return _this;
 	    }
 
@@ -54726,7 +54728,7 @@
 	                    _react2.default.createElement(_PopupTabs2.default, { layerId: this.props.layerId,
 	                        featureProperties: this.props.featureProperties,
 	                        update: this.update,
-	                        popupType: 'leaflet'
+	                        popupType: this.popupType
 	                    })
 	                ),
 	                _react2.default.createElement(
@@ -55238,16 +55240,6 @@
 	            }).y(function (d) {
 	                return y(_config2.default.lakeMichiganWaterLevel.avg);
 	            });
-	            var michigan_high = (0, _d3Shape.line)().x(function (d) {
-	                return x(d.x);
-	            }).y(function (d) {
-	                return y(_config2.default.lakeMichiganWaterLevel.recordHigh);
-	            });
-	            var michigan_low = (0, _d3Shape.line)().x(function (d) {
-	                return x(d.x);
-	            }).y(function (d) {
-	                return y(_config2.default.lakeMichiganWaterLevel.recordLow);
-	            });
 	            // Adds the svg canvas
 	            var svg = (0, _d3Selection.select)(this.profileDiv).append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 	            // get the profile's data from it's json file
@@ -55259,12 +55251,6 @@
 	                    return d.x;
 	                }));
 	                svg.append("path").attr("class", "lake-stats michigan-avg").attr("d", michigan_avg(data));
-	                // svg.append("path")
-	                //     .attr("class", "lake-stats michigan-low")
-	                //     .attr("d", michigan_low(data));
-	                // svg.append("path")
-	                //     .attr("class", "lake-stats michigan-high")
-	                //     .attr("d", michigan_high(data));
 	                // Add the valueline path.
 	                svg.append("path").attr("class", "line").attr("d", valueline(data));
 	                // Add the X Axis
@@ -63379,7 +63365,7 @@
 	PopupFooter.propTypes = {
 	    layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
 	    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired,
-	    children: _propTypes2.default.array
+	    children: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.array])
 	};
 
 	PopupFooter.defaultProps = {
@@ -64185,6 +64171,7 @@
 	            height: 300,
 	            width: 300
 	        };
+	        _this.popupType = "pinned";
 	        return _this;
 	    }
 
@@ -64247,7 +64234,7 @@
 	                        { className: 'wiscviewer-feature-popup-body' },
 	                        _react2.default.createElement(_PopupTabs2.default, { layerId: this.props.layerId,
 	                            featureProperties: this.props.featureProperties,
-	                            popupType: 'pinned'
+	                            popupType: this.popupType
 	                        })
 	                    ),
 	                    _react2.default.createElement(
