@@ -2,7 +2,8 @@
  * styles.js
  * This contains style functions that are applied to each layer when they are loaded.
  * Additionally, this file caches the styles applied by each layer, so that when
- * the user activates them in the map, the legend can display all the associated styles.
+ * the user activates them in the map, we save memory and we can keep track of all possible styles
+ * for use in the legend
  */
 import store from '../store';
 import { legendStyleUpdate } from '../ducks/layers';
@@ -271,9 +272,15 @@ const LAYER_STYLES_BY_ID = {
     }
 }
 
-// Individual layer sub-style names should be specified here. If one name, return <string>,
-// if a layer has multiple styles based on a feature's properties, that property value should
-// be returned instead
+/**
+ * If a layer should have different styles for features based on a particular feature property
+ * i.e. For all features in the Profiles layer:
+ *  - feature.type = "bluff" - should be colored red
+ *  - feature.type = "bathy" - should be colored blue
+ * Return the value of the property that determines the differing style
+ * Alternatively, if a layer's style should be the same for all features, just return
+ * a string to serve as the label in the legend
+ */
 function getLayerSubStyleName (layerId, feature) {
     let subStyleName = layerId;
     switch (layerId) {
@@ -338,6 +345,10 @@ function getCachedStyle (layerId, feature) {
     return false;
 }
 
+/**
+ * Called when a particular style / sub-style doesn't have an associated cache
+ * A new style object is created, and cached for future use
+ */
 function createNewStyle (layerId, feature) {
     let style = null;
     // Get either the singular name for the layer's style or the name of the sub-style for this feature
