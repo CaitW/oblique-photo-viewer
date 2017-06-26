@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { unmountComponentAtNode } from 'react-dom';
 
 import CONFIG from '../config.json';
 import LAYER_STYLE from '../layers/layerStyles';
@@ -25,7 +26,23 @@ export default class ObliquePhotoMap {
         this.dispatchZoom = this.dispatchZoom.bind(this);
         this.map.on('zoomend', self.dispatchZoom);
         this.map.on('mousedown', self.onMapMousedown);
+        this.map.on('popupclose', self.onPopupClose)
         this.dispatchZoom();
+    }
+    /**
+     * Leaflet popups are tied into React, and the react nodes need to be
+     * manually added / removed. The below function removes the React node
+     * when a popup is closed
+     */
+    onPopupClose (e) {
+        let container = e.popup.getContent();
+        /**
+         * setTimeout hack to get around this current issue with React:
+         * https://github.com/facebook/react/issues/3298
+         */
+        setTimeout(function () {
+            unmountComponentAtNode(container);
+        },10);
     }
     onMapMousedown () {
         store.dispatch(mapMousedown());

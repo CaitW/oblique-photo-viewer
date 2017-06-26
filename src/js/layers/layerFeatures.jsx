@@ -84,15 +84,17 @@ function getFeatureMidpoint (featureLayer) {
  */
 function createLeafletPopup (feature, featureLayer, layerId, map) {
     let featureMiddlePoint = getFeatureMidpoint(featureLayer);
-    let popup = L.popup({
-        closeOnClick: false,
-        className: "feature-popup hidden-xs",
-        autoClose: true,
-        maxWidth: 350,
-        minWidth: 350,
-        closeButton: false
-    }).setLatLng(L.latLng(featureMiddlePoint[1], featureMiddlePoint[0]));
     let container = document.createElement("div");
+    let popup = L.popup({
+            closeOnClick: false,
+            className: "feature-popup hidden-xs",
+            autoClose: true,
+            maxWidth: 350,
+            minWidth: 350,
+            closeButton: false
+        })
+        .setLatLng(L.latLng(featureMiddlePoint[1], featureMiddlePoint[0]))
+        .setContent(container);
     let getPopupPosition = () => {
         let popupPosition = popup.getLatLng();
         let positionInMap = map.latLngToContainerPoint(popupPosition);
@@ -105,16 +107,9 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
         return positionInDocument;
     }
     let closePopup = () => {
-        /**
-         * setTimeout hack to get around this current issue with React:
-         * https://github.com/facebook/react/issues/3298
-         */
-        setTimeout(function () {
-            unmountComponentAtNode(container);
-            // eslint-disable-next-line no-underscore-dangle
-            popup._close();
-        },10);
-    };
+        popup._close();
+    }
+
     popup.on("add", function addPopup () {
         render(
             <FeaturePopup
@@ -132,10 +127,6 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
             leafletPopupOpened([featureMiddlePoint[1], featureMiddlePoint[0]])
         );
     });
-    popup.on("remove", function removePopup () {
-        unmountComponentAtNode(container);
-    });
-    popup.setContent(container);
     popup.openOn(map);
     return popup;
 }
@@ -157,7 +148,7 @@ function togglePopup (feature, featureLayer, layerId, map) {
     } else if (featureLayer.popup === false) {
         featureLayer.popup = createLeafletPopup(feature, featureLayer, layerId, map, featureIndex);
     } else {
-        featureLayer.openPopup();
+        featureLayer.popup.openOn(map);
     }
 }
 
