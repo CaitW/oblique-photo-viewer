@@ -54580,6 +54580,7 @@
 	 */
 	function createLeafletPopup(feature, featureLayer, layerId, map) {
 	    var featureMiddlePoint = getFeatureMidpoint(featureLayer);
+	    var container = document.createElement("div");
 	    var popup = L.popup({
 	        closeOnClick: false,
 	        className: "feature-popup hidden-xs",
@@ -54587,8 +54588,7 @@
 	        maxWidth: 350,
 	        minWidth: 350,
 	        closeButton: false
-	    }).setLatLng(L.latLng(featureMiddlePoint[1], featureMiddlePoint[0]));
-	    var container = document.createElement("div");
+	    }).setLatLng(L.latLng(featureMiddlePoint[1], featureMiddlePoint[0])).setContent(container);
 	    var getPopupPosition = function getPopupPosition() {
 	        var popupPosition = popup.getLatLng();
 	        var positionInMap = map.latLngToContainerPoint(popupPosition);
@@ -54601,16 +54601,9 @@
 	        return positionInDocument;
 	    };
 	    var closePopup = function closePopup() {
-	        /**
-	         * setTimeout hack to get around this current issue with React:
-	         * https://github.com/facebook/react/issues/3298
-	         */
-	        setTimeout(function () {
-	            (0, _reactDom.unmountComponentAtNode)(container);
-	            // eslint-disable-next-line no-underscore-dangle
-	            popup._close();
-	        }, 10);
+	        popup._close();
 	    };
+
 	    popup.on("add", function addPopup() {
 	        (0, _reactDom.render)(_react2.default.createElement(_FeaturePopup2.default, {
 	            layerId: layerId,
@@ -54623,10 +54616,6 @@
 	        }), container);
 	        _store2.default.dispatch((0, _map.leafletPopupOpened)([featureMiddlePoint[1], featureMiddlePoint[0]]));
 	    });
-	    popup.on("remove", function removePopup() {
-	        (0, _reactDom.unmountComponentAtNode)(container);
-	    });
-	    popup.setContent(container);
 	    popup.openOn(map);
 	    return popup;
 	}
@@ -54648,7 +54637,7 @@
 	    } else if (featureLayer.popup === false) {
 	        featureLayer.popup = createLeafletPopup(feature, featureLayer, layerId, map, featureIndex);
 	    } else {
-	        featureLayer.openPopup();
+	        featureLayer.popup.openOn(map);
 	    }
 	}
 
@@ -75380,6 +75369,8 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
+	var _reactDom = __webpack_require__(334);
+
 	var _config = __webpack_require__(777);
 
 	var _config2 = _interopRequireDefault(_config);
@@ -75420,10 +75411,29 @@
 	        this.dispatchZoom = this.dispatchZoom.bind(this);
 	        this.map.on('zoomend', self.dispatchZoom);
 	        this.map.on('mousedown', self.onMapMousedown);
+	        this.map.on('popupclose', self.onPopupClose);
 	        this.dispatchZoom();
 	    }
+	    /**
+	     * Leaflet popups are tied into React, and the react nodes need to be
+	     * manually added / removed. The below function removes the React node
+	     * when a popup is closed
+	     */
+
 
 	    _createClass(ObliquePhotoMap, [{
+	        key: 'onPopupClose',
+	        value: function onPopupClose(e) {
+	            var container = e.popup.getContent();
+	            /**
+	             * setTimeout hack to get around this current issue with React:
+	             * https://github.com/facebook/react/issues/3298
+	             */
+	            setTimeout(function () {
+	                (0, _reactDom.unmountComponentAtNode)(container);
+	            }, 10);
+	        }
+	    }, {
 	        key: 'onMapMousedown',
 	        value: function onMapMousedown() {
 	            _store2.default.dispatch((0, _map.mapMousedown)());
