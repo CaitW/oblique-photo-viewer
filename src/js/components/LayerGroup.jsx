@@ -24,11 +24,6 @@ const LayerGroup = (props) => {
     }
     let bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
     let headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
-    if(props.panelVisible === false) {
-        bodyClassNames.push("hidden");
-    } else {
-        headerClassNames.push("active");
-    }
     return (
         <div className="panel panel-default wiscviewer-sidebar-panel">
             <div className={headerClassNames.join(" ")}
@@ -50,8 +45,7 @@ LayerGroup.propTypes = {
     layerGroupId: PropTypes.string.isRequired,
     layerGroupName: PropTypes.string.isRequired,
     layers: PropTypes.object.isRequired,
-    onLayerClick: PropTypes.func.isRequired,
-    panelVisible: PropTypes.bool.isRequired
+    onLayerClick: PropTypes.func.isRequired
 }
 
 export default LayerGroup;

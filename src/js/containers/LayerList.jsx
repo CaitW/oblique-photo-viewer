@@ -40,7 +40,6 @@ class LayerList extends React.Component {
                     layers={this.props.layers[layerGroupId].layers}
                     onLayerClick={this.constructor.onLayerClick}
                     eventKey={eventKey.toString()}
-                    panelVisible={true}
                 />
             );
             eventKey += 1;

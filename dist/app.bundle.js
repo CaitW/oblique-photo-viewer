@@ -8077,33 +8077,25 @@
 
 	var _NavBar2 = _interopRequireDefault(_NavBar);
 
-	var _SidebarWrapper = __webpack_require__(792);
+	var _Sidebar = __webpack_require__(792);
 
-	var _SidebarWrapper2 = _interopRequireDefault(_SidebarWrapper);
+	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 
-	var _MobileFeaturePopup = __webpack_require__(793);
+	var _MobileFeaturePopup = __webpack_require__(801);
 
 	var _MobileFeaturePopup2 = _interopRequireDefault(_MobileFeaturePopup);
 
-	var _MapWrapper = __webpack_require__(893);
+	var _MapWrapper = __webpack_require__(899);
 
 	var _MapWrapper2 = _interopRequireDefault(_MapWrapper);
 
-	var _MobileLayerList = __webpack_require__(894);
+	var _MobileLayerList = __webpack_require__(900);
 
 	var _MobileLayerList2 = _interopRequireDefault(_MobileLayerList);
 
-	var _PinnedFeaturePopupContainer = __webpack_require__(900);
+	var _PinnedFeaturePopupContainer = __webpack_require__(901);
 
 	var _PinnedFeaturePopupContainer2 = _interopRequireDefault(_PinnedFeaturePopupContainer);
-
-	var _LayerList = __webpack_require__(895);
-
-	var _LayerList2 = _interopRequireDefault(_LayerList);
-
-	var _Legend = __webpack_require__(903);
-
-	var _Legend2 = _interopRequireDefault(_Legend);
 
 	var _LeafletMap = __webpack_require__(904);
 
@@ -8166,12 +8158,7 @@
 	                    _react2.default.createElement(
 	                        _reactBootstrap.Row,
 	                        { className: 'wiscviewer-content-container' },
-	                        _react2.default.createElement(
-	                            _SidebarWrapper2.default,
-	                            null,
-	                            _react2.default.createElement(_LayerList2.default, null),
-	                            _react2.default.createElement(_Legend2.default, null)
-	                        ),
+	                        _react2.default.createElement(_Sidebar2.default, null),
 	                        _react2.default.createElement(
 	                            _MapWrapper2.default,
 	                            null,
@@ -53957,6 +53944,8 @@
 	    value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(298);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -53967,31 +53956,119 @@
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
+	var _LayerList = __webpack_require__(793);
+
+	var _LayerList2 = _interopRequireDefault(_LayerList);
+
+	var _Legend = __webpack_require__(800);
+
+	var _Legend2 = _interopRequireDefault(_Legend);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var SidebarWrapper = function SidebarWrapper(props) {
-	    return _react2.default.createElement(
-	        _reactBootstrap.Col,
-	        { xsHidden: true, sm: 5, md: 4, lg: 3, className: 'wiscviewer-sidebar' },
-	        _react2.default.createElement(
-	            'div',
-	            { className: 'wiscviewer-sidebar-inner-container' },
-	            props.children
-	        )
-	    );
-	}; /**
-	    * Sidebar.jsx
-	    * This component creates the sidebar, which contains:
-	    * - Layers List
-	    * - Legend
-	    */
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Sidebar.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component creates the sidebar, which contains:
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * - Layers List
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * - Legend
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 
-	SidebarWrapper.propTypes = {
-	    children: _propTypes2.default.node.isRequired
-	};
+	var Sidebar = function (_React$Component) {
+	    _inherits(Sidebar, _React$Component);
 
-	exports.default = SidebarWrapper;
+	    function Sidebar(props) {
+	        _classCallCheck(this, Sidebar);
+
+	        var _this = _possibleConstructorReturn(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).call(this, props));
+
+	        _this.state = {
+	            activeTab: "LayerList"
+	        };
+	        _this.onTabClick = _this.onTabClick.bind(_this);
+	        _this.getClassName = _this.getClassName.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(Sidebar, [{
+	        key: 'onTabClick',
+	        value: function onTabClick(e) {
+	            var clickedTab = e.target.getAttribute("value");
+	            this.setState({
+	                activeTab: clickedTab
+	            });
+	        }
+	    }, {
+	        key: 'getClassName',
+	        value: function getClassName(tabValue) {
+	            if (this.state.activeTab === tabValue) {
+	                return "active";
+	            }
+	            return "";
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var content = [];
+	            if (this.state.activeTab === "LayerList") {
+	                content.push(_react2.default.createElement(_LayerList2.default, { key: 'layers' }));
+	            } else {
+	                content.push(_react2.default.createElement(_Legend2.default, { key: 'legend' }));
+	            }
+	            return _react2.default.createElement(
+	                _reactBootstrap.Col,
+	                { xsHidden: true, sm: 5, md: 4, lg: 3, className: 'wiscviewer-sidebar' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'wiscviewer-sidebar-inner-container' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'wiscviewer-sidebar-tabs' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: this.getClassName("LayerList"),
+	                                onClick: this.onTabClick,
+	                                value: 'LayerList' },
+	                            _react2.default.createElement(
+	                                'i',
+	                                { className: 'fa fa-map' },
+	                                ' '
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: this.getClassName("Legend"),
+	                                onClick: this.onTabClick,
+	                                value: 'Legend' },
+	                            _react2.default.createElement(
+	                                'i',
+	                                { className: 'fa fa-key' },
+	                                ' '
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'wiscviewer-sidebar-tab-content' },
+	                        content
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Sidebar;
+	}(_react2.default.Component);
+
+	;
+
+	Sidebar.propTypes = {};
+
+	exports.default = Sidebar;
 
 /***/ }),
 /* 793 */
@@ -54000,7 +54077,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -54021,23 +54098,19 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _selectors = __webpack_require__(794);
+	var _LayerGroup = __webpack_require__(794);
 
-	var _mobile = __webpack_require__(780);
+	var _LayerGroup2 = _interopRequireDefault(_LayerGroup);
 
-	var _layerFeatures = __webpack_require__(796);
+	var _BasemapList = __webpack_require__(796);
 
-	var _PopupTabs = __webpack_require__(872);
+	var _BasemapList2 = _interopRequireDefault(_BasemapList);
 
-	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
+	var _layers = __webpack_require__(775);
 
-	var _PopupTitle = __webpack_require__(891);
+	var _basemaps = __webpack_require__(778);
 
-	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
-
-	var _PopupFooter = __webpack_require__(892);
-
-	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
+	var _selectors = __webpack_require__(798);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54046,120 +54119,344 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * FeatureModal.jsx
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This creates the modal that's displayed when a user clicks on an object in the map
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * LayerList.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component takes the current layers and basemaps and displays them,
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * grouped by type, in the sidebar and mobile layers list.
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
 
 	var mapStateToProps = function mapStateToProps(state) {
-	  return (0, _selectors.getMobileFeaturePopupProps)(state);
+	    return {
+	        layers: (0, _selectors.mapLayerGroupsToLayers)(state),
+	        basemaps: (0, _selectors.getBasemapsByIdWithData)(state)
+	    };
 	};
 
-	var MobileFeaturePopup = function (_React$Component) {
-	  _inherits(MobileFeaturePopup, _React$Component);
+	var LayerList = function (_React$Component) {
+	    _inherits(LayerList, _React$Component);
 
-	  function MobileFeaturePopup(props) {
-	    _classCallCheck(this, MobileFeaturePopup);
+	    function LayerList() {
+	        _classCallCheck(this, LayerList);
 
-	    var _this = _possibleConstructorReturn(this, (MobileFeaturePopup.__proto__ || Object.getPrototypeOf(MobileFeaturePopup)).call(this, props));
-
-	    _this.openPreviousFeature = _this.openPreviousFeature.bind(_this);
-	    _this.openNextFeature = _this.openNextFeature.bind(_this);
-	    _this.popupType = "modal";
-	    return _this;
-	  }
-
-	  _createClass(MobileFeaturePopup, [{
-	    key: 'openPreviousFeature',
-	    value: function openPreviousFeature() {
-	      (0, _layerFeatures.getFeatureLayer)(this.props.featureIndex, this.props.layerId).openPreviousFeature();
+	        return _possibleConstructorReturn(this, (LayerList.__proto__ || Object.getPrototypeOf(LayerList)).apply(this, arguments));
 	    }
-	  }, {
-	    key: 'openNextFeature',
-	    value: function openNextFeature() {
-	      (0, _layerFeatures.getFeatureLayer)(this.props.featureIndex, this.props.layerId).openPreviousFeature();
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var classNames = ["wiscviewer-modal", "wiscviewer-mobile-modal", "wiscviewer-mobile-feature-popup", "static-modal"];
-	      if (this.props.visible === false) {
-	        classNames.push("hidden");
-	      }
-	      return _react2.default.createElement(
-	        'div',
-	        { className: classNames.join(" ") },
-	        _react2.default.createElement(
-	          _reactBootstrap.Modal.Dialog,
-	          null,
-	          _react2.default.createElement(
-	            _reactBootstrap.Modal.Header,
-	            null,
-	            _react2.default.createElement(_PopupTitle2.default, {
-	              featureProperties: this.props.featureProperties,
-	              layerGroupName: this.props.layerGroupName,
-	              layerName: this.props.layerName
-	            })
-	          ),
-	          _react2.default.createElement(
-	            _reactBootstrap.Modal.Body,
-	            null,
-	            _react2.default.createElement(_PopupTabs2.default, {
-	              layerId: this.props.layerId,
-	              featureProperties: this.props.featureProperties,
-	              popupType: this.popupType
-	            })
-	          ),
-	          _react2.default.createElement(
-	            _reactBootstrap.Modal.Footer,
-	            null,
-	            _react2.default.createElement(
-	              _PopupFooter2.default,
-	              { layerId: this.props.layerId, featureProperties: this.props.featureProperties },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'wiscviewer-feature-controls' },
-	                _react2.default.createElement('i', { className: 'fa fa-arrow-left wiscviewer-feature-popup-previous-button',
-	                  onClick: this.openPreviousFeature,
-	                  role: 'button',
-	                  tabIndex: -1 }),
-	                _react2.default.createElement(
-	                  _reactBootstrap.Button,
-	                  { key: 'close', className: 'wiscviewer-mobile-feature-modal-close', onClick: this.constructor.close },
-	                  'Close'
-	                ),
-	                _react2.default.createElement('i', { className: 'fa fa-arrow-right wiscviewer-feature-popup-next-button',
-	                  onClick: this.openNextFeature,
-	                  role: 'button',
-	                  tabIndex: -1 })
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }], [{
-	    key: 'close',
-	    value: function close() {
-	      _store2.default.dispatch((0, _mobile.closeMobileFeatureModal)());
-	    }
-	  }]);
 
-	  return MobileFeaturePopup;
+	    _createClass(LayerList, [{
+	        key: 'render',
+	        value: function render() {
+	            var layerGroups = [];
+	            var eventKey = 1;
+	            for (var layerGroupId in this.props.layers) {
+	                layerGroups.push(_react2.default.createElement(_LayerGroup2.default, {
+	                    key: layerGroupId,
+	                    layerGroupId: layerGroupId,
+	                    layerGroupName: this.props.layers[layerGroupId].name,
+	                    layers: this.props.layers[layerGroupId].layers,
+	                    onLayerClick: this.constructor.onLayerClick,
+	                    eventKey: eventKey.toString()
+	                }));
+	                eventKey += 1;
+	            }
+	            return _react2.default.createElement(
+	                _reactBootstrap.PanelGroup,
+	                { className: 'wiscviewer-layer-list' },
+	                layerGroups,
+	                _react2.default.createElement(_BasemapList2.default, { basemaps: this.props.basemaps,
+	                    panelVisible: true,
+	                    onBasemapClick: this.constructor.onBasemapClick,
+	                    eventKey: eventKey.toString()
+	                })
+	            );
+	        }
+	    }], [{
+	        key: 'onLayerClick',
+	        value: function onLayerClick(layerId) {
+	            _store2.default.dispatch((0, _layers.toggleLayer)(layerId));
+	        }
+	    }, {
+	        key: 'onBasemapClick',
+	        value: function onBasemapClick(basemapID) {
+	            _store2.default.dispatch((0, _basemaps.toggleBasemap)(basemapID));
+	        }
+	    }]);
+
+	    return LayerList;
 	}(_react2.default.Component);
 
-	MobileFeaturePopup.propTypes = {
-	  visible: _propTypes2.default.bool.isRequired,
-	  featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired,
-	  layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
-	  layerName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
-	  layerGroupName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired
+	LayerList.propTypes = {
+	    layers: _propTypes2.default.object.isRequired,
+	    basemaps: _propTypes2.default.object.isRequired
 	};
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MobileFeaturePopup);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LayerList);
 
 /***/ }),
 /* 794 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(298);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(569);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _reactBootstrap = __webpack_require__(481);
+
+	var _Layer = __webpack_require__(795);
+
+	var _Layer2 = _interopRequireDefault(_Layer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * LayerGroup.jsx
+	 * This creates the group container that holds each non-basemap layer list item,
+	 * in the sidebar and mobile layer list
+	 */
+	var LayerGroup = function LayerGroup(props) {
+	    var layers = [];
+	    for (var layerId in props.layers) {
+	        var boundOnLayerClick = props.onLayerClick.bind(null, layerId);
+	        layers.push(_react2.default.createElement(_Layer2.default, {
+	            key: layerId,
+	            layerName: props.layers[layerId].name,
+	            active: props.layers[layerId].active,
+	            onLayerClick: boundOnLayerClick
+	        }));
+	    }
+	    var bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
+	    var headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
+	    return _react2.default.createElement(
+	        'div',
+	        { className: 'panel panel-default wiscviewer-sidebar-panel' },
+	        _react2.default.createElement(
+	            'div',
+	            { className: headerClassNames.join(" "),
+	                role: 'button',
+	                tabIndex: 0
+	            },
+	            props.layerGroupName
+	        ),
+	        _react2.default.createElement(
+	            'div',
+	            { className: bodyClassNames.join(" ") },
+	            _react2.default.createElement(
+	                _reactBootstrap.ListGroup,
+	                { className: 'wiscviewer-layer-list-group' },
+	                layers
+	            )
+	        )
+	    );
+	};
+
+	LayerGroup.propTypes = {
+	    layerGroupId: _propTypes2.default.string.isRequired,
+	    layerGroupName: _propTypes2.default.string.isRequired,
+	    layers: _propTypes2.default.object.isRequired,
+	    onLayerClick: _propTypes2.default.func.isRequired
+	};
+
+	exports.default = LayerGroup;
+
+/***/ }),
+/* 795 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(298);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(569);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _reactBootstrap = __webpack_require__(481);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Layer = function Layer(props) {
+	    var iconClassNames = ["fa", "wiscviewer-layer-left-icon"];
+	    var layerClassNames = ["wiscviewer-layer-item"];
+	    if (props.active) {
+	        iconClassNames.push("fa-check");
+	        iconClassNames.push("active");
+	        layerClassNames.push("active");
+	    } else {
+	        iconClassNames.push("fa-plus");
+	    }
+
+	    return _react2.default.createElement(
+	        _reactBootstrap.ListGroupItem,
+	        {
+	            active: props.active,
+	            className: layerClassNames.join(" "),
+	            onClick: props.onLayerClick },
+	        _react2.default.createElement('i', { className: iconClassNames.join(" ") }),
+	        props.layerName
+	    );
+	}; /**
+	    * Layer.jsx
+	    * This builds the list item representing a non-basemap layer in the sidebar and mobile layer list
+	    */
+
+
+	Layer.propTypes = {
+	    active: _propTypes2.default.bool.isRequired,
+	    onLayerClick: _propTypes2.default.func.isRequired,
+	    layerName: _propTypes2.default.string.isRequired
+	};
+
+	exports.default = Layer;
+
+/***/ }),
+/* 796 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(298);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(569);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _reactBootstrap = __webpack_require__(481);
+
+	var _Basemap = __webpack_require__(797);
+
+	var _Basemap2 = _interopRequireDefault(_Basemap);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * BasemapList.jsx
+	 * This creates the group container that holds each Basemap list item,
+	 * in the sidebar and mobile layer list
+	 */
+	var BasemapList = function BasemapList(props) {
+	  var basemaps = [];
+	  for (var basemapId in props.basemaps) {
+	    var basemap = props.basemaps[basemapId];
+	    var boundOnBasemapClick = props.onBasemapClick.bind(null, basemapId);
+	    basemaps.push(_react2.default.createElement(_Basemap2.default, { key: basemapId,
+	      basemapName: basemap.name,
+	      active: basemap.active,
+	      onBasemapClick: boundOnBasemapClick
+	    }));
+	  }
+
+	  var bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
+	  var headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
+	  if (props.panelVisible === false) {
+	    bodyClassNames.push("hidden");
+	  } else {
+	    headerClassNames.push("active");
+	  }
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'panel panel-default wiscviewer-sidebar-panel' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: headerClassNames.join(" "),
+	        role: 'button',
+	        tabIndex: 0
+	      },
+	      'Basemaps'
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: bodyClassNames.join(" ") },
+	      _react2.default.createElement(
+	        _reactBootstrap.ListGroup,
+	        { className: 'wiscviewer-layer-list-group' },
+	        basemaps
+	      )
+	    )
+	  );
+	};
+
+	BasemapList.propTypes = {
+	  basemaps: _propTypes2.default.object.isRequired,
+	  panelVisible: _propTypes2.default.bool.isRequired,
+	  onBasemapClick: _propTypes2.default.func.isRequired
+	};
+
+	exports.default = BasemapList;
+
+/***/ }),
+/* 797 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(298);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(569);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _reactBootstrap = __webpack_require__(481);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Basemap = function Basemap(props) {
+	    var iconClassNames = ["fa", "fa-map", "wiscviewer-layer-left-icon"];
+	    var layerClassNames = ["wiscviewer-layer-item"];
+	    if (props.active) {
+	        iconClassNames.push("active");
+	        layerClassNames.push("active");
+	    }
+	    return _react2.default.createElement(
+	        _reactBootstrap.ListGroupItem,
+	        {
+	            active: props.active,
+	            className: layerClassNames.join(" "),
+	            onClick: props.onBasemapClick },
+	        _react2.default.createElement('i', { className: iconClassNames.join(" ") }),
+	        props.basemapName
+	    );
+	}; /**
+	    * Basemap.jsx
+	    * This builds the list item representing basemaps in the sidebar and mobile layer list
+	    */
+
+
+	Basemap.propTypes = {
+	    active: _propTypes2.default.bool.isRequired,
+	    onBasemapClick: _propTypes2.default.func.isRequired,
+	    basemapName: _propTypes2.default.string.isRequired
+	};
+
+	exports.default = Basemap;
+
+/***/ }),
+/* 798 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54171,7 +54468,7 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _reselect = __webpack_require__(795);
+	var _reselect = __webpack_require__(799);
 
 	var _util = __webpack_require__(776);
 
@@ -54353,7 +54650,7 @@
 	});
 
 /***/ }),
-/* 795 */
+/* 799 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -54469,7 +54766,299 @@
 	}
 
 /***/ }),
-/* 796 */
+/* 800 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(298);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(736);
+
+	var _reactBootstrap = __webpack_require__(481);
+
+	var _propTypes = __webpack_require__(569);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _selectors = __webpack_require__(798);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {
+	        activeLayerStyleTypes: (0, _selectors.getActiveLayerStyleTypes)(state)
+	    };
+	}; /**
+	    * Legend.jsx
+	    * This component references the Redux store to determine which layers are currently active.
+	    * It then renders the legend based on the currently active layers.
+	    */
+
+
+	var LegendStyle = function LegendStyle(props) {
+	    return _react2.default.createElement(
+	        'li',
+	        { key: props.styleName },
+	        _react2.default.createElement('i', { style: props.iconStyle, className: props.styleIconClassNames.join(" ") }),
+	        props.styleName
+	    );
+	};
+
+	var LegendLayer = function LegendLayer(props) {
+	    var headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
+	    var bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
+	    var styles = [];
+	    var _iteratorNormalCompletion = true;
+	    var _didIteratorError = false;
+	    var _iteratorError = undefined;
+
+	    try {
+	        for (var _iterator = props.layerStyles[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	            var style = _step.value;
+
+	            styles.push(_react2.default.createElement(LegendStyle, {
+	                key: style.styleName,
+	                styleName: style.styleName,
+	                iconStyle: style.iconStyle,
+	                styleIconClassNames: style.styleIconClassNames
+	            }));
+	        }
+	    } catch (err) {
+	        _didIteratorError = true;
+	        _iteratorError = err;
+	    } finally {
+	        try {
+	            if (!_iteratorNormalCompletion && _iterator.return) {
+	                _iterator.return();
+	            }
+	        } finally {
+	            if (_didIteratorError) {
+	                throw _iteratorError;
+	            }
+	        }
+	    }
+
+	    return _react2.default.createElement(
+	        'div',
+	        { className: 'panel panel-default wiscviewer-sidebar-panel' },
+	        _react2.default.createElement(
+	            'div',
+	            { className: headerClassNames.join(" "),
+	                role: 'button',
+	                tabIndex: 0
+	            },
+	            props.layerName
+	        ),
+	        _react2.default.createElement(
+	            'div',
+	            { className: bodyClassNames.join(" ") },
+	            _react2.default.createElement(
+	                'ul',
+	                { className: 'wiscviewer-legend-list' },
+	                styles
+	            )
+	        )
+	    );
+	};
+
+	var Legend = function Legend(props) {
+	    var layers = [];
+	    var activeLayerStyleTypes = props.activeLayerStyleTypes;
+	    for (var layerKey in activeLayerStyleTypes) {
+	        var styles = activeLayerStyleTypes[layerKey];
+	        layers.push(_react2.default.createElement(LegendLayer, {
+	            key: layerKey,
+	            layerName: layerKey,
+	            layerStyles: styles
+	        }));
+	    }
+	    return _react2.default.createElement(
+	        _reactBootstrap.PanelGroup,
+	        { className: 'wiscviewer-legend' },
+	        layers
+	    );
+	};
+
+	Legend.propTypes = {
+	    activeLayerStyleTypes: _propTypes2.default.object.isRequired
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Legend);
+
+/***/ }),
+/* 801 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(298);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(569);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _reactBootstrap = __webpack_require__(481);
+
+	var _reactRedux = __webpack_require__(736);
+
+	var _store = __webpack_require__(774);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	var _selectors = __webpack_require__(798);
+
+	var _mobile = __webpack_require__(780);
+
+	var _layerFeatures = __webpack_require__(802);
+
+	var _PopupTabs = __webpack_require__(878);
+
+	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
+
+	var _PopupTitle = __webpack_require__(897);
+
+	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
+
+	var _PopupFooter = __webpack_require__(898);
+
+	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * FeatureModal.jsx
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This creates the modal that's displayed when a user clicks on an object in the map
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  return (0, _selectors.getMobileFeaturePopupProps)(state);
+	};
+
+	var MobileFeaturePopup = function (_React$Component) {
+	  _inherits(MobileFeaturePopup, _React$Component);
+
+	  function MobileFeaturePopup(props) {
+	    _classCallCheck(this, MobileFeaturePopup);
+
+	    var _this = _possibleConstructorReturn(this, (MobileFeaturePopup.__proto__ || Object.getPrototypeOf(MobileFeaturePopup)).call(this, props));
+
+	    _this.openPreviousFeature = _this.openPreviousFeature.bind(_this);
+	    _this.openNextFeature = _this.openNextFeature.bind(_this);
+	    _this.popupType = "modal";
+	    return _this;
+	  }
+
+	  _createClass(MobileFeaturePopup, [{
+	    key: 'openPreviousFeature',
+	    value: function openPreviousFeature() {
+	      (0, _layerFeatures.getFeatureLayer)(this.props.featureIndex, this.props.layerId).openPreviousFeature();
+	    }
+	  }, {
+	    key: 'openNextFeature',
+	    value: function openNextFeature() {
+	      (0, _layerFeatures.getFeatureLayer)(this.props.featureIndex, this.props.layerId).openPreviousFeature();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var classNames = ["wiscviewer-modal", "wiscviewer-mobile-modal", "wiscviewer-mobile-feature-popup", "static-modal"];
+	      if (this.props.visible === false) {
+	        classNames.push("hidden");
+	      }
+	      return _react2.default.createElement(
+	        'div',
+	        { className: classNames.join(" ") },
+	        _react2.default.createElement(
+	          _reactBootstrap.Modal.Dialog,
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Header,
+	            null,
+	            _react2.default.createElement(_PopupTitle2.default, {
+	              featureProperties: this.props.featureProperties,
+	              layerGroupName: this.props.layerGroupName,
+	              layerName: this.props.layerName
+	            })
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Body,
+	            null,
+	            _react2.default.createElement(_PopupTabs2.default, {
+	              layerId: this.props.layerId,
+	              featureProperties: this.props.featureProperties,
+	              popupType: this.popupType
+	            })
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Footer,
+	            null,
+	            _react2.default.createElement(
+	              _PopupFooter2.default,
+	              { layerId: this.props.layerId, featureProperties: this.props.featureProperties },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'wiscviewer-feature-controls' },
+	                _react2.default.createElement('i', { className: 'fa fa-arrow-left wiscviewer-feature-popup-previous-button',
+	                  onClick: this.openPreviousFeature,
+	                  role: 'button',
+	                  tabIndex: -1 }),
+	                _react2.default.createElement(
+	                  _reactBootstrap.Button,
+	                  { key: 'close', className: 'wiscviewer-mobile-feature-modal-close', onClick: this.constructor.close },
+	                  'Close'
+	                ),
+	                _react2.default.createElement('i', { className: 'fa fa-arrow-right wiscviewer-feature-popup-next-button',
+	                  onClick: this.openNextFeature,
+	                  role: 'button',
+	                  tabIndex: -1 })
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }], [{
+	    key: 'close',
+	    value: function close() {
+	      _store2.default.dispatch((0, _mobile.closeMobileFeatureModal)());
+	    }
+	  }]);
+
+	  return MobileFeaturePopup;
+	}(_react2.default.Component);
+
+	MobileFeaturePopup.propTypes = {
+	  visible: _propTypes2.default.bool.isRequired,
+	  featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired,
+	  layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	  layerName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	  layerGroupName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MobileFeaturePopup);
+
+/***/ }),
+/* 802 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54486,7 +55075,7 @@
 
 	var _reactDom = __webpack_require__(334);
 
-	var _turf = __webpack_require__(797);
+	var _turf = __webpack_require__(803);
 
 	var _store = __webpack_require__(774);
 
@@ -54496,7 +55085,7 @@
 
 	var _map = __webpack_require__(779);
 
-	var _FeaturePopup = __webpack_require__(871);
+	var _FeaturePopup = __webpack_require__(877);
 
 	var _FeaturePopup2 = _interopRequireDefault(_FeaturePopup);
 
@@ -54688,7 +55277,7 @@
 	}
 
 /***/ }),
-/* 797 */
+/* 803 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*eslint global-require: 0*/
@@ -54701,52 +55290,52 @@
 	 * @summary Geospatial analysis for JavaScript
 	 */
 	module.exports = {
-	    isolines: __webpack_require__(798),
-	    convex: __webpack_require__(811),
-	    within: __webpack_require__(828),
-	    concave: __webpack_require__(829),
-	    difference: __webpack_require__(832),
-	    collect: __webpack_require__(833),
-	    flip: __webpack_require__(834),
-	    simplify: __webpack_require__(835),
-	    bezier: __webpack_require__(837),
-	    tag: __webpack_require__(839),
-	    sample: __webpack_require__(840),
-	    envelope: __webpack_require__(841),
-	    square: __webpack_require__(808),
-	    midpoint: __webpack_require__(843),
-	    buffer: __webpack_require__(846),
-	    center: __webpack_require__(848),
-	    centroid: __webpack_require__(849),
-	    combine: __webpack_require__(850),
-	    distance: __webpack_require__(809),
-	    explode: __webpack_require__(851),
-	    bbox: __webpack_require__(805),
-	    tesselate: __webpack_require__(852),
-	    bboxPolygon: __webpack_require__(842),
-	    inside: __webpack_require__(801),
-	    intersect: __webpack_require__(854),
-	    nearest: __webpack_require__(855),
-	    planepoint: __webpack_require__(807),
-	    random: __webpack_require__(856),
-	    tin: __webpack_require__(799),
-	    union: __webpack_require__(830),
-	    bearing: __webpack_require__(844),
-	    destination: __webpack_require__(845),
-	    kinks: __webpack_require__(858),
-	    pointOnSurface: __webpack_require__(859),
-	    area: __webpack_require__(860),
-	    along: __webpack_require__(863),
-	    lineDistance: __webpack_require__(864),
-	    lineSlice: __webpack_require__(865),
-	    pointOnLine: __webpack_require__(866),
-	    pointGrid: __webpack_require__(867),
-	    squareGrid: __webpack_require__(868),
-	    triangleGrid: __webpack_require__(869),
-	    hexGrid: __webpack_require__(870)
+	    isolines: __webpack_require__(804),
+	    convex: __webpack_require__(817),
+	    within: __webpack_require__(834),
+	    concave: __webpack_require__(835),
+	    difference: __webpack_require__(838),
+	    collect: __webpack_require__(839),
+	    flip: __webpack_require__(840),
+	    simplify: __webpack_require__(841),
+	    bezier: __webpack_require__(843),
+	    tag: __webpack_require__(845),
+	    sample: __webpack_require__(846),
+	    envelope: __webpack_require__(847),
+	    square: __webpack_require__(814),
+	    midpoint: __webpack_require__(849),
+	    buffer: __webpack_require__(852),
+	    center: __webpack_require__(854),
+	    centroid: __webpack_require__(855),
+	    combine: __webpack_require__(856),
+	    distance: __webpack_require__(815),
+	    explode: __webpack_require__(857),
+	    bbox: __webpack_require__(811),
+	    tesselate: __webpack_require__(858),
+	    bboxPolygon: __webpack_require__(848),
+	    inside: __webpack_require__(807),
+	    intersect: __webpack_require__(860),
+	    nearest: __webpack_require__(861),
+	    planepoint: __webpack_require__(813),
+	    random: __webpack_require__(862),
+	    tin: __webpack_require__(805),
+	    union: __webpack_require__(836),
+	    bearing: __webpack_require__(850),
+	    destination: __webpack_require__(851),
+	    kinks: __webpack_require__(864),
+	    pointOnSurface: __webpack_require__(865),
+	    area: __webpack_require__(866),
+	    along: __webpack_require__(869),
+	    lineDistance: __webpack_require__(870),
+	    lineSlice: __webpack_require__(871),
+	    pointOnLine: __webpack_require__(872),
+	    pointGrid: __webpack_require__(873),
+	    squareGrid: __webpack_require__(874),
+	    triangleGrid: __webpack_require__(875),
+	    hexGrid: __webpack_require__(876)
 	};
 
-	var helpers = __webpack_require__(800);
+	var helpers = __webpack_require__(806);
 
 	module.exports.point = helpers.point;
 	module.exports.polygon = helpers.polygon;
@@ -54760,20 +55349,20 @@
 
 
 /***/ }),
-/* 798 */
+/* 804 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//https://github.com/jasondavies/conrec.js
 	//http://stackoverflow.com/questions/263305/drawing-a-topographical-map
-	var tin = __webpack_require__(799);
-	var inside = __webpack_require__(801);
-	var grid = __webpack_require__(803);
-	var bbox = __webpack_require__(805);
-	var planepoint = __webpack_require__(807);
-	var featurecollection = __webpack_require__(800).featureCollection;
-	var linestring = __webpack_require__(800).lineString;
-	var square = __webpack_require__(808);
-	var Conrec = __webpack_require__(810);
+	var tin = __webpack_require__(805);
+	var inside = __webpack_require__(807);
+	var grid = __webpack_require__(809);
+	var bbox = __webpack_require__(811);
+	var planepoint = __webpack_require__(813);
+	var featurecollection = __webpack_require__(806).featureCollection;
+	var linestring = __webpack_require__(806).lineString;
+	var square = __webpack_require__(814);
+	var Conrec = __webpack_require__(816);
 
 	/**
 	 * Takes {@link Point|points} with z-values and an array of
@@ -54862,13 +55451,13 @@
 
 
 /***/ }),
-/* 799 */
+/* 805 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//http://en.wikipedia.org/wiki/Delaunay_triangulation
 	//https://github.com/ironwallaby/delaunay
-	var polygon = __webpack_require__(800).polygon;
-	var featurecollection = __webpack_require__(800).featureCollection;
+	var polygon = __webpack_require__(806).polygon;
+	var featurecollection = __webpack_require__(806).featureCollection;
 
 	/**
 	 * Takes a set of {@link Point|points} and the name of a z-value property and
@@ -55105,7 +55694,7 @@
 
 
 /***/ }),
-/* 800 */
+/* 806 */
 /***/ (function(module, exports) {
 
 	/**
@@ -55434,10 +56023,10 @@
 
 
 /***/ }),
-/* 801 */
+/* 807 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var invariant = __webpack_require__(802);
+	var invariant = __webpack_require__(808);
 
 	// http://en.wikipedia.org/wiki/Even%E2%80%93odd_rule
 	// modified from: https://github.com/substack/point-in-polygon/blob/master/index.js
@@ -55539,7 +56128,7 @@
 
 
 /***/ }),
-/* 802 */
+/* 808 */
 /***/ (function(module, exports) {
 
 	/**
@@ -55638,10 +56227,10 @@
 
 
 /***/ }),
-/* 803 */
+/* 809 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var point = __webpack_require__(804);
+	var point = __webpack_require__(810);
 
 	/**
 	 * Takes a bounding box and a cell depth and returns a {@link FeatureCollection} of {@link Point} features in a grid.
@@ -55681,7 +56270,7 @@
 
 
 /***/ }),
-/* 804 */
+/* 810 */
 /***/ (function(module, exports) {
 
 	/**
@@ -55717,10 +56306,10 @@
 
 
 /***/ }),
-/* 805 */
+/* 811 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var each = __webpack_require__(806).coordEach;
+	var each = __webpack_require__(812).coordEach;
 
 	/**
 	 * Takes a set of features, calculates the bbox of all input features, and returns a bounding box.
@@ -55790,7 +56379,7 @@
 
 
 /***/ }),
-/* 806 */
+/* 812 */
 /***/ (function(module, exports) {
 
 	/**
@@ -55972,7 +56561,7 @@
 
 
 /***/ }),
-/* 807 */
+/* 813 */
 /***/ (function(module, exports) {
 
 	/**
@@ -56050,10 +56639,10 @@
 
 
 /***/ }),
-/* 808 */
+/* 814 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var distance = __webpack_require__(809);
+	var distance = __webpack_require__(815);
 
 	/**
 	 * Takes a bounding box and calculates the minimum square bounding box that
@@ -56101,11 +56690,11 @@
 
 
 /***/ }),
-/* 809 */
+/* 815 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getCoord = __webpack_require__(802).getCoord;
-	var radiansToDistance = __webpack_require__(800).radiansToDistance;
+	var getCoord = __webpack_require__(808).getCoord;
+	var radiansToDistance = __webpack_require__(806).radiansToDistance;
 	//http://en.wikipedia.org/wiki/Haversine_formula
 	//http://www.movable-type.co.uk/scripts/latlong.html
 
@@ -56167,7 +56756,7 @@
 
 
 /***/ }),
-/* 810 */
+/* 816 */
 /***/ (function(module, exports) {
 
 	/* eslint-disable */
@@ -56690,12 +57279,12 @@
 
 
 /***/ }),
-/* 811 */
+/* 817 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var each = __webpack_require__(806).coordEach,
-	    convexHull = __webpack_require__(812),
-	    polygon = __webpack_require__(800).polygon;
+	var each = __webpack_require__(812).coordEach,
+	    convexHull = __webpack_require__(818),
+	    polygon = __webpack_require__(806).polygon;
 
 	/**
 	 * Takes a set of {@link Point|points} and returns a
@@ -56785,14 +57374,14 @@
 
 
 /***/ }),
-/* 812 */
+/* 818 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict"
 
-	var convexHull1d = __webpack_require__(813)
-	var convexHull2d = __webpack_require__(814)
-	var convexHullnd = __webpack_require__(822)
+	var convexHull1d = __webpack_require__(819)
+	var convexHull2d = __webpack_require__(820)
+	var convexHullnd = __webpack_require__(828)
 
 	module.exports = convexHull
 
@@ -56815,7 +57404,7 @@
 	}
 
 /***/ }),
-/* 813 */
+/* 819 */
 /***/ (function(module, exports) {
 
 	"use strict"
@@ -56843,14 +57432,14 @@
 	}
 
 /***/ }),
-/* 814 */
+/* 820 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict'
 
 	module.exports = convexHull2D
 
-	var monotoneHull = __webpack_require__(815)
+	var monotoneHull = __webpack_require__(821)
 
 	function convexHull2D(points) {
 	  var hull = monotoneHull(points)
@@ -56870,14 +57459,14 @@
 
 
 /***/ }),
-/* 815 */
+/* 821 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict'
 
 	module.exports = monotoneConvexHull2D
 
-	var orient = __webpack_require__(816)[3]
+	var orient = __webpack_require__(822)[3]
 
 	function monotoneConvexHull2D(points) {
 	  var n = points.length
@@ -56956,15 +57545,15 @@
 	}
 
 /***/ }),
-/* 816 */
+/* 822 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict"
 
-	var twoProduct = __webpack_require__(817)
-	var robustSum = __webpack_require__(818)
-	var robustScale = __webpack_require__(819)
-	var robustSubtract = __webpack_require__(821)
+	var twoProduct = __webpack_require__(823)
+	var robustSum = __webpack_require__(824)
+	var robustScale = __webpack_require__(825)
+	var robustSubtract = __webpack_require__(827)
 
 	var NUM_EXPAND = 5
 
@@ -57151,7 +57740,7 @@
 	generateOrientationProc()
 
 /***/ }),
-/* 817 */
+/* 823 */
 /***/ (function(module, exports) {
 
 	"use strict"
@@ -57189,7 +57778,7 @@
 	}
 
 /***/ }),
-/* 818 */
+/* 824 */
 /***/ (function(module, exports) {
 
 	"use strict"
@@ -57350,13 +57939,13 @@
 	}
 
 /***/ }),
-/* 819 */
+/* 825 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict"
 
-	var twoProduct = __webpack_require__(817)
-	var twoSum = __webpack_require__(820)
+	var twoProduct = __webpack_require__(823)
+	var twoSum = __webpack_require__(826)
 
 	module.exports = scaleLinearExpansion
 
@@ -57405,7 +57994,7 @@
 	}
 
 /***/ }),
-/* 820 */
+/* 826 */
 /***/ (function(module, exports) {
 
 	"use strict"
@@ -57427,7 +58016,7 @@
 	}
 
 /***/ }),
-/* 821 */
+/* 827 */
 /***/ (function(module, exports) {
 
 	"use strict"
@@ -57588,15 +58177,15 @@
 	}
 
 /***/ }),
-/* 822 */
+/* 828 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict'
 
 	module.exports = convexHullnD
 
-	var ich = __webpack_require__(823)
-	var aff = __webpack_require__(827)
+	var ich = __webpack_require__(829)
+	var aff = __webpack_require__(833)
 
 	function permute(points, front) {
 	  var n = points.length
@@ -57653,7 +58242,7 @@
 	}
 
 /***/ }),
-/* 823 */
+/* 829 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict"
@@ -57664,8 +58253,8 @@
 
 	module.exports = incrementalConvexHull
 
-	var orient = __webpack_require__(816)
-	var compareCell = __webpack_require__(824).compareCells
+	var orient = __webpack_require__(822)
+	var compareCell = __webpack_require__(830).compareCells
 
 	function compareInt(a, b) {
 	  return a - b
@@ -58104,13 +58693,13 @@
 	}
 
 /***/ }),
-/* 824 */
+/* 830 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict"; "use restrict";
 
-	var bits      = __webpack_require__(825)
-	  , UnionFind = __webpack_require__(826)
+	var bits      = __webpack_require__(831)
+	  , UnionFind = __webpack_require__(832)
 
 	//Returns the dimension of a cell complex
 	function dimension(cells) {
@@ -58452,7 +59041,7 @@
 
 
 /***/ }),
-/* 825 */
+/* 831 */
 /***/ (function(module, exports) {
 
 	/**
@@ -58662,7 +59251,7 @@
 
 
 /***/ }),
-/* 826 */
+/* 832 */
 /***/ (function(module, exports) {
 
 	"use strict"; "use restrict";
@@ -58729,14 +59318,14 @@
 	}
 
 /***/ }),
-/* 827 */
+/* 833 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict'
 
 	module.exports = affineHull
 
-	var orient = __webpack_require__(816)
+	var orient = __webpack_require__(822)
 
 	function linearlyIndependent(points, d) {
 	  var nhull = new Array(d+1)
@@ -58785,11 +59374,11 @@
 	}
 
 /***/ }),
-/* 828 */
+/* 834 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var inside = __webpack_require__(801);
-	var featureCollection = __webpack_require__(800).featureCollection;
+	var inside = __webpack_require__(807);
+	var featureCollection = __webpack_require__(806).featureCollection;
 
 	/**
 	 * Takes a set of {@link Point|points} and a set of {@link Polygon|polygons} and returns the points that fall within the polygons.
@@ -58885,7 +59474,7 @@
 
 
 /***/ }),
-/* 829 */
+/* 835 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 1. run tin on points
@@ -58893,9 +59482,9 @@
 	// 3. remove triangles that fail the max length test
 	// 4. buffer the results slightly
 	// 5. merge the results
-	var tin = __webpack_require__(799);
-	var union = __webpack_require__(830);
-	var distance = __webpack_require__(809);
+	var tin = __webpack_require__(805);
+	var union = __webpack_require__(836);
+	var distance = __webpack_require__(815);
 
 	/**
 	 * Takes a set of {@link Point|points} and returns a concave hull polygon.
@@ -59007,7 +59596,7 @@
 
 
 /***/ }),
-/* 830 */
+/* 836 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// look here for help http://svn.osgeo.org/grass/grass/branches/releasebranch_6_4/vector/v.overlay/main.c
@@ -59015,7 +59604,7 @@
 
 	// depend on jsts for now https://github.com/bjornharrtell/jsts/blob/master/examples/overlay.html
 
-	var jsts = __webpack_require__(831);
+	var jsts = __webpack_require__(837);
 
 	/**
 	 * Takes two {@link Polygon|polygons} and returns a combined polygon. If the input polygons are not contiguous, this function returns a {@link MultiPolygon} feature.
@@ -59085,7 +59674,7 @@
 
 
 /***/ }),
-/* 831 */
+/* 837 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// JSTS. See https://github.com/bjornharrtell/jsts
@@ -59110,11 +59699,11 @@
 
 
 /***/ }),
-/* 832 */
+/* 838 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// depend on jsts for now https://github.com/bjornharrtell/jsts/blob/master/examples/overlay.html
-	var jsts = __webpack_require__(831);
+	var jsts = __webpack_require__(837);
 
 	/**
 	 * Finds the difference between two {@link Polygon|polygons} by clipping the second
@@ -59210,10 +59799,10 @@
 
 
 /***/ }),
-/* 833 */
+/* 839 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var inside = __webpack_require__(801);
+	var inside = __webpack_require__(807);
 
 	/**
 	 * Joins attributes FeatureCollection of polygons with a FeatureCollection of
@@ -59262,10 +59851,10 @@
 
 
 /***/ }),
-/* 834 */
+/* 840 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var coordEach = __webpack_require__(806).coordEach;
+	var coordEach = __webpack_require__(812).coordEach;
 
 	/**
 	 * Takes input features and flips all of their coordinates
@@ -59304,10 +59893,10 @@
 
 
 /***/ }),
-/* 835 */
+/* 841 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var simplify = __webpack_require__(836);
+	var simplify = __webpack_require__(842);
 
 	// supported GeoJSON geometries, used to check whether to wrap in simpleFeature()
 	var supportedTypes = ['LineString', 'MultiLineString', 'Polygon', 'MultiPolygon'];
@@ -59491,7 +60080,7 @@
 
 
 /***/ }),
-/* 836 */
+/* 842 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -59628,11 +60217,11 @@
 
 
 /***/ }),
-/* 837 */
+/* 843 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var linestring = __webpack_require__(800).lineString;
-	var Spline = __webpack_require__(838);
+	var linestring = __webpack_require__(806).lineString;
+	var Spline = __webpack_require__(844);
 
 	/**
 	 * Takes a {@link LineString|line} and returns a curved version
@@ -59700,7 +60289,7 @@
 
 
 /***/ }),
-/* 838 */
+/* 844 */
 /***/ (function(module, exports) {
 
 	/* eslint-disable */
@@ -59840,10 +60429,10 @@
 
 
 /***/ }),
-/* 839 */
+/* 845 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var inside = __webpack_require__(801);
+	var inside = __webpack_require__(807);
 
 	/**
 	 * Takes a set of {@link Point|points} and a set of {@link Polygon|polygons} and performs a spatial join.
@@ -59901,11 +60490,11 @@
 
 
 /***/ }),
-/* 840 */
+/* 846 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// http://stackoverflow.com/questions/11935175/sampling-a-random-subset-from-an-array
-	var featureCollection = __webpack_require__(800).featureCollection;
+	var featureCollection = __webpack_require__(806).featureCollection;
 
 	/**
 	 * Takes a {@link FeatureCollection} and returns a FeatureCollection with given number of {@link Feature|features} at random.
@@ -59941,11 +60530,11 @@
 
 
 /***/ }),
-/* 841 */
+/* 847 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var bbox = __webpack_require__(805);
-	var bboxPolygon = __webpack_require__(842);
+	var bbox = __webpack_require__(811);
+	var bboxPolygon = __webpack_require__(848);
 
 	/**
 	 * Takes any number of features and returns a rectangular {@link Polygon} that encompasses all vertices.
@@ -60005,10 +60594,10 @@
 
 
 /***/ }),
-/* 842 */
+/* 848 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var polygon = __webpack_require__(800).polygon;
+	var polygon = __webpack_require__(806).polygon;
 
 	/**
 	 * Takes a bbox and returns an equivalent {@link Polygon|polygon}.
@@ -60041,12 +60630,12 @@
 
 
 /***/ }),
-/* 843 */
+/* 849 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var bearing = __webpack_require__(844);
-	var destination = __webpack_require__(845);
-	var distance = __webpack_require__(809);
+	var bearing = __webpack_require__(850);
+	var destination = __webpack_require__(851);
+	var distance = __webpack_require__(815);
 
 	/**
 	 * Takes two {@link Point|points} and returns a point midway between them.
@@ -60095,10 +60684,10 @@
 
 
 /***/ }),
-/* 844 */
+/* 850 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var getCoord = __webpack_require__(802).getCoord;
+	var getCoord = __webpack_require__(808).getCoord;
 	//http://en.wikipedia.org/wiki/Haversine_formula
 	//http://www.movable-type.co.uk/scripts/latlong.html
 
@@ -60163,13 +60752,13 @@
 
 
 /***/ }),
-/* 845 */
+/* 851 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//http://en.wikipedia.org/wiki/Haversine_formula
 	//http://www.movable-type.co.uk/scripts/latlong.html
-	var getCoord = __webpack_require__(802).getCoord;
-	var helpers = __webpack_require__(800);
+	var getCoord = __webpack_require__(808).getCoord;
+	var helpers = __webpack_require__(806);
 	var point = helpers.point;
 	var distanceToRadians = helpers.distanceToRadians;
 
@@ -60228,17 +60817,17 @@
 
 
 /***/ }),
-/* 846 */
+/* 852 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// http://stackoverflow.com/questions/839899/how-do-i-calculate-a-point-on-a-circles-circumference
 	// radians = degrees * (pi/180)
 	// https://github.com/bjornharrtell/jsts/blob/master/examples/buffer.html
 
-	var helpers = __webpack_require__(800);
+	var helpers = __webpack_require__(806);
 	var featureCollection = helpers.featureCollection;
-	var jsts = __webpack_require__(831);
-	var normalize = __webpack_require__(847);
+	var jsts = __webpack_require__(837);
+	var normalize = __webpack_require__(853);
 
 	/**
 	 * Calculates a buffer for input features for a given radius. Units supported are miles, kilometers, and degrees.
@@ -60294,7 +60883,7 @@
 
 
 /***/ }),
-/* 847 */
+/* 853 */
 /***/ (function(module, exports) {
 
 	module.exports = normalize;
@@ -60343,11 +60932,11 @@
 
 
 /***/ }),
-/* 848 */
+/* 854 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var bbox = __webpack_require__(805),
-	    point = __webpack_require__(800).point;
+	var bbox = __webpack_require__(811),
+	    point = __webpack_require__(806).point;
 
 	/**
 	 * Takes a {@link FeatureCollection} and returns the absolute center point of all features.
@@ -60470,11 +61059,11 @@
 
 
 /***/ }),
-/* 849 */
+/* 855 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var each = __webpack_require__(806).coordEach;
-	var point = __webpack_require__(800).point;
+	var each = __webpack_require__(812).coordEach;
+	var point = __webpack_require__(806).point;
 
 	/**
 	 * Takes one or more features and calculates the centroid using
@@ -60522,10 +61111,10 @@
 
 
 /***/ }),
-/* 850 */
+/* 856 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var meta = __webpack_require__(806);
+	var meta = __webpack_require__(812);
 
 	/**
 	 * Combines a {@link FeatureCollection} of {@link Point},
@@ -60617,12 +61206,12 @@
 
 
 /***/ }),
-/* 851 */
+/* 857 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var featureCollection = __webpack_require__(800).featureCollection;
-	var each = __webpack_require__(806).coordEach;
-	var point = __webpack_require__(800).point;
+	var featureCollection = __webpack_require__(806).featureCollection;
+	var each = __webpack_require__(812).coordEach;
+	var point = __webpack_require__(806).point;
 
 	/**
 	 * Takes a feature or set of features and returns all positions as
@@ -60666,11 +61255,11 @@
 
 
 /***/ }),
-/* 852 */
+/* 858 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var polygon = __webpack_require__(800).polygon;
-	var earcut = __webpack_require__(853);
+	var polygon = __webpack_require__(806).polygon;
+	var earcut = __webpack_require__(859);
 
 	/**
 	 * Tesselates a {@link Feature<Polygon>} into a {@link FeatureCollection<Polygon>} of triangles
@@ -60747,7 +61336,7 @@
 
 
 /***/ }),
-/* 853 */
+/* 859 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -61397,11 +61986,11 @@
 
 
 /***/ }),
-/* 854 */
+/* 860 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// depend on jsts for now https://github.com/bjornharrtell/jsts/blob/master/examples/overlay.html
-	var jsts = __webpack_require__(831);
+	var jsts = __webpack_require__(837);
 
 	/**
 	 * Takes two {@link Polygon|polygons} and finds their intersection. If they share a border, returns the border; if they don't intersect, returns undefined.
@@ -61485,10 +62074,10 @@
 
 
 /***/ }),
-/* 855 */
+/* 861 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var distance = __webpack_require__(809);
+	var distance = __webpack_require__(815);
 
 	/**
 	 * Takes a reference {@link Point|point} and a FeatureCollection of Features
@@ -61564,10 +62153,10 @@
 
 
 /***/ }),
-/* 856 */
+/* 862 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var random = __webpack_require__(857);
+	var random = __webpack_require__(863);
 
 	/**
 	 * Generates random {@link GeoJSON} data, including {@link Point|Points} and {@link Polygon|Polygons}, for testing
@@ -61621,7 +62210,7 @@
 
 
 /***/ }),
-/* 857 */
+/* 863 */
 /***/ (function(module, exports) {
 
 	module.exports = function() {
@@ -61730,7 +62319,7 @@
 
 
 /***/ }),
-/* 858 */
+/* 864 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -61766,7 +62355,7 @@
 	 * //=result
 	 */
 
-	var point = __webpack_require__(800).point;
+	var point = __webpack_require__(806).point;
 
 	module.exports = function (polyIn) {
 	    var poly;
@@ -61848,14 +62437,14 @@
 
 
 /***/ }),
-/* 859 */
+/* 865 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var featureCollection = __webpack_require__(800).featureCollection;
-	var centroid = __webpack_require__(848);
-	var distance = __webpack_require__(809);
-	var inside = __webpack_require__(801);
-	var explode = __webpack_require__(851);
+	var featureCollection = __webpack_require__(806).featureCollection;
+	var centroid = __webpack_require__(854);
+	var distance = __webpack_require__(815);
+	var inside = __webpack_require__(807);
+	var explode = __webpack_require__(857);
 
 	/**
 	 * Takes a feature and returns a {@link Point} guaranteed to be on the surface of the feature.
@@ -62002,10 +62591,10 @@
 
 
 /***/ }),
-/* 860 */
+/* 866 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var geometryArea = __webpack_require__(861).geometry;
+	var geometryArea = __webpack_require__(867).geometry;
 
 	/**
 	 * Takes a one or more features and returns their area
@@ -62069,10 +62658,10 @@
 
 
 /***/ }),
-/* 861 */
+/* 867 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var wgs84 = __webpack_require__(862);
+	var wgs84 = __webpack_require__(868);
 
 	module.exports.geometry = geometry;
 	module.exports.ring = ringArea;
@@ -62163,7 +62752,7 @@
 	}
 
 /***/ }),
-/* 862 */
+/* 868 */
 /***/ (function(module, exports) {
 
 	module.exports.RADIUS = 6378137;
@@ -62172,13 +62761,13 @@
 
 
 /***/ }),
-/* 863 */
+/* 869 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var measureDistance = __webpack_require__(809);
-	var point = __webpack_require__(800).point;
-	var bearing = __webpack_require__(844);
-	var destination = __webpack_require__(845);
+	var measureDistance = __webpack_require__(815);
+	var point = __webpack_require__(806).point;
+	var bearing = __webpack_require__(850);
+	var destination = __webpack_require__(851);
 
 	/**
 	 * Takes a {@link LineString|line} and returns a {@link Point|point} at a specified distance along the line.
@@ -62240,11 +62829,11 @@
 
 
 /***/ }),
-/* 864 */
+/* 870 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var distance = __webpack_require__(809);
-	var point = __webpack_require__(800).point;
+	var distance = __webpack_require__(815);
+	var point = __webpack_require__(806).point;
 
 	/**
 	 * Takes a {@link LineString|line} and measures its length in the specified units.
@@ -62327,11 +62916,11 @@
 
 
 /***/ }),
-/* 865 */
+/* 871 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var linestring = __webpack_require__(800).lineString;
-	var pointOnLine = __webpack_require__(866);
+	var linestring = __webpack_require__(806).lineString;
+	var pointOnLine = __webpack_require__(872);
 
 	/**
 	 * Takes a {@link LineString|line}, a start {@link Point}, and a stop point
@@ -62413,13 +63002,13 @@
 
 
 /***/ }),
-/* 866 */
+/* 872 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var distance = __webpack_require__(809);
-	var point = __webpack_require__(800).point;
-	var bearing = __webpack_require__(844);
-	var destination = __webpack_require__(845);
+	var distance = __webpack_require__(815);
+	var point = __webpack_require__(806).point;
+	var bearing = __webpack_require__(850);
+	var destination = __webpack_require__(851);
 
 	/**
 	 * Takes a {@link Point} and a {@link LineString} and calculates the closest Point on the LineString.
@@ -62574,12 +63163,12 @@
 
 
 /***/ }),
-/* 867 */
+/* 873 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var point = __webpack_require__(800).point;
-	var featurecollection = __webpack_require__(800).featureCollection;
-	var distance = __webpack_require__(809);
+	var point = __webpack_require__(806).point;
+	var featurecollection = __webpack_require__(806).featureCollection;
+	var distance = __webpack_require__(815);
 	/**
 	 * Takes a bounding box and a cell depth and returns a set of {@link Point|points} in a grid.
 	 *
@@ -62620,13 +63209,13 @@
 
 
 /***/ }),
-/* 868 */
+/* 874 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var featurecollection = __webpack_require__(800).featureCollection;
-	var point = __webpack_require__(800).point;
-	var polygon = __webpack_require__(800).polygon;
-	var distance = __webpack_require__(809);
+	var featurecollection = __webpack_require__(806).featureCollection;
+	var point = __webpack_require__(806).point;
+	var polygon = __webpack_require__(806).polygon;
+	var distance = __webpack_require__(815);
 
 	/**
 	 * Takes a bounding box and a cell depth and returns a set of square {@link Polygon|polygons} in a grid.
@@ -62675,12 +63264,12 @@
 
 
 /***/ }),
-/* 869 */
+/* 875 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var featurecollection = __webpack_require__(800).featureCollection;
-	var polygon = __webpack_require__(800).polygon;
-	var distance = __webpack_require__(809);
+	var featurecollection = __webpack_require__(806).featureCollection;
+	var polygon = __webpack_require__(806).polygon;
+	var distance = __webpack_require__(815);
 
 	/**
 	 * Takes a bounding box and a cell depth and returns a set of triangular {@link Polygon|polygons} in a grid.
@@ -62773,13 +63362,13 @@
 
 
 /***/ }),
-/* 870 */
+/* 876 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var point = __webpack_require__(800).point;
-	var polygon = __webpack_require__(800).polygon;
-	var distance = __webpack_require__(809);
-	var featurecollection = __webpack_require__(800).featureCollection;
+	var point = __webpack_require__(806).point;
+	var polygon = __webpack_require__(806).polygon;
+	var distance = __webpack_require__(815);
+	var featurecollection = __webpack_require__(806).featureCollection;
 
 	//Precompute cosines and sines of angles used in hexagon creation
 	// for performance gain
@@ -62909,7 +63498,7 @@
 
 
 /***/ }),
-/* 871 */
+/* 877 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62932,15 +63521,15 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _PopupTabs = __webpack_require__(872);
+	var _PopupTabs = __webpack_require__(878);
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
-	var _PopupTitle = __webpack_require__(891);
+	var _PopupTitle = __webpack_require__(897);
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _PopupFooter = __webpack_require__(892);
+	var _PopupFooter = __webpack_require__(898);
 
 	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
 
@@ -63081,7 +63670,7 @@
 	exports.default = FeaturePopup;
 
 /***/ }),
-/* 872 */
+/* 878 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63106,15 +63695,15 @@
 
 	var _uuid2 = _interopRequireDefault(_uuid);
 
-	var _ImageTab = __webpack_require__(873);
+	var _ImageTab = __webpack_require__(879);
 
 	var _ImageTab2 = _interopRequireDefault(_ImageTab);
 
-	var _DataTab = __webpack_require__(874);
+	var _DataTab = __webpack_require__(880);
 
 	var _DataTab2 = _interopRequireDefault(_DataTab);
 
-	var _ProfileTab = __webpack_require__(875);
+	var _ProfileTab = __webpack_require__(881);
 
 	var _ProfileTab2 = _interopRequireDefault(_ProfileTab);
 
@@ -63258,7 +63847,7 @@
 	exports.default = PopupTabs;
 
 /***/ }),
-/* 873 */
+/* 879 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63309,7 +63898,7 @@
 	exports.default = ImageTab;
 
 /***/ }),
-/* 874 */
+/* 880 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63435,7 +64024,7 @@
 	exports.default = DataTab;
 
 /***/ }),
-/* 875 */
+/* 881 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63462,17 +64051,17 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _d3Scale = __webpack_require__(876);
+	var _d3Scale = __webpack_require__(882);
 
-	var _d3Axis = __webpack_require__(884);
+	var _d3Axis = __webpack_require__(890);
 
-	var _d3Shape = __webpack_require__(885);
+	var _d3Shape = __webpack_require__(891);
 
-	var _d3Request = __webpack_require__(887);
+	var _d3Request = __webpack_require__(893);
 
-	var _d3Selection = __webpack_require__(890);
+	var _d3Selection = __webpack_require__(896);
 
-	var _d3Array = __webpack_require__(877);
+	var _d3Array = __webpack_require__(883);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63617,12 +64206,12 @@
 	exports.default = ProfileTab;
 
 /***/ }),
-/* 876 */
+/* 882 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-scale/ Version 1.0.6. Copyright 2017 Mike Bostock.
 	(function (global, factory) {
-		 true ? factory(exports, __webpack_require__(877), __webpack_require__(878), __webpack_require__(879), __webpack_require__(881), __webpack_require__(882), __webpack_require__(883), __webpack_require__(880)) :
+		 true ? factory(exports, __webpack_require__(883), __webpack_require__(884), __webpack_require__(885), __webpack_require__(887), __webpack_require__(888), __webpack_require__(889), __webpack_require__(886)) :
 		typeof define === 'function' && define.amd ? define(['exports', 'd3-array', 'd3-collection', 'd3-interpolate', 'd3-format', 'd3-time', 'd3-time-format', 'd3-color'], factory) :
 		(factory((global.d3 = global.d3 || {}),global.d3,global.d3,global.d3,global.d3,global.d3,global.d3,global.d3));
 	}(this, (function (exports,d3Array,d3Collection,d3Interpolate,d3Format,d3Time,d3TimeFormat,d3Color) { 'use strict';
@@ -64548,7 +65137,7 @@
 
 
 /***/ }),
-/* 877 */
+/* 883 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-array/ Version 1.2.0. Copyright 2017 Mike Bostock.
@@ -65143,7 +65732,7 @@
 
 
 /***/ }),
-/* 878 */
+/* 884 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-collection/ Version 1.0.3. Copyright 2017 Mike Bostock.
@@ -65366,12 +65955,12 @@
 
 
 /***/ }),
-/* 879 */
+/* 885 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-interpolate/ Version 1.1.5. Copyright 2017 Mike Bostock.
 	(function (global, factory) {
-		 true ? factory(exports, __webpack_require__(880)) :
+		 true ? factory(exports, __webpack_require__(886)) :
 		typeof define === 'function' && define.amd ? define(['exports', 'd3-color'], factory) :
 		(factory((global.d3 = global.d3 || {}),global.d3));
 	}(this, (function (exports,d3Color) { 'use strict';
@@ -65917,7 +66506,7 @@
 
 
 /***/ }),
-/* 880 */
+/* 886 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-color/ Version 1.0.3. Copyright 2017 Mike Bostock.
@@ -66446,7 +67035,7 @@
 
 
 /***/ }),
-/* 881 */
+/* 887 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-format/ Version 1.2.0. Copyright 2017 Mike Bostock.
@@ -66783,7 +67372,7 @@
 
 
 /***/ }),
-/* 882 */
+/* 888 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-time/ Version 1.0.6. Copyright 2017 Mike Bostock.
@@ -67167,12 +67756,12 @@
 
 
 /***/ }),
-/* 883 */
+/* 889 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-time-format/ Version 2.0.5. Copyright 2017 Mike Bostock.
 	(function (global, factory) {
-		 true ? factory(exports, __webpack_require__(882)) :
+		 true ? factory(exports, __webpack_require__(888)) :
 		typeof define === 'function' && define.amd ? define(['exports', 'd3-time'], factory) :
 		(factory((global.d3 = global.d3 || {}),global.d3));
 	}(this, (function (exports,d3Time) { 'use strict';
@@ -67761,7 +68350,7 @@
 
 
 /***/ }),
-/* 884 */
+/* 890 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-axis/ Version 1.0.7. Copyright 2017 Mike Bostock.
@@ -67954,12 +68543,12 @@
 
 
 /***/ }),
-/* 885 */
+/* 891 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-shape/ Version 1.1.1. Copyright 2017 Mike Bostock.
 	(function (global, factory) {
-		 true ? factory(exports, __webpack_require__(886)) :
+		 true ? factory(exports, __webpack_require__(892)) :
 		typeof define === 'function' && define.amd ? define(['exports', 'd3-path'], factory) :
 		(factory((global.d3 = global.d3 || {}),global.d3));
 	}(this, (function (exports,d3Path) { 'use strict';
@@ -69892,7 +70481,7 @@
 
 
 /***/ }),
-/* 886 */
+/* 892 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-path/ Version 1.0.5. Copyright 2017 Mike Bostock.
@@ -70039,12 +70628,12 @@
 
 
 /***/ }),
-/* 887 */
+/* 893 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-request/ Version 1.0.5. Copyright 2017 Mike Bostock.
 	(function (global, factory) {
-		 true ? factory(exports, __webpack_require__(878), __webpack_require__(888), __webpack_require__(889)) :
+		 true ? factory(exports, __webpack_require__(884), __webpack_require__(894), __webpack_require__(895)) :
 		typeof define === 'function' && define.amd ? define(['exports', 'd3-collection', 'd3-dispatch', 'd3-dsv'], factory) :
 		(factory((global.d3 = global.d3 || {}),global.d3,global.d3,global.d3));
 	}(this, (function (exports,d3Collection,d3Dispatch,d3Dsv) { 'use strict';
@@ -70261,7 +70850,7 @@
 
 
 /***/ }),
-/* 888 */
+/* 894 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-dispatch/ Version 1.0.3. Copyright 2017 Mike Bostock.
@@ -70362,7 +70951,7 @@
 
 
 /***/ }),
-/* 889 */
+/* 895 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-dsv/ Version 1.0.5. Copyright 2017 Mike Bostock.
@@ -70537,7 +71126,7 @@
 
 
 /***/ }),
-/* 890 */
+/* 896 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// https://d3js.org/d3-selection/ Version 1.1.0. Copyright 2017 Mike Bostock.
@@ -71519,7 +72108,7 @@
 
 
 /***/ }),
-/* 891 */
+/* 897 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71573,7 +72162,7 @@
 	exports.default = PopupTitle;
 
 /***/ }),
-/* 892 */
+/* 898 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71691,7 +72280,7 @@
 	exports.default = PopupFooter;
 
 /***/ }),
-/* 893 */
+/* 899 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71735,7 +72324,7 @@
 	exports.default = MapWrapper;
 
 /***/ }),
-/* 894 */
+/* 900 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71762,7 +72351,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _LayerList = __webpack_require__(895);
+	var _LayerList = __webpack_require__(793);
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
 
@@ -71853,399 +72442,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MobileLayerList);
 
 /***/ }),
-/* 895 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(298);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _propTypes = __webpack_require__(569);
-
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-
-	var _reactBootstrap = __webpack_require__(481);
-
-	var _reactRedux = __webpack_require__(736);
-
-	var _store = __webpack_require__(774);
-
-	var _store2 = _interopRequireDefault(_store);
-
-	var _LayerGroup = __webpack_require__(896);
-
-	var _LayerGroup2 = _interopRequireDefault(_LayerGroup);
-
-	var _BasemapList = __webpack_require__(898);
-
-	var _BasemapList2 = _interopRequireDefault(_BasemapList);
-
-	var _layers = __webpack_require__(775);
-
-	var _basemaps = __webpack_require__(778);
-
-	var _selectors = __webpack_require__(794);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * LayerList.jsx
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component takes the current layers and basemaps and displays them,
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * grouped by type, in the sidebar and mobile layers list.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-
-	var mapStateToProps = function mapStateToProps(state) {
-	    return {
-	        layers: (0, _selectors.mapLayerGroupsToLayers)(state),
-	        basemaps: (0, _selectors.getBasemapsByIdWithData)(state)
-	    };
-	};
-
-	var LayerList = function (_React$Component) {
-	    _inherits(LayerList, _React$Component);
-
-	    function LayerList() {
-	        _classCallCheck(this, LayerList);
-
-	        return _possibleConstructorReturn(this, (LayerList.__proto__ || Object.getPrototypeOf(LayerList)).apply(this, arguments));
-	    }
-
-	    _createClass(LayerList, [{
-	        key: 'render',
-	        value: function render() {
-	            var layerGroups = [];
-	            var eventKey = 1;
-	            for (var layerGroupId in this.props.layers) {
-	                layerGroups.push(_react2.default.createElement(_LayerGroup2.default, {
-	                    key: layerGroupId,
-	                    layerGroupId: layerGroupId,
-	                    layerGroupName: this.props.layers[layerGroupId].name,
-	                    layers: this.props.layers[layerGroupId].layers,
-	                    onLayerClick: this.constructor.onLayerClick,
-	                    eventKey: eventKey.toString(),
-	                    panelVisible: true
-	                }));
-	                eventKey += 1;
-	            }
-	            return _react2.default.createElement(
-	                _reactBootstrap.PanelGroup,
-	                { className: 'wiscviewer-layer-list' },
-	                layerGroups,
-	                _react2.default.createElement(_BasemapList2.default, { basemaps: this.props.basemaps,
-	                    panelVisible: true,
-	                    onBasemapClick: this.constructor.onBasemapClick,
-	                    eventKey: eventKey.toString()
-	                })
-	            );
-	        }
-	    }], [{
-	        key: 'onLayerClick',
-	        value: function onLayerClick(layerId) {
-	            _store2.default.dispatch((0, _layers.toggleLayer)(layerId));
-	        }
-	    }, {
-	        key: 'onBasemapClick',
-	        value: function onBasemapClick(basemapID) {
-	            _store2.default.dispatch((0, _basemaps.toggleBasemap)(basemapID));
-	        }
-	    }]);
-
-	    return LayerList;
-	}(_react2.default.Component);
-
-	LayerList.propTypes = {
-	    layers: _propTypes2.default.object.isRequired,
-	    basemaps: _propTypes2.default.object.isRequired
-	};
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(LayerList);
-
-/***/ }),
-/* 896 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(298);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _propTypes = __webpack_require__(569);
-
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-
-	var _reactBootstrap = __webpack_require__(481);
-
-	var _Layer = __webpack_require__(897);
-
-	var _Layer2 = _interopRequireDefault(_Layer);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * LayerGroup.jsx
-	 * This creates the group container that holds each non-basemap layer list item,
-	 * in the sidebar and mobile layer list
-	 */
-	var LayerGroup = function LayerGroup(props) {
-	    var layers = [];
-	    for (var layerId in props.layers) {
-	        var boundOnLayerClick = props.onLayerClick.bind(null, layerId);
-	        layers.push(_react2.default.createElement(_Layer2.default, {
-	            key: layerId,
-	            layerName: props.layers[layerId].name,
-	            active: props.layers[layerId].active,
-	            onLayerClick: boundOnLayerClick
-	        }));
-	    }
-	    var bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
-	    var headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
-	    if (props.panelVisible === false) {
-	        bodyClassNames.push("hidden");
-	    } else {
-	        headerClassNames.push("active");
-	    }
-	    return _react2.default.createElement(
-	        'div',
-	        { className: 'panel panel-default wiscviewer-sidebar-panel' },
-	        _react2.default.createElement(
-	            'div',
-	            { className: headerClassNames.join(" "),
-	                role: 'button',
-	                tabIndex: 0
-	            },
-	            props.layerGroupName
-	        ),
-	        _react2.default.createElement(
-	            'div',
-	            { className: bodyClassNames.join(" ") },
-	            _react2.default.createElement(
-	                _reactBootstrap.ListGroup,
-	                { className: 'wiscviewer-layer-list-group' },
-	                layers
-	            )
-	        )
-	    );
-	};
-
-	LayerGroup.propTypes = {
-	    layerGroupId: _propTypes2.default.string.isRequired,
-	    layerGroupName: _propTypes2.default.string.isRequired,
-	    layers: _propTypes2.default.object.isRequired,
-	    onLayerClick: _propTypes2.default.func.isRequired,
-	    panelVisible: _propTypes2.default.bool.isRequired
-	};
-
-	exports.default = LayerGroup;
-
-/***/ }),
-/* 897 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(298);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _propTypes = __webpack_require__(569);
-
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-
-	var _reactBootstrap = __webpack_require__(481);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Layer = function Layer(props) {
-	    var iconClassNames = ["fa", "wiscviewer-layer-left-icon"];
-	    var layerClassNames = ["wiscviewer-layer-item"];
-	    if (props.active) {
-	        iconClassNames.push("fa-check");
-	        iconClassNames.push("active");
-	        layerClassNames.push("active");
-	    } else {
-	        iconClassNames.push("fa-plus");
-	    }
-
-	    return _react2.default.createElement(
-	        _reactBootstrap.ListGroupItem,
-	        {
-	            active: props.active,
-	            className: layerClassNames.join(" "),
-	            onClick: props.onLayerClick },
-	        _react2.default.createElement('i', { className: iconClassNames.join(" ") }),
-	        props.layerName
-	    );
-	}; /**
-	    * Layer.jsx
-	    * This builds the list item representing a non-basemap layer in the sidebar and mobile layer list
-	    */
-
-
-	Layer.propTypes = {
-	    active: _propTypes2.default.bool.isRequired,
-	    onLayerClick: _propTypes2.default.func.isRequired,
-	    layerName: _propTypes2.default.string.isRequired
-	};
-
-	exports.default = Layer;
-
-/***/ }),
-/* 898 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(298);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _propTypes = __webpack_require__(569);
-
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-
-	var _reactBootstrap = __webpack_require__(481);
-
-	var _Basemap = __webpack_require__(899);
-
-	var _Basemap2 = _interopRequireDefault(_Basemap);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * BasemapList.jsx
-	 * This creates the group container that holds each Basemap list item,
-	 * in the sidebar and mobile layer list
-	 */
-	var BasemapList = function BasemapList(props) {
-	  var basemaps = [];
-	  for (var basemapId in props.basemaps) {
-	    var basemap = props.basemaps[basemapId];
-	    var boundOnBasemapClick = props.onBasemapClick.bind(null, basemapId);
-	    basemaps.push(_react2.default.createElement(_Basemap2.default, { key: basemapId,
-	      basemapName: basemap.name,
-	      active: basemap.active,
-	      onBasemapClick: boundOnBasemapClick
-	    }));
-	  }
-
-	  var bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
-	  var headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
-	  if (props.panelVisible === false) {
-	    bodyClassNames.push("hidden");
-	  } else {
-	    headerClassNames.push("active");
-	  }
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'panel panel-default wiscviewer-sidebar-panel' },
-	    _react2.default.createElement(
-	      'div',
-	      { className: headerClassNames.join(" "),
-	        role: 'button',
-	        tabIndex: 0
-	      },
-	      'Basemaps'
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: bodyClassNames.join(" ") },
-	      _react2.default.createElement(
-	        _reactBootstrap.ListGroup,
-	        { className: 'wiscviewer-layer-list-group' },
-	        basemaps
-	      )
-	    )
-	  );
-	};
-
-	BasemapList.propTypes = {
-	  basemaps: _propTypes2.default.object.isRequired,
-	  panelVisible: _propTypes2.default.bool.isRequired,
-	  onBasemapClick: _propTypes2.default.func.isRequired
-	};
-
-	exports.default = BasemapList;
-
-/***/ }),
-/* 899 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(298);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _propTypes = __webpack_require__(569);
-
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-
-	var _reactBootstrap = __webpack_require__(481);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Basemap = function Basemap(props) {
-	    var iconClassNames = ["fa", "fa-map", "wiscviewer-layer-left-icon"];
-	    var layerClassNames = ["wiscviewer-layer-item"];
-	    if (props.active) {
-	        iconClassNames.push("active");
-	        layerClassNames.push("active");
-	    }
-	    return _react2.default.createElement(
-	        _reactBootstrap.ListGroupItem,
-	        {
-	            active: props.active,
-	            className: layerClassNames.join(" "),
-	            onClick: props.onBasemapClick },
-	        _react2.default.createElement('i', { className: iconClassNames.join(" ") }),
-	        props.basemapName
-	    );
-	}; /**
-	    * Basemap.jsx
-	    * This builds the list item representing basemaps in the sidebar and mobile layer list
-	    */
-
-
-	Basemap.propTypes = {
-	    active: _propTypes2.default.bool.isRequired,
-	    onBasemapClick: _propTypes2.default.func.isRequired,
-	    basemapName: _propTypes2.default.string.isRequired
-	};
-
-	exports.default = Basemap;
-
-/***/ }),
-/* 900 */
+/* 901 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72272,11 +72469,11 @@
 
 	var _pinnedFeatures = __webpack_require__(781);
 
-	var _PinnedFeaturePopup = __webpack_require__(901);
+	var _PinnedFeaturePopup = __webpack_require__(902);
 
 	var _PinnedFeaturePopup2 = _interopRequireDefault(_PinnedFeaturePopup);
 
-	var _selectors = __webpack_require__(794);
+	var _selectors = __webpack_require__(798);
 
 	var _util = __webpack_require__(776);
 
@@ -72428,7 +72625,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(PinnedFeaturePopupContainer);
 
 /***/ }),
-/* 901 */
+/* 902 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72447,19 +72644,19 @@
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _reactDraggable = __webpack_require__(902);
+	var _reactDraggable = __webpack_require__(903);
 
 	var _reactDraggable2 = _interopRequireDefault(_reactDraggable);
 
-	var _PopupTabs = __webpack_require__(872);
+	var _PopupTabs = __webpack_require__(878);
 
 	var _PopupTabs2 = _interopRequireDefault(_PopupTabs);
 
-	var _PopupTitle = __webpack_require__(891);
+	var _PopupTitle = __webpack_require__(897);
 
 	var _PopupTitle2 = _interopRequireDefault(_PopupTitle);
 
-	var _PopupFooter = __webpack_require__(892);
+	var _PopupFooter = __webpack_require__(898);
 
 	var _PopupFooter2 = _interopRequireDefault(_PopupFooter);
 
@@ -72589,7 +72786,7 @@
 	exports.default = PinnedFeaturePopup;
 
 /***/ }),
-/* 902 */
+/* 903 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -75049,170 +75246,6 @@
 	//# sourceMappingURL=react-draggable.js.map
 
 /***/ }),
-/* 903 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(298);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(736);
-
-	var _propTypes = __webpack_require__(569);
-
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-
-	var _selectors = __webpack_require__(794);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Legend.jsx
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * This component references the Redux store to determine which layers are currently active.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * It then renders the legend based on the currently active layers.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-
-	var mapStateToProps = function mapStateToProps(state) {
-	    return {
-	        activeLayerStyleTypes: (0, _selectors.getActiveLayerStyleTypes)(state)
-	    };
-	};
-
-	var Legend = function (_React$Component) {
-	    _inherits(Legend, _React$Component);
-
-	    function Legend() {
-	        _classCallCheck(this, Legend);
-
-	        var _this = _possibleConstructorReturn(this, (Legend.__proto__ || Object.getPrototypeOf(Legend)).call(this));
-
-	        _this.state = {
-	            panelVisible: true
-	        };
-	        _this.onPanelClick = _this.onPanelClick.bind(_this);
-	        return _this;
-	    }
-
-	    _createClass(Legend, [{
-	        key: 'onPanelClick',
-	        value: function onPanelClick() {
-	            var self = this;
-	            var newState = Object.assign({}, self.state);
-	            newState.panelVisible = !newState.panelVisible;
-	            this.setState(newState);
-	        }
-	    }, {
-	        key: 'renderLayerStyleTypes',
-	        value: function renderLayerStyleTypes() {
-	            var layers = [];
-	            var activeLayerStyleTypes = this.props.activeLayerStyleTypes;
-	            for (var layerKey in activeLayerStyleTypes) {
-	                var styles = [];
-	                var _iteratorNormalCompletion = true;
-	                var _didIteratorError = false;
-	                var _iteratorError = undefined;
-
-	                try {
-	                    for (var _iterator = activeLayerStyleTypes[layerKey][Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	                        var style = _step.value;
-
-	                        styles.push(_react2.default.createElement(
-	                            'li',
-	                            { key: style.styleName },
-	                            _react2.default.createElement('i', { style: style.iconStyle, className: style.styleIconClassNames.join(" ") }),
-	                            style.styleName
-	                        ));
-	                    }
-	                } catch (err) {
-	                    _didIteratorError = true;
-	                    _iteratorError = err;
-	                } finally {
-	                    try {
-	                        if (!_iteratorNormalCompletion && _iterator.return) {
-	                            _iterator.return();
-	                        }
-	                    } finally {
-	                        if (_didIteratorError) {
-	                            throw _iteratorError;
-	                        }
-	                    }
-	                }
-
-	                layers.push(_react2.default.createElement(
-	                    'div',
-	                    { key: layerKey },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'wiscviewer-legend-layer' },
-	                        layerKey
-	                    ),
-	                    _react2.default.createElement(
-	                        'ul',
-	                        { className: 'wiscviewer-legend-list' },
-	                        styles
-	                    )
-	                ));
-	            }
-	            return layers;
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
-	            var headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
-	            var iconClassNames = ["fa", "pull-right"];
-	            if (this.state.panelVisible === false) {
-	                bodyClassNames.push("hidden");
-	                iconClassNames.push("fa-plus");
-	            } else {
-	                headerClassNames.push("active");
-	                iconClassNames.push("fa-chevron-up");
-	            }
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'wiscviewer-legend panel panel-default wiscviewer-sidebar-panel' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: headerClassNames.join(" "),
-	                        onClick: this.onPanelClick,
-	                        role: 'button',
-	                        tabIndex: 0
-	                    },
-	                    'Legend',
-	                    _react2.default.createElement('i', { className: iconClassNames.join(" ") })
-	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: bodyClassNames.join(" ") },
-	                    this.renderLayerStyleTypes()
-	                )
-	            );
-	        }
-	    }]);
-
-	    return Legend;
-	}(_react2.default.Component);
-
-	Legend.propTypes = {
-	    activeLayerStyleTypes: _propTypes2.default.object.isRequired
-	};
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Legend);
-
-/***/ }),
 /* 904 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -75244,7 +75277,7 @@
 
 	var _map = __webpack_require__(779);
 
-	var _selectors = __webpack_require__(794);
+	var _selectors = __webpack_require__(798);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -75379,7 +75412,7 @@
 
 	var _layerStyles2 = _interopRequireDefault(_layerStyles);
 
-	var _layerFeatures = __webpack_require__(796);
+	var _layerFeatures = __webpack_require__(802);
 
 	var _map = __webpack_require__(779);
 

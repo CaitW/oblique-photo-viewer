@@ -25,6 +25,27 @@ $hide_scroll_padding: 17px;
   -ms-overflow-style: none;
 }
 
+.wiscviewer-sidebar-tabs {
+  margin-bottom: 3px;
+  div {
+    display: inline-block;
+    width: 50%;
+    padding: 10px 5px 10px 5px;
+    text-align: center;
+    color: $primary_500;
+    background-color: $primary_900;
+    font-size: 14px;
+    &.active {
+      color: $primary_100;
+      background-color: $primary_800;
+    }
+    &:hover {
+      color: $primary_100;
+      cursor: pointer;
+    }
+  }
+}
+
 .wiscviewer-sidebar-panel {
   background-color: $primary_800;
   margin: 0 !important;
@@ -78,23 +99,9 @@ $hide_scroll_padding: 17px;
   }
 }
 
-.wiscviewer-legend {
-  .panel-heading {
-    cursor: pointer;
-  }
-  .panel-body {
-    padding: 5px 10px;
-  }
-}
-
-.wiscviewer-legend-layer {
-  padding: 5px 0;
-  border: 1px solid $primary_600;
-  border-width: 0 0 1px;
-}
-
 .wiscviewer-legend-list {
-  padding: 5px 10px;
+  padding: 10px 15px;
+  margin: 0;
   list-style: none;
   text-transform: capitalize;
   color: $primary_200;

@@ -8720,6 +8720,23 @@ button.close {
   .wiscviewer-sidebar-inner-container::-webkit-scrollbar {
     display: none; }
 
+.wiscviewer-sidebar-tabs {
+  margin-bottom: 3px; }
+  .wiscviewer-sidebar-tabs div {
+    display: inline-block;
+    width: 50%;
+    padding: 10px 5px 10px 5px;
+    text-align: center;
+    color: #607d8b;
+    background-color: #263238;
+    font-size: 14px; }
+    .wiscviewer-sidebar-tabs div.active {
+      color: #cfd8dc;
+      background-color: #37474f; }
+    .wiscviewer-sidebar-tabs div:hover {
+      color: #cfd8dc;
+      cursor: pointer; }
+
 .wiscviewer-sidebar-panel {
   background-color: #37474f;
   margin: 0 !important;
@@ -8763,19 +8780,9 @@ button.close {
   .wiscviewer-sidebar-panel-header:hover {
     cursor: default; }
 
-.wiscviewer-legend .panel-heading {
-  cursor: pointer; }
-
-.wiscviewer-legend .panel-body {
-  padding: 5px 10px; }
-
-.wiscviewer-legend-layer {
-  padding: 5px 0;
-  border: 1px solid #546e7a;
-  border-width: 0 0 1px; }
-
 .wiscviewer-legend-list {
-  padding: 5px 10px;
+  padding: 10px 15px;
+  margin: 0;
   list-style: none;
   text-transform: capitalize;
   color: #b0bec5; }
