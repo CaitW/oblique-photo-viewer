@@ -4,7 +4,8 @@
   "description": "Oblique Photo Viewer",
   "main": "dist/app.bundle.js",
   "scripts": {
-    "build": "gulp build"
+    "build": "gulp build",
+    "deploy": "git fetch --all && git checkout --force && npm install && git deploy"
   },
   "keywords": [
     "Oblique",

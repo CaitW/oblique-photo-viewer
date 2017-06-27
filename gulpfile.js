@@ -17,6 +17,15 @@ var debug = require('gulp-debug');
 var zip = require('gulp-zip');
 var ogr2ogr = require('ogr2ogr');
 
+var CONFIG;
+try {
+    CONFIG = fs.readFileSync('./config.json');
+    CONFIG = JSON.parse(CONFIG);
+} catch (err) {
+    console.log("\x1b[31m%s\x1b[0m", "No config.json found. Copy and rename config.example.json or create your own. See github for more info.");
+    throw "Error";
+}
+
 // List all files in a directory in Node.js recursively in a synchronous fashion
 function walkSync (dir, filelist) {
     var path = path || require('path');
@@ -256,15 +265,11 @@ gulp.task('lint-css', function () {
     }));
 });
 
-gulp.task('update', function () {
-  git.fetch('', '', {args: '--all'}, function (err) {
-    if (err) throw err;
-    gulp.task('checkout', function(){
-      git.checkout('master', {args:'--force'}, function (err) {
-        if (err) throw err;
-      });
-    });
-  });
+// copy ./dist directory to the web server for hosting
+gulp.task('copy-to-server', ['build'], function () {
+    return gulp.src(['./dist/**/*'])
+        .pipe(debug({title: 'deploying:'}))
+        .pipe(gulp.dest(CONFIG.SERVER_DIR));
 });
 
 /*
@@ -283,6 +288,5 @@ gulp.task('watch', ['default', 'watch-files']);
 /**
  * Production Tasks
  */
-gulp.task('update', ['update']);
 gulp.task('build', ['clean','copy-html', 'copy-content', 'make-downloads', 'sass', 'scripts', 'webpack-prod', 'compress-libraries', 'copy-data']);
-
+gulp.task('deploy', ['build', 'copy-to-server']);
