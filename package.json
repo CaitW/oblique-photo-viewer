@@ -5,7 +5,7 @@
   "main": "dist/app.bundle.js",
   "scripts": {
     "build": "gulp build",
-    "deploy": "git fetch --all && git checkout --force && npm install && git deploy"
+    "deploy": "git fetch --all && git checkout origin/master --force && npm install && gulp deploy"
   },
   "keywords": [
     "Oblique",
