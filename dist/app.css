@@ -8806,6 +8806,16 @@ button.close {
 .wiscviewer-layer-item:focus {
   outline: none; }
 
+.wiscviewer-layer-chevron {
+  color: #546e7a;
+  font-size: 14px;
+  margin: 0 5px; }
+
+.wiscviewer-layer-group-name {
+  color: #90a4ae;
+  font-size: 14px;
+  float: right; }
+
 .pullDown {
   animation-name: pullDown;
   -webkit-animation-name: pullDown;

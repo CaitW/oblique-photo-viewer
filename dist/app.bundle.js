@@ -53998,9 +53998,11 @@
 	        key: 'onTabClick',
 	        value: function onTabClick(e) {
 	            var clickedTab = e.target.getAttribute("value");
-	            this.setState({
-	                activeTab: clickedTab
-	            });
+	            if (typeof clickedTab === "string") {
+	                this.setState({
+	                    activeTab: clickedTab
+	                });
+	            }
 	        }
 	    }, {
 	        key: 'getClassName',
@@ -54574,11 +54576,11 @@
 	            var layerId = _step2.value;
 
 	            var layer = layers[layerId];
-	            var layerName = layer.name || "";
+	            var layerName = layer.name || layerId;
 	            var layerGroupId = layer.layerGroupId;
-	            var layerGroupName = "";
+	            var layerGroupName = layerGroupId;
 	            if (typeof layerGroups[layerGroupId] !== "undefined") {
-	                layerGroupName = layerGroups[layerGroupId].name;
+	                layerGroupName = layerGroups[layerGroupId].name || layerGroupId;
 	            }
 	            var legendStyles = layer.legendStyles;
 	            var styles = [];
@@ -54612,7 +54614,11 @@
 	                }
 	                return 0;
 	            });
-	            stylesByLayerId[layerGroupName + " - " + layerName] = styles;
+	            stylesByLayerId[layerId] = {
+	                layerName: layerName,
+	                layerGroupName: layerGroupName,
+	                styles: styles
+	            };
 	        }
 	    } catch (err) {
 	        _didIteratorError2 = true;
@@ -54854,7 +54860,20 @@
 	                role: 'button',
 	                tabIndex: 0
 	            },
-	            props.layerName
+	            _react2.default.createElement(
+	                'span',
+	                { className: 'wiscviewer-layer-name' },
+	                ' ',
+	                props.layerName,
+	                ' '
+	            ),
+	            _react2.default.createElement(
+	                'span',
+	                { className: 'wiscviewer-legend-layer-group-name' },
+	                ' ',
+	                props.layerGroupName,
+	                ' '
+	            )
 	        ),
 	        _react2.default.createElement(
 	            'div',
@@ -54871,11 +54890,14 @@
 	var Legend = function Legend(props) {
 	    var layers = [];
 	    var activeLayerStyleTypes = props.activeLayerStyleTypes;
-	    for (var layerKey in activeLayerStyleTypes) {
-	        var styles = activeLayerStyleTypes[layerKey];
+	    for (var layerId in activeLayerStyleTypes) {
+	        var styles = activeLayerStyleTypes[layerId].styles;
+	        var layerName = activeLayerStyleTypes[layerId].layerName;
+	        var layerGroupName = activeLayerStyleTypes[layerId].layerGroupName;
 	        layers.push(_react2.default.createElement(LegendLayer, {
-	            key: layerKey,
-	            layerName: layerKey,
+	            key: layerId,
+	            layerGroupName: layerGroupName,
+	            layerName: layerName,
 	            layerStyles: styles
 	        }));
 	    }

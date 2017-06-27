@@ -81,11 +81,11 @@ export const getActiveLayerStyleTypes = createSelector(
         let stylesByLayerId = {};
         for (let layerId of activeLayers) {
             let layer = layers[layerId];
-            let layerName = layer.name || "";
+            let layerName = layer.name || layerId;
             let layerGroupId = layer.layerGroupId;
-            let layerGroupName = "";
+            let layerGroupName = layerGroupId;
             if (typeof layerGroups[layerGroupId] !== "undefined") {
-                layerGroupName = layerGroups[layerGroupId].name
+                layerGroupName = layerGroups[layerGroupId].name || layerGroupId;
             }
             let legendStyles = layer.legendStyles;
             let styles = [];
@@ -122,7 +122,11 @@ export const getActiveLayerStyleTypes = createSelector(
                 }
                 return 0;
             });
-            stylesByLayerId[layerGroupName + " - " + layerName] = styles;
+            stylesByLayerId[layerId] = {
+                layerName,
+                layerGroupName,
+                styles
+            };
         }
         return stylesByLayerId;
     }

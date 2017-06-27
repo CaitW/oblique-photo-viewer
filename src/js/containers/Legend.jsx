@@ -43,7 +43,8 @@ const LegendLayer = (props) => {
                 role="button"
                 tabIndex={0}
                 >
-                {props.layerName}
+                <span> {props.layerName} </span>
+                <span className="wiscviewer-legend-layer-group-name"> {props.layerGroupName} </span>
             </div>
             <div className={bodyClassNames.join(" ")}>
                 <ul className="wiscviewer-legend-list">
@@ -57,12 +58,15 @@ const LegendLayer = (props) => {
 const Legend = (props) => {
     let layers = [];
     let activeLayerStyleTypes = props.activeLayerStyleTypes;
-    for (let layerKey in activeLayerStyleTypes) {
-        let styles = activeLayerStyleTypes[layerKey];
+    for (let layerId in activeLayerStyleTypes) {
+        let styles = activeLayerStyleTypes[layerId].styles;
+        let layerName = activeLayerStyleTypes[layerId].layerName;
+        let layerGroupName = activeLayerStyleTypes[layerId].layerGroupName;
         layers.push(
             <LegendLayer
-                key={layerKey}
-                layerName={layerKey}
+                key={layerId}
+                layerGroupName={layerGroupName}
+                layerName={layerName}
                 layerStyles={styles}
             />
         );

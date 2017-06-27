@@ -22,9 +22,11 @@ class Sidebar extends React.Component {
     }
     onTabClick (e) {
         let clickedTab = e.target.getAttribute("value");
-        this.setState({
-            activeTab: clickedTab
-        })
+        if(typeof clickedTab === "string") {
+            this.setState({
+                activeTab: clickedTab
+            });
+        }
     }
     getClassName (tabValue) {
         if(this.state.activeTab === tabValue) {
