@@ -279,15 +279,18 @@ gulp.task('copy-to-server', ['build'], function() {
 
  // make data downloads
 gulp.task('make-downloads', ['zip-geojson-layers', 'zip-json-profiles', 'convert-and-zip-layer-shapefiles']);
-// default task
-gulp.task('default', ['copy-html', 'copy-data', 'copy-content', 'sass', 'sass-about', 'scripts', 'webpack-dev']);
+// build for development (skips some steps)
+gulp.task('dev-build', ['copy-html', 'copy-data', 'copy-content', 'sass', 'sass-about', 'scripts', 'webpack-dev']);
 // lint code
 gulp.task('lint', ['lint-js','lint-css']);
 // for active development
 gulp.task('watch', ['default', 'watch-files']);
+// alias
+gulp.task('default', ['dev-build']);
 
 /**
  * Production Tasks
  */
+ // makes clean, minified production build in /dist
 gulp.task('build', ['clean','copy-html', 'copy-content', 'make-downloads', 'sass', 'scripts', 'webpack-prod', 'compress-libraries', 'copy-data']);
 gulp.task('deploy', ['build', 'copy-to-server']);
