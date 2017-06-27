@@ -266,11 +266,12 @@ gulp.task('lint-css', function () {
 });
 
 // copy ./dist directory to the web server for hosting
-gulp.task('copy-to-server', ['build'], function () {
+gulp.task('copy-to-server', ['build'], function() {
     return gulp.src(['./dist/**/*'])
-        .pipe(debug({title: 'deploying:'}))
+        .pipe(debug({ title: 'deploying:' }))
         .pipe(gulp.dest(CONFIG.SERVER_DIR));
 });
+
 
 /*
  * Development Tasks
