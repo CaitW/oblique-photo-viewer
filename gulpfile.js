@@ -102,7 +102,6 @@ gulp.task('convert-and-zip-layer-shapefiles', function(done) {
                     return del(['temp']);
                     done();
                 });
-
         }
     }
     return convertToShapefile(0, geojsons);
@@ -257,18 +256,33 @@ gulp.task('lint-css', function () {
     }));
 });
 
+gulp.task('update', function () {
+  git.fetch('', '', {args: '--all'}, function (err) {
+    if (err) throw err;
+    gulp.task('checkout', function(){
+      git.checkout('master', {args:'--force'}, function (err) {
+        if (err) throw err;
+      });
+    });
+  });
+});
+
 /*
- * Tasks
+ * Development Tasks
  */
+
  // make data downloads
 gulp.task('make-downloads', ['zip-geojson-layers', 'zip-json-profiles', 'convert-and-zip-layer-shapefiles']);
 // default task
 gulp.task('default', ['copy-html', 'copy-data', 'copy-content', 'sass', 'sass-about', 'scripts', 'webpack-dev']);
+// lint code
+gulp.task('lint', ['lint-js','lint-css']);
 // for active development
 gulp.task('watch', ['default', 'watch-files']);
 
-// pre-deploy tasks (for releases)
-gulp.task('pre-deploy', ['clean','lint-js','lint-css']);
-// production
-gulp.task('build', ['copy-html', 'copy-content', 'make-downloads', 'sass', 'scripts', 'webpack-prod', 'compress-libraries', 'copy-data']);
+/**
+ * Production Tasks
+ */
+gulp.task('update', ['update']);
+gulp.task('build', ['clean','copy-html', 'copy-content', 'make-downloads', 'sass', 'scripts', 'webpack-prod', 'compress-libraries', 'copy-data']);
 
