@@ -293,4 +293,4 @@ gulp.task('default', ['dev-build']);
  */
  // makes clean, minified production build in /dist
 gulp.task('build', ['clean','copy-html', 'copy-content', 'make-downloads', 'sass', 'scripts', 'webpack-prod', 'compress-libraries', 'copy-data']);
-gulp.task('deploy', ['build', 'copy-to-server']);
+gulp.task('deploy', ['copy-to-server']);
