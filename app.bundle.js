@@ -54245,7 +54245,13 @@
 	                role: 'button',
 	                tabIndex: 0
 	            },
-	            props.layerGroupName
+	            _react2.default.createElement(
+	                'span',
+	                { className: 'wiscviewer-layer-group-name' },
+	                ' ',
+	                props.layerGroupName,
+	                ' '
+	            )
 	        ),
 	        _react2.default.createElement(
 	            'div',
@@ -54853,7 +54859,7 @@
 
 	    return _react2.default.createElement(
 	        'div',
-	        { className: 'panel panel-default wiscviewer-sidebar-panel' },
+	        { className: 'panel panel-default wiscviewer-sidebar-panel wiscviewer-legend-layer-group' },
 	        _react2.default.createElement(
 	            'div',
 	            { className: headerClassNames.join(" "),
@@ -54869,7 +54875,7 @@
 	            ),
 	            _react2.default.createElement(
 	                'span',
-	                { className: 'wiscviewer-legend-layer-group-name' },
+	                { className: 'wiscviewer-layer-group-name' },
 	                ' ',
 	                props.layerGroupName,
 	                ' '
@@ -72167,7 +72173,13 @@
 	    return _react2.default.createElement(
 	        'div',
 	        { className: 'wiscviewer-feature-popup-title' },
-	        props.layerGroupName,
+	        _react2.default.createElement(
+	            'span',
+	            { className: 'wiscviewer-layer-group-name' },
+	            ' ',
+	            props.layerGroupName,
+	            ' '
+	        ),
 	        _react2.default.createElement('i', { className: 'fa fa-chevron-right' }),
 	        props.layerName,
 	        _react2.default.createElement('i', { className: 'fa fa-chevron-right' }),
