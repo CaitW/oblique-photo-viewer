@@ -21,10 +21,39 @@
 The Oblique Photo Viewer app is assembled using the collection of tools above. The source files (```src/```) are compiled, using several tools, into the production version of the application (```dist/```).
 
 ## Simple Setup
-1. Download this repository
+1. Clone / Download this repository
 2. Copy the contents of ```dist/``` onto your web server
 
+## Deploying
+To get updates from GitHub and automatically push the built version to the web server (requires that [git](https://git-scm.com/) CLI is installed)
+
+Install if you already haven't...
+1. Clone / Download this repository
+2. `npm install`
+3. `gulp build`
+
+Also:
+1. Make a `server_config.json` (or copy `server_config.example.json` and rename) and specify your webserver location
+
+After any changes occur to the GitHub, deploy those changes to the server using:
+1. `npm run deploy`
+
+
 ## Modifications
+
+### First: Install
+To make changes, you will need to: fully install all dependencies, alter the source files, and re-compile the application.
+1. Clone the GitHub repository
+1. ```cd``` to the repository directory
+1. ```npm install```
+
+### Changes
+1. Make any changes required to ```src/```
+1. ```gulp dev-build``` to compile for testing, `gulp build` to compile for production
+
+Results will appear in the ```dist/``` folder.
+
+The app doesn't come shipped with a web server, so you'll need to host `/dist` using your own server or view the files using a browser locally.
 
 ### config.json Modifications
 The configuration file is located in ```src/js/config.json```. It contains select options that can be changed quickly.
@@ -78,16 +107,6 @@ The configuration file is located in ```src/js/config.json```. It contains selec
 #### Basemap Sources
 The application utilizes Mapbox basemaps.
 
-### Making Changes and Recompiling Application
-To make changes, you will need to alter the source files and re-compile the application.
-1. Clone the GitHub repository
-1. ```cd``` to the repository directory
-1. ```npm install```
-1. Make any changes required to ```src/```
-1. ```gulp build``` to compile
-
-Results will appear in the ```dist/``` folder
-
 ### Adding a Layer
 1. Add layer spec to config.json (```src/js/config.json```), within the ```map.layers``` property as documented above
 1. If a geojson layer, add that layer's geojson file to ```src/js/data/layers/```
@@ -98,4 +117,4 @@ Results will appear in the ```dist/``` folder
 
 ### Pull Requests
 
-When making pull requests, please use the gulp task `pre-deploy` to lint your files before submitting.
+When making pull requests, please use the gulp task `lint` to lint your files before submitting.
