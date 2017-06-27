@@ -8771,7 +8771,7 @@ button.close {
       color: #eceff1; }
 
 .wiscviewer-sidebar-panel-header {
-  color: #cfd8dc !important;
+  color: #90a4ae !important;
   background-color: #263238 !important;
   border: 0;
   padding: 15px;
@@ -8806,8 +8806,13 @@ button.close {
 .wiscviewer-layer-item:focus {
   outline: none; }
 
-.wiscviewer-legend-layer-group-name {
-  color: #90a4ae;
+.wiscviewer-layer-group-name {
+  color: #90a4ae; }
+
+.wiscviewer-layer-name {
+  color: #cfd8dc; }
+
+.wiscviewer-legend-layer-group .wiscviewer-layer-group-name {
   font-size: 14px;
   float: right; }
 

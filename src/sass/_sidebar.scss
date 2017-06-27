@@ -87,7 +87,7 @@ $hide_scroll_padding: 17px;
 }
 
 .wiscviewer-sidebar-panel-header {
-  color: $primary_100 !important;
+  color: $primary_300 !important;
   background-color: $primary_900 !important;
   border: 0;
   padding: 15px;
@@ -136,10 +136,21 @@ $hide_scroll_padding: 17px;
   }
 }
 
-.wiscviewer-legend-layer-group-name {
+.wiscviewer-layer-group-name {
   color: $primary_300;
-  font-size: 14px;
-  float: right;
 }
+
+.wiscviewer-layer-name {
+  color: $primary_100;
+}
+
+.wiscviewer-legend-layer-group {
+  .wiscviewer-layer-group-name {
+    font-size: 14px;
+    float: right;
+  }
+}
+
+
 
 

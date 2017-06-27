@@ -38,13 +38,13 @@ const LegendLayer = (props) => {
         );
     }
     return (
-        <div className="panel panel-default wiscviewer-sidebar-panel">
+        <div className="panel panel-default wiscviewer-sidebar-panel wiscviewer-legend-layer-group">
             <div className={headerClassNames.join(" ")}
                 role="button"
                 tabIndex={0}
                 >
-                <span> {props.layerName} </span>
-                <span className="wiscviewer-legend-layer-group-name"> {props.layerGroupName} </span>
+                <span className="wiscviewer-layer-name"> {props.layerName} </span>
+                <span className="wiscviewer-layer-group-name"> {props.layerGroupName} </span>
             </div>
             <div className={bodyClassNames.join(" ")}>
                 <ul className="wiscviewer-legend-list">

@@ -30,7 +30,7 @@ const LayerGroup = (props) => {
                 role="button"
                 tabIndex={0}
                 >
-                {props.layerGroupName}
+                <span className="wiscviewer-layer-group-name"> {props.layerGroupName} </span>
             </div>
             <div className={bodyClassNames.join(" ")}>
                 <ListGroup className="wiscviewer-layer-list-group">
