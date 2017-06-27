@@ -22,7 +22,7 @@ try {
     CONFIG = fs.readFileSync('./server_config.json');
     CONFIG = JSON.parse(CONFIG);
 } catch (err) {
-    console.log("\x1b[31m%s\x1b[0m", "No config.json found. Copy and rename config.example.json or create your own. See github for more info.");
+    console.log("\x1b[31m%s\x1b[0m", "No server_config.json found. Copy and rename server_config.example.json or create your own. See github for more info.");
     throw "Error";
 }
 
