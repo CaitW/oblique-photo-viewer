@@ -45,6 +45,7 @@ class PinnedFeaturePopup extends React.Component {
                 zIndex={1100}
                 >
                 <div className="wiscviewer-feature-popup wiscviewer-pinned-feature-popup hidden-xs"
+                    role="button"
                     ref={
                         (content) => {this.content = content}
                     }

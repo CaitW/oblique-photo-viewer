@@ -8,6 +8,24 @@ import { mapNewZoomLevel, mapMousedown } from '../ducks/map';
 import store from '../store';
 
 export default class ObliquePhotoMap {
+    /**
+     * Leaflet popups are tied into React, and the react nodes need to be
+     * manually added / removed. The below function removes the React node
+     * when a popup is closed
+     */
+    static onPopupClose (e) {
+        let container = e.popup.getContent();
+        /**
+         * setTimeout hack to get around this current issue with React:
+         * https://github.com/facebook/react/issues/3298
+         */
+        setTimeout(function () {
+            unmountComponentAtNode(container);
+        },10);
+    }
+    static onMapMousedown () {
+        store.dispatch(mapMousedown());
+    }
     constructor(map) {
         var self = this;
         this.basemapGroup = L.layerGroup();
@@ -25,27 +43,9 @@ export default class ObliquePhotoMap {
         this.layerIndex = {};
         this.dispatchZoom = this.dispatchZoom.bind(this);
         this.map.on('zoomend', self.dispatchZoom);
-        this.map.on('mousedown', self.onMapMousedown);
-        this.map.on('popupclose', self.onPopupClose)
+        this.map.on('mousedown', self.constructor.onMapMousedown);
+        this.map.on('popupclose', self.constructor.onPopupClose)
         this.dispatchZoom();
-    }
-    /**
-     * Leaflet popups are tied into React, and the react nodes need to be
-     * manually added / removed. The below function removes the React node
-     * when a popup is closed
-     */
-    onPopupClose (e) {
-        let container = e.popup.getContent();
-        /**
-         * setTimeout hack to get around this current issue with React:
-         * https://github.com/facebook/react/issues/3298
-         */
-        setTimeout(function () {
-            unmountComponentAtNode(container);
-        },10);
-    }
-    onMapMousedown () {
-        store.dispatch(mapMousedown());
     }
     dispatchZoom () {
         let currentZoom = this.map.getZoom();

@@ -42,7 +42,6 @@ const LayerGroup = (props) => {
 }
 
 LayerGroup.propTypes = {
-    layerGroupId: PropTypes.string.isRequired,
     layerGroupName: PropTypes.string.isRequired,
     layers: PropTypes.object.isRequired,
     onLayerClick: PropTypes.func.isRequired

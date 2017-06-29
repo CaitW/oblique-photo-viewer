@@ -7,14 +7,13 @@
  * apply click handling functions to each feature in each layer.
  */
 import React from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
+import { render } from 'react-dom';
 import { midpoint, point } from 'turf';
 
 import store from '../store';
 import { mobileClickFeature } from '../ducks/mobile';
 import { leafletPopupOpened } from '../ducks/map';
 import FeaturePopup from '../components/FeaturePopups/FeaturePopup';
-import { LAYERS_BY_ID } from '../util';
 
 const LAYER_FEATURES = {};
 
@@ -74,6 +73,7 @@ function getFeatureMidpoint (featureLayer) {
     } else if (typeof featureLayer.getLatLng !== "undefined") {
         return getPointCoords(featureLayer.getLatLng());
     }
+    return false;
 }
 
 /**
@@ -107,6 +107,7 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
         return positionInDocument;
     }
     let closePopup = () => {
+        // eslint-disable-next-line
         popup._close();
     }
 
@@ -131,24 +132,39 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
     return popup;
 }
 
+function toggleNextFeaturePopup () {
+    let featureIndex = this.featureIndex;
+    let layerId = this.layerId;
+    let nextFeatureIndex = ((featureIndex + 1) >= LAYER_FEATURES[layerId].length) ? 0 : featureIndex + 1;
+    LAYER_FEATURES[layerId][nextFeatureIndex].togglePopup();
+}
+
+function togglePreviousFeaturePopup () {
+    let featureIndex = this.featureIndex;
+    let layerId = this.layerId;
+    let previousFeatureIndex = ((featureIndex - 1) < 0) ? LAYER_FEATURES[layerId].length - 1 : featureIndex - 1;
+    LAYER_FEATURES[layerId][previousFeatureIndex].togglePopup();
+}
+
 /**
  * Determine whether to:
  *  - show the mobile feature popup
  *  - create a popup for a particular feature layer, and then show it
  *  - toggle an already-created popup
  */
-function togglePopup (feature, featureLayer, layerId, map) {
-    let featureIndex = featureLayer.featureIndex;
-    let nextFeatureIndex = ((featureIndex + 1) >= LAYER_FEATURES[layerId].length) ? 0 : featureIndex + 1;
-    let previousFeatureIndex = ((featureIndex - 1) < 0) ? LAYER_FEATURES[layerId].length - 1 : featureIndex - 1;
-    featureLayer.openNextFeature = LAYER_FEATURES[layerId][nextFeatureIndex].togglePopup;
-    featureLayer.openPreviousFeature = LAYER_FEATURES[layerId][previousFeatureIndex].togglePopup;
+function togglePopup() {
+    let feature = this.feature;
+    let featureIndex = this.featureIndex;
+    let layerId = this.layerId;
+    let map = this.map;
+    this.openNextFeature = toggleNextFeaturePopup.bind(this);
+    this.openPreviousFeature = togglePreviousFeaturePopup.bind(this);
     if (store.getState().mobile.window.width < 992) {
         store.dispatch(mobileClickFeature(feature.properties, layerId, featureIndex));
-    } else if (featureLayer.popup === false) {
-        featureLayer.popup = createLeafletPopup(feature, featureLayer, layerId, map, featureIndex);
+    } else if (this.popup === false) {
+        this.popup = createLeafletPopup(feature, this, layerId, map, featureIndex);
     } else {
-        featureLayer.popup.openOn(map);
+        this.popup.openOn(map);
     }
 }
 
@@ -179,12 +195,11 @@ export function onEachFeature (layerId, map) {
     return (feature, featureLayer) => {
         let featureIndex = addFeatureLayerToList(featureLayer, layerId);
         featureLayer.popup = false;
-        featureLayer.openNextFeature = false;
-        featureLayer.openPreviousFeature = false;
         featureLayer.featureIndex = featureIndex;
-        featureLayer.togglePopup = function () {
-            togglePopup(feature, featureLayer, layerId, map);
-        };
+        featureLayer.layerId = layerId;
+        featureLayer.map = map;
+        featureLayer.feature = feature;
+        featureLayer.togglePopup = togglePopup.bind(featureLayer);
         featureLayer.on('mouseup', featureLayer.togglePopup);
     }
 }

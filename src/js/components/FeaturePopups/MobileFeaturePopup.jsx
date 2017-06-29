@@ -10,7 +10,7 @@ import store from '../../store';
 
 import { getMobileFeaturePopupProps } from '../../selectors';
 import { closeMobileFeatureModal } from '../../ducks/mobile';
-import { getFeatureLayer } from '../../layers/layerFeatures.jsx';
+import { getFeatureLayer } from '../../layers/layerFeatures';
 
 import PopupTabs from './components/PopupTabs';
 import PopupTitle from './components/PopupTitle';
@@ -21,14 +21,14 @@ const mapStateToProps = (state) => {
 }
 
 class MobileFeaturePopup extends React.Component {
+  static close () {
+      store.dispatch(closeMobileFeatureModal());
+  }
   constructor (props) {
     super(props);
     this.openPreviousFeature = this.openPreviousFeature.bind(this);
     this.openNextFeature = this.openNextFeature.bind(this);
     this.popupType = "modal";
-  }
-  static close () {
-      store.dispatch(closeMobileFeatureModal());
   }
   openPreviousFeature () {
     getFeatureLayer(this.props.featureIndex, this.props.layerId).openPreviousFeature();
@@ -64,14 +64,19 @@ class MobileFeaturePopup extends React.Component {
                     />
                   </Modal.Body>
                   <Modal.Footer>
-                    <PopupFooter layerId={this.props.layerId} featureProperties={this.props.featureProperties}>
+                    <PopupFooter layerId={this.props.layerId}
+                      featureProperties={this.props.featureProperties}>
                       <div className="wiscviewer-feature-controls">
                         <i className="fa fa-arrow-left wiscviewer-feature-popup-previous-button"
                             onClick={this.openPreviousFeature}
                             role="button"
                             tabIndex={-1}>
                         </i>
-                        <Button key="close" className="wiscviewer-mobile-feature-modal-close" onClick={this.constructor.close}>Close</Button>
+                        <Button key="close"
+                          className="wiscviewer-mobile-feature-modal-close"
+                          onClick={this.constructor.close}>
+                          Close
+                        </Button>
                         <i className="fa fa-arrow-right wiscviewer-feature-popup-next-button"
                             onClick={this.openNextFeature}
                             role="button"
@@ -102,6 +107,10 @@ MobileFeaturePopup.propTypes = {
   ]).isRequired,
   layerGroupName: PropTypes.oneOfType([
     PropTypes.string,
+    PropTypes.bool
+  ]).isRequired,
+  featureIndex: PropTypes.oneOfType([
+    PropTypes.number,
     PropTypes.bool
   ]).isRequired
 }

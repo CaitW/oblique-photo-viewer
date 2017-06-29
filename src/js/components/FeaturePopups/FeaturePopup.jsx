@@ -46,8 +46,9 @@ class FeaturePopup extends React.Component {
         let layerName = LAYERS_BY_ID[this.props.layerId].name;
         return (
             <div className="wiscviewer-feature-popup"
-                onClick={this.bringToFront}
-                tabIndex={0}>
+                role="button"
+                tabIndex={-1}
+                onClick={this.bringToFront}>
                 <div className="wiscviewer-feature-popup-header">
                     <div className="wiscviewer-feature-popup-controls">
                         <i className="fa fa-arrow-left feature-popup-previous-button"

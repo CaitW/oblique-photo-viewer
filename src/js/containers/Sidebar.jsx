@@ -6,7 +6,6 @@
  */
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import PropTypes from 'prop-types';
 
 import LayerList from './LayerList';
 import Legend from './Legend';
@@ -46,12 +45,16 @@ class Sidebar extends React.Component {
                 <div className="wiscviewer-sidebar-inner-container">
                     <div className="wiscviewer-sidebar-tabs">
                         <div className={this.getClassName("LayerList")}
+                            role="button"
+                            tabIndex={-1}
                             onClick={this.onTabClick}
                             value="LayerList">
                             <i className="fa fa-map"> </i>
                         </div>
                         <div className={this.getClassName("Legend")}
                             onClick={this.onTabClick}
+                            role="button"
+                            tabIndex={-1}
                             value="Legend">
                             <i className="fa fa-key"> </i>
                         </div>
@@ -64,9 +67,5 @@ class Sidebar extends React.Component {
         );
     };
 };
-
-Sidebar.propTypes = {
-
-}
 
 export default Sidebar;

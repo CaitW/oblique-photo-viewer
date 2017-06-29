@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Tab, Button } from 'react-bootstrap';
+import { Tab } from 'react-bootstrap';
 
 const ImageTab = (props) => {
     let tabProps = {
@@ -9,7 +9,6 @@ const ImageTab = (props) => {
     delete tabProps.imgPath;
     delete tabProps.update;
     delete tabProps.alt;
-    delete tabProps.fullSizePath;
     let style = {
         "minHeight": "200px",
         "minWidth": "300px",
@@ -25,8 +24,7 @@ const ImageTab = (props) => {
 ImageTab.propTypes = {
     imgPath: PropTypes.string.isRequired,
     update: PropTypes.func.isRequired,
-    alt: PropTypes.string.isRequired,
-    fullSizePath: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired
 }
 
 export default ImageTab;

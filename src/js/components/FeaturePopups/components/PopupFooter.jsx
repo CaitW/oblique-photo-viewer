@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
-import CONFIG from '../../../config.json';
 import { getPhotoURLs, getProfileURLs } from '../../../util';
 
 const PopupFooter = (props) => {
@@ -24,6 +23,7 @@ const PopupFooter = (props) => {
                     </Button>
                 </a>
             );
+            break;
         }
         case "profiles": {
             let urls = getProfileURLs(props.featureProperties);

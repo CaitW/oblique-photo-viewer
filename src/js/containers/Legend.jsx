@@ -21,7 +21,18 @@ const LegendStyle = (props) => (
         <i style={props.iconStyle} className={props.styleIconClassNames.join(" ")}></i>
         {props.styleName}
     </li>
-)
+);
+
+LegendStyle.propTypes = {
+    styleName: PropTypes.string.isRequired,
+    iconStyle: PropTypes.string,
+    styleIconClassNames: PropTypes.array
+};
+
+LegendStyle.defaultProps = {
+    iconStyle: "",
+    styleIconClassNames: []
+}
 
 const LegendLayer = (props) => {
     let headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
@@ -55,6 +66,12 @@ const LegendLayer = (props) => {
     );
 }
 
+LegendLayer.propTypes = {
+    layerGroupName: PropTypes.string.isRequired,
+    layerName: PropTypes.string.isRequired,
+    layerStyles: PropTypes.array.isRequired
+};
+
 const Legend = (props) => {
     let layers = [];
     let activeLayerStyleTypes = props.activeLayerStyleTypes;
@@ -79,7 +96,7 @@ const Legend = (props) => {
 }
 
 Legend.propTypes = {
-    activeLayerStyleTypes: PropTypes.object.isRequired
+    activeLayerStyleTypes: PropTypes.object.isRequired,
 }
 
 export default connect(mapStateToProps)(Legend);

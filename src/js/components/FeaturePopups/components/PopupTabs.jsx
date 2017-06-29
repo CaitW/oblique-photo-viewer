@@ -8,7 +8,6 @@ import DataTab from './tabs/DataTab';
 import ProfileTab from './tabs/ProfileTab';
 
 import { getPhotoURLs, getProfileURLs } from '../../../util';
-import CONFIG from '../../../config.json';
 
 class PopupTabs extends React.Component {
 
@@ -28,7 +27,6 @@ class PopupTabs extends React.Component {
         let tabs = [];
         let featureProperties = this.props.featureProperties;
         let layerId = this.props.layerId;
-        let urls = CONFIG.resources;
 
         switch (layerId) {
             case "photos_1976":
@@ -42,7 +40,6 @@ class PopupTabs extends React.Component {
                         eventKey={1}
                         title="Image"
                         imgPath={photoURLs.popup}
-                        fullSizePath={photoURLs.original}
                         alt="Oblique"
                         update={this.update}
                     />

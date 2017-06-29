@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Tab, Button } from 'react-bootstrap';
-import CONFIG from '../../../../config.json';
+import { Tab  } from 'react-bootstrap';
 
 import { scaleLinear } from 'd3-scale';
 import { axisBottom, axisLeft } from 'd3-axis';
@@ -9,6 +8,8 @@ import { line } from 'd3-shape';
 import { json } from 'd3-request';
 import { select } from 'd3-selection';
 import { extent, descending } from 'd3-array';
+
+import CONFIG from '../../../../config.json';
 
 class ProfileTab extends React.Component {
     constructor(props) {
@@ -39,7 +40,7 @@ class ProfileTab extends React.Component {
         }
         let yAxisLabel = {
             x: 0 - (height / 2),
-            y: 0 - margin.left + 5
+            y: (0 - margin.left) + 5
         }
         if(this.props.popupType === "modal") {
             yAxisLabel.y = yAxisLabel.y + 5;
@@ -75,7 +76,7 @@ class ProfileTab extends React.Component {
             .y(function(d) {
                 return y(d.y);
             });
-        var michigan_avg = line()
+        var michiganAvg = line()
             .x(function(d) {
                 return (x(d.x))
             })
@@ -91,17 +92,17 @@ class ProfileTab extends React.Component {
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
         // get the profile's data from it's json file
         json(this.props.jsonLocation, function(error, data) {
-            data = data.sort(function (a, b) {
+            let sortedData = data.sort(function (a, b) {
                 return descending(a.x, b.x)
             });
-            x.domain(extent(data, function(d) { return d.x }))
+            x.domain(extent(sortedData, function(d) { return d.x }))
             svg.append("path")
                 .attr("class", "lake-stats michigan-avg")
-                .attr("d", michigan_avg(data));
+                .attr("d", michiganAvg(sortedData));
             // Add the valueline path.
             svg.append("path")
                 .attr("class", "line")
-                .attr("d", valueline(data));
+                .attr("d", valueline(sortedData));
             // Add the X Axis
             svg.append("g")
                 .attr("class", "x axis")

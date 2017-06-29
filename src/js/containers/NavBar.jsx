@@ -7,6 +7,7 @@
  * - the button that activates the AboutModal
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
@@ -23,14 +24,6 @@ const mapStateToProps = (state) => {
     return state.nav
 }
 class NavBar extends React.Component {
-    constructor (props) {
-      super(props);
-      this.state = {
-        expanded: false
-      }
-      this.collapse = this.collapse.bind(this);
-      this.toggle = this.toggle.bind(this);
-    }
     static onMobileLayersClick() {
       store.dispatch(openMobileLayerList());
     }
@@ -39,6 +32,21 @@ class NavBar extends React.Component {
     }
     static onResetViewClick () {
         store.dispatch(resetMapView());
+    }
+    constructor (props) {
+      super(props);
+      this.state = {
+        expanded: false
+      }
+      this.collapse = this.collapse.bind(this);
+      this.toggle = this.toggle.bind(this);
+    }
+    componentWillReceiveProps (nextProps) {
+      if(nextProps.expanded !== this.state.expanded) {
+        this.setState({
+          expanded: nextProps.expanded
+        });
+      }
     }
     collapse () {
       this.toggle(false);
@@ -51,16 +59,13 @@ class NavBar extends React.Component {
         store.dispatch(setNavExpand(expanded));
       }
     }
-    componentWillReceiveProps (nextProps) {
-      if(nextProps.expanded !== this.state.expanded) {
-        this.setState({
-          expanded: nextProps.expanded
-        });
-      }
-    }
     render() {
         return (
-            <Navbar onSelect={this.collapse} onToggle={this.toggle} expanded={this.state.expanded} fluid className="wiscviewer-nav">
+            <Navbar onSelect={this.collapse}
+              onToggle={this.toggle}
+              expanded={this.state.expanded}
+              fluid
+              className="wiscviewer-nav">
               <Navbar.Header>
                 <img src="img/wisconsin.svg" alt="Wisconsin Logo" className="wiscviewer-logo" />
                 <Navbar.Brand className="wiscviewer-brand">
@@ -83,6 +88,10 @@ class NavBar extends React.Component {
             </Navbar>
         )
     }
+}
+
+NavBar.propTypes = {
+  expanded: PropTypes.bool.isRequired
 }
 
 export default connect(mapStateToProps)(NavBar);
