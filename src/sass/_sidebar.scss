@@ -19,26 +19,31 @@ $hide_scroll_padding: 17px;
   left: 0;
   overflow-x: hidden;
   overflow-y: auto;
+
   &::-webkit-scrollbar {
     display: none;
   }
+
   -ms-overflow-style: none;
 }
 
 .wiscviewer-sidebar-tabs {
   margin-bottom: 3px;
+
   div {
     display: inline-block;
     width: 50%;
-    padding: 10px 5px 10px 5px;
+    padding: 10px 5px;
     text-align: center;
     color: $primary_500;
     background-color: $primary_900;
     font-size: 14px;
+
     &.active {
       color: $primary_100;
       background-color: $primary_800;
     }
+
     &:hover {
       color: $primary_100;
       cursor: pointer;
@@ -66,14 +71,15 @@ $hide_scroll_padding: 17px;
   border-width: 0;
   border-radius: 0;
   margin: 0;
+
   .wiscviewer-layer-item,
   .wiscviewer-layer-item:focus {
     background-color: $primary_800;
     border-color: $primary_200;
     color: $primary_200;
-    border-width: 0px 0 0;
+    border-width: 0;
     border-radius: 0;
-    padding: 10px 10px;
+    padding: 10px;
 
     &:hover {
       color: $primary_50;
@@ -119,8 +125,9 @@ $hide_scroll_padding: 17px;
   margin-left: 5px;
   margin-right: 15px;
   color: $primary_500;
+
   &.active {
-    color: #8BC34A;
+    color: #8bc34a;
   }
 }
 

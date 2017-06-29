@@ -1,23 +1,34 @@
 // Fonts
-@import 'fonts';
-@import 'lib/font-awesome/font-awesome';
 
+@import 'fonts';
+
+@import 'lib/font-awesome/font-awesome';
 $font_header: 'Fjalla One', sans-serif;
 $font_body: 'Roboto', sans-serif;
 $font_icons: 'Font Awesome';
 
 // Libraries
+
 @import 'lib/bootstrap';
+
 @import 'lib/leaflet';
+
 @import 'lib/L.Control.MousePosition';
 
 // Partials
+
 @import 'colors';
+
 @import 'modals';
+
 @import 'nav';
+
 @import 'sidebar';
+
 @import 'animations';
+
 @import 'map';
+
 @import 'popups';
 
 // CSS

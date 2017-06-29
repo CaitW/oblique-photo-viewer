@@ -34,6 +34,7 @@
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+
   .wiscviewer-feature-popup-header {
     cursor: move;
   }
@@ -47,9 +48,11 @@
   background-color: $primary_800;
   color: $primary_100;
   border-radius: 3px;
+
   &:focus {
     outline: none;
   }
+
   a {
     button {
       font-size: inherit;
@@ -80,6 +83,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
   .fa-chevron-right {
     font-size: 10px;
     margin: 0 5px;
@@ -104,7 +108,7 @@
 }
 
 .wiscviewer-feature-popup-body {
-  padding: 0 0 0 0;
+  padding: 0;
   border-radius: 3px;
 
   .nav-tabs {
@@ -136,6 +140,7 @@
           color: $primary_200;
           border-bottom: 1px solid $primary_900;
           background-color: inherit;
+
           &:hover {
             border: none;
             border-bottom: 1px solid $primary_900;
@@ -197,6 +202,7 @@
   background-color: $primary_800;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+
   a {
     margin-left: 5px;
   }
@@ -211,29 +217,37 @@
   .lake-stats {
     stroke-width: 1px;
   }
+
   .michigan-avg {
     stroke: $primary_700;
   }
+
   .michigan-high {
     stroke: $primary_600;
   }
+
   .michigan-low {
     stroke: $primary_600;
   }
+
   .tick {
     font-family: $font-body;
+
     line {
       stroke: $primary_600;
     }
+
     text {
       fill: $primary_400;
     }
   }
+
   .domain {
     stroke-width: 3px;
     stroke: $primary_600;
     stroke-linecap: butt;
   }
+
   .line {
     stroke: $secondary_300;
     stroke-width: 2px;
@@ -241,9 +255,11 @@
     stroke-linejoin: round;
     stroke-linecap: round;
   }
+
   .wiscviewer-profile-graph {
     background-color: $primary_900;
   }
+
   .axis-label {
     fill: $primary_600;
   }

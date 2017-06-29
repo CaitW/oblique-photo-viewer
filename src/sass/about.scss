@@ -1,15 +1,18 @@
 // Fonts
-@import 'fonts';
-@import 'lib/font-awesome/font-awesome';
 
+@import 'fonts';
+
+@import 'lib/font-awesome/font-awesome';
 $font_header: 'Fjalla One', sans-serif;
 $font_body: 'Roboto', sans-serif;
 $font_icons: 'Font Awesome';
 
 // Libraries
+
 @import 'lib/bootstrap';
 
 // Partials
+
 @import 'colors';
 
 // CSS
@@ -48,26 +51,29 @@ h6 {
 
 .button-group-label {
   margin-bottom: 5px;
+
   i {
     margin: 0 10px;
   }
 }
 
 button {
-    background-color: $primary_400 !important;
-    color: $primary_900 !important;
-    border-color: $primary_600 !important;
-    border-radius: 0 !important;
-    width: 100%;
-    text-align: left !important;
-    i {
-        float: left;
-        vertical-align: middle;
-        margin: 3px 20px auto 0;
-    }
-    &:hover {
-        background-color: $primary_500 !important;
-    }
+  background-color: $primary_400 !important;
+  color: $primary_900 !important;
+  border-color: $primary_600 !important;
+  border-radius: 0 !important;
+  width: 100%;
+  text-align: left !important;
+
+  i {
+    float: left;
+    vertical-align: middle;
+    margin: 3px 20px auto 0;
+  }
+
+  &:hover {
+    background-color: $primary_500 !important;
+  }
 }
 
 

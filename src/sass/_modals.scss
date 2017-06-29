@@ -1,64 +1,76 @@
 .wiscviewer-mobile-modal {
   font-size: 18px;
   color: $primary_100;
+
   .modal-dialog {
     z-index: 600;
     max-height: calc(100% - 20px);
   }
+
   .modal-content {
     background-color: $primary_700;
     height: 100%;
     overflow-y: scroll;
   }
+
   .modal-header {
     background-color: $primary_800;
     border: 0;
     height: 50px;
     font-size: 16px;
   }
+
   .modal-body {
     width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
   }
+
   .modal-footer {
     background-color: $primary_700;
     border: 0;
     min-height: 60px;
     padding: 10px;
+
     button:not(:first-child) {
       margin-left: 10px;
     }
   }
+
   .modal-header {
     i {
       margin: 0 10px;
     }
   }
+
   .btn {
     border: 0;
     background-color: $primary_900;
     color: $primary_200;
     font-size: 18px;
+
     &:hover {
       background-color: $primary_900;
     }
   }
 }
 
-
 .wiscviewer-mobile-feature-popup {
   img {
     width: 100%;
   }
+
   .modal-body {
     padding: 0;
   }
+
   .modal-footer {
     font-size: 30px;
   }
+
   .nav-tabs {
     border: none;
+
     li {
       a {
         padding: 10px 20px;
@@ -66,6 +78,7 @@
         border: none;
         background-color: inherit !important;
       }
+
       &.active {
         a {
           color: $primary_50;
@@ -74,39 +87,48 @@
       }
     }
   }
+
   .tab-content {
     padding: 0;
     overflow-x: auto;
     border: none;
     border: 0 solid $primary_900;
-    border-width: 4px 0 4px 0;
+    border-width: 4px 0;
   }
+
   .wiscviewer-popup-downloads-row {
     display: block;
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
     padding: 0;
     text-align: left;
+
     i {
       display: none;
     }
   }
+
   table {
     width: 100%;
     font-size: 14px;
   }
+
   button {
     margin-left: 5px;
   }
+
   .wiscviewer-profile-tab {
     .lake-stats {
       stroke-width: 2px;
     }
+
     .domain {
       stroke-width: 4px;
     }
+
     .line {
       stroke-width: 3px;
     }
+
     .axis-label {
       font-size: 16px;
     }
@@ -115,12 +137,15 @@
 
 .wiscviewer-feature-controls {
   text-align: center;
+
   .wiscviewer-feature-popup-previous-button {
     float: left;
   }
+
   .wiscviewer-feature-popup-next-button {
     float: right;
   }
+
   i {
     font-size: 30px;
     margin: 0 10px;
@@ -131,6 +156,7 @@
   .modal-dialog {
     height: calc(100% - 20px);
   }
+
   .panel {
     background-color: $primary_100;
     border: 0;

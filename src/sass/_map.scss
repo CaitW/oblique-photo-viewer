@@ -15,13 +15,16 @@
   @for $zoom-level from 1 through 18 {
     $profile-width: 1 + (0.3 * $zoom-level);
     $line-width: 4 + (0.6 * $zoom-level);
+
     @if $zoom-level > 15 {
       $line-width: 4 + (0.8 * $zoom-level);
     }
     $dot-stroke: 1 + (0.4 * $zoom-level);
+
     @if $zoom-level > 13 {
       $dot-stroke: 1 + (0.6 * $zoom-level);
     }
+
     @if $zoom-level > 15 {
       $dot-stroke: 1 + (0.8 * $zoom-level);
     }
@@ -34,6 +37,7 @@
       .layer-structure_1976,
       .layer-structure_2007 {
         stroke-width: $dot-stroke;
+
         &:hover {
           stroke-width: $dot-stroke + 2;
         }
@@ -67,12 +71,12 @@
       }
     }
   }
-
 }
 
 // Leaflet Modifications
 .leaflet-control-zoom.leaflet-bar {
   border: 0;
+
   a {
     background-color: $primary_50;
   }

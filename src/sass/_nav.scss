@@ -23,7 +23,8 @@
   color: $primary_50 !important;
   font-family: $font_header;
   font-size: 20px;
-  padding: 18px 15px 12px 15px;
+  padding: 18px 15px 12px;
+
   &:before {
     content: 'WI Shoreline Inventory';
   }
@@ -44,6 +45,7 @@
 .wiscviewer-nav-tool {
   color: $primary_100;
   font-size: 16px;
+
   a,
   a:hover {
     color: $primary_100 !important;
@@ -73,13 +75,16 @@
   text-transform: capitalize;
   background-color: $primary_900;
   padding: 5px 0px;
+
   &:hover {
     outline: none;
     background-color: $primary_900 !important;
     cursor: default;
+
     a {
       outline: none;
       background-color: $primary_900 !important;
+
       &:hover {
         cursor: default;
       }
@@ -91,15 +96,18 @@
   text-transform: capitalize;
   background-color: $primary_800;
   padding: 3px 0px;
+
   &:not(:last-child) {
-    border: 0px solid $primary_700;
+    border: 0 solid $primary_700;
     border-bottom-width: 1px;
   }
+
   &:active,
   &:hover,
   &:focus {
     outline: none;
     background-color: $primary_900 !important;
+
     a {
       outline: none;
       background-color: $primary_900 !important;
@@ -113,11 +121,13 @@
   padding: 5px 20px;
   height: 50px;
   margin: 0;
+
   &:hover,
   &:focus {
     color: $white;
     background-color: $primary_700 !important;
   }
+
   &:active {
     background-color: $primary_800 !important;
   }
@@ -130,19 +140,19 @@
 
 .wiscviewer-nav-tool-zoom {
   .wiscviewer-tool-title:after {
-    content: "Shoreline"
+    content: 'Shoreline';
   }
 }
 
 .wiscviewer-nav-tool-reset {
   a:after {
-    content: "Reset"
+    content: 'Reset';
   }
 }
 
 .wiscviewer-nav-tool-about {
   a:after {
-    content: "About"
+    content: 'About';
   }
 }
 
@@ -153,8 +163,9 @@
 
   .wiscviewer-nav-tool-zoom {
     .wiscviewer-tool-title:after {
-      content: ""
+      content: '';
     }
+
     .caret {
       display: none;
     }
@@ -162,23 +173,24 @@
 
   .wiscviewer-nav-tool-reset {
     a:after {
-      content: ""
+      content: '';
     }
   }
 
   .wiscviewer-nav-tool-about {
     a:after {
-      content: ""
+      content: '';
     }
   }
 }
 
 @media (max-width: 767px) {
   .wiscviewer-nav-tools {
-    border: 0px solid $primary_300;
+    border: 0 solid $primary_300;
     height: calc(100% - 50px);
     overflow-x: hidden;
     overflow-y: hidden;
+
     .navbar-nav {
       font-size: 20px;
       height: 100%;
