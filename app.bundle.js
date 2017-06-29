@@ -52157,6 +52157,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _propTypes = __webpack_require__(569);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
 	var _reactBootstrap = __webpack_require__(481);
 
 	var _reactRedux = __webpack_require__(736);
@@ -52210,6 +52214,23 @@
 	var NavBar = function (_React$Component) {
 	  _inherits(NavBar, _React$Component);
 
+	  _createClass(NavBar, null, [{
+	    key: 'onMobileLayersClick',
+	    value: function onMobileLayersClick() {
+	      _store2.default.dispatch((0, _mobile.openMobileLayerList)());
+	    }
+	  }, {
+	    key: 'onZoomShorelineClick',
+	    value: function onZoomShorelineClick(lakeName, countyName) {
+	      _store2.default.dispatch((0, _map.zoomToShoreline)(lakeName, countyName));
+	    }
+	  }, {
+	    key: 'onResetViewClick',
+	    value: function onResetViewClick() {
+	      _store2.default.dispatch((0, _map.resetMapView)());
+	    }
+	  }]);
+
 	  function NavBar(props) {
 	    _classCallCheck(this, NavBar);
 
@@ -52224,6 +52245,15 @@
 	  }
 
 	  _createClass(NavBar, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (nextProps.expanded !== this.state.expanded) {
+	        this.setState({
+	          expanded: nextProps.expanded
+	        });
+	      }
+	    }
+	  }, {
 	    key: 'collapse',
 	    value: function collapse() {
 	      this.toggle(false);
@@ -52239,20 +52269,15 @@
 	      }
 	    }
 	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {
-	      if (nextProps.expanded !== this.state.expanded) {
-	        this.setState({
-	          expanded: nextProps.expanded
-	        });
-	      }
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        _reactBootstrap.Navbar,
-	        { onSelect: this.collapse, onToggle: this.toggle, expanded: this.state.expanded, fluid: true, className: 'wiscviewer-nav' },
+	        { onSelect: this.collapse,
+	          onToggle: this.toggle,
+	          expanded: this.state.expanded,
+	          fluid: true,
+	          className: 'wiscviewer-nav' },
 	        _react2.default.createElement(
 	          _reactBootstrap.Navbar.Header,
 	          null,
@@ -52282,25 +52307,14 @@
 	        )
 	      );
 	    }
-	  }], [{
-	    key: 'onMobileLayersClick',
-	    value: function onMobileLayersClick() {
-	      _store2.default.dispatch((0, _mobile.openMobileLayerList)());
-	    }
-	  }, {
-	    key: 'onZoomShorelineClick',
-	    value: function onZoomShorelineClick(lakeName, countyName) {
-	      _store2.default.dispatch((0, _map.zoomToShoreline)(lakeName, countyName));
-	    }
-	  }, {
-	    key: 'onResetViewClick',
-	    value: function onResetViewClick() {
-	      _store2.default.dispatch((0, _map.resetMapView)());
-	    }
 	  }]);
 
 	  return NavBar;
 	}(_react2.default.Component);
+
+	NavBar.propTypes = {
+	  expanded: _propTypes2.default.bool.isRequired
+	};
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(NavBar);
 
@@ -53952,10 +53966,6 @@
 
 	var _reactBootstrap = __webpack_require__(481);
 
-	var _propTypes = __webpack_require__(569);
-
-	var _propTypes2 = _interopRequireDefault(_propTypes);
-
 	var _LayerList = __webpack_require__(793);
 
 	var _LayerList2 = _interopRequireDefault(_LayerList);
@@ -54033,6 +54043,8 @@
 	                        _react2.default.createElement(
 	                            'div',
 	                            { className: this.getClassName("LayerList"),
+	                                role: 'button',
+	                                tabIndex: -1,
 	                                onClick: this.onTabClick,
 	                                value: 'LayerList' },
 	                            _react2.default.createElement(
@@ -54045,6 +54057,8 @@
 	                            'div',
 	                            { className: this.getClassName("Legend"),
 	                                onClick: this.onTabClick,
+	                                role: 'button',
+	                                tabIndex: -1,
 	                                value: 'Legend' },
 	                            _react2.default.createElement(
 	                                'i',
@@ -54067,8 +54081,6 @@
 	}(_react2.default.Component);
 
 	;
-
-	Sidebar.propTypes = {};
 
 	exports.default = Sidebar;
 
@@ -54151,7 +54163,6 @@
 	            for (var layerGroupId in this.props.layers) {
 	                layerGroups.push(_react2.default.createElement(_LayerGroup2.default, {
 	                    key: layerGroupId,
-	                    layerGroupId: layerGroupId,
 	                    layerGroupName: this.props.layers[layerGroupId].name,
 	                    layers: this.props.layers[layerGroupId].layers,
 	                    onLayerClick: this.constructor.onLayerClick,
@@ -54266,7 +54277,6 @@
 	};
 
 	LayerGroup.propTypes = {
-	    layerGroupId: _propTypes2.default.string.isRequired,
 	    layerGroupName: _propTypes2.default.string.isRequired,
 	    layers: _propTypes2.default.object.isRequired,
 	    onLayerClick: _propTypes2.default.func.isRequired
@@ -54823,6 +54833,17 @@
 	    );
 	};
 
+	LegendStyle.propTypes = {
+	    styleName: _propTypes2.default.string.isRequired,
+	    iconStyle: _propTypes2.default.string,
+	    styleIconClassNames: _propTypes2.default.array
+	};
+
+	LegendStyle.defaultProps = {
+	    iconStyle: "",
+	    styleIconClassNames: []
+	};
+
 	var LegendLayer = function LegendLayer(props) {
 	    var headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
 	    var bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
@@ -54891,6 +54912,12 @@
 	            )
 	        )
 	    );
+	};
+
+	LegendLayer.propTypes = {
+	    layerGroupName: _propTypes2.default.string.isRequired,
+	    layerName: _propTypes2.default.string.isRequired,
+	    layerStyles: _propTypes2.default.array.isRequired
 	};
 
 	var Legend = function Legend(props) {
@@ -54985,6 +55012,13 @@
 	var MobileFeaturePopup = function (_React$Component) {
 	  _inherits(MobileFeaturePopup, _React$Component);
 
+	  _createClass(MobileFeaturePopup, null, [{
+	    key: 'close',
+	    value: function close() {
+	      _store2.default.dispatch((0, _mobile.closeMobileFeatureModal)());
+	    }
+	  }]);
+
 	  function MobileFeaturePopup(props) {
 	    _classCallCheck(this, MobileFeaturePopup);
 
@@ -55042,7 +55076,8 @@
 	            null,
 	            _react2.default.createElement(
 	              _PopupFooter2.default,
-	              { layerId: this.props.layerId, featureProperties: this.props.featureProperties },
+	              { layerId: this.props.layerId,
+	                featureProperties: this.props.featureProperties },
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'wiscviewer-feature-controls' },
@@ -55052,7 +55087,9 @@
 	                  tabIndex: -1 }),
 	                _react2.default.createElement(
 	                  _reactBootstrap.Button,
-	                  { key: 'close', className: 'wiscviewer-mobile-feature-modal-close', onClick: this.constructor.close },
+	                  { key: 'close',
+	                    className: 'wiscviewer-mobile-feature-modal-close',
+	                    onClick: this.constructor.close },
 	                  'Close'
 	                ),
 	                _react2.default.createElement('i', { className: 'fa fa-arrow-right wiscviewer-feature-popup-next-button',
@@ -55065,11 +55102,6 @@
 	        )
 	      );
 	    }
-	  }], [{
-	    key: 'close',
-	    value: function close() {
-	      _store2.default.dispatch((0, _mobile.closeMobileFeatureModal)());
-	    }
 	  }]);
 
 	  return MobileFeaturePopup;
@@ -55080,7 +55112,8 @@
 	  featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired,
 	  layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
 	  layerName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
-	  layerGroupName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired
+	  layerGroupName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+	  featureIndex: _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.bool]).isRequired
 	};
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(MobileFeaturePopup);
@@ -55117,18 +55150,8 @@
 
 	var _FeaturePopup2 = _interopRequireDefault(_FeaturePopup);
 
-	var _util = __webpack_require__(776);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	/**
-	 * layerFeatures.jsx
-	 * This module contains functions that are applied to each layer's features
-	 *
-	 * onEachFeature() (below) is applied to a specific layer's features,
-	 * and Leaflet passes the layer's data to that function on load. It is used here to
-	 * apply click handling functions to each feature in each layer.
-	 */
 	var LAYER_FEATURES = {};
 
 	/**
@@ -55140,6 +55163,14 @@
 	 * - points
 	 * Points are easy. Center the popup on the coordinate of the point.
 	 * For linestrings, the popup is centered on the median coordinate.
+	 */
+	/**
+	 * layerFeatures.jsx
+	 * This module contains functions that are applied to each layer's features
+	 *
+	 * onEachFeature() (below) is applied to a specific layer's features,
+	 * and Leaflet passes the layer's data to that function on load. It is used here to
+	 * apply click handling functions to each feature in each layer.
 	 */
 	function getFeatureMidpoint(featureLayer) {
 
@@ -55187,6 +55218,7 @@
 	    } else if (typeof featureLayer.getLatLng !== "undefined") {
 	        return getPointCoords(featureLayer.getLatLng());
 	    }
+	    return false;
 	}
 
 	/**
@@ -55218,6 +55250,7 @@
 	        return positionInDocument;
 	    };
 	    var closePopup = function closePopup() {
+	        // eslint-disable-next-line
 	        popup._close();
 	    };
 
@@ -55237,24 +55270,39 @@
 	    return popup;
 	}
 
+	function toggleNextFeaturePopup() {
+	    var featureIndex = this.featureIndex;
+	    var layerId = this.layerId;
+	    var nextFeatureIndex = featureIndex + 1 >= LAYER_FEATURES[layerId].length ? 0 : featureIndex + 1;
+	    LAYER_FEATURES[layerId][nextFeatureIndex].togglePopup();
+	}
+
+	function togglePreviousFeaturePopup() {
+	    var featureIndex = this.featureIndex;
+	    var layerId = this.layerId;
+	    var previousFeatureIndex = featureIndex - 1 < 0 ? LAYER_FEATURES[layerId].length - 1 : featureIndex - 1;
+	    LAYER_FEATURES[layerId][previousFeatureIndex].togglePopup();
+	}
+
 	/**
 	 * Determine whether to:
 	 *  - show the mobile feature popup
 	 *  - create a popup for a particular feature layer, and then show it
 	 *  - toggle an already-created popup
 	 */
-	function togglePopup(feature, featureLayer, layerId, map) {
-	    var featureIndex = featureLayer.featureIndex;
-	    var nextFeatureIndex = featureIndex + 1 >= LAYER_FEATURES[layerId].length ? 0 : featureIndex + 1;
-	    var previousFeatureIndex = featureIndex - 1 < 0 ? LAYER_FEATURES[layerId].length - 1 : featureIndex - 1;
-	    featureLayer.openNextFeature = LAYER_FEATURES[layerId][nextFeatureIndex].togglePopup;
-	    featureLayer.openPreviousFeature = LAYER_FEATURES[layerId][previousFeatureIndex].togglePopup;
+	function togglePopup() {
+	    var feature = this.feature;
+	    var featureIndex = this.featureIndex;
+	    var layerId = this.layerId;
+	    var map = this.map;
+	    this.openNextFeature = toggleNextFeaturePopup.bind(this);
+	    this.openPreviousFeature = togglePreviousFeaturePopup.bind(this);
 	    if (_store2.default.getState().mobile.window.width < 992) {
 	        _store2.default.dispatch((0, _mobile.mobileClickFeature)(feature.properties, layerId, featureIndex));
-	    } else if (featureLayer.popup === false) {
-	        featureLayer.popup = createLeafletPopup(feature, featureLayer, layerId, map, featureIndex);
+	    } else if (this.popup === false) {
+	        this.popup = createLeafletPopup(feature, this, layerId, map, featureIndex);
 	    } else {
-	        featureLayer.popup.openOn(map);
+	        this.popup.openOn(map);
 	    }
 	}
 
@@ -55285,12 +55333,11 @@
 	    return function (feature, featureLayer) {
 	        var featureIndex = addFeatureLayerToList(featureLayer, layerId);
 	        featureLayer.popup = false;
-	        featureLayer.openNextFeature = false;
-	        featureLayer.openPreviousFeature = false;
 	        featureLayer.featureIndex = featureIndex;
-	        featureLayer.togglePopup = function () {
-	            togglePopup(feature, featureLayer, layerId, map);
-	        };
+	        featureLayer.layerId = layerId;
+	        featureLayer.map = map;
+	        featureLayer.feature = feature;
+	        featureLayer.togglePopup = togglePopup.bind(featureLayer);
 	        featureLayer.on('mouseup', featureLayer.togglePopup);
 	    };
 	}
@@ -63629,8 +63676,9 @@
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'wiscviewer-feature-popup',
-	                    onClick: this.bringToFront,
-	                    tabIndex: 0 },
+	                    role: 'button',
+	                    tabIndex: -1,
+	                    onClick: this.bringToFront },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'wiscviewer-feature-popup-header' },
@@ -63737,10 +63785,6 @@
 
 	var _util = __webpack_require__(776);
 
-	var _config = __webpack_require__(777);
-
-	var _config2 = _interopRequireDefault(_config);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -63778,7 +63822,6 @@
 	            var tabs = [];
 	            var featureProperties = this.props.featureProperties;
 	            var layerId = this.props.layerId;
-	            var urls = _config2.default.resources;
 
 	            switch (layerId) {
 	                case "photos_1976":
@@ -63792,7 +63835,6 @@
 	                            eventKey: 1,
 	                            title: 'Image',
 	                            imgPath: photoURLs.popup,
-	                            fullSizePath: photoURLs.original,
 	                            alt: 'Oblique',
 	                            update: this.update
 	                        }));
@@ -63808,22 +63850,22 @@
 	                case "profiles":
 	                    {
 	                        var eventKeyIndex = 1;
-	                        var _urls = (0, _util.getProfileURLs)(featureProperties);
-	                        if (_urls.bluffJson) {
+	                        var urls = (0, _util.getProfileURLs)(featureProperties);
+	                        if (urls.bluffJson) {
 	                            tabs.push(_react2.default.createElement(_ProfileTab2.default, { key: 'bluff_graph',
 	                                eventKey: eventKeyIndex,
 	                                title: 'Bluff Profile',
-	                                jsonLocation: _urls.bluffJson,
+	                                jsonLocation: urls.bluffJson,
 	                                update: this.update,
 	                                popupType: this.props.popupType
 	                            }));
 	                            eventKeyIndex += 1;
 	                        }
-	                        if (_urls.bathyJson) {
+	                        if (urls.bathyJson) {
 	                            tabs.push(_react2.default.createElement(_ProfileTab2.default, { key: 'bathy_graph',
 	                                eventKey: eventKeyIndex,
 	                                title: 'Bathy Profile',
-	                                jsonLocation: _urls.bathyJson,
+	                                jsonLocation: urls.bathyJson,
 	                                update: this.update,
 	                                popupType: this.props.popupType
 	                            }));
@@ -63903,7 +63945,6 @@
 	    delete tabProps.imgPath;
 	    delete tabProps.update;
 	    delete tabProps.alt;
-	    delete tabProps.fullSizePath;
 	    var style = {
 	        "minHeight": "200px",
 	        "minWidth": "300px",
@@ -63919,8 +63960,7 @@
 	ImageTab.propTypes = {
 	    imgPath: _propTypes2.default.string.isRequired,
 	    update: _propTypes2.default.func.isRequired,
-	    alt: _propTypes2.default.string.isRequired,
-	    fullSizePath: _propTypes2.default.string.isRequired
+	    alt: _propTypes2.default.string.isRequired
 	};
 
 	exports.default = ImageTab;
@@ -64075,10 +64115,6 @@
 
 	var _reactBootstrap = __webpack_require__(481);
 
-	var _config = __webpack_require__(777);
-
-	var _config2 = _interopRequireDefault(_config);
-
 	var _d3Scale = __webpack_require__(882);
 
 	var _d3Axis = __webpack_require__(890);
@@ -64090,6 +64126,10 @@
 	var _d3Selection = __webpack_require__(896);
 
 	var _d3Array = __webpack_require__(883);
+
+	var _config = __webpack_require__(777);
+
+	var _config2 = _interopRequireDefault(_config);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64168,7 +64208,7 @@
 	            }).y(function (d) {
 	                return y(d.y);
 	            });
-	            var michigan_avg = (0, _d3Shape.line)().x(function (d) {
+	            var michiganAvg = (0, _d3Shape.line)().x(function (d) {
 	                return x(d.x);
 	            }).y(function (d) {
 	                return y(_config2.default.lakeMichiganWaterLevel.avg);
@@ -64177,15 +64217,15 @@
 	            var svg = (0, _d3Selection.select)(this.profileDiv).append("svg").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 	            // get the profile's data from it's json file
 	            (0, _d3Request.json)(this.props.jsonLocation, function (error, data) {
-	                data = data.sort(function (a, b) {
+	                var sortedData = data.sort(function (a, b) {
 	                    return (0, _d3Array.descending)(a.x, b.x);
 	                });
-	                x.domain((0, _d3Array.extent)(data, function (d) {
+	                x.domain((0, _d3Array.extent)(sortedData, function (d) {
 	                    return d.x;
 	                }));
-	                svg.append("path").attr("class", "lake-stats michigan-avg").attr("d", michigan_avg(data));
+	                svg.append("path").attr("class", "lake-stats michigan-avg").attr("d", michiganAvg(sortedData));
 	                // Add the valueline path.
-	                svg.append("path").attr("class", "line").attr("d", valueline(data));
+	                svg.append("path").attr("class", "line").attr("d", valueline(sortedData));
 	                // Add the X Axis
 	                svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis);
 	                svg.append("text").attr("transform", "translate(" + xAxisLabel.x + " ," + xAxisLabel.y + ")").style("text-anchor", "middle").attr("class", "axis-label").text("Distance (ft)");
@@ -68381,7 +68421,7 @@
 /* 890 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	// https://d3js.org/d3-axis/ Version 1.0.7. Copyright 2017 Mike Bostock.
+	// https://d3js.org/d3-axis/ Version 1.0.8. Copyright 2017 Mike Bostock.
 	(function (global, factory) {
 		 true ? factory(exports) :
 		typeof define === 'function' && define.amd ? define(['exports'], factory) :
@@ -68408,11 +68448,17 @@
 	  return "translate(0," + (y + 0.5) + ")";
 	}
 
+	function number(scale) {
+	  return function(d) {
+	    return +scale(d);
+	  };
+	}
+
 	function center(scale) {
 	  var offset = Math.max(0, scale.bandwidth() - 1) / 2; // Adjust for 0.5px offset.
 	  if (scale.round()) offset = Math.round(offset);
 	  return function(d) {
-	    return scale(d) + offset;
+	    return +scale(d) + offset;
 	  };
 	}
 
@@ -68436,9 +68482,9 @@
 	        format = tickFormat == null ? (scale.tickFormat ? scale.tickFormat.apply(scale, tickArguments) : identity) : tickFormat,
 	        spacing = Math.max(tickSizeInner, 0) + tickPadding,
 	        range = scale.range(),
-	        range0 = range[0] + 0.5,
-	        range1 = range[range.length - 1] + 0.5,
-	        position = (scale.bandwidth ? center : identity)(scale.copy()),
+	        range0 = +range[0] + 0.5,
+	        range1 = +range[range.length - 1] + 0.5,
+	        position = (scale.bandwidth ? center : number)(scale.copy()),
 	        selection = context.selection ? context.selection() : context,
 	        path = selection.selectAll(".domain").data([null]),
 	        tick = selection.selectAll(".tick").data(values, scale).order(),
@@ -68574,7 +68620,7 @@
 /* 891 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	// https://d3js.org/d3-shape/ Version 1.1.1. Copyright 2017 Mike Bostock.
+	// https://d3js.org/d3-shape/ Version 1.2.0. Copyright 2017 Mike Bostock.
 	(function (global, factory) {
 		 true ? factory(exports, __webpack_require__(892)) :
 		typeof define === 'function' && define.amd ? define(['exports', 'd3-path'], factory) :
@@ -69177,7 +69223,7 @@
 	  return radial;
 	}
 
-	function radialLine(l) {
+	function lineRadial(l) {
 	  var c = l.curve;
 
 	  l.angle = l.x, delete l.x;
@@ -69190,11 +69236,11 @@
 	  return l;
 	}
 
-	var radialLine$1 = function() {
-	  return radialLine(line().curve(curveRadialLinear));
+	var lineRadial$1 = function() {
+	  return lineRadial(line().curve(curveRadialLinear));
 	};
 
-	var radialArea = function() {
+	var areaRadial = function() {
 	  var a = area().curve(curveRadialLinear),
 	      c = a.curve,
 	      x0 = a.lineX0,
@@ -69208,10 +69254,10 @@
 	  a.radius = a.y, delete a.y;
 	  a.innerRadius = a.y0, delete a.y0;
 	  a.outerRadius = a.y1, delete a.y1;
-	  a.lineStartAngle = function() { return radialLine(x0()); }, delete a.lineX0;
-	  a.lineEndAngle = function() { return radialLine(x1()); }, delete a.lineX1;
-	  a.lineInnerRadius = function() { return radialLine(y0()); }, delete a.lineY0;
-	  a.lineOuterRadius = function() { return radialLine(y1()); }, delete a.lineY1;
+	  a.lineStartAngle = function() { return lineRadial(x0()); }, delete a.lineX0;
+	  a.lineEndAngle = function() { return lineRadial(x1()); }, delete a.lineX1;
+	  a.lineInnerRadius = function() { return lineRadial(y0()); }, delete a.lineY0;
+	  a.lineOuterRadius = function() { return lineRadial(y1()); }, delete a.lineY1;
 
 	  a.curve = function(_) {
 	    return arguments.length ? c(curveRadial(_)) : c()._curve;
@@ -69220,11 +69266,11 @@
 	  return a;
 	};
 
-	var slice = Array.prototype.slice;
-
-	var radialPoint = function(x, y) {
+	var pointRadial = function(x, y) {
 	  return [(y = +y) * Math.cos(x -= Math.PI / 2), y * Math.sin(x)];
 	};
+
+	var slice = Array.prototype.slice;
 
 	function linkSource(d) {
 	  return d.source;
@@ -69282,10 +69328,10 @@
 	}
 
 	function curveRadial$1(context, x0, y0, x1, y1) {
-	  var p0 = radialPoint(x0, y0),
-	      p1 = radialPoint(x0, y0 = (y0 + y1) / 2),
-	      p2 = radialPoint(x1, y0),
-	      p3 = radialPoint(x1, y1);
+	  var p0 = pointRadial(x0, y0),
+	      p1 = pointRadial(x0, y0 = (y0 + y1) / 2),
+	      p2 = pointRadial(x1, y0),
+	      p3 = pointRadial(x1, y1);
 	  context.moveTo(p0[0], p0[1]);
 	  context.bezierCurveTo(p1[0], p1[1], p2[0], p2[1], p3[0], p3[1]);
 	}
@@ -70459,8 +70505,11 @@
 	exports.area = area;
 	exports.line = line;
 	exports.pie = pie;
-	exports.radialArea = radialArea;
-	exports.radialLine = radialLine$1;
+	exports.areaRadial = areaRadial;
+	exports.radialArea = areaRadial;
+	exports.lineRadial = lineRadial$1;
+	exports.radialLine = lineRadial$1;
+	exports.pointRadial = pointRadial;
 	exports.linkHorizontal = linkHorizontal;
 	exports.linkVertical = linkVertical;
 	exports.linkRadial = linkRadial;
@@ -72215,10 +72264,6 @@
 
 	var _reactBootstrap = __webpack_require__(481);
 
-	var _config = __webpack_require__(777);
-
-	var _config2 = _interopRequireDefault(_config);
-
 	var _util = __webpack_require__(776);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -72246,6 +72291,7 @@
 	                        ' Full Size'
 	                    )
 	                ));
+	                break;
 	            }
 	        case "profiles":
 	            {
@@ -72757,6 +72803,7 @@
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'wiscviewer-feature-popup wiscviewer-pinned-feature-popup hidden-xs',
+	                        role: 'button',
 	                        ref: function ref(content) {
 	                            _this2.content = content;
 	                        },
@@ -75459,6 +75506,31 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var ObliquePhotoMap = function () {
+	    _createClass(ObliquePhotoMap, null, [{
+	        key: 'onPopupClose',
+
+	        /**
+	         * Leaflet popups are tied into React, and the react nodes need to be
+	         * manually added / removed. The below function removes the React node
+	         * when a popup is closed
+	         */
+	        value: function onPopupClose(e) {
+	            var container = e.popup.getContent();
+	            /**
+	             * setTimeout hack to get around this current issue with React:
+	             * https://github.com/facebook/react/issues/3298
+	             */
+	            setTimeout(function () {
+	                (0, _reactDom.unmountComponentAtNode)(container);
+	            }, 10);
+	        }
+	    }, {
+	        key: 'onMapMousedown',
+	        value: function onMapMousedown() {
+	            _store2.default.dispatch((0, _map.mapMousedown)());
+	        }
+	    }]);
+
 	    function ObliquePhotoMap(map) {
 	        _classCallCheck(this, ObliquePhotoMap);
 
@@ -75477,35 +75549,12 @@
 	        this.layerIndex = {};
 	        this.dispatchZoom = this.dispatchZoom.bind(this);
 	        this.map.on('zoomend', self.dispatchZoom);
-	        this.map.on('mousedown', self.onMapMousedown);
-	        this.map.on('popupclose', self.onPopupClose);
+	        this.map.on('mousedown', self.constructor.onMapMousedown);
+	        this.map.on('popupclose', self.constructor.onPopupClose);
 	        this.dispatchZoom();
 	    }
-	    /**
-	     * Leaflet popups are tied into React, and the react nodes need to be
-	     * manually added / removed. The below function removes the React node
-	     * when a popup is closed
-	     */
-
 
 	    _createClass(ObliquePhotoMap, [{
-	        key: 'onPopupClose',
-	        value: function onPopupClose(e) {
-	            var container = e.popup.getContent();
-	            /**
-	             * setTimeout hack to get around this current issue with React:
-	             * https://github.com/facebook/react/issues/3298
-	             */
-	            setTimeout(function () {
-	                (0, _reactDom.unmountComponentAtNode)(container);
-	            }, 10);
-	        }
-	    }, {
-	        key: 'onMapMousedown',
-	        value: function onMapMousedown() {
-	            _store2.default.dispatch((0, _map.mapMousedown)());
-	        }
-	    }, {
 	        key: 'dispatchZoom',
 	        value: function dispatchZoom() {
 	            var currentZoom = this.map.getZoom();
