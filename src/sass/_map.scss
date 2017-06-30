@@ -1,16 +1,6 @@
-/**
- * Structure
- */
-
 .wiscviewer-map {
+
   height: 100%;
-}
-
-/**
- * Skin
- */
-
-.wiscviewer-map {
 
   @for $zoom-level from 1 through 18 {
     $profile-width: 1 + (0.3 * $zoom-level);
