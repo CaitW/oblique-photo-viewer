@@ -18,6 +18,9 @@
     border: 0;
     height: 50px;
     font-size: 16px;
+    i {
+      margin: 0 10px;
+    }
   }
 
   .modal-body {
@@ -34,12 +37,6 @@
 
     button:not(:first-child) {
       margin-left: 10px;
-    }
-  }
-
-  .modal-header {
-    i {
-      margin: 0 10px;
     }
   }
 
