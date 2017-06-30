@@ -72,7 +72,7 @@ gulp.task('zip-geojson-layers', function() {
         .pipe(gulp.dest('./dist/downloads'));
 });
 gulp.task('zip-json-profiles', function() {
-    return gulp.src(['./src/data/profiles/*.json'])
+    return gulp.src(['./src/data/profiles/**/*.json'])
         .pipe(debug({title: 'zipping:'}))
         .pipe(zip('profiles-json.zip'))
         .pipe(gulp.dest('./dist/downloads'));
