@@ -340,7 +340,7 @@
     },
     "resources": {
         "photos": {
-            "urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/1976_2007_inventories/",
+            "urlBase": "http://floodatlas.org/asfpm/oblique_viewer_resources/data/1976_2007_inventories/",
             "sizes": {
                 "popup": "pop",
                 "medium": "med",
@@ -350,8 +350,8 @@
         },
         "profiles": {
             "pathToXls": {
-                "bluff": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bluff/",
-                "bathy": "http://floodatlas.org/asfpm/oblique_viewer/data/profiles/bathy/"
+                "bluff": "./data/profiles/bluff/",
+                "bathy": "./data/profiles/bathy/"
             },
             "pathToJson": {
                 "bluff": "./data/profiles/bluff/",
@@ -359,20 +359,20 @@
             }
         },
         "photos_2016": {
-            "urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2016_photos/",
+            "urlBase": "http://floodatlas.org/asfpm/oblique_viewer_resources/data/2016_photos/",
             "sizes": {
                 "popup": "popup"
             }
         },
         "photos_2017": {
-            "urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2017_photos/",
+            "urlBase": "http://floodatlas.org/asfpm/oblique_viewer_resources/data/2017_photos/",
             "extension": ".JPG",
             "sizes": {
                 "popup": "popup"
             }
         },
         "photos_2012": {
-            "urlBase": "http://floodatlas.org/asfpm/oblique_viewer/data/2012_photos/",
+            "urlBase": "http://floodatlas.org/asfpm/oblique_viewer_resources/data/2012_photos/",
             "extension": ".jpg",
             "sizes": {
                 "popup": "popup"
