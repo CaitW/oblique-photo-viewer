@@ -8441,6 +8441,8 @@ button.close {
     border: 0;
     height: 50px;
     font-size: 16px; }
+    .wiscviewer-mobile-modal .modal-header i {
+      margin: 0 10px; }
   .wiscviewer-mobile-modal .modal-body {
     width: 100%;
     overflow-y: auto;
@@ -8452,8 +8454,6 @@ button.close {
     padding: 10px; }
     .wiscviewer-mobile-modal .modal-footer button:not(:first-child) {
       margin-left: 10px; }
-  .wiscviewer-mobile-modal .modal-header i {
-    margin: 0 10px; }
   .wiscviewer-mobile-modal .btn {
     border: 0;
     background-color: #263238;

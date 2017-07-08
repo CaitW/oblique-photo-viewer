@@ -65,6 +65,9 @@ gulp.task('clean', function () {
 /**
  * Make Data Downloads
  */
+gulp.task('delete-temp-downloads', function () {
+    return del(['./temp/']);
+})
 gulp.task('zip-geojson-layers', function() {
     return gulp.src(['./src/data/layers/*.json'])
         .pipe(debug({title: 'zipping:'}))
@@ -108,8 +111,8 @@ gulp.task('convert-and-zip-layer-shapefiles', function(done) {
                 .pipe(zip('layers-shp.zip'))
                 .pipe(gulp.dest('./dist/downloads'))
                 .on('end', function() {
-                    return del(['temp']);
                     done();
+                    return;
                 });
         }
     }
@@ -131,26 +134,32 @@ gulp.task('copy-data', function() {
         .pipe(debug({title: 'copying:'}))
         .pipe(gulp.dest('./dist/data'));
 });
-gulp.task('copy-content', function() {
-    gulp.src('./src/downloads/**/*')
+gulp.task('copy-downloads', function () {
+    return gulp.src('./src/downloads/**/*')
         .pipe(debug({title: 'copying:'}))
         .pipe(gulp.dest('./dist/downloads/'));
-    gulp.src('./src/fonts/**/*')
+})
+gulp.task('copy-fonts', function () {
+    return gulp.src('./src/fonts/**/*')
         .pipe(debug({title: 'copying:'}))
         .pipe(gulp.dest('./dist/fonts'));
-    gulp.src('./src/favicons/**/*')
+});
+gulp.task('copy-favicons', function () {
+    return gulp.src('./src/favicons/**/*')
         .pipe(debug({title: 'copying:'}))
         .pipe(gulp.dest('./dist/'));
-    gulp.src('./src/img/**/*')
+});
+gulp.task('copy-img', function () {
+    return gulp.src('./src/img/**/*')
         .pipe(debug({title: 'copying:'}))
         .pipe(gulp.dest('./dist/img/'));
-    return;
-});
+})
+gulp.task('copy', gulp.parallel('copy-html', 'copy-data', 'copy-downloads', 'copy-fonts', 'copy-favicons', 'copy-img'));
 
 /**
  * Build Stylesheets, copy
  */
-gulp.task('sass', function() {
+gulp.task('sass-app', function() {
     return gulp.src('src/sass/app.scss')
         .pipe(debug({title: 'processing stylesheet:'}))
         .pipe(sass.sync()
@@ -168,23 +177,27 @@ gulp.task('sass-about', function() {
         .pipe(livereload());
 });
 
+gulp.task('sass', gulp.parallel('sass-app', 'sass-about'));
+
 /*
  * Process libraries
  */
-gulp.task('scripts', function() {
+ // dev
+gulp.task('make-dev-scripts', function() {
     return gulp.src(['src/js/lib/leaflet.js', 'src/js/lib/L.Control.MousePosition.js'])
         .pipe(debug({title: 'concatenating:'}))
         .pipe(concat('lib.js'))
         .pipe(gulp.dest('./dist/'));
 });
-gulp.task('compress-libraries', ['scripts'], function(cb) {
-    pump([
+// prod
+gulp.task('make-prod-scripts', gulp.series('make-dev-scripts', function(cb) {
+    return pump([
         gulp.src('./dist/lib.js')
         .pipe(debug({title: 'compressing:'})),
         uglify(),
         gulp.dest('dist')
     ]);
-});
+}));
 
 /*
  * Build Javascript
@@ -206,26 +219,27 @@ gulp.task('webpack-prod', function() {
 /*
  * Watch Files
  */
+
 gulp.task('watch-files', function() {
     livereload.listen();
-    gulp.watch('src/js/**/*.js', ['webpack-dev']);
-    gulp.watch('src/js/**/*.jsx', ['webpack-dev']);
-    gulp.watch('src/js/**/*.json', ['webpack-dev']);
-    gulp.watch('src/sass/**/*.scss', ['sass', 'sass-about']);
-    gulp.watch('src/*.html', ['copy-html']);
-    gulp.watch('src/js/lib/*.js', ['scripts']);
-    gulp.watch('src/data/**/*', ['copy-data']);
-    gulp.watch('src/fonts/**/*', ['copy-content']);
-    gulp.watch('src/downloads/**/*', ['copy-content']);
-    gulp.watch('src/favicons/**/*', ['copy-content']);
-    gulp.watch('src/img/**/*', ['copy-content']);
+    gulp.watch('src/js/**/*.js', gulp.parallel('webpack-dev'));
+    gulp.watch('src/js/**/*.jsx', gulp.parallel('webpack-dev'));
+    gulp.watch('src/js/**/*.json', gulp.parallel('webpack-dev'));
+    gulp.watch('src/sass/**/*.scss', 'sass');
+    gulp.watch('src/*.html', gulp.parallel('copy-html'));
+    gulp.watch('src/js/lib/*.js', gulp.parallel('make-dev-scripts'));
+    gulp.watch('src/data/**/*', gulp.parallel('copy-data'));
+    gulp.watch('src/fonts/**/*', gulp.parallel('copy-fonts'));
+    gulp.watch('src/downloads/**/*', gulp.parallel('copy-downloads'));
+    gulp.watch('src/favicons/**/*', gulp.parallel('copy-favicons'));
+    gulp.watch('src/img/**/*', gulp.parallel('copy-img'));
 });
 
 
 /*
  * Linting
  */
-gulp.task('lint-js', () => {
+gulp.task('lint-js', (done) => {
     // Via CLI:
     // eslint --ext .js,.jsx src/js/** --ignore-pattern '/lib/' --ignore-pattern '*.json'
     // ESLint ignores files with "node_modules" paths.
@@ -250,7 +264,10 @@ gulp.task('lint-js', () => {
         .pipe(eslint.format())
         // To have the process exit with an error code (1) on
         // lint error, return the stream and pipe to failAfterError last.
-        .pipe(eslint.failAfterError());
+        .pipe(eslint.failAfterError())
+        .on('end', function () {
+            done();
+        })
 });
 gulp.task('lint-css', function () {
     // Command line command to lint:
@@ -278,19 +295,25 @@ gulp.task('copy-to-server', function() {
  */
 
  // make data downloads
-gulp.task('make-downloads', ['zip-geojson-layers', 'zip-json-profiles', 'convert-and-zip-layer-shapefiles']);
-// build for development (skips some steps)
-gulp.task('dev-build', ['copy-html', 'copy-data', 'copy-content', 'sass', 'sass-about', 'scripts', 'webpack-dev']);
-// lint code
-gulp.task('lint', ['lint-js','lint-css']);
-// for active development
-gulp.task('watch', ['default', 'watch-files']);
+gulp.task('make-downloads', gulp.series('zip-geojson-layers', 'zip-json-profiles', 'convert-and-zip-layer-shapefiles', 'delete-temp-downloads'));
+// build for development (skips some steps, like 'clean', 'make-downloads')
+gulp.task('dev-build', gulp.series('sass', 'make-dev-scripts', 'webpack-dev', 'copy'));
 // alias
-gulp.task('default', ['dev-build']);
+gulp.task('default', gulp.parallel('dev-build'));
+// for active development
+gulp.task('watch', gulp.parallel('default', 'watch-files'));
+
+/**
+ * Testing
+ */
+
+// lint code
+gulp.task('lint', gulp.parallel('lint-js','lint-css'));
 
 /**
  * Production Tasks
  */
  // makes clean, minified production build in /dist
-gulp.task('build', ['clean','copy-html', 'copy-content', 'make-downloads', 'sass', 'scripts', 'webpack-prod', 'compress-libraries', 'copy-data']);
-gulp.task('deploy', ['copy-to-server']);
+gulp.task('build', gulp.series('clean','make-downloads', 'sass', 'make-prod-scripts', 'webpack-prod', 'copy'));
+gulp.task('deploy', gulp.parallel('copy-to-server'));
+
