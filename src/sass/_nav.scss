@@ -208,3 +208,14 @@
     margin-right: 20px;
   }
 }
+
+svg {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  float: left;
+  margin: auto 5px auto 0;
+  path {
+    fill: $primary_100;
+  }
+}

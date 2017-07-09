@@ -225,7 +225,7 @@ gulp.task('watch-files', function() {
     gulp.watch('src/js/**/*.js', gulp.parallel('webpack-dev'));
     gulp.watch('src/js/**/*.jsx', gulp.parallel('webpack-dev'));
     gulp.watch('src/js/**/*.json', gulp.parallel('webpack-dev'));
-    gulp.watch('src/sass/**/*.scss', 'sass');
+    gulp.watch('src/sass/**/*.scss', gulp.parallel('sass'));
     gulp.watch('src/*.html', gulp.parallel('copy-html'));
     gulp.watch('src/js/lib/*.js', gulp.parallel('make-dev-scripts'));
     gulp.watch('src/data/**/*', gulp.parallel('copy-data'));

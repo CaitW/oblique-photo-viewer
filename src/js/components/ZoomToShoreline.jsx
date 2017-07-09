@@ -6,13 +6,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MenuItem, NavDropdown } from 'react-bootstrap';
+import SVGInline from 'react-svg-inline';
 
 import CONFIG from '../config.json';
+
+import superior_michigan_icon from'../../img/superior_michigan.svg';
 
 const ZoomToShoreline = (props) => {
     let title = (
         <span className="wiscviewer-tool-title">
-            <i className="fa fa-search wiscviewer-nav-tool-icon"></i>
+            <SVGInline svg={superior_michigan_icon} />
         </span>
     );
     var shorelines = [];

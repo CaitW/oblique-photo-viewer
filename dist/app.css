@@ -8698,6 +8698,15 @@ button.close {
   .wiscviewer-nav-tool-icon {
     margin-right: 20px; } }
 
+svg {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  float: left;
+  margin: auto 5px auto 0; }
+  svg path {
+    fill: #cfd8dc; }
+
 .wiscviewer-sidebar {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   z-index: 500;
