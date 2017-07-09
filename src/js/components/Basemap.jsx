@@ -7,11 +7,20 @@ import PropTypes from 'prop-types';
 import { ListGroupItem } from 'react-bootstrap';
 
 const Basemap = (props) => {
-    let iconClassNames = ["fa", "fa-map", "wiscviewer-layer-left-icon"];
+    let iconClassNames = ["fa", "wiscviewer-layer-left-icon"];
     let layerClassNames = ["wiscviewer-layer-item"]
-    if(props.active) {
-        iconClassNames.push("active");
-        layerClassNames.push("active");
+    if(props.state === "loading") {
+        iconClassNames.push("fa-circle-o-notch");
+        iconClassNames.push("fa-spin");
+    } else if (props.state === "error") {
+        iconClassNames.push("fa-exclamation-triangle");
+        iconClassNames.push("error");
+    } else {
+        iconClassNames.push("fa-map");
+        if(props.active) {
+            iconClassNames.push("active");
+            layerClassNames.push("active");
+        }
     }
     return (
         <ListGroupItem
@@ -27,7 +36,8 @@ const Basemap = (props) => {
 Basemap.propTypes = {
     active: PropTypes.bool.isRequired,
     onBasemapClick: PropTypes.func.isRequired,
-    basemapName: PropTypes.string.isRequired
+    basemapName: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired
 }
 
 export default Basemap;

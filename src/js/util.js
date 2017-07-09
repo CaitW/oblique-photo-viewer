@@ -6,7 +6,8 @@ const BASEMAPS_BY_ID = {};
 
 for (let basemapId in CONFIG.map.basemaps) {
     BASEMAPS_BY_ID[basemapId] = {
-        ...CONFIG.map.basemaps[basemapId]
+        ...CONFIG.map.basemaps[basemapId],
+        state: 'init'
     }
     BASEMAPS_BY_ID[basemapId].name = BASEMAPS_BY_ID[basemapId].name || basemapId;
 }
@@ -20,7 +21,8 @@ for (let layerGroupId in CONFIG.map.layers) {
     LAYER_GROUPS_BY_ID[layerGroupId] = {
         ...layerGroupProperties,
         name,
-        layers
+        layers,
+        state: 'init'
     };
 }
 

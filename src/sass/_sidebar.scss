@@ -132,6 +132,9 @@ $hide_scroll_padding: 17px;
   &.active {
     color: #8bc34a;
   }
+  &.error {
+    color: #FFEB3B;
+  }
 }
 
 .wiscviewer-layer-group-icon {

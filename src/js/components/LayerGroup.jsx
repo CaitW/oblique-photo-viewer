@@ -19,6 +19,7 @@ const LayerGroup = (props) => {
                 layerName={props.layers[layerId].name}
                 active={props.layers[layerId].active}
                 onLayerClick={boundOnLayerClick}
+                state={props.layers[layerId].state}
             />
         );
     }

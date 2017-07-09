@@ -9,12 +9,20 @@ import { ListGroupItem } from 'react-bootstrap';
 const Layer = (props) => {
     let iconClassNames = ["fa", "wiscviewer-layer-left-icon"];
     let layerClassNames = ["wiscviewer-layer-item"]
-    if(props.active) {
-        iconClassNames.push("fa-check");
-        iconClassNames.push("active");
-        layerClassNames.push("active");
+    if(props.state === "loading") {
+        iconClassNames.push("fa-circle-o-notch");
+        iconClassNames.push("fa-spin");
+    } else if (props.state === "error") {
+        iconClassNames.push("fa-exclamation-triangle");
+        iconClassNames.push("error");
     } else {
-        iconClassNames.push("fa-plus");
+        if(props.active) {
+            iconClassNames.push("fa-check");
+            iconClassNames.push("active");
+            layerClassNames.push("active");
+        } else {
+            iconClassNames.push("fa-plus");
+        }
     }
 
     return (
@@ -32,7 +40,8 @@ const Layer = (props) => {
 Layer.propTypes = {
     active: PropTypes.bool.isRequired,
     onLayerClick: PropTypes.func.isRequired,
-    layerName: PropTypes.string.isRequired
+    layerName: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired
 }
 
 export default Layer;

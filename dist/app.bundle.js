@@ -52391,6 +52391,9 @@
 
 	exports.toggleLayer = toggleLayer;
 	exports.legendStyleUpdate = legendStyleUpdate;
+	exports.layerPreload = layerPreload;
+	exports.layerLoaded = layerLoaded;
+	exports.layerError = layerError;
 	exports.default = layers;
 
 	var _util = __webpack_require__(776);
@@ -52399,7 +52402,7 @@
 
 	function toggleLayer(layerId) {
 	    return {
-	        type: "MAP:TOGGLE_LAYER",
+	        type: "LAYERS:TOGGLE_LAYER",
 	        layerId: layerId
 	    };
 	}
@@ -52411,6 +52414,24 @@
 	        propertyName: propertyName,
 	        style: style,
 	        geometryType: geometryType
+	    };
+	}
+	function layerPreload(layerId) {
+	    return {
+	        type: "LAYERS:LAYER_PRELOAD",
+	        layerId: layerId
+	    };
+	}
+	function layerLoaded(layerId) {
+	    return {
+	        type: "LAYERS:LAYER_LOADED",
+	        layerId: layerId
+	    };
+	}
+	function layerError(layerId) {
+	    return {
+	        type: "LAYERS:LAYER_ERROR",
+	        layerId: layerId
 	    };
 	}
 
@@ -52444,7 +52465,7 @@
 
 	    var newState = _extends({}, state);
 	    switch (action.type) {
-	        case "MAP:TOGGLE_LAYER":
+	        case "LAYERS:TOGGLE_LAYER":
 	            {
 	                newState.layersById = _extends({}, state.layersById, _defineProperty({}, action.layerId, _extends({}, state.layersById[action.layerId], {
 	                    active: !state.layersById[action.layerId].active
@@ -52462,6 +52483,27 @@
 	                })));
 	                break;
 	            }
+	        case "LAYERS:LAYER_PRELOAD":
+	            {
+	                newState.layersById = _extends({}, state.layersById, _defineProperty({}, action.layerId, _extends({}, state.layersById[action.layerId], {
+	                    state: 'loading'
+	                })));
+	                break;
+	            }
+	        case "LAYERS:LAYER_LOADED":
+	            {
+	                newState.layersById = _extends({}, state.layersById, _defineProperty({}, action.layerId, _extends({}, state.layersById[action.layerId], {
+	                    state: 'loaded'
+	                })));
+	                break;
+	            }
+	        case "LAYERS:LAYER_ERROR":
+	            {
+	                newState.layersById = _extends({}, state.layersById, _defineProperty({}, action.layerId, _extends({}, state.layersById[action.layerId], {
+	                    state: 'error'
+	                })));
+	                break;
+	            }
 	        default:
 	            break;
 	    }
@@ -52472,7 +52514,7 @@
 /* 776 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -52495,7 +52537,9 @@
 	var BASEMAPS_BY_ID = {};
 
 	for (var basemapId in _config2.default.map.basemaps) {
-	    BASEMAPS_BY_ID[basemapId] = _extends({}, _config2.default.map.basemaps[basemapId]);
+	    BASEMAPS_BY_ID[basemapId] = _extends({}, _config2.default.map.basemaps[basemapId], {
+	        state: 'init'
+	    });
 	    BASEMAPS_BY_ID[basemapId].name = BASEMAPS_BY_ID[basemapId].name || basemapId;
 	}
 
@@ -52507,7 +52551,8 @@
 	    var layers = [];
 	    LAYER_GROUPS_BY_ID[layerGroupId] = _extends({}, layerGroupProperties, {
 	        name: name,
-	        layers: layers
+	        layers: layers,
+	        state: 'init'
 	    });
 	}
 
@@ -53112,7 +53157,7 @@
 /* 778 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -53127,6 +53172,9 @@
 
 
 	exports.toggleBasemap = toggleBasemap;
+	exports.basemapPreload = basemapPreload;
+	exports.basemapLoaded = basemapLoaded;
+	exports.basemapError = basemapError;
 	exports.default = basemaps;
 
 	var _util = __webpack_require__(776);
@@ -53135,13 +53183,32 @@
 
 	for (var basemapId in _util.BASEMAPS_BY_ID) {
 	    initialBasemaps[basemapId] = {
-	        active: _util.BASEMAPS_BY_ID[basemapId].defaultActive
+	        active: _util.BASEMAPS_BY_ID[basemapId].defaultActive,
+	        state: 'init'
 	    };
 	}
 
 	function toggleBasemap(basemapId) {
 	    return {
-	        type: "MAP:TOGGLE_BASEMAP",
+	        type: "BASEMAPS:TOGGLE_BASEMAP",
+	        basemapId: basemapId
+	    };
+	}
+	function basemapPreload(basemapId) {
+	    return {
+	        type: "BASEMAPS:BASEMAP_PRELOAD",
+	        basemapId: basemapId
+	    };
+	}
+	function basemapLoaded(basemapId) {
+	    return {
+	        type: "BASEMAPS:BASEMAP_LOADED",
+	        basemapId: basemapId
+	    };
+	}
+	function basemapError(basemapId) {
+	    return {
+	        type: "BASEMAPS:BASEMAP_ERROR",
 	        basemapId: basemapId
 	    };
 	}
@@ -53152,7 +53219,7 @@
 
 	    var newState = _extends({}, state);
 	    switch (action.type) {
-	        case "MAP:TOGGLE_BASEMAP":
+	        case "BASEMAPS:TOGGLE_BASEMAP":
 	            {
 	                var basemapIdToToggle = action.basemapId;
 	                for (var _basemapId in newState) {
@@ -53166,6 +53233,27 @@
 	                        });
 	                    }
 	                }
+	                break;
+	            }
+	        case "BASEMAPS:BASEMAP_PRELOAD":
+	            {
+	                newState[action.basemapId] = _extends({}, newState[action.basemapId], {
+	                    state: 'loading'
+	                });
+	                break;
+	            }
+	        case "BASEMAPS:BASEMAP_LOADED":
+	            {
+	                newState[action.basemapId] = _extends({}, newState[action.basemapId], {
+	                    state: 'loaded'
+	                });
+	                break;
+	            }
+	        case "BASEMAPS:BASEMAP_ERROR":
+	            {
+	                newState[action.basemapId] = _extends({}, newState[action.basemapId], {
+	                    state: 'error'
+	                });
 	                break;
 	            }
 	        default:
@@ -54440,7 +54528,8 @@
 	            key: layerId,
 	            layerName: props.layers[layerId].name,
 	            active: props.layers[layerId].active,
-	            onLayerClick: boundOnLayerClick
+	            onLayerClick: boundOnLayerClick,
+	            state: props.layers[layerId].state
 	        }));
 	    }
 	    var bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
@@ -54507,12 +54596,20 @@
 	var Layer = function Layer(props) {
 	    var iconClassNames = ["fa", "wiscviewer-layer-left-icon"];
 	    var layerClassNames = ["wiscviewer-layer-item"];
-	    if (props.active) {
-	        iconClassNames.push("fa-check");
-	        iconClassNames.push("active");
-	        layerClassNames.push("active");
+	    if (props.state === "loading") {
+	        iconClassNames.push("fa-circle-o-notch");
+	        iconClassNames.push("fa-spin");
+	    } else if (props.state === "error") {
+	        iconClassNames.push("fa-exclamation-triangle");
+	        iconClassNames.push("error");
 	    } else {
-	        iconClassNames.push("fa-plus");
+	        if (props.active) {
+	            iconClassNames.push("fa-check");
+	            iconClassNames.push("active");
+	            layerClassNames.push("active");
+	        } else {
+	            iconClassNames.push("fa-plus");
+	        }
 	    }
 
 	    return _react2.default.createElement(
@@ -54533,7 +54630,8 @@
 	Layer.propTypes = {
 	    active: _propTypes2.default.bool.isRequired,
 	    onLayerClick: _propTypes2.default.func.isRequired,
-	    layerName: _propTypes2.default.string.isRequired
+	    layerName: _propTypes2.default.string.isRequired,
+	    state: _propTypes2.default.string.isRequired
 	};
 
 	exports.default = Layer;
@@ -54577,7 +54675,8 @@
 	    basemaps.push(_react2.default.createElement(_Basemap2.default, { key: basemapId,
 	      basemapName: basemap.name,
 	      active: basemap.active,
-	      onBasemapClick: boundOnBasemapClick
+	      onBasemapClick: boundOnBasemapClick,
+	      state: basemap.state
 	    }));
 	  }
 
@@ -54642,11 +54741,20 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Basemap = function Basemap(props) {
-	    var iconClassNames = ["fa", "fa-map", "wiscviewer-layer-left-icon"];
+	    var iconClassNames = ["fa", "wiscviewer-layer-left-icon"];
 	    var layerClassNames = ["wiscviewer-layer-item"];
-	    if (props.active) {
-	        iconClassNames.push("active");
-	        layerClassNames.push("active");
+	    if (props.state === "loading") {
+	        iconClassNames.push("fa-circle-o-notch");
+	        iconClassNames.push("fa-spin");
+	    } else if (props.state === "error") {
+	        iconClassNames.push("fa-exclamation-triangle");
+	        iconClassNames.push("error");
+	    } else {
+	        iconClassNames.push("fa-map");
+	        if (props.active) {
+	            iconClassNames.push("active");
+	            layerClassNames.push("active");
+	        }
 	    }
 	    return _react2.default.createElement(
 	        _reactBootstrap.ListGroupItem,
@@ -54666,7 +54774,8 @@
 	Basemap.propTypes = {
 	    active: _propTypes2.default.bool.isRequired,
 	    onBasemapClick: _propTypes2.default.func.isRequired,
-	    basemapName: _propTypes2.default.string.isRequired
+	    basemapName: _propTypes2.default.string.isRequired,
+	    state: _propTypes2.default.string.isRequired
 	};
 
 	exports.default = Basemap;
@@ -75695,6 +75804,10 @@
 
 	var _map = __webpack_require__(779);
 
+	var _layers = __webpack_require__(775);
+
+	var _basemaps = __webpack_require__(778);
+
 	var _store = __webpack_require__(774);
 
 	var _store2 = _interopRequireDefault(_store);
@@ -75762,6 +75875,7 @@
 	        key: 'createLayer',
 	        value: function createLayer(layerId, layer) {
 	            var self = this;
+	            _store2.default.dispatch((0, _layers.layerPreload)(layerId));
 	            switch (layer.type) {
 	                case "tileLayer":
 	                    if (typeof layer.url === "undefined") {
@@ -75769,6 +75883,9 @@
 	                    } else {
 	                        this.layerIndex[layerId] = L.tileLayer(layer.url, {
 	                            zIndex: 1
+	                        });
+	                        this.layerIndex[layerId].once("load", function () {
+	                            _store2.default.dispatch((0, _layers.layerLoaded)(layerId));
 	                        });
 	                    }
 	                    break;
@@ -75790,13 +75907,16 @@
 	                        this.layerIndex[layerId] = L.geoJson(null, layerOptions);
 	                        _axios2.default.get(layer.dataLocation).then(function (response) {
 	                            self.layerIndex[layerId].addData(response.data);
+	                            _store2.default.dispatch((0, _layers.layerLoaded)(layerId));
 	                        }).catch(function (error) {
 	                            console.error(error);
+	                            _store2.default.dispatch((0, _layers.layerError)(layerId));
 	                        });
 	                    }
 	                    break;
 	                default:
 	                    console.error("Unrecognized layer type in config");
+	                    _store2.default.dispatch((0, _layers.layerError)(layerId));
 	                    break;
 	            }
 	        }
@@ -75826,6 +75946,10 @@
 	                }
 	                if (basemap.active === true) {
 	                    this.basemapGroup.clearLayers();
+	                    _store2.default.dispatch((0, _basemaps.basemapPreload)(basemapID));
+	                    self.basemapIndex[basemapID].once("load", function () {
+	                        _store2.default.dispatch((0, _basemaps.basemapLoaded)(basemapID));
+	                    });
 	                    this.basemapGroup.addLayer(self.basemapIndex[basemapID]);
 	                }
 	            }

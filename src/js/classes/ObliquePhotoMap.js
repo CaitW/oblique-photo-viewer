@@ -5,6 +5,8 @@ import CONFIG from '../config.json';
 import LAYER_STYLE from '../layers/layerStyles';
 import { onEachFeature } from '../layers/layerFeatures';
 import { mapNewZoomLevel, mapMousedown } from '../ducks/map';
+import { layerPreload, layerLoaded, layerError } from '../ducks/layers';
+import { basemapPreload, basemapLoaded, basemapError } from '../ducks/basemaps';
 import store from '../store';
 
 export default class ObliquePhotoMap {
@@ -53,6 +55,7 @@ export default class ObliquePhotoMap {
     }
     createLayer(layerId, layer) {
         var self = this;
+        store.dispatch(layerPreload(layerId));
         switch (layer.type) {
             case "tileLayer":
                 if (typeof layer.url === "undefined") {
@@ -61,6 +64,9 @@ export default class ObliquePhotoMap {
                     this.layerIndex[layerId] = L.tileLayer(layer.url, {
                         zIndex: 1
                     });
+                    this.layerIndex[layerId].once("load", function () {
+                        store.dispatch(layerLoaded(layerId));
+                    })
                 }
                 break;
             case "geojson":
@@ -82,14 +88,17 @@ export default class ObliquePhotoMap {
                     axios.get(layer.dataLocation)
                         .then(function(response) {
                             self.layerIndex[layerId].addData(response.data);
+                            store.dispatch(layerLoaded(layerId));
                         })
                         .catch(function(error) {
                             console.error(error);
+                            store.dispatch(layerError(layerId));
                         });
                 }
                 break;
             default:
                 console.error("Unrecognized layer type in config");
+                store.dispatch(layerError(layerId));
                 break;
         }
     }
@@ -115,6 +124,10 @@ export default class ObliquePhotoMap {
             }
             if (basemap.active === true) {
                 this.basemapGroup.clearLayers();
+                store.dispatch(basemapPreload(basemapID));
+                self.basemapIndex[basemapID].once("load", function () {
+                    store.dispatch(basemapLoaded(basemapID));
+                })
                 this.basemapGroup.addLayer(self.basemapIndex[basemapID]);
             }
         }

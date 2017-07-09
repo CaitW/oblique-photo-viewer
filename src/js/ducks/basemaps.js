@@ -10,13 +10,32 @@ const initialBasemaps = {};
 
 for(let basemapId in BASEMAPS_BY_ID) {
     initialBasemaps[basemapId] = {
-        active: BASEMAPS_BY_ID[basemapId].defaultActive
+        active: BASEMAPS_BY_ID[basemapId].defaultActive,
+        state: 'init'
     }
 }
 
 export function toggleBasemap(basemapId) {
     return {
-        type: "MAP:TOGGLE_BASEMAP",
+        type: "BASEMAPS:TOGGLE_BASEMAP",
+        basemapId
+    }
+}
+export function basemapPreload(basemapId) {
+    return {
+        type: "BASEMAPS:BASEMAP_PRELOAD",
+        basemapId
+    }
+}
+export function basemapLoaded(basemapId) {
+    return {
+        type: "BASEMAPS:BASEMAP_LOADED",
+        basemapId
+    }
+}
+export function basemapError(basemapId) {
+    return {
+        type: "BASEMAPS:BASEMAP_ERROR",
         basemapId
     }
 }
@@ -26,7 +45,7 @@ export default function basemaps(state = initialBasemaps, action) {
         ...state
     };
     switch (action.type) {
-        case "MAP:TOGGLE_BASEMAP":
+        case "BASEMAPS:TOGGLE_BASEMAP":
             {
                 let basemapIdToToggle = action.basemapId;
                 for (let basemapId in newState) {
@@ -42,6 +61,30 @@ export default function basemaps(state = initialBasemaps, action) {
                         }
                     }
                 }
+                break;
+            }
+        case "BASEMAPS:BASEMAP_PRELOAD":
+            {
+                newState[action.basemapId] = {
+                    ...newState[action.basemapId],
+                    state: 'loading'
+                };
+                break;
+            }
+        case "BASEMAPS:BASEMAP_LOADED":
+            {
+                newState[action.basemapId] = {
+                    ...newState[action.basemapId],
+                    state: 'loaded'
+                };
+                break;
+            }
+        case "BASEMAPS:BASEMAP_ERROR":
+            {
+                newState[action.basemapId] = {
+                    ...newState[action.basemapId],
+                    state: 'error'
+                };
                 break;
             }
         default:

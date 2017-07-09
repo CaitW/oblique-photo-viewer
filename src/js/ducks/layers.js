@@ -10,7 +10,7 @@ import { LAYERS_BY_ID, LAYER_GROUPS_BY_ID } from '../util'
 
 export function toggleLayer(layerId) {
     return {
-        type: "MAP:TOGGLE_LAYER",
+        type: "LAYERS:TOGGLE_LAYER",
         layerId
     }
 }
@@ -22,6 +22,24 @@ export function legendStyleUpdate(layerId, propertyName, style, geometryType) {
         propertyName,
         style,
         geometryType
+    }
+}
+export function layerPreload(layerId) {
+    return {
+        type: "LAYERS:LAYER_PRELOAD",
+        layerId
+    }
+}
+export function layerLoaded(layerId) {
+    return {
+        type: "LAYERS:LAYER_LOADED",
+        layerId
+    }
+}
+export function layerError(layerId) {
+    return {
+        type: "LAYERS:LAYER_ERROR",
+        layerId
     }
 }
 
@@ -54,7 +72,7 @@ export default function layers(state = initialLayers, action) {
         ...state
     };
     switch (action.type) {
-        case "MAP:TOGGLE_LAYER": {
+        case "LAYERS:TOGGLE_LAYER": {
             newState.layersById = {
                 ...state.layersById,
                 [action.layerId]: {
@@ -81,6 +99,39 @@ export default function layers(state = initialLayers, action) {
             }
             break;
         }
+        case "LAYERS:LAYER_PRELOAD":
+            {
+                newState.layersById = {
+                    ...state.layersById,
+                    [action.layerId]: {
+                        ...state.layersById[action.layerId],
+                        state: 'loading'
+                    }
+                }
+                break;
+            }
+        case "LAYERS:LAYER_LOADED":
+            {
+                newState.layersById = {
+                    ...state.layersById,
+                    [action.layerId]: {
+                        ...state.layersById[action.layerId],
+                        state: 'loaded'
+                    }
+                }
+                break;
+            }
+        case "LAYERS:LAYER_ERROR":
+            {
+                newState.layersById = {
+                    ...state.layersById,
+                    [action.layerId]: {
+                        ...state.layersById[action.layerId],
+                        state: 'error'
+                    }
+                }
+                break;
+            }
         default:
             break;
     }
