@@ -8620,6 +8620,8 @@ button.close {
   text-transform: capitalize;
   background-color: #263238;
   padding: 5px 0px; }
+  .wiscviewer-dropdown-header a:focus {
+    background-color: #263238 !important; }
   .wiscviewer-dropdown-header:hover {
     outline: none;
     background-color: #263238 !important;
@@ -8629,6 +8631,16 @@ button.close {
       background-color: #263238 !important; }
       .wiscviewer-dropdown-header:hover a:hover {
         cursor: default; }
+  .wiscviewer-dropdown-header svg {
+    height: 30px;
+    display: inline-block;
+    float: left;
+    margin: -5px 8px auto -7px; }
+    .wiscviewer-dropdown-header svg path {
+      fill: #cfd8dc; }
+    .wiscviewer-dropdown-header svg.Lake-Michigan-svg {
+      height: 20px;
+      margin: 0 8px 5px -7px; }
 
 .wiscviewer-dropdown-item {
   text-transform: capitalize;
@@ -8637,6 +8649,8 @@ button.close {
   .wiscviewer-dropdown-item:not(:last-child) {
     border: 0 solid #455a64;
     border-bottom-width: 1px; }
+  .wiscviewer-dropdown-item a:focus {
+    background-color: #263238 !important; }
   .wiscviewer-dropdown-item:active, .wiscviewer-dropdown-item:hover, .wiscviewer-dropdown-item:focus {
     outline: none;
     background-color: #263238 !important; }
@@ -8669,7 +8683,23 @@ button.close {
 .wiscviewer-nav-tool-about a:after {
   content: 'About'; }
 
+.wiscviewer-tool-title svg {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  float: left;
+  margin: -5px 8px auto -7px; }
+  .wiscviewer-tool-title svg path {
+    fill: #cfd8dc; }
+
 @media (min-width: 768px) and (max-width: 991px) {
+  .wiscviewer-tool-title .SVGInline {
+    display: block;
+    height: 20px; }
+  .wiscviewer-tool-title svg {
+    margin: -5px 0 auto 0; }
+  .dropdown-menu {
+    min-width: 200px; }
   .wiscviewer-nav-tool {
     font-size: 20px; }
   .wiscviewer-nav-tool-zoom .wiscviewer-tool-title:after {
@@ -8697,15 +8727,6 @@ button.close {
     padding: 5px 0; }
   .wiscviewer-nav-tool-icon {
     margin-right: 20px; } }
-
-svg {
-  width: 30px;
-  height: 30px;
-  display: inline-block;
-  float: left;
-  margin: -5px 8px auto -7px; }
-  svg path {
-    fill: #cfd8dc; }
 
 .wiscviewer-sidebar {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
