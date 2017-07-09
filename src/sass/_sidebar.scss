@@ -38,6 +38,9 @@ $hide_scroll_padding: 17px;
     color: $primary_500;
     background-color: $primary_900;
     font-size: 14px;
+    &:focus {
+      outline: none;
+    }
 
     &.active {
       color: $primary_100;

@@ -8760,6 +8760,8 @@ button.close {
     color: #607d8b;
     background-color: #263238;
     font-size: 14px; }
+    .wiscviewer-sidebar-tabs div:focus {
+      outline: none; }
     .wiscviewer-sidebar-tabs div.active {
       color: #cfd8dc;
       background-color: #37474f; }
