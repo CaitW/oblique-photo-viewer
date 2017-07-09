@@ -8829,6 +8829,8 @@ button.close {
   color: #607d8b; }
   .wiscviewer-layer-left-icon.active {
     color: #8bc34a; }
+  .wiscviewer-layer-left-icon.error {
+    color: #FFEB3B; }
 
 .wiscviewer-layer-group-icon {
   float: right;
