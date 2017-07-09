@@ -37,7 +37,11 @@ Basemap.propTypes = {
     active: PropTypes.bool.isRequired,
     onBasemapClick: PropTypes.func.isRequired,
     basemapName: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired
+    state: PropTypes.string
+}
+
+Basemap.defaultProps = {
+    state: "init"
 }
 
 export default Basemap;

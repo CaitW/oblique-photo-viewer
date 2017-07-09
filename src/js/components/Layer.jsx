@@ -41,7 +41,11 @@ Layer.propTypes = {
     active: PropTypes.bool.isRequired,
     onLayerClick: PropTypes.func.isRequired,
     layerName: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired
+    state: PropTypes.string
+}
+
+Layer.defaultProps = {
+    state: "init"
 }
 
 export default Layer;
