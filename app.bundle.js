@@ -54631,7 +54631,11 @@
 	    active: _propTypes2.default.bool.isRequired,
 	    onLayerClick: _propTypes2.default.func.isRequired,
 	    layerName: _propTypes2.default.string.isRequired,
-	    state: _propTypes2.default.string.isRequired
+	    state: _propTypes2.default.string
+	};
+
+	Layer.defaultProps = {
+	    state: "init"
 	};
 
 	exports.default = Layer;
@@ -54775,7 +54779,11 @@
 	    active: _propTypes2.default.bool.isRequired,
 	    onBasemapClick: _propTypes2.default.func.isRequired,
 	    basemapName: _propTypes2.default.string.isRequired,
-	    state: _propTypes2.default.string.isRequired
+	    state: _propTypes2.default.string
+	};
+
+	Basemap.defaultProps = {
+	    state: "init"
 	};
 
 	exports.default = Basemap;
