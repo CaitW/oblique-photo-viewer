@@ -7874,3 +7874,8 @@ button {
     margin: 3px 20px auto 0; }
   button:hover {
     background-color: #607d8b !important; }
+
+img {
+  max-width: 500px;
+  max-height: 200px;
+  margin: 10px; }
