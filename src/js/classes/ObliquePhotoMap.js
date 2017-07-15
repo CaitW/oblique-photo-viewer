@@ -44,9 +44,10 @@ export default class ObliquePhotoMap {
         this.basemapIndex = {};
         this.layerIndex = {};
         this.dispatchZoom = this.dispatchZoom.bind(this);
+        this.updateSize = this.updateSize.bind(this);
         this.map.on('zoomend', self.dispatchZoom);
         this.map.on('mousedown', self.constructor.onMapMousedown);
-        this.map.on('popupclose', self.constructor.onPopupClose)
+        this.map.on('popupclose', self.constructor.onPopupClose);
         this.dispatchZoom();
     }
     dispatchZoom () {
@@ -139,5 +140,8 @@ export default class ObliquePhotoMap {
     }
     panAndZoom(zoom, coordinates) {
         this.map.setView(coordinates, zoom);
+    }
+    updateSize () {
+        this.map.invalidateSize();
     }
 }

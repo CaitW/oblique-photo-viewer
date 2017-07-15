@@ -40,8 +40,22 @@ class Sidebar extends React.Component {
         } else {
             content.push(<Legend key="legend" />);
         }
+        let props = {
+            xsHidden: true,
+            sm: 5,
+            md: 4,
+            lg: 3
+        }
+        if(this.props.sidebarOpen === false) {
+            props = {
+                lgHidden: true,
+                mdHidden: true,
+                smHidden: true,
+                xsHidden: true
+            }
+        }
         return (
-            <Col xsHidden sm={5} md={4} lg={3} className="wiscviewer-sidebar">
+            <Col {...props} className="wiscviewer-sidebar">
                 <div className="wiscviewer-sidebar-inner-container">
                     <div className="wiscviewer-sidebar-tabs">
                         <div className={this.getClassName("LayerList")}

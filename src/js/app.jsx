@@ -24,9 +24,21 @@ class App extends React.Component {
         let width = window.innerWidth;
         store.dispatch(updateWindowDimensions(height, width));
     }
+    constructor (props) {
+        super (props);
+        this.state = {
+            sidebarOpen: true
+        };
+        this.toggleSidebar = this.toggleSidebar.bind(this);
+    }
     componentDidMount () {
         this.constructor.updateDimensions();
         window.addEventListener("resize", this.constructor.updateDimensions);
+    }
+    toggleSidebar () {
+        this.setState({
+            sidebarOpen: !this.state.sidebarOpen
+        });
     }
     render() {
         return (
@@ -38,9 +50,9 @@ class App extends React.Component {
                         <NavBar />
                     </Row>
                     <Row className="wiscviewer-content-container">
-                        <Sidebar />
-                        <MapWrapper>
-                            <LeafletMap />
+                        <Sidebar sidebarOpen={this.state.sidebarOpen}/>
+                        <MapWrapper sidebarOpen={this.state.sidebarOpen} toggleSidebar={this.toggleSidebar}>
+                            <LeafletMap sidebarOpen={this.state.sidebarOpen} />
                         </MapWrapper>
                         <PinnedFeaturePopupContainer />
                     </Row>

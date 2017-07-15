@@ -33,6 +33,7 @@ class LeafletMap extends React.Component {
         this.toggleBasemaps(oldProps.basemaps, nextProps.basemaps);
         this.toggleLayers(oldProps.layers, nextProps.layers);
         this.toggleMapActions(oldProps.map, nextProps.map);
+        this.sidebarToggled(oldProps.sidebarOpen, nextProps.sidebarOpen);
     }
     toggleLayers(oldLayerProps, newLayerProps) {
         for (let layerId in newLayerProps) {
@@ -60,6 +61,11 @@ class LeafletMap extends React.Component {
                 this.map.panAndZoom(newMapProps.state.zoom, newMapProps.state.coordinates);
                 store.dispatch(doneZooming());
             }
+        }
+    }
+    sidebarToggled (oldProps, newProps) {
+        if(oldProps !== null && oldProps !== newProps) {
+            this.map.updateSize();
         }
     }
     render() {

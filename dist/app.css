@@ -8850,6 +8850,22 @@ button.close {
   font-size: 14px;
   float: right; }
 
+.wiscviewer-sidebar-toggle {
+  position: absolute;
+  top: 300px;
+  top: 40vh;
+  left: 0;
+  height: 50px;
+  width: 20px;
+  background-color: #455a64;
+  color: #b0bec5;
+  z-index: 800;
+  line-height: 50px;
+  text-align: center; }
+  .wiscviewer-sidebar-toggle:hover {
+    cursor: pointer;
+    color: #cfd8dc; }
+
 .pullDown {
   animation-name: pullDown;
   -webkit-animation-name: pullDown;
@@ -8868,7 +8884,8 @@ button.close {
     transform: scaleY(1); } }
 
 .wiscviewer-map {
-  height: 100%; }
+  height: 100%;
+  width: 100%; }
 
 [data-zoom='1'] .layer-type-Point,
 [data-zoom='1'] .layer-photos_1976,

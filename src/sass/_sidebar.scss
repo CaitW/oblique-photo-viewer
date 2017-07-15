@@ -164,6 +164,24 @@ $hide_scroll_padding: 17px;
   }
 }
 
+.wiscviewer-sidebar-toggle {
+  position: absolute;
+  top: 300px;
+  top: 40vh;
+  left: 0;
+  height: 50px;
+  width: 20px;
+  background-color: $primary_700;
+  color: $primary_200;
+  z-index: 800;
+  line-height: 50px;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+    color: $primary_100;
+  }
+}
+
 
 
 
