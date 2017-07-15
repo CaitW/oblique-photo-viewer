@@ -9,68 +9,18 @@ import { PanelGroup } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import { getActiveLayerStyleTypes } from '../selectors';
+import LegendLayer from '../components/LegendLayer';
+
+/**
+ * Legend
+ * The legend container component
+ */
 
 const mapStateToProps = (state) => {
     return {
         activeLayerStyleTypes: getActiveLayerStyleTypes(state)
     };
 }
-
-const LegendStyle = (props) => (
-    <li key={props.styleName}>
-        <i style={props.iconStyle} className={props.styleIconClassNames.join(" ")}></i>
-        {props.styleName}
-    </li>
-);
-
-LegendStyle.propTypes = {
-    styleName: PropTypes.string.isRequired,
-    iconStyle: PropTypes.string,
-    styleIconClassNames: PropTypes.array
-};
-
-LegendStyle.defaultProps = {
-    iconStyle: "",
-    styleIconClassNames: []
-}
-
-const LegendLayer = (props) => {
-    let headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
-    let bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
-    let styles = [];
-    for(let style of props.layerStyles) {
-        styles.push(
-            <LegendStyle
-                key={style.styleName}
-                styleName={style.styleName}
-                iconStyle={style.iconStyle}
-                styleIconClassNames={style.styleIconClassNames}
-            />
-        );
-    }
-    return (
-        <div className="panel panel-default wiscviewer-sidebar-panel wiscviewer-legend-layer-group">
-            <div className={headerClassNames.join(" ")}
-                role="button"
-                tabIndex={0}
-                >
-                <span className="wiscviewer-layer-name"> {props.layerName} </span>
-                <span className="wiscviewer-layer-group-name"> {props.layerGroupName} </span>
-            </div>
-            <div className={bodyClassNames.join(" ")}>
-                <ul className="wiscviewer-legend-list">
-                    {styles}
-                </ul>
-            </div>
-        </div>
-    );
-}
-
-LegendLayer.propTypes = {
-    layerGroupName: PropTypes.string.isRequired,
-    layerName: PropTypes.string.isRequired,
-    layerStyles: PropTypes.array.isRequired
-};
 
 const Legend = (props) => {
     let layers = [];
