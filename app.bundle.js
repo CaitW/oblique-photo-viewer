@@ -55164,11 +55164,6 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
-	 * Legend
-	 * The legend container component
-	 */
-
-	/**
 	 * Legend.jsx
 	 * This component references the Redux store to determine which layers are currently active.
 	 * It then renders the legend based on the currently active layers.
@@ -55666,6 +55661,7 @@
 	    };
 
 	    popup.on("add", function addPopup() {
+	        _store2.default.dispatch((0, _map.leafletPopupOpened)([featureMiddlePoint[1], featureMiddlePoint[0]]));
 	        (0, _reactDom.render)(_react2.default.createElement(_FeaturePopup2.default, {
 	            layerId: layerId,
 	            featureProperties: feature.properties,
@@ -55675,7 +55671,6 @@
 	            openNextFeature: featureLayer.openNextFeature,
 	            openPreviousFeature: featureLayer.openPreviousFeature
 	        }), container);
-	        _store2.default.dispatch((0, _map.leafletPopupOpened)([featureMiddlePoint[1], featureMiddlePoint[0]]));
 	    });
 	    popup.openOn(map);
 	    return popup;
@@ -64054,7 +64049,11 @@
 	    _createClass(FeaturePopup, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
-	            this.update();
+	            var _this2 = this;
+
+	            setTimeout(function () {
+	                _this2.update();
+	            }, 500);
 	        }
 	    }, {
 	        key: 'update',
