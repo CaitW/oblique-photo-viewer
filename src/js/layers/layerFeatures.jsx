@@ -112,6 +112,9 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
     }
 
     popup.on("add", function addPopup () {
+        store.dispatch(
+            leafletPopupOpened([featureMiddlePoint[1], featureMiddlePoint[0]])
+        );
         render(
             <FeaturePopup
                 layerId={layerId}
@@ -123,9 +126,6 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
                 openPreviousFeature={featureLayer.openPreviousFeature}
             />,
             container
-        );
-        store.dispatch(
-            leafletPopupOpened([featureMiddlePoint[1], featureMiddlePoint[0]])
         );
     });
     popup.openOn(map);

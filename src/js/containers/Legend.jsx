@@ -11,11 +11,6 @@ import PropTypes from 'prop-types';
 import { getActiveLayerStyleTypes } from '../selectors';
 import LegendLayer from '../components/LegendLayer';
 
-/**
- * Legend
- * The legend container component
- */
-
 const mapStateToProps = (state) => {
     return {
         activeLayerStyleTypes: getActiveLayerStyleTypes(state)
