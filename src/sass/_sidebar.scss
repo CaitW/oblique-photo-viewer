@@ -15,7 +15,7 @@ $hide_scroll_padding: 17px;
   position: absolute;
   top: 0;
   bottom: 0;
-  right: 0;
+  right: -17px;
   left: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -25,10 +25,18 @@ $hide_scroll_padding: 17px;
   }
 
   -ms-overflow-style: none;
+
+  // there's a -17px buffer on the sidebar inner container to hide the scrollbar
+  // this adjusts the content so that -17px margin isn't visible
+  .wiscviewer-sidebar-tabs,
+  .wiscviewer-sidebar-content {
+    margin-right: 17px;
+  }
 }
 
 .wiscviewer-sidebar-tabs {
   margin-bottom: 3px;
+  margin-right: 17px;
 
   div {
     display: inline-block;
