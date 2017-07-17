@@ -8742,16 +8742,20 @@ button.close {
   position: absolute;
   top: 0;
   bottom: 0;
-  right: 0;
+  right: -17px;
   left: 0;
   overflow-x: hidden;
   overflow-y: auto;
   -ms-overflow-style: none; }
   .wiscviewer-sidebar-inner-container::-webkit-scrollbar {
     display: none; }
+  .wiscviewer-sidebar-inner-container .wiscviewer-sidebar-tabs,
+  .wiscviewer-sidebar-inner-container .wiscviewer-sidebar-content {
+    margin-right: 17px; }
 
 .wiscviewer-sidebar-tabs {
-  margin-bottom: 3px; }
+  margin-bottom: 3px;
+  margin-right: 17px; }
   .wiscviewer-sidebar-tabs div {
     display: inline-block;
     width: 50%;
