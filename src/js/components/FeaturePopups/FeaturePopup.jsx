@@ -22,9 +22,7 @@ class FeaturePopup extends React.Component {
         this.popupType = "leaflet";
     }
     componentDidMount() {
-        setTimeout(() => {
-            this.update();
-        }, 500);
+        this.update();
     }
     update() {
         this.props.popup.update();

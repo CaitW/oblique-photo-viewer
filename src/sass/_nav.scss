@@ -68,6 +68,7 @@
     z-index: 500;
     background-color: $primary_800;
     padding: 0;
+    max-width: 300px;
   }
 }
 
@@ -94,6 +95,7 @@
   }
   svg {
     height: 30px;
+    max-width: 50px;
     display: inline-block;
     float: left;
     margin: -5px 8px auto -7px;

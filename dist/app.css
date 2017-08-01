@@ -8614,7 +8614,8 @@ button.close {
 .wiscviewer-nav-dropdown .dropdown-menu {
   z-index: 500;
   background-color: #37474f;
-  padding: 0; }
+  padding: 0;
+  max-width: 300px; }
 
 .wiscviewer-dropdown-header {
   text-transform: capitalize;
@@ -8633,6 +8634,7 @@ button.close {
         cursor: default; }
   .wiscviewer-dropdown-header svg {
     height: 30px;
+    max-width: 50px;
     display: inline-block;
     float: left;
     margin: -5px 8px auto -7px; }
@@ -8746,11 +8748,12 @@ button.close {
   left: 0;
   overflow-x: hidden;
   overflow-y: auto;
+  overflow: -moz-scrollbars-none;
   -ms-overflow-style: none; }
   .wiscviewer-sidebar-inner-container::-webkit-scrollbar {
     display: none; }
   .wiscviewer-sidebar-inner-container .wiscviewer-sidebar-tabs,
-  .wiscviewer-sidebar-inner-container .wiscviewer-sidebar-content {
+  .wiscviewer-sidebar-inner-container .wiscviewer-sidebar-tab-content {
     margin-right: 17px; }
 
 .wiscviewer-sidebar-tabs {
