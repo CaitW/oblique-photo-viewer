@@ -53118,7 +53118,7 @@
 		},
 		"resources": {
 			"photos": {
-				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer_resources/1976_2007_inventories/",
+				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer_resources/1976_2007_inventories",
 				"sizes": {
 					"popup": "pop",
 					"medium": "med",
@@ -53137,20 +53137,20 @@
 				}
 			},
 			"photos_2016": {
-				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer_resources/2016_photos/",
+				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer_resources/2016_photos",
 				"sizes": {
 					"popup": "popup"
 				}
 			},
 			"photos_2017": {
-				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer_resources/2017_photos/",
+				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer_resources/2017_photos",
 				"extension": ".JPG",
 				"sizes": {
 					"popup": "popup"
 				}
 			},
 			"photos_2012": {
-				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer_resources/2012_photos/",
+				"urlBase": "http://floodatlas.org/asfpm/oblique_viewer_resources/2012_photos",
 				"extension": ".jpg",
 				"sizes": {
 					"popup": "popup"
@@ -64049,11 +64049,7 @@
 	    _createClass(FeaturePopup, [{
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
-	            var _this2 = this;
-
-	            setTimeout(function () {
-	                _this2.update();
-	            }, 500);
+	            this.update();
 	        }
 	    }, {
 	        key: 'update',
