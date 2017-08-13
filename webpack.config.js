@@ -10,7 +10,7 @@ module.exports = {
         filename: '[name].bundle.js',
     },
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['8', '.js', '.jsx']
     },
     module: {
         loaders: [{
@@ -33,5 +33,12 @@ module.exports = {
         tls: '{}',
         net: '{}',
         console: '{}'
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+          'process.env':{
+            'NODE_ENV': JSON.stringify('development')
+          }
+        })
+    ]
 };

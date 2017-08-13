@@ -12,7 +12,7 @@ module.exports = {
         filename: '[name].bundle.js',
     },
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['*', '.js', '.jsx']
     },
     module: {
         loaders: [{
@@ -37,6 +37,9 @@ module.exports = {
         console: '{}'
     },
     plugins: [
-        new UglifyJSPlugin()
+        new UglifyJSPlugin(),
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify('production')
+        })
     ]
 };

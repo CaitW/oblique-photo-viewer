@@ -5,7 +5,9 @@
   "main": "dist/app.bundle.js",
   "scripts": {
     "build": "gulp build",
-    "deploy": "git fetch --all && git checkout origin/master --force && npm install && gulp deploy"
+    "deploy": "git fetch --all && git checkout origin/master --force && npm install && gulp deploy",
+    "lint-js": "eslint --ext .js,.jsx src/js/** --ignore-pattern '/lib/' --ignore-pattern '*.json'",
+    "lint-css": "stylefmt -r 'src/sass/*.scss'"
   },
   "repository": {
     "type": "git",
@@ -39,12 +41,12 @@
     "gulp-concat": "^2.6.1",
     "gulp-debug": "^3.1.0",
     "gulp-eslint": "^3.0.1",
-    "gulp-git": "^2.4.1",
     "gulp-jsonminify": "^1.0.0",
     "gulp-livereload": "^3.8.1",
     "gulp-sass": "^3.1.0",
     "gulp-stylelint": "^3.9.0",
     "gulp-uglify": "^2.0.1",
+    "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.11",
     "gulp-zip": "^4.0.0",
     "json-loader": "^0.5.4",
@@ -58,8 +60,7 @@
     "stylelint-selector-bem-pattern": "^1.0.0",
     "uglify-js": "^3.0.15",
     "uglifyjs-webpack-plugin": "^0.4.6",
-    "webpack": "^2.2.1",
-    "webpack-stream": "^3.2.0"
+    "webpack": "^2.2.1"
   },
   "dependencies": {
     "axios": "^0.15.3",

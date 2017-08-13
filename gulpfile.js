@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var webpack = require('webpack-stream');
+var webpack = require('webpack');
 var watch = require('gulp-watch');
 var livereload = require('gulp-livereload');
 var sass = require('gulp-sass');
@@ -16,6 +16,11 @@ var jsonMinify = require('gulp-jsonminify');
 var debug = require('gulp-debug');
 var zip = require('gulp-zip');
 var ogr2ogr = require('ogr2ogr');
+var gulpUtil = require('gulp-util');
+
+// webpack configurations
+var webpack_dev = require('./webpack.config.js');
+var webpack_prod = require('./webpack.config.prod.js');
 
 var CONFIG;
 try {
@@ -202,18 +207,40 @@ gulp.task('make-prod-scripts', gulp.series('make-dev-scripts', function(cb) {
 /*
  * Build Javascript
  */
-gulp.task('webpack-dev', function() {
-    return gulp.src('src/js/app.jsx')
-        .pipe(debug({title: 'webpacking (dev) :'}))
-        .pipe(webpack(require('./webpack.config.js')))
-        .pipe(gulp.dest('dist/'))
-        .pipe(livereload());
+gulp.task('webpack-dev', function(done) {
+    return webpack(webpack_dev, function(error) {
+        var pluginError;
+        if (error) {
+            pluginError = new gulpUtil.PluginError('webpack', error);
+            if (done) {
+                done(pluginError);
+            } else {
+                gulpUtil.log('[webpack]', pluginError);
+            }
+            return;
+        }
+        if (done) {
+            livereload.reload('./dist/app.bundle.js');
+            done();
+        }
+    });
 });
-gulp.task('webpack-prod', function() {
-    return gulp.src('src/js/app.jsx')
-        .pipe(debug({title: 'webpacking (prod) :'}))
-        .pipe(webpack(require('./webpack.config.prod.js')))
-        .pipe(gulp.dest('dist/'));
+gulp.task('webpack-prod', function(done) {
+    return webpack(webpack_prod, function(error) {
+        var pluginError;
+        if (error) {
+            pluginError = new gulpUtil.PluginError('webpack', error);
+            if (done) {
+                done(pluginError);
+            } else {
+                gulpUtil.log('[webpack]', pluginError);
+            }
+            return;
+        }
+        if (done) {
+            done();
+        }
+    });
 });
 
 /*
