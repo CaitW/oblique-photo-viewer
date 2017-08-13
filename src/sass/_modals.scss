@@ -5,6 +5,7 @@
   .modal-dialog {
     z-index: 600;
     max-height: calc(100% - 20px);
+    overflow-y: scroll;
   }
 
   .modal-content {

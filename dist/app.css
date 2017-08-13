@@ -8431,7 +8431,8 @@ button.close {
   color: #cfd8dc; }
   .wiscviewer-mobile-modal .modal-dialog {
     z-index: 600;
-    max-height: calc(100% - 20px); }
+    max-height: calc(100% - 20px);
+    overflow-y: scroll; }
   .wiscviewer-mobile-modal .modal-content {
     background-color: #455a64;
     height: 100%;

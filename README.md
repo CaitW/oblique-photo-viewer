@@ -118,3 +118,7 @@ The application utilizes Mapbox basemaps.
 ### Pull Requests
 
 When making pull requests, please use the gulp task `lint` to lint your files before submitting.
+
+### Releases
+
+Only issue a release after running the `gulp build` task, so that the /dist folder is built using the production configuration
