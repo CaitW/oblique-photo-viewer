@@ -8749,7 +8749,6 @@ button.close {
   left: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  overflow: -moz-scrollbars-none;
   -ms-overflow-style: none; }
   .wiscviewer-sidebar-inner-container::-webkit-scrollbar {
     display: none; }
