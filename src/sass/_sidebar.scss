@@ -60,6 +60,13 @@ $hide_scroll_padding: 17px;
       color: $primary_100;
       cursor: pointer;
     }
+
+    &:first-child:not(.active) {
+      box-shadow: inset -3px 3px 10px rgba(0,0,0,0.10);
+    }
+    &:last-child:not(.active) {
+      box-shadow: inset 3px 3px 10px rgba(0,0,0,0.10);
+    }
   }
 }
 
@@ -100,6 +107,7 @@ $hide_scroll_padding: 17px;
 
     &.active {
       color: $primary_50;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.20);
     }
   }
 }
@@ -118,14 +126,17 @@ $hide_scroll_padding: 17px;
 }
 
 .wiscviewer-legend-list {
-  padding: 10px 15px;
+  padding: 10px 20px;
   margin: 0;
   list-style: none;
   text-transform: capitalize;
   color: $primary_200;
+  li {
+    padding: 1px 0;
+  }
 
   i {
-    margin-right: 10px;
+    margin-right: 20px;
 
     &.fa-circle {
       font-size: 10px;
@@ -163,7 +174,7 @@ $hide_scroll_padding: 17px;
 }
 
 .wiscviewer-layer-name {
-  color: $primary_100;
+  color: $primary_200;
 }
 
 .wiscviewer-legend-layer-group {

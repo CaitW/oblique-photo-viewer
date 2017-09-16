@@ -8570,7 +8570,7 @@ button.close {
 
 .wiscviewer-nav-container nav {
   color: #eceff1;
-  border-width: 0;
+  border: 0;
   border-radius: 0;
   background-color: #455a64;
   margin-bottom: 0; }
@@ -8582,13 +8582,15 @@ button.close {
 .wiscviewer-logo {
   width: 50px;
   height: 50px;
-  float: left; }
+  float: left;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
 
 .wiscviewer-brand {
   color: #eceff1 !important;
   font-family: "Fjalla One", sans-serif;
   font-size: 20px;
-  padding: 18px 15px 12px; }
+  padding: 18px 15px 12px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
   .wiscviewer-brand:before {
     content: 'WI Shoreline Inventory'; }
 
@@ -8603,9 +8605,11 @@ button.close {
 .wiscviewer-nav-tool {
   color: #cfd8dc;
   font-size: 16px; }
-  .wiscviewer-nav-tool a,
-  .wiscviewer-nav-tool a:hover {
+  .wiscviewer-nav-tool > a {
     color: #cfd8dc !important; }
+  .wiscviewer-nav-tool > a:hover {
+    color: #eceff1 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
 
 .wiscviewer-nav-dropdown.open > a {
   background-color: #37474f !important; }
@@ -8620,9 +8624,13 @@ button.close {
 
 .wiscviewer-dropdown-header {
   text-transform: capitalize;
+  text-align: center;
   background-color: #263238;
   padding: 5px 0px; }
+  .wiscviewer-dropdown-header a {
+    color: #90a4ae !important; }
   .wiscviewer-dropdown-header a:focus {
+    outline: none;
     background-color: #263238 !important; }
   .wiscviewer-dropdown-header:hover {
     outline: none;
@@ -8635,12 +8643,12 @@ button.close {
         cursor: default; }
   .wiscviewer-dropdown-header svg {
     height: 30px;
-    max-width: 50px;
+    width: 30px;
     display: inline-block;
     float: left;
     margin: -5px 8px auto -7px; }
     .wiscviewer-dropdown-header svg path {
-      fill: #cfd8dc; }
+      fill: #607d8b; }
     .wiscviewer-dropdown-header svg.Lake-Michigan-svg {
       height: 20px;
       margin: 0 8px 5px -7px; }
@@ -8649,17 +8657,19 @@ button.close {
   text-transform: capitalize;
   background-color: #37474f;
   padding: 3px 0px; }
-  .wiscviewer-dropdown-item:not(:last-child) {
-    border: 0 solid #455a64;
-    border-bottom-width: 1px; }
-  .wiscviewer-dropdown-item a:focus {
-    background-color: #263238 !important; }
+  .wiscviewer-dropdown-item a {
+    color: #b0bec5 !important; }
+    .wiscviewer-dropdown-item a:focus {
+      background-color: #37474f !important;
+      outline: none; }
   .wiscviewer-dropdown-item:active, .wiscviewer-dropdown-item:hover, .wiscviewer-dropdown-item:focus {
     outline: none;
-    background-color: #263238 !important; }
+    background-color: #37474f !important; }
     .wiscviewer-dropdown-item:active a, .wiscviewer-dropdown-item:hover a, .wiscviewer-dropdown-item:focus a {
       outline: none;
-      background-color: #263238 !important; }
+      color: #eceff1 !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      background-color: #37474f !important; }
 
 .wiscviewer-mobile-toggle {
   border: 0;
@@ -8675,7 +8685,7 @@ button.close {
 
 .wiscviewer-nav-tool-icon {
   margin-right: 10px;
-  color: #b0bec5; }
+  color: #90a4ae; }
 
 .wiscviewer-nav-tool-zoom .wiscviewer-tool-title:after {
   content: 'Shoreline'; }
@@ -8693,7 +8703,7 @@ button.close {
   float: left;
   margin: -5px 8px auto -7px; }
   .wiscviewer-tool-title svg path {
-    fill: #cfd8dc; }
+    fill: #90a4ae; }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .wiscviewer-tool-title .SVGInline {
@@ -8775,6 +8785,10 @@ button.close {
     .wiscviewer-sidebar-tabs div:hover {
       color: #cfd8dc;
       cursor: pointer; }
+    .wiscviewer-sidebar-tabs div:first-child:not(.active) {
+      box-shadow: inset -3px 3px 10px rgba(0, 0, 0, 0.1); }
+    .wiscviewer-sidebar-tabs div:last-child:not(.active) {
+      box-shadow: inset 3px 3px 10px rgba(0, 0, 0, 0.1); }
 
 .wiscviewer-sidebar-panel {
   background-color: #37474f;
@@ -8807,7 +8821,8 @@ button.close {
       background-color: #37474f; }
     .wiscviewer-layer-list-group .wiscviewer-layer-item.active,
     .wiscviewer-layer-list-group .wiscviewer-layer-item:focus.active {
-      color: #eceff1; }
+      color: #eceff1;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
 
 .wiscviewer-sidebar-panel-header {
   color: #90a4ae !important;
@@ -8820,13 +8835,15 @@ button.close {
     cursor: default; }
 
 .wiscviewer-legend-list {
-  padding: 10px 15px;
+  padding: 10px 20px;
   margin: 0;
   list-style: none;
   text-transform: capitalize;
   color: #b0bec5; }
+  .wiscviewer-legend-list li {
+    padding: 1px 0; }
   .wiscviewer-legend-list i {
-    margin-right: 10px; }
+    margin-right: 20px; }
     .wiscviewer-legend-list i.fa-circle {
       font-size: 10px; }
 
@@ -8851,7 +8868,7 @@ button.close {
   color: #90a4ae; }
 
 .wiscviewer-layer-name {
-  color: #cfd8dc; }
+  color: #b0bec5; }
 
 .wiscviewer-legend-layer-group .wiscviewer-layer-group-name {
   font-size: 14px;
@@ -9642,7 +9659,8 @@ button.close {
         border-top-left-radius: 3px; }
       .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=true] {
         background-color: inherit;
-        color: #eceff1; }
+        color: #eceff1;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
         .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=true]:hover, .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=true]:focus {
           border: none; }
       .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=false] {
@@ -9668,17 +9686,22 @@ button.close {
   font-size: 12px;
   color: #263238; }
   .wiscviewer-data-table tr:hover {
-    background-color: #b0bec5; }
+    background-color: inherit !important; }
   .wiscviewer-data-table tr td {
-    border: 1px solid #78909c; }
+    border: none !important; }
+    .wiscviewer-data-table tr td:first-child {
+      text-align: left;
+      color: #263238; }
+    .wiscviewer-data-table tr td:last-child {
+      text-align: right; }
   .wiscviewer-data-table tr:nth-of-type(odd) {
     background-color: #ffffff; }
     .wiscviewer-data-table tr:nth-of-type(odd):hover {
-      background-color: #b0bec5; }
+      background-color: #ffffff; }
   .wiscviewer-data-table tr:nth-of-type(even) {
     background-color: #eceff1; }
     .wiscviewer-data-table tr:nth-of-type(even):hover {
-      background-color: #b0bec5; }
+      background-color: #eceff1; }
 
 .wiscviewer-feature-popup-footer {
   padding: 5px 10px;

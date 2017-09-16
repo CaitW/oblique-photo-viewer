@@ -129,6 +129,7 @@
         &[aria-selected=true] {
           background-color: inherit;
           color: $primary_50;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.20);
 
           &:hover,
           &:focus {
@@ -172,11 +173,18 @@
 
   tr {
     &:hover {
-      background-color: $primary_200;
+      background-color: inherit !important;
     }
 
     td {
-      border: 1px solid $primary_400;
+      border: none !important;
+      &:first-child {
+        text-align: left;
+        color: $primary_900;
+      }
+      &:last-child {
+        text-align: right;
+      }
     }
   }
 
@@ -184,7 +192,7 @@
     background-color: #ffffff;
 
     &:hover {
-      background-color: $primary_200;
+      background-color: #ffffff;
     }
   }
 
@@ -192,7 +200,7 @@
     background-color: $primary_50;
 
     &:hover {
-      background-color: $primary_200;
+      background-color: $primary_50;
     }
   }
 }
