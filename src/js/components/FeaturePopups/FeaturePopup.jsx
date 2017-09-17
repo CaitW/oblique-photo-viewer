@@ -46,26 +46,27 @@ class FeaturePopup extends React.Component {
         let layerName = LAYERS_BY_ID[this.props.layerId].name;
         return (
             <div className="wiscviewer-feature-popup"
-                role="button"
                 tabIndex={-1}
                 onClick={this.bringToFront}>
                 <div className="wiscviewer-feature-popup-header">
                     <div className="wiscviewer-feature-popup-controls">
-                        <i className="fa fa-arrow-left feature-popup-previous-button"
-                            onClick={this.props.openPreviousFeature}
-                            role="button"
-                            tabIndex={-1}>
-                        </i>
-                        <i className="fa fa-arrow-right feature-popup-next-button"
-                            onClick={this.props.openNextFeature}
-                            role="button"
-                            tabIndex={-1}>
-                        </i>
                         <i className="fa fa-thumb-tack feature-popup-pin"
                             onClick={this.pin}
                             role="button"
                             tabIndex={-1}>
                         </i>
+                        <span className="wiscviewer-feature-nav-tools">
+                            <i className="fa fa-arrow-left feature-popup-previous-button"
+                                onClick={this.props.openPreviousFeature}
+                                role="button"
+                                tabIndex={-1}>
+                            </i>
+                            <i className="fa fa-arrow-right feature-popup-next-button"
+                                onClick={this.props.openNextFeature}
+                                role="button"
+                                tabIndex={-1}>
+                            </i>
+                        </span>
                         <i className="fa fa-times feature-popup-close-button"
                             onClick={this.close}
                             role="button"

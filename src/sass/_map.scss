@@ -74,19 +74,45 @@
 
   .leaflet-control-zoom-in,
   .leaflet-control-zoom-out {
-    background-color: $primary_700;
+    background-color: $primary_800;
     color: $primary_100;
+    &:hover {
+      color: $primary_50;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.20);
+    }
   }
 
   .leaflet-control-zoom-in {
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
+    border-radius: 0;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid $primary_300;
   }
 
   .leaflet-control-zoom-out {
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-radius: 0;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   }
+
+}
+
+.leaflet-control-scale-line {
+  background-color: $primary_800;
+  color: $primary_200;
+  border: 2px solid $primary_300;
+  border-top: none;
+  font-family: "Open Sans";
+}
+
+.leaflet-control-scale-line:not(:first-child) {
+    border-top: 2px solid $primary_300;
+    border-bottom: none;
+    margin-top: -2px;
+}
+
+.leaflet-container .leaflet-control-mouseposition {
+  margin-left: 5px;
+  margin-bottom: 5px;
+  background-color: $primary_800;
+  color: $primary_200;
+  font-family: "Open Sans";
 }

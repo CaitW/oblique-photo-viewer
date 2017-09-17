@@ -8603,13 +8603,22 @@ button.close {
     content: 'Wisconsin Shoreline Inventory and Oblique Viewer'; } }
 
 .wiscviewer-nav-tool {
-  color: #cfd8dc;
   font-size: 16px; }
   .wiscviewer-nav-tool > a {
     color: #cfd8dc !important; }
-  .wiscviewer-nav-tool > a:hover {
-    color: #eceff1 !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
+    .wiscviewer-nav-tool > a:hover {
+      color: #eceff1 !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
+    .wiscviewer-nav-tool > a i {
+      color: #90a4ae; }
+    .wiscviewer-nav-tool > a svg {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      float: left;
+      margin: -5px 8px auto -7px; }
+      .wiscviewer-nav-tool > a svg path {
+        fill: #90a4ae; }
 
 .wiscviewer-nav-dropdown.open > a {
   background-color: #37474f !important; }
@@ -8623,15 +8632,17 @@ button.close {
   max-width: 300px; }
 
 .wiscviewer-dropdown-header {
-  text-transform: capitalize;
+  letter-spacing: 1.6px;
+  font-size: 12px;
+  text-transform: uppercase;
   text-align: center;
   background-color: #263238;
   padding: 5px 0px; }
   .wiscviewer-dropdown-header a {
     color: #90a4ae !important; }
-  .wiscviewer-dropdown-header a:focus {
-    outline: none;
-    background-color: #263238 !important; }
+    .wiscviewer-dropdown-header a:focus {
+      outline: none;
+      background-color: #263238 !important; }
   .wiscviewer-dropdown-header:hover {
     outline: none;
     background-color: #263238 !important;
@@ -8687,29 +8698,23 @@ button.close {
   margin-right: 10px;
   color: #90a4ae; }
 
-.wiscviewer-nav-tool-zoom .wiscviewer-tool-title:after {
-  content: 'Shoreline'; }
+.wiscviewer-nav-tool-zoom .caret {
+  display: none; }
 
-.wiscviewer-nav-tool-reset a:after {
+.wiscviewer-nav-tool-zoom > a:after {
+  content: 'Shorelines'; }
+
+.wiscviewer-nav-tool-reset > a:after {
   content: 'Reset'; }
 
-.wiscviewer-nav-tool-about a:after {
+.wiscviewer-nav-tool-about > a:after {
   content: 'About'; }
 
-.wiscviewer-tool-title svg {
-  width: 30px;
-  height: 30px;
-  display: inline-block;
-  float: left;
-  margin: -5px 8px auto -7px; }
-  .wiscviewer-tool-title svg path {
-    fill: #90a4ae; }
-
 @media (min-width: 768px) and (max-width: 991px) {
-  .wiscviewer-tool-title .SVGInline {
+  .wiscviewer-nav-tool-zoom .SVGInline {
     display: block;
     height: 20px; }
-  .wiscviewer-tool-title svg {
+  .wiscviewer-nav-tool-zoom svg {
     margin: -5px 0 auto 0; }
   .dropdown-menu {
     min-width: 200px; }
@@ -8825,7 +8830,6 @@ button.close {
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
 
 .wiscviewer-sidebar-panel-header {
-  color: #90a4ae !important;
   background-color: #263238 !important;
   border: 0;
   padding: 15px;
@@ -8864,15 +8868,9 @@ button.close {
 .wiscviewer-layer-item:focus {
   outline: none; }
 
-.wiscviewer-layer-group-name {
-  color: #90a4ae; }
-
-.wiscviewer-layer-name {
-  color: #b0bec5; }
-
 .wiscviewer-legend-layer-group .wiscviewer-layer-group-name {
-  font-size: 14px;
-  float: right; }
+  float: right;
+  margin-top: 4px; }
 
 .wiscviewer-sidebar-toggle {
   position: absolute;
@@ -8881,14 +8879,14 @@ button.close {
   left: 0;
   height: 50px;
   width: 20px;
-  background-color: #455a64;
-  color: #b0bec5;
-  z-index: 800;
+  background-color: #37474f;
+  color: #cfd8dc;
+  z-index: 450;
   line-height: 50px;
   text-align: center; }
   .wiscviewer-sidebar-toggle:hover {
     cursor: pointer;
-    color: #cfd8dc; }
+    color: #eceff1; }
 
 .pullDown {
   animation-name: pullDown;
@@ -9555,16 +9553,38 @@ button.close {
     background-color: #eceff1; }
   .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-in,
   .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-out {
-    background-color: #455a64;
+    background-color: #37474f;
     color: #cfd8dc; }
+    .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-in:hover,
+    .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-out:hover {
+      color: #eceff1;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
   .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-in {
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }
+    border-radius: 0;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #90a4ae; }
   .leaflet-control-zoom.leaflet-bar .leaflet-control-zoom-out {
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-radius: 0;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }
+
+.leaflet-control-scale-line {
+  background-color: #37474f;
+  color: #b0bec5;
+  border: 2px solid #90a4ae;
+  border-top: none;
+  font-family: "Open Sans"; }
+
+.leaflet-control-scale-line:not(:first-child) {
+  border-top: 2px solid #90a4ae;
+  border-bottom: none;
+  margin-top: -2px; }
+
+.leaflet-container .leaflet-control-mouseposition {
+  margin-left: 5px;
+  margin-bottom: 5px;
+  background-color: #37474f;
+  color: #b0bec5;
+  font-family: "Open Sans"; }
 
 .leaflet-popup-content-wrapper {
   margin: 0;
@@ -9620,11 +9640,12 @@ button.close {
   right: 0;
   top: 0;
   left: 0;
-  height: 30px; }
+  height: 34px;
+  background-color: #263238; }
 
 .wiscviewer-feature-popup-title {
   width: 100%;
-  font-size: 16px;
+  font-size: 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; }
@@ -9638,44 +9659,46 @@ button.close {
   margin: 2px 10px 0 0;
   font-size: 20px;
   float: right; }
-  .wiscviewer-feature-popup-controls i {
-    margin-left: 10px; }
-    .wiscviewer-feature-popup-controls i:hover {
-      color: #eceff1;
-      cursor: pointer; }
+  .wiscviewer-feature-popup-controls > i {
+    margin-left: 15px; }
+  .wiscviewer-feature-popup-controls span {
+    margin-left: 15px; }
+    .wiscviewer-feature-popup-controls span > i:not(:first-child) {
+      margin-left: 10px; }
+  .wiscviewer-feature-popup-controls i:hover {
+    color: #eceff1;
+    cursor: pointer; }
 
 .wiscviewer-feature-popup-body {
   padding: 0;
   border-radius: 3px; }
   .wiscviewer-feature-popup-body .nav-tabs {
-    padding-top: 2px;
-    border-bottom: 1px solid #263238;
-    font-size: 14px; }
-    .wiscviewer-feature-popup-body .nav-tabs li a {
-      padding: 5px 10px;
-      border: 0;
-      border-radius: 0; }
-      .wiscviewer-feature-popup-body .nav-tabs li a:first-child {
-        border-top-left-radius: 3px; }
-      .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=true] {
-        background-color: inherit;
-        color: #eceff1;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
-        .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=true]:hover, .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=true]:focus {
-          border: none; }
-      .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=false] {
-        color: #b0bec5;
-        border-bottom: 1px solid #263238;
-        background-color: inherit; }
-        .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=false]:hover {
-          border: none;
-          border-bottom: 1px solid #263238;
+    border: 0;
+    font-size: 14px;
+    height: 34px; }
+    .wiscviewer-feature-popup-body .nav-tabs li {
+      height: 100%; }
+      .wiscviewer-feature-popup-body .nav-tabs li a {
+        height: 100%;
+        padding: 5px 10px;
+        border: 0;
+        border-radius: 0; }
+        .wiscviewer-feature-popup-body .nav-tabs li a:first-child {
+          border-top-left-radius: 3px; }
+        .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=true] {
+          background-color: #37474f;
           color: #eceff1;
-          background-color: #37474f; }
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
+          .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=true]:hover, .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=true]:focus {
+            border: none; }
+        .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=false] {
+          color: #b0bec5;
+          background-color: inherit; }
+          .wiscviewer-feature-popup-body .nav-tabs li a[aria-selected=false]:hover {
+            color: #eceff1; }
   .wiscviewer-feature-popup-body .tab-content {
-    border: 1px solid #263238;
     background-color: #cfd8dc;
-    border-width: 3px 0 4px; }
+    border-width: 0 0 4px 0; }
     .wiscviewer-feature-popup-body .tab-content img {
       width: 100%;
       display: block; }
@@ -9685,8 +9708,6 @@ button.close {
   margin-bottom: 0;
   font-size: 12px;
   color: #263238; }
-  .wiscviewer-data-table tr:hover {
-    background-color: inherit !important; }
   .wiscviewer-data-table tr td {
     border: none !important; }
     .wiscviewer-data-table tr td:first-child {
@@ -9695,16 +9716,16 @@ button.close {
     .wiscviewer-data-table tr td:last-child {
       text-align: right; }
   .wiscviewer-data-table tr:nth-of-type(odd) {
-    background-color: #ffffff; }
+    background-color: #cfd8dc; }
     .wiscviewer-data-table tr:nth-of-type(odd):hover {
-      background-color: #ffffff; }
+      background-color: #cfd8dc; }
   .wiscviewer-data-table tr:nth-of-type(even) {
     background-color: #eceff1; }
     .wiscviewer-data-table tr:nth-of-type(even):hover {
       background-color: #eceff1; }
 
 .wiscviewer-feature-popup-footer {
-  padding: 5px 10px;
+  padding: 10px 10px;
   background-color: #37474f;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px; }
@@ -9714,6 +9735,12 @@ button.close {
 .wiscviewer-popup-downloads-row {
   padding: 10px 0 0;
   color: #b0bec5; }
+  .wiscviewer-popup-downloads-row > i {
+    margin-left: 5px; }
+  .wiscviewer-popup-downloads-row a {
+    margin-left: 15px; }
+    .wiscviewer-popup-downloads-row a i {
+      margin-right: 5px; }
 
 .wiscviewer-profile-tab .lake-stats {
   stroke-width: 1px; }
@@ -9773,3 +9800,21 @@ html {
 .wiscviewer-map-container {
   height: 100%;
   padding: 0; }
+
+.wiscviewer-layer-group-name {
+  letter-spacing: 1.6px;
+  font-size: 12px;
+  color: #78909c !important;
+  text-transform: uppercase; }
+
+.wiscviewer-layer-name {
+  color: #b0bec5 !important;
+  letter-spacing: 1.6px;
+  font-size: 12px;
+  text-transform: uppercase; }
+
+*:focus {
+  outline: none; }
+
+a:focus {
+  outline: none; }

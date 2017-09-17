@@ -25,7 +25,7 @@ const BasemapList = (props) => {
   }
 
   let bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
-  let headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
+  let headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header", "wiscviewer-layer-group-name"];
   if (props.panelVisible === false) {
       bodyClassNames.push("hidden");
   } else {

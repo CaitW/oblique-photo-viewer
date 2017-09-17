@@ -52,7 +52,7 @@ class DataTab extends React.Component {
 
         return (
             <Tab {...tabProps} className="wiscviewer-data-tab">
-                <Table striped bordered condensed hover className="wiscviewer-data-table">
+                <Table className="wiscviewer-data-table">
                     <tbody>
                         {rows}
                     </tbody>

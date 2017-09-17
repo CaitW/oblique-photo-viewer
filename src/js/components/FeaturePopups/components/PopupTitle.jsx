@@ -18,11 +18,9 @@ const PopupTitle = (props) => {
     }
     return (
         <div className="wiscviewer-feature-popup-title">
-            <span className="wiscviewer-layer-group-name"> {props.layerGroupName} </span>
-            <i className="fa fa-chevron-right"></i>
-            {props.layerName}
-            <i className="fa fa-chevron-right"></i>
-            {featureName}
+            <div className="wiscviewer-layer-group-name"> {props.layerGroupName} </div>
+            <div className="wiscviewer-layer-name"> {props.layerName} </div>
+            <div className="wiscviewer-feature-name"> {featureName} </div>
         </div>
     )
 };

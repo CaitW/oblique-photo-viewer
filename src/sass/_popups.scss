@@ -74,12 +74,13 @@
   right: 0;
   top: 0;
   left: 0;
-  height: 30px;
+  height: 34px;
+  background-color: $primary_900;
 }
 
 .wiscviewer-feature-popup-title {
   width: 100%;
-  font-size: 16px;
+  font-size: 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -97,9 +98,18 @@
   font-size: 20px;
   float: right;
 
-  i {
-    margin-left: 10px;
+  > i {
+    margin-left: 15px;
+  }
 
+  span {
+    margin-left: 15px;
+    > i:not(:first-child) {
+      margin-left: 10px;
+    }
+  }
+
+  i {
     &:hover {
       color: $primary_50;
       cursor: pointer;
@@ -112,12 +122,14 @@
   border-radius: 3px;
 
   .nav-tabs {
-    padding-top: 2px;
-    border-bottom: 1px solid $primary_900;
+    border: 0;
     font-size: 14px;
+    height: 34px;
 
     li {
+      height: 100%;
       a {
+        height: 100%;
         padding: 5px 10px;
         border: 0;
         border-radius: 0;
@@ -127,7 +139,7 @@
         }
 
         &[aria-selected=true] {
-          background-color: inherit;
+          background-color: $primary_800;
           color: $primary_50;
           text-shadow: 0 1px 2px rgba(0,0,0,0.20);
 
@@ -139,14 +151,10 @@
 
         &[aria-selected=false] {
           color: $primary_200;
-          border-bottom: 1px solid $primary_900;
           background-color: inherit;
 
           &:hover {
-            border: none;
-            border-bottom: 1px solid $primary_900;
             color: $primary_50;
-            background-color: $primary_800;
           }
         }
       }
@@ -154,9 +162,8 @@
   }
 
   .tab-content {
-    border: 1px solid $primary_900;
     background-color: $primary_100;
-    border-width: 3px 0 4px;
+    border-width: 0 0 4px 0;
 
     img {
       width: 100%;
@@ -172,10 +179,6 @@
   color: $primary_900;
 
   tr {
-    &:hover {
-      background-color: inherit !important;
-    }
-
     td {
       border: none !important;
       &:first-child {
@@ -189,10 +192,10 @@
   }
 
   tr:nth-of-type(odd) {
-    background-color: #ffffff;
+    background-color: $primary_100;
 
     &:hover {
-      background-color: #ffffff;
+      background-color: $primary_100;
     }
   }
 
@@ -206,7 +209,7 @@
 }
 
 .wiscviewer-feature-popup-footer {
-  padding: 5px 10px;
+  padding: 10px 10px;
   background-color: $primary_800;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -219,6 +222,15 @@
 .wiscviewer-popup-downloads-row {
   padding: 10px 0 0;
   color: $primary_200;
+  > i {
+    margin-left: 5px;
+  }
+  a {
+    margin-left: 15px;
+    i {
+      margin-right: 5px;
+    }
+  }
 }
 
 .wiscviewer-profile-tab {

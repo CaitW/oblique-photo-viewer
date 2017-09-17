@@ -47,17 +47,29 @@
 }
 
 .wiscviewer-nav-tool {
-  color: $primary_100;
-  font-size: 16px;
-
-  > a {
-    color: $primary_100 !important;
-  }
-  > a:hover {
-    color: $primary_50 !important;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.20);
-  }
+    font-size: 16px;
+    > a {
+        color: $primary_100 !important;
+        &:hover {
+            color: $primary_50 !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.20);
+        }
+        i {
+            color: $primary_300;
+        }
+        svg {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            float: left;
+            margin: -5px 8px auto -7px;
+            path {
+                fill: $primary_300;
+            }
+        }
+    }
 }
+
 
 .wiscviewer-nav-dropdown {
   &.open {
@@ -80,14 +92,14 @@
 }
 
 .wiscviewer-dropdown-header {
-  text-transform: capitalize;
+  letter-spacing: 1.6px;
+  font-size: 12px;
+  text-transform: uppercase;
   text-align: center;
   background-color: $primary_900;
   padding: 5px 0px;
   a {
     color: $primary_300 !important;
-  }
-  a {
     &:focus {
       outline: none;
       background-color: $primary_900 !important;
@@ -171,40 +183,30 @@
 }
 
 .wiscviewer-nav-tool-zoom {
-  .wiscviewer-tool-title:after {
-    content: 'Shoreline';
+  .caret {
+    display: none;
+  }
+
+  > a:after {
+    content: 'Shorelines';
   }
 }
 
 .wiscviewer-nav-tool-reset {
-  a:after {
+  > a:after {
     content: 'Reset';
   }
 }
 
 .wiscviewer-nav-tool-about {
-  a:after {
+  > a:after {
     content: 'About';
   }
 }
 
-.wiscviewer-tool-title {
-  svg {
-    width: 30px;
-    height: 30px;
-    display: inline-block;
-    float: left;
-    margin: -5px 8px auto -7px;
-    path {
-      fill: $primary_300;
-    }
-  }
-}
-
-
 @media (min-width: 768px) and (max-width: 991px) {
 
-  .wiscviewer-tool-title {
+  .wiscviewer-nav-tool-zoom {
     .SVGInline {
       display: block;
       height: 20px;

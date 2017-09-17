@@ -21,9 +21,7 @@ const lake_icons = {
 
 const ZoomToShoreline = (props) => {
     let title = (
-        <span className="wiscviewer-tool-title">
-            <SVGInline svg={superior_michigan_icon} />
-        </span>
+        <SVGInline svg={superior_michigan_icon} />
     );
     var shorelines = [];
     for(let lakeName in CONFIG.map.county_shorelines) {

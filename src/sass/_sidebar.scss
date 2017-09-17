@@ -113,7 +113,6 @@ $hide_scroll_padding: 17px;
 }
 
 .wiscviewer-sidebar-panel-header {
-  color: $primary_300 !important;
   background-color: $primary_900 !important;
   border: 0;
   padding: 15px;
@@ -169,18 +168,10 @@ $hide_scroll_padding: 17px;
   }
 }
 
-.wiscviewer-layer-group-name {
-  color: $primary_300;
-}
-
-.wiscviewer-layer-name {
-  color: $primary_200;
-}
-
 .wiscviewer-legend-layer-group {
   .wiscviewer-layer-group-name {
-    font-size: 14px;
     float: right;
+    margin-top: 4px;
   }
 }
 
@@ -191,14 +182,14 @@ $hide_scroll_padding: 17px;
   left: 0;
   height: 50px;
   width: 20px;
-  background-color: $primary_700;
-  color: $primary_200;
-  z-index: 800;
+  background-color: $primary_800;
+  color: $primary_100;
+  z-index: 450;
   line-height: 50px;
   text-align: center;
   &:hover {
     cursor: pointer;
-    color: $primary_100;
+    color: $primary_50;
   }
 }
 
