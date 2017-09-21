@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="">
+  <title data-ice="title">Source | oblique-photo-viewer</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Oblique Photo Viewer"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="oblique-photo-viewer"><meta property="twitter:description" content="Oblique Photo Viewer"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/CaitW/oblique-photo-viewer.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js">js</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getPhotoURLs">getPhotoURLs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getProfileURLs">getProfileURLs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getActiveBasemapId">getActiveBasemapId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getActiveLayerStyleTypes">getActiveLayerStyleTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getActiveLayers">getActiveLayers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getBasemapsByIdWithData">getBasemapsByIdWithData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getLayerGroupsByIdWithData">getLayerGroupsByIdWithData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getLayersByIdWithData">getLayersByIdWithData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getMobileFeaturePopupProps">getMobileFeaturePopupProps</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mapLayerGroupsToLayers">mapLayerGroupsToLayers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-store">store</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BASEMAPS_BY_ID">BASEMAPS_BY_ID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LAYERS_BY_ID">LAYERS_BY_ID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LAYER_GROUPS_BY_ID">LAYER_GROUPS_BY_ID</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-classes">js/classes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html">ObliquePhotoMap</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-ducks">js/ducks</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapError">basemapError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapLoaded">basemapLoaded</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapPreload">basemapPreload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemaps">basemaps</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleBasemap">toggleBasemap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layerError">layerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layerLoaded">layerLoaded</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layerPreload">layerPreload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layers">layers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-legendStyleUpdate">legendStyleUpdate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleLayer">toggleLayer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-doneZooming">doneZooming</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-leafletPopupOpened">leafletPopupOpened</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-map">map</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapMousedown">mapMousedown</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapNewZoomLevel">mapNewZoomLevel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resetMapView">resetMapView</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-zoomToShoreline">zoomToShoreline</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-closeMobileFeatureModal">closeMobileFeatureModal</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-closeMobileLayerList">closeMobileLayerList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mobile">mobile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mobileClickFeature">mobileClickFeature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-openMobileLayerList">openMobileLayerList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateWindowDimensions">updateWindowDimensions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-nav">nav</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setNavExpand">setNavExpand</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-closePinnedFeature">closePinnedFeature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPinnedFeature">newPinnedFeature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pinnedFeatures">pinnedFeatures</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-layers">js/layers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-LAYER_STYLE">LAYER_STYLE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">4/81</span></h1>
+
+<table class="files-summary" data-ice="files" data-use-coverage="true">
+  <thead>
+    <tr>
+      <td>File</td>
+      <td>Identifier</td>
+      <td class="coverage">Document</td>
+      <td style="display: none;">Size</td>
+      <td style="display: none;">Lines</td>
+      <td style="display: none;">Updated</td>
+    </tr>
+  </thead>
+  <tbody>
+    
+  <tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#errorLines=106,116,12,136,141,144,28,31,33,34,35,44,45,53,57">src/js/classes/ObliquePhotoMap.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html">ObliquePhotoMap</a></span></td>
+      <td class="coverage"><span data-ice="coverage">6 %</span><span data-ice="coverageCount" class="coverage-count">1/16</span></td>
+      <td style="display: none;" data-ice="size">5710 byte</td>
+      <td style="display: none;" data-ice="lines">147</td>
+      <td style="display: none;" data-ice="updated">2017-07-07 23:22:21 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/js/ducks/basemaps.js.html#errorLines=18,24,30,36,43,9">src/js/ducks/basemaps.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-basemapError">basemapError</a></span>
+<span><a href="function/index.html#static-function-basemapLoaded">basemapLoaded</a></span>
+<span><a href="function/index.html#static-function-basemapPreload">basemapPreload</a></span>
+<span><a href="function/index.html#static-function-basemaps">basemaps</a></span>
+<span><a href="function/index.html#static-function-toggleBasemap">toggleBasemap</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/6</span></td>
+      <td style="display: none;" data-ice="size">2476 byte</td>
+      <td style="display: none;" data-ice="lines">94</td>
+      <td style="display: none;" data-ice="updated">2017-07-01 22:13:00 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/js/ducks/layers.js.html#errorLines=11,18,27,33,39,46,47,65,70">src/js/ducks/layers.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-layerError">layerError</a></span>
+<span><a href="function/index.html#static-function-layerLoaded">layerLoaded</a></span>
+<span><a href="function/index.html#static-function-layerPreload">layerPreload</a></span>
+<span><a href="function/index.html#static-function-layers">layers</a></span>
+<span><a href="function/index.html#static-function-legendStyleUpdate">legendStyleUpdate</a></span>
+<span><a href="function/index.html#static-function-toggleLayer">toggleLayer</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/9</span></td>
+      <td style="display: none;" data-ice="size">3720 byte</td>
+      <td style="display: none;" data-ice="lines">139</td>
+      <td style="display: none;" data-ice="updated">2017-07-01 21:57:58 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/js/ducks/map.js.html#errorLines=15,20,25,31,36,42,48,8">src/js/ducks/map.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-doneZooming">doneZooming</a></span>
+<span><a href="function/index.html#static-function-leafletPopupOpened">leafletPopupOpened</a></span>
+<span><a href="function/index.html#static-function-map">map</a></span>
+<span><a href="function/index.html#static-function-mapMousedown">mapMousedown</a></span>
+<span><a href="function/index.html#static-function-mapNewZoomLevel">mapNewZoomLevel</a></span>
+<span><a href="function/index.html#static-function-resetMapView">resetMapView</a></span>
+<span><a href="function/index.html#static-function-zoomToShoreline">zoomToShoreline</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/8</span></td>
+      <td style="display: none;" data-ice="size">2429 byte</td>
+      <td style="display: none;" data-ice="lines">99</td>
+      <td style="display: none;" data-ice="updated">2017-07-01 21:28:46 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/js/ducks/mobile.js.html#errorLines=18,23,30,38,43,58">src/js/ducks/mobile.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-closeMobileFeatureModal">closeMobileFeatureModal</a></span>
+<span><a href="function/index.html#static-function-closeMobileLayerList">closeMobileLayerList</a></span>
+<span><a href="function/index.html#static-function-mobile">mobile</a></span>
+<span><a href="function/index.html#static-function-mobileClickFeature">mobileClickFeature</a></span>
+<span><a href="function/index.html#static-function-openMobileLayerList">openMobileLayerList</a></span>
+<span><a href="function/index.html#static-function-updateWindowDimensions">updateWindowDimensions</a></span></td>
+      <td class="coverage"><span data-ice="coverage">14 %</span><span data-ice="coverageCount" class="coverage-count">1/7</span></td>
+      <td style="display: none;" data-ice="size">2915 byte</td>
+      <td style="display: none;" data-ice="lines">96</td>
+      <td style="display: none;" data-ice="updated">2017-06-05 20:18:44 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/js/ducks/nav.js.html#errorLines=1,12,5">src/js/ducks/nav.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-nav">nav</a></span>
+<span><a href="function/index.html#static-function-setNavExpand">setNavExpand</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/3</span></td>
+      <td style="display: none;" data-ice="size">652 byte</td>
+      <td style="display: none;" data-ice="lines">30</td>
+      <td style="display: none;" data-ice="updated">2017-06-01 16:41:03 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/js/ducks/pinnedFeatures.js.html#errorLines=11,19,26,9">src/js/ducks/pinnedFeatures.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-closePinnedFeature">closePinnedFeature</a></span>
+<span><a href="function/index.html#static-function-newPinnedFeature">newPinnedFeature</a></span>
+<span><a href="function/index.html#static-function-pinnedFeatures">pinnedFeatures</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/4</span></td>
+      <td style="display: none;" data-ice="size">1145 byte</td>
+      <td style="display: none;" data-ice="lines">47</td>
+      <td style="display: none;" data-ice="updated">2017-05-07 15:05:49 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/js/layers/layerStyles.js.html#errorLines=11,336,338,378,53,79">src/js/layers/layerStyles.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-LAYER_STYLE">LAYER_STYLE</a></span></td>
+      <td class="coverage"><span data-ice="coverage">25 %</span><span data-ice="coverageCount" class="coverage-count">2/8</span></td>
+      <td style="display: none;" data-ice="size">11455 byte</td>
+      <td style="display: none;" data-ice="lines">382</td>
+      <td style="display: none;" data-ice="updated">2017-06-01 20:52:44 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/js/lib/L.Control.MousePosition.js.html#errorLines=46">src/js/lib/L.Control.MousePosition.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/1</span></td>
+      <td style="display: none;" data-ice="size">1618 byte</td>
+      <td style="display: none;" data-ice="lines">48</td>
+      <td style="display: none;" data-ice="updated">2017-04-05 15:15:49 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/js/lib/leaflet.js.html">src/js/lib/leaflet.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">145332 byte</td>
+      <td style="display: none;" data-ice="lines">8</td>
+      <td style="display: none;" data-ice="updated">2017-05-03 14:11:13 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/js/selectors.js.html#errorLines=135,20,31,4,41,5,58,6,68,7,78,9">src/js/selectors.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="variable/index.html#static-variable-getActiveBasemapId">getActiveBasemapId</a></span>
+<span><a href="variable/index.html#static-variable-getActiveLayerStyleTypes">getActiveLayerStyleTypes</a></span>
+<span><a href="variable/index.html#static-variable-getActiveLayers">getActiveLayers</a></span>
+<span><a href="variable/index.html#static-variable-getBasemapsByIdWithData">getBasemapsByIdWithData</a></span>
+<span><a href="variable/index.html#static-variable-getLayerGroupsByIdWithData">getLayerGroupsByIdWithData</a></span>
+<span><a href="variable/index.html#static-variable-getLayersByIdWithData">getLayersByIdWithData</a></span>
+<span><a href="variable/index.html#static-variable-getMobileFeaturePopupProps">getMobileFeaturePopupProps</a></span>
+<span><a href="variable/index.html#static-variable-mapLayerGroupsToLayers">mapLayerGroupsToLayers</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/12</span></td>
+      <td style="display: none;" data-ice="size">5393 byte</td>
+      <td style="display: none;" data-ice="lines">155</td>
+      <td style="display: none;" data-ice="updated">2017-06-03 14:20:21 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/js/store.js.html#errorLines=17,9">src/js/store.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="variable/index.html#static-variable-store">store</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
+      <td style="display: none;" data-ice="size">603 byte</td>
+      <td style="display: none;" data-ice="lines">22</td>
+      <td style="display: none;" data-ice="updated">2017-06-06 19:22:59 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/js/util.js.html#errorLines=3,4,49,5,99">src/js/util.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="variable/index.html#static-variable-BASEMAPS_BY_ID">BASEMAPS_BY_ID</a></span>
+<span><a href="variable/index.html#static-variable-LAYERS_BY_ID">LAYERS_BY_ID</a></span>
+<span><a href="variable/index.html#static-variable-LAYER_GROUPS_BY_ID">LAYER_GROUPS_BY_ID</a></span>
+<span><a href="function/index.html#static-function-getPhotoURLs">getPhotoURLs</a></span>
+<span><a href="function/index.html#static-function-getProfileURLs">getProfileURLs</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/5</span></td>
+      <td style="display: none;" data-ice="size">4194 byte</td>
+      <td style="display: none;" data-ice="lines">121</td>
+      <td style="display: none;" data-ice="updated">2017-07-01 21:57:25 (UTC)</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.3)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

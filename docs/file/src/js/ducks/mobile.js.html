@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">src/js/ducks/mobile.js | oblique-photo-viewer</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Oblique Photo Viewer"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="oblique-photo-viewer"><meta property="twitter:description" content="Oblique Photo Viewer"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/CaitW/oblique-photo-viewer.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js">js</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getPhotoURLs">getPhotoURLs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getProfileURLs">getProfileURLs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getActiveBasemapId">getActiveBasemapId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getActiveLayerStyleTypes">getActiveLayerStyleTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getActiveLayers">getActiveLayers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getBasemapsByIdWithData">getBasemapsByIdWithData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getLayerGroupsByIdWithData">getLayerGroupsByIdWithData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getLayersByIdWithData">getLayersByIdWithData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getMobileFeaturePopupProps">getMobileFeaturePopupProps</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mapLayerGroupsToLayers">mapLayerGroupsToLayers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-store">store</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BASEMAPS_BY_ID">BASEMAPS_BY_ID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LAYERS_BY_ID">LAYERS_BY_ID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LAYER_GROUPS_BY_ID">LAYER_GROUPS_BY_ID</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-classes">js/classes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html">ObliquePhotoMap</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-ducks">js/ducks</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapError">basemapError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapLoaded">basemapLoaded</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapPreload">basemapPreload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemaps">basemaps</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleBasemap">toggleBasemap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layerError">layerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layerLoaded">layerLoaded</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layerPreload">layerPreload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layers">layers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-legendStyleUpdate">legendStyleUpdate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleLayer">toggleLayer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-doneZooming">doneZooming</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-leafletPopupOpened">leafletPopupOpened</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-map">map</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapMousedown">mapMousedown</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapNewZoomLevel">mapNewZoomLevel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resetMapView">resetMapView</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-zoomToShoreline">zoomToShoreline</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-closeMobileFeatureModal">closeMobileFeatureModal</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-closeMobileLayerList">closeMobileLayerList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mobile">mobile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mobileClickFeature">mobileClickFeature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-openMobileLayerList">openMobileLayerList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateWindowDimensions">updateWindowDimensions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-nav">nav</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setNavExpand">setNavExpand</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-closePinnedFeature">closePinnedFeature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPinnedFeature">newPinnedFeature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pinnedFeatures">pinnedFeatures</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-layers">js/layers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-LAYER_STYLE">LAYER_STYLE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/js/ducks/mobile.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * mobile.js Ducks
+ *
+ * Contains the actions and reducer part that controls mobile functionality.
+ * Mobile functionality is present when the window is smaller than 992px.
+ * These features include:
+ * - Mobile Layer List
+ * - Keeping track of window size
+ * - When a feature is clicked during mobile mode (&lt;992px)
+ * - Mobile Feature Modal
+ */
+
+export function openMobileLayerList() {
+    return {
+        type: &quot;MOBILE:LAYER_POPUP:OPEN&quot;
+    }
+}
+export function closeMobileLayerList() {
+    return {
+        type: &quot;MOBILE:LAYER_POPUP:CLOSE&quot;
+    }
+}
+export function updateWindowDimensions(height, width) {
+    return {
+        type: &quot;WINDOW:UPDATE_DIMENSIONS&quot;,
+        height,
+        width
+    }
+}
+export function mobileClickFeature(featureProperties, layerId, featureIndex) {
+    return {
+        type: &quot;MOBILE:LAYER:CLICK_FEATURE&quot;,
+        featureProperties,
+        layerId,
+        featureIndex
+    }
+}
+export function closeMobileFeatureModal() {
+    return {
+        type: &quot;MOBILE:FEATURE_MODAL:CLOSE&quot;
+    }
+}
+let initialState = {
+    window: {
+        height: false,
+        width: false
+    },
+    layersPopup: {
+        visible: false
+    },
+    featureModal: {
+        visible: false,
+        featureProperties: false,
+        layerId: false,
+        featureIndex: false
+    }
+};
+export default function mobile(state = initialState, action) {
+    let newState = Object.assign({}, state);
+    let layersPopupState = Object.assign({}, newState.layersPopup);
+    let windowState = Object.assign({}, newState.window);
+    let featureModalState = Object.assign({}, newState.featureModal);
+    switch (action.type) {
+        case &quot;MOBILE:LAYER_POPUP:OPEN&quot;:
+            layersPopupState.visible = true;
+            newState.layersPopup = layersPopupState;
+            break;
+        case &quot;MOBILE:LAYER_POPUP:CLOSE&quot;:
+            layersPopupState.visible = false;
+            newState.layersPopup = layersPopupState;
+            break;
+        case &quot;WINDOW:UPDATE_DIMENSIONS&quot;:
+            windowState.height = action.height;
+            windowState.width = action.width;
+            newState.window = windowState;
+            break;
+        case &quot;MOBILE:LAYER:CLICK_FEATURE&quot;:
+            featureModalState.visible = true;
+            featureModalState.featureProperties = action.featureProperties;
+            featureModalState.layerId = action.layerId;
+            featureModalState.featureIndex = action.featureIndex;
+            newState.featureModal = featureModalState;
+            break;
+        case &quot;MOBILE:FEATURE_MODAL:CLOSE&quot;:
+            featureModalState.visible = false;
+            featureModalState.featureProperties = false;
+            featureModalState.layerId = false;
+            featureModalState.featureIndex = false;
+            newState.featureModal = featureModalState;
+            break;
+        default:
+            newState = state;
+            break;
+    }
+    return newState;
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.3)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

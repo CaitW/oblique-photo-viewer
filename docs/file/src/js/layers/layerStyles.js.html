@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">src/js/layers/layerStyles.js | oblique-photo-viewer</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Oblique Photo Viewer"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="oblique-photo-viewer"><meta property="twitter:description" content="Oblique Photo Viewer"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/CaitW/oblique-photo-viewer.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js">js</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getPhotoURLs">getPhotoURLs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getProfileURLs">getProfileURLs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getActiveBasemapId">getActiveBasemapId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getActiveLayerStyleTypes">getActiveLayerStyleTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getActiveLayers">getActiveLayers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getBasemapsByIdWithData">getBasemapsByIdWithData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getLayerGroupsByIdWithData">getLayerGroupsByIdWithData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getLayersByIdWithData">getLayersByIdWithData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getMobileFeaturePopupProps">getMobileFeaturePopupProps</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mapLayerGroupsToLayers">mapLayerGroupsToLayers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-store">store</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BASEMAPS_BY_ID">BASEMAPS_BY_ID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LAYERS_BY_ID">LAYERS_BY_ID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LAYER_GROUPS_BY_ID">LAYER_GROUPS_BY_ID</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-classes">js/classes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html">ObliquePhotoMap</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-ducks">js/ducks</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapError">basemapError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapLoaded">basemapLoaded</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapPreload">basemapPreload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemaps">basemaps</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleBasemap">toggleBasemap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layerError">layerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layerLoaded">layerLoaded</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layerPreload">layerPreload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layers">layers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-legendStyleUpdate">legendStyleUpdate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleLayer">toggleLayer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-doneZooming">doneZooming</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-leafletPopupOpened">leafletPopupOpened</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-map">map</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapMousedown">mapMousedown</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapNewZoomLevel">mapNewZoomLevel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resetMapView">resetMapView</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-zoomToShoreline">zoomToShoreline</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-closeMobileFeatureModal">closeMobileFeatureModal</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-closeMobileLayerList">closeMobileLayerList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mobile">mobile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mobileClickFeature">mobileClickFeature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-openMobileLayerList">openMobileLayerList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateWindowDimensions">updateWindowDimensions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-nav">nav</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setNavExpand">setNavExpand</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-closePinnedFeature">closePinnedFeature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPinnedFeature">newPinnedFeature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pinnedFeatures">pinnedFeatures</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-layers">js/layers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-LAYER_STYLE">LAYER_STYLE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/js/layers/layerStyles.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * styles.js
+ * This contains style functions that are applied to each layer when they are loaded.
+ * Additionally, this file caches the styles applied by each layer, so that when
+ * the user activates them in the map, we save memory and we can keep track of all possible styles
+ * for use in the legend
+ */
+import store from &apos;../store&apos;;
+import { legendStyleUpdate } from &apos;../ducks/layers&apos;;
+
+let COLORS = {
+    RED: &quot;#F44336&quot;,
+    GREEN: &quot;#8BC34A&quot;,
+    YELLOW: &quot;#FFEB3B&quot;,
+    GRAY: &quot;#9E9E9E&quot;,
+    BLACK: &quot;#000000&quot;
+};
+
+COLORS.BEACH = [
+    &quot;#E0E0E0&quot;,
+    &apos;#a6cee3&apos;,
+    &apos;#1f78b4&apos;,
+    &apos;#b2df8a&apos;,
+    &apos;#33a02c&apos;,
+    &apos;#fb9a99&apos;,
+    &apos;#e31a1c&apos;,
+    &apos;#fdbf6f&apos;,
+    &apos;#ff7f00&apos;,
+    &apos;#cab2d6&apos;,
+    &apos;#6a3d9a&apos;,
+    &apos;#ffff99&apos;
+]
+
+COLORS.PHOTOS = [
+    &quot;#9575CD&quot;,
+    &quot;#7E57C2&quot;,
+    &quot;#673AB7&quot;,
+    &quot;#512DA8&quot;,
+    &quot;#311B92&quot;
+];
+
+COLORS.STRUCTURES = [
+     &quot;#6D4C41&quot;,
+     &quot;#3E2723&quot;
+];
+
+COLORS.PROFILES = {
+    bathy: &quot;#00838F&quot;,
+    bluff: &quot;#4E342E&quot;
+};
+
+// Default styles, if no style is specified for a particular layer
+const DEFAULT_STYLES = {
+    LineString: {
+        weight: 4,
+        opacity: 0.9,
+        lineCap: &quot;round&quot;,
+        lineJoin: &quot;round&quot;,
+        color: COLORS.BLACK
+    },
+    Point: {
+        radius: 1,
+        color: COLORS.BLACK,
+        strokeColor: COLORS.BLACK,
+        weight: 0,
+        opacity: 0.8,
+        fillOpacity: 0
+    },
+    MultiLineString: {
+        weight: 4,
+        opacity: 0.9,
+        lineCap: &quot;round&quot;,
+        lineJoin: &quot;round&quot;,
+        color: COLORS.BLACK
+    }
+};
+
+// Individual layer styles are added below, as referenced by ID in config.json
+const LAYER_STYLES_BY_ID = {
+    backshore_1976: function(subStyleName) {
+        let style = {
+            ...DEFAULT_STYLES.LineString
+        };
+        switch (subStyleName) {
+            case &quot;Moderately Stable&quot;:
+                style.color = COLORS.GREEN;
+                break;
+            case &quot;Moderately Unstable&quot;:
+                style.color = COLORS.YELLOW;
+                break;
+            case &quot;No Bluff&quot;:
+                style.color = COLORS.GRAY;
+                break;
+            case &quot;Unstable / Failing&quot;:
+                style.color = COLORS.RED;
+                break;
+            default:
+                style.color = COLORS.BLACK;
+                break;
+        }
+        return style;
+    },
+    backshore_2007: function(subStyleName) {
+        let style = {
+            ...DEFAULT_STYLES.LineString
+        };
+        switch (subStyleName) {
+            case &quot;Moderately Stable&quot;:
+                style.color = COLORS.GREEN;
+                break;
+            case &quot;Moderately Unstable&quot;:
+                style.color = COLORS.YELLOW;
+                break;
+            case &quot;No Bluff&quot;:
+                style.color = COLORS.GRAY;
+                break;
+            case &quot;Unstable / Failing&quot;:
+                style.color = COLORS.RED;
+                break;
+            default:
+                style.color = COLORS.BLACK;
+                break;
+        }
+        return style;
+    },
+    photos_1976: function() {
+        return {
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.PHOTOS[0],
+            strokeColor: COLORS.PHOTOS[0]
+        };
+    },
+    photos_2007: function() {
+        return {
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.PHOTOS[1],
+            strokeColor: COLORS.PHOTOS[1],
+        };
+    },
+    structure_1976: function() {
+        return {
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.STRUCTURES[0],
+            fillColor: COLORS.STRUCTURES[0],
+            opacity: 1
+        };
+    },
+    structure_2007: function() {
+        return {
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.STRUCTURES[1],
+            fillColor: COLORS.STRUCTURES[1],
+            opacity: 1
+        };
+    },
+    beachclass_1976: function(subStyleName) {
+        let style = {
+            ...DEFAULT_STYLES.LineString
+        };
+        switch (subStyleName) {
+            case &quot;None&quot;:
+                style.color = COLORS.BEACH[0];
+                break;
+            case &apos;Revetment&apos;:
+                style.color = COLORS.BEACH[1];
+                break;
+            case &apos;Poorly Organized Rip-Rap / Rubble&apos;:
+                style.color = COLORS.BEACH[2];
+                break;
+            case &apos;Seawall / Bulkhead&apos;:
+                style.color = COLORS.BEACH[3];
+                break;
+            case &apos;Groin / Jetty / Offshore Breakwater&apos;:
+                style.color = COLORS.BEACH[4];
+                break;
+            case &apos;Small Boat Dock&apos;:
+                style.color = COLORS.BEACH[5];
+                break;
+            case &apos;Public Marina&apos;:
+                style.color = COLORS.BEACH[6];
+                break;
+            case &apos;Commercial / Industrial Dock&apos;:
+                style.color = COLORS.BEACH[7];
+                break;
+            case &apos;Personal Marina&apos;:
+                style.color = COLORS.BEACH[8];
+                break;
+            case &apos;Offshore Breakwater&apos;:
+                style.color = COLORS.BEACH[9];
+                break;
+            default:
+                style.opacity = 0;
+                break;
+        }
+        return style;
+    },
+    beachclass_2007: function(subStyleName) {
+        let style = {
+            ...DEFAULT_STYLES.LineString
+        };
+        switch (subStyleName) {
+            case &quot;None&quot;:
+                style.color = COLORS.BEACH[0];
+                break;
+            case &apos;Revetment&apos;:
+                style.color = COLORS.BEACH[1];
+                break;
+            case &apos;Poorly Organized Rip-Rap / Rubble&apos;:
+                style.color = COLORS.BEACH[2];
+                break;
+            case &apos;Seawall / Bulkhead&apos;:
+                style.color = COLORS.BEACH[3];
+                break;
+            case &apos;Groin / Jetty / Offshore Breakwater&apos;:
+                style.color = COLORS.BEACH[4];
+                break;
+            case &apos;Small Boat Dock&apos;:
+                style.color = COLORS.BEACH[5];
+                break;
+            case &apos;Public Marina&apos;:
+                style.color = COLORS.BEACH[6];
+                break;
+            case &apos;Commercial / Industrial Dock&apos;:
+                style.color = COLORS.BEACH[7];
+                break;
+            case &apos;Personal Marina&apos;:
+                style.color = COLORS.BEACH[8];
+                break;
+            case &apos;Offshore Breakwater&apos;:
+                style.color = COLORS.BEACH[9];
+                break;
+            default:
+                style.opacity = 0;
+                break;
+        }
+        return style;
+    },
+    profiles: function (subStyleName) {
+        let style = {
+            ...DEFAULT_STYLES.LineString,
+            color: COLORS.PROFILES.bluff
+        };
+        switch (subStyleName) {
+            case &quot;Bathymetric Profile&quot;:
+                style.color = COLORS.PROFILES.bathy;
+                break;
+            default:
+                break;
+        }
+        return style;
+    },
+    photos_2016: function () {
+        return {
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.PHOTOS[3],
+            strokeColor: COLORS.PHOTOS[3]
+        };
+    },
+    photos_2017: function () {
+        return {
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.PHOTOS[4],
+            strokeColor: COLORS.PHOTOS[4]
+        };
+    },
+    photos_2012: function () {
+        return {
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.PHOTOS[2],
+            strokeColor: COLORS.PHOTOS[2]
+        };
+    }
+}
+
+/**
+ * If a layer should have different styles for features based on a particular feature property
+ * i.e. For all features in the Profiles layer:
+ *  - feature.type = &quot;bluff&quot; - should be colored red
+ *  - feature.type = &quot;bathy&quot; - should be colored blue
+ * Return the value of the property that determines the differing style
+ * Alternatively, if a layer&apos;s style should be the same for all features, just return
+ * a string to serve as the label in the legend
+ */
+function getLayerSubStyleName (layerId, feature) {
+    let subStyleName = layerId;
+    switch (layerId) {
+        case &quot;backshore_1976&quot;:
+            subStyleName = feature.properties[&quot;Bluff Condition Classification&quot;];
+            break;
+        case &quot;backshore_2007&quot;:
+            subStyleName = feature.properties[&quot;Bluff Condition Classification&quot;];
+            break;
+        case &quot;photos_1976&quot;:
+            subStyleName = &quot;1976 Photos&quot;;
+            break;
+        case &quot;photos_2007&quot;:
+            subStyleName = &quot;2007 Photos&quot;;
+            break;
+        case &quot;structure_1976&quot;:
+            subStyleName = &quot;Structures&quot;;
+            break;
+        case &quot;structure_2007&quot;:
+            subStyleName = &quot;Structures&quot;;
+            break;
+        case &quot;beachclass_1976&quot;:
+            subStyleName = feature.properties[&quot;Shore Protection Classification&quot;];
+            break;
+        case &quot;beachclass_2007&quot;:
+            subStyleName = feature.properties[&quot;Shore Protection Classification&quot;];
+            break;
+        case &quot;profiles&quot;:
+            if(feature.properties.type === &quot;bathymetry&quot;) {
+                subStyleName = &quot;Bathymetric Profile&quot;;
+            } else {
+                subStyleName = &quot;Bluff Profile&quot;;
+            }
+            break;
+        case &quot;photos_obl_2016&quot;:
+            subStyleName = &quot;2016 Photos&quot;;
+            break;
+        case &quot;photos_dm_2016&quot;:
+            subStyleName = &quot;2016 Photos&quot;;
+            break;
+        case &quot;photos_2017&quot;:
+            subStyleName = &quot;2017 Photos&quot;;
+            break;
+        case &quot;photos_2012&quot;:
+            subStyleName = &quot;2012 Photos&quot;;
+            break;
+        default:
+            break;
+    }
+    return subStyleName;
+}
+
+const CACHE = {};
+
+function getCachedStyle (layerId, feature) {
+    if(typeof CACHE[layerId] !== &quot;undefined&quot;) {
+        let subStyleName = getLayerSubStyleName(layerId, feature);
+        if (typeof CACHE[layerId][subStyleName] !== &quot;undefined&quot;) {
+            return CACHE[layerId][subStyleName];
+        }
+    }
+    return false;
+}
+
+/**
+ * Called when a particular style / sub-style doesn&apos;t have an associated cache
+ * A new style object is created, and cached for future use
+ */
+function createNewStyle (layerId, feature) {
+    let style = null;
+    // Get either the singular name for the layer&apos;s style or the name of the sub-style for this feature
+    let subStyleName = getLayerSubStyleName(layerId, feature);
+    // If there&apos;s a style set for a particular Layer ID, fetch that style
+    // Otherwise, get the default style for that geometry type
+    if (typeof LAYER_STYLES_BY_ID[layerId] !== &quot;undefined&quot;) {
+        style = LAYER_STYLES_BY_ID[layerId](subStyleName);
+    } else if (typeof DEFAULT_STYLES[feature.geometry.type] !== &quot;undefined&quot;) {
+        style = DEFAULT_STYLES[feature.geometry.type];
+    }
+    // assign the classname property of every style
+    let layerIdClass = &quot;layer-&quot; + layerId;
+    let layerTypeClass = &quot;layer-type-&quot; + feature.geometry.type;
+    if(typeof style.className === &quot;undefined&quot;) {
+        style.className = &quot;&quot;;
+    }
+    style.className += &quot; &quot; + [layerTypeClass, layerIdClass].join(&quot; &quot;);
+    // add the style to the legend
+    store.dispatch(legendStyleUpdate(layerId, subStyleName, style, feature.geometry.type));
+    // add style to cache
+    CACHE[layerId] = CACHE[layerId] || {};
+    CACHE[layerId][subStyleName] = style;
+    return style;
+}
+
+export default function LAYER_STYLE (layerId) {
+    return function layerStyle (feature) {
+        return getCachedStyle(layerId, feature) || createNewStyle(layerId, feature);
+    };
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.3)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

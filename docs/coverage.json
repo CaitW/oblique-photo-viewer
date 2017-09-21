@@ -1,0 +1,156 @@
+{
+  "coverage": "4.93%",
+  "expectCount": 81,
+  "actualCount": 4,
+  "files": {
+    "src/js/classes/ObliquePhotoMap.js": {
+      "expectCount": 16,
+      "actualCount": 1,
+      "undocumentLines": [
+        12,
+        28,
+        31,
+        33,
+        34,
+        35,
+        44,
+        45,
+        53,
+        57,
+        106,
+        116,
+        136,
+        141,
+        144
+      ]
+    },
+    "src/js/ducks/basemaps.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        9,
+        18,
+        24,
+        30,
+        36,
+        43
+      ]
+    },
+    "src/js/ducks/layers.js": {
+      "expectCount": 9,
+      "actualCount": 0,
+      "undocumentLines": [
+        11,
+        18,
+        27,
+        33,
+        39,
+        46,
+        47,
+        65,
+        70
+      ]
+    },
+    "src/js/ducks/map.js": {
+      "expectCount": 8,
+      "actualCount": 0,
+      "undocumentLines": [
+        8,
+        15,
+        20,
+        25,
+        31,
+        36,
+        42,
+        48
+      ]
+    },
+    "src/js/ducks/mobile.js": {
+      "expectCount": 7,
+      "actualCount": 1,
+      "undocumentLines": [
+        18,
+        23,
+        30,
+        38,
+        43,
+        58
+      ]
+    },
+    "src/js/ducks/nav.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        5,
+        12
+      ]
+    },
+    "src/js/ducks/pinnedFeatures.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        9,
+        11,
+        19,
+        26
+      ]
+    },
+    "src/js/layers/layerStyles.js": {
+      "expectCount": 8,
+      "actualCount": 2,
+      "undocumentLines": [
+        11,
+        53,
+        79,
+        336,
+        338,
+        378
+      ]
+    },
+    "src/js/lib/L.Control.MousePosition.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        46
+      ]
+    },
+    "src/js/selectors.js": {
+      "expectCount": 12,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        6,
+        7,
+        9,
+        20,
+        31,
+        41,
+        58,
+        68,
+        78,
+        135
+      ]
+    },
+    "src/js/store.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        9,
+        17
+      ]
+    },
+    "src/js/util.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        49,
+        99,
+        3,
+        4,
+        5
+      ]
+    }
+  }
+}

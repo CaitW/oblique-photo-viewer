@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/js/selectors.js | oblique-photo-viewer</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Oblique Photo Viewer"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="oblique-photo-viewer"><meta property="twitter:description" content="Oblique Photo Viewer"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/CaitW/oblique-photo-viewer.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js">js</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getPhotoURLs">getPhotoURLs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getProfileURLs">getProfileURLs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getActiveBasemapId">getActiveBasemapId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getActiveLayerStyleTypes">getActiveLayerStyleTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getActiveLayers">getActiveLayers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getBasemapsByIdWithData">getBasemapsByIdWithData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getLayerGroupsByIdWithData">getLayerGroupsByIdWithData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getLayersByIdWithData">getLayersByIdWithData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getMobileFeaturePopupProps">getMobileFeaturePopupProps</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mapLayerGroupsToLayers">mapLayerGroupsToLayers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-store">store</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BASEMAPS_BY_ID">BASEMAPS_BY_ID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LAYERS_BY_ID">LAYERS_BY_ID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LAYER_GROUPS_BY_ID">LAYER_GROUPS_BY_ID</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-classes">js/classes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html">ObliquePhotoMap</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-ducks">js/ducks</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapError">basemapError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapLoaded">basemapLoaded</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapPreload">basemapPreload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemaps">basemaps</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleBasemap">toggleBasemap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layerError">layerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layerLoaded">layerLoaded</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layerPreload">layerPreload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layers">layers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-legendStyleUpdate">legendStyleUpdate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleLayer">toggleLayer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-doneZooming">doneZooming</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-leafletPopupOpened">leafletPopupOpened</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-map">map</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapMousedown">mapMousedown</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapNewZoomLevel">mapNewZoomLevel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resetMapView">resetMapView</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-zoomToShoreline">zoomToShoreline</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-closeMobileFeatureModal">closeMobileFeatureModal</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-closeMobileLayerList">closeMobileLayerList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mobile">mobile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mobileClickFeature">mobileClickFeature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-openMobileLayerList">openMobileLayerList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateWindowDimensions">updateWindowDimensions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-nav">nav</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setNavExpand">setNavExpand</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-closePinnedFeature">closePinnedFeature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPinnedFeature">newPinnedFeature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pinnedFeatures">pinnedFeatures</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-layers">js/layers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-LAYER_STYLE">LAYER_STYLE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/js/selectors.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { createSelector } from &apos;reselect&apos;;
+import { LAYERS_BY_ID, LAYER_GROUPS_BY_ID, BASEMAPS_BY_ID } from &apos;./util&apos;;
+
+const getLayersById = state =&gt; state.layers.layersById;
+const getBasemapsById = state =&gt; state.basemaps;
+const getLayerGroupsById = state =&gt; state.layers.layerGroupsById;
+const getMobileFeatureModal = state =&gt; state.mobile.featureModal;
+
+export const getBasemapsByIdWithData = createSelector([getBasemapsById], basemaps =&gt; {
+    let basemapsWithData = {};
+    for(let basemapId in basemaps) {
+        basemapsWithData[basemapId] = {
+            ...BASEMAPS_BY_ID[basemapId],
+            ...basemaps[basemapId]
+        }
+    }
+    return basemapsWithData;
+});
+
+export const getLayersByIdWithData = createSelector([getLayersById], layers =&gt; {
+    let layersWithData = {};
+    for (let layerId in layers) {
+        layersWithData[layerId] = {
+            ...LAYERS_BY_ID[layerId],
+            ...layers[layerId]
+        };
+    }
+    return layersWithData;
+});
+
+export const getLayerGroupsByIdWithData = createSelector([getLayerGroupsById], layerGroups =&gt; {
+    let layersGroupsWithData = {};
+    for (let layerGroupId in layerGroups) {
+        layersGroupsWithData[layerGroupId] = {
+            ...LAYER_GROUPS_BY_ID[layerGroupId]
+        };
+    }
+    return layersGroupsWithData;
+});
+
+export const mapLayerGroupsToLayers = createSelector(
+    [getLayerGroupsByIdWithData, getLayersByIdWithData],
+    (layerGroups, layers) =&gt; {
+        let mappedLayerGroups = {};
+        for (let layerGroupId in layerGroups) {
+            mappedLayerGroups[layerGroupId] = {
+                ...layerGroups[layerGroupId],
+                layers: {}
+            };
+            for (let layerId of layerGroups[layerGroupId].layers) {
+                mappedLayerGroups[layerGroupId].layers[layerId] = layers[layerId];
+            }
+        }
+        return mappedLayerGroups;
+    }
+);
+
+export const getActiveBasemapId = createSelector([getBasemapsById], basemaps =&gt; {
+    let activeBasemapId = &quot;&quot;;
+    for(let basemapId in basemaps) {
+        if(basemaps[basemapId].active === true) {
+            activeBasemapId = basemapId;
+        }
+    }
+    return activeBasemapId;
+});
+
+export const getActiveLayers = createSelector(getLayersById, layers =&gt; {
+    let activeLayers = [];
+    for (let layerId in layers) {
+        if (layers[layerId].active === true) {
+            activeLayers.push(layerId);
+        }
+    }
+    return activeLayers;
+});
+
+export const getActiveLayerStyleTypes = createSelector(
+    [getLayersByIdWithData, getLayerGroupsByIdWithData, getActiveLayers],
+    (layers, layerGroups, activeLayers) =&gt; {
+        let stylesByLayerId = {};
+        for (let layerId of activeLayers) {
+            let layer = layers[layerId];
+            let layerName = layer.name || layerId;
+            let layerGroupId = layer.layerGroupId;
+            let layerGroupName = layerGroupId;
+            if (typeof layerGroups[layerGroupId] !== &quot;undefined&quot;) {
+                layerGroupName = layerGroups[layerGroupId].name || layerGroupId;
+            }
+            let legendStyles = layer.legendStyles;
+            let styles = [];
+            for (let styleName in legendStyles) {
+                let styleIconClassNames = [&quot;fa&quot;];
+                let iconStyle = {
+                    color: &quot;#000000&quot;
+                };
+                if (
+                    legendStyles[styleName].geometryType === &quot;LineString&quot;
+                    || legendStyles[styleName].geometryType === &quot;MultiLineString&quot;
+                ) {
+                    styleIconClassNames.push(&quot;fa-minus&quot;);
+                    iconStyle.color = legendStyles[styleName].style.color;
+                } else if (legendStyles[styleName].geometryType === &quot;Point&quot;) {
+                    styleIconClassNames.push(&quot;fa-circle&quot;);
+                    iconStyle.color = legendStyles[styleName].style.strokeColor;
+                }
+                if (styleName === &quot;null&quot;) {
+                    styleName = &quot;(No Value)&quot;;
+                }
+                styles.push({
+                    styleName,
+                    iconStyle,
+                    styleIconClassNames
+                });
+            }
+            styles = styles.sort(function(a, b) {
+                if (a.styleName &lt; b.styleName) {
+                    return -1;
+                }
+                if (a.styleName &gt; b.styleName) {
+                    return 1;
+                }
+                return 0;
+            });
+            stylesByLayerId[layerId] = {
+                layerName,
+                layerGroupName,
+                styles
+            };
+        }
+        return stylesByLayerId;
+    }
+);
+
+export const getMobileFeaturePopupProps = createSelector(
+    [getLayersByIdWithData, getLayerGroupsByIdWithData, getMobileFeatureModal],
+    (layers, layerGroups, featureModal) =&gt; {
+        if (typeof featureModal.layerId !== &quot;undefined&quot; &amp;&amp; featureModal.layerId !== false) {
+            let layerId = featureModal.layerId;
+            let layerName = layers[layerId].name;
+            let layerGroupId = layers[layerId].layerGroupId;
+            let layerGroupName = layerGroups[layerGroupId].name;
+            return {
+                ...featureModal,
+                layerName,
+                layerGroupName
+            }
+        }
+        return {
+            ...featureModal,
+            layerName: &quot;&quot;,
+            layerGroupName: &quot;&quot;
+        };
+    }
+);
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.3)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

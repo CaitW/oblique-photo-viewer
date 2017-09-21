@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | oblique-photo-viewer</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Oblique Photo Viewer"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="oblique-photo-viewer"><meta property="twitter:description" content="Oblique Photo Viewer"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/CaitW/oblique-photo-viewer.git"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js">js</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getPhotoURLs">getPhotoURLs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getProfileURLs">getProfileURLs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getActiveBasemapId">getActiveBasemapId</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getActiveLayerStyleTypes">getActiveLayerStyleTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getActiveLayers">getActiveLayers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getBasemapsByIdWithData">getBasemapsByIdWithData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getLayerGroupsByIdWithData">getLayerGroupsByIdWithData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getLayersByIdWithData">getLayersByIdWithData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getMobileFeaturePopupProps">getMobileFeaturePopupProps</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mapLayerGroupsToLayers">mapLayerGroupsToLayers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-store">store</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BASEMAPS_BY_ID">BASEMAPS_BY_ID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LAYERS_BY_ID">LAYERS_BY_ID</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-LAYER_GROUPS_BY_ID">LAYER_GROUPS_BY_ID</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-classes">js/classes</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html">ObliquePhotoMap</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-ducks">js/ducks</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapError">basemapError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapLoaded">basemapLoaded</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapPreload">basemapPreload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemaps">basemaps</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleBasemap">toggleBasemap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layerError">layerError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layerLoaded">layerLoaded</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layerPreload">layerPreload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-layers">layers</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-legendStyleUpdate">legendStyleUpdate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleLayer">toggleLayer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-doneZooming">doneZooming</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-leafletPopupOpened">leafletPopupOpened</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-map">map</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapMousedown">mapMousedown</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapNewZoomLevel">mapNewZoomLevel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resetMapView">resetMapView</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-zoomToShoreline">zoomToShoreline</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-closeMobileFeatureModal">closeMobileFeatureModal</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-closeMobileLayerList">closeMobileLayerList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mobile">mobile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mobileClickFeature">mobileClickFeature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-openMobileLayerList">openMobileLayerList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateWindowDimensions">updateWindowDimensions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-nav">nav</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setNavExpand">setNavExpand</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-closePinnedFeature">closePinnedFeature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPinnedFeature">newPinnedFeature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pinnedFeatures">pinnedFeatures</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-layers">js/layers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-LAYER_STYLE">LAYER_STYLE</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="wisconsin-shoreline-inventory-and-oblique-photo-viewer">Wisconsin Shoreline Inventory and Oblique Photo Viewer</h1><h2 id="front-end-stack-">Front-end Stack:</h2><ul>
+<li><strong>Framework</strong><ul>
+<li><a href="https://facebook.github.io/react/">React</a></li>
+<li><a href="http://redux.js.org/">Redux</a></li>
+</ul>
+</li>
+<li><strong>Map</strong><ul>
+<li><a href="http://leafletjs.com/">Leaflet</a></li>
+</ul>
+</li>
+<li><strong>Design</strong><ul>
+<li><a href="https://react-bootstrap.github.io/">React-Bootstrap</a></li>
+<li><a href="http://sass-lang.com/">Sass</a></li>
+<li><a href="http://fontawesome.io/">Font Awesome</a></li>
+</ul>
+</li>
+<li><strong>Workflow</strong><ul>
+<li><a href="https://webpack.github.io/">Webpack</a></li>
+<li><a href="http://gulpjs.com/">Gulp</a></li>
+<li><a href="https://babeljs.io/">Babel</a></li>
+</ul>
+</li>
+<li><strong>Other Libraries</strong><ul>
+<li><a href="https://github.com/mzabriskie/axios">axios</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="overview">Overview</h2><p>The Oblique Photo Viewer app is assembled using the collection of tools above. The source files (<code>src/</code>) are compiled, using several tools, into the production version of the application (<code>dist/</code>).</p>
+<h2 id="simple-setup">Simple Setup</h2><ol>
+<li>Clone / Download this repository</li>
+<li>Copy the contents of <code>dist/</code> onto your web server</li>
+</ol>
+<h2 id="deploying">Deploying</h2><p>To get updates from GitHub and automatically push the built version to the web server (requires that <a href="https://git-scm.com/">git</a> CLI is installed)</p>
+<p>Install if you already haven&apos;t...</p>
+<ol>
+<li>Clone / Download this repository</li>
+<li><code>npm install</code></li>
+<li><code>gulp build</code></li>
+</ol>
+<p>Also:</p>
+<ol>
+<li>Make a <code>server_config.json</code> (or copy <code>server_config.example.json</code> and rename) and specify your webserver location</li>
+</ol>
+<p>After any changes occur to the GitHub, deploy those changes to the server using:</p>
+<ol>
+<li><code>npm run deploy</code></li>
+</ol>
+<h2 id="modifications">Modifications</h2><h3 id="first--install">First: Install</h3><p>To make changes, you will need to: fully install all dependencies, alter the source files, and re-compile the application.</p>
+<ol>
+<li>Clone the GitHub repository</li>
+<li><code>cd</code> to the repository directory</li>
+<li><code>npm install</code></li>
+</ol>
+<h3 id="changes">Changes</h3><ol>
+<li>Make any changes required to <code>src/</code></li>
+<li><code>gulp dev-build</code> to compile for testing, <code>gulp build</code> to compile for production</li>
+</ol>
+<p>Results will appear in the <code>dist/</code> folder.</p>
+<p>The app doesn&apos;t come shipped with a web server, so you&apos;ll need to host <code>/dist</code> using your own server or view the files using a browser locally.</p>
+<h3 id="config-json-modifications">config.json Modifications</h3><p>The configuration file is located in <code>src/js/config.json</code>. It contains select options that can be changed quickly.</p>
+<h4 id="config-map">CONFIG.map</h4><p><code>wisconsinExtent</code> - the extent the map zooms to on load, and when the user selects &quot;Reset View&quot;</p>
+<p><code>maxExtent</code> - the maximum boundaries of the map</p>
+<p><code>basemaps</code> - contains a list of basemaps to display in the map, in the format of:</p>
+<pre><code class="lang-Javascript"><code class="source-code prettyprint">&quot;BASEMAP_ID&quot;: {
+    &quot;name&quot;: &quot;BASEMAP_NAME&quot;,
+    &quot;url&quot;: &quot;URL_OF_BASEMAP&quot;,
+    &quot;defaultActive&quot;: /* Boolean: Whether the basemap should be active on map load */
+}</code>
+</code></pre>
+<p><code>layers</code> - contains a list of layer groups and layers to display in the map, in the format of:</p>
+<pre><code class="lang-Javascript"><code class="source-code prettyprint">&quot;LAYER_GROUP_ID&quot;: {
+    &quot;name&quot;: &quot;LAYER_GROUP_NAME&quot;,
+    &quot;layers&quot;: {
+        &quot;LAYER_ID&quot;: {
+            &quot;name&quot;: &quot;LAYER_NAME&quot;,
+            &quot;type&quot;: /* &quot;geojson&quot; OR &quot;tileLayer&quot;, mapped to Leaflet layer types of same name */,
+            &quot;styleID&quot;: &quot;STYLE_ID&quot;, /* referring to the style specified in /src/js/layers/layerStyles.js */
+            &quot;dataLocation&quot;: &quot;./data/layers/LAYER.json&quot;, /* for geoJson types, refers to location of geoJSON file with layer data */
+            &quot;defaultActive&quot;: false, /* boolean: active or inactive on map load */
+            /* feature properties in the geojson mapped to either a string,
+              which will modify the display name of the property in that feature&apos;s popup,
+              or a boolean value, indicating whether it should be shown or hidden */
+            &quot;tableProperties&quot;: {
+              &quot;propertyNameInGeoJson&quot;: &quot;Property Name to Show in Popup&quot;
+              &quot;aHiddenProperty&quot;: false,
+              &quot;Properly Formatted Property Name In GeoJSON&quot;: true
+            }
+        },
+        &quot;ANOTHER_LAYER_ID&quot;: {
+          // ...
+        }
+    }
+}</code>
+</code></pre>
+<p><code>countyShorelines</code> - contains a list of county shorelines and their extents, for use in &quot;zoom to shoreline&quot; button</p>
+<h4 id="config-resources">CONFIG.resources</h4><ul>
+<li>Arbitrary storing of URLs for use in app popups, images</li>
+</ul>
+<h4 id="basemap-sources">Basemap Sources</h4><p>The application utilizes Mapbox basemaps.</p>
+<h3 id="adding-a-layer">Adding a Layer</h3><ol>
+<li>Add layer spec to config.json (<code>src/js/config.json</code>), within the <code>map.layers</code> property as documented above</li>
+<li>If a geojson layer, add that layer&apos;s geojson file to <code>src/js/data/layers/</code></li>
+<li>If you want to style the layer (geojson layers only), add a (Leaflet) style function in <code>src/js/layers/layerStyles.js</code></li>
+<li>If the layer should have different styles for different types of features, make sure to add a case to the <code>getLayerSubStyleName</code> function</li>
+<li>To make custom modifications to a layer&apos;s popup, modify <code>src/js/components/FeaturePopups/components/PopupTabs</code></li>
+<li>Rebuild the application</li>
+</ol>
+<h3 id="pull-requests">Pull Requests</h3><p>When making pull requests, please use the gulp task <code>lint</code> to lint your files before submitting.</p>
+<h3 id="releases">Releases</h3><p>Only issue a release after running the <code>gulp build</code> task, so that the /dist folder is built using the production configuration</p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.3)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
