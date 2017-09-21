@@ -23,13 +23,15 @@ $font_icons: 'Font Awesome';
 
 @import 'nav';
 
+@import 'nav-dropdown';
+
 @import 'sidebar';
 
 @import 'animations';
 
 @import 'map';
 
-@import 'popups';
+@import 'feature-popups';
 
 // CSS
 html {

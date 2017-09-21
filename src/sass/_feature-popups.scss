@@ -1,44 +1,9 @@
-// Unpinned Leaflet Feature Popups
-.leaflet-popup-content-wrapper {
-  margin: 0;
-  border-radius: 3px;
-  background-color: $primary_50;
-  padding: 1px 0 1px 1px;
-  width: 350px;
-
-  .leaflet-popup-content {
-    margin: -1px;
-  }
-}
-
-.leaflet-popup-tip {
-  background-color: $primary_800;
-}
-
-// Pinned Feature Popup Container
-.wiscviewer-pinned-feature-popup-container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  pointer-events: none;
-  overflow: visible;
-  z-index: 1100;
-
-  * {
-    pointer-events: auto;
-  }
-}
-
-.wiscviewer-pinned-feature-popup {
-  position: absolute;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
-
-  .wiscviewer-feature-popup-header {
-    cursor: move;
-  }
-}
+@import 'featurePopups/unpinned';
+@import 'featurePopups/pinned';
+@import 'featurePopups/mobile';
+// tabs
+@import 'featurePopups/tabs/data-tab';
+@import 'featurePopups/tabs/profile-tab';
 
 // Both Leaflet Popups and Pinned Popups
 .wiscviewer-feature-popup {
@@ -54,16 +19,19 @@
   }
 
   a {
-    button {
+    button,
+    button:active {
       font-size: inherit;
       padding: 5px 10px;
       border: 0;
-      background-color: $primary_900;
+      border-radius: 0;
+      background-color: $primary_800;
       color: $primary_200;
+      outline: none;
 
       &:hover {
         color: $primary_50;
-        background-color: $primary_900;
+        background-color: $primary_800;
       }
     }
   }
@@ -84,6 +52,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
 
   .fa-chevron-right {
     font-size: 10px;
@@ -93,7 +63,7 @@
 }
 
 .wiscviewer-feature-popup-controls {
-  color: $primary_200;
+  color: $primary_300;
   margin: 2px 10px 0 0;
   font-size: 20px;
   float: right;
@@ -172,45 +142,9 @@
   }
 }
 
-.wiscviewer-data-table {
-  width: 350px;
-  margin-bottom: 0;
-  font-size: 12px;
-  color: $primary_900;
-
-  tr {
-    td {
-      border: none !important;
-      &:first-child {
-        text-align: left;
-        color: $primary_900;
-      }
-      &:last-child {
-        text-align: right;
-      }
-    }
-  }
-
-  tr:nth-of-type(odd) {
-    background-color: $primary_100;
-
-    &:hover {
-      background-color: $primary_100;
-    }
-  }
-
-  tr:nth-of-type(even) {
-    background-color: $primary_50;
-
-    &:hover {
-      background-color: $primary_50;
-    }
-  }
-}
-
 .wiscviewer-feature-popup-footer {
   padding: 10px 10px;
-  background-color: $primary_800;
+  background-color: $primary_900;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 
@@ -233,54 +167,3 @@
   }
 }
 
-.wiscviewer-profile-tab {
-  .lake-stats {
-    stroke-width: 1px;
-  }
-
-  .michigan-avg {
-    stroke: $primary_700;
-  }
-
-  .michigan-high {
-    stroke: $primary_600;
-  }
-
-  .michigan-low {
-    stroke: $primary_600;
-  }
-
-  .tick {
-    font-family: $font-body;
-
-    line {
-      stroke: $primary_600;
-    }
-
-    text {
-      fill: $primary_400;
-    }
-  }
-
-  .domain {
-    stroke-width: 3px;
-    stroke: $primary_600;
-    stroke-linecap: butt;
-  }
-
-  .line {
-    stroke: $secondary_300;
-    stroke-width: 2px;
-    fill: none;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-  }
-
-  .wiscviewer-profile-graph {
-    background-color: $primary_900;
-  }
-
-  .axis-label {
-    fill: $primary_600;
-  }
-}

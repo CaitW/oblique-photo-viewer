@@ -1,0 +1,16 @@
+// Unpinned Leaflet Feature Popups
+.leaflet-popup-content-wrapper {
+  margin: 0;
+  border-radius: 3px;
+  background-color: $primary_50;
+  padding: 1px 0 1px 1px;
+  width: 350px;
+
+  .leaflet-popup-content {
+    margin: -1px;
+  }
+}
+
+.leaflet-popup-tip {
+  background-color: $primary_800;
+}

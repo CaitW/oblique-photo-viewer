@@ -1,0 +1,24 @@
+// Pinned Feature Popup Container
+.wiscviewer-pinned-feature-popup-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 1100;
+
+  * {
+    pointer-events: auto;
+  }
+}
+
+.wiscviewer-pinned-feature-popup {
+  position: absolute;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+
+  .wiscviewer-feature-popup-header {
+    cursor: move;
+  }
+}

@@ -1,23 +1,24 @@
 .wiscviewer-mobile-modal {
   font-size: 18px;
-  color: $primary_100;
+  border-radius: 0;
 
   .modal-dialog {
     z-index: 600;
     max-height: calc(100% - 20px);
     overflow-y: scroll;
+    border-radius: 0;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   }
 
   .modal-content {
-    background-color: $primary_700;
     height: 100%;
     overflow-y: scroll;
+    border-radius: 0;
+    border: none;
   }
 
   .modal-header {
-    background-color: $primary_800;
     border: 0;
-    height: 50px;
     font-size: 16px;
     i {
       margin: 0 10px;
@@ -31,21 +32,20 @@
   }
 
   .modal-footer {
-    background-color: $primary_700;
     border: 0;
     min-height: 60px;
     padding: 10px;
-
-    button:not(:first-child) {
-      margin-left: 10px;
+    button {
+      margin: 0;
     }
   }
 
-  .btn {
+  button.btn {
     border: 0;
     background-color: $primary_900;
     color: $primary_200;
     font-size: 18px;
+    border-radius: 0;
 
     &:hover {
       background-color: $primary_900;
@@ -53,106 +53,32 @@
   }
 }
 
-.wiscviewer-mobile-feature-popup {
-  img {
-    width: 100%;
+.wiscviewer-mobile-layers-list {
+  color: $primary_100;
+
+  .modal-dialog {
+    height: calc(100% - 20px);
   }
 
-  .modal-body {
-    padding: 0;
+  .modal-content {
+    background-color: $primary_700;
+  }
+
+  .modal-header {
+    background-color: $primary_800;
   }
 
   .modal-footer {
-    font-size: 30px;
+    background-color: $primary_700;
   }
 
-  .nav-tabs {
-    border: none;
+  button.btn {
+    background-color: $primary_900;
+    color: $primary_200;
 
-    li {
-      a {
-        padding: 10px 20px;
-        color: $primary_200;
-        border: none;
-        background-color: inherit !important;
-      }
-
-      &.active {
-        a {
-          color: $primary_50;
-          border: none;
-        }
-      }
+    &:hover {
+      background-color: $primary_900;
     }
-  }
-
-  .tab-content {
-    padding: 0;
-    overflow-x: auto;
-    border: none;
-    border: 0 solid $primary_900;
-    border-width: 4px 0;
-  }
-
-  .wiscviewer-popup-downloads-row {
-    display: block;
-    margin: 0 0 10px;
-    padding: 0;
-    text-align: left;
-
-    i {
-      display: none;
-    }
-  }
-
-  table {
-    width: 100%;
-    font-size: 14px;
-  }
-
-  button {
-    margin-left: 5px;
-  }
-
-  .wiscviewer-profile-tab {
-    .lake-stats {
-      stroke-width: 2px;
-    }
-
-    .domain {
-      stroke-width: 4px;
-    }
-
-    .line {
-      stroke-width: 3px;
-    }
-
-    .axis-label {
-      font-size: 16px;
-    }
-  }
-}
-
-.wiscviewer-feature-controls {
-  text-align: center;
-
-  .wiscviewer-feature-popup-previous-button {
-    float: left;
-  }
-
-  .wiscviewer-feature-popup-next-button {
-    float: right;
-  }
-
-  i {
-    font-size: 30px;
-    margin: 0 10px;
-  }
-}
-
-.wiscviewer-mobile-layers-list {
-  .modal-dialog {
-    height: calc(100% - 20px);
   }
 
   .panel {
@@ -188,18 +114,13 @@
     border-radius: 0;
     margin-bottom: 0;
   }
-
-  .list-group-item {
-    background-color: $primary_100;
-    border-color: $primary_400;
-    color: $primary_900;
-    border-width: 1px 0 0;
-    border-radius: 0;
-
-    &.active {
-      background-color: $primary_700;
-      border-color: $primary_400;
-      color: $primary_50;
+  .wiscviewer-layer-list-group {
+    .wiscviewer-layer-item {
+      &.active {
+        color: $primary_50;
+      }
     }
   }
 }
+
+

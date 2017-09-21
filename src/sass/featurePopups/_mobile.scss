@@ -1,0 +1,97 @@
+.wiscviewer-mobile-feature-popup {
+  color: $primary_100;
+
+  .modal-dialog {
+    height: calc(100% - 20px);
+  }
+
+  .modal-body {
+    padding: 0;
+  }
+
+  .modal-content {
+    background-color: $primary_800;
+  }
+
+  .modal-header {
+    background-color: $primary_900;
+  }
+
+  .modal-footer {
+    background-color: $primary_900;
+    font-size: 30px;
+  }
+
+  button.btn {
+    background-color: $primary_800;
+    color: $primary_200;
+
+    &:hover {
+      background-color: $primary_800;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .nav-tabs {
+    border: none;
+
+    li {
+      a {
+        padding: 10px 20px;
+        color: $primary_200;
+        border: none;
+        background-color: inherit !important;
+      }
+
+      &.active {
+        a {
+          color: $primary_50;
+          border: none;
+        }
+      }
+    }
+  }
+
+  .tab-content {
+    padding: 0;
+    overflow-x: auto;
+    border: none;
+    border: 0 solid $primary_900;
+    border-width: 4px 0;
+  }
+
+  .wiscviewer-popup-downloads-row {
+    display: block;
+    margin: 0 0 10px;
+    padding: 0;
+    text-align: left;
+
+    i {
+      font-size: 18px;
+    }
+  }
+
+  button {
+    margin-left: 5px;
+  }
+}
+
+.wiscviewer-feature-controls {
+  text-align: center;
+
+  .wiscviewer-feature-popup-previous-button {
+    float: left;
+  }
+
+  .wiscviewer-feature-popup-next-button {
+    float: right;
+  }
+
+  i {
+    font-size: 30px;
+    margin: 0 10px;
+  }
+}

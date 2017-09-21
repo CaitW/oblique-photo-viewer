@@ -90,15 +90,16 @@ $hide_scroll_padding: 17px;
   border-width: 0;
   border-radius: 0;
   margin: 0;
+  background-color: $primary_800;
+  //box-shadow: inset 0px 3px 10px rgba(0,0,0,0.10);
 
   .wiscviewer-layer-item,
   .wiscviewer-layer-item:focus {
-    background-color: $primary_800;
-    border-color: $primary_200;
     color: $primary_200;
-    border-width: 0;
     border-radius: 0;
     padding: 10px;
+    background-color: transparent;
+    border: none;
 
     &:hover {
       color: $primary_50;

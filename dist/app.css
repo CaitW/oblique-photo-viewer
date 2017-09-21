@@ -8428,19 +8428,20 @@ button.close {
 
 .wiscviewer-mobile-modal {
   font-size: 18px;
-  color: #cfd8dc; }
+  border-radius: 0; }
   .wiscviewer-mobile-modal .modal-dialog {
     z-index: 600;
     max-height: calc(100% - 20px);
-    overflow-y: scroll; }
+    overflow-y: scroll;
+    border-radius: 0;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }
   .wiscviewer-mobile-modal .modal-content {
-    background-color: #455a64;
     height: 100%;
-    overflow-y: scroll; }
+    overflow-y: scroll;
+    border-radius: 0;
+    border: none; }
   .wiscviewer-mobile-modal .modal-header {
-    background-color: #37474f;
     border: 0;
-    height: 50px;
     font-size: 16px; }
     .wiscviewer-mobile-modal .modal-header i {
       margin: 0 10px; }
@@ -8449,123 +8450,58 @@ button.close {
     overflow-y: auto;
     overflow-x: hidden; }
   .wiscviewer-mobile-modal .modal-footer {
-    background-color: #455a64;
     border: 0;
     min-height: 60px;
     padding: 10px; }
-    .wiscviewer-mobile-modal .modal-footer button:not(:first-child) {
-      margin-left: 10px; }
-  .wiscviewer-mobile-modal .btn {
+    .wiscviewer-mobile-modal .modal-footer button {
+      margin: 0; }
+  .wiscviewer-mobile-modal button.btn {
     border: 0;
     background-color: #263238;
     color: #b0bec5;
-    font-size: 18px; }
-    .wiscviewer-mobile-modal .btn:hover {
+    font-size: 18px;
+    border-radius: 0; }
+    .wiscviewer-mobile-modal button.btn:hover {
       background-color: #263238; }
 
-.wiscviewer-mobile-feature-popup img {
-  width: 100%; }
-
-.wiscviewer-mobile-feature-popup .modal-body {
-  padding: 0; }
-
-.wiscviewer-mobile-feature-popup .modal-footer {
-  font-size: 30px; }
-
-.wiscviewer-mobile-feature-popup .nav-tabs {
-  border: none; }
-  .wiscviewer-mobile-feature-popup .nav-tabs li a {
-    padding: 10px 20px;
-    color: #b0bec5;
-    border: none;
-    background-color: inherit !important; }
-  .wiscviewer-mobile-feature-popup .nav-tabs li.active a {
-    color: #eceff1;
-    border: none; }
-
-.wiscviewer-mobile-feature-popup .tab-content {
-  padding: 0;
-  overflow-x: auto;
-  border: none;
-  border: 0 solid #263238;
-  border-width: 4px 0; }
-
-.wiscviewer-mobile-feature-popup .wiscviewer-popup-downloads-row {
-  display: block;
-  margin: 0 0 10px;
-  padding: 0;
-  text-align: left; }
-  .wiscviewer-mobile-feature-popup .wiscviewer-popup-downloads-row i {
-    display: none; }
-
-.wiscviewer-mobile-feature-popup table {
-  width: 100%;
-  font-size: 14px; }
-
-.wiscviewer-mobile-feature-popup button {
-  margin-left: 5px; }
-
-.wiscviewer-mobile-feature-popup .wiscviewer-profile-tab .lake-stats {
-  stroke-width: 2px; }
-
-.wiscviewer-mobile-feature-popup .wiscviewer-profile-tab .domain {
-  stroke-width: 4px; }
-
-.wiscviewer-mobile-feature-popup .wiscviewer-profile-tab .line {
-  stroke-width: 3px; }
-
-.wiscviewer-mobile-feature-popup .wiscviewer-profile-tab .axis-label {
-  font-size: 16px; }
-
-.wiscviewer-feature-controls {
-  text-align: center; }
-  .wiscviewer-feature-controls .wiscviewer-feature-popup-previous-button {
-    float: left; }
-  .wiscviewer-feature-controls .wiscviewer-feature-popup-next-button {
-    float: right; }
-  .wiscviewer-feature-controls i {
-    font-size: 30px;
-    margin: 0 10px; }
-
-.wiscviewer-mobile-layers-list .modal-dialog {
-  height: calc(100% - 20px); }
-
-.wiscviewer-mobile-layers-list .panel {
-  background-color: #cfd8dc;
-  border: 0; }
-
-.wiscviewer-mobile-layers-list .panel-heading {
-  color: #263238;
-  background-color: #78909c;
-  border: 0; }
-  .wiscviewer-mobile-layers-list .panel-heading i {
-    float: right;
-    line-height: inherit;
-    color: #cfd8dc; }
-
-.wiscviewer-mobile-layers-list .modal-body {
-  padding: 0; }
-
-.wiscviewer-mobile-layers-list .panel-body {
-  padding: 0;
-  border: 0;
-  background-color: #cfd8dc; }
-
-.wiscviewer-mobile-layers-list .list-group {
-  padding: 0;
-  border-width: 0;
-  border-radius: 0;
-  margin-bottom: 0; }
-
-.wiscviewer-mobile-layers-list .list-group-item {
-  background-color: #cfd8dc;
-  border-color: #78909c;
-  color: #263238;
-  border-width: 1px 0 0;
-  border-radius: 0; }
-  .wiscviewer-mobile-layers-list .list-group-item.active {
-    background-color: #455a64;
-    border-color: #78909c;
+.wiscviewer-mobile-layers-list {
+  color: #cfd8dc; }
+  .wiscviewer-mobile-layers-list .modal-dialog {
+    height: calc(100% - 20px); }
+  .wiscviewer-mobile-layers-list .modal-content {
+    background-color: #455a64; }
+  .wiscviewer-mobile-layers-list .modal-header {
+    background-color: #37474f; }
+  .wiscviewer-mobile-layers-list .modal-footer {
+    background-color: #455a64; }
+  .wiscviewer-mobile-layers-list button.btn {
+    background-color: #263238;
+    color: #b0bec5; }
+    .wiscviewer-mobile-layers-list button.btn:hover {
+      background-color: #263238; }
+  .wiscviewer-mobile-layers-list .panel {
+    background-color: #cfd8dc;
+    border: 0; }
+  .wiscviewer-mobile-layers-list .panel-heading {
+    color: #263238;
+    background-color: #78909c;
+    border: 0; }
+    .wiscviewer-mobile-layers-list .panel-heading i {
+      float: right;
+      line-height: inherit;
+      color: #cfd8dc; }
+  .wiscviewer-mobile-layers-list .modal-body {
+    padding: 0; }
+  .wiscviewer-mobile-layers-list .panel-body {
+    padding: 0;
+    border: 0;
+    background-color: #cfd8dc; }
+  .wiscviewer-mobile-layers-list .list-group {
+    padding: 0;
+    border-width: 0;
+    border-radius: 0;
+    margin-bottom: 0; }
+  .wiscviewer-mobile-layers-list .wiscviewer-layer-list-group .wiscviewer-layer-item.active {
     color: #eceff1; }
 
 .wiscviewer-nav-container nav {
@@ -8612,13 +8548,78 @@ button.close {
     .wiscviewer-nav-tool > a i {
       color: #90a4ae; }
     .wiscviewer-nav-tool > a svg {
-      width: 30px;
+      width: 22px;
       height: 30px;
       display: inline-block;
       float: left;
       margin: -5px 8px auto -7px; }
       .wiscviewer-nav-tool > a svg path {
         fill: #90a4ae; }
+
+.wiscviewer-mobile-toggle {
+  border: 0;
+  font-size: 30px;
+  padding: 5px 20px;
+  height: 50px;
+  margin: 0; }
+  .wiscviewer-mobile-toggle:hover, .wiscviewer-mobile-toggle:focus {
+    color: #ffffff;
+    background-color: #455a64 !important; }
+  .wiscviewer-mobile-toggle:active {
+    background-color: #37474f !important; }
+
+.wiscviewer-nav-tool-icon {
+  margin-right: 10px;
+  color: #90a4ae; }
+
+.wiscviewer-nav-tool-zoom .caret {
+  display: none; }
+
+.wiscviewer-nav-tool-zoom > a:after {
+  content: 'Shorelines'; }
+
+.wiscviewer-nav-tool-reset > a:after {
+  content: 'Reset'; }
+
+.wiscviewer-nav-tool-about > a:after {
+  content: 'About'; }
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .wiscviewer-nav-tool-zoom > a .SVGInline {
+    display: block;
+    height: 20px; }
+    .wiscviewer-nav-tool-zoom > a .SVGInline svg {
+      margin: -5px 0 auto 0; }
+  .wiscviewer-nav-tool {
+    font-size: 20px; }
+    .wiscviewer-nav-tool > a i {
+      margin-right: 0px;
+      color: #cfd8dc; }
+    .wiscviewer-nav-tool > a svg path {
+      fill: #cfd8dc; }
+  .wiscviewer-nav-tool-zoom > a:after {
+    content: ''; }
+  .wiscviewer-nav-tool-zoom .caret {
+    display: none; }
+  .wiscviewer-nav-tool-reset a:after {
+    content: ''; }
+  .wiscviewer-nav-tool-about a:after {
+    content: ''; } }
+
+@media (max-width: 767px) {
+  .wiscviewer-nav-tools {
+    border: 0 solid #90a4ae;
+    height: calc(100% - 50px);
+    overflow-x: hidden;
+    overflow-y: hidden; }
+    .wiscviewer-nav-tools .navbar-nav {
+      font-size: 20px;
+      height: 100%;
+      margin: 0 -15px;
+      overflow-y: auto; }
+  .wiscviewer-nav-tool-icon,
+  .wiscviewer-nav-tool > a svg {
+    margin-right: 20px; } }
 
 .wiscviewer-nav-dropdown.open > a {
   background-color: #37474f !important; }
@@ -8629,7 +8630,8 @@ button.close {
   z-index: 500;
   background-color: #37474f;
   padding: 0;
-  max-width: 300px; }
+  max-width: 300px;
+  min-width: 200px; }
 
 .wiscviewer-dropdown-header {
   letter-spacing: 1.6px;
@@ -8682,69 +8684,14 @@ button.close {
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
       background-color: #37474f !important; }
 
-.wiscviewer-mobile-toggle {
-  border: 0;
-  font-size: 30px;
-  padding: 5px 20px;
-  height: 50px;
-  margin: 0; }
-  .wiscviewer-mobile-toggle:hover, .wiscviewer-mobile-toggle:focus {
-    color: #ffffff;
-    background-color: #455a64 !important; }
-  .wiscviewer-mobile-toggle:active {
-    background-color: #37474f !important; }
-
-.wiscviewer-nav-tool-icon {
-  margin-right: 10px;
-  color: #90a4ae; }
-
-.wiscviewer-nav-tool-zoom .caret {
-  display: none; }
-
-.wiscviewer-nav-tool-zoom > a:after {
-  content: 'Shorelines'; }
-
-.wiscviewer-nav-tool-reset > a:after {
-  content: 'Reset'; }
-
-.wiscviewer-nav-tool-about > a:after {
-  content: 'About'; }
-
 @media (min-width: 768px) and (max-width: 991px) {
-  .wiscviewer-nav-tool-zoom .SVGInline {
-    display: block;
-    height: 20px; }
-  .wiscviewer-nav-tool-zoom svg {
-    margin: -5px 0 auto 0; }
   .dropdown-menu {
-    min-width: 200px; }
-  .wiscviewer-nav-tool {
-    font-size: 20px; }
-  .wiscviewer-nav-tool-zoom .wiscviewer-tool-title:after {
-    content: ''; }
-  .wiscviewer-nav-tool-zoom .caret {
-    display: none; }
-  .wiscviewer-nav-tool-reset a:after {
-    content: ''; }
-  .wiscviewer-nav-tool-about a:after {
-    content: ''; } }
+    min-width: 250px; } }
 
 @media (max-width: 767px) {
-  .wiscviewer-nav-tools {
-    border: 0 solid #90a4ae;
-    height: calc(100% - 50px);
-    overflow-x: hidden;
-    overflow-y: hidden; }
-    .wiscviewer-nav-tools .navbar-nav {
-      font-size: 20px;
-      height: 100%;
-      margin: 0 -15px;
-      overflow-y: auto; }
   .wiscviewer-dropdown-item {
     font-size: 18px;
-    padding: 5px 0; }
-  .wiscviewer-nav-tool-icon {
-    margin-right: 20px; } }
+    padding: 5px 0; } }
 
 .wiscviewer-sidebar {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
@@ -8811,15 +8758,15 @@ button.close {
 .wiscviewer-layer-list-group {
   border-width: 0;
   border-radius: 0;
-  margin: 0; }
+  margin: 0;
+  background-color: #37474f; }
   .wiscviewer-layer-list-group .wiscviewer-layer-item,
   .wiscviewer-layer-list-group .wiscviewer-layer-item:focus {
-    background-color: #37474f;
-    border-color: #b0bec5;
     color: #b0bec5;
-    border-width: 0;
     border-radius: 0;
-    padding: 10px; }
+    padding: 10px;
+    background-color: transparent;
+    border: none; }
     .wiscviewer-layer-list-group .wiscviewer-layer-item:hover,
     .wiscviewer-layer-list-group .wiscviewer-layer-item:focus:hover {
       color: #eceff1;
@@ -9616,6 +9563,136 @@ button.close {
   .wiscviewer-pinned-feature-popup .wiscviewer-feature-popup-header {
     cursor: move; }
 
+.wiscviewer-mobile-feature-popup {
+  color: #cfd8dc; }
+  .wiscviewer-mobile-feature-popup .modal-dialog {
+    height: calc(100% - 20px); }
+  .wiscviewer-mobile-feature-popup .modal-body {
+    padding: 0; }
+  .wiscviewer-mobile-feature-popup .modal-content {
+    background-color: #37474f; }
+  .wiscviewer-mobile-feature-popup .modal-header {
+    background-color: #263238; }
+  .wiscviewer-mobile-feature-popup .modal-footer {
+    background-color: #263238;
+    font-size: 30px; }
+  .wiscviewer-mobile-feature-popup button.btn {
+    background-color: #37474f;
+    color: #b0bec5; }
+    .wiscviewer-mobile-feature-popup button.btn:hover {
+      background-color: #37474f; }
+  .wiscviewer-mobile-feature-popup img {
+    width: 100%; }
+  .wiscviewer-mobile-feature-popup .nav-tabs {
+    border: none; }
+    .wiscviewer-mobile-feature-popup .nav-tabs li a {
+      padding: 10px 20px;
+      color: #b0bec5;
+      border: none;
+      background-color: inherit !important; }
+    .wiscviewer-mobile-feature-popup .nav-tabs li.active a {
+      color: #eceff1;
+      border: none; }
+  .wiscviewer-mobile-feature-popup .tab-content {
+    padding: 0;
+    overflow-x: auto;
+    border: none;
+    border: 0 solid #263238;
+    border-width: 4px 0; }
+  .wiscviewer-mobile-feature-popup .wiscviewer-popup-downloads-row {
+    display: block;
+    margin: 0 0 10px;
+    padding: 0;
+    text-align: left; }
+    .wiscviewer-mobile-feature-popup .wiscviewer-popup-downloads-row i {
+      font-size: 18px; }
+  .wiscviewer-mobile-feature-popup button {
+    margin-left: 5px; }
+
+.wiscviewer-feature-controls {
+  text-align: center; }
+  .wiscviewer-feature-controls .wiscviewer-feature-popup-previous-button {
+    float: left; }
+  .wiscviewer-feature-controls .wiscviewer-feature-popup-next-button {
+    float: right; }
+  .wiscviewer-feature-controls i {
+    font-size: 30px;
+    margin: 0 10px; }
+
+.wiscviewer-data-table {
+  width: 350px;
+  margin-bottom: 0;
+  font-size: 12px;
+  color: #263238; }
+  .wiscviewer-data-table tr td {
+    border: none !important; }
+    .wiscviewer-data-table tr td:first-child {
+      text-align: left;
+      color: #263238; }
+    .wiscviewer-data-table tr td:last-child {
+      text-align: right; }
+  .wiscviewer-data-table tr:nth-of-type(odd) {
+    background-color: #cfd8dc; }
+    .wiscviewer-data-table tr:nth-of-type(odd):hover {
+      background-color: #cfd8dc; }
+  .wiscviewer-data-table tr:nth-of-type(even) {
+    background-color: #eceff1; }
+    .wiscviewer-data-table tr:nth-of-type(even):hover {
+      background-color: #eceff1; }
+
+.wiscviewer-mobile-feature-popup .wiscviewer-data-table {
+  width: 100%;
+  font-size: 14px; }
+
+.wiscviewer-profile-tab .lake-stats {
+  stroke-width: 1px; }
+
+.wiscviewer-profile-tab .michigan-avg {
+  stroke: #546e7a; }
+
+.wiscviewer-profile-tab .michigan-high {
+  stroke: #546e7a; }
+
+.wiscviewer-profile-tab .michigan-low {
+  stroke: #546e7a; }
+
+.wiscviewer-profile-tab .tick {
+  font-family: "Roboto", sans-serif; }
+  .wiscviewer-profile-tab .tick line {
+    stroke: #546e7a; }
+  .wiscviewer-profile-tab .tick text {
+    fill: #78909c; }
+
+.wiscviewer-profile-tab .domain {
+  stroke-width: 3px;
+  stroke: #607d8b;
+  stroke-linecap: butt; }
+
+.wiscviewer-profile-tab .line {
+  stroke: #80deea;
+  stroke-width: 2px;
+  fill: none;
+  stroke-linejoin: round;
+  stroke-linecap: round; }
+
+.wiscviewer-profile-tab .wiscviewer-profile-graph {
+  background-color: #37474f; }
+
+.wiscviewer-profile-tab .axis-label {
+  fill: #607d8b; }
+
+.wiscviewer-mobile-feature-popup .wiscviewer-profile-tab .lake-stats {
+  stroke-width: 2px; }
+
+.wiscviewer-mobile-feature-popup .wiscviewer-profile-tab .domain {
+  stroke-width: 4px; }
+
+.wiscviewer-mobile-feature-popup .wiscviewer-profile-tab .line {
+  stroke-width: 3px; }
+
+.wiscviewer-mobile-feature-popup .wiscviewer-profile-tab .axis-label {
+  font-size: 16px; }
+
 .wiscviewer-feature-popup {
   font-size: 12px;
   font-family: 'Roboto';
@@ -9625,15 +9702,19 @@ button.close {
   border-radius: 3px; }
   .wiscviewer-feature-popup:focus {
     outline: none; }
-  .wiscviewer-feature-popup a button {
+  .wiscviewer-feature-popup a button,
+  .wiscviewer-feature-popup a button:active {
     font-size: inherit;
     padding: 5px 10px;
     border: 0;
-    background-color: #263238;
-    color: #b0bec5; }
-    .wiscviewer-feature-popup a button:hover {
+    border-radius: 0;
+    background-color: #37474f;
+    color: #b0bec5;
+    outline: none; }
+    .wiscviewer-feature-popup a button:hover,
+    .wiscviewer-feature-popup a button:active:hover {
       color: #eceff1;
-      background-color: #263238; }
+      background-color: #37474f; }
 
 .wiscviewer-feature-popup-header {
   position: absolute;
@@ -9648,14 +9729,16 @@ button.close {
   font-size: 12px;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  letter-spacing: 1.6px; }
   .wiscviewer-feature-popup-title .fa-chevron-right {
     font-size: 10px;
     margin: 0 5px;
     color: #90a4ae; }
 
 .wiscviewer-feature-popup-controls {
-  color: #b0bec5;
+  color: #90a4ae;
   margin: 2px 10px 0 0;
   font-size: 20px;
   float: right; }
@@ -9703,30 +9786,9 @@ button.close {
       width: 100%;
       display: block; }
 
-.wiscviewer-data-table {
-  width: 350px;
-  margin-bottom: 0;
-  font-size: 12px;
-  color: #263238; }
-  .wiscviewer-data-table tr td {
-    border: none !important; }
-    .wiscviewer-data-table tr td:first-child {
-      text-align: left;
-      color: #263238; }
-    .wiscviewer-data-table tr td:last-child {
-      text-align: right; }
-  .wiscviewer-data-table tr:nth-of-type(odd) {
-    background-color: #cfd8dc; }
-    .wiscviewer-data-table tr:nth-of-type(odd):hover {
-      background-color: #cfd8dc; }
-  .wiscviewer-data-table tr:nth-of-type(even) {
-    background-color: #eceff1; }
-    .wiscviewer-data-table tr:nth-of-type(even):hover {
-      background-color: #eceff1; }
-
 .wiscviewer-feature-popup-footer {
   padding: 10px 10px;
-  background-color: #37474f;
+  background-color: #263238;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px; }
   .wiscviewer-feature-popup-footer a {
@@ -9741,43 +9803,6 @@ button.close {
     margin-left: 15px; }
     .wiscviewer-popup-downloads-row a i {
       margin-right: 5px; }
-
-.wiscviewer-profile-tab .lake-stats {
-  stroke-width: 1px; }
-
-.wiscviewer-profile-tab .michigan-avg {
-  stroke: #455a64; }
-
-.wiscviewer-profile-tab .michigan-high {
-  stroke: #546e7a; }
-
-.wiscviewer-profile-tab .michigan-low {
-  stroke: #546e7a; }
-
-.wiscviewer-profile-tab .tick {
-  font-family: "Roboto", sans-serif; }
-  .wiscviewer-profile-tab .tick line {
-    stroke: #546e7a; }
-  .wiscviewer-profile-tab .tick text {
-    fill: #78909c; }
-
-.wiscviewer-profile-tab .domain {
-  stroke-width: 3px;
-  stroke: #546e7a;
-  stroke-linecap: butt; }
-
-.wiscviewer-profile-tab .line {
-  stroke: #4dd0e1;
-  stroke-width: 2px;
-  fill: none;
-  stroke-linejoin: round;
-  stroke-linecap: round; }
-
-.wiscviewer-profile-tab .wiscviewer-profile-graph {
-  background-color: #263238; }
-
-.wiscviewer-profile-tab .axis-label {
-  fill: #546e7a; }
 
 html {
   height: 100%; }
