@@ -79,13 +79,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import ObliquePhotoMap from &apos;<span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber12">oblique-photo-viewer/src/js/classes/ObliquePhotoMap.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import ObliquePhotoMap from &apos;<span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber15">oblique-photo-viewer/src/js/classes/ObliquePhotoMap.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber12">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber15">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -105,7 +105,8 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>The main class that contains the Leaflet-based map component</p>
+</div>
   
 
   
@@ -142,7 +143,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Dispatch a map action every time the user clicks the map</p>
+</div>
       </div>
     </td>
     <td>
@@ -201,7 +203,7 @@ manually added / removed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(map: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
         </p>
       </div>
       <div>
@@ -383,13 +385,14 @@ manually added / removed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html#instance-method-createLayer">createLayer</a></span></span><span class="code" data-ice="signature">(layerId: <span>*</span>, layer: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html#instance-method-createLayer">createLayer</a></span></span><span class="code" data-ice="signature">(layerId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, -: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Create a new map layer</p>
+</div>
       </div>
     </td>
     <td>
@@ -417,7 +420,8 @@ manually added / removed.</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Dispatch a zoom action every time the map is zoomed</p>
+</div>
       </div>
     </td>
     <td>
@@ -467,13 +471,18 @@ manually added / removed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html#instance-method-toggleBasemap">toggleBasemap</a></span></span><span class="code" data-ice="signature">(basemapID: <span>*</span>, basemap: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html#instance-method-toggleBasemap">toggleBasemap</a></span></span><span class="code" data-ice="signature">(basemapId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, basemap: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Toggle a basemap on or off</p>
+<ul>
+<li>Create if it doesn&apos;t exist</li>
+<li>Toggle it if it already exists</li>
+</ul>
+</div>
       </div>
     </td>
     <td>
@@ -495,13 +504,18 @@ manually added / removed.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html#instance-method-toggleLayer">toggleLayer</a></span></span><span class="code" data-ice="signature">(layerId: <span>*</span>, layer: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html#instance-method-toggleLayer">toggleLayer</a></span></span><span class="code" data-ice="signature">(layerId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, layer: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Toggle a layer on or off</p>
+<ul>
+<li>Create a layer if it doesn&apos;t exist</li>
+<li>Toggle it if it already exists and is in the map</li>
+</ul>
+</div>
       </div>
     </td>
     <td>
@@ -586,14 +600,15 @@ manually added / removed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber28">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber34">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Dispatch a map action every time the user clicks the map</p>
+</div>
 
   
 
@@ -629,7 +644,7 @@ manually added / removed.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber18">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber21">source</a></span></span>
     </span>
   </h3>
 
@@ -690,11 +705,11 @@ when a popup is closed</p>
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(map: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber31">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber40">source</a></span></span>
     </span>
   </h3>
 
@@ -705,7 +720,24 @@ when a popup is closed</p>
 
   
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">map</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>the string ID of the html element that the map will be added to</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
   
@@ -740,7 +772,7 @@ when a popup is closed</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber33">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber42">source</a></span></span>
     </span>
   </h3>
 
@@ -783,7 +815,7 @@ when a popup is closed</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber44">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber53">source</a></span></span>
     </span>
   </h3>
 
@@ -826,7 +858,7 @@ when a popup is closed</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber34">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber43">source</a></span></span>
     </span>
   </h3>
 
@@ -869,7 +901,7 @@ when a popup is closed</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber45">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber54">source</a></span></span>
     </span>
   </h3>
 
@@ -912,7 +944,7 @@ when a popup is closed</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber35">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber44">source</a></span></span>
     </span>
   </h3>
 
@@ -954,18 +986,19 @@ when a popup is closed</p>
     
     
     
-    <span class="code" data-ice="name">createLayer</span><span class="code" data-ice="signature">(layerId: <span>*</span>, layer: <span>*</span>)</span>
+    <span class="code" data-ice="name">createLayer</span><span class="code" data-ice="signature">(layerId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, -: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber57">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber75">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Create a new map layer</p>
+</div>
 
   
 
@@ -979,15 +1012,17 @@ when a popup is closed</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">layerId</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>a unique identifier for a layer</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">layer</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="name" class="code" data-depth="0">-</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>key/value pairs describing a layer</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1023,14 +1058,15 @@ when a popup is closed</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber53">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber66">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Dispatch a zoom action every time the map is zoomed</p>
+</div>
 
   
 
@@ -1066,7 +1102,7 @@ when a popup is closed</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber141">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber175">source</a></span></span>
     </span>
   </h3>
 
@@ -1127,18 +1163,23 @@ when a popup is closed</p>
     
     
     
-    <span class="code" data-ice="name">toggleBasemap</span><span class="code" data-ice="signature">(basemapID: <span>*</span>, basemap: <span>*</span>)</span>
+    <span class="code" data-ice="name">toggleBasemap</span><span class="code" data-ice="signature">(basemapId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, basemap: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber116">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber150">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Toggle a basemap on or off</p>
+<ul>
+<li>Create if it doesn&apos;t exist</li>
+<li>Toggle it if it already exists</li>
+</ul>
+</div>
 
   
 
@@ -1151,16 +1192,18 @@ when a popup is closed</p>
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">basemapID</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="name" class="code" data-depth="0">basemapId</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>a unique identifier for a layer</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">basemap</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>key/value pairs describing a layer</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1192,18 +1235,23 @@ when a popup is closed</p>
     
     
     
-    <span class="code" data-ice="name">toggleLayer</span><span class="code" data-ice="signature">(layerId: <span>*</span>, layer: <span>*</span>)</span>
+    <span class="code" data-ice="name">toggleLayer</span><span class="code" data-ice="signature">(layerId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, layer: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber106">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber132">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Toggle a layer on or off</p>
+<ul>
+<li>Create a layer if it doesn&apos;t exist</li>
+<li>Toggle it if it already exists and is in the map</li>
+</ul>
+</div>
 
   
 
@@ -1217,15 +1265,17 @@ when a popup is closed</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">layerId</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>a unique identifier for a layer</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">layer</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>key/value pairs describing a layer</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1261,7 +1311,7 @@ when a popup is closed</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber144">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber178">source</a></span></span>
     </span>
   </h3>
 
@@ -1304,7 +1354,7 @@ when a popup is closed</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber136">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/classes/ObliquePhotoMap.js.html#lineNumber170">source</a></span></span>
     </span>
   </h3>
 

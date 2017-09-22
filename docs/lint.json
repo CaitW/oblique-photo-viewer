@@ -1,1 +1,90 @@
-[]
+[
+  {
+    "name": "ObliquePhotoMap#createLayer",
+    "filePath": "src/js/classes/ObliquePhotoMap.js",
+    "lines": [
+      {
+        "lineNumber": 69,
+        "line": "    /**"
+      },
+      {
+        "lineNumber": 70,
+        "line": "     * Create a new map layer"
+      },
+      {
+        "lineNumber": 71,
+        "line": "     * @param {string} layerId - a unique identifier for a layer"
+      },
+      {
+        "lineNumber": 72,
+        "line": "     * @param {Object} - key/value pairs describing a layer"
+      },
+      {
+        "lineNumber": 73,
+        "line": "     */"
+      },
+      {
+        "lineNumber": 74,
+        "line": "    createLayer(layerId, layer) {"
+      }
+    ],
+    "codeParams": [
+      "layerId",
+      "layer"
+    ],
+    "docParams": [
+      "layerId",
+      "-"
+    ]
+  },
+  {
+    "name": "ObliquePhotoMap#toggleBasemap",
+    "filePath": "src/js/classes/ObliquePhotoMap.js",
+    "lines": [
+      {
+        "lineNumber": 141,
+        "line": "    /**"
+      },
+      {
+        "lineNumber": 142,
+        "line": "     * Toggle a basemap on or off"
+      },
+      {
+        "lineNumber": 143,
+        "line": "     * - Create if it doesn't exist"
+      },
+      {
+        "lineNumber": 144,
+        "line": "     * - Toggle it if it already exists"
+      },
+      {
+        "lineNumber": 145,
+        "line": "     *"
+      },
+      {
+        "lineNumber": 146,
+        "line": "     * @param {string} basemapId - a unique identifier for a layer"
+      },
+      {
+        "lineNumber": 147,
+        "line": "     * @param {Object} basemap - key/value pairs describing a layer"
+      },
+      {
+        "lineNumber": 148,
+        "line": "     */"
+      },
+      {
+        "lineNumber": 149,
+        "line": "    toggleBasemap(basemapID, basemap) {"
+      }
+    ],
+    "codeParams": [
+      "basemapID",
+      "basemap"
+    ],
+    "docParams": [
+      "basemapId",
+      "basemap"
+    ]
+  }
+]

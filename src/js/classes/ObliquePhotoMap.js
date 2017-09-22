@@ -9,6 +9,9 @@ import { layerPreload, layerLoaded, layerError } from '../ducks/layers';
 import { basemapPreload, basemapLoaded, basemapError } from '../ducks/basemaps';
 import store from '../store';
 
+/**
+ * The main class that contains the Leaflet-based map component
+ */
 export default class ObliquePhotoMap {
     /**
      * Leaflet popups are tied into React, and the react nodes need to be
@@ -25,9 +28,15 @@ export default class ObliquePhotoMap {
             unmountComponentAtNode(container);
         },10);
     }
+    /**
+     * Dispatch a map action every time the user clicks the map
+     */
     static onMapMousedown () {
         store.dispatch(mapMousedown());
     }
+    /**
+     * @param {string} map - the string ID of the html element that the map will be added to
+     */
     constructor(map) {
         var self = this;
         this.basemapGroup = L.layerGroup();
@@ -48,12 +57,21 @@ export default class ObliquePhotoMap {
         this.map.on('zoomend', self.dispatchZoom);
         this.map.on('mousedown', self.constructor.onMapMousedown);
         this.map.on('popupclose', self.constructor.onPopupClose);
+        // set some default values
         this.dispatchZoom();
     }
+    /**
+     * Dispatch a zoom action every time the map is zoomed
+     */
     dispatchZoom () {
         let currentZoom = this.map.getZoom();
         store.dispatch(mapNewZoomLevel(currentZoom));
     }
+    /**
+     * Create a new map layer
+     * @param {string} layerId - a unique identifier for a layer
+     * @param {Object} - key/value pairs describing a layer
+     */
     createLayer(layerId, layer) {
         var self = this;
         store.dispatch(layerPreload(layerId));
@@ -103,6 +121,14 @@ export default class ObliquePhotoMap {
                 break;
         }
     }
+    /**
+     * Toggle a layer on or off
+     * - Create a layer if it doesn't exist
+     * - Toggle it if it already exists and is in the map
+     *
+     * @param {string} layerId - a unique identifier for a layer
+     * @param {Object} layer - key/value pairs describing a layer
+     */
     toggleLayer(layerId, layer) {
         if (typeof this.layerIndex[layerId] === "undefined") {
             this.createLayer(layerId, layer);
@@ -113,6 +139,14 @@ export default class ObliquePhotoMap {
             this.layerGroup.removeLayer(this.layerIndex[layerId]);
         }
     }
+    /**
+     * Toggle a basemap on or off
+     * - Create if it doesn't exist
+     * - Toggle it if it already exists
+     *
+     * @param {string} basemapId - a unique identifier for a layer
+     * @param {Object} basemap - key/value pairs describing a layer
+     */
     toggleBasemap(basemapID, basemap) {
         var self = this;
         if (typeof basemap.url === "undefined") {
@@ -133,6 +167,11 @@ export default class ObliquePhotoMap {
             }
         }
     }
+    /**
+     * Zoom to an extent
+     *
+     * @param {string} extent - a unique identifier for a layer
+     */
     zoomToExtent(extent) {
         this.map.fitBounds(extent, {
             padding: [10, 10]
