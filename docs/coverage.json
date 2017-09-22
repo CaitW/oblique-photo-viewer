@@ -1,20 +1,17 @@
 {
-  "coverage": "13.58%",
+  "coverage": "17.28%",
   "expectCount": 81,
-  "actualCount": 11,
+  "actualCount": 14,
   "files": {
     "src/js/classes/ObliquePhotoMap.js": {
       "expectCount": 16,
-      "actualCount": 8,
+      "actualCount": 11,
       "undocumentLines": [
-        42,
-        43,
-        44,
-        53,
-        54,
-        170,
-        175,
-        178
+        45,
+        46,
+        47,
+        58,
+        59
       ]
     },
     "src/js/ducks/basemaps.js": {
@@ -101,11 +98,11 @@
         378
       ]
     },
-    "src/js/lib/L.Control.MousePosition.js": {
+    "src/js/lib/AddMousePosition.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
-        46
+        1
       ]
     },
     "src/js/selectors.js": {

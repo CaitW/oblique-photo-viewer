@@ -1,5 +1,11 @@
 window.esdocSearchIndex = [
   [
+    "oblique-photo-viewer/src/js/lib/addmouseposition.js~addmouseposition",
+    "function/index.html#static-function-AddMousePosition",
+    "<span>AddMousePosition</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/lib/AddMousePosition.js</span>",
+    "function"
+  ],
+  [
     "oblique-photo-viewer/src/js/util.js~basemaps_by_id",
     "variable/index.html#static-variable-BASEMAPS_BY_ID",
     "<span>BASEMAPS_BY_ID</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/util.js</span>",
@@ -690,15 +696,9 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/js/lib/l.control.mouseposition.js",
-    "file/src/js/lib/L.Control.MousePosition.js.html",
-    "src/js/lib/L.Control.MousePosition.js",
-    "file"
-  ],
-  [
-    "src/js/lib/leaflet.js",
-    "file/src/js/lib/leaflet.js.html",
-    "src/js/lib/leaflet.js",
+    "src/js/lib/addmouseposition.js",
+    "file/src/js/lib/AddMousePosition.js.html",
+    "src/js/lib/AddMousePosition.js",
     "file"
   ],
   [

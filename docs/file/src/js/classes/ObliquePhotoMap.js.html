@@ -74,6 +74,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPinnedFeature">newPinnedFeature</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pinnedFeatures">pinnedFeatures</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-layers">js/layers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-LAYER_STYLE">LAYER_STYLE</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-lib">js/lib</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddMousePosition">AddMousePosition</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -81,6 +82,9 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/js/classes/ObliquePhotoMap.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import axios from &apos;axios&apos;;
 import { unmountComponentAtNode } from &apos;react-dom&apos;;
+import L from &apos;leaflet&apos;;
+
+import AddMousePosition from &apos;../lib/AddMousePosition&apos;;
 
 import CONFIG from &apos;../config.json&apos;;
 import LAYER_STYLE from &apos;../layers/layerStyles&apos;;
@@ -129,6 +133,8 @@ export default class ObliquePhotoMap {
             .fitBounds(CONFIG.map.wisconsinExtent, {
                 padding: [10, 10]
             });
+        // shim to add non-es6 L.Control.MousePosition
+        AddMousePosition(L);
         L.control.mousePosition().addTo(self.map);
         L.control.scale().addTo(self.map);
         this.basemapIndex = {};
@@ -248,14 +254,31 @@ export default class ObliquePhotoMap {
             }
         }
     }
+    /**
+     * Zoom to an extent
+     * - wrapper for the Leaflet function map.fitBounds with added padding
+     *
+     * @param {LatLngBounds|Array[]} extent - [[lat, lng],[lat, lng]]
+     */
     zoomToExtent(extent) {
         this.map.fitBounds(extent, {
             padding: [10, 10]
         });
     }
+    /**
+     * Pan and Zoom to a location
+     * - wrapper for the Leaflet function map.setView
+     *
+     * @param {number} zoom - zoom level
+     * @param {LatLng} coordinates - [lat, lng]
+     */
     panAndZoom(zoom, coordinates) {
         this.map.setView(coordinates, zoom);
     }
+    /**
+     * Force leaflet to re-calculate the size of the map within its bounding div
+     * - wrapper for the Leaflet function invalidateSize
+     */
     updateSize () {
         this.map.invalidateSize();
     }
