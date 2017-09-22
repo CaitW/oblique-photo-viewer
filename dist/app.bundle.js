@@ -92119,8 +92119,9 @@ var ObliquePhotoMap = function () {
         }
         /**
          * Zoom to an extent
+         * - wrapper for the Leaflet function map.fitBounds with added padding
          *
-         * @param {string} extent - a unique identifier for a layer
+         * @param {LatLngBounds|Array[]} extent - [[lat, lng],[lat, lng]]
          */
 
     }, {
@@ -92130,11 +92131,24 @@ var ObliquePhotoMap = function () {
                 padding: [10, 10]
             });
         }
+        /**
+         * Pan and Zoom to a location
+         * - wrapper for the Leaflet function map.setView
+         *
+         * @param {number} zoom - zoom level
+         * @param {LatLng} coordinates - [lat, lng]
+         */
+
     }, {
         key: 'panAndZoom',
         value: function panAndZoom(zoom, coordinates) {
             this.map.setView(coordinates, zoom);
         }
+        /**
+         * Force leaflet to re-calculate the size of the map within its bounding div
+         * - wrapper for the Leaflet function invalidateSize
+         */
+
     }, {
         key: 'updateSize',
         value: function updateSize() {

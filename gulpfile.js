@@ -17,12 +17,17 @@ var debug = require('gulp-debug');
 var zip = require('gulp-zip');
 var ogr2ogr = require('ogr2ogr');
 var gulpUtil = require('gulp-util');
+var shell = require('gulp-shell');
 
 // webpack configurations
 var webpack_dev = require('./webpack.config.js');
 var webpack_prod = require('./webpack.config.prod.js');
 
+// esdoc config
+var esdoc_config = JSON.parse(fs.readFileSync('./.esdoc.json'));
+
 var CONFIG;
+
 try {
     CONFIG = fs.readFileSync('./server_config.json');
     CONFIG = JSON.parse(CONFIG);
@@ -295,6 +300,12 @@ gulp.task('copy-to-server', function() {
         .pipe(gulp.dest(CONFIG.SERVER_DIR));
 });
 
+gulp.task('make-docs', function() {
+  return gulp.src('src/')
+    .pipe(shell('npm run make-docs'))
+    .pipe(gulp.dest('./dist'));
+});
+
 
 /*
  * Development Tasks
@@ -320,6 +331,6 @@ gulp.task('lint', gulp.parallel('lint-js','lint-css'));
  * Production Tasks
  */
  // makes clean, minified production build in /dist
-gulp.task('build', gulp.series('clean','make-downloads', 'sass', 'webpack-prod', 'copy'));
+gulp.task('build', gulp.series('clean','make-docs','make-downloads', 'sass', 'webpack-prod', 'copy'));
 gulp.task('deploy', gulp.parallel('copy-to-server'));
 

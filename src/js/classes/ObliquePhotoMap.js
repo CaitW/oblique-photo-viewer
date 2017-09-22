@@ -75,7 +75,7 @@ export default class ObliquePhotoMap {
     /**
      * Create a new map layer
      * @param {string} layerId - a unique identifier for a layer
-     * @param {Object} - key/value pairs describing a layer
+     * @param {Object} layer - key/value pairs describing a layer
      */
     createLayer(layerId, layer) {
         var self = this;
@@ -152,39 +152,51 @@ export default class ObliquePhotoMap {
      * @param {string} basemapId - a unique identifier for a layer
      * @param {Object} basemap - key/value pairs describing a layer
      */
-    toggleBasemap(basemapID, basemap) {
+    toggleBasemap(basemapId, basemap) {
         var self = this;
         if (typeof basemap.url === "undefined") {
-            console.error("Basemap " + basemapID + " must have a tile URL");
+            console.error("Basemap " + basemapId + " must have a tile URL");
         } else {
-            if (typeof this.basemapIndex[basemapID] === "undefined") {
-                this.basemapIndex[basemapID] = L.tileLayer(basemap.url, {
+            if (typeof this.basemapIndex[basemapId] === "undefined") {
+                this.basemapIndex[basemapId] = L.tileLayer(basemap.url, {
                     zIndex: 0
                 });
             }
             if (basemap.active === true) {
                 this.basemapGroup.clearLayers();
-                store.dispatch(basemapPreload(basemapID));
-                self.basemapIndex[basemapID].once("load", function () {
-                    store.dispatch(basemapLoaded(basemapID));
+                store.dispatch(basemapPreload(basemapId));
+                self.basemapIndex[basemapId].once("load", function () {
+                    store.dispatch(basemapLoaded(basemapId));
                 })
-                this.basemapGroup.addLayer(self.basemapIndex[basemapID]);
+                this.basemapGroup.addLayer(self.basemapIndex[basemapId]);
             }
         }
     }
     /**
      * Zoom to an extent
+     * - wrapper for the Leaflet function map.fitBounds with added padding
      *
-     * @param {string} extent - a unique identifier for a layer
+     * @param {LatLngBounds|Array[]} extent - [[lat, lng],[lat, lng]]
      */
     zoomToExtent(extent) {
         this.map.fitBounds(extent, {
             padding: [10, 10]
         });
     }
+    /**
+     * Pan and Zoom to a location
+     * - wrapper for the Leaflet function map.setView
+     *
+     * @param {number} zoom - zoom level
+     * @param {LatLng} coordinates - [lat, lng]
+     */
     panAndZoom(zoom, coordinates) {
         this.map.setView(coordinates, zoom);
     }
+    /**
+     * Force leaflet to re-calculate the size of the map within its bounding div
+     * - wrapper for the Leaflet function invalidateSize
+     */
     updateSize () {
         this.map.invalidateSize();
     }
