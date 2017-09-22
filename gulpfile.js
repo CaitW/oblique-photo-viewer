@@ -185,26 +185,6 @@ gulp.task('sass-about', function() {
 gulp.task('sass', gulp.parallel('sass-app', 'sass-about'));
 
 /*
- * Process libraries
- */
- // dev
-gulp.task('make-dev-scripts', function() {
-    return gulp.src(['src/js/lib/leaflet.js', 'src/js/lib/L.Control.MousePosition.js'])
-        .pipe(debug({title: 'concatenating:'}))
-        .pipe(concat('lib.js'))
-        .pipe(gulp.dest('./dist/'));
-});
-// prod
-gulp.task('make-prod-scripts', gulp.series('make-dev-scripts', function(cb) {
-    return pump([
-        gulp.src('./dist/lib.js')
-        .pipe(debug({title: 'compressing:'})),
-        uglify(),
-        gulp.dest('dist')
-    ]);
-}));
-
-/*
  * Build Javascript
  */
 gulp.task('webpack-dev', function(done) {
@@ -254,7 +234,6 @@ gulp.task('watch-files', function() {
     gulp.watch('src/js/**/*.json', gulp.parallel('webpack-dev'));
     gulp.watch('src/sass/**/*.scss', gulp.parallel('sass'));
     gulp.watch('src/*.html', gulp.parallel('copy-html'));
-    gulp.watch('src/js/lib/*.js', gulp.parallel('make-dev-scripts'));
     gulp.watch('src/data/**/*', gulp.parallel('copy-data'));
     gulp.watch('src/fonts/**/*', gulp.parallel('copy-fonts'));
     gulp.watch('src/downloads/**/*', gulp.parallel('copy-downloads'));
@@ -324,7 +303,7 @@ gulp.task('copy-to-server', function() {
  // make data downloads
 gulp.task('make-downloads', gulp.series('zip-geojson-layers', 'zip-json-profiles', 'convert-and-zip-layer-shapefiles', 'delete-temp-downloads'));
 // build for development (skips some steps, like 'clean', 'make-downloads')
-gulp.task('dev-build', gulp.series('sass', 'make-dev-scripts', 'webpack-dev', 'copy'));
+gulp.task('dev-build', gulp.series('sass', 'webpack-dev', 'copy'));
 // alias
 gulp.task('default', gulp.parallel('dev-build'));
 // for active development
@@ -341,6 +320,6 @@ gulp.task('lint', gulp.parallel('lint-js','lint-css'));
  * Production Tasks
  */
  // makes clean, minified production build in /dist
-gulp.task('build', gulp.series('clean','make-downloads', 'sass', 'make-prod-scripts', 'webpack-prod', 'copy'));
+gulp.task('build', gulp.series('clean','make-downloads', 'sass', 'webpack-prod', 'copy'));
 gulp.task('deploy', gulp.parallel('copy-to-server'));
 

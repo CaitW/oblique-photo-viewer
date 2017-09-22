@@ -7,6 +7,7 @@
  * apply click handling functions to each feature in each layer.
  */
 import React from 'react';
+import L from 'leaflet';
 import { render } from 'react-dom';
 import { midpoint, point } from 'turf';
 

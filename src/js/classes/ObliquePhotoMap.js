@@ -1,5 +1,8 @@
 import axios from 'axios';
 import { unmountComponentAtNode } from 'react-dom';
+import L from 'leaflet';
+
+import AddMousePosition from '../lib/AddMousePosition';
 
 import CONFIG from '../config.json';
 import LAYER_STYLE from '../layers/layerStyles';
@@ -48,6 +51,8 @@ export default class ObliquePhotoMap {
             .fitBounds(CONFIG.map.wisconsinExtent, {
                 padding: [10, 10]
             });
+        // shim to add non-es6 L.Control.MousePosition
+        AddMousePosition(L);
         L.control.mousePosition().addTo(self.map);
         L.control.scale().addTo(self.map);
         this.basemapIndex = {};
