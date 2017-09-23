@@ -28036,13 +28036,27 @@ var LAYER_FEATURES = {};
  * - points
  * Points are easy. Center the popup on the coordinate of the point.
  * For linestrings, the popup is centered on the median coordinate.
+ *
+ * @param {L.Layer} featureLayer - a leaflet layer representing a single feature
  */
 function getFeatureMidpoint(featureLayer) {
 
+    /**
+     * Convert a lat/lng to a geojson point
+     *
+     * @param {L.LatLng} latLng
+     * @returns {GeoJSON Feature}
+     */
     function toCoordFeature(latLng) {
         return (0, _turf.point)([latLng.lng, latLng.lat]);
     }
 
+    /**
+     * Get the midpoint of a line using Turf's `midpoint` function
+     *
+     * @param {L.LatLng[]} latLngs
+     * @returns {coordinates} - [x,y] coordinates describing the middle of a line
+     */
     function getLineMidpoint(latLngs) {
         var lowerMiddle = false;
         var upperMiddle = false;
@@ -28074,12 +28088,17 @@ function getFeatureMidpoint(featureLayer) {
         return middlePoint.geometry.coordinates;
     }
 
+    /**
+     * Get the coordinates of a feature
+     */
     function getPointCoords(latLng) {
         return toCoordFeature(latLng).geometry.coordinates;
     }
 
+    // if it's a line (getLatLngs isn't undefined)
     if (typeof featureLayer.getLatLngs !== "undefined") {
         return getLineMidpoint(featureLayer.getLatLngs());
+        // if it's a point (getLatLng isn't undefined)
     } else if (typeof featureLayer.getLatLng !== "undefined") {
         return getPointCoords(featureLayer.getLatLng());
     }
@@ -28091,6 +28110,13 @@ function getFeatureMidpoint(featureLayer) {
  * however, Leaflet is not controlled by React.
  * Therefore, the popup's content must mount/unmount the React component
  * manually whenever it is opened/closed.
+ *
+ * @param {GeoJSON feature} feature - a GeoJSON feature
+ * @param {L.Layer} featureLayer - a leaflet feature layer representing the above feature
+ *  - i.e. Feature #3464
+ * @param {string} layerId - unique layer ID describing the map layer containing this feature
+ *  - i.e. 2017 Photos
+ * @param {L.Map} map - the Leaflet map containing the feature
  */
 function createLeafletPopup(feature, featureLayer, layerId, map) {
     var featureMiddlePoint = getFeatureMidpoint(featureLayer);
@@ -28135,6 +28161,11 @@ function createLeafletPopup(feature, featureLayer, layerId, map) {
     return popup;
 }
 
+/**
+ * When the user has a popup open, they can use forward and back arrows to scroll to the next or
+ * previous feature in the layer. This function is bound via `this` to a particular feature, and
+ * then opens the next layer in the LAYER_INDEX
+ */
 function toggleNextFeaturePopup() {
     var featureIndex = this.featureIndex;
     var layerId = this.layerId;
@@ -28142,6 +28173,11 @@ function toggleNextFeaturePopup() {
     LAYER_FEATURES[layerId][nextFeatureIndex].togglePopup();
 }
 
+/**
+ * When the user has a popup open, they can use forward and back arrows to scroll to the next or
+ * previous feature in the layer. This function is bound via `this` to a particular feature, and
+ * then opens the previous layer in the LAYER_INDEX
+ */
 function togglePreviousFeaturePopup() {
     var featureIndex = this.featureIndex;
     var layerId = this.layerId;
@@ -92013,7 +92049,7 @@ var ObliquePhotoMap = function () {
         /**
          * Create a new map layer
          * @param {string} layerId - a unique identifier for a layer
-         * @param {Object} - key/value pairs describing a layer
+         * @param {Object} layer - key/value pairs describing a layer
          */
 
     }, {
@@ -92097,23 +92133,23 @@ var ObliquePhotoMap = function () {
 
     }, {
         key: 'toggleBasemap',
-        value: function toggleBasemap(basemapID, basemap) {
+        value: function toggleBasemap(basemapId, basemap) {
             var self = this;
             if (typeof basemap.url === "undefined") {
-                console.error("Basemap " + basemapID + " must have a tile URL");
+                console.error("Basemap " + basemapId + " must have a tile URL");
             } else {
-                if (typeof this.basemapIndex[basemapID] === "undefined") {
-                    this.basemapIndex[basemapID] = _leaflet2.default.tileLayer(basemap.url, {
+                if (typeof this.basemapIndex[basemapId] === "undefined") {
+                    this.basemapIndex[basemapId] = _leaflet2.default.tileLayer(basemap.url, {
                         zIndex: 0
                     });
                 }
                 if (basemap.active === true) {
                     this.basemapGroup.clearLayers();
-                    _store2.default.dispatch((0, _basemaps.basemapPreload)(basemapID));
-                    self.basemapIndex[basemapID].once("load", function () {
-                        _store2.default.dispatch((0, _basemaps.basemapLoaded)(basemapID));
+                    _store2.default.dispatch((0, _basemaps.basemapPreload)(basemapId));
+                    self.basemapIndex[basemapId].once("load", function () {
+                        _store2.default.dispatch((0, _basemaps.basemapLoaded)(basemapId));
                     });
-                    this.basemapGroup.addLayer(self.basemapIndex[basemapID]);
+                    this.basemapGroup.addLayer(self.basemapIndex[basemapId]);
                 }
             }
         }
@@ -93046,6 +93082,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = AddMousePosition;
+/**
+ * Hand-rolled shim that accepts Leaflet as a parameter and adds the MousePosition plugin
+ */
 function AddMousePosition(L) {
     L.Control.MousePosition = L.Control.extend({
         options: {
@@ -93127,6 +93166,9 @@ var _layers = __webpack_require__(171);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * Colors used in the app
+ */
 var COLORS = {
     RED: "#F44336",
     GREEN: "#8BC34A",
@@ -93172,7 +93214,16 @@ var DEFAULT_STYLES = {
     }
 };
 
-// Individual layer styles are added below, as referenced by ID in config.json
+/**
+ * Individual layer styles are added below, as referenced by ID in config.json
+ *
+ * @param {string} subStyleName - if a style has different sub-styles for a particular feature type
+ *  this parameter specifies the name of that sub-style, and the function below returns a style
+ *  based on that information
+ * @returns {object} - style per Leaflet's GeoJSON style spec
+ *
+ * - the keys of each function in LAYER_STYLES_BY_ID correspond to layers in config.json
+ */
 var LAYER_STYLES_BY_ID = {
     backshore_1976: function backshore_1976(subStyleName) {
         var style = _extends({}, DEFAULT_STYLES.LineString);
@@ -93360,6 +93411,9 @@ var LAYER_STYLES_BY_ID = {
      * Return the value of the property that determines the differing style
      * Alternatively, if a layer's style should be the same for all features, just return
      * a string to serve as the label in the legend
+     *
+     * @param {string} layerId - unique layer identifier
+     * @param {GeoJSON Feature} feature - a GeoJSON feature
      */
 };function getLayerSubStyleName(layerId, feature) {
     var subStyleName = layerId;
@@ -93413,8 +93467,18 @@ var LAYER_STYLES_BY_ID = {
     return subStyleName;
 }
 
+/**
+ * Cache every unique style so that it can be reused for features sharing the same style
+ */
 var CACHE = {};
 
+/**
+ * Return a cached style if it exists
+ *
+ * @param {string} layerId - unique layer identifier
+ * @param {GeoJSON Feature} feature - a GeoJSON feature
+ * @returns {Object|false} - returns style object if cache exists, false if it doesn't
+ */
 function getCachedStyle(layerId, feature) {
     if (typeof CACHE[layerId] !== "undefined") {
         var subStyleName = getLayerSubStyleName(layerId, feature);
@@ -93428,6 +93492,10 @@ function getCachedStyle(layerId, feature) {
 /**
  * Called when a particular style / sub-style doesn't have an associated cache
  * A new style object is created, and cached for future use
+ *
+ * @param {string} layerId - unique layer identifier
+ * @param {GeoJSON Feature} feature - a GeoJSON feature
+ * @return {object} - style
  */
 function createNewStyle(layerId, feature) {
     var style = null;
@@ -93455,6 +93523,13 @@ function createNewStyle(layerId, feature) {
     return style;
 }
 
+/**
+ * Imported by ObliquePhotoMap. When passed a layerId, this function returns a function,
+ * bound to the LayerId, to get all a style for each feature in a particular layer
+ *
+ * @param {string} layerId - a unique layer id
+ * @returns {function} - a function that gets a unique style based on the feature that's passed to it
+ */
 function LAYER_STYLE(layerId) {
     return function layerStyle(feature) {
         return getCachedStyle(layerId, feature) || createNewStyle(layerId, feature);
