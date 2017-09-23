@@ -5452,6 +5452,10 @@ function getPhotoURLs(layerId, photoProperties) {
     return urls;
 }
 
+/**
+ * Gets URLS of profile documents based on the feature's properties
+ * @param {Object} featureProperties
+ */
 function getProfileURLs(featureProperties) {
     var bluffXls = _config2.default.resources.profiles.pathToXls.bluff;
     var bathyXls = _config2.default.resources.profiles.pathToXls.bathy;
@@ -6857,16 +6861,30 @@ exports.default = mobile;
  * - Mobile Feature Modal
  */
 
+/**
+ * Opens the mobile layer list
+ */
 function openMobileLayerList() {
     return {
         type: "MOBILE:LAYER_POPUP:OPEN"
     };
 }
+
+/**
+ * Closes the mobile layer list
+ */
 function closeMobileLayerList() {
     return {
         type: "MOBILE:LAYER_POPUP:CLOSE"
     };
 }
+
+/**
+ * When the browser window changes sizes, this dispatches the height and width of the window to the store
+ *
+ * @param {number} height
+ * @param {number} width
+ */
 function updateWindowDimensions(height, width) {
     return {
         type: "WINDOW:UPDATE_DIMENSIONS",
@@ -6874,6 +6892,14 @@ function updateWindowDimensions(height, width) {
         width: width
     };
 }
+
+/**
+ * When the browser is sufficiently small and the user clicks on a feature
+ *
+ * @param {Object} featureProperties - key/value pairs describing a particular feature
+ * @param {string} layerId
+ * @param {number} featureIndex - a number indicating the feature's order within the layer
+ */
 function mobileClickFeature(featureProperties, layerId, featureIndex) {
     return {
         type: "MOBILE:LAYER:CLICK_FEATURE",
@@ -6882,11 +6908,16 @@ function mobileClickFeature(featureProperties, layerId, featureIndex) {
         featureIndex: featureIndex
     };
 }
+
+/**
+ * When the user clicks on the "close" button in the mobile feature modal
+ */
 function closeMobileFeatureModal() {
     return {
         type: "MOBILE:FEATURE_MODAL:CLOSE"
     };
 }
+
 var initialState = {
     window: {
         height: false,
@@ -6902,6 +6933,7 @@ var initialState = {
         featureIndex: false
     }
 };
+
 function mobile() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
     var action = arguments[1];
@@ -8357,50 +8389,81 @@ var _config2 = _interopRequireDefault(_config);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * Sets the map store to contain a zoom-to-shoreline action
+ * @param {string} lakeName
+ * @param {string} countyName
+ */
 function zoomToShoreline(lakeName, countyName) {
     return {
         type: "MAP:ZOOM_TO_SHORELINE",
         lakeName: lakeName,
         countyName: countyName
     };
-} /**
-   * map.js Ducks
-   *
-   * Contains the actions and reducer part that controls map functionality.
-   */
+}
+
+/**
+ * Sets the map store to done zooming
+ */
+/**
+ * map.js Ducks
+ *
+ * Contains the actions and reducer part that controls map functionality.
+ */
 function doneZooming() {
     return {
         type: "MAP:DONE_ZOOMING"
     };
 }
+
+/**
+ * Tells the map to reset the view back to the default as specified by the config
+ */
 function resetMapView() {
     return {
         type: "MAP:RESET_VIEW"
     };
 }
+
+/**
+ * Dispatched when the map is done zooming to a new level
+ */
 function mapNewZoomLevel(zoomLevel) {
     return {
         type: "MAP:NEW_ZOOM_LEVEL",
         zoomLevel: zoomLevel
     };
 }
+
+/**
+ * Dispatched when the user clicks on the map
+ */
 function mapMousedown() {
     return {
         type: "MAP:MOUSEDOWN"
     };
 }
+
+/**
+ * Dispatched when a user clicks on a feature. The map will then zoom to that location if the
+ * map is sufficiently zoomed out
+ *
+ * @param {array} coordinates - the coordinates of the location where the popup opened
+ */
 function leafletPopupOpened(coordinates) {
     return {
         type: "MAP:LEAFLET_POPUP_OPENED",
         coordinates: coordinates
     };
 }
+
 var initialMapState = {
     state: {
         action: "none"
     },
     zoom: false
 };
+
 function map() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialMapState;
     var action = arguments[1];
@@ -8418,9 +8481,11 @@ function map() {
             }
         case "MAP:DONE_ZOOMING":
             {
-                newState.state = {
-                    action: "none"
-                };
+                if (state.action === "willZoom") {
+                    newState.state = {
+                        action: "none"
+                    };
+                }
                 break;
             }
         case "MAP:RESET_VIEW":
@@ -11197,6 +11262,10 @@ var _util = __webpack_require__(76);
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+/**
+ * Toggles a layer on and off
+ * @param {string} layerId
+ */
 function toggleLayer(layerId) {
     return {
         type: "LAYERS:TOGGLE_LAYER",
@@ -11204,6 +11273,18 @@ function toggleLayer(layerId) {
     };
 }
 
+/**
+ * When the app is processing a layer and comes across a new feature style, it dispatches this
+ * action to store the style in the store. It's then used by the legend to display an appropriate
+ * entry.
+ *
+ * @param {string} layerId
+ * @param {string} propertyName - the name of the property within the feature that's being styled
+ *  i.e. in the Structures layer, we're styling different structure types
+ * @param {Object} style - the key/value pairs that describe a Leaflet style
+ * @param {string} geometryType - usually point or line, allows the legend to determine what shape to show
+ *  as an icon next to a legend entry
+ */
 function legendStyleUpdate(layerId, propertyName, style, geometryType) {
     return {
         type: "LAYER:LEGEND_STYLE_UPDATE",
@@ -11213,18 +11294,33 @@ function legendStyleUpdate(layerId, propertyName, style, geometryType) {
         geometryType: geometryType
     };
 }
+
+/**
+ * Tells the store that a layer is in a pre-loading state
+ * @param {string} layerId
+ */
 function layerPreload(layerId) {
     return {
         type: "LAYERS:LAYER_PRELOAD",
         layerId: layerId
     };
 }
+
+/**
+ * Tells the store that a layer has loaded
+ * @param {string} layerId
+ */
 function layerLoaded(layerId) {
     return {
         type: "LAYERS:LAYER_LOADED",
         layerId: layerId
     };
 }
+
+/**
+ * Tells the store that a layer has errored
+ * @param {string} layerId
+ */
 function layerError(layerId) {
     return {
         type: "LAYERS:LAYER_ERROR",
@@ -16296,24 +16392,43 @@ for (var basemapId in _util.BASEMAPS_BY_ID) {
     };
 }
 
+/**
+ * Turns a basemap on or off
+ * @param {string} basemapId
+ */
 function toggleBasemap(basemapId) {
     return {
         type: "BASEMAPS:TOGGLE_BASEMAP",
         basemapId: basemapId
     };
 }
+
+/**
+ * Tells the store that the basemap is in a pre-loaded state
+ * @param {string} basemapId
+ */
 function basemapPreload(basemapId) {
     return {
         type: "BASEMAPS:BASEMAP_PRELOAD",
         basemapId: basemapId
     };
 }
+
+/**
+ * Tells the store that the basemap is in a loaded state
+ * @param {string} basemapId
+ */
 function basemapLoaded(basemapId) {
     return {
         type: "BASEMAPS:BASEMAP_LOADED",
         basemapId: basemapId
     };
 }
+
+/**
+ * Tells the store that the basemap failed to load
+ * @param {string} basemapId
+ */
 function basemapError(basemapId) {
     return {
         type: "BASEMAPS:BASEMAP_ERROR",
@@ -16401,6 +16516,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var initialState = {};
 
+/**
+ * When a Leaflet-based feature popup is "pinned", by clicking on the pin icon
+ *
+ * @param {string} layerId
+ * @param {Object} featureProperties - key/value pairs describing a feature's properties
+ * @param {Object} position - pixel coordinates describing the location of the leaflet popup
+ *  in the map container.
+ * @param {number} position.x - pixel coordinate describing x offset from left of window
+ * @param {number} position.y - pixel coordinate describing y offset from top of window
+ */
 function newPinnedFeature(layerId, featureProperties, position) {
     return {
         type: "PINNED_FEATURES:NEW",
@@ -16409,6 +16534,12 @@ function newPinnedFeature(layerId, featureProperties, position) {
         position: position
     };
 }
+
+/**
+ * Closes a pinned feature popup
+ *
+ * @param {string} featureId - the ID of the feature to close
+ */
 function closePinnedFeature(featureId) {
     return {
         type: "PINNED_FEATURES:CLOSE",
@@ -16940,14 +17071,17 @@ var PopupTabs = function (_React$Component) {
         _this.update = _this.update.bind(_this);
         return _this;
     }
+    /**
+     * Applies to popups within the Leaflet map scope, which need to update their dimensions once
+     *  images have loaded
+     */
     // eslint-disable-next-line class-methods-use-this
 
 
     _createClass(PopupTabs, [{
         key: 'update',
         value: function update() {
-            // Applies to popups within the Leaflet map scope, which
-            // need to update their dimensions once images have loaded
+
             if (typeof this.props.update !== "undefined") {
                 this.props.update();
             }
@@ -18450,17 +18584,25 @@ var _util = __webpack_require__(76);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var PopupFooter = function PopupFooter(props) {
-    var footer = [];
-    switch (props.layerId) {
+/**
+ * Based on the layer ID and the feature currently being displayed, determine what footer content
+ * to display
+ *
+ * @param {string} layerId - the ID of the layer containing this feature
+ * @param {object} featureProperties - the key/value pair properties for the feature
+ * @returns {JSX[]} - array of JSX components to be displayed in the footer
+ */
+var getContentByLayerId = function getContentByLayerId(layerId, featureProperties) {
+    var content = [];
+    switch (layerId) {
         case "photos_1976":
         case "photos_2007":
         case "photos_2017":
         case "photos_2016":
         case "photos_2012":
             {
-                var photoURLs = (0, _util.getPhotoURLs)(props.layerId, props.featureProperties);
-                footer.push(_react2.default.createElement(
+                var photoURLs = (0, _util.getPhotoURLs)(layerId, featureProperties);
+                content.push(_react2.default.createElement(
                     'a',
                     { href: photoURLs.original,
                         key: 'open-larger-image-button',
@@ -18477,9 +18619,9 @@ var PopupFooter = function PopupFooter(props) {
             }
         case "profiles":
             {
-                var urls = (0, _util.getProfileURLs)(props.featureProperties);
+                var urls = (0, _util.getProfileURLs)(featureProperties);
                 if (urls.bluffXls) {
-                    footer.push(_react2.default.createElement(
+                    content.push(_react2.default.createElement(
                         'a',
                         { href: urls.bluffXls,
                             key: 'download-bluff-excel-button',
@@ -18494,7 +18636,7 @@ var PopupFooter = function PopupFooter(props) {
                     ));
                 }
                 if (urls.bathyXls) {
-                    footer.push(_react2.default.createElement(
+                    content.push(_react2.default.createElement(
                         'a',
                         { href: urls.bathyXls,
                             key: 'download-bathy-excel-button',
@@ -18513,6 +18655,12 @@ var PopupFooter = function PopupFooter(props) {
         default:
             break;
     }
+    return content;
+};
+
+var PopupFooter = function PopupFooter(props) {
+
+    var footer = getContentByLayerId(props.layerId, props.featureProperties);
     if (footer.length > 0) {
         footer.unshift(_react2.default.createElement('i', { key: 'download', className: 'fa fa-download' }));
     }
@@ -27828,9 +27976,11 @@ exports.setNavExpand = setNavExpand;
 exports.default = nav;
 var initialState = {
     expanded: false
-};
 
-function setNavExpand(expanded) {
+    /**
+     * Sets the expanded state of the mobile version of the nav
+     */
+};function setNavExpand(expanded) {
     return {
         type: "NAV:SET_EXPANDED",
         expanded: expanded
@@ -27958,13 +28108,23 @@ var LayerList = function (_React$Component) {
         }
     }], [{
         key: 'onLayerClick',
+
+        /**
+         * When a layer is clicked, dispatch an action to the store
+         * @param {string} layerId - a unique layer id
+         */
         value: function onLayerClick(layerId) {
             _store2.default.dispatch((0, _layers.toggleLayer)(layerId));
         }
+        /**
+         * When a basemap is clicked, dispatch an action to the store
+         * @param {string} basemapId - a unique basemap id
+         */
+
     }, {
         key: 'onBasemapClick',
-        value: function onBasemapClick(basemapID) {
-            _store2.default.dispatch((0, _basemaps.toggleBasemap)(basemapID));
+        value: function onBasemapClick(basemapId) {
+            _store2.default.dispatch((0, _basemaps.toggleBasemap)(basemapId));
         }
     }]);
 
@@ -28129,6 +28289,10 @@ function createLeafletPopup(feature, featureLayer, layerId, map) {
         minWidth: 350,
         closeButton: false
     }).setLatLng(_leaflet2.default.latLng(featureMiddlePoint[1], featureMiddlePoint[0])).setContent(container);
+    /**
+     * Gets the pixel position of the popup within the window
+     * @returns {Object} - position with properties x, y
+     */
     var getPopupPosition = function getPopupPosition() {
         var popupPosition = popup.getLatLng();
         var positionInMap = map.latLngToContainerPoint(popupPosition);
@@ -28198,8 +28362,10 @@ function togglePopup() {
     var map = this.map;
     this.openNextFeature = toggleNextFeaturePopup.bind(this);
     this.openPreviousFeature = togglePreviousFeaturePopup.bind(this);
+    // if the window is sufficiently small, show the mobile feature modal
     if (_store2.default.getState().mobile.window.width < 992) {
         _store2.default.dispatch((0, _mobile.mobileClickFeature)(feature.properties, layerId, featureIndex));
+        // else, show a popup
     } else if (this.popup === false) {
         this.popup = createLeafletPopup(feature, this, layerId, map, featureIndex);
     } else {
@@ -74472,14 +74638,30 @@ var NavBar = function (_React$Component) {
 
   _createClass(NavBar, null, [{
     key: 'onMobileLayersClick',
+
+    /**
+     * Dispatches an action to open the mobile layer list. Only available on small screens.
+     */
     value: function onMobileLayersClick() {
       _store2.default.dispatch((0, _mobile.openMobileLayerList)());
     }
+    /**
+     * When a user clicks on a county shoreline, dispatches an action to zoom to a particular shoreline.
+     * Shorelines are organized by Lake, then County. Per config.json
+     *
+     * @param {string} lakeName
+     * @param {string} countyName
+     */
+
   }, {
     key: 'onZoomShorelineClick',
     value: function onZoomShorelineClick(lakeName, countyName) {
       _store2.default.dispatch((0, _map.zoomToShoreline)(lakeName, countyName));
     }
+    /**
+     * When a user clicks on the reset button, dispatches an action to reset the map view
+     */
+
   }, {
     key: 'onResetViewClick',
     value: function onResetViewClick() {
@@ -74490,6 +74672,10 @@ var NavBar = function (_React$Component) {
   function NavBar(props) {
     _classCallCheck(this, NavBar);
 
+    /**
+     * @type {object} state
+     * @property {string} expanded - in mobile mode, whether or not the nav-bar is expanded vertically
+     */
     var _this = _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).call(this, props));
 
     _this.state = {
@@ -74499,6 +74685,11 @@ var NavBar = function (_React$Component) {
     _this.toggle = _this.toggle.bind(_this);
     return _this;
   }
+  /**
+   * When component is about to recieve new props, check to see if the nav should be expanded (mobile only)
+   * @param {object} nextProps - props to be received
+   */
+
 
   _createClass(NavBar, [{
     key: 'componentWillReceiveProps',
@@ -74509,11 +74700,19 @@ var NavBar = function (_React$Component) {
         });
       }
     }
+    /**
+     * Force the nav to close (mobile mode only)
+     */
+
   }, {
     key: 'collapse',
     value: function collapse() {
       this.toggle(false);
     }
+    /**
+     * Toggle the nav open or closed (mobile mode only)
+     */
+
   }, {
     key: 'toggle',
     value: function toggle(expanded) {
@@ -75159,6 +75358,12 @@ var Sidebar = function (_React$Component) {
     function Sidebar(props) {
         _classCallCheck(this, Sidebar);
 
+        /**
+         * @type {object} state
+         * @property {string} activeTab - the ID of the active tab
+         *  - "LayerList"
+         *  - "Legend"
+         */
         var _this = _possibleConstructorReturn(this, (Sidebar.__proto__ || Object.getPrototypeOf(Sidebar)).call(this, props));
 
         _this.state = {
@@ -75168,6 +75373,11 @@ var Sidebar = function (_React$Component) {
         _this.getClassName = _this.getClassName.bind(_this);
         return _this;
     }
+    /**
+     * Called when a tab is clicked. Sets state to the value of the clicked tab.
+     * @param {SyntheticEvent} e
+     */
+
 
     _createClass(Sidebar, [{
         key: 'onTabClick',
@@ -75179,6 +75389,12 @@ var Sidebar = function (_React$Component) {
                 });
             }
         }
+        /**
+         * Return a classname for active vs inactive tabs
+         * @param {string} tabValue - check tab value against currently active tab
+         * @returns {string} - returns "active" if tab is active, or empty string
+         */
+
     }, {
         key: 'getClassName',
         value: function getClassName(tabValue) {
@@ -75988,6 +76204,10 @@ var MobileFeaturePopup = function (_React$Component) {
 
   _createClass(MobileFeaturePopup, null, [{
     key: 'close',
+
+    /**
+     * Closes the mobile feature popup
+     */
     value: function close() {
       _store2.default.dispatch((0, _mobile.closeMobileFeatureModal)());
     }
@@ -76003,12 +76223,20 @@ var MobileFeaturePopup = function (_React$Component) {
     _this.popupType = "modal";
     return _this;
   }
+  /**
+   * Opens previous feature in the layer
+   */
+
 
   _createClass(MobileFeaturePopup, [{
     key: 'openPreviousFeature',
     value: function openPreviousFeature() {
       (0, _layerFeatures.getFeatureLayer)(this.props.featureIndex, this.props.layerId).openPreviousFeature();
     }
+    /**
+     * Opens next feature in the layer
+     */
+
   }, {
     key: 'openNextFeature',
     value: function openNextFeature() {
@@ -82329,27 +82557,47 @@ var FeaturePopup = function (_React$Component) {
         _this.popupType = "leaflet";
         return _this;
     }
+    /**
+     * When the component mounts, update the size of the Leaflet popup to adjust for the content
+     */
+
 
     _createClass(FeaturePopup, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
             this.update();
         }
+        /**
+         * Update the size of the Leaflet popup to adjust for the content
+         */
+
     }, {
         key: 'update',
         value: function update() {
             this.props.popup.update();
         }
+        /**
+         * When the user clicks on the popup, bring it to the front (z-index)
+         */
+
     }, {
         key: 'bringToFront',
         value: function bringToFront() {
             this.props.popup.bringToFront();
         }
+        /**
+         * Close the popup
+         */
+
     }, {
         key: 'close',
         value: function close() {
             this.props.closePopup();
         }
+        /**
+         * Pin the popup. Adds the popup to the Pinned Popup Container and removes it from the leaflet map.
+         */
+
     }, {
         key: 'pin',
         value: function pin() {
@@ -82582,6 +82830,12 @@ var DataTab = function (_React$Component) {
         }
     }], [{
         key: 'renderRow',
+
+        /**
+         * Given a property and a value, render a table row
+         * @param {string} property - the property name
+         * @param {string} value - the value of the property
+         */
         value: function renderRow(property, value) {
             return _react2.default.createElement(
                 'tr',
@@ -82675,6 +82929,10 @@ var ProfileTab = function (_React$Component) {
         _this.createLineChart = _this.createLineChart.bind(_this);
         return _this;
     }
+    /**
+     * When the component mounts, create the d3 line chart and then update the popup
+     */
+
 
     _createClass(ProfileTab, [{
         key: 'componentDidMount',
@@ -82682,6 +82940,10 @@ var ProfileTab = function (_React$Component) {
             this.createLineChart();
             this.props.update();
         }
+        /**
+         * Create the profile's line chart within the given drawing area
+         */
+
     }, {
         key: 'createLineChart',
         value: function createLineChart() {
@@ -88785,6 +89047,10 @@ var MobileLayerList = function (_React$Component) {
         }
     }], [{
         key: 'closeModal',
+
+        /**
+         * Dispatches an action to close the mobile layer list
+         */
         value: function closeModal() {
             _store2.default.dispatch((0, _mobile.closeMobileLayerList)());
         }
@@ -88862,6 +89128,11 @@ var PinnedFeaturePopupContainer = function (_React$Component) {
 
     _createClass(PinnedFeaturePopupContainer, null, [{
         key: 'closePopup',
+
+        /**
+         * Close a particular pinned popup
+         * @param {string} featureId - a unique ID for a feature in a layer
+         */
         value: function closePopup(featureId) {
             _store2.default.dispatch((0, _pinnedFeatures.closePinnedFeature)(featureId));
         }
@@ -88870,6 +89141,10 @@ var PinnedFeaturePopupContainer = function (_React$Component) {
     function PinnedFeaturePopupContainer() {
         _classCallCheck(this, PinnedFeaturePopupContainer);
 
+        /**
+         * @type {object} state
+         * @property {Array} order - the order in which the popups should appear (z-index)
+         */
         var _this = _possibleConstructorReturn(this, (PinnedFeaturePopupContainer.__proto__ || Object.getPrototypeOf(PinnedFeaturePopupContainer)).call(this));
 
         _this.state = {
@@ -88878,6 +89153,14 @@ var PinnedFeaturePopupContainer = function (_React$Component) {
         _this.bringToFront = _this.bringToFront.bind(_this);
         return _this;
     }
+    /**
+     * Function to process new props from Redux / its parent container
+     * - If a new popup has been pinned, add that popup to the container and order accordingly
+     * - If a popup has been closed, remove it from the list and reset order accordingly
+     *
+     * @param {object} nextProps
+     */
+
 
     _createClass(PinnedFeaturePopupContainer, [{
         key: 'componentWillReceiveProps',
@@ -88921,6 +89204,13 @@ var PinnedFeaturePopupContainer = function (_React$Component) {
                 order: newOrder
             });
         }
+        /**
+         * If a user clicks on a popup that isn't in front, bring it in front so that its contents
+         * are visible above all others
+         *
+         * @param {string} featureId - a unique ID for a feature within a layer
+         */
+
     }, {
         key: 'bringToFront',
         value: function bringToFront(featureId) {
@@ -89047,6 +89337,10 @@ var PinnedFeaturePopup = function (_React$Component) {
         _this.popupType = "pinned";
         return _this;
     }
+    /**
+     * On component mount, set the width and height of the container
+     */
+
 
     _createClass(PinnedFeaturePopup, [{
         key: 'componentDidMount',
@@ -91838,12 +92132,24 @@ var LeafletMap = function (_React$Component) {
 
     _createClass(LeafletMap, [{
         key: 'componentDidMount',
+
+        /**
+         * When the component mounts to the DOM, create a new instance of the Oblique Photo Map, which
+         * initializes a Leaflet map.
+         */
         value: function componentDidMount() {
             this.map = new _ObliquePhotoMap2.default(this.mapComponent);
             // order here matters (basemaps, then layers)
             this.toggleBasemaps(null, this.props.basemaps);
             this.toggleLayers(null, this.props.layers);
         }
+        /**
+         * When this component recieves new props (via Redux or parent components), it toggles additional
+         * functions to determine whether the props have changed
+         * @param {object} nextProps - next key/value pairs describing props fed from Redux and parent
+         *   components
+         */
+
     }, {
         key: 'componentWillReceiveProps',
         value: function componentWillReceiveProps(nextProps) {
@@ -91853,6 +92159,13 @@ var LeafletMap = function (_React$Component) {
             this.toggleMapActions(oldProps.map, nextProps.map);
             this.sidebarToggled(oldProps.sidebarOpen, nextProps.sidebarOpen);
         }
+        /**
+         * Compare old layer props and new layer props.
+         * - If there are new layer selections, toggle them in the map
+         * @param {object} oldLayerProps - next key/value pairs describing current layer props
+         * @param {object} newLayerProps - next key/value pairs describing new layer props
+         */
+
     }, {
         key: 'toggleLayers',
         value: function toggleLayers(oldLayerProps, newLayerProps) {
@@ -91863,6 +92176,13 @@ var LeafletMap = function (_React$Component) {
                 }
             }
         }
+        /**
+         * Compare old basemap props and new basemap props.
+         * - If there are new basemap selections, toggle them in the map
+         * @param {object} oldBasemapProps - next key/value pairs describing current basemap props
+         * @param {object} newBasemapProps - next key/value pairs describing new basemap props
+         */
+
     }, {
         key: 'toggleBasemaps',
         value: function toggleBasemaps(oldBasemapProps, newBasemapProps) {
@@ -91872,24 +92192,38 @@ var LeafletMap = function (_React$Component) {
                 }
             }
         }
+        /**
+         * Compare old map action props and new map action props
+         * - If there are new map actions, execute corresponding functions
+         * @param {object} oldMapProps - next key/value pairs describing current map props
+         * @param {object} newMapProps - next key/value pairs describing new map props
+         */
+
     }, {
         key: 'toggleMapActions',
         value: function toggleMapActions(oldMapProps, newMapProps) {
             if (oldMapProps !== null) {
-                if (newMapProps.state.action === "willZoom") {
+                if (newMapProps.state.action === "willZoom" && oldMapProps.state.action !== "willZoom") {
                     this.map.zoomToExtent(newMapProps.state.extent);
                     _store2.default.dispatch((0, _map.doneZooming)());
                 }
-                if (newMapProps.state.action === "willPanAndZoom") {
+                if (newMapProps.state.action === "willPanAndZoom" && oldMapProps.state.action !== "willPanAndZoom") {
                     this.map.panAndZoom(newMapProps.state.zoom, newMapProps.state.coordinates);
                     _store2.default.dispatch((0, _map.doneZooming)());
                 }
             }
         }
+        /**
+         * Compare old sidebar props and new sidebar props
+         * - If the sidebar props have changed, toggle updateSize
+         * @param {object} oldSidebarProps - next key/value pairs describing current sidebar props
+         * @param {object} newSidebarProps - next key/value pairs describing new sidebar props
+         */
+
     }, {
         key: 'sidebarToggled',
-        value: function sidebarToggled(oldProps, newProps) {
-            if (oldProps !== null && oldProps !== newProps) {
+        value: function sidebarToggled(oldSidebarProps, newSidebarProps) {
+            if (oldSidebarProps !== null && oldSidebarProps !== newSidebarProps) {
                 this.map.updateSize();
             }
         }
@@ -93148,7 +93482,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /**
-                                                                                                                                                                                                                                                                   * styles.js
+                                                                                                                                                                                                                                                                   * layerStyles.js
                                                                                                                                                                                                                                                                    * This contains style functions that are applied to each layer when they are loaded.
                                                                                                                                                                                                                                                                    * Additionally, this file caches the styles applied by each layer, so that when
                                                                                                                                                                                                                                                                    * the user activates them in the map, we save memory and we can keep track of all possible styles

@@ -9523,8 +9523,7 @@ button.close {
   font-family: "Open Sans"; }
 
 .leaflet-control-scale-line:not(:first-child) {
-  border-top: 2px solid #90a4ae;
-  border-bottom: none;
+  border: none;
   margin-top: -2px; }
 
 .leaflet-container .leaflet-control-mouseposition {
