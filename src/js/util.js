@@ -96,6 +96,10 @@ export function getPhotoURLs (layerId, photoProperties) {
     return urls;
 }
 
+/**
+ * Gets URLS of profile documents based on the feature's properties
+ * @param {Object} featureProperties
+ */
 export function getProfileURLs (featureProperties) {
     let bluffXls = CONFIG.resources.profiles.pathToXls.bluff;
     let bathyXls = CONFIG.resources.profiles.pathToXls.bathy;
