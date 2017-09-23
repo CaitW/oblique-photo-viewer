@@ -8695,6 +8695,24 @@ button.close {
     font-size: 18px;
     padding: 5px 0; } }
 
+.wiscviewer-legend-list {
+  padding: 10px 20px;
+  margin: 0;
+  list-style: none;
+  text-transform: capitalize;
+  color: #b0bec5; }
+  .wiscviewer-legend-list li {
+    padding: 1px 0; }
+  .wiscviewer-legend-list i {
+    margin-right: 20px;
+    font-size: 20px; }
+    .wiscviewer-legend-list i.fa-circle {
+      font-size: 12px; }
+
+.wiscviewer-legend-layer-group .wiscviewer-layer-group-name {
+  float: right;
+  margin-top: 4px; }
+
 .wiscviewer-sidebar {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   z-index: 500;
@@ -8787,19 +8805,6 @@ button.close {
   .wiscviewer-sidebar-panel-header:hover {
     cursor: default; }
 
-.wiscviewer-legend-list {
-  padding: 10px 20px;
-  margin: 0;
-  list-style: none;
-  text-transform: capitalize;
-  color: #b0bec5; }
-  .wiscviewer-legend-list li {
-    padding: 1px 0; }
-  .wiscviewer-legend-list i {
-    margin-right: 20px; }
-    .wiscviewer-legend-list i.fa-circle {
-      font-size: 10px; }
-
 .wiscviewer-layer-left-icon {
   margin-left: 5px;
   margin-right: 15px;
@@ -8816,10 +8821,6 @@ button.close {
 .wiscviewer-sidebar-panel-header:focus,
 .wiscviewer-layer-item:focus {
   outline: none; }
-
-.wiscviewer-legend-layer-group .wiscviewer-layer-group-name {
-  float: right;
-  margin-top: 4px; }
 
 .wiscviewer-sidebar-toggle {
   position: absolute;
@@ -9532,7 +9533,7 @@ button.close {
   background-color: #37474f;
   border: none;
   color: #b0bec5;
-  font-family: "Open Sans"; }
+  font: 11px "Open Sans"; }
 
 .leaflet-popup-content-wrapper {
   margin: 0;

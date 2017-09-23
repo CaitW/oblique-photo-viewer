@@ -1,0 +1,26 @@
+.wiscviewer-legend-list {
+  padding: 10px 20px;
+  margin: 0;
+  list-style: none;
+  text-transform: capitalize;
+  color: $primary_200;
+  li {
+    padding: 1px 0;
+  }
+
+  i {
+    margin-right: 20px;
+    font-size: 20px;
+
+    &.fa-circle {
+      font-size: 12px;
+    }
+  }
+}
+
+.wiscviewer-legend-layer-group {
+  .wiscviewer-layer-group-name {
+    float: right;
+    margin-top: 4px;
+  }
+}

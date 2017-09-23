@@ -1,3 +1,5 @@
+@import 'sidebar/legend';
+
 $hide_scroll_padding: 17px;
 
 .wiscviewer-sidebar {
@@ -125,25 +127,6 @@ $hide_scroll_padding: 17px;
   }
 }
 
-.wiscviewer-legend-list {
-  padding: 10px 20px;
-  margin: 0;
-  list-style: none;
-  text-transform: capitalize;
-  color: $primary_200;
-  li {
-    padding: 1px 0;
-  }
-
-  i {
-    margin-right: 20px;
-
-    &.fa-circle {
-      font-size: 10px;
-    }
-  }
-}
-
 .wiscviewer-layer-left-icon {
   margin-left: 5px;
   margin-right: 15px;
@@ -166,13 +149,6 @@ $hide_scroll_padding: 17px;
 .wiscviewer-layer-item {
   &:focus {
     outline: none;
-  }
-}
-
-.wiscviewer-legend-layer-group {
-  .wiscviewer-layer-group-name {
-    float: right;
-    margin-top: 4px;
   }
 }
 
