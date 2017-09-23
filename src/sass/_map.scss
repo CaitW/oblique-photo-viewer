@@ -103,8 +103,7 @@
 }
 
 .leaflet-control-scale-line:not(:first-child) {
-    border-top: 2px solid $primary_300;
-    border-bottom: none;
+    border: none;
     margin-top: -2px;
 }
 
