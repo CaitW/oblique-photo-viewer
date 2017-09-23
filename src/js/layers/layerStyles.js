@@ -1,5 +1,5 @@
 /**
- * styles.js
+ * layerStyles.js
  * This contains style functions that are applied to each layer when they are loaded.
  * Additionally, this file caches the styles applied by each layer, so that when
  * the user activates them in the map, we save memory and we can keep track of all possible styles
@@ -8,6 +8,10 @@
 import store from '../store';
 import { legendStyleUpdate } from '../ducks/layers';
 
+
+/**
+ * Colors used in the app
+ */
 let COLORS = {
     RED: "#F44336",
     GREEN: "#8BC34A",
@@ -75,7 +79,16 @@ const DEFAULT_STYLES = {
     }
 };
 
-// Individual layer styles are added below, as referenced by ID in config.json
+/**
+ * Individual layer styles are added below, as referenced by ID in config.json
+ *
+ * @param {string} subStyleName - if a style has different sub-styles for a particular feature type
+ *  this parameter specifies the name of that sub-style, and the function below returns a style
+ *  based on that information
+ * @returns {object} - style per Leaflet's GeoJSON style spec
+ *
+ * - the keys of each function in LAYER_STYLES_BY_ID correspond to layers in config.json
+ */
 const LAYER_STYLES_BY_ID = {
     backshore_1976: function(subStyleName) {
         let style = {
@@ -280,6 +293,9 @@ const LAYER_STYLES_BY_ID = {
  * Return the value of the property that determines the differing style
  * Alternatively, if a layer's style should be the same for all features, just return
  * a string to serve as the label in the legend
+ *
+ * @param {string} layerId - unique layer identifier
+ * @param {GeoJSON Feature} feature - a GeoJSON feature
  */
 function getLayerSubStyleName (layerId, feature) {
     let subStyleName = layerId;
@@ -333,8 +349,18 @@ function getLayerSubStyleName (layerId, feature) {
     return subStyleName;
 }
 
+/**
+ * Cache every unique style so that it can be reused for features sharing the same style
+ */
 const CACHE = {};
 
+/**
+ * Return a cached style if it exists
+ *
+ * @param {string} layerId - unique layer identifier
+ * @param {GeoJSON Feature} feature - a GeoJSON feature
+ * @returns {Object|false} - returns style object if cache exists, false if it doesn't
+ */
 function getCachedStyle (layerId, feature) {
     if(typeof CACHE[layerId] !== "undefined") {
         let subStyleName = getLayerSubStyleName(layerId, feature);
@@ -348,6 +374,10 @@ function getCachedStyle (layerId, feature) {
 /**
  * Called when a particular style / sub-style doesn't have an associated cache
  * A new style object is created, and cached for future use
+ *
+ * @param {string} layerId - unique layer identifier
+ * @param {GeoJSON Feature} feature - a GeoJSON feature
+ * @return {object} - style
  */
 function createNewStyle (layerId, feature) {
     let style = null;
@@ -375,6 +405,13 @@ function createNewStyle (layerId, feature) {
     return style;
 }
 
+/**
+ * Imported by ObliquePhotoMap. When passed a layerId, this function returns a function,
+ * bound to the LayerId, to get all a style for each feature in a particular layer
+ *
+ * @param {string} layerId - a unique layer id
+ * @returns {function} - a function that gets a unique style based on the feature that's passed to it
+ */
 export default function LAYER_STYLE (layerId) {
     return function layerStyle (feature) {
         return getCachedStyle(layerId, feature) || createNewStyle(layerId, feature);

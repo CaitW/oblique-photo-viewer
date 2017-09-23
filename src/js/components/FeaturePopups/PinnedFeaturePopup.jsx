@@ -19,6 +19,9 @@ class PinnedFeaturePopup extends React.Component {
         };
         this.popupType = "pinned";
     }
+    /**
+     * On component mount, set the width and height of the container
+     */
     componentDidMount () {
         let height = this.content.clientHeight;
         let width = this.content.clientWidth;

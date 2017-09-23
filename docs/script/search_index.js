@@ -1,5 +1,11 @@
 window.esdocSearchIndex = [
   [
+    "oblique-photo-viewer/src/js/components/aboutbutton.jsx~aboutbutton",
+    "function/index.html#static-function-AboutButton",
+    "<span>AboutButton</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/AboutButton.jsx</span>",
+    "function"
+  ],
+  [
     "oblique-photo-viewer/src/js/lib/addmouseposition.js~addmouseposition",
     "function/index.html#static-function-AddMousePosition",
     "<span>AddMousePosition</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/lib/AddMousePosition.js</span>",
@@ -10,6 +16,36 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-BASEMAPS_BY_ID",
     "<span>BASEMAPS_BY_ID</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/util.js</span>",
     "variable"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/basemap.jsx~basemap",
+    "function/index.html#static-function-Basemap",
+    "<span>Basemap</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/Basemap.jsx</span>",
+    "function"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/basemaplist.jsx~basemaplist",
+    "function/index.html#static-function-BasemapList",
+    "<span>BasemapList</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/BasemapList.jsx</span>",
+    "function"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/featurepopups/components/tabs/datatab.jsx~datatab",
+    "class/src/js/components/FeaturePopups/components/tabs/DataTab.jsx~DataTab.html",
+    "<span>DataTab</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/FeaturePopups/components/tabs/DataTab.jsx</span>",
+    "class"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/featurepopups/featurepopup.jsx~featurepopup",
+    "class/src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup.html",
+    "<span>FeaturePopup</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/FeaturePopups/FeaturePopup.jsx</span>",
+    "class"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/featurepopups/components/tabs/imagetab.jsx~imagetab",
+    "function/index.html#static-function-ImageTab",
+    "<span>ImageTab</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/FeaturePopups/components/tabs/ImageTab.jsx</span>",
+    "function"
   ],
   [
     "oblique-photo-viewer/src/js/util.js~layers_by_id",
@@ -30,10 +66,94 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "oblique-photo-viewer/src/js/components/layer.jsx~layer",
+    "function/index.html#static-function-Layer",
+    "<span>Layer</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/Layer.jsx</span>",
+    "function"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/layergroup.jsx~layergroup",
+    "function/index.html#static-function-LayerGroup",
+    "<span>LayerGroup</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/LayerGroup.jsx</span>",
+    "function"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/legendlayer.jsx~legendlayer",
+    "function/index.html#static-function-LegendLayer",
+    "<span>LegendLayer</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/LegendLayer.jsx</span>",
+    "function"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/legendstyle.jsx~legendstyle",
+    "function/index.html#static-function-LegendStyle",
+    "<span>LegendStyle</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/LegendStyle.jsx</span>",
+    "function"
+  ],
+  [
+    "oblique-photo-viewer/src/js/wrappers/mapwrapper.jsx~mapwrapper",
+    "function/index.html#static-function-MapWrapper",
+    "<span>MapWrapper</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/wrappers/MapWrapper.jsx</span>",
+    "function"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/mobiletoggle.jsx~mobiletoggle",
+    "function/index.html#static-function-MobileToggle",
+    "<span>MobileToggle</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/MobileToggle.jsx</span>",
+    "function"
+  ],
+  [
     "oblique-photo-viewer/src/js/classes/obliquephotomap.js~obliquephotomap",
     "class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html",
     "<span>ObliquePhotoMap</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/classes/ObliquePhotoMap.js</span>",
     "class"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/featurepopups/pinnedfeaturepopup.jsx~pinnedfeaturepopup",
+    "class/src/js/components/FeaturePopups/PinnedFeaturePopup.jsx~PinnedFeaturePopup.html",
+    "<span>PinnedFeaturePopup</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/FeaturePopups/PinnedFeaturePopup.jsx</span>",
+    "class"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/featurepopups/components/popupfooter.jsx~popupfooter",
+    "function/index.html#static-function-PopupFooter",
+    "<span>PopupFooter</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/FeaturePopups/components/PopupFooter.jsx</span>",
+    "function"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/featurepopups/components/popuptabs.jsx~popuptabs",
+    "class/src/js/components/FeaturePopups/components/PopupTabs.jsx~PopupTabs.html",
+    "<span>PopupTabs</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/FeaturePopups/components/PopupTabs.jsx</span>",
+    "class"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/featurepopups/components/popuptitle.jsx~popuptitle",
+    "function/index.html#static-function-PopupTitle",
+    "<span>PopupTitle</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/FeaturePopups/components/PopupTitle.jsx</span>",
+    "function"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/featurepopups/components/tabs/profiletab.jsx~profiletab",
+    "class/src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab.html",
+    "<span>ProfileTab</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx</span>",
+    "class"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/resetview.jsx~resetview",
+    "function/index.html#static-function-ResetView",
+    "<span>ResetView</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/ResetView.jsx</span>",
+    "function"
+  ],
+  [
+    "oblique-photo-viewer/src/js/containers/sidebar.jsx~sidebar",
+    "class/src/js/containers/Sidebar.jsx~Sidebar.html",
+    "<span>Sidebar</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/containers/Sidebar.jsx</span>",
+    "class"
+  ],
+  [
+    "oblique-photo-viewer/src/js/components/zoomtoshoreline.jsx~zoomtoshoreline",
+    "function/index.html#static-function-ZoomToShoreline",
+    "<span>ZoomToShoreline</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/ZoomToShoreline.jsx</span>",
+    "function"
   ],
   [
     "oblique-photo-viewer/src/js/ducks/basemaps.js~basemaperror",
@@ -106,6 +226,12 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-getBasemapsByIdWithData",
     "<span>getBasemapsByIdWithData</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/selectors.js</span>",
     "variable"
+  ],
+  [
+    "oblique-photo-viewer/src/js/layers/layerfeatures.jsx~getfeaturelayer",
+    "function/index.html#static-function-getFeatureLayer",
+    "<span>getFeatureLayer</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/layers/layerFeatures.jsx</span>",
+    "function"
   ],
   [
     "oblique-photo-viewer/src/js/selectors.js~getlayergroupsbyidwithdata",
@@ -219,6 +345,12 @@ window.esdocSearchIndex = [
     "oblique-photo-viewer/src/js/ducks/pinnedfeatures.js~newpinnedfeature",
     "function/index.html#static-function-newPinnedFeature",
     "<span>newPinnedFeature</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/ducks/pinnedFeatures.js</span>",
+    "function"
+  ],
+  [
+    "oblique-photo-viewer/src/js/layers/layerfeatures.jsx~oneachfeature",
+    "function/index.html#static-function-onEachFeature",
+    "<span>onEachFeature</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/layers/layerFeatures.jsx</span>",
     "function"
   ],
   [
@@ -558,6 +690,12 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "src/js/app.jsx",
+    "file/src/js/app.jsx.html",
+    "src/js/app.jsx",
+    "file"
+  ],
+  [
     "src/js/classes/obliquephotomap.js",
     "file/src/js/classes/ObliquePhotoMap.js.html",
     "src/js/classes/ObliquePhotoMap.js",
@@ -654,6 +792,342 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/js/components/aboutbutton.jsx",
+    "file/src/js/components/AboutButton.jsx.html",
+    "src/js/components/AboutButton.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/basemap.jsx",
+    "file/src/js/components/Basemap.jsx.html",
+    "src/js/components/Basemap.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/basemaplist.jsx",
+    "file/src/js/components/BasemapList.jsx.html",
+    "src/js/components/BasemapList.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/featurepopups/featurepopup.jsx",
+    "file/src/js/components/FeaturePopups/FeaturePopup.jsx.html",
+    "src/js/components/FeaturePopups/FeaturePopup.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/featurepopups/featurepopup.jsx~featurepopup#bringtofront",
+    "class/src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup.html#instance-method-bringToFront",
+    "src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup#bringToFront",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/featurepopup.jsx~featurepopup#close",
+    "class/src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup.html#instance-method-close",
+    "src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup#close",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/featurepopup.jsx~featurepopup#componentdidmount",
+    "class/src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup.html#instance-method-componentDidMount",
+    "src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup#componentDidMount",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/featurepopup.jsx~featurepopup#constructor",
+    "class/src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup.html#instance-constructor-constructor",
+    "src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup#constructor",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/featurepopup.jsx~featurepopup#pin",
+    "class/src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup.html#instance-method-pin",
+    "src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup#pin",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/featurepopup.jsx~featurepopup#popuptype",
+    "class/src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup.html#instance-member-popupType",
+    "src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup#popupType",
+    "member"
+  ],
+  [
+    "src/js/components/featurepopups/featurepopup.jsx~featurepopup#render",
+    "class/src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup.html#instance-method-render",
+    "src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup#render",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/featurepopup.jsx~featurepopup#update",
+    "class/src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup.html#instance-method-update",
+    "src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup#update",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/mobilefeaturepopup.jsx",
+    "file/src/js/components/FeaturePopups/MobileFeaturePopup.jsx.html",
+    "src/js/components/FeaturePopups/MobileFeaturePopup.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/featurepopups/pinnedfeaturepopup.jsx",
+    "file/src/js/components/FeaturePopups/PinnedFeaturePopup.jsx.html",
+    "src/js/components/FeaturePopups/PinnedFeaturePopup.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/featurepopups/pinnedfeaturepopup.jsx~pinnedfeaturepopup#componentdidmount",
+    "class/src/js/components/FeaturePopups/PinnedFeaturePopup.jsx~PinnedFeaturePopup.html#instance-method-componentDidMount",
+    "src/js/components/FeaturePopups/PinnedFeaturePopup.jsx~PinnedFeaturePopup#componentDidMount",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/pinnedfeaturepopup.jsx~pinnedfeaturepopup#constructor",
+    "class/src/js/components/FeaturePopups/PinnedFeaturePopup.jsx~PinnedFeaturePopup.html#instance-constructor-constructor",
+    "src/js/components/FeaturePopups/PinnedFeaturePopup.jsx~PinnedFeaturePopup#constructor",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/pinnedfeaturepopup.jsx~pinnedfeaturepopup#content",
+    "class/src/js/components/FeaturePopups/PinnedFeaturePopup.jsx~PinnedFeaturePopup.html#instance-member-content",
+    "src/js/components/FeaturePopups/PinnedFeaturePopup.jsx~PinnedFeaturePopup#content",
+    "member"
+  ],
+  [
+    "src/js/components/featurepopups/pinnedfeaturepopup.jsx~pinnedfeaturepopup#popuptype",
+    "class/src/js/components/FeaturePopups/PinnedFeaturePopup.jsx~PinnedFeaturePopup.html#instance-member-popupType",
+    "src/js/components/FeaturePopups/PinnedFeaturePopup.jsx~PinnedFeaturePopup#popupType",
+    "member"
+  ],
+  [
+    "src/js/components/featurepopups/pinnedfeaturepopup.jsx~pinnedfeaturepopup#render",
+    "class/src/js/components/FeaturePopups/PinnedFeaturePopup.jsx~PinnedFeaturePopup.html#instance-method-render",
+    "src/js/components/FeaturePopups/PinnedFeaturePopup.jsx~PinnedFeaturePopup#render",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/pinnedfeaturepopup.jsx~pinnedfeaturepopup#state",
+    "class/src/js/components/FeaturePopups/PinnedFeaturePopup.jsx~PinnedFeaturePopup.html#instance-member-state",
+    "src/js/components/FeaturePopups/PinnedFeaturePopup.jsx~PinnedFeaturePopup#state",
+    "member"
+  ],
+  [
+    "src/js/components/featurepopups/components/popupfooter.jsx",
+    "file/src/js/components/FeaturePopups/components/PopupFooter.jsx.html",
+    "src/js/components/FeaturePopups/components/PopupFooter.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/featurepopups/components/popuptabs.jsx",
+    "file/src/js/components/FeaturePopups/components/PopupTabs.jsx.html",
+    "src/js/components/FeaturePopups/components/PopupTabs.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/featurepopups/components/popuptabs.jsx~popuptabs#constructor",
+    "class/src/js/components/FeaturePopups/components/PopupTabs.jsx~PopupTabs.html#instance-constructor-constructor",
+    "src/js/components/FeaturePopups/components/PopupTabs.jsx~PopupTabs#constructor",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/components/popuptabs.jsx~popuptabs#render",
+    "class/src/js/components/FeaturePopups/components/PopupTabs.jsx~PopupTabs.html#instance-method-render",
+    "src/js/components/FeaturePopups/components/PopupTabs.jsx~PopupTabs#render",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/components/popuptabs.jsx~popuptabs#update",
+    "class/src/js/components/FeaturePopups/components/PopupTabs.jsx~PopupTabs.html#instance-method-update",
+    "src/js/components/FeaturePopups/components/PopupTabs.jsx~PopupTabs#update",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/components/popuptitle.jsx",
+    "file/src/js/components/FeaturePopups/components/PopupTitle.jsx.html",
+    "src/js/components/FeaturePopups/components/PopupTitle.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/featurepopups/components/tabs/datatab.jsx",
+    "file/src/js/components/FeaturePopups/components/tabs/DataTab.jsx.html",
+    "src/js/components/FeaturePopups/components/tabs/DataTab.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/featurepopups/components/tabs/datatab.jsx~datatab#componentdidmount",
+    "class/src/js/components/FeaturePopups/components/tabs/DataTab.jsx~DataTab.html#instance-method-componentDidMount",
+    "src/js/components/FeaturePopups/components/tabs/DataTab.jsx~DataTab#componentDidMount",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/components/tabs/datatab.jsx~datatab#render",
+    "class/src/js/components/FeaturePopups/components/tabs/DataTab.jsx~DataTab.html#instance-method-render",
+    "src/js/components/FeaturePopups/components/tabs/DataTab.jsx~DataTab#render",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/components/tabs/datatab.jsx~datatab.renderrow",
+    "class/src/js/components/FeaturePopups/components/tabs/DataTab.jsx~DataTab.html#static-method-renderRow",
+    "src/js/components/FeaturePopups/components/tabs/DataTab.jsx~DataTab.renderRow",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/components/tabs/imagetab.jsx",
+    "file/src/js/components/FeaturePopups/components/tabs/ImageTab.jsx.html",
+    "src/js/components/FeaturePopups/components/tabs/ImageTab.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/featurepopups/components/tabs/profiletab.jsx",
+    "file/src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx.html",
+    "src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/featurepopups/components/tabs/profiletab.jsx~profiletab#componentdidmount",
+    "class/src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab.html#instance-method-componentDidMount",
+    "src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab#componentDidMount",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/components/tabs/profiletab.jsx~profiletab#constructor",
+    "class/src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab.html#instance-constructor-constructor",
+    "src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab#constructor",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/components/tabs/profiletab.jsx~profiletab#createlinechart",
+    "class/src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab.html#instance-method-createLineChart",
+    "src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab#createLineChart",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/components/tabs/profiletab.jsx~profiletab#profilediv",
+    "class/src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab.html#instance-member-profileDiv",
+    "src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab#profileDiv",
+    "member"
+  ],
+  [
+    "src/js/components/featurepopups/components/tabs/profiletab.jsx~profiletab#render",
+    "class/src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab.html#instance-method-render",
+    "src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab#render",
+    "method"
+  ],
+  [
+    "src/js/components/layer.jsx",
+    "file/src/js/components/Layer.jsx.html",
+    "src/js/components/Layer.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/layergroup.jsx",
+    "file/src/js/components/LayerGroup.jsx.html",
+    "src/js/components/LayerGroup.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/legendlayer.jsx",
+    "file/src/js/components/LegendLayer.jsx.html",
+    "src/js/components/LegendLayer.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/legendstyle.jsx",
+    "file/src/js/components/LegendStyle.jsx.html",
+    "src/js/components/LegendStyle.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/mobiletoggle.jsx",
+    "file/src/js/components/MobileToggle.jsx.html",
+    "src/js/components/MobileToggle.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/resetview.jsx",
+    "file/src/js/components/ResetView.jsx.html",
+    "src/js/components/ResetView.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/zoomtoshoreline.jsx",
+    "file/src/js/components/ZoomToShoreline.jsx.html",
+    "src/js/components/ZoomToShoreline.jsx",
+    "file"
+  ],
+  [
+    "src/js/containers/layerlist.jsx",
+    "file/src/js/containers/LayerList.jsx.html",
+    "src/js/containers/LayerList.jsx",
+    "file"
+  ],
+  [
+    "src/js/containers/leafletmap.jsx",
+    "file/src/js/containers/LeafletMap.jsx.html",
+    "src/js/containers/LeafletMap.jsx",
+    "file"
+  ],
+  [
+    "src/js/containers/legend.jsx",
+    "file/src/js/containers/Legend.jsx.html",
+    "src/js/containers/Legend.jsx",
+    "file"
+  ],
+  [
+    "src/js/containers/mobilelayerlist.jsx",
+    "file/src/js/containers/MobileLayerList.jsx.html",
+    "src/js/containers/MobileLayerList.jsx",
+    "file"
+  ],
+  [
+    "src/js/containers/navbar.jsx",
+    "file/src/js/containers/NavBar.jsx.html",
+    "src/js/containers/NavBar.jsx",
+    "file"
+  ],
+  [
+    "src/js/containers/pinnedfeaturepopupcontainer.jsx",
+    "file/src/js/containers/PinnedFeaturePopupContainer.jsx.html",
+    "src/js/containers/PinnedFeaturePopupContainer.jsx",
+    "file"
+  ],
+  [
+    "src/js/containers/sidebar.jsx",
+    "file/src/js/containers/Sidebar.jsx.html",
+    "src/js/containers/Sidebar.jsx",
+    "file"
+  ],
+  [
+    "src/js/containers/sidebar.jsx~sidebar#constructor",
+    "class/src/js/containers/Sidebar.jsx~Sidebar.html#instance-constructor-constructor",
+    "src/js/containers/Sidebar.jsx~Sidebar#constructor",
+    "method"
+  ],
+  [
+    "src/js/containers/sidebar.jsx~sidebar#getclassname",
+    "class/src/js/containers/Sidebar.jsx~Sidebar.html#instance-method-getClassName",
+    "src/js/containers/Sidebar.jsx~Sidebar#getClassName",
+    "method"
+  ],
+  [
+    "src/js/containers/sidebar.jsx~sidebar#ontabclick",
+    "class/src/js/containers/Sidebar.jsx~Sidebar.html#instance-method-onTabClick",
+    "src/js/containers/Sidebar.jsx~Sidebar#onTabClick",
+    "method"
+  ],
+  [
+    "src/js/containers/sidebar.jsx~sidebar#render",
+    "class/src/js/containers/Sidebar.jsx~Sidebar.html#instance-method-render",
+    "src/js/containers/Sidebar.jsx~Sidebar#render",
+    "method"
+  ],
+  [
+    "src/js/containers/sidebar.jsx~sidebar#state",
+    "class/src/js/containers/Sidebar.jsx~Sidebar.html#instance-member-state",
+    "src/js/containers/Sidebar.jsx~Sidebar#state",
+    "member"
+  ],
+  [
     "src/js/ducks/basemaps.js",
     "file/src/js/ducks/basemaps.js.html",
     "src/js/ducks/basemaps.js",
@@ -690,6 +1164,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/js/layers/layerfeatures.jsx",
+    "file/src/js/layers/layerFeatures.jsx.html",
+    "src/js/layers/layerFeatures.jsx",
+    "file"
+  ],
+  [
     "src/js/layers/layerstyles.js",
     "file/src/js/layers/layerStyles.js.html",
     "src/js/layers/layerStyles.js",
@@ -717,6 +1197,12 @@ window.esdocSearchIndex = [
     "src/js/util.js",
     "file/src/js/util.js.html",
     "src/js/util.js",
+    "file"
+  ],
+  [
+    "src/js/wrappers/mapwrapper.jsx",
+    "file/src/js/wrappers/MapWrapper.jsx.html",
+    "src/js/wrappers/MapWrapper.jsx",
     "file"
   ]
 ]

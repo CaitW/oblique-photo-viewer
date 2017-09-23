@@ -27,13 +27,27 @@ const LAYER_FEATURES = {};
  * - points
  * Points are easy. Center the popup on the coordinate of the point.
  * For linestrings, the popup is centered on the median coordinate.
+ *
+ * @param {L.Layer} featureLayer - a leaflet layer representing a single feature
  */
 function getFeatureMidpoint (featureLayer) {
 
+    /**
+     * Convert a lat/lng to a geojson point
+     *
+     * @param {L.LatLng} latLng
+     * @returns {GeoJSON Feature}
+     */
     function toCoordFeature (latLng) {
         return point([latLng.lng,latLng.lat]);
     }
 
+    /**
+     * Get the midpoint of a line using Turf's `midpoint` function
+     *
+     * @param {L.LatLng[]} latLngs
+     * @returns {coordinates} - [x,y] coordinates describing the middle of a line
+     */
     function getLineMidpoint (latLngs) {
         let lowerMiddle = false;
         let upperMiddle = false;
@@ -65,12 +79,17 @@ function getFeatureMidpoint (featureLayer) {
         return middlePoint.geometry.coordinates;
     }
 
+    /**
+     * Get the coordinates of a feature
+     */
     function getPointCoords (latLng) {
         return toCoordFeature(latLng).geometry.coordinates;
     }
 
+    // if it's a line (getLatLngs isn't undefined)
     if(typeof featureLayer.getLatLngs !== "undefined") {
         return getLineMidpoint(featureLayer.getLatLngs());
+    // if it's a point (getLatLng isn't undefined)
     } else if (typeof featureLayer.getLatLng !== "undefined") {
         return getPointCoords(featureLayer.getLatLng());
     }
@@ -82,6 +101,13 @@ function getFeatureMidpoint (featureLayer) {
  * however, Leaflet is not controlled by React.
  * Therefore, the popup's content must mount/unmount the React component
  * manually whenever it is opened/closed.
+ *
+ * @param {GeoJSON feature} feature - a GeoJSON feature
+ * @param {L.Layer} featureLayer - a leaflet feature layer representing the above feature
+ *  - i.e. Feature #3464
+ * @param {string} layerId - unique layer ID describing the map layer containing this feature
+ *  - i.e. 2017 Photos
+ * @param {L.Map} map - the Leaflet map containing the feature
  */
 function createLeafletPopup (feature, featureLayer, layerId, map) {
     let featureMiddlePoint = getFeatureMidpoint(featureLayer);
@@ -96,6 +122,10 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
         })
         .setLatLng(L.latLng(featureMiddlePoint[1], featureMiddlePoint[0]))
         .setContent(container);
+    /**
+     * Gets the pixel position of the popup within the window
+     * @returns {Object} - position with properties x, y
+     */
     let getPopupPosition = () => {
         let popupPosition = popup.getLatLng();
         let positionInMap = map.latLngToContainerPoint(popupPosition);
@@ -133,6 +163,11 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
     return popup;
 }
 
+/**
+ * When the user has a popup open, they can use forward and back arrows to scroll to the next or
+ * previous feature in the layer. This function is bound via `this` to a particular feature, and
+ * then opens the next layer in the LAYER_INDEX
+ */
 function toggleNextFeaturePopup () {
     let featureIndex = this.featureIndex;
     let layerId = this.layerId;
@@ -140,6 +175,11 @@ function toggleNextFeaturePopup () {
     LAYER_FEATURES[layerId][nextFeatureIndex].togglePopup();
 }
 
+/**
+ * When the user has a popup open, they can use forward and back arrows to scroll to the next or
+ * previous feature in the layer. This function is bound via `this` to a particular feature, and
+ * then opens the previous layer in the LAYER_INDEX
+ */
 function togglePreviousFeaturePopup () {
     let featureIndex = this.featureIndex;
     let layerId = this.layerId;
@@ -160,8 +200,10 @@ function togglePopup() {
     let map = this.map;
     this.openNextFeature = toggleNextFeaturePopup.bind(this);
     this.openPreviousFeature = togglePreviousFeaturePopup.bind(this);
+    // if the window is sufficiently small, show the mobile feature modal
     if (store.getState().mobile.window.width < 992) {
         store.dispatch(mobileClickFeature(feature.properties, layerId, featureIndex));
+    // else, show a popup
     } else if (this.popup === false) {
         this.popup = createLeafletPopup(feature, this, layerId, map, featureIndex);
     } else {

@@ -13,12 +13,22 @@ import Legend from './Legend';
 class Sidebar extends React.Component {
     constructor (props) {
         super(props);
+        /**
+         * @type {object} state
+         * @property {string} activeTab - the ID of the active tab
+         *  - "LayerList"
+         *  - "Legend"
+         */
         this.state = {
             activeTab: "LayerList"
         };
         this.onTabClick = this.onTabClick.bind(this);
         this.getClassName = this.getClassName.bind(this);
     }
+    /**
+     * Called when a tab is clicked. Sets state to the value of the clicked tab.
+     * @param {SyntheticEvent} e
+     */
     onTabClick (e) {
         let clickedTab = e.target.getAttribute("value");
         if(typeof clickedTab === "string") {
@@ -27,6 +37,11 @@ class Sidebar extends React.Component {
             });
         }
     }
+    /**
+     * Return a classname for active vs inactive tabs
+     * @param {string} tabValue - check tab value against currently active tab
+     * @returns {string} - returns "active" if tab is active, or empty string
+     */
     getClassName (tabValue) {
         if(this.state.activeTab === tabValue) {
             return "active";

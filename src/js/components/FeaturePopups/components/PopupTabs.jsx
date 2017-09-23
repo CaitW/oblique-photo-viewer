@@ -15,10 +15,13 @@ class PopupTabs extends React.Component {
         super(props);
         this.update = this.update.bind(this);
     }
+    /**
+     * Applies to popups within the Leaflet map scope, which need to update their dimensions once
+     *  images have loaded
+     */
     // eslint-disable-next-line class-methods-use-this
     update () {
-        // Applies to popups within the Leaflet map scope, which
-        // need to update their dimensions once images have loaded
+
         if(typeof this.props.update !== "undefined") {
             this.props.update();
         }

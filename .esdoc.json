@@ -13,5 +13,6 @@
             "name": "esdoc-jsx-plugin",
             "option": { "enable": true }
         }
-    ]
+    ],
+    "includes": ["\\.(js|jsx)$"]
 }

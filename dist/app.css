@@ -8509,7 +8509,9 @@ button.close {
   border: 0;
   border-radius: 0;
   background-color: #455a64;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+  z-index: 500; }
 
 .wiscviewer-nav-container .navbar-toggle {
   border-radius: 3px;
@@ -9517,8 +9519,7 @@ button.close {
 .leaflet-control-scale-line {
   background-color: #37474f;
   color: #b0bec5;
-  border: 2px solid #90a4ae;
-  border-top: none;
+  border: none;
   font-family: "Open Sans"; }
 
 .leaflet-control-scale-line:not(:first-child) {
@@ -9530,6 +9531,7 @@ button.close {
   margin-left: 5px;
   margin-bottom: 5px;
   background-color: #37474f;
+  border: none;
   color: #b0bec5;
   font-family: "Open Sans"; }
 

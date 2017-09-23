@@ -16,10 +16,16 @@ class ProfileTab extends React.Component {
         super(props);
         this.createLineChart = this.createLineChart.bind(this);
     }
+    /**
+     * When the component mounts, create the d3 line chart and then update the popup
+     */
     componentDidMount () {
         this.createLineChart();
         this.props.update();
     }
+    /**
+     * Create the profile's line chart within the given drawing area
+     */
     createLineChart() {
         let popupWidth = this.profileDiv.clientWidth;
         let popupHeight = this.profileDiv.clientHeight;

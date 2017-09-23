@@ -10,16 +10,30 @@
  * - Mobile Feature Modal
  */
 
+/**
+ * Opens the mobile layer list
+ */
 export function openMobileLayerList() {
     return {
         type: "MOBILE:LAYER_POPUP:OPEN"
     }
 }
+
+/**
+ * Closes the mobile layer list
+ */
 export function closeMobileLayerList() {
     return {
         type: "MOBILE:LAYER_POPUP:CLOSE"
     }
 }
+
+/**
+ * When the browser window changes sizes, this dispatches the height and width of the window to the store
+ *
+ * @param {number} height
+ * @param {number} width
+ */
 export function updateWindowDimensions(height, width) {
     return {
         type: "WINDOW:UPDATE_DIMENSIONS",
@@ -27,6 +41,14 @@ export function updateWindowDimensions(height, width) {
         width
     }
 }
+
+/**
+ * When the browser is sufficiently small and the user clicks on a feature
+ *
+ * @param {Object} featureProperties - key/value pairs describing a particular feature
+ * @param {string} layerId
+ * @param {number} featureIndex - a number indicating the feature's order within the layer
+ */
 export function mobileClickFeature(featureProperties, layerId, featureIndex) {
     return {
         type: "MOBILE:LAYER:CLICK_FEATURE",
@@ -35,11 +57,16 @@ export function mobileClickFeature(featureProperties, layerId, featureIndex) {
         featureIndex
     }
 }
+
+/**
+ * When the user clicks on the "close" button in the mobile feature modal
+ */
 export function closeMobileFeatureModal() {
     return {
         type: "MOBILE:FEATURE_MODAL:CLOSE"
     }
 }
+
 let initialState = {
     window: {
         height: false,
@@ -55,6 +82,7 @@ let initialState = {
         featureIndex: false
     }
 };
+
 export default function mobile(state = initialState, action) {
     let newState = Object.assign({}, state);
     let layersPopupState = Object.assign({}, newState.layersPopup);

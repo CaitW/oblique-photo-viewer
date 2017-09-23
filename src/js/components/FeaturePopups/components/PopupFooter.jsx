@@ -4,16 +4,24 @@ import { Button } from 'react-bootstrap';
 
 import { getPhotoURLs, getProfileURLs } from '../../../util';
 
-const PopupFooter = (props) => {
-    let footer = [];
-    switch (props.layerId) {
+/**
+ * Based on the layer ID and the feature currently being displayed, determine what footer content
+ * to display
+ *
+ * @param {string} layerId - the ID of the layer containing this feature
+ * @param {object} featureProperties - the key/value pair properties for the feature
+ * @returns {JSX[]} - array of JSX components to be displayed in the footer
+ */
+const getContentByLayerId = (layerId, featureProperties) => {
+    let content = [];
+    switch (layerId) {
         case "photos_1976":
         case "photos_2007":
         case "photos_2017":
         case "photos_2016":
         case "photos_2012": {
-            let photoURLs = getPhotoURLs(props.layerId, props.featureProperties);
-            footer.push(
+            let photoURLs = getPhotoURLs(layerId, featureProperties);
+            content.push(
                 <a href={photoURLs.original}
                     key="open-larger-image-button"
                     target="_blank"
@@ -26,9 +34,9 @@ const PopupFooter = (props) => {
             break;
         }
         case "profiles": {
-            let urls = getProfileURLs(props.featureProperties);
+            let urls = getProfileURLs(featureProperties);
             if(urls.bluffXls) {
-                footer.push(
+                content.push(
                   <a href={urls.bluffXls}
                     key="download-bluff-excel-button"
                     target="_blank"
@@ -40,7 +48,7 @@ const PopupFooter = (props) => {
                 );
             }
             if(urls.bathyXls) {
-                footer.push(
+                content.push(
                   <a href={urls.bathyXls}
                     key="download-bathy-excel-button"
                     target="_blank"
@@ -56,6 +64,12 @@ const PopupFooter = (props) => {
         default:
             break;
     }
+    return content;
+}
+
+const PopupFooter = (props) => {
+
+    let footer = getContentByLayerId(props.layerId, props.featureProperties);
     if(footer.length > 0) {
         footer.unshift(
             <i key="download" className="fa fa-download"></i>

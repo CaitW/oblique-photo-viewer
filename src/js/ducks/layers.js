@@ -8,6 +8,10 @@
  */
 import { LAYERS_BY_ID, LAYER_GROUPS_BY_ID } from '../util'
 
+/**
+ * Toggles a layer on and off
+ * @param {string} layerId
+ */
 export function toggleLayer(layerId) {
     return {
         type: "LAYERS:TOGGLE_LAYER",
@@ -15,6 +19,18 @@ export function toggleLayer(layerId) {
     }
 }
 
+/**
+ * When the app is processing a layer and comes across a new feature style, it dispatches this
+ * action to store the style in the store. It's then used by the legend to display an appropriate
+ * entry.
+ *
+ * @param {string} layerId
+ * @param {string} propertyName - the name of the property within the feature that's being styled
+ *  i.e. in the Structures layer, we're styling different structure types
+ * @param {Object} style - the key/value pairs that describe a Leaflet style
+ * @param {string} geometryType - usually point or line, allows the legend to determine what shape to show
+ *  as an icon next to a legend entry
+ */
 export function legendStyleUpdate(layerId, propertyName, style, geometryType) {
     return {
         type: "LAYER:LEGEND_STYLE_UPDATE",
@@ -24,18 +40,33 @@ export function legendStyleUpdate(layerId, propertyName, style, geometryType) {
         geometryType
     }
 }
+
+/**
+ * Tells the store that a layer is in a pre-loading state
+ * @param {string} layerId
+ */
 export function layerPreload(layerId) {
     return {
         type: "LAYERS:LAYER_PRELOAD",
         layerId
     }
 }
+
+/**
+ * Tells the store that a layer has loaded
+ * @param {string} layerId
+ */
 export function layerLoaded(layerId) {
     return {
         type: "LAYERS:LAYER_LOADED",
         layerId
     }
 }
+
+/**
+ * Tells the store that a layer has errored
+ * @param {string} layerId
+ */
 export function layerError(layerId) {
     return {
         type: "LAYERS:LAYER_ERROR",

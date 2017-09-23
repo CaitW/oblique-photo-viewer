@@ -15,24 +15,43 @@ for(let basemapId in BASEMAPS_BY_ID) {
     }
 }
 
+/**
+ * Turns a basemap on or off
+ * @param {string} basemapId
+ */
 export function toggleBasemap(basemapId) {
     return {
         type: "BASEMAPS:TOGGLE_BASEMAP",
         basemapId
     }
 }
+
+/**
+ * Tells the store that the basemap is in a pre-loaded state
+ * @param {string} basemapId
+ */
 export function basemapPreload(basemapId) {
     return {
         type: "BASEMAPS:BASEMAP_PRELOAD",
         basemapId
     }
 }
+
+/**
+ * Tells the store that the basemap is in a loaded state
+ * @param {string} basemapId
+ */
 export function basemapLoaded(basemapId) {
     return {
         type: "BASEMAPS:BASEMAP_LOADED",
         basemapId
     }
 }
+
+/**
+ * Tells the store that the basemap failed to load
+ * @param {string} basemapId
+ */
 export function basemapError(basemapId) {
     return {
         type: "BASEMAPS:BASEMAP_ERROR",

@@ -21,18 +21,33 @@ class FeaturePopup extends React.Component {
         this.pin = this.pin.bind(this);
         this.popupType = "leaflet";
     }
+    /**
+     * When the component mounts, update the size of the Leaflet popup to adjust for the content
+     */
     componentDidMount() {
         this.update();
     }
+    /**
+     * Update the size of the Leaflet popup to adjust for the content
+     */
     update() {
         this.props.popup.update();
     }
+    /**
+     * When the user clicks on the popup, bring it to the front (z-index)
+     */
     bringToFront () {
         this.props.popup.bringToFront();
     }
+    /**
+     * Close the popup
+     */
     close () {
         this.props.closePopup();
     }
+    /**
+     * Pin the popup. Adds the popup to the Pinned Popup Container and removes it from the leaflet map.
+     */
     pin () {
         let position = this.props.getPosition();
         store.dispatch(

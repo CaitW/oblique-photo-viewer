@@ -19,6 +19,9 @@ const mapStateToProps = (state) => {
     };
 }
 class MobileLayerList extends React.Component {
+    /**
+     * Dispatches an action to close the mobile layer list
+     */
     static closeModal () {
         store.dispatch(closeMobileLayerList());
     }

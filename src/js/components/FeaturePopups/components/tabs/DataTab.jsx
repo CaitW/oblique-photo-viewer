@@ -5,6 +5,11 @@ import { Tab, Table } from 'react-bootstrap';
 import { LAYERS_BY_ID } from '../../../../util';
 
 class DataTab extends React.Component {
+    /**
+     * Given a property and a value, render a table row
+     * @param {string} property - the property name
+     * @param {string} value - the value of the property
+     */
     static renderRow (property, value) {
         return (
             <tr key={property}>

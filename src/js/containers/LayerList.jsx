@@ -21,12 +21,21 @@ const mapStateToProps = (state) => {
         basemaps: getBasemapsByIdWithData(state)
     };
 }
+
 class LayerList extends React.Component {
+    /**
+     * When a layer is clicked, dispatch an action to the store
+     * @param {string} layerId - a unique layer id
+     */
     static onLayerClick(layerId) {
         store.dispatch(toggleLayer(layerId));
     }
-    static onBasemapClick(basemapID) {
-        store.dispatch(toggleBasemap(basemapID));
+    /**
+     * When a basemap is clicked, dispatch an action to the store
+     * @param {string} basemapId - a unique basemap id
+     */
+    static onBasemapClick(basemapId) {
+        store.dispatch(toggleBasemap(basemapId));
     }
     render() {
         let layerGroups = [];

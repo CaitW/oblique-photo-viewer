@@ -21,6 +21,9 @@ const mapStateToProps = (state) => {
 }
 
 class MobileFeaturePopup extends React.Component {
+  /**
+   * Closes the mobile feature popup
+   */
   static close () {
       store.dispatch(closeMobileFeatureModal());
   }
@@ -30,9 +33,15 @@ class MobileFeaturePopup extends React.Component {
     this.openNextFeature = this.openNextFeature.bind(this);
     this.popupType = "modal";
   }
+  /**
+   * Opens previous feature in the layer
+   */
   openPreviousFeature () {
     getFeatureLayer(this.props.featureIndex, this.props.layerId).openPreviousFeature();
   }
+  /**
+   * Opens next feature in the layer
+   */
   openNextFeature () {
     getFeatureLayer(this.props.featureIndex, this.props.layerId).openPreviousFeature();
   }

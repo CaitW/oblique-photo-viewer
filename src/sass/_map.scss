@@ -98,8 +98,7 @@
 .leaflet-control-scale-line {
   background-color: $primary_800;
   color: $primary_200;
-  border: 2px solid $primary_300;
-  border-top: none;
+  border: none;
   font-family: "Open Sans";
 }
 
@@ -113,6 +112,7 @@
   margin-left: 5px;
   margin-bottom: 5px;
   background-color: $primary_800;
+  border: none;
   color: $primary_200;
   font-family: "Open Sans";
 }
