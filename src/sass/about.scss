@@ -23,7 +23,8 @@ html {
 body {
   height: 100%;
   font-family: $font_body;
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 1.6;
   background-color: $primary_50;
   color: $primary_900;
 }
@@ -44,6 +45,77 @@ h6 {
   color: $primary_800;
 }
 
+.wiscviewer-about-title-row {
+  background-color: $primary_800;
+  .wiscviewer-brand-container {
+    display: flex;
+  }
+  .wiscviewer-about-brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.30);
+  }
+
+  img {
+    float: left;
+    width: 150px;
+    height: 150px;
+  }
+  h1 {
+  color: $primary_50;
+  }
+  p {
+    color: $primary_200;
+  }
+}
+
+.wiscviewer-about-downloads-row {
+  background-color: $primary_100;
+}
+
+.wiscviewer-about-content-row {
+  i {
+    margin: 0 15px;
+    color: $primary_700;
+    font-size: 18px;
+  }
+  dd {
+    margin-bottom: 10px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      line-height: 1.6;
+      padding: 5px 0;
+    }
+  }
+}
+
+.wiscviewer-section {
+  display: flex;
+  padding: 10px;
+  .wiscviewer-section-title {
+    min-width: 200px;
+    font-size: 30px;
+    font-family: $font_header;
+  }
+  .wiscviewer-section-text {
+
+  }
+}
+
+.wiscviewer-about-contact-row {
+  background-color: $primary_100;
+  margin-bottom: 20px;
+  i {
+    font-size: 40px;
+    margin-right: 10px;
+  }
+}
+
 .btn-group {
   margin-bottom: 10px;
   width: 100%;
@@ -60,10 +132,13 @@ h6 {
 button {
   background-color: $primary_400 !important;
   color: $primary_900 !important;
-  border-color: $primary_600 !important;
   border-radius: 0 !important;
   width: 100%;
   text-align: left !important;
+  &.btn {
+    margin-bottom: 5px;
+    border: none;
+  }
 
   i {
     float: left;
@@ -80,6 +155,42 @@ img {
   max-width: 500px;
   max-height: 200px;
   margin: 10px;
+}
+
+.wiscviewer-about-download-button-row {
+  display: flex;
+}
+
+.wiscviewer-about-download-button-column {
+  min-width: 200px;
+  &:first-child {
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wiscviewer-section {
+    flex-direction: column;
+  }
+  .wiscviewer-about-download-button-row {
+    flex-direction: column;
+    button.btn {
+      width: 100%;
+    }
+  }
+  .wiscviewer-about-download-button-column {
+      &:first-child {
+    margin-right: 0;
+  }
+  }
+  .wiscviewer-about-title-row {
+    .wiscviewer-brand-container {
+      flex-direction: column;
+    }
+    .wiscviewer-about-logo img {
+      display: none;
+    }
+  }
 }
 
 
