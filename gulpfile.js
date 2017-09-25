@@ -332,5 +332,5 @@ gulp.task('lint', gulp.parallel('lint-js','lint-css'));
  */
  // makes clean, minified production build in /dist
 gulp.task('build', gulp.series('clean','make-downloads', 'sass', 'webpack-prod', 'copy', 'make-docs'));
-gulp.task('deploy', gulp.parallel('copy-to-server'));
+gulp.task('deploy', gulp.series('build', 'copy-to-server'));
 
