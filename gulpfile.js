@@ -82,13 +82,13 @@ gulp.task('zip-geojson-layers', function() {
     return gulp.src(['./src/data/layers/*.json'])
         .pipe(debug({title: 'zipping:'}))
         .pipe(zip('layers-geojson.zip'))
-        .pipe(gulp.dest('./dist/downloads'));
+        .pipe(gulp.dest('./src/downloads'));
 });
 gulp.task('zip-json-profiles', function() {
     return gulp.src(['./src/data/profiles/**/*.json'])
         .pipe(debug({title: 'zipping:'}))
         .pipe(zip('profiles-json.zip'))
-        .pipe(gulp.dest('./dist/downloads'));
+        .pipe(gulp.dest('./src/downloads'));
 });
 gulp.task('convert-and-zip-layer-shapefiles', function(done) {
     let geojsons = returnGeoJsonFiles(walkSync('./src/data/layers/'));
@@ -119,7 +119,7 @@ gulp.task('convert-and-zip-layer-shapefiles', function(done) {
             gulp.src(['./temp/layer-shapefiles/**/*.zip'])
                 .pipe(debug({ title: 'zipping:' }))
                 .pipe(zip('layers-shp.zip'))
-                .pipe(gulp.dest('./dist/downloads'))
+                .pipe(gulp.dest('./src/downloads'))
                 .on('end', function() {
                     done();
                     return;
@@ -331,6 +331,6 @@ gulp.task('lint', gulp.parallel('lint-js','lint-css'));
  * Production Tasks
  */
  // makes clean, minified production build in /dist
-gulp.task('build', gulp.series('clean','make-downloads', 'sass', 'webpack-prod', 'copy', 'make-docs'));
+gulp.task('build', gulp.series('clean', 'sass', 'webpack-prod', 'copy', 'make-docs'));
 gulp.task('deploy', gulp.series('build', 'copy-to-server'));
 
