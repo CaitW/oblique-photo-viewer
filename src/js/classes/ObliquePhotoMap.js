@@ -7,7 +7,7 @@ import AddMousePosition from '../lib/AddMousePosition';
 import CONFIG from '../config.json';
 import LAYER_STYLE from '../layers/layerStyles';
 import { onEachFeature } from '../layers/layerFeatures';
-import { mapNewZoomLevel, mapMousedown } from '../ducks/map';
+import { mapNewZoomLevel, mapMousedown, doneZooming } from '../ducks/map';
 import { layerPreload, layerLoaded, layerError } from '../ducks/layers';
 import { basemapPreload, basemapLoaded, basemapError } from '../ducks/basemaps';
 import store from '../store';
@@ -182,6 +182,7 @@ export default class ObliquePhotoMap {
         this.map.fitBounds(extent, {
             padding: [10, 10]
         });
+        store.dispatch(doneZooming());
     }
     /**
      * Pan and Zoom to a location
@@ -192,6 +193,7 @@ export default class ObliquePhotoMap {
      */
     panAndZoom(zoom, coordinates) {
         this.map.setView(coordinates, zoom);
+        store.dispatch(doneZooming());
     }
     /**
      * Force leaflet to re-calculate the size of the map within its bounding div

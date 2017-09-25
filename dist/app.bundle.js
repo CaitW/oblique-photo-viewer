@@ -8481,7 +8481,7 @@ function map() {
             }
         case "MAP:DONE_ZOOMING":
             {
-                if (state.action === "willZoom") {
+                if (state.state.action === "willZoom") {
                     newState.state = {
                         action: "none"
                     };
@@ -92205,11 +92205,9 @@ var LeafletMap = function (_React$Component) {
             if (oldMapProps !== null) {
                 if (newMapProps.state.action === "willZoom" && oldMapProps.state.action !== "willZoom") {
                     this.map.zoomToExtent(newMapProps.state.extent);
-                    _store2.default.dispatch((0, _map.doneZooming)());
                 }
                 if (newMapProps.state.action === "willPanAndZoom" && oldMapProps.state.action !== "willPanAndZoom") {
                     this.map.panAndZoom(newMapProps.state.zoom, newMapProps.state.coordinates);
-                    _store2.default.dispatch((0, _map.doneZooming)());
                 }
             }
         }
@@ -92500,6 +92498,7 @@ var ObliquePhotoMap = function () {
             this.map.fitBounds(extent, {
                 padding: [10, 10]
             });
+            _store2.default.dispatch((0, _map.doneZooming)());
         }
         /**
          * Pan and Zoom to a location
@@ -92513,6 +92512,7 @@ var ObliquePhotoMap = function () {
         key: 'panAndZoom',
         value: function panAndZoom(zoom, coordinates) {
             this.map.setView(coordinates, zoom);
+            _store2.default.dispatch((0, _map.doneZooming)());
         }
         /**
          * Force leaflet to re-calculate the size of the map within its bounding div

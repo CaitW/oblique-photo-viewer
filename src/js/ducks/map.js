@@ -89,7 +89,7 @@ export default function map(state = initialMapState, action) {
             }
         case "MAP:DONE_ZOOMING":
             {
-                if(state.action === "willZoom") {
+                if(state.state.action === "willZoom") {
                     newState.state = {
                         action: "none"
                     }
