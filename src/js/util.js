@@ -1,14 +1,14 @@
 import CONFIG from './config.json';
 
 const LAYERS_BY_ID = {};
-const LAYER_GROUPS_BY_ID = {}
+const LAYER_GROUPS_BY_ID = {};
 const BASEMAPS_BY_ID = {};
 
 for (let basemapId in CONFIG.map.basemaps) {
     BASEMAPS_BY_ID[basemapId] = {
         ...CONFIG.map.basemaps[basemapId],
         state: 'init'
-    }
+    };
     BASEMAPS_BY_ID[basemapId].name = BASEMAPS_BY_ID[basemapId].name || basemapId;
 }
 

@@ -91,7 +91,7 @@ export default class ObliquePhotoMap {
                     });
                     this.layerIndex[layerId].once('load', function () {
                         store.dispatch(layerLoaded(layerId));
-                    })
+                    });
                 }
                 break;
             case 'geojson':
@@ -168,7 +168,7 @@ export default class ObliquePhotoMap {
                 store.dispatch(basemapPreload(basemapId));
                 self.basemapIndex[basemapId].once('load', function () {
                     store.dispatch(basemapLoaded(basemapId));
-                })
+                });
                 this.basemapGroup.addLayer(self.basemapIndex[basemapId]);
             }
         }

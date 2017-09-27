@@ -12,7 +12,7 @@ export const getBasemapsByIdWithData = createSelector([getBasemapsById], basemap
         basemapsWithData[basemapId] = {
             ...BASEMAPS_BY_ID[basemapId],
             ...basemaps[basemapId]
-        }
+        };
     }
     return basemapsWithData;
 });
@@ -144,7 +144,7 @@ export const getMobileFeaturePopupProps = createSelector(
                 ...featureModal,
                 layerName,
                 layerGroupName
-            }
+            };
         }
         return {
             ...featureModal,

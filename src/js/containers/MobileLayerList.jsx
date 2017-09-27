@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
     return {
         active: state.mobile.layersPopup.visible
     };
-}
+};
 class MobileLayerList extends React.Component {
     /**
      * Dispatches an action to close the mobile layer list
@@ -57,7 +57,7 @@ class MobileLayerList extends React.Component {
 
 MobileLayerList.propTypes = {
     active: PropTypes.bool.isRequired
-}
+};
 
 export default connect(mapStateToProps)(MobileLayerList);
 

@@ -17,8 +17,8 @@ import PopupTitle from './components/PopupTitle';
 import PopupFooter from './components/PopupFooter';
 
 const mapStateToProps = (state) => {
-    return getMobileFeaturePopupProps(state)
-}
+    return getMobileFeaturePopupProps(state);
+};
 
 class MobileFeaturePopup extends React.Component {
   /**
@@ -122,6 +122,6 @@ MobileFeaturePopup.propTypes = {
     PropTypes.number,
     PropTypes.bool
   ]).isRequired
-}
+};
 
 export default connect(mapStateToProps)(MobileFeaturePopup);

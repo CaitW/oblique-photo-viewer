@@ -15,7 +15,7 @@ export function zoomToShoreline(lakeName, countyName) {
         type: 'MAP:ZOOM_TO_SHORELINE',
         lakeName,
         countyName
-    }
+    };
 }
 
 /**
@@ -24,7 +24,7 @@ export function zoomToShoreline(lakeName, countyName) {
 export function doneZooming() {
     return {
         type: 'MAP:DONE_ZOOMING'
-    }
+    };
 }
 
 /**
@@ -33,7 +33,7 @@ export function doneZooming() {
 export function resetMapView() {
     return {
         type: 'MAP:RESET_VIEW'
-    }
+    };
 }
 
 /**
@@ -43,7 +43,7 @@ export function mapNewZoomLevel(zoomLevel) {
     return {
         type: 'MAP:NEW_ZOOM_LEVEL',
         zoomLevel
-    }
+    };
 }
 
 /**
@@ -52,7 +52,7 @@ export function mapNewZoomLevel(zoomLevel) {
 export function mapMousedown() {
     return {
         type: 'MAP:MOUSEDOWN'
-    }
+    };
 }
 
 /**
@@ -65,7 +65,7 @@ export function leafletPopupOpened(coordinates) {
     return {
         type: 'MAP:LEAFLET_POPUP_OPENED',
         coordinates
-    }
+    };
 }
 
 const initialMapState = {
@@ -92,7 +92,7 @@ export default function map(state = initialMapState, action) {
                 if(state.state.action === 'willZoom') {
                     newState.state = {
                         action: 'none'
-                    }
+                    };
                 }
                 break;
             }

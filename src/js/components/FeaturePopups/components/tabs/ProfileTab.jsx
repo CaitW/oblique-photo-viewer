@@ -47,7 +47,7 @@ class ProfileTab extends React.Component {
         let yAxisLabel = {
             x: 0 - (height / 2),
             y: (0 - margin.left) + 5
-        }
+        };
         if(this.props.popupType === 'modal') {
             yAxisLabel.y = yAxisLabel.y + 5;
         }
@@ -84,10 +84,10 @@ class ProfileTab extends React.Component {
             });
         const michiganAvg = line()
             .x(function (d) {
-                return (x(d.x))
+                return (x(d.x));
             })
             .y(function (d) {
-                return y(CONFIG.lakeMichiganWaterLevel.avg)
+                return y(CONFIG.lakeMichiganWaterLevel.avg);
             });
         // Adds the svg canvas
         const svg = select(this.profileDiv)
@@ -99,9 +99,9 @@ class ProfileTab extends React.Component {
         // get the profile's data from it's json file
         json(this.props.jsonLocation, function (error, data) {
             let sortedData = data.sort(function (a, b) {
-                return descending(a.x, b.x)
+                return descending(a.x, b.x);
             });
-            x.domain(extent(sortedData, function (d) { return d.x }))
+            x.domain(extent(sortedData, function (d) { return d.x; }));
             svg.append('path')
                 .attr('class', 'lake-stats michigan-avg')
                 .attr('d', michiganAvg(sortedData));
@@ -145,17 +145,17 @@ class ProfileTab extends React.Component {
         let style = {
             'height': '200px',
             'width': '350px'
-        }
+        };
         if(this.props.popupType === 'modal') {
             style.width = '100%';
             style.height = '300px';
         }
         return (
             <Tab {...tabProps} className="wiscviewer-profile-tab">
-                <div style={style} className="wiscviewer-profile-graph" ref={(ref) => {this.profileDiv = ref}}>
+                <div style={style} className="wiscviewer-profile-graph" ref={(ref) => {this.profileDiv = ref;}}>
                 </div>
             </Tab>
-        )
+        );
     }
 }
 
@@ -163,6 +163,6 @@ ProfileTab.propTypes = {
     jsonLocation: PropTypes.string.isRequired,
     update: PropTypes.func.isRequired,
     popupType: PropTypes.string.isRequired
-}
+};
 
 export default ProfileTab;

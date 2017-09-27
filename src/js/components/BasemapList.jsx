@@ -52,6 +52,6 @@ BasemapList.propTypes = {
     basemaps: PropTypes.object.isRequired,
     panelVisible: PropTypes.bool.isRequired,
     onBasemapClick: PropTypes.func.isRequired
-}
+};
 
 export default BasemapList;

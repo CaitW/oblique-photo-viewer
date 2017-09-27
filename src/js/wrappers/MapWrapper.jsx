@@ -29,16 +29,16 @@ const MapWrapper = (props) => {
             </div>
             {props.children}
         </Col>
-    )
+    );
 
 };
 
 MapWrapper.propTypes = {
     children: PropTypes.object
-}
+};
 
 MapWrapper.defaultProps = {
     children: {}
-}
+};
 
 export default MapWrapper;

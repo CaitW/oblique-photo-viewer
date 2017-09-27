@@ -65,7 +65,7 @@ const getContentByLayerId = (layerId, featureProperties) => {
             break;
     }
     return content;
-}
+};
 
 const PopupFooter = (props) => {
 
@@ -83,7 +83,7 @@ const PopupFooter = (props) => {
             </div>
             {props.children}
         </div>
-    )
+    );
 };
 
 PopupFooter.propTypes = {
@@ -99,10 +99,10 @@ PopupFooter.propTypes = {
         PropTypes.object,
         PropTypes.array
     ])
-}
+};
 
 PopupFooter.defaultProps = {
     children: {}
-}
+};
 
 export default PopupFooter;

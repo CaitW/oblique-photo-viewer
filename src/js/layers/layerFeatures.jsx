@@ -134,20 +134,20 @@ function createLeafletPopup(feature, featureLayer, layerId, map) {
         let positionInDocument = {
             x: positionInMap.x + mapLocation.left,
             y: positionInMap.y + mapLocation.top
-        }
+        };
         return positionInDocument;
-    }
+    };
     let closePopup = () => {
         // eslint-disable-next-line
         popup._close();
-    }
+    };
     let updateAfterZoom = () => {
         map.once('zoomend', () => {
             setTimeout(() => {
                 popup.update();
             }, 500);
         });
-    }
+    };
     popup.on('add', function addPopup() {
         store.dispatch(
             leafletPopupOpened([featureMiddlePoint[1], featureMiddlePoint[0]])
@@ -251,7 +251,7 @@ export function onEachFeature(layerId, map) {
         featureLayer.feature = feature;
         featureLayer.togglePopup = togglePopup.bind(featureLayer);
         featureLayer.on('mouseup', featureLayer.togglePopup);
-    }
+    };
 }
 
 /**

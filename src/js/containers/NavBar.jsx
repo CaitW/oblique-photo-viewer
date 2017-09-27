@@ -21,8 +21,8 @@ import { zoomToShoreline, resetMapView } from '../ducks/map';
 import { setNavExpand } from '../ducks/nav';
 
 const mapStateToProps = (state) => {
-    return state.nav
-}
+    return state.nav;
+};
 
 class NavBar extends React.Component {
     /**
@@ -55,7 +55,7 @@ class NavBar extends React.Component {
        */
       this.state = {
         expanded: false
-      }
+      };
       this.collapse = this.collapse.bind(this);
       this.toggle = this.toggle.bind(this);
     }
@@ -114,12 +114,12 @@ class NavBar extends React.Component {
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
-        )
+        );
     }
 }
 
 NavBar.propTypes = {
   expanded: PropTypes.bool.isRequired
-}
+};
 
 export default connect(mapStateToProps)(NavBar);

@@ -60,14 +60,14 @@ class Sidebar extends React.Component {
             sm: 5,
             md: 4,
             lg: 3
-        }
+        };
         if(this.props.sidebarOpen === false) {
             props = {
                 lgHidden: true,
                 mdHidden: true,
                 smHidden: true,
                 xsHidden: true
-            }
+            };
         }
         return (
             <Col {...props} className="wiscviewer-sidebar">

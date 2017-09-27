@@ -21,6 +21,6 @@ LegendStyle.propTypes = {
 LegendStyle.defaultProps = {
     iconStyle: {},
     styleIconClassNames: []
-}
+};
 
 export default LegendStyle;

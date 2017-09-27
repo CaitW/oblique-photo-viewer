@@ -8,7 +8,7 @@ import { ListGroupItem } from 'react-bootstrap';
 
 const Layer = (props) => {
     let iconClassNames = ['fa', 'wiscviewer-layer-left-icon'];
-    let layerClassNames = ['wiscviewer-layer-item']
+    let layerClassNames = ['wiscviewer-layer-item'];
     if(props.state === 'loading') {
         iconClassNames.push('fa-circle-o-notch');
         iconClassNames.push('fa-spin');
@@ -34,7 +34,7 @@ const Layer = (props) => {
             {props.layerName}
         </ListGroupItem>
     );
-}
+};
 
 
 Layer.propTypes = {
@@ -42,10 +42,10 @@ Layer.propTypes = {
     onLayerClick: PropTypes.func.isRequired,
     layerName: PropTypes.string.isRequired,
     state: PropTypes.string
-}
+};
 
 Layer.defaultProps = {
     state: 'init'
-}
+};
 
 export default Layer;

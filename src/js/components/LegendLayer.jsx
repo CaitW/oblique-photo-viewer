@@ -36,7 +36,7 @@ const LegendLayer = (props) => {
             </div>
         </div>
     );
-}
+};
 
 LegendLayer.propTypes = {
     layerGroupName: PropTypes.string.isRequired,

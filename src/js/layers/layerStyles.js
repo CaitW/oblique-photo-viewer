@@ -33,7 +33,7 @@ COLORS.BEACH = [
     '#cab2d6',
     '#6a3d9a',
     '#ffff99'
-]
+];
 
 COLORS.PHOTOS = [
     '#9575CD',
@@ -283,7 +283,7 @@ const LAYER_STYLES_BY_ID = {
             strokeColor: COLORS.PHOTOS[2]
         };
     }
-}
+};
 
 /**
  * If a layer should have different styles for features based on a particular feature property

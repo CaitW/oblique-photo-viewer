@@ -7,7 +7,7 @@ const MobileToggle = (props, context) => (
     className="navbar-toggle collapsed wiscviewer-mobile-toggle">
     <i className="fa fa-bars"></i>
   </button>
-)
+);
 
 MobileToggle.contextTypes = {
   $bs_navbar: PropTypes.shape({

@@ -10,14 +10,14 @@ import store from '../store';
 import { closePinnedFeature } from '../ducks/pinnedFeatures';
 import PinnedFeaturePopup from '../components/FeaturePopups/PinnedFeaturePopup';
 import { getLayersByIdWithData } from '../selectors';
-import { LAYER_GROUPS_BY_ID } from '../util'
+import { LAYER_GROUPS_BY_ID } from '../util';
 
 const mapStateToProps = (state) => {
     return {
         pinnedFeatures: state.pinnedFeatures,
         layers: getLayersByIdWithData(state)
-    }
-}
+    };
+};
 
 class PinnedFeaturePopupContainer extends React.Component {
     /**
@@ -93,12 +93,12 @@ class PinnedFeaturePopupContainer extends React.Component {
                     initialPosition={pinnedFeature.position}
                     layerName={layerName}
                     layerGroupName={layerGroupName}
-                    closePopup={() => {this.constructor.closePopup(featureId)}}
+                    closePopup={() => {this.constructor.closePopup(featureId);}}
                     key={featureId}
-                    onClick={() => {this.bringToFront(featureId)}}
+                    onClick={() => {this.bringToFront(featureId);}}
                     zIndex={zIndex}
                 />
-            )
+            );
         }
         return (
             <div className="wiscviewer-pinned-feature-popup-container">
@@ -111,6 +111,6 @@ class PinnedFeaturePopupContainer extends React.Component {
 PinnedFeaturePopupContainer.propTypes = {
     pinnedFeatures: PropTypes.object.isRequired,
     layers: PropTypes.object.isRequired
-}
+};
 
 export default connect(mapStateToProps)(PinnedFeaturePopupContainer);

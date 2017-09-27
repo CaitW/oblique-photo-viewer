@@ -23,7 +23,7 @@ export default function AddMousePosition(L) {
         },
 
         onRemove: function (map) {
-            map.off('mousemove', this._onMouseMove)
+            map.off('mousemove', this._onMouseMove);
         },
 
         _onMouseMove: function (e) {

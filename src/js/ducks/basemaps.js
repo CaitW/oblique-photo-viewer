@@ -4,7 +4,7 @@
  * Contains the actions and reducer part that controls basemaps in the map.
  * - Controls adding and removing basemaps
  */
-import { BASEMAPS_BY_ID } from '../util'
+import { BASEMAPS_BY_ID } from '../util';
 
 const initialBasemaps = {};
 
@@ -12,7 +12,7 @@ for(let basemapId in BASEMAPS_BY_ID) {
     initialBasemaps[basemapId] = {
         active: BASEMAPS_BY_ID[basemapId].defaultActive,
         state: 'init'
-    }
+    };
 }
 
 /**
@@ -23,7 +23,7 @@ export function toggleBasemap(basemapId) {
     return {
         type: 'BASEMAPS:TOGGLE_BASEMAP',
         basemapId
-    }
+    };
 }
 
 /**
@@ -34,7 +34,7 @@ export function basemapPreload(basemapId) {
     return {
         type: 'BASEMAPS:BASEMAP_PRELOAD',
         basemapId
-    }
+    };
 }
 
 /**
@@ -45,7 +45,7 @@ export function basemapLoaded(basemapId) {
     return {
         type: 'BASEMAPS:BASEMAP_LOADED',
         basemapId
-    }
+    };
 }
 
 /**
@@ -56,7 +56,7 @@ export function basemapError(basemapId) {
     return {
         type: 'BASEMAPS:BASEMAP_ERROR',
         basemapId
-    }
+    };
 }
 
 export default function basemaps(state = initialBasemaps, action) {
@@ -72,12 +72,12 @@ export default function basemaps(state = initialBasemaps, action) {
                         newState[basemapId] = {
                             ...newState[basemapId],
                             active: true
-                        }
+                        };
                     } else {
                         newState[basemapId] = {
                             ...newState[basemapId],
                             active: false
-                        }
+                        };
                     }
                 }
                 break;

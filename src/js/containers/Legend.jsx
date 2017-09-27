@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
     return {
         activeLayerStyleTypes: getActiveLayerStyleTypes(state)
     };
-}
+};
 
 const Legend = (props) => {
     let layers = [];
@@ -38,10 +38,10 @@ const Legend = (props) => {
             {layers}
         </PanelGroup>
     );
-}
+};
 
 Legend.propTypes = {
     activeLayerStyleTypes: PropTypes.object.isRequired,
-}
+};
 
 export default connect(mapStateToProps)(Legend);

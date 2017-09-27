@@ -40,12 +40,12 @@ const LayerGroup = (props) => {
             </div>
         </div>
     );
-}
+};
 
 LayerGroup.propTypes = {
     layerGroupName: PropTypes.string.isRequired,
     layers: PropTypes.object.isRequired,
     onLayerClick: PropTypes.func.isRequired
-}
+};
 
 export default LayerGroup;

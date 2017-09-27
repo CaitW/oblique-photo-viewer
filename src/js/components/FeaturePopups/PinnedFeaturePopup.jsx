@@ -29,18 +29,18 @@ class PinnedFeaturePopup extends React.Component {
         this.setState({
             height,
             width
-        })
+        });
     }
     render() {
         let initialPositionAdjustedForContent = {
             x: this.props.initialPosition.x - (this.state.width / 2),
             y: this.props.initialPosition.y - this.state.height
-        }
+        };
         let style = {
             'top': initialPositionAdjustedForContent.y,
             'left': initialPositionAdjustedForContent.x,
             'zIndex': this.props.zIndex
-        }
+        };
         return (
             <Draggable
                 axis="both"
@@ -50,7 +50,7 @@ class PinnedFeaturePopup extends React.Component {
                 <div className="wiscviewer-feature-popup wiscviewer-pinned-feature-popup hidden-xs"
                     role="button"
                     ref={
-                        (content) => {this.content = content}
+                        (content) => {this.content = content;}
                     }
                     style={style}
                     onClick={this.props.onClick}
@@ -96,7 +96,7 @@ PinnedFeaturePopup.propTypes = {
     closePopup: PropTypes.func.isRequired,
     onClick: PropTypes.func.isRequired,
     zIndex: PropTypes.number.isRequired
-}
+};
 
 export default PinnedFeaturePopup;
 

@@ -50,11 +50,11 @@ const ZoomToShoreline = (props) => {
             className="wiscviewer-nav-dropdown wiscviewer-nav-tool wiscviewer-nav-tool-zoom">
             {shorelines}
         </NavDropdown>
-    )
-}
+    );
+};
 
 ZoomToShoreline.propTypes = {
     onZoomShorelineClick: PropTypes.func.isRequired
-}
+};
 
 export default ZoomToShoreline;

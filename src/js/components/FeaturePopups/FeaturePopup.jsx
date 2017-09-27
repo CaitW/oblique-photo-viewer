@@ -119,6 +119,6 @@ FeaturePopup.propTypes = {
     openNextFeature: PropTypes.func.isRequired,
     openPreviousFeature: PropTypes.func.isRequired,
     getPosition: PropTypes.func.isRequired
-}
+};
 
 export default FeaturePopup;

@@ -24,7 +24,7 @@ export function newPinnedFeature(layerId, featureProperties, position) {
         layerId,
         featureProperties,
         position
-    }
+    };
 }
 
 /**
@@ -36,7 +36,7 @@ export function closePinnedFeature(featureId) {
     return {
         type: 'PINNED_FEATURES:CLOSE',
         featureId
-    }
+    };
 }
 
 export default function pinnedFeatures(state = initialState, action) {

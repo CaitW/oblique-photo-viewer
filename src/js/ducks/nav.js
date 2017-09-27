@@ -1,6 +1,6 @@
 const initialState = {
     expanded: false
-}
+};
 
 /**
  * Sets the expanded state of the mobile version of the nav
@@ -9,7 +9,7 @@ export function setNavExpand(expanded) {
     return {
         type: 'NAV:SET_EXPANDED',
         expanded
-    }
+    };
 }
 
 export default function nav(state = initialState, action) {

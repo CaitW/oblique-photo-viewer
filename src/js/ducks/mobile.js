@@ -16,7 +16,7 @@
 export function openMobileLayerList() {
     return {
         type: 'MOBILE:LAYER_POPUP:OPEN'
-    }
+    };
 }
 
 /**
@@ -25,7 +25,7 @@ export function openMobileLayerList() {
 export function closeMobileLayerList() {
     return {
         type: 'MOBILE:LAYER_POPUP:CLOSE'
-    }
+    };
 }
 
 /**
@@ -39,7 +39,7 @@ export function updateWindowDimensions(height, width) {
         type: 'WINDOW:UPDATE_DIMENSIONS',
         height,
         width
-    }
+    };
 }
 
 /**
@@ -55,7 +55,7 @@ export function mobileClickFeature(featureProperties, layerId, featureIndex) {
         featureProperties,
         layerId,
         featureIndex
-    }
+    };
 }
 
 /**
@@ -64,7 +64,7 @@ export function mobileClickFeature(featureProperties, layerId, featureIndex) {
 export function closeMobileFeatureModal() {
     return {
         type: 'MOBILE:FEATURE_MODAL:CLOSE'
-    }
+    };
 }
 
 let initialState = {

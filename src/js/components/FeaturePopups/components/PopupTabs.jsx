@@ -113,7 +113,7 @@ class PopupTabs extends React.Component {
             <Tabs onSelect={this.update} id={uuid.v4()}>
                 {tabs}
             </Tabs>
-        )
+        );
     }
 }
 
@@ -128,10 +128,10 @@ PopupTabs.propTypes = {
     ]).isRequired,
     update: PropTypes.func,
     popupType: PropTypes.string.isRequired
-}
+};
 
 PopupTabs.defaultProps = {
     update: function () {}
-}
+};
 
 export default PopupTabs;

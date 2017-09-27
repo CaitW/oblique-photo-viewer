@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
         layers: mapLayerGroupsToLayers(state),
         basemaps: getBasemapsByIdWithData(state)
     };
-}
+};
 
 class LayerList extends React.Component {
     /**
@@ -68,6 +68,6 @@ class LayerList extends React.Component {
 LayerList.propTypes = {
     layers: PropTypes.object.isRequired,
     basemaps: PropTypes.object.isRequired
-}
+};
 
 export default connect(mapStateToProps)(LayerList);

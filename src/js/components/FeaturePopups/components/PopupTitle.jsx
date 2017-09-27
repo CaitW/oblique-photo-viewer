@@ -22,7 +22,7 @@ const PopupTitle = (props) => {
             <div className="wiscviewer-layer-name"> {props.layerName} </div>
             <div className="wiscviewer-feature-name"> {featureName} </div>
         </div>
-    )
+    );
 };
 
 PopupTitle.propTypes = {
@@ -38,6 +38,6 @@ PopupTitle.propTypes = {
         PropTypes.object,
         PropTypes.bool
     ]).isRequired
-}
+};
 
 export default PopupTitle;

@@ -8,7 +8,7 @@ import { ListGroupItem } from 'react-bootstrap';
 
 const Basemap = (props) => {
     let iconClassNames = ['fa', 'wiscviewer-layer-left-icon'];
-    let layerClassNames = ['wiscviewer-layer-item']
+    let layerClassNames = ['wiscviewer-layer-item'];
     if(props.state === 'loading') {
         iconClassNames.push('fa-circle-o-notch');
         iconClassNames.push('fa-spin');
@@ -30,7 +30,7 @@ const Basemap = (props) => {
             <i className={iconClassNames.join(' ')}></i>
             {props.basemapName}
         </ListGroupItem>
-    )
+    );
 };
 
 Basemap.propTypes = {
@@ -38,10 +38,10 @@ Basemap.propTypes = {
     onBasemapClick: PropTypes.func.isRequired,
     basemapName: PropTypes.string.isRequired,
     state: PropTypes.string
-}
+};
 
 Basemap.defaultProps = {
     state: 'init'
-}
+};
 
 export default Basemap;

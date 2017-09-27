@@ -15,6 +15,6 @@ const ResetView = (props) => (
 
 ResetView.propTypes = {
     onResetViewClick: PropTypes.func.isRequired
-}
+};
 
 export default ResetView;

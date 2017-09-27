@@ -63,7 +63,7 @@ class DataTab extends React.Component {
                     </tbody>
                 </Table>
             </Tab>
-        )
+        );
     }
 }
 
@@ -77,6 +77,6 @@ DataTab.propTypes = {
         PropTypes.bool
     ]).isRequired,
     update: PropTypes.func.isRequired
-}
+};
 
 export default DataTab;
