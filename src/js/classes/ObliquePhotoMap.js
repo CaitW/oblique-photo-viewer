@@ -59,6 +59,7 @@ export default class ObliquePhotoMap {
         this.layerIndex = {};
         this.dispatchZoom = this.dispatchZoom.bind(this);
         this.updateSize = this.updateSize.bind(this);
+        this.zoomToPopup = this.zoomToPopup.bind(this);
         this.map.on('zoomend', self.dispatchZoom);
         this.map.on('mousedown', self.constructor.onMapMousedown);
         this.map.on('popupclose', self.constructor.onPopupClose);
@@ -194,6 +195,21 @@ export default class ObliquePhotoMap {
     panAndZoom(zoom, coordinates) {
         this.map.setView(coordinates, zoom);
         store.dispatch(doneZooming());
+    }
+    /**
+     *
+     * @param {number} zoom - zoom level
+     * @param {LatLng} coordinates - [lat, lng]
+     */
+    zoomToPopup (zoom, coordinates) {
+        this.map.panTo(coordinates, {
+            animate: true
+        });
+        this.map.once('moveend', () => {
+            this.map.setZoom(zoom, {
+                animate: true
+            });
+        });
     }
     /**
      * Force leaflet to re-calculate the size of the map within its bounding div

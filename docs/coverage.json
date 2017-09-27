@@ -1,7 +1,7 @@
 {
-  "coverage": "44.44%",
-  "expectCount": 198,
-  "actualCount": 88,
+  "coverage": "44.72%",
+  "expectCount": 199,
+  "actualCount": 89,
   "files": {
     "src/js/app.jsx": {
       "expectCount": 7,
@@ -17,8 +17,8 @@
       ]
     },
     "src/js/classes/ObliquePhotoMap.js": {
-      "expectCount": 16,
-      "actualCount": 11,
+      "expectCount": 17,
+      "actualCount": 12,
       "undocumentLines": [
         45,
         46,
@@ -196,8 +196,8 @@
         16,
         25,
         31,
-        104,
-        106
+        107,
+        109
       ]
     },
     "src/js/containers/Legend.jsx": {

@@ -25,7 +25,7 @@ class FeaturePopup extends React.Component {
      * When the component mounts, update the size of the Leaflet popup to adjust for the content
      */
     componentDidMount() {
-        this.update();
+        this.props.updateAfterZoom();
     }
     /**
      * Update the size of the Leaflet popup to adjust for the content

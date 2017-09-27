@@ -141,7 +141,13 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
         // eslint-disable-next-line
         popup._close();
     }
-
+    let updateAfterZoom = () => {
+        map.once("zoomend", () => {
+            setTimeout(() => {
+                popup.update();
+            }, 500);
+        });
+    }
     popup.on("add", function addPopup () {
         store.dispatch(
             leafletPopupOpened([featureMiddlePoint[1], featureMiddlePoint[0]])
@@ -151,6 +157,7 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
                 layerId={layerId}
                 featureProperties={feature.properties}
                 popup={popup}
+                updateAfterZoom={updateAfterZoom}
                 closePopup={closePopup}
                 getPosition={getPopupPosition}
                 openNextFeature={featureLayer.openNextFeature}

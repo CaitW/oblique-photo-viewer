@@ -114,7 +114,7 @@ export default function map(state = initialMapState, action) {
             {
                 if(state.zoom < 10) {
                     newState.state = {
-                        action: "willPanAndZoom",
+                        action: "willZoomToPopup",
                         zoom: 10,
                         coordinates: action.coordinates
                     };

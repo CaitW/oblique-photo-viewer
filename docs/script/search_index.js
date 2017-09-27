@@ -780,6 +780,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/js/classes/obliquephotomap.js~obliquephotomap#zoomtopopup",
+    "class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html#instance-method-zoomToPopup",
+    "src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap#zoomToPopup",
+    "method"
+  ],
+  [
     "src/js/classes/obliquephotomap.js~obliquephotomap.onmapmousedown",
     "class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html#static-method-onMapMousedown",
     "src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.onMapMousedown",
