@@ -60,29 +60,29 @@ class ProfileTab extends React.Component {
          * remains consistent in popups, while x values are stretched according to each profile
          * and will therefore vary depending on the profile being viewed
          */
-        var x = scaleLinear()
+        const x = scaleLinear()
             .range([width, 0]);
-        var y = scaleLinear()
+        const y = scaleLinear()
             .domain([CONFIG.profileSummaryStatistics.yMin, CONFIG.profileSummaryStatistics.yMax])
             .range([height, 0]);
         // Define the axes
-        var xAxis = axisBottom(x)
+        const xAxis = axisBottom(x)
             .ticks(5);
-        var yAxis = axisLeft(y)
+        const yAxis = axisLeft(y)
             .ticks(5);
         /**
          * Define the Lines
          * - ValueLine is the actual profile line
          * - michigan_avg, michigan_high, michigan_low are the lines that describe lake michigan avg lake levels
          */
-        var valueline = line()
+        const valueline = line()
             .x(function(d) {
                 return x(d.x);
             })
             .y(function(d) {
                 return y(d.y);
             });
-        var michiganAvg = line()
+        const michiganAvg = line()
             .x(function(d) {
                 return (x(d.x))
             })
@@ -90,7 +90,7 @@ class ProfileTab extends React.Component {
                 return y(CONFIG.lakeMichiganWaterLevel.avg)
             });
         // Adds the svg canvas
-        var svg = select(this.profileDiv)
+        const svg = select(this.profileDiv)
             .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)

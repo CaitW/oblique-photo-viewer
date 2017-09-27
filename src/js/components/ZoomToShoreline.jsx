@@ -23,7 +23,7 @@ const ZoomToShoreline = (props) => {
     let title = (
         <SVGInline svg={superior_michigan_icon} />
     );
-    var shorelines = [];
+    let shorelines = [];
     for(let lakeName in CONFIG.map.county_shorelines) {
         let shorelinesForLake = CONFIG.map.county_shorelines[lakeName];
             shorelines.push(

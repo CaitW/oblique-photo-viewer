@@ -41,7 +41,7 @@ export default class ObliquePhotoMap {
      * @param {string} map - the string ID of the html element that the map will be added to
      */
     constructor(map) {
-        var self = this;
+        const self = this;
         this.basemapGroup = L.layerGroup();
         this.layerGroup = L.layerGroup();
         this.map = L.map(map, {
@@ -79,7 +79,7 @@ export default class ObliquePhotoMap {
      * @param {Object} layer - key/value pairs describing a layer
      */
     createLayer(layerId, layer) {
-        var self = this;
+        const self = this;
         store.dispatch(layerPreload(layerId));
         switch (layer.type) {
             case "tileLayer":
@@ -154,7 +154,7 @@ export default class ObliquePhotoMap {
      * @param {Object} basemap - key/value pairs describing a layer
      */
     toggleBasemap(basemapId, basemap) {
-        var self = this;
+        const self = this;
         if (typeof basemap.url === "undefined") {
             console.error("Basemap " + basemapId + " must have a tile URL");
         } else {
