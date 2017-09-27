@@ -29,7 +29,7 @@ const ZoomToShoreline = (props) => {
             shorelines.push(
                 <MenuItem className="wiscviewer-dropdown-header"
                     key={lakeName}>
-                    <SVGInline svg={lake_icons[lakeName]} className={lakeName.replace(' ','-')}/>
+                    <SVGInline svg={lake_icons[lakeName]} className={lakeName.replace(' ', '-')}/>
                     {lakeName}
                 </MenuItem>
             );

@@ -29,7 +29,7 @@ export default class ObliquePhotoMap {
          */
         setTimeout(function () {
             unmountComponentAtNode(container);
-        },10);
+        }, 10);
     }
     /**
      * Dispatch a map action every time the user clicks the map

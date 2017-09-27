@@ -39,7 +39,7 @@ function getFeatureMidpoint(featureLayer) {
      * @returns {GeoJSON Feature}
      */
     function toCoordFeature(latLng) {
-        return point([latLng.lng,latLng.lat]);
+        return point([latLng.lng, latLng.lat]);
     }
 
     /**
