@@ -30,7 +30,7 @@ const LAYER_FEATURES = {};
  *
  * @param {L.Layer} featureLayer - a leaflet layer representing a single feature
  */
-function getFeatureMidpoint (featureLayer) {
+function getFeatureMidpoint(featureLayer) {
 
     /**
      * Convert a lat/lng to a geojson point
@@ -38,7 +38,7 @@ function getFeatureMidpoint (featureLayer) {
      * @param {L.LatLng} latLng
      * @returns {GeoJSON Feature}
      */
-    function toCoordFeature (latLng) {
+    function toCoordFeature(latLng) {
         return point([latLng.lng,latLng.lat]);
     }
 
@@ -48,7 +48,7 @@ function getFeatureMidpoint (featureLayer) {
      * @param {L.LatLng[]} latLngs
      * @returns {coordinates} - [x,y] coordinates describing the middle of a line
      */
-    function getLineMidpoint (latLngs) {
+    function getLineMidpoint(latLngs) {
         let lowerMiddle = false;
         let upperMiddle = false;
         let middlePoint = false;
@@ -82,7 +82,7 @@ function getFeatureMidpoint (featureLayer) {
     /**
      * Get the coordinates of a feature
      */
-    function getPointCoords (latLng) {
+    function getPointCoords(latLng) {
         return toCoordFeature(latLng).geometry.coordinates;
     }
 
@@ -109,7 +109,7 @@ function getFeatureMidpoint (featureLayer) {
  *  - i.e. 2017 Photos
  * @param {L.Map} map - the Leaflet map containing the feature
  */
-function createLeafletPopup (feature, featureLayer, layerId, map) {
+function createLeafletPopup(feature, featureLayer, layerId, map) {
     let featureMiddlePoint = getFeatureMidpoint(featureLayer);
     let container = document.createElement('div');
     let popup = L.popup({
@@ -148,7 +148,7 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
             }, 500);
         });
     }
-    popup.on('add', function addPopup () {
+    popup.on('add', function addPopup() {
         store.dispatch(
             leafletPopupOpened([featureMiddlePoint[1], featureMiddlePoint[0]])
         );
@@ -175,7 +175,7 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
  * previous feature in the layer. This function is bound via `this` to a particular feature, and
  * then opens the next layer in the LAYER_INDEX
  */
-function toggleNextFeaturePopup () {
+function toggleNextFeaturePopup() {
     let featureIndex = this.featureIndex;
     let layerId = this.layerId;
     let nextFeatureIndex = ((featureIndex + 1) >= LAYER_FEATURES[layerId].length) ? 0 : featureIndex + 1;
@@ -187,7 +187,7 @@ function toggleNextFeaturePopup () {
  * previous feature in the layer. This function is bound via `this` to a particular feature, and
  * then opens the previous layer in the LAYER_INDEX
  */
-function togglePreviousFeaturePopup () {
+function togglePreviousFeaturePopup() {
     let featureIndex = this.featureIndex;
     let layerId = this.layerId;
     let previousFeatureIndex = ((featureIndex - 1) < 0) ? LAYER_FEATURES[layerId].length - 1 : featureIndex - 1;
@@ -227,7 +227,7 @@ function togglePopup() {
  *      in the feature popups
  * - returns an index value for each feature layer added
  */
-function addFeatureLayerToList (featureLayer, layerId) {
+function addFeatureLayerToList(featureLayer, layerId) {
     LAYER_FEATURES[layerId] = LAYER_FEATURES[layerId] || [];
     LAYER_FEATURES[layerId].push(featureLayer);
     return LAYER_FEATURES[layerId].length - 1;
@@ -241,7 +241,7 @@ function addFeatureLayerToList (featureLayer, layerId) {
  *  - create a popup for that feature
  *  - attach the popup to the featureLayer
  */
-export function onEachFeature (layerId, map) {
+export function onEachFeature(layerId, map) {
     return (feature, featureLayer) => {
         let featureIndex = addFeatureLayerToList(featureLayer, layerId);
         featureLayer.popup = false;
@@ -259,7 +259,7 @@ export function onEachFeature (layerId, map) {
  * we need to access the index of layer features so we can utilize the "next"
  * and "previous" button functionality
  */
-export function getFeatureLayer (featureIndex, layerId) {
+export function getFeatureLayer(featureIndex, layerId) {
     return LAYER_FEATURES[layerId][featureIndex];
 }
 

@@ -21,7 +21,7 @@ export default class ObliquePhotoMap {
      * manually added / removed. The below function removes the React node
      * when a popup is closed
      */
-    static onPopupClose (e) {
+    static onPopupClose(e) {
         let container = e.popup.getContent();
         /**
          * setTimeout hack to get around this current issue with React:
@@ -34,7 +34,7 @@ export default class ObliquePhotoMap {
     /**
      * Dispatch a map action every time the user clicks the map
      */
-    static onMapMousedown () {
+    static onMapMousedown() {
         store.dispatch(mapMousedown());
     }
     /**
@@ -69,7 +69,7 @@ export default class ObliquePhotoMap {
     /**
      * Dispatch a zoom action every time the map is zoomed
      */
-    dispatchZoom () {
+    dispatchZoom() {
         let currentZoom = this.map.getZoom();
         store.dispatch(mapNewZoomLevel(currentZoom));
     }
@@ -111,11 +111,11 @@ export default class ObliquePhotoMap {
                     layerOptions.style = LAYER_STYLE(layerId);
                     this.layerIndex[layerId] = L.geoJson(null, layerOptions);
                     axios.get(layer.dataLocation)
-                        .then(function(response) {
+                        .then(function (response) {
                             self.layerIndex[layerId].addData(response.data);
                             store.dispatch(layerLoaded(layerId));
                         })
-                        .catch(function(error) {
+                        .catch(function (error) {
                             console.error(error);
                             store.dispatch(layerError(layerId));
                         });
@@ -201,7 +201,7 @@ export default class ObliquePhotoMap {
      * @param {number} zoom - zoom level
      * @param {LatLng} coordinates - [lat, lng]
      */
-    zoomToPopup (zoom, coordinates) {
+    zoomToPopup(zoom, coordinates) {
         this.map.panTo(coordinates, {
             animate: true
         });
@@ -215,7 +215,7 @@ export default class ObliquePhotoMap {
      * Force leaflet to re-calculate the size of the map within its bounding div
      * - wrapper for the Leaflet function invalidateSize
      */
-    updateSize () {
+    updateSize() {
         this.map.invalidateSize();
     }
 }

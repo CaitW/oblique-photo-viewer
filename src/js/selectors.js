@@ -113,7 +113,7 @@ export const getActiveLayerStyleTypes = createSelector(
                     styleIconClassNames
                 });
             }
-            styles = styles.sort(function(a, b) {
+            styles = styles.sort(function (a, b) {
                 if (a.styleName < b.styleName) {
                     return -1;
                 }

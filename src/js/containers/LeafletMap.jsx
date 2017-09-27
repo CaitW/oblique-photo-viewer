@@ -99,7 +99,7 @@ class LeafletMap extends React.Component {
      * @param {object} oldSidebarProps - next key/value pairs describing current sidebar props
      * @param {object} newSidebarProps - next key/value pairs describing new sidebar props
      */
-    sidebarToggled (oldSidebarProps, newSidebarProps) {
+    sidebarToggled(oldSidebarProps, newSidebarProps) {
         if(oldSidebarProps !== null && oldSidebarProps !== newSidebarProps) {
             this.map.updateSize();
         }

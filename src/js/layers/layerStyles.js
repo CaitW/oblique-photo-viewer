@@ -90,7 +90,7 @@ const DEFAULT_STYLES = {
  * - the keys of each function in LAYER_STYLES_BY_ID correspond to layers in config.json
  */
 const LAYER_STYLES_BY_ID = {
-    backshore_1976: function(subStyleName) {
+    backshore_1976: function (subStyleName) {
         let style = {
             ...DEFAULT_STYLES.LineString
         };
@@ -113,7 +113,7 @@ const LAYER_STYLES_BY_ID = {
         }
         return style;
     },
-    backshore_2007: function(subStyleName) {
+    backshore_2007: function (subStyleName) {
         let style = {
             ...DEFAULT_STYLES.LineString
         };
@@ -136,21 +136,21 @@ const LAYER_STYLES_BY_ID = {
         }
         return style;
     },
-    photos_1976: function() {
+    photos_1976: function () {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.PHOTOS[0],
             strokeColor: COLORS.PHOTOS[0]
         };
     },
-    photos_2007: function() {
+    photos_2007: function () {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.PHOTOS[1],
             strokeColor: COLORS.PHOTOS[1],
         };
     },
-    structure_1976: function() {
+    structure_1976: function () {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.STRUCTURES[0],
@@ -158,7 +158,7 @@ const LAYER_STYLES_BY_ID = {
             opacity: 1
         };
     },
-    structure_2007: function() {
+    structure_2007: function () {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.STRUCTURES[1],
@@ -166,7 +166,7 @@ const LAYER_STYLES_BY_ID = {
             opacity: 1
         };
     },
-    beachclass_1976: function(subStyleName) {
+    beachclass_1976: function (subStyleName) {
         let style = {
             ...DEFAULT_STYLES.LineString
         };
@@ -207,7 +207,7 @@ const LAYER_STYLES_BY_ID = {
         }
         return style;
     },
-    beachclass_2007: function(subStyleName) {
+    beachclass_2007: function (subStyleName) {
         let style = {
             ...DEFAULT_STYLES.LineString
         };
@@ -297,7 +297,7 @@ const LAYER_STYLES_BY_ID = {
  * @param {string} layerId - unique layer identifier
  * @param {GeoJSON Feature} feature - a GeoJSON feature
  */
-function getLayerSubStyleName (layerId, feature) {
+function getLayerSubStyleName(layerId, feature) {
     let subStyleName = layerId;
     switch (layerId) {
         case 'backshore_1976':
@@ -361,7 +361,7 @@ const CACHE = {};
  * @param {GeoJSON Feature} feature - a GeoJSON feature
  * @returns {Object|false} - returns style object if cache exists, false if it doesn't
  */
-function getCachedStyle (layerId, feature) {
+function getCachedStyle(layerId, feature) {
     if(typeof CACHE[layerId] !== 'undefined') {
         let subStyleName = getLayerSubStyleName(layerId, feature);
         if (typeof CACHE[layerId][subStyleName] !== 'undefined') {
@@ -379,7 +379,7 @@ function getCachedStyle (layerId, feature) {
  * @param {GeoJSON Feature} feature - a GeoJSON feature
  * @return {object} - style
  */
-function createNewStyle (layerId, feature) {
+function createNewStyle(layerId, feature) {
     let style = null;
     // Get either the singular name for the layer's style or the name of the sub-style for this feature
     let subStyleName = getLayerSubStyleName(layerId, feature);
@@ -412,8 +412,8 @@ function createNewStyle (layerId, feature) {
  * @param {string} layerId - a unique layer id
  * @returns {function} - a function that gets a unique style based on the feature that's passed to it
  */
-export default function LAYER_STYLE (layerId) {
-    return function layerStyle (feature) {
+export default function LAYER_STYLE(layerId) {
+    return function layerStyle(feature) {
         return getCachedStyle(layerId, feature) || createNewStyle(layerId, feature);
     };
 }

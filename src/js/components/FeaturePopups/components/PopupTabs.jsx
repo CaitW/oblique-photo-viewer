@@ -11,7 +11,7 @@ import { getPhotoURLs, getProfileURLs } from '../../../util';
 
 class PopupTabs extends React.Component {
 
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.update = this.update.bind(this);
     }
@@ -20,13 +20,13 @@ class PopupTabs extends React.Component {
      *  images have loaded
      */
     // eslint-disable-next-line class-methods-use-this
-    update () {
+    update() {
 
         if(typeof this.props.update !== 'undefined') {
             this.props.update();
         }
     }
-    render () {
+    render() {
         let tabs = [];
         let featureProperties = this.props.featureProperties;
         let layerId = this.props.layerId;

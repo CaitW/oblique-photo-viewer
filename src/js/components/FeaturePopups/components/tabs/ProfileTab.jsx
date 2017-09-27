@@ -19,7 +19,7 @@ class ProfileTab extends React.Component {
     /**
      * When the component mounts, create the d3 line chart and then update the popup
      */
-    componentDidMount () {
+    componentDidMount() {
         this.createLineChart();
         this.props.update();
     }
@@ -76,14 +76,14 @@ class ProfileTab extends React.Component {
          * - michigan_avg, michigan_high, michigan_low are the lines that describe lake michigan avg lake levels
          */
         const valueline = line()
-            .x(function(d) {
+            .x(function (d) {
                 return x(d.x);
             })
-            .y(function(d) {
+            .y(function (d) {
                 return y(d.y);
             });
         const michiganAvg = line()
-            .x(function(d) {
+            .x(function (d) {
                 return (x(d.x))
             })
             .y(function (d) {
@@ -97,11 +97,11 @@ class ProfileTab extends React.Component {
             .append('g')
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
         // get the profile's data from it's json file
-        json(this.props.jsonLocation, function(error, data) {
+        json(this.props.jsonLocation, function (error, data) {
             let sortedData = data.sort(function (a, b) {
                 return descending(a.x, b.x)
             });
-            x.domain(extent(sortedData, function(d) { return d.x }))
+            x.domain(extent(sortedData, function (d) { return d.x }))
             svg.append('path')
                 .attr('class', 'lake-stats michigan-avg')
                 .attr('d', michiganAvg(sortedData));

@@ -24,10 +24,10 @@ class MobileFeaturePopup extends React.Component {
   /**
    * Closes the mobile feature popup
    */
-  static close () {
+  static close() {
       store.dispatch(closeMobileFeatureModal());
   }
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.openPreviousFeature = this.openPreviousFeature.bind(this);
     this.openNextFeature = this.openNextFeature.bind(this);
@@ -36,16 +36,16 @@ class MobileFeaturePopup extends React.Component {
   /**
    * Opens previous feature in the layer
    */
-  openPreviousFeature () {
+  openPreviousFeature() {
     getFeatureLayer(this.props.featureIndex, this.props.layerId).openPreviousFeature();
   }
   /**
    * Opens next feature in the layer
    */
-  openNextFeature () {
+  openNextFeature() {
     getFeatureLayer(this.props.featureIndex, this.props.layerId).openPreviousFeature();
   }
-  render () {
+  render() {
     let classNames = [
       'wiscviewer-modal',
       'wiscviewer-mobile-modal',

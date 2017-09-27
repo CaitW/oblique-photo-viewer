@@ -19,23 +19,23 @@ import store from './store';
 import { updateWindowDimensions } from './ducks/mobile';
 
 class App extends React.Component {
-    static updateDimensions () {
+    static updateDimensions() {
         let height = window.innerHeight;
         let width = window.innerWidth;
         store.dispatch(updateWindowDimensions(height, width));
     }
-    constructor (props) {
+    constructor(props) {
         super (props);
         this.state = {
             sidebarOpen: true
         };
         this.toggleSidebar = this.toggleSidebar.bind(this);
     }
-    componentDidMount () {
+    componentDidMount() {
         this.constructor.updateDimensions();
         window.addEventListener('resize', this.constructor.updateDimensions);
     }
-    toggleSidebar () {
+    toggleSidebar() {
         this.setState({
             sidebarOpen: !this.state.sidebarOpen
         });

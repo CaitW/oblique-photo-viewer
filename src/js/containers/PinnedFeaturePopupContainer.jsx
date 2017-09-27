@@ -24,7 +24,7 @@ class PinnedFeaturePopupContainer extends React.Component {
      * Close a particular pinned popup
      * @param {string} featureId - a unique ID for a feature in a layer
      */
-    static closePopup (featureId) {
+    static closePopup(featureId) {
         store.dispatch(closePinnedFeature(featureId));
     }
     constructor() {
@@ -45,7 +45,7 @@ class PinnedFeaturePopupContainer extends React.Component {
      *
      * @param {object} nextProps
      */
-    componentWillReceiveProps (nextProps) {
+    componentWillReceiveProps(nextProps) {
         let newOrder = [...this.state.order];
         // if a new popup has been added, add that item to the beginning of the list
         for(let featureId in nextProps.pinnedFeatures) {
@@ -69,7 +69,7 @@ class PinnedFeaturePopupContainer extends React.Component {
      *
      * @param {string} featureId - a unique ID for a feature within a layer
      */
-    bringToFront (featureId) {
+    bringToFront(featureId) {
         let newOrder = [...this.state.order];
         newOrder.splice(newOrder.indexOf(featureId), 1);
         newOrder.push(featureId);

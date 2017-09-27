@@ -1,7 +1,7 @@
 /**
  * Hand-rolled shim that accepts Leaflet as a parameter and adds the MousePosition plugin
  */
-export default function AddMousePosition (L) {
+export default function AddMousePosition(L) {
     L.Control.MousePosition = L.Control.extend({
         options: {
             position: 'bottomleft',

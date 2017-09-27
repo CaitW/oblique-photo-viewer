@@ -22,7 +22,7 @@ class PinnedFeaturePopup extends React.Component {
     /**
      * On component mount, set the width and height of the container
      */
-    componentDidMount () {
+    componentDidMount() {
         let height = this.content.clientHeight;
         let width = this.content.clientWidth;
         // eslint-disable-next-line

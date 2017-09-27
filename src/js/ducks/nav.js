@@ -5,7 +5,7 @@ const initialState = {
 /**
  * Sets the expanded state of the mobile version of the nav
  */
-export function setNavExpand (expanded) {
+export function setNavExpand(expanded) {
     return {
         type: 'NAV:SET_EXPANDED',
         expanded

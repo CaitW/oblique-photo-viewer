@@ -22,7 +22,7 @@ class MobileLayerList extends React.Component {
     /**
      * Dispatches an action to close the mobile layer list
      */
-    static closeModal () {
+    static closeModal() {
         store.dispatch(closeMobileLayerList());
     }
     render() {

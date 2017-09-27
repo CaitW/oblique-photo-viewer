@@ -38,16 +38,16 @@ class NavBar extends React.Component {
      * @param {string} lakeName
      * @param {string} countyName
      */
-    static onZoomShorelineClick (lakeName, countyName) {
+    static onZoomShorelineClick(lakeName, countyName) {
       store.dispatch(zoomToShoreline(lakeName, countyName));
     }
     /**
      * When a user clicks on the reset button, dispatches an action to reset the map view
      */
-    static onResetViewClick () {
+    static onResetViewClick() {
         store.dispatch(resetMapView());
     }
-    constructor (props) {
+    constructor(props) {
       super(props);
       /**
        * @type {object} state
@@ -63,7 +63,7 @@ class NavBar extends React.Component {
      * When component is about to recieve new props, check to see if the nav should be expanded (mobile only)
      * @param {object} nextProps - props to be received
      */
-    componentWillReceiveProps (nextProps) {
+    componentWillReceiveProps(nextProps) {
       if(nextProps.expanded !== this.state.expanded) {
         this.setState({
           expanded: nextProps.expanded
@@ -73,13 +73,13 @@ class NavBar extends React.Component {
     /**
      * Force the nav to close (mobile mode only)
      */
-    collapse () {
+    collapse() {
       this.toggle(false);
     }
     /**
      * Toggle the nav open or closed (mobile mode only)
      */
-    toggle (expanded) {
+    toggle(expanded) {
       this.setState({
         expanded: expanded
       });

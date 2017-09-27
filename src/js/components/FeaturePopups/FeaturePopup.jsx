@@ -36,19 +36,19 @@ class FeaturePopup extends React.Component {
     /**
      * When the user clicks on the popup, bring it to the front (z-index)
      */
-    bringToFront () {
+    bringToFront() {
         this.props.popup.bringToFront();
     }
     /**
      * Close the popup
      */
-    close () {
+    close() {
         this.props.closePopup();
     }
     /**
      * Pin the popup. Adds the popup to the Pinned Popup Container and removes it from the leaflet map.
      */
-    pin () {
+    pin() {
         let position = this.props.getPosition();
         store.dispatch(
             newPinnedFeature(this.props.layerId, this.props.featureProperties, position)

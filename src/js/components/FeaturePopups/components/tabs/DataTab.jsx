@@ -10,7 +10,7 @@ class DataTab extends React.Component {
      * @param {string} property - the property name
      * @param {string} value - the value of the property
      */
-    static renderRow (property, value) {
+    static renderRow(property, value) {
         return (
             <tr key={property}>
                 <td><strong>{property}</strong></td>
@@ -18,7 +18,7 @@ class DataTab extends React.Component {
             </tr>
         );
     }
-    componentDidMount () {
+    componentDidMount() {
         this.props.update();
     }
     render() {

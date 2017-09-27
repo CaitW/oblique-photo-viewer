@@ -51,7 +51,7 @@ for (let layerGroupId in LAYER_GROUPS_BY_ID) {
  * @param {string} layerId
  * @param {Object} photoProperties
  */
-export function getPhotoURLs (layerId, photoProperties) {
+export function getPhotoURLs(layerId, photoProperties) {
     let urls = {};
     switch (layerId) {
         case 'photos_1976':
@@ -105,7 +105,7 @@ export function getPhotoURLs (layerId, photoProperties) {
  * Gets URLS of profile documents based on the feature's properties
  * @param {Object} featureProperties
  */
-export function getProfileURLs (featureProperties) {
+export function getProfileURLs(featureProperties) {
     let bluffXls = CONFIG.resources.profiles.pathToXls.bluff;
     let bathyXls = CONFIG.resources.profiles.pathToXls.bathy;
     let bluffJson = CONFIG.resources.profiles.pathToJson.bluff;

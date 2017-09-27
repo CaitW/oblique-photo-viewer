@@ -11,7 +11,7 @@ import LayerList from './LayerList';
 import Legend from './Legend';
 
 class Sidebar extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
         /**
          * @type {object} state
@@ -29,7 +29,7 @@ class Sidebar extends React.Component {
      * Called when a tab is clicked. Sets state to the value of the clicked tab.
      * @param {SyntheticEvent} e
      */
-    onTabClick (e) {
+    onTabClick(e) {
         let clickedTab = e.target.getAttribute('value');
         if(typeof clickedTab === 'string') {
             this.setState({
@@ -42,13 +42,13 @@ class Sidebar extends React.Component {
      * @param {string} tabValue - check tab value against currently active tab
      * @returns {string} - returns "active" if tab is active, or empty string
      */
-    getClassName (tabValue) {
+    getClassName(tabValue) {
         if(this.state.activeTab === tabValue) {
             return 'active';
         }
         return '';
     }
-    render () {
+    render() {
         let content = [];
         if(this.state.activeTab === 'LayerList') {
             content.push(<LayerList key="layers" />);
