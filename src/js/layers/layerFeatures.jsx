@@ -148,7 +148,7 @@ function createLeafletPopup(feature, featureLayer, layerId, map) {
             }, 500);
         });
     };
-    popup.on('add', function addPopup() {
+    popup.on('add', () => {
         store.dispatch(
             leafletPopupOpened([featureMiddlePoint[1], featureMiddlePoint[0]])
         );

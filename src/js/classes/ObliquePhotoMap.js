@@ -27,7 +27,7 @@ export default class ObliquePhotoMap {
          * setTimeout hack to get around this current issue with React:
          * https://github.com/facebook/react/issues/3298
          */
-        setTimeout(function () {
+        setTimeout(() => {
             unmountComponentAtNode(container);
         }, 10);
     }
@@ -89,7 +89,7 @@ export default class ObliquePhotoMap {
                     this.layerIndex[layerId] = L.tileLayer(layer.url, {
                         zIndex: 1
                     });
-                    this.layerIndex[layerId].once('load', function () {
+                    this.layerIndex[layerId].once('load', () => {
                         store.dispatch(layerLoaded(layerId));
                     });
                 }
@@ -111,11 +111,11 @@ export default class ObliquePhotoMap {
                     layerOptions.style = LAYER_STYLE(layerId);
                     this.layerIndex[layerId] = L.geoJson(null, layerOptions);
                     axios.get(layer.dataLocation)
-                        .then(function (response) {
+                        .then((response) => {
                             self.layerIndex[layerId].addData(response.data);
                             store.dispatch(layerLoaded(layerId));
                         })
-                        .catch(function (error) {
+                        .catch((error) => {
                             console.error(error);
                             store.dispatch(layerError(layerId));
                         });
@@ -166,7 +166,7 @@ export default class ObliquePhotoMap {
             if (basemap.active === true) {
                 this.basemapGroup.clearLayers();
                 store.dispatch(basemapPreload(basemapId));
-                self.basemapIndex[basemapId].once('load', function () {
+                self.basemapIndex[basemapId].once('load', () => {
                     store.dispatch(basemapLoaded(basemapId));
                 });
                 this.basemapGroup.addLayer(self.basemapIndex[basemapId]);

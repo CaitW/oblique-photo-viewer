@@ -76,17 +76,17 @@ class ProfileTab extends React.Component {
          * - michigan_avg, michigan_high, michigan_low are the lines that describe lake michigan avg lake levels
          */
         const valueline = line()
-            .x(function (d) {
+            .x((d) => {
                 return x(d.x);
             })
-            .y(function (d) {
+            .y((d) => {
                 return y(d.y);
             });
         const michiganAvg = line()
-            .x(function (d) {
+            .x((d) => {
                 return (x(d.x));
             })
-            .y(function (d) {
+            .y((d) => {
                 return y(CONFIG.lakeMichiganWaterLevel.avg);
             });
         // Adds the svg canvas
@@ -97,11 +97,11 @@ class ProfileTab extends React.Component {
             .append('g')
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
         // get the profile's data from it's json file
-        json(this.props.jsonLocation, function (error, data) {
-            let sortedData = data.sort(function (a, b) {
+        json(this.props.jsonLocation, (error, data) => {
+            let sortedData = data.sort((a, b) => {
                 return descending(a.x, b.x);
             });
-            x.domain(extent(sortedData, function (d) { return d.x; }));
+            x.domain(extent(sortedData, (d) => { return d.x; }));
             svg.append('path')
                 .attr('class', 'lake-stats michigan-avg')
                 .attr('d', michiganAvg(sortedData));
