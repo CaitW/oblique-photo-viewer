@@ -46,6 +46,11 @@ for (let layerGroupId in LAYER_GROUPS_BY_ID) {
     }
 }
 
+/**
+ * Get URL for photos associated with a particular feature, layerId
+ * @param {string} layerId
+ * @param {Object} photoProperties
+ */
 export function getPhotoURLs (layerId, photoProperties) {
     let urls = {};
     switch (layerId) {
