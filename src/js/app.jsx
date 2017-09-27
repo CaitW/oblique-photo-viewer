@@ -25,7 +25,7 @@ class App extends React.Component {
         store.dispatch(updateWindowDimensions(height, width));
     }
     constructor(props) {
-        super (props);
+        super(props);
         this.state = {
             sidebarOpen: true
         };
