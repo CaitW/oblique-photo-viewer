@@ -6,7 +6,7 @@ const getBasemapsById = state => state.basemaps;
 const getLayerGroupsById = state => state.layers.layerGroupsById;
 const getMobileFeatureModal = state => state.mobile.featureModal;
 
-export const getBasemapsByIdWithData = createSelector([getBasemapsById], basemaps => {
+export const getBasemapsByIdWithData = createSelector([getBasemapsById], (basemaps) => {
     const basemapsWithData = {};
     for (const basemapId in basemaps) {
         basemapsWithData[basemapId] = {
@@ -17,7 +17,7 @@ export const getBasemapsByIdWithData = createSelector([getBasemapsById], basemap
     return basemapsWithData;
 });
 
-export const getLayersByIdWithData = createSelector([getLayersById], layers => {
+export const getLayersByIdWithData = createSelector([getLayersById], (layers) => {
     const layersWithData = {};
     for (const layerId in layers) {
         layersWithData[layerId] = {
@@ -28,7 +28,7 @@ export const getLayersByIdWithData = createSelector([getLayersById], layers => {
     return layersWithData;
 });
 
-export const getLayerGroupsByIdWithData = createSelector([getLayerGroupsById], layerGroups => {
+export const getLayerGroupsByIdWithData = createSelector([getLayerGroupsById], (layerGroups) => {
     const layersGroupsWithData = {};
     for (const layerGroupId in layerGroups) {
         layersGroupsWithData[layerGroupId] = {
@@ -55,7 +55,7 @@ export const mapLayerGroupsToLayers = createSelector(
     }
 );
 
-export const getActiveBasemapId = createSelector([getBasemapsById], basemaps => {
+export const getActiveBasemapId = createSelector([getBasemapsById], (basemaps) => {
     let activeBasemapId = '';
     for (const basemapId in basemaps) {
         if (basemaps[basemapId].active === true) {
@@ -65,7 +65,7 @@ export const getActiveBasemapId = createSelector([getBasemapsById], basemaps => 
     return activeBasemapId;
 });
 
-export const getActiveLayers = createSelector(getLayersById, layers => {
+export const getActiveLayers = createSelector(getLayersById, (layers) => {
     const activeLayers = [];
     for (const layerId in layers) {
         if (layers[layerId].active === true) {
