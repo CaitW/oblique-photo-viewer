@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { Tab } from 'react-bootstrap';
 
 const ImageTab = (props) => {
-    let tabProps = {
+    const tabProps = {
         ...props
     };
     delete tabProps.imgPath;
     delete tabProps.update;
     delete tabProps.alt;
-    let style = {
+    const style = {
         'minHeight': '200px',
         'minWidth': '300px',
         'backgroundColor': '#90a4ae'

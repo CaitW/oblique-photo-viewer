@@ -40,7 +40,7 @@ class LeafletMap extends React.Component {
      *   components
      */
     componentWillReceiveProps(nextProps) {
-        let oldProps = this.props;
+        const oldProps = this.props;
         this.toggleBasemaps(oldProps.basemaps, nextProps.basemaps);
         this.toggleLayers(oldProps.layers, nextProps.layers);
         this.toggleMapActions(oldProps.map, nextProps.map);
@@ -53,8 +53,8 @@ class LeafletMap extends React.Component {
      * @param {object} newLayerProps - next key/value pairs describing new layer props
      */
     toggleLayers(oldLayerProps, newLayerProps) {
-        for (let layerId in newLayerProps) {
-            let newLayer = newLayerProps[layerId];
+        for (const layerId in newLayerProps) {
+            const newLayer = newLayerProps[layerId];
             if (oldLayerProps === null || newLayer.active !== oldLayerProps[layerId].active) {
                 this.map.toggleLayer(layerId, newLayer);
             }
@@ -67,7 +67,7 @@ class LeafletMap extends React.Component {
      * @param {object} newBasemapProps - next key/value pairs describing new basemap props
      */
     toggleBasemaps(oldBasemapProps, newBasemapProps) {
-        for (let basemap in newBasemapProps) {
+        for (const basemap in newBasemapProps) {
             if (oldBasemapProps === null
                 || newBasemapProps[basemap].active !== oldBasemapProps[basemap].active) {
                 this.map.toggleBasemap(basemap, newBasemapProps[basemap]);

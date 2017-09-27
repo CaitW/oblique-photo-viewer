@@ -10,9 +10,9 @@ import { ListGroup } from 'react-bootstrap';
 import Layer from './Layer';
 
 const LayerGroup = (props) => {
-    let layers = [];
-    for (let layerId in props.layers) {
-        let boundOnLayerClick = props.onLayerClick.bind(null, layerId);
+    const layers = [];
+    for (const layerId in props.layers) {
+        const boundOnLayerClick = props.onLayerClick.bind(null, layerId);
         layers.push(
             <Layer
                 key={layerId}
@@ -23,8 +23,8 @@ const LayerGroup = (props) => {
             />
         );
     }
-    let bodyClassNames = ['panel-body', 'pullDown', 'wiscviewer-sidebar-panel-body'];
-    let headerClassNames = ['panel-heading', 'wiscviewer-sidebar-panel-header'];
+    const bodyClassNames = ['panel-body', 'pullDown', 'wiscviewer-sidebar-panel-body'];
+    const headerClassNames = ['panel-heading', 'wiscviewer-sidebar-panel-header'];
     return (
         <div className="panel panel-default wiscviewer-sidebar-panel">
             <div className={headerClassNames.join(' ')}

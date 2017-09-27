@@ -18,12 +18,12 @@ const mapStateToProps = (state) => {
 };
 
 const Legend = (props) => {
-    let layers = [];
-    let activeLayerStyleTypes = props.activeLayerStyleTypes;
-    for (let layerId in activeLayerStyleTypes) {
-        let styles = activeLayerStyleTypes[layerId].styles;
-        let layerName = activeLayerStyleTypes[layerId].layerName;
-        let layerGroupName = activeLayerStyleTypes[layerId].layerGroupName;
+    const layers = [];
+    const activeLayerStyleTypes = props.activeLayerStyleTypes;
+    for (const layerId in activeLayerStyleTypes) {
+        const styles = activeLayerStyleTypes[layerId].styles;
+        const layerName = activeLayerStyleTypes[layerId].layerName;
+        const layerGroupName = activeLayerStyleTypes[layerId].layerGroupName;
         layers.push(
             <LegendLayer
                 key={layerId}

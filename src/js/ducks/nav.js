@@ -13,7 +13,7 @@ export function setNavExpand(expanded) {
 }
 
 export default function nav(state = initialState, action) {
-    let newState = {
+    const newState = {
         ...state
     };
     switch (action.type) {

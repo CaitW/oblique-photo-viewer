@@ -22,22 +22,22 @@ class DataTab extends React.Component {
         this.props.update();
     }
     render() {
-        let layerData = LAYERS_BY_ID[this.props.layerId];
-        let tabProps = {
+        const layerData = LAYERS_BY_ID[this.props.layerId];
+        const tabProps = {
             ...this.props
         };
         delete tabProps.layerId;
         delete tabProps.featureProperties;
         delete tabProps.update;
 
-        let rows = [];
+        const rows = [];
 
         if (typeof layerData !== 'undefined' && typeof layerData.tableProperties !== 'undefined') {
-            let displayProperties = layerData.tableProperties;
+            const displayProperties = layerData.tableProperties;
             for (let property in this.props.featureProperties) {
                 if ( typeof displayProperties[property] === 'undefined'
                     || displayProperties[property] !== false ) {
-                    let value = this.props.featureProperties[property];
+                    const value = this.props.featureProperties[property];
                     if (typeof displayProperties[property] === 'string') {
                         property = displayProperties[property];
                     }
@@ -47,8 +47,8 @@ class DataTab extends React.Component {
                 }
             }
         } else {
-            for (let property in this.props.featureProperties) {
-                let value = this.props.featureProperties[property];
+            for (const property in this.props.featureProperties) {
+                const value = this.props.featureProperties[property];
                 rows.push(
                     this.constructor.renderRow(property, value)
                 );

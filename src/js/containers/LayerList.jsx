@@ -38,9 +38,9 @@ class LayerList extends React.Component {
         store.dispatch(toggleBasemap(basemapId));
     }
     render() {
-        let layerGroups = [];
+        const layerGroups = [];
         let eventKey = 1;
-        for (let layerGroupId in this.props.layers) {
+        for (const layerGroupId in this.props.layers) {
             layerGroups.push(
                 <LayerGroup
                     key={layerGroupId}

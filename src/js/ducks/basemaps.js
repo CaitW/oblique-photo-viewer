@@ -8,7 +8,7 @@ import { BASEMAPS_BY_ID } from '../util';
 
 const initialBasemaps = {};
 
-for (let basemapId in BASEMAPS_BY_ID) {
+for (const basemapId in BASEMAPS_BY_ID) {
     initialBasemaps[basemapId] = {
         active: BASEMAPS_BY_ID[basemapId].defaultActive,
         state: 'init'
@@ -60,14 +60,14 @@ export function basemapError(basemapId) {
 }
 
 export default function basemaps(state = initialBasemaps, action) {
-    let newState = {
+    const newState = {
         ...state
     };
     switch (action.type) {
         case 'BASEMAPS:TOGGLE_BASEMAP':
         {
-            let basemapIdToToggle = action.basemapId;
-            for (let basemapId in newState) {
+            const basemapIdToToggle = action.basemapId;
+            for (const basemapId in newState) {
                 if (basemapId === basemapIdToToggle) {
                     newState[basemapId] = {
                         ...newState[basemapId],

@@ -27,24 +27,24 @@ class ProfileTab extends React.Component {
      * Create the profile's line chart within the given drawing area
      */
     createLineChart() {
-        let popupWidth = this.profileDiv.clientWidth;
-        let popupHeight = this.profileDiv.clientHeight;
+        const popupWidth = this.profileDiv.clientWidth;
+        const popupHeight = this.profileDiv.clientHeight;
         // Set the dimensions of the canvas / graph
-        let margin = { top: 10, right: 20, bottom: 40, left: 50 };
+        const margin = { top: 10, right: 20, bottom: 40, left: 50 };
         if (this.props.popupType === 'modal') {
             margin.left = 70;
             margin.bottom = 60;
         }
-        let width = popupWidth - margin.left - margin.right;
-        let height = popupHeight - margin.top - margin.bottom;
-        let xAxisLabel = {
+        const width = popupWidth - margin.left - margin.right;
+        const height = popupHeight - margin.top - margin.bottom;
+        const xAxisLabel = {
             x: (width / 2),
             y: (height + margin.top + 25)
         };
         if (this.props.popupType === 'modal') {
             xAxisLabel.y = xAxisLabel.y + 10;
         }
-        let yAxisLabel = {
+        const yAxisLabel = {
             x: 0 - (height / 2),
             y: (0 - margin.left) + 5
         };
@@ -98,7 +98,7 @@ class ProfileTab extends React.Component {
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
         // get the profile's data from it's json file
         json(this.props.jsonLocation, (error, data) => {
-            let sortedData = data.sort((a, b) => {
+            const sortedData = data.sort((a, b) => {
                 return descending(a.x, b.x);
             });
             x.domain(extent(sortedData, (d) => { return d.x; }));
@@ -136,13 +136,13 @@ class ProfileTab extends React.Component {
         });
     }
     render() {
-        let tabProps = {
+        const tabProps = {
             ...this.props
         };
         delete tabProps.jsonLocation;
         delete tabProps.update;
         delete tabProps.popupType;
-        let style = {
+        const style = {
             'height': '200px',
             'width': '350px'
         };

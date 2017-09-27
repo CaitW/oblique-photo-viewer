@@ -46,7 +46,7 @@ class MobileFeaturePopup extends React.Component {
         getFeatureLayer(this.props.featureIndex, this.props.layerId).openPreviousFeature();
     }
     render() {
-        let classNames = [
+        const classNames = [
             'wiscviewer-modal',
             'wiscviewer-mobile-modal',
             'wiscviewer-mobile-feature-popup',

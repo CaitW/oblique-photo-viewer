@@ -26,7 +26,7 @@ class MobileLayerList extends React.Component {
         store.dispatch(closeMobileLayerList());
     }
     render() {
-        let classNames = [
+        const classNames = [
             'wiscviewer-modal',
             'wiscviewer-mobile-modal',
             'wiscviewer-mobile-layers-list',

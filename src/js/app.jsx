@@ -20,8 +20,8 @@ import { updateWindowDimensions } from './ducks/mobile';
 
 class App extends React.Component {
     static updateDimensions() {
-        let height = window.innerHeight;
-        let width = window.innerWidth;
+        const height = window.innerHeight;
+        const width = window.innerWidth;
         store.dispatch(updateWindowDimensions(height, width));
     }
     constructor(props) {

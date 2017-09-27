@@ -7,8 +7,8 @@ const getLayerGroupsById = state => state.layers.layerGroupsById;
 const getMobileFeatureModal = state => state.mobile.featureModal;
 
 export const getBasemapsByIdWithData = createSelector([getBasemapsById], basemaps => {
-    let basemapsWithData = {};
-    for (let basemapId in basemaps) {
+    const basemapsWithData = {};
+    for (const basemapId in basemaps) {
         basemapsWithData[basemapId] = {
             ...BASEMAPS_BY_ID[basemapId],
             ...basemaps[basemapId]
@@ -18,8 +18,8 @@ export const getBasemapsByIdWithData = createSelector([getBasemapsById], basemap
 });
 
 export const getLayersByIdWithData = createSelector([getLayersById], layers => {
-    let layersWithData = {};
-    for (let layerId in layers) {
+    const layersWithData = {};
+    for (const layerId in layers) {
         layersWithData[layerId] = {
             ...LAYERS_BY_ID[layerId],
             ...layers[layerId]
@@ -29,8 +29,8 @@ export const getLayersByIdWithData = createSelector([getLayersById], layers => {
 });
 
 export const getLayerGroupsByIdWithData = createSelector([getLayerGroupsById], layerGroups => {
-    let layersGroupsWithData = {};
-    for (let layerGroupId in layerGroups) {
+    const layersGroupsWithData = {};
+    for (const layerGroupId in layerGroups) {
         layersGroupsWithData[layerGroupId] = {
             ...LAYER_GROUPS_BY_ID[layerGroupId]
         };
@@ -41,13 +41,13 @@ export const getLayerGroupsByIdWithData = createSelector([getLayerGroupsById], l
 export const mapLayerGroupsToLayers = createSelector(
     [getLayerGroupsByIdWithData, getLayersByIdWithData],
     (layerGroups, layers) => {
-        let mappedLayerGroups = {};
-        for (let layerGroupId in layerGroups) {
+        const mappedLayerGroups = {};
+        for (const layerGroupId in layerGroups) {
             mappedLayerGroups[layerGroupId] = {
                 ...layerGroups[layerGroupId],
                 layers: {}
             };
-            for (let layerId of layerGroups[layerGroupId].layers) {
+            for (const layerId of layerGroups[layerGroupId].layers) {
                 mappedLayerGroups[layerGroupId].layers[layerId] = layers[layerId];
             }
         }
@@ -57,7 +57,7 @@ export const mapLayerGroupsToLayers = createSelector(
 
 export const getActiveBasemapId = createSelector([getBasemapsById], basemaps => {
     let activeBasemapId = '';
-    for (let basemapId in basemaps) {
+    for (const basemapId in basemaps) {
         if (basemaps[basemapId].active === true) {
             activeBasemapId = basemapId;
         }
@@ -66,8 +66,8 @@ export const getActiveBasemapId = createSelector([getBasemapsById], basemaps => 
 });
 
 export const getActiveLayers = createSelector(getLayersById, layers => {
-    let activeLayers = [];
-    for (let layerId in layers) {
+    const activeLayers = [];
+    for (const layerId in layers) {
         if (layers[layerId].active === true) {
             activeLayers.push(layerId);
         }
@@ -78,20 +78,20 @@ export const getActiveLayers = createSelector(getLayersById, layers => {
 export const getActiveLayerStyleTypes = createSelector(
     [getLayersByIdWithData, getLayerGroupsByIdWithData, getActiveLayers],
     (layers, layerGroups, activeLayers) => {
-        let stylesByLayerId = {};
-        for (let layerId of activeLayers) {
-            let layer = layers[layerId];
-            let layerName = layer.name || layerId;
-            let layerGroupId = layer.layerGroupId;
+        const stylesByLayerId = {};
+        for (const layerId of activeLayers) {
+            const layer = layers[layerId];
+            const layerName = layer.name || layerId;
+            const layerGroupId = layer.layerGroupId;
             let layerGroupName = layerGroupId;
             if (typeof layerGroups[layerGroupId] !== 'undefined') {
                 layerGroupName = layerGroups[layerGroupId].name || layerGroupId;
             }
-            let legendStyles = layer.legendStyles;
+            const legendStyles = layer.legendStyles;
             let styles = [];
             for (let styleName in legendStyles) {
-                let styleIconClassNames = ['fa'];
-                let iconStyle = {
+                const styleIconClassNames = ['fa'];
+                const iconStyle = {
                     color: '#000000'
                 };
                 if (
@@ -136,10 +136,10 @@ export const getMobileFeaturePopupProps = createSelector(
     [getLayersByIdWithData, getLayerGroupsByIdWithData, getMobileFeatureModal],
     (layers, layerGroups, featureModal) => {
         if (typeof featureModal.layerId !== 'undefined' && featureModal.layerId !== false) {
-            let layerId = featureModal.layerId;
-            let layerName = layers[layerId].name;
-            let layerGroupId = layers[layerId].layerGroupId;
-            let layerGroupName = layerGroups[layerGroupId].name;
+            const layerId = featureModal.layerId;
+            const layerName = layers[layerId].name;
+            const layerGroupId = layers[layerId].layerGroupId;
+            const layerGroupName = layerGroups[layerGroupId].name;
             return {
                 ...featureModal,
                 layerName,

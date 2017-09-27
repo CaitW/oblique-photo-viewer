@@ -80,7 +80,7 @@ export default function map(state = initialMapState, action) {
     switch (action.type) {
         case 'MAP:ZOOM_TO_SHORELINE':
         {
-            let shorelineExtent = CONFIG.map.county_shorelines[action.lakeName][action.countyName];
+            const shorelineExtent = CONFIG.map.county_shorelines[action.lakeName][action.countyName];
             newState.state = {
                 action: 'willZoom',
                 extent: shorelineExtent
@@ -98,7 +98,7 @@ export default function map(state = initialMapState, action) {
         }
         case 'MAP:RESET_VIEW':
         {
-            let wisconsinExtent = CONFIG.map.wisconsinExtent;
+            const wisconsinExtent = CONFIG.map.wisconsinExtent;
             newState.state = {
                 action: 'willZoom',
                 extent: wisconsinExtent

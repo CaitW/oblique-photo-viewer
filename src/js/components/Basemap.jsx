@@ -7,8 +7,8 @@ import PropTypes from 'prop-types';
 import { ListGroupItem } from 'react-bootstrap';
 
 const Basemap = (props) => {
-    let iconClassNames = ['fa', 'wiscviewer-layer-left-icon'];
-    let layerClassNames = ['wiscviewer-layer-item'];
+    const iconClassNames = ['fa', 'wiscviewer-layer-left-icon'];
+    const layerClassNames = ['wiscviewer-layer-item'];
     if (props.state === 'loading') {
         iconClassNames.push('fa-circle-o-notch');
         iconClassNames.push('fa-spin');

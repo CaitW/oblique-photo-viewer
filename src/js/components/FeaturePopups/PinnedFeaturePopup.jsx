@@ -23,8 +23,8 @@ class PinnedFeaturePopup extends React.Component {
      * On component mount, set the width and height of the container
      */
     componentDidMount() {
-        let height = this.content.clientHeight;
-        let width = this.content.clientWidth;
+        const height = this.content.clientHeight;
+        const width = this.content.clientWidth;
         // eslint-disable-next-line
         this.setState({
             height,
@@ -32,11 +32,11 @@ class PinnedFeaturePopup extends React.Component {
         });
     }
     render() {
-        let initialPositionAdjustedForContent = {
+        const initialPositionAdjustedForContent = {
             x: this.props.initialPosition.x - (this.state.width / 2),
             y: this.props.initialPosition.y - this.state.height
         };
-        let style = {
+        const style = {
             'top': initialPositionAdjustedForContent.y,
             'left': initialPositionAdjustedForContent.x,
             'zIndex': this.props.zIndex

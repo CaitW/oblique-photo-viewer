@@ -6,7 +6,7 @@
  */
 import uuid from 'uuid';
 
-let initialState = {};
+const initialState = {};
 
 /**
  * When a Leaflet-based feature popup is "pinned", by clicking on the pin icon
@@ -40,12 +40,12 @@ export function closePinnedFeature(featureId) {
 }
 
 export default function pinnedFeatures(state = initialState, action) {
-    let newState = {
+    const newState = {
         ...state
     };
     switch (action.type) {
         case 'PINNED_FEATURES:NEW': {
-            let newPinnedFeatureId = uuid.v4();
+            const newPinnedFeatureId = uuid.v4();
             newState[newPinnedFeatureId] = {
                 layerId: action.layerId,
                 featureProperties: action.featureProperties,

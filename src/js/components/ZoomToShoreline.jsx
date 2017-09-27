@@ -20,12 +20,12 @@ const lake_icons = {
 };
 
 const ZoomToShoreline = (props) => {
-    let title = (
+    const title = (
         <SVGInline svg={superior_michigan_icon} />
     );
-    let shorelines = [];
-    for (let lakeName in CONFIG.map.county_shorelines) {
-        let shorelinesForLake = CONFIG.map.county_shorelines[lakeName];
+    const shorelines = [];
+    for (const lakeName in CONFIG.map.county_shorelines) {
+        const shorelinesForLake = CONFIG.map.county_shorelines[lakeName];
         shorelines.push(
             <MenuItem className="wiscviewer-dropdown-header"
                 key={lakeName}>
@@ -33,7 +33,7 @@ const ZoomToShoreline = (props) => {
                 {lakeName}
             </MenuItem>
         );
-        for (let shorelineName in shorelinesForLake) {
+        for (const shorelineName in shorelinesForLake) {
             shorelines.push(
                 <MenuItem className="wiscviewer-dropdown-item"
                     key={shorelineName}

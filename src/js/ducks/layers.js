@@ -74,32 +74,32 @@ export function layerError(layerId) {
     };
 }
 
-let layerGroupsById = {};
-let layersById = {};
+const layerGroupsById = {};
+const layersById = {};
 
 // set up our layer group state
-for (let layerGroupId in LAYER_GROUPS_BY_ID) {
+for (const layerGroupId in LAYER_GROUPS_BY_ID) {
     layerGroupsById[layerGroupId] = {
         layers: LAYER_GROUPS_BY_ID[layerGroupId].layers
     };
 }
 
 // set up our layers state
-for (let layerId in LAYERS_BY_ID) {
-    let legendStyles = LAYERS_BY_ID[layerId].legendStyles || {};
+for (const layerId in LAYERS_BY_ID) {
+    const legendStyles = LAYERS_BY_ID[layerId].legendStyles || {};
     layersById[layerId] = {
         active: LAYERS_BY_ID[layerId].defaultActive,
         legendStyles
     };
 }
 
-let initialLayers = {
+const initialLayers = {
     layersById,
     layerGroupsById
 };
 
 export default function layers(state = initialLayers, action) {
-    let newState = {
+    const newState = {
         ...state
     };
     switch (action.type) {
@@ -114,7 +114,7 @@ export default function layers(state = initialLayers, action) {
             break;
         }
         case 'LAYER:LEGEND_STYLE_UPDATE': {
-            let legendStyle = {
+            const legendStyle = {
                 style: action.style,
                 geometryType: action.geometryType
             };

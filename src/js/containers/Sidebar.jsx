@@ -30,7 +30,7 @@ class Sidebar extends React.Component {
      * @param {SyntheticEvent} e
      */
     onTabClick(e) {
-        let clickedTab = e.target.getAttribute('value');
+        const clickedTab = e.target.getAttribute('value');
         if (typeof clickedTab === 'string') {
             this.setState({
                 activeTab: clickedTab
@@ -49,7 +49,7 @@ class Sidebar extends React.Component {
         return '';
     }
     render() {
-        let content = [];
+        const content = [];
         if (this.state.activeTab === 'LayerList') {
             content.push(<LayerList key="layers" />);
         } else {

@@ -12,7 +12,7 @@ import { legendStyleUpdate } from '../ducks/layers';
 /**
  * Colors used in the app
  */
-let COLORS = {
+const COLORS = {
     RED: '#F44336',
     GREEN: '#8BC34A',
     YELLOW: '#FFEB3B',
@@ -91,7 +91,7 @@ const DEFAULT_STYLES = {
  */
 const LAYER_STYLES_BY_ID = {
     backshore_1976: function (subStyleName) {
-        let style = {
+        const style = {
             ...DEFAULT_STYLES.LineString
         };
         switch (subStyleName) {
@@ -114,7 +114,7 @@ const LAYER_STYLES_BY_ID = {
         return style;
     },
     backshore_2007: function (subStyleName) {
-        let style = {
+        const style = {
             ...DEFAULT_STYLES.LineString
         };
         switch (subStyleName) {
@@ -167,7 +167,7 @@ const LAYER_STYLES_BY_ID = {
         };
     },
     beachclass_1976: function (subStyleName) {
-        let style = {
+        const style = {
             ...DEFAULT_STYLES.LineString
         };
         switch (subStyleName) {
@@ -208,7 +208,7 @@ const LAYER_STYLES_BY_ID = {
         return style;
     },
     beachclass_2007: function (subStyleName) {
-        let style = {
+        const style = {
             ...DEFAULT_STYLES.LineString
         };
         switch (subStyleName) {
@@ -249,7 +249,7 @@ const LAYER_STYLES_BY_ID = {
         return style;
     },
     profiles: function (subStyleName) {
-        let style = {
+        const style = {
             ...DEFAULT_STYLES.LineString,
             color: COLORS.PROFILES.bluff
         };
@@ -363,7 +363,7 @@ const CACHE = {};
  */
 function getCachedStyle(layerId, feature) {
     if (typeof CACHE[layerId] !== 'undefined') {
-        let subStyleName = getLayerSubStyleName(layerId, feature);
+        const subStyleName = getLayerSubStyleName(layerId, feature);
         if (typeof CACHE[layerId][subStyleName] !== 'undefined') {
             return CACHE[layerId][subStyleName];
         }
@@ -382,7 +382,7 @@ function getCachedStyle(layerId, feature) {
 function createNewStyle(layerId, feature) {
     let style = null;
     // Get either the singular name for the layer's style or the name of the sub-style for this feature
-    let subStyleName = getLayerSubStyleName(layerId, feature);
+    const subStyleName = getLayerSubStyleName(layerId, feature);
     // If there's a style set for a particular Layer ID, fetch that style
     // Otherwise, get the default style for that geometry type
     if (typeof LAYER_STYLES_BY_ID[layerId] !== 'undefined') {
@@ -391,8 +391,8 @@ function createNewStyle(layerId, feature) {
         style = DEFAULT_STYLES[feature.geometry.type];
     }
     // assign the classname property of every style
-    let layerIdClass = 'layer-' + layerId;
-    let layerTypeClass = 'layer-type-' + feature.geometry.type;
+    const layerIdClass = 'layer-' + layerId;
+    const layerTypeClass = 'layer-type-' + feature.geometry.type;
     if (typeof style.className === 'undefined') {
         style.className = '';
     }

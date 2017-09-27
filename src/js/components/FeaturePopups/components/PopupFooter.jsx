@@ -13,14 +13,14 @@ import { getPhotoURLs, getProfileURLs } from '../../../util';
  * @returns {JSX[]} - array of JSX components to be displayed in the footer
  */
 const getContentByLayerId = (layerId, featureProperties) => {
-    let content = [];
+    const content = [];
     switch (layerId) {
         case 'photos_1976':
         case 'photos_2007':
         case 'photos_2017':
         case 'photos_2016':
         case 'photos_2012': {
-            let photoURLs = getPhotoURLs(layerId, featureProperties);
+            const photoURLs = getPhotoURLs(layerId, featureProperties);
             content.push(
                 <a href={photoURLs.original}
                     key="open-larger-image-button"
@@ -34,7 +34,7 @@ const getContentByLayerId = (layerId, featureProperties) => {
             break;
         }
         case 'profiles': {
-            let urls = getProfileURLs(featureProperties);
+            const urls = getProfileURLs(featureProperties);
             if (urls.bluffXls) {
                 content.push(
                     <a href={urls.bluffXls}
@@ -69,7 +69,7 @@ const getContentByLayerId = (layerId, featureProperties) => {
 
 const PopupFooter = (props) => {
 
-    let footer = getContentByLayerId(props.layerId, props.featureProperties);
+    const footer = getContentByLayerId(props.layerId, props.featureProperties);
     if (footer.length > 0) {
         footer.unshift(
             <i key="download" className="fa fa-download"></i>

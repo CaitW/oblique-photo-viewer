@@ -49,16 +49,16 @@ class FeaturePopup extends React.Component {
      * Pin the popup. Adds the popup to the Pinned Popup Container and removes it from the leaflet map.
      */
     pin() {
-        let position = this.props.getPosition();
+        const position = this.props.getPosition();
         store.dispatch(
             newPinnedFeature(this.props.layerId, this.props.featureProperties, position)
         );
         this.close();
     }
     render() {
-        let layerGroupId = LAYERS_BY_ID[this.props.layerId].layerGroupId;
-        let layerGroupName = LAYER_GROUPS_BY_ID[layerGroupId].name;
-        let layerName = LAYERS_BY_ID[this.props.layerId].name;
+        const layerGroupId = LAYERS_BY_ID[this.props.layerId].layerGroupId;
+        const layerGroupName = LAYER_GROUPS_BY_ID[layerGroupId].name;
+        const layerName = LAYERS_BY_ID[this.props.layerId].name;
         return (
             <div className="wiscviewer-feature-popup"
                 tabIndex={-1}

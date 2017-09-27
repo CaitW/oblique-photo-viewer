@@ -10,10 +10,10 @@ import { ListGroup } from 'react-bootstrap';
 import Basemap from './Basemap';
 
 const BasemapList = (props) => {
-    let basemaps = [];
-    for (let basemapId in props.basemaps) {
-        let basemap = props.basemaps[basemapId];
-        let boundOnBasemapClick = props.onBasemapClick.bind(null, basemapId);
+    const basemaps = [];
+    for (const basemapId in props.basemaps) {
+        const basemap = props.basemaps[basemapId];
+        const boundOnBasemapClick = props.onBasemapClick.bind(null, basemapId);
         basemaps.push(
             <Basemap key={ basemapId }
                 basemapName={ basemap.name }
@@ -24,8 +24,8 @@ const BasemapList = (props) => {
         );
     }
 
-    let bodyClassNames = ['panel-body', 'pullDown', 'wiscviewer-sidebar-panel-body'];
-    let headerClassNames = ['panel-heading', 'wiscviewer-sidebar-panel-header', 'wiscviewer-layer-group-name'];
+    const bodyClassNames = ['panel-body', 'pullDown', 'wiscviewer-sidebar-panel-body'];
+    const headerClassNames = ['panel-heading', 'wiscviewer-sidebar-panel-header', 'wiscviewer-layer-group-name'];
     if (props.panelVisible === false) {
         bodyClassNames.push('hidden');
     } else {

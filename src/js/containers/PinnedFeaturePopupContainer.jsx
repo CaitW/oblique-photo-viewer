@@ -46,15 +46,15 @@ class PinnedFeaturePopupContainer extends React.Component {
      * @param {object} nextProps
      */
     componentWillReceiveProps(nextProps) {
-        let newOrder = [...this.state.order];
+        const newOrder = [...this.state.order];
         // if a new popup has been added, add that item to the beginning of the list
-        for (let featureId in nextProps.pinnedFeatures) {
+        for (const featureId in nextProps.pinnedFeatures) {
             if (newOrder.indexOf(featureId) === -1) {
                 newOrder.push(featureId);
             }
         }
         // if a popup has been closed, remove that popup from the order
-        for (let featureId of newOrder) {
+        for (const featureId of newOrder) {
             if (typeof nextProps.pinnedFeatures[featureId] === 'undefined') {
                 newOrder.splice(newOrder.indexOf(featureId), 1);
             }
@@ -70,7 +70,7 @@ class PinnedFeaturePopupContainer extends React.Component {
      * @param {string} featureId - a unique ID for a feature within a layer
      */
     bringToFront(featureId) {
-        let newOrder = [...this.state.order];
+        const newOrder = [...this.state.order];
         newOrder.splice(newOrder.indexOf(featureId), 1);
         newOrder.push(featureId);
         this.setState({
@@ -78,14 +78,14 @@ class PinnedFeaturePopupContainer extends React.Component {
         });
     }
     render() {
-        let pinnedFeatures = [];
-        for (let featureId in this.props.pinnedFeatures) {
-            let pinnedFeature = this.props.pinnedFeatures[featureId];
-            let layerId = pinnedFeature.layerId;
-            let layerName = this.props.layers[layerId].name;
-            let layerGroupId = this.props.layers[layerId].layerGroupId;
-            let layerGroupName = LAYER_GROUPS_BY_ID[layerGroupId].name;
-            let zIndex = this.state.order.indexOf(featureId);
+        const pinnedFeatures = [];
+        for (const featureId in this.props.pinnedFeatures) {
+            const pinnedFeature = this.props.pinnedFeatures[featureId];
+            const layerId = pinnedFeature.layerId;
+            const layerName = this.props.layers[layerId].name;
+            const layerGroupId = this.props.layers[layerId].layerGroupId;
+            const layerGroupName = LAYER_GROUPS_BY_ID[layerGroupId].name;
+            const zIndex = this.state.order.indexOf(featureId);
             pinnedFeatures.push(
                 <PinnedFeaturePopup
                     layerId={layerId}

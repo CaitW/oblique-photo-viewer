@@ -22,7 +22,7 @@ export default class ObliquePhotoMap {
      * when a popup is closed
      */
     static onPopupClose(e) {
-        let container = e.popup.getContent();
+        const container = e.popup.getContent();
         /**
          * setTimeout hack to get around this current issue with React:
          * https://github.com/facebook/react/issues/3298
@@ -70,7 +70,7 @@ export default class ObliquePhotoMap {
      * Dispatch a zoom action every time the map is zoomed
      */
     dispatchZoom() {
-        let currentZoom = this.map.getZoom();
+        const currentZoom = this.map.getZoom();
         store.dispatch(mapNewZoomLevel(currentZoom));
     }
     /**
@@ -98,7 +98,7 @@ export default class ObliquePhotoMap {
                 if (typeof layer.dataLocation === 'undefined') {
                     console.error('Layer ' + layerId + ' must have a data location');
                 } else {
-                    let layerOptions = {
+                    const layerOptions = {
                         pointToLayer: function (feature, latlng) {
                             // eslint-disable-next-line
                             return new L.circleMarker(latlng, {

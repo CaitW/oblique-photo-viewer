@@ -7,10 +7,10 @@ import PropTypes from 'prop-types';
 import LegendStyle from './LegendStyle';
 
 const LegendLayer = (props) => {
-    let headerClassNames = ['panel-heading', 'wiscviewer-sidebar-panel-header'];
-    let bodyClassNames = ['panel-body', 'pullDown', 'wiscviewer-sidebar-panel-body'];
-    let styles = [];
-    for (let style of props.layerStyles) {
+    const headerClassNames = ['panel-heading', 'wiscviewer-sidebar-panel-header'];
+    const bodyClassNames = ['panel-body', 'pullDown', 'wiscviewer-sidebar-panel-body'];
+    const styles = [];
+    for (const style of props.layerStyles) {
         styles.push(
             <LegendStyle
                 key={style.styleName}

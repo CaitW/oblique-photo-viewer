@@ -7,7 +7,7 @@ import { Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const MapWrapper = (props) => {
-    let xs = 12;
+    const xs = 12;
     let sm = 7;
     let md = 8;
     let lg = 9;
@@ -16,7 +16,7 @@ const MapWrapper = (props) => {
         md = 12;
         lg = 12;
     }
-    let iconClassNames = ['fa'];
+    const iconClassNames = ['fa'];
     if (props.sidebarOpen) {
         iconClassNames.push('fa-chevron-left');
     } else {

@@ -67,7 +67,7 @@ export function closeMobileFeatureModal() {
     };
 }
 
-let initialState = {
+const initialState = {
     window: {
         height: false,
         width: false
@@ -85,9 +85,9 @@ let initialState = {
 
 export default function mobile(state = initialState, action) {
     let newState = Object.assign({}, state);
-    let layersPopupState = Object.assign({}, newState.layersPopup);
-    let windowState = Object.assign({}, newState.window);
-    let featureModalState = Object.assign({}, newState.featureModal);
+    const layersPopupState = Object.assign({}, newState.layersPopup);
+    const windowState = Object.assign({}, newState.window);
+    const featureModalState = Object.assign({}, newState.featureModal);
     switch (action.type) {
         case 'MOBILE:LAYER_POPUP:OPEN':
             layersPopupState.visible = true;

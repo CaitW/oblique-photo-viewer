@@ -57,14 +57,14 @@ function getFeatureMidpoint(featureLayer) {
             // if the number of coordinates is even, find the
             // average of the two middle coordinates
             if (latLngs.length % 2 === 0) {
-                let firstIndex = (latLngs.length / 2) - 1;
-                let lastIndex = latLngs.length / 2;
+                const firstIndex = (latLngs.length / 2) - 1;
+                const lastIndex = latLngs.length / 2;
                 lowerMiddle = toCoordFeature(latLngs[firstIndex]);
                 upperMiddle = toCoordFeature(latLngs[lastIndex]);
                 middlePoint = midpoint(lowerMiddle, upperMiddle);
                 // if the number of coordinates is odd, get the median value
             } else {
-                let middleIndex = Math.ceil(latLngs.length / 2);
+                const middleIndex = Math.ceil(latLngs.length / 2);
                 middlePoint = toCoordFeature(latLngs[(middleIndex)]);
             }
             // if there are exactly 2 coordinates
@@ -110,9 +110,9 @@ function getFeatureMidpoint(featureLayer) {
  * @param {L.Map} map - the Leaflet map containing the feature
  */
 function createLeafletPopup(feature, featureLayer, layerId, map) {
-    let featureMiddlePoint = getFeatureMidpoint(featureLayer);
-    let container = document.createElement('div');
-    let popup = L.popup({
+    const featureMiddlePoint = getFeatureMidpoint(featureLayer);
+    const container = document.createElement('div');
+    const popup = L.popup({
         closeOnClick: false,
         className: 'feature-popup hidden-xs',
         autoClose: true,
@@ -126,22 +126,22 @@ function createLeafletPopup(feature, featureLayer, layerId, map) {
      * Gets the pixel position of the popup within the window
      * @returns {Object} - position with properties x, y
      */
-    let getPopupPosition = () => {
-        let popupPosition = popup.getLatLng();
-        let positionInMap = map.latLngToContainerPoint(popupPosition);
-        let mapElement = document.getElementById('map');
-        let mapLocation = mapElement.getBoundingClientRect();
-        let positionInDocument = {
+    const getPopupPosition = () => {
+        const popupPosition = popup.getLatLng();
+        const positionInMap = map.latLngToContainerPoint(popupPosition);
+        const mapElement = document.getElementById('map');
+        const mapLocation = mapElement.getBoundingClientRect();
+        const positionInDocument = {
             x: positionInMap.x + mapLocation.left,
             y: positionInMap.y + mapLocation.top
         };
         return positionInDocument;
     };
-    let closePopup = () => {
+    const closePopup = () => {
     // eslint-disable-next-line
         popup._close();
     };
-    let updateAfterZoom = () => {
+    const updateAfterZoom = () => {
         map.once('zoomend', () => {
             setTimeout(() => {
                 popup.update();
@@ -176,9 +176,9 @@ function createLeafletPopup(feature, featureLayer, layerId, map) {
  * then opens the next layer in the LAYER_INDEX
  */
 function toggleNextFeaturePopup() {
-    let featureIndex = this.featureIndex;
-    let layerId = this.layerId;
-    let nextFeatureIndex = ((featureIndex + 1) >= LAYER_FEATURES[layerId].length) ? 0 : featureIndex + 1;
+    const featureIndex = this.featureIndex;
+    const layerId = this.layerId;
+    const nextFeatureIndex = ((featureIndex + 1) >= LAYER_FEATURES[layerId].length) ? 0 : featureIndex + 1;
     LAYER_FEATURES[layerId][nextFeatureIndex].togglePopup();
 }
 
@@ -188,9 +188,9 @@ function toggleNextFeaturePopup() {
  * then opens the previous layer in the LAYER_INDEX
  */
 function togglePreviousFeaturePopup() {
-    let featureIndex = this.featureIndex;
-    let layerId = this.layerId;
-    let previousFeatureIndex = ((featureIndex - 1) < 0) ? LAYER_FEATURES[layerId].length - 1 : featureIndex - 1;
+    const featureIndex = this.featureIndex;
+    const layerId = this.layerId;
+    const previousFeatureIndex = ((featureIndex - 1) < 0) ? LAYER_FEATURES[layerId].length - 1 : featureIndex - 1;
     LAYER_FEATURES[layerId][previousFeatureIndex].togglePopup();
 }
 
@@ -201,10 +201,10 @@ function togglePreviousFeaturePopup() {
  *  - toggle an already-created popup
  */
 function togglePopup() {
-    let feature = this.feature;
-    let featureIndex = this.featureIndex;
-    let layerId = this.layerId;
-    let map = this.map;
+    const feature = this.feature;
+    const featureIndex = this.featureIndex;
+    const layerId = this.layerId;
+    const map = this.map;
     this.openNextFeature = toggleNextFeaturePopup.bind(this);
     this.openPreviousFeature = togglePreviousFeaturePopup.bind(this);
     // if the window is sufficiently small, show the mobile feature modal
@@ -243,7 +243,7 @@ function addFeatureLayerToList(featureLayer, layerId) {
  */
 export function onEachFeature(layerId, map) {
     return (feature, featureLayer) => {
-        let featureIndex = addFeatureLayerToList(featureLayer, layerId);
+        const featureIndex = addFeatureLayerToList(featureLayer, layerId);
         featureLayer.popup = false;
         featureLayer.featureIndex = featureIndex;
         featureLayer.layerId = layerId;

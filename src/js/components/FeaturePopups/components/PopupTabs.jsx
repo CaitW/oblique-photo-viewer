@@ -27,9 +27,9 @@ class PopupTabs extends React.Component {
         }
     }
     render() {
-        let tabs = [];
-        let featureProperties = this.props.featureProperties;
-        let layerId = this.props.layerId;
+        const tabs = [];
+        const featureProperties = this.props.featureProperties;
+        const layerId = this.props.layerId;
 
         switch (layerId) {
             case 'photos_1976':
@@ -37,7 +37,7 @@ class PopupTabs extends React.Component {
             case 'photos_2017':
             case 'photos_2016':
             case 'photos_2012': {
-                let photoURLs = getPhotoURLs(layerId, featureProperties);
+                const photoURLs = getPhotoURLs(layerId, featureProperties);
                 tabs.push(
                     <ImageTab key="image"
                         eventKey={1}
@@ -60,7 +60,7 @@ class PopupTabs extends React.Component {
             }
             case 'profiles': {
                 let eventKeyIndex = 1;
-                let urls = getProfileURLs(featureProperties);
+                const urls = getProfileURLs(featureProperties);
                 if (urls.bluffJson) {
                     tabs.push(
                         <ProfileTab key="bluff_graph"
