@@ -56,7 +56,7 @@ export const mapLayerGroupsToLayers = createSelector(
 );
 
 export const getActiveBasemapId = createSelector([getBasemapsById], basemaps => {
-    let activeBasemapId = "";
+    let activeBasemapId = '';
     for(let basemapId in basemaps) {
         if(basemaps[basemapId].active === true) {
             activeBasemapId = basemapId;
@@ -84,28 +84,28 @@ export const getActiveLayerStyleTypes = createSelector(
             let layerName = layer.name || layerId;
             let layerGroupId = layer.layerGroupId;
             let layerGroupName = layerGroupId;
-            if (typeof layerGroups[layerGroupId] !== "undefined") {
+            if (typeof layerGroups[layerGroupId] !== 'undefined') {
                 layerGroupName = layerGroups[layerGroupId].name || layerGroupId;
             }
             let legendStyles = layer.legendStyles;
             let styles = [];
             for (let styleName in legendStyles) {
-                let styleIconClassNames = ["fa"];
+                let styleIconClassNames = ['fa'];
                 let iconStyle = {
-                    color: "#000000"
+                    color: '#000000'
                 };
                 if (
-                    legendStyles[styleName].geometryType === "LineString"
-                    || legendStyles[styleName].geometryType === "MultiLineString"
+                    legendStyles[styleName].geometryType === 'LineString'
+                    || legendStyles[styleName].geometryType === 'MultiLineString'
                 ) {
-                    styleIconClassNames.push("fa-minus");
+                    styleIconClassNames.push('fa-minus');
                     iconStyle.color = legendStyles[styleName].style.color;
-                } else if (legendStyles[styleName].geometryType === "Point") {
-                    styleIconClassNames.push("fa-circle");
+                } else if (legendStyles[styleName].geometryType === 'Point') {
+                    styleIconClassNames.push('fa-circle');
                     iconStyle.color = legendStyles[styleName].style.strokeColor;
                 }
-                if (styleName === "null") {
-                    styleName = "(No Value)";
+                if (styleName === 'null') {
+                    styleName = '(No Value)';
                 }
                 styles.push({
                     styleName,
@@ -135,7 +135,7 @@ export const getActiveLayerStyleTypes = createSelector(
 export const getMobileFeaturePopupProps = createSelector(
     [getLayersByIdWithData, getLayerGroupsByIdWithData, getMobileFeatureModal],
     (layers, layerGroups, featureModal) => {
-        if (typeof featureModal.layerId !== "undefined" && featureModal.layerId !== false) {
+        if (typeof featureModal.layerId !== 'undefined' && featureModal.layerId !== false) {
             let layerId = featureModal.layerId;
             let layerName = layers[layerId].name;
             let layerGroupId = layers[layerId].layerGroupId;
@@ -148,8 +148,8 @@ export const getMobileFeaturePopupProps = createSelector(
         }
         return {
             ...featureModal,
-            layerName: "",
-            layerGroupName: ""
+            layerName: '',
+            layerGroupName: ''
         };
     }
 );

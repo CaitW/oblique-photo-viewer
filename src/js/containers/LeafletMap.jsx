@@ -82,13 +82,13 @@ class LeafletMap extends React.Component {
      */
     toggleMapActions(oldMapProps, newMapProps) {
         if(oldMapProps !== null) {
-            if(newMapProps.state.action === "willZoom" && oldMapProps.state.action !== "willZoom") {
+            if(newMapProps.state.action === 'willZoom' && oldMapProps.state.action !== 'willZoom') {
                 this.map.zoomToExtent(newMapProps.state.extent);
             }
-            if(newMapProps.state.action === "willPanAndZoom" && oldMapProps.state.action !== "willPanAndZoom") {
+            if(newMapProps.state.action === 'willPanAndZoom' && oldMapProps.state.action !== 'willPanAndZoom') {
                 this.map.panAndZoom(newMapProps.state.zoom, newMapProps.state.coordinates);
             }
-            if(newMapProps.state.action === "willZoomToPopup" && oldMapProps.state.action !== "willZoomToPopup") {
+            if(newMapProps.state.action === 'willZoomToPopup' && oldMapProps.state.action !== 'willZoomToPopup') {
                 this.map.zoomToPopup(newMapProps.state.zoom, newMapProps.state.coordinates);
             }
         }

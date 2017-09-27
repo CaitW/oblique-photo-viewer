@@ -33,7 +33,7 @@ class App extends React.Component {
     }
     componentDidMount () {
         this.constructor.updateDimensions();
-        window.addEventListener("resize", this.constructor.updateDimensions);
+        window.addEventListener('resize', this.constructor.updateDimensions);
     }
     toggleSidebar () {
         this.setState({

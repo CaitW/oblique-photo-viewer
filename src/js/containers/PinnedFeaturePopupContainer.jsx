@@ -55,7 +55,7 @@ class PinnedFeaturePopupContainer extends React.Component {
         }
         // if a popup has been closed, remove that popup from the order
         for(let featureId of newOrder) {
-            if(typeof nextProps.pinnedFeatures[featureId] === "undefined") {
+            if(typeof nextProps.pinnedFeatures[featureId] === 'undefined') {
                 newOrder.splice(newOrder.indexOf(featureId),1);
             }
         }

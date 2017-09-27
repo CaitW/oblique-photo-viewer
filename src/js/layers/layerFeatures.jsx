@@ -87,10 +87,10 @@ function getFeatureMidpoint (featureLayer) {
     }
 
     // if it's a line (getLatLngs isn't undefined)
-    if(typeof featureLayer.getLatLngs !== "undefined") {
+    if(typeof featureLayer.getLatLngs !== 'undefined') {
         return getLineMidpoint(featureLayer.getLatLngs());
     // if it's a point (getLatLng isn't undefined)
-    } else if (typeof featureLayer.getLatLng !== "undefined") {
+    } else if (typeof featureLayer.getLatLng !== 'undefined') {
         return getPointCoords(featureLayer.getLatLng());
     }
     return false;
@@ -111,10 +111,10 @@ function getFeatureMidpoint (featureLayer) {
  */
 function createLeafletPopup (feature, featureLayer, layerId, map) {
     let featureMiddlePoint = getFeatureMidpoint(featureLayer);
-    let container = document.createElement("div");
+    let container = document.createElement('div');
     let popup = L.popup({
             closeOnClick: false,
-            className: "feature-popup hidden-xs",
+            className: 'feature-popup hidden-xs',
             autoClose: true,
             maxWidth: 350,
             minWidth: 350,
@@ -129,7 +129,7 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
     let getPopupPosition = () => {
         let popupPosition = popup.getLatLng();
         let positionInMap = map.latLngToContainerPoint(popupPosition);
-        let mapElement = document.getElementById("map");
+        let mapElement = document.getElementById('map');
         let mapLocation = mapElement.getBoundingClientRect();
         let positionInDocument = {
             x: positionInMap.x + mapLocation.left,
@@ -142,13 +142,13 @@ function createLeafletPopup (feature, featureLayer, layerId, map) {
         popup._close();
     }
     let updateAfterZoom = () => {
-        map.once("zoomend", () => {
+        map.once('zoomend', () => {
             setTimeout(() => {
                 popup.update();
             }, 500);
         });
     }
-    popup.on("add", function addPopup () {
+    popup.on('add', function addPopup () {
         store.dispatch(
             leafletPopupOpened([featureMiddlePoint[1], featureMiddlePoint[0]])
         );

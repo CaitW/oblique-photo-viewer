@@ -21,7 +21,7 @@ for(let basemapId in BASEMAPS_BY_ID) {
  */
 export function toggleBasemap(basemapId) {
     return {
-        type: "BASEMAPS:TOGGLE_BASEMAP",
+        type: 'BASEMAPS:TOGGLE_BASEMAP',
         basemapId
     }
 }
@@ -32,7 +32,7 @@ export function toggleBasemap(basemapId) {
  */
 export function basemapPreload(basemapId) {
     return {
-        type: "BASEMAPS:BASEMAP_PRELOAD",
+        type: 'BASEMAPS:BASEMAP_PRELOAD',
         basemapId
     }
 }
@@ -43,7 +43,7 @@ export function basemapPreload(basemapId) {
  */
 export function basemapLoaded(basemapId) {
     return {
-        type: "BASEMAPS:BASEMAP_LOADED",
+        type: 'BASEMAPS:BASEMAP_LOADED',
         basemapId
     }
 }
@@ -54,7 +54,7 @@ export function basemapLoaded(basemapId) {
  */
 export function basemapError(basemapId) {
     return {
-        type: "BASEMAPS:BASEMAP_ERROR",
+        type: 'BASEMAPS:BASEMAP_ERROR',
         basemapId
     }
 }
@@ -64,7 +64,7 @@ export default function basemaps(state = initialBasemaps, action) {
         ...state
     };
     switch (action.type) {
-        case "BASEMAPS:TOGGLE_BASEMAP":
+        case 'BASEMAPS:TOGGLE_BASEMAP':
             {
                 let basemapIdToToggle = action.basemapId;
                 for (let basemapId in newState) {
@@ -82,7 +82,7 @@ export default function basemaps(state = initialBasemaps, action) {
                 }
                 break;
             }
-        case "BASEMAPS:BASEMAP_PRELOAD":
+        case 'BASEMAPS:BASEMAP_PRELOAD':
             {
                 newState[action.basemapId] = {
                     ...newState[action.basemapId],
@@ -90,7 +90,7 @@ export default function basemaps(state = initialBasemaps, action) {
                 };
                 break;
             }
-        case "BASEMAPS:BASEMAP_LOADED":
+        case 'BASEMAPS:BASEMAP_LOADED':
             {
                 newState[action.basemapId] = {
                     ...newState[action.basemapId],
@@ -98,7 +98,7 @@ export default function basemaps(state = initialBasemaps, action) {
                 };
                 break;
             }
-        case "BASEMAPS:BASEMAP_ERROR":
+        case 'BASEMAPS:BASEMAP_ERROR':
             {
                 newState[action.basemapId] = {
                     ...newState[action.basemapId],

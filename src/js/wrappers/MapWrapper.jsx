@@ -16,16 +16,16 @@ const MapWrapper = (props) => {
         md = 12;
         lg = 12;
     }
-    let iconClassNames = ["fa"];
+    let iconClassNames = ['fa'];
     if (props.sidebarOpen) {
-        iconClassNames.push("fa-chevron-left");
+        iconClassNames.push('fa-chevron-left');
     } else {
-        iconClassNames.push("fa-chevron-right");
+        iconClassNames.push('fa-chevron-right');
     }
     return (
         <Col xs={xs} sm={sm} md={md} lg={lg} className="wiscviewer-map-container">
             <div className="wiscviewer-sidebar-toggle hidden-xs" onClick={props.toggleSidebar}>
-                <i className={iconClassNames.join(" ")}> </i>
+                <i className={iconClassNames.join(' ')}> </i>
             </div>
             {props.children}
         </Col>

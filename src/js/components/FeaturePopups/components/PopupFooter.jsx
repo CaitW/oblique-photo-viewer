@@ -15,11 +15,11 @@ import { getPhotoURLs, getProfileURLs } from '../../../util';
 const getContentByLayerId = (layerId, featureProperties) => {
     let content = [];
     switch (layerId) {
-        case "photos_1976":
-        case "photos_2007":
-        case "photos_2017":
-        case "photos_2016":
-        case "photos_2012": {
+        case 'photos_1976':
+        case 'photos_2007':
+        case 'photos_2017':
+        case 'photos_2016':
+        case 'photos_2012': {
             let photoURLs = getPhotoURLs(layerId, featureProperties);
             content.push(
                 <a href={photoURLs.original}
@@ -33,7 +33,7 @@ const getContentByLayerId = (layerId, featureProperties) => {
             );
             break;
         }
-        case "profiles": {
+        case 'profiles': {
             let urls = getProfileURLs(featureProperties);
             if(urls.bluffXls) {
                 content.push(

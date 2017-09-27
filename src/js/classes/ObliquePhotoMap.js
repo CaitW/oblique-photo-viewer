@@ -82,21 +82,21 @@ export default class ObliquePhotoMap {
         const self = this;
         store.dispatch(layerPreload(layerId));
         switch (layer.type) {
-            case "tileLayer":
-                if (typeof layer.url === "undefined") {
-                    console.error("Layer " + layerId + " must have a tile URL");
+            case 'tileLayer':
+                if (typeof layer.url === 'undefined') {
+                    console.error('Layer ' + layerId + ' must have a tile URL');
                 } else {
                     this.layerIndex[layerId] = L.tileLayer(layer.url, {
                         zIndex: 1
                     });
-                    this.layerIndex[layerId].once("load", function () {
+                    this.layerIndex[layerId].once('load', function () {
                         store.dispatch(layerLoaded(layerId));
                     })
                 }
                 break;
-            case "geojson":
-                if (typeof layer.dataLocation === "undefined") {
-                    console.error("Layer " + layerId + " must have a data location");
+            case 'geojson':
+                if (typeof layer.dataLocation === 'undefined') {
+                    console.error('Layer ' + layerId + ' must have a data location');
                 } else {
                     let layerOptions = {
                         pointToLayer: function (feature, latlng) {
@@ -122,7 +122,7 @@ export default class ObliquePhotoMap {
                 }
                 break;
             default:
-                console.error("Unrecognized layer type in config");
+                console.error('Unrecognized layer type in config');
                 store.dispatch(layerError(layerId));
                 break;
         }
@@ -136,7 +136,7 @@ export default class ObliquePhotoMap {
      * @param {Object} layer - key/value pairs describing a layer
      */
     toggleLayer(layerId, layer) {
-        if (typeof this.layerIndex[layerId] === "undefined") {
+        if (typeof this.layerIndex[layerId] === 'undefined') {
             this.createLayer(layerId, layer);
         }
         if (layer.active === true) {
@@ -155,10 +155,10 @@ export default class ObliquePhotoMap {
      */
     toggleBasemap(basemapId, basemap) {
         const self = this;
-        if (typeof basemap.url === "undefined") {
-            console.error("Basemap " + basemapId + " must have a tile URL");
+        if (typeof basemap.url === 'undefined') {
+            console.error('Basemap ' + basemapId + ' must have a tile URL');
         } else {
-            if (typeof this.basemapIndex[basemapId] === "undefined") {
+            if (typeof this.basemapIndex[basemapId] === 'undefined') {
                 this.basemapIndex[basemapId] = L.tileLayer(basemap.url, {
                     zIndex: 0
                 });
@@ -166,7 +166,7 @@ export default class ObliquePhotoMap {
             if (basemap.active === true) {
                 this.basemapGroup.clearLayers();
                 store.dispatch(basemapPreload(basemapId));
-                self.basemapIndex[basemapId].once("load", function () {
+                self.basemapIndex[basemapId].once('load', function () {
                     store.dispatch(basemapLoaded(basemapId));
                 })
                 this.basemapGroup.addLayer(self.basemapIndex[basemapId]);

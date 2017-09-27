@@ -7,27 +7,27 @@ import PropTypes from 'prop-types';
 import { ListGroupItem } from 'react-bootstrap';
 
 const Basemap = (props) => {
-    let iconClassNames = ["fa", "wiscviewer-layer-left-icon"];
-    let layerClassNames = ["wiscviewer-layer-item"]
-    if(props.state === "loading") {
-        iconClassNames.push("fa-circle-o-notch");
-        iconClassNames.push("fa-spin");
-    } else if (props.state === "error") {
-        iconClassNames.push("fa-exclamation-triangle");
-        iconClassNames.push("error");
+    let iconClassNames = ['fa', 'wiscviewer-layer-left-icon'];
+    let layerClassNames = ['wiscviewer-layer-item']
+    if(props.state === 'loading') {
+        iconClassNames.push('fa-circle-o-notch');
+        iconClassNames.push('fa-spin');
+    } else if (props.state === 'error') {
+        iconClassNames.push('fa-exclamation-triangle');
+        iconClassNames.push('error');
     } else {
-        iconClassNames.push("fa-map");
+        iconClassNames.push('fa-map');
         if(props.active) {
-            iconClassNames.push("active");
-            layerClassNames.push("active");
+            iconClassNames.push('active');
+            layerClassNames.push('active');
         }
     }
     return (
         <ListGroupItem
             active={props.active}
-            className={layerClassNames.join(" ")}
+            className={layerClassNames.join(' ')}
             onClick={props.onBasemapClick}>
-            <i className={iconClassNames.join(" ")}></i>
+            <i className={iconClassNames.join(' ')}></i>
             {props.basemapName}
         </ListGroupItem>
     )
@@ -41,7 +41,7 @@ Basemap.propTypes = {
 }
 
 Basemap.defaultProps = {
-    state: "init"
+    state: 'init'
 }
 
 export default Basemap;

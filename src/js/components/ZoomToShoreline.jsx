@@ -15,8 +15,8 @@ import superior_icon from'../../img/superior.svg';
 import michigan_icon from'../../img/michigan.svg';
 
 const lake_icons = {
-    "Lake Michigan": michigan_icon,
-    "Lake Superior": superior_icon
+    'Lake Michigan': michigan_icon,
+    'Lake Superior': superior_icon
 };
 
 const ZoomToShoreline = (props) => {

@@ -20,7 +20,7 @@ class Sidebar extends React.Component {
          *  - "Legend"
          */
         this.state = {
-            activeTab: "LayerList"
+            activeTab: 'LayerList'
         };
         this.onTabClick = this.onTabClick.bind(this);
         this.getClassName = this.getClassName.bind(this);
@@ -30,8 +30,8 @@ class Sidebar extends React.Component {
      * @param {SyntheticEvent} e
      */
     onTabClick (e) {
-        let clickedTab = e.target.getAttribute("value");
-        if(typeof clickedTab === "string") {
+        let clickedTab = e.target.getAttribute('value');
+        if(typeof clickedTab === 'string') {
             this.setState({
                 activeTab: clickedTab
             });
@@ -44,13 +44,13 @@ class Sidebar extends React.Component {
      */
     getClassName (tabValue) {
         if(this.state.activeTab === tabValue) {
-            return "active";
+            return 'active';
         }
-        return "";
+        return '';
     }
     render () {
         let content = [];
-        if(this.state.activeTab === "LayerList") {
+        if(this.state.activeTab === 'LayerList') {
             content.push(<LayerList key="layers" />);
         } else {
             content.push(<Legend key="legend" />);
@@ -73,14 +73,14 @@ class Sidebar extends React.Component {
             <Col {...props} className="wiscviewer-sidebar">
                 <div className="wiscviewer-sidebar-inner-container">
                     <div className="wiscviewer-sidebar-tabs">
-                        <div className={this.getClassName("LayerList")}
+                        <div className={this.getClassName('LayerList')}
                             role="button"
                             tabIndex={-1}
                             onClick={this.onTabClick}
                             value="LayerList">
                             <i className="fa fa-map"> </i>
                         </div>
-                        <div className={this.getClassName("Legend")}
+                        <div className={this.getClassName('Legend')}
                             onClick={this.onTabClick}
                             role="button"
                             tabIndex={-1}

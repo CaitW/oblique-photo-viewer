@@ -23,17 +23,17 @@ const LayerGroup = (props) => {
             />
         );
     }
-    let bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
-    let headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
+    let bodyClassNames = ['panel-body', 'pullDown', 'wiscviewer-sidebar-panel-body'];
+    let headerClassNames = ['panel-heading', 'wiscviewer-sidebar-panel-header'];
     return (
         <div className="panel panel-default wiscviewer-sidebar-panel">
-            <div className={headerClassNames.join(" ")}
+            <div className={headerClassNames.join(' ')}
                 role="button"
                 tabIndex={0}
                 >
                 <span className="wiscviewer-layer-group-name"> {props.layerGroupName} </span>
             </div>
-            <div className={bodyClassNames.join(" ")}>
+            <div className={bodyClassNames.join(' ')}>
                 <ListGroup className="wiscviewer-layer-list-group">
                     {layers}
                 </ListGroup>

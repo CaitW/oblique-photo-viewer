@@ -24,22 +24,22 @@ const BasemapList = (props) => {
       );
   }
 
-  let bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
-  let headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header", "wiscviewer-layer-group-name"];
+  let bodyClassNames = ['panel-body', 'pullDown', 'wiscviewer-sidebar-panel-body'];
+  let headerClassNames = ['panel-heading', 'wiscviewer-sidebar-panel-header', 'wiscviewer-layer-group-name'];
   if (props.panelVisible === false) {
-      bodyClassNames.push("hidden");
+      bodyClassNames.push('hidden');
   } else {
-      headerClassNames.push("active");
+      headerClassNames.push('active');
   }
   return (
       <div className="panel panel-default wiscviewer-sidebar-panel">
-        <div className={ headerClassNames.join(" ") }
+        <div className={ headerClassNames.join(' ') }
           role="button"
           tabIndex={0}
           >
             Basemaps
         </div>
-        <div className={ bodyClassNames.join(" ") }>
+        <div className={ bodyClassNames.join(' ') }>
           <ListGroup className="wiscviewer-layer-list-group">
             { basemaps }
           </ListGroup>

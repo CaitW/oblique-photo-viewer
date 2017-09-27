@@ -31,7 +31,7 @@ class ProfileTab extends React.Component {
         let popupHeight = this.profileDiv.clientHeight;
         // Set the dimensions of the canvas / graph
         let margin = { top: 10, right: 20, bottom: 40, left: 50 };
-        if(this.props.popupType === "modal") {
+        if(this.props.popupType === 'modal') {
             margin.left = 70;
             margin.bottom = 60;
         }
@@ -41,14 +41,14 @@ class ProfileTab extends React.Component {
             x: (width / 2),
             y: (height + margin.top + 25)
         };
-        if(this.props.popupType === "modal") {
+        if(this.props.popupType === 'modal') {
             xAxisLabel.y = xAxisLabel.y + 10;
         }
         let yAxisLabel = {
             x: 0 - (height / 2),
             y: (0 - margin.left) + 5
         }
-        if(this.props.popupType === "modal") {
+        if(this.props.popupType === 'modal') {
             yAxisLabel.y = yAxisLabel.y + 5;
         }
         /**
@@ -91,47 +91,47 @@ class ProfileTab extends React.Component {
             });
         // Adds the svg canvas
         const svg = select(this.profileDiv)
-            .append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            .append('svg')
+            .attr('width', width + margin.left + margin.right)
+            .attr('height', height + margin.top + margin.bottom)
+            .append('g')
+            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
         // get the profile's data from it's json file
         json(this.props.jsonLocation, function(error, data) {
             let sortedData = data.sort(function (a, b) {
                 return descending(a.x, b.x)
             });
             x.domain(extent(sortedData, function(d) { return d.x }))
-            svg.append("path")
-                .attr("class", "lake-stats michigan-avg")
-                .attr("d", michiganAvg(sortedData));
+            svg.append('path')
+                .attr('class', 'lake-stats michigan-avg')
+                .attr('d', michiganAvg(sortedData));
             // Add the valueline path.
-            svg.append("path")
-                .attr("class", "line")
-                .attr("d", valueline(sortedData));
+            svg.append('path')
+                .attr('class', 'line')
+                .attr('d', valueline(sortedData));
             // Add the X Axis
-            svg.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
+            svg.append('g')
+                .attr('class', 'x axis')
+                .attr('transform', 'translate(0,' + height + ')')
                 .call(xAxis);
-            svg.append("text")
-                .attr("transform", "translate(" + xAxisLabel.x + " ," + xAxisLabel.y + ")")
-                .style("text-anchor", "middle")
-                .attr("class", "axis-label")
-                .text("Distance (ft)");
+            svg.append('text')
+                .attr('transform', 'translate(' + xAxisLabel.x + ' ,' + xAxisLabel.y + ')')
+                .style('text-anchor', 'middle')
+                .attr('class', 'axis-label')
+                .text('Distance (ft)');
             // Add the Y Axis
-            svg.append("g")
-                .attr("class", "y axis")
+            svg.append('g')
+                .attr('class', 'y axis')
                 .call(yAxis);
             // text label for the y axis
-            svg.append("text")
-                .attr("transform", "rotate(-90)")
-                .attr("y", yAxisLabel.y)
-                .attr("x", yAxisLabel.x)
-                .attr("dy", "1em")
-                .attr("class", "axis-label")
-                .style("text-anchor", "middle")
-                .text("Altitude (ft)");
+            svg.append('text')
+                .attr('transform', 'rotate(-90)')
+                .attr('y', yAxisLabel.y)
+                .attr('x', yAxisLabel.x)
+                .attr('dy', '1em')
+                .attr('class', 'axis-label')
+                .style('text-anchor', 'middle')
+                .text('Altitude (ft)');
 
         });
     }
@@ -143,12 +143,12 @@ class ProfileTab extends React.Component {
         delete tabProps.update;
         delete tabProps.popupType;
         let style = {
-            "height": "200px",
-            "width": "350px"
+            'height': '200px',
+            'width': '350px'
         }
-        if(this.props.popupType === "modal") {
-            style.width = "100%";
-            style.height = "300px";
+        if(this.props.popupType === 'modal') {
+            style.width = '100%';
+            style.height = '300px';
         }
         return (
             <Tab {...tabProps} className="wiscviewer-profile-tab">

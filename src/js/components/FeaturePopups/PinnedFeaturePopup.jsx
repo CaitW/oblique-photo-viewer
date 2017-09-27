@@ -17,7 +17,7 @@ class PinnedFeaturePopup extends React.Component {
             height: 300,
             width: 300
         };
-        this.popupType = "pinned";
+        this.popupType = 'pinned';
     }
     /**
      * On component mount, set the width and height of the container
@@ -37,9 +37,9 @@ class PinnedFeaturePopup extends React.Component {
             y: this.props.initialPosition.y - this.state.height
         }
         let style = {
-            "top": initialPositionAdjustedForContent.y,
-            "left": initialPositionAdjustedForContent.x,
-            "zIndex": this.props.zIndex
+            'top': initialPositionAdjustedForContent.y,
+            'left': initialPositionAdjustedForContent.x,
+            'zIndex': this.props.zIndex
         }
         return (
             <Draggable

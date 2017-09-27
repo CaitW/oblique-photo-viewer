@@ -31,7 +31,7 @@ class MobileFeaturePopup extends React.Component {
     super(props);
     this.openPreviousFeature = this.openPreviousFeature.bind(this);
     this.openNextFeature = this.openNextFeature.bind(this);
-    this.popupType = "modal";
+    this.popupType = 'modal';
   }
   /**
    * Opens previous feature in the layer
@@ -47,16 +47,16 @@ class MobileFeaturePopup extends React.Component {
   }
   render () {
     let classNames = [
-      "wiscviewer-modal",
-      "wiscviewer-mobile-modal",
-      "wiscviewer-mobile-feature-popup",
-      "static-modal"
+      'wiscviewer-modal',
+      'wiscviewer-mobile-modal',
+      'wiscviewer-mobile-feature-popup',
+      'static-modal'
     ];
     if (this.props.visible === false) {
-        classNames.push("hidden");
+        classNames.push('hidden');
     }
     return (
-      <div className={classNames.join(" ")}>
+      <div className={classNames.join(' ')}>
             <Modal.Dialog>
                   <Modal.Header>
                     <PopupTitle

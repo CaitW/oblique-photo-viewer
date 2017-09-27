@@ -11,7 +11,7 @@ export default function AddMousePosition (L) {
             numDigits: 5,
             lngFormatter: undefined,
             latFormatter: undefined,
-            prefix: ""
+            prefix: ''
         },
 
         onAdd: function (map) {

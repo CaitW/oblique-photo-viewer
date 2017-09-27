@@ -13,15 +13,15 @@ import { legendStyleUpdate } from '../ducks/layers';
  * Colors used in the app
  */
 let COLORS = {
-    RED: "#F44336",
-    GREEN: "#8BC34A",
-    YELLOW: "#FFEB3B",
-    GRAY: "#9E9E9E",
-    BLACK: "#000000"
+    RED: '#F44336',
+    GREEN: '#8BC34A',
+    YELLOW: '#FFEB3B',
+    GRAY: '#9E9E9E',
+    BLACK: '#000000'
 };
 
 COLORS.BEACH = [
-    "#E0E0E0",
+    '#E0E0E0',
     '#a6cee3',
     '#1f78b4',
     '#b2df8a',
@@ -36,21 +36,21 @@ COLORS.BEACH = [
 ]
 
 COLORS.PHOTOS = [
-    "#9575CD",
-    "#7E57C2",
-    "#673AB7",
-    "#512DA8",
-    "#311B92"
+    '#9575CD',
+    '#7E57C2',
+    '#673AB7',
+    '#512DA8',
+    '#311B92'
 ];
 
 COLORS.STRUCTURES = [
-     "#6D4C41",
-     "#3E2723"
+     '#6D4C41',
+     '#3E2723'
 ];
 
 COLORS.PROFILES = {
-    bathy: "#00838F",
-    bluff: "#4E342E"
+    bathy: '#00838F',
+    bluff: '#4E342E'
 };
 
 // Default styles, if no style is specified for a particular layer
@@ -58,8 +58,8 @@ const DEFAULT_STYLES = {
     LineString: {
         weight: 4,
         opacity: 0.9,
-        lineCap: "round",
-        lineJoin: "round",
+        lineCap: 'round',
+        lineJoin: 'round',
         color: COLORS.BLACK
     },
     Point: {
@@ -73,8 +73,8 @@ const DEFAULT_STYLES = {
     MultiLineString: {
         weight: 4,
         opacity: 0.9,
-        lineCap: "round",
-        lineJoin: "round",
+        lineCap: 'round',
+        lineJoin: 'round',
         color: COLORS.BLACK
     }
 };
@@ -95,16 +95,16 @@ const LAYER_STYLES_BY_ID = {
             ...DEFAULT_STYLES.LineString
         };
         switch (subStyleName) {
-            case "Moderately Stable":
+            case 'Moderately Stable':
                 style.color = COLORS.GREEN;
                 break;
-            case "Moderately Unstable":
+            case 'Moderately Unstable':
                 style.color = COLORS.YELLOW;
                 break;
-            case "No Bluff":
+            case 'No Bluff':
                 style.color = COLORS.GRAY;
                 break;
-            case "Unstable / Failing":
+            case 'Unstable / Failing':
                 style.color = COLORS.RED;
                 break;
             default:
@@ -118,16 +118,16 @@ const LAYER_STYLES_BY_ID = {
             ...DEFAULT_STYLES.LineString
         };
         switch (subStyleName) {
-            case "Moderately Stable":
+            case 'Moderately Stable':
                 style.color = COLORS.GREEN;
                 break;
-            case "Moderately Unstable":
+            case 'Moderately Unstable':
                 style.color = COLORS.YELLOW;
                 break;
-            case "No Bluff":
+            case 'No Bluff':
                 style.color = COLORS.GRAY;
                 break;
-            case "Unstable / Failing":
+            case 'Unstable / Failing':
                 style.color = COLORS.RED;
                 break;
             default:
@@ -171,7 +171,7 @@ const LAYER_STYLES_BY_ID = {
             ...DEFAULT_STYLES.LineString
         };
         switch (subStyleName) {
-            case "None":
+            case 'None':
                 style.color = COLORS.BEACH[0];
                 break;
             case 'Revetment':
@@ -212,7 +212,7 @@ const LAYER_STYLES_BY_ID = {
             ...DEFAULT_STYLES.LineString
         };
         switch (subStyleName) {
-            case "None":
+            case 'None':
                 style.color = COLORS.BEACH[0];
                 break;
             case 'Revetment':
@@ -254,7 +254,7 @@ const LAYER_STYLES_BY_ID = {
             color: COLORS.PROFILES.bluff
         };
         switch (subStyleName) {
-            case "Bathymetric Profile":
+            case 'Bathymetric Profile':
                 style.color = COLORS.PROFILES.bathy;
                 break;
             default:
@@ -300,48 +300,48 @@ const LAYER_STYLES_BY_ID = {
 function getLayerSubStyleName (layerId, feature) {
     let subStyleName = layerId;
     switch (layerId) {
-        case "backshore_1976":
-            subStyleName = feature.properties["Bluff Condition Classification"];
+        case 'backshore_1976':
+            subStyleName = feature.properties['Bluff Condition Classification'];
             break;
-        case "backshore_2007":
-            subStyleName = feature.properties["Bluff Condition Classification"];
+        case 'backshore_2007':
+            subStyleName = feature.properties['Bluff Condition Classification'];
             break;
-        case "photos_1976":
-            subStyleName = "1976 Photos";
+        case 'photos_1976':
+            subStyleName = '1976 Photos';
             break;
-        case "photos_2007":
-            subStyleName = "2007 Photos";
+        case 'photos_2007':
+            subStyleName = '2007 Photos';
             break;
-        case "structure_1976":
-            subStyleName = "Structures";
+        case 'structure_1976':
+            subStyleName = 'Structures';
             break;
-        case "structure_2007":
-            subStyleName = "Structures";
+        case 'structure_2007':
+            subStyleName = 'Structures';
             break;
-        case "beachclass_1976":
-            subStyleName = feature.properties["Shore Protection Classification"];
+        case 'beachclass_1976':
+            subStyleName = feature.properties['Shore Protection Classification'];
             break;
-        case "beachclass_2007":
-            subStyleName = feature.properties["Shore Protection Classification"];
+        case 'beachclass_2007':
+            subStyleName = feature.properties['Shore Protection Classification'];
             break;
-        case "profiles":
-            if(feature.properties.type === "bathymetry") {
-                subStyleName = "Bathymetric Profile";
+        case 'profiles':
+            if(feature.properties.type === 'bathymetry') {
+                subStyleName = 'Bathymetric Profile';
             } else {
-                subStyleName = "Bluff Profile";
+                subStyleName = 'Bluff Profile';
             }
             break;
-        case "photos_obl_2016":
-            subStyleName = "2016 Photos";
+        case 'photos_obl_2016':
+            subStyleName = '2016 Photos';
             break;
-        case "photos_dm_2016":
-            subStyleName = "2016 Photos";
+        case 'photos_dm_2016':
+            subStyleName = '2016 Photos';
             break;
-        case "photos_2017":
-            subStyleName = "2017 Photos";
+        case 'photos_2017':
+            subStyleName = '2017 Photos';
             break;
-        case "photos_2012":
-            subStyleName = "2012 Photos";
+        case 'photos_2012':
+            subStyleName = '2012 Photos';
             break;
         default:
             break;
@@ -362,9 +362,9 @@ const CACHE = {};
  * @returns {Object|false} - returns style object if cache exists, false if it doesn't
  */
 function getCachedStyle (layerId, feature) {
-    if(typeof CACHE[layerId] !== "undefined") {
+    if(typeof CACHE[layerId] !== 'undefined') {
         let subStyleName = getLayerSubStyleName(layerId, feature);
-        if (typeof CACHE[layerId][subStyleName] !== "undefined") {
+        if (typeof CACHE[layerId][subStyleName] !== 'undefined') {
             return CACHE[layerId][subStyleName];
         }
     }
@@ -385,18 +385,18 @@ function createNewStyle (layerId, feature) {
     let subStyleName = getLayerSubStyleName(layerId, feature);
     // If there's a style set for a particular Layer ID, fetch that style
     // Otherwise, get the default style for that geometry type
-    if (typeof LAYER_STYLES_BY_ID[layerId] !== "undefined") {
+    if (typeof LAYER_STYLES_BY_ID[layerId] !== 'undefined') {
         style = LAYER_STYLES_BY_ID[layerId](subStyleName);
-    } else if (typeof DEFAULT_STYLES[feature.geometry.type] !== "undefined") {
+    } else if (typeof DEFAULT_STYLES[feature.geometry.type] !== 'undefined') {
         style = DEFAULT_STYLES[feature.geometry.type];
     }
     // assign the classname property of every style
-    let layerIdClass = "layer-" + layerId;
-    let layerTypeClass = "layer-type-" + feature.geometry.type;
-    if(typeof style.className === "undefined") {
-        style.className = "";
+    let layerIdClass = 'layer-' + layerId;
+    let layerTypeClass = 'layer-type-' + feature.geometry.type;
+    if(typeof style.className === 'undefined') {
+        style.className = '';
     }
-    style.className += " " + [layerTypeClass, layerIdClass].join(" ");
+    style.className += ' ' + [layerTypeClass, layerIdClass].join(' ');
     // add the style to the legend
     store.dispatch(legendStyleUpdate(layerId, subStyleName, style, feature.geometry.type));
     // add style to cache

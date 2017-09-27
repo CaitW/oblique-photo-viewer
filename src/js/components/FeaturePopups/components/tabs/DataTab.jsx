@@ -32,13 +32,13 @@ class DataTab extends React.Component {
 
         let rows = [];
 
-        if(typeof layerData !== "undefined" && typeof layerData.tableProperties !== "undefined") {
+        if(typeof layerData !== 'undefined' && typeof layerData.tableProperties !== 'undefined') {
             let displayProperties = layerData.tableProperties;
             for (let property in this.props.featureProperties) {
-                if ( typeof displayProperties[property] === "undefined"
+                if ( typeof displayProperties[property] === 'undefined'
                     || displayProperties[property] !== false ) {
                     let value = this.props.featureProperties[property];
-                    if(typeof displayProperties[property] === "string") {
+                    if(typeof displayProperties[property] === 'string') {
                         property = displayProperties[property];
                     }
                     rows.push(

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 const LegendStyle = (props) => (
     <li key={props.styleName}>
-        <i style={props.iconStyle} className={props.styleIconClassNames.join(" ")}></i>
+        <i style={props.iconStyle} className={props.styleIconClassNames.join(' ')}></i>
         {props.styleName}
     </li>
 );

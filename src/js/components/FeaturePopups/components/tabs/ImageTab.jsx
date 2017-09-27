@@ -10,9 +10,9 @@ const ImageTab = (props) => {
     delete tabProps.update;
     delete tabProps.alt;
     let style = {
-        "minHeight": "200px",
-        "minWidth": "300px",
-        "backgroundColor": "#90a4ae"
+        'minHeight': '200px',
+        'minWidth': '300px',
+        'backgroundColor': '#90a4ae'
     }
     return (
         <Tab {...tabProps} className="wiscviewer-image-tab">

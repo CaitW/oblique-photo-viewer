@@ -29,7 +29,7 @@ class MobileLayerList extends React.Component {
         let classNames = [
             'wiscviewer-modal',
             'wiscviewer-mobile-modal',
-            "wiscviewer-mobile-layers-list",
+            'wiscviewer-mobile-layers-list',
             'hidden-sm',
             'hidden-md',
             'hidden-lg'
@@ -38,7 +38,7 @@ class MobileLayerList extends React.Component {
             classNames.push('hidden');
         }
         return (
-            <div className={classNames.join(" ")}>
+            <div className={classNames.join(' ')}>
                 <Modal.Dialog>
                       <Modal.Header>
                             <Modal.Title>Layers</Modal.Title>

@@ -54,45 +54,45 @@ for (let layerGroupId in LAYER_GROUPS_BY_ID) {
 export function getPhotoURLs (layerId, photoProperties) {
     let urls = {};
     switch (layerId) {
-        case "photos_1976":
-        case "photos_2007": {
+        case 'photos_1976':
+        case 'photos_2007': {
             let base = CONFIG.resources.photos.urlBase;
-            let lakeName = photoProperties["Great Lake"].replace(/ /gi, "");
-            let year = photoProperties["Year"];
-            let fileName = photoProperties["File Name"];
+            let lakeName = photoProperties['Great Lake'].replace(/ /gi, '');
+            let year = photoProperties['Year'];
+            let fileName = photoProperties['File Name'];
             for (let size in CONFIG.resources.photos.sizes) {
                 let sizeDir = CONFIG.resources.photos.sizes[size];
                 let modifiedFilename = fileName;
-                if(size !== "original") {
-                    let parts = fileName.split(".");
-                    parts[0] += "_" + sizeDir;
-                    modifiedFilename = parts.join(".");
+                if(size !== 'original') {
+                    let parts = fileName.split('.');
+                    parts[0] += '_' + sizeDir;
+                    modifiedFilename = parts.join('.');
                 }
-                urls[size] = [base,lakeName,year,sizeDir,modifiedFilename].join("/");
+                urls[size] = [base,lakeName,year,sizeDir,modifiedFilename].join('/');
             }
             break;
         }
-        case "photos_2016": {
+        case 'photos_2016': {
             let base = CONFIG.resources.photos_2016.urlBase;
             let fileName = photoProperties.filename;
-            urls.original = [base,fileName].join("/");
-            urls.popup = [base,"popup",fileName].join("/");
+            urls.original = [base,fileName].join('/');
+            urls.popup = [base,'popup',fileName].join('/');
             break;
         }
-        case "photos_2017": {
+        case 'photos_2017': {
             let base = CONFIG.resources.photos_2017.urlBase;
             let fileName = photoProperties.id;
             let ext = CONFIG.resources.photos_2017.extension;
-            urls.original = [base,fileName].join("/") + ext;
-            urls.popup = [base,"popup",fileName].join("/") + ext;
+            urls.original = [base,fileName].join('/') + ext;
+            urls.popup = [base,'popup',fileName].join('/') + ext;
             break;
         }
-        case "photos_2012": {
+        case 'photos_2012': {
             let base = CONFIG.resources.photos_2012.urlBase;
             let fileName = photoProperties.imageId;
             let ext = CONFIG.resources.photos_2012.extension;
-            urls.original = [base,fileName].join("/") + ext;
-            urls.popup = [base,"popup",fileName].join("/") + ext;
+            urls.original = [base,fileName].join('/') + ext;
+            urls.popup = [base,'popup',fileName].join('/') + ext;
             break;
         }
         default:

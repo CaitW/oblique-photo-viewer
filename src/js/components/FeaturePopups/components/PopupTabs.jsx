@@ -22,7 +22,7 @@ class PopupTabs extends React.Component {
     // eslint-disable-next-line class-methods-use-this
     update () {
 
-        if(typeof this.props.update !== "undefined") {
+        if(typeof this.props.update !== 'undefined') {
             this.props.update();
         }
     }
@@ -32,11 +32,11 @@ class PopupTabs extends React.Component {
         let layerId = this.props.layerId;
 
         switch (layerId) {
-            case "photos_1976":
-            case "photos_2007":
-            case "photos_2017":
-            case "photos_2016":
-            case "photos_2012": {
+            case 'photos_1976':
+            case 'photos_2007':
+            case 'photos_2017':
+            case 'photos_2016':
+            case 'photos_2012': {
                 let photoURLs = getPhotoURLs(layerId, featureProperties);
                 tabs.push(
                     <ImageTab key="image"
@@ -58,7 +58,7 @@ class PopupTabs extends React.Component {
                 );
                 break;
             }
-            case "profiles": {
+            case 'profiles': {
                 let eventKeyIndex = 1;
                 let urls = getProfileURLs(featureProperties);
                 if(urls.bluffJson) {

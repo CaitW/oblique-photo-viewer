@@ -20,7 +20,7 @@ let initialState = {};
  */
 export function newPinnedFeature(layerId, featureProperties, position) {
     return {
-        type: "PINNED_FEATURES:NEW",
+        type: 'PINNED_FEATURES:NEW',
         layerId,
         featureProperties,
         position
@@ -34,7 +34,7 @@ export function newPinnedFeature(layerId, featureProperties, position) {
  */
 export function closePinnedFeature(featureId) {
     return {
-        type: "PINNED_FEATURES:CLOSE",
+        type: 'PINNED_FEATURES:CLOSE',
         featureId
     }
 }
@@ -44,7 +44,7 @@ export default function pinnedFeatures(state = initialState, action) {
         ...state
     };
     switch (action.type) {
-        case "PINNED_FEATURES:NEW": {
+        case 'PINNED_FEATURES:NEW': {
             let newPinnedFeatureId = uuid.v4();
             newState[newPinnedFeatureId] = {
                 layerId: action.layerId,
@@ -53,7 +53,7 @@ export default function pinnedFeatures(state = initialState, action) {
             };
             break;
         }
-        case "PINNED_FEATURES:CLOSE":
+        case 'PINNED_FEATURES:CLOSE':
             delete newState[action.featureId];
             break;
         default:

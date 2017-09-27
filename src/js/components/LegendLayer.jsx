@@ -7,8 +7,8 @@ import PropTypes from 'prop-types';
 import LegendStyle from './LegendStyle';
 
 const LegendLayer = (props) => {
-    let headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"];
-    let bodyClassNames = ["panel-body", "pullDown", "wiscviewer-sidebar-panel-body"];
+    let headerClassNames = ['panel-heading', 'wiscviewer-sidebar-panel-header'];
+    let bodyClassNames = ['panel-body', 'pullDown', 'wiscviewer-sidebar-panel-body'];
     let styles = [];
     for(let style of props.layerStyles) {
         styles.push(
@@ -22,14 +22,14 @@ const LegendLayer = (props) => {
     }
     return (
         <div className="panel panel-default wiscviewer-sidebar-panel wiscviewer-legend-layer-group">
-            <div className={headerClassNames.join(" ")}
+            <div className={headerClassNames.join(' ')}
                 role="button"
                 tabIndex={0}
                 >
                 <span className="wiscviewer-layer-name"> {props.layerName} </span>
                 <span className="wiscviewer-layer-group-name"> {props.layerGroupName} </span>
             </div>
-            <div className={bodyClassNames.join(" ")}>
+            <div className={bodyClassNames.join(' ')}>
                 <ul className="wiscviewer-legend-list">
                     {styles}
                 </ul>

@@ -19,7 +19,7 @@ class FeaturePopup extends React.Component {
         this.bringToFront = this.bringToFront.bind(this);
         this.close = this.close.bind(this);
         this.pin = this.pin.bind(this);
-        this.popupType = "leaflet";
+        this.popupType = 'leaflet';
     }
     /**
      * When the component mounts, update the size of the Leaflet popup to adjust for the content

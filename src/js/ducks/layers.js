@@ -14,7 +14,7 @@ import { LAYERS_BY_ID, LAYER_GROUPS_BY_ID } from '../util'
  */
 export function toggleLayer(layerId) {
     return {
-        type: "LAYERS:TOGGLE_LAYER",
+        type: 'LAYERS:TOGGLE_LAYER',
         layerId
     }
 }
@@ -33,7 +33,7 @@ export function toggleLayer(layerId) {
  */
 export function legendStyleUpdate(layerId, propertyName, style, geometryType) {
     return {
-        type: "LAYER:LEGEND_STYLE_UPDATE",
+        type: 'LAYER:LEGEND_STYLE_UPDATE',
         layerId,
         propertyName,
         style,
@@ -47,7 +47,7 @@ export function legendStyleUpdate(layerId, propertyName, style, geometryType) {
  */
 export function layerPreload(layerId) {
     return {
-        type: "LAYERS:LAYER_PRELOAD",
+        type: 'LAYERS:LAYER_PRELOAD',
         layerId
     }
 }
@@ -58,7 +58,7 @@ export function layerPreload(layerId) {
  */
 export function layerLoaded(layerId) {
     return {
-        type: "LAYERS:LAYER_LOADED",
+        type: 'LAYERS:LAYER_LOADED',
         layerId
     }
 }
@@ -69,7 +69,7 @@ export function layerLoaded(layerId) {
  */
 export function layerError(layerId) {
     return {
-        type: "LAYERS:LAYER_ERROR",
+        type: 'LAYERS:LAYER_ERROR',
         layerId
     }
 }
@@ -103,7 +103,7 @@ export default function layers(state = initialLayers, action) {
         ...state
     };
     switch (action.type) {
-        case "LAYERS:TOGGLE_LAYER": {
+        case 'LAYERS:TOGGLE_LAYER': {
             newState.layersById = {
                 ...state.layersById,
                 [action.layerId]: {
@@ -113,7 +113,7 @@ export default function layers(state = initialLayers, action) {
             }
             break;
         }
-        case "LAYER:LEGEND_STYLE_UPDATE": {
+        case 'LAYER:LEGEND_STYLE_UPDATE': {
             let legendStyle = {
                 style: action.style,
                 geometryType: action.geometryType
@@ -130,7 +130,7 @@ export default function layers(state = initialLayers, action) {
             }
             break;
         }
-        case "LAYERS:LAYER_PRELOAD":
+        case 'LAYERS:LAYER_PRELOAD':
             {
                 newState.layersById = {
                     ...state.layersById,
@@ -141,7 +141,7 @@ export default function layers(state = initialLayers, action) {
                 }
                 break;
             }
-        case "LAYERS:LAYER_LOADED":
+        case 'LAYERS:LAYER_LOADED':
             {
                 newState.layersById = {
                     ...state.layersById,
@@ -152,7 +152,7 @@ export default function layers(state = initialLayers, action) {
                 }
                 break;
             }
-        case "LAYERS:LAYER_ERROR":
+        case 'LAYERS:LAYER_ERROR':
             {
                 newState.layersById = {
                     ...state.layersById,
