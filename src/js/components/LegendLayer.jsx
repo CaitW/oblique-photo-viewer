@@ -12,8 +12,7 @@ const LegendLayer = (props) => {
     const styles = [];
     for (const style of props.layerStyles) {
         styles.push(
-            <LegendStyle
-                key={style.styleName}
+            <LegendStyle key={style.styleName}
                 styleName={style.styleName}
                 iconStyle={style.iconStyle}
                 styleIconClassNames={style.styleIconClassNames}

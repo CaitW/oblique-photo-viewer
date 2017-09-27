@@ -42,8 +42,7 @@ class PinnedFeaturePopup extends React.Component {
             'zIndex': this.props.zIndex
         };
         return (
-            <Draggable
-                axis="both"
+            <Draggable axis="both"
                 handle=".handle"
                 zIndex={1100}
             >

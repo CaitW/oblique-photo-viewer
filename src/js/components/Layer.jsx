@@ -26,8 +26,7 @@ const Layer = (props) => {
     }
 
     return (
-        <ListGroupItem
-            active={props.active}
+        <ListGroupItem active={props.active}
             className={layerClassNames.join(' ')}
             onClick={props.onLayerClick}>
             <i className={iconClassNames.join(' ')}></i>

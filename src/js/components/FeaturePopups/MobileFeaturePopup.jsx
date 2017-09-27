@@ -59,15 +59,13 @@ class MobileFeaturePopup extends React.Component {
             <div className={classNames.join(' ')}>
                 <Modal.Dialog>
                     <Modal.Header>
-                        <PopupTitle
-                            featureProperties={this.props.featureProperties}
+                        <PopupTitle featureProperties={this.props.featureProperties}
                             layerGroupName={this.props.layerGroupName}
                             layerName={this.props.layerName}
                         />
                     </Modal.Header>
                     <Modal.Body>
-                        <PopupTabs
-                            layerId={this.props.layerId}
+                        <PopupTabs layerId={this.props.layerId}
                             featureProperties={this.props.featureProperties}
                             popupType={this.popupType}
                         />

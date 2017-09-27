@@ -23,8 +23,7 @@ const Basemap = (props) => {
         }
     }
     return (
-        <ListGroupItem
-            active={props.active}
+        <ListGroupItem active={props.active}
             className={layerClassNames.join(' ')}
             onClick={props.onBasemapClick}>
             <i className={iconClassNames.join(' ')}></i>

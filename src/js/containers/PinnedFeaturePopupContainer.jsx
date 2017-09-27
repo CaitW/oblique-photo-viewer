@@ -87,8 +87,7 @@ class PinnedFeaturePopupContainer extends React.Component {
             const layerGroupName = LAYER_GROUPS_BY_ID[layerGroupId].name;
             const zIndex = this.state.order.indexOf(featureId);
             pinnedFeatures.push(
-                <PinnedFeaturePopup
-                    layerId={layerId}
+                <PinnedFeaturePopup layerId={layerId}
                     featureProperties={pinnedFeature.featureProperties}
                     initialPosition={pinnedFeature.position}
                     layerName={layerName}

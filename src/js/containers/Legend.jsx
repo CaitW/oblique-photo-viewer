@@ -25,8 +25,7 @@ const Legend = (props) => {
         const layerName = activeLayerStyleTypes[layerId].layerName;
         const layerGroupName = activeLayerStyleTypes[layerId].layerGroupName;
         layers.push(
-            <LegendLayer
-                key={layerId}
+            <LegendLayer key={layerId}
                 layerGroupName={layerGroupName}
                 layerName={layerName}
                 layerStyles={styles}

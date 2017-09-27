@@ -153,8 +153,7 @@ function createLeafletPopup(feature, featureLayer, layerId, map) {
             leafletPopupOpened([featureMiddlePoint[1], featureMiddlePoint[0]])
         );
         render(
-            <FeaturePopup
-                layerId={layerId}
+            <FeaturePopup layerId={layerId}
                 featureProperties={feature.properties}
                 popup={popup}
                 updateAfterZoom={updateAfterZoom}
