@@ -15,10 +15,10 @@ const BasemapList = (props) => {
         const basemap = props.basemaps[basemapId];
         const boundOnBasemapClick = props.onBasemapClick.bind(null, basemapId);
         basemaps.push(
-            <Basemap key={ basemapId }
-                basemapName={ basemap.name }
-                active={ basemap.active }
-                onBasemapClick={ boundOnBasemapClick }
+            <Basemap key={basemapId}
+                basemapName={basemap.name}
+                active={basemap.active}
+                onBasemapClick={boundOnBasemapClick}
                 state={basemap.state}
             />
         );
@@ -33,13 +33,13 @@ const BasemapList = (props) => {
     }
     return (
         <div className="panel panel-default wiscviewer-sidebar-panel">
-            <div className={ headerClassNames.join(' ') }
+            <div className={headerClassNames.join(' ')}
                 role="button"
                 tabIndex={0}
             >
             Basemaps
             </div>
-            <div className={ bodyClassNames.join(' ') }>
+            <div className={bodyClassNames.join(' ')}>
                 <ListGroup className="wiscviewer-layer-list-group">
                     { basemaps }
                 </ListGroup>
