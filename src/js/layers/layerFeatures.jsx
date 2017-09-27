@@ -62,17 +62,17 @@ function getFeatureMidpoint(featureLayer) {
                 lowerMiddle = toCoordFeature(latLngs[firstIndex]);
                 upperMiddle = toCoordFeature(latLngs[lastIndex]);
                 middlePoint = midpoint(lowerMiddle, upperMiddle);
-            // if the number of coordinates is odd, get the median value
+                // if the number of coordinates is odd, get the median value
             } else {
                 let middleIndex = Math.ceil(latLngs.length / 2);
                 middlePoint = toCoordFeature(latLngs[(middleIndex)]);
             }
-        // if there are exactly 2 coordinates
+            // if there are exactly 2 coordinates
         } else if (latLngs.length === 2) {
             lowerMiddle = toCoordFeature(latLngs[0]);
             upperMiddle = toCoordFeature(latLngs[1]);
             middlePoint = midpoint(lowerMiddle, upperMiddle);
-        // if there is exactly 1 coordinate
+            // if there is exactly 1 coordinate
         } else if (latLngs.length === 1) {
             middlePoint = toCoordFeature(latLngs[0]);
         }
@@ -113,13 +113,13 @@ function createLeafletPopup(feature, featureLayer, layerId, map) {
     let featureMiddlePoint = getFeatureMidpoint(featureLayer);
     let container = document.createElement('div');
     let popup = L.popup({
-            closeOnClick: false,
-            className: 'feature-popup hidden-xs',
-            autoClose: true,
-            maxWidth: 350,
-            minWidth: 350,
-            closeButton: false
-        })
+        closeOnClick: false,
+        className: 'feature-popup hidden-xs',
+        autoClose: true,
+        maxWidth: 350,
+        minWidth: 350,
+        closeButton: false
+    })
         .setLatLng(L.latLng(featureMiddlePoint[1], featureMiddlePoint[0]))
         .setContent(container);
     /**
@@ -138,7 +138,7 @@ function createLeafletPopup(feature, featureLayer, layerId, map) {
         return positionInDocument;
     };
     let closePopup = () => {
-        // eslint-disable-next-line
+    // eslint-disable-next-line
         popup._close();
     };
     let updateAfterZoom = () => {

@@ -46,7 +46,7 @@ class PinnedFeaturePopup extends React.Component {
                 axis="both"
                 handle=".handle"
                 zIndex={1100}
-                >
+            >
                 <div className="wiscviewer-feature-popup wiscviewer-pinned-feature-popup hidden-xs"
                     role="button"
                     ref={
@@ -55,7 +55,7 @@ class PinnedFeaturePopup extends React.Component {
                     style={style}
                     onClick={this.props.onClick}
                     tabIndex={0}
-                    >
+                >
                     <div className="wiscviewer-feature-popup-header handle">
                         <div className="wiscviewer-feature-popup-controls">
                             <i className="fa fa-times feature-popup-close-button"

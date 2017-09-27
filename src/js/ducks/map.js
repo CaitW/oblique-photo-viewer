@@ -79,53 +79,53 @@ export default function map(state = initialMapState, action) {
     let newState = Object.assign({}, state);
     switch (action.type) {
         case 'MAP:ZOOM_TO_SHORELINE':
-            {
-                let shorelineExtent = CONFIG.map.county_shorelines[action.lakeName][action.countyName];
-                newState.state = {
-                    action: 'willZoom',
-                    extent: shorelineExtent
-                };
-                break;
-            }
+        {
+            let shorelineExtent = CONFIG.map.county_shorelines[action.lakeName][action.countyName];
+            newState.state = {
+                action: 'willZoom',
+                extent: shorelineExtent
+            };
+            break;
+        }
         case 'MAP:DONE_ZOOMING':
-            {
-                if(state.state.action === 'willZoom') {
-                    newState.state = {
-                        action: 'none'
-                    };
-                }
-                break;
-            }
-        case 'MAP:RESET_VIEW':
-            {
-                let wisconsinExtent = CONFIG.map.wisconsinExtent;
+        {
+            if(state.state.action === 'willZoom') {
                 newState.state = {
-                    action: 'willZoom',
-                    extent: wisconsinExtent
+                    action: 'none'
                 };
-                break;
             }
+            break;
+        }
+        case 'MAP:RESET_VIEW':
+        {
+            let wisconsinExtent = CONFIG.map.wisconsinExtent;
+            newState.state = {
+                action: 'willZoom',
+                extent: wisconsinExtent
+            };
+            break;
+        }
         case 'MAP:NEW_ZOOM_LEVEL':
-            {
-                newState.zoom = action.zoomLevel;
-                break;
-            }
+        {
+            newState.zoom = action.zoomLevel;
+            break;
+        }
         case 'MAP:LEAFLET_POPUP_OPENED':
-            {
-                if(state.zoom < 10) {
-                    newState.state = {
-                        action: 'willZoomToPopup',
-                        zoom: 10,
-                        coordinates: action.coordinates
-                    };
-                }
-                break;
+        {
+            if(state.zoom < 10) {
+                newState.state = {
+                    action: 'willZoomToPopup',
+                    zoom: 10,
+                    coordinates: action.coordinates
+                };
             }
+            break;
+        }
         default:
-            {
-                newState = state;
-                break;
-            }
+        {
+            newState = state;
+            break;
+        }
     }
     return newState;
 }

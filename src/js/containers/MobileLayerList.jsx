@@ -40,15 +40,15 @@ class MobileLayerList extends React.Component {
         return (
             <div className={classNames.join(' ')}>
                 <Modal.Dialog>
-                      <Modal.Header>
-                            <Modal.Title>Layers</Modal.Title>
-                      </Modal.Header>
-                      <Modal.Body>
+                    <Modal.Header>
+                        <Modal.Title>Layers</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
                         <LayerList />
-                      </Modal.Body>
-                      <Modal.Footer>
-                            <Button onClick={this.constructor.closeModal}>Close</Button>
-                      </Modal.Footer>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={this.constructor.closeModal}>Close</Button>
+                    </Modal.Footer>
                 </Modal.Dialog>
             </div>
         );

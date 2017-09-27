@@ -25,7 +25,7 @@ const LegendLayer = (props) => {
             <div className={headerClassNames.join(' ')}
                 role="button"
                 tabIndex={0}
-                >
+            >
                 <span className="wiscviewer-layer-name"> {props.layerName} </span>
                 <span className="wiscviewer-layer-group-name"> {props.layerGroupName} </span>
             </div>

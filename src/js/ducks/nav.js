@@ -18,13 +18,13 @@ export default function nav(state = initialState, action) {
     };
     switch (action.type) {
         case 'MAP:MOUSEDOWN':
-                newState.expanded = false;
+            newState.expanded = false;
             break;
         case 'NAV:SET_EXPANDED':
-                newState.expanded = action.expanded;
+            newState.expanded = action.expanded;
             break;
         case 'MAP:ZOOM_TO_COUNTY':
-                newState.expanded = false;
+            newState.expanded = false;
             break;
         default:
             break;

@@ -131,38 +131,38 @@ export default function layers(state = initialLayers, action) {
             break;
         }
         case 'LAYERS:LAYER_PRELOAD':
-            {
-                newState.layersById = {
-                    ...state.layersById,
-                    [action.layerId]: {
-                        ...state.layersById[action.layerId],
-                        state: 'loading'
-                    }
-                };
-                break;
-            }
+        {
+            newState.layersById = {
+                ...state.layersById,
+                [action.layerId]: {
+                    ...state.layersById[action.layerId],
+                    state: 'loading'
+                }
+            };
+            break;
+        }
         case 'LAYERS:LAYER_LOADED':
-            {
-                newState.layersById = {
-                    ...state.layersById,
-                    [action.layerId]: {
-                        ...state.layersById[action.layerId],
-                        state: 'loaded'
-                    }
-                };
-                break;
-            }
+        {
+            newState.layersById = {
+                ...state.layersById,
+                [action.layerId]: {
+                    ...state.layersById[action.layerId],
+                    state: 'loaded'
+                }
+            };
+            break;
+        }
         case 'LAYERS:LAYER_ERROR':
-            {
-                newState.layersById = {
-                    ...state.layersById,
-                    [action.layerId]: {
-                        ...state.layersById[action.layerId],
-                        state: 'error'
-                    }
-                };
-                break;
-            }
+        {
+            newState.layersById = {
+                ...state.layersById,
+                [action.layerId]: {
+                    ...state.layersById[action.layerId],
+                    state: 'error'
+                }
+            };
+            break;
+        }
         default:
             break;
     }

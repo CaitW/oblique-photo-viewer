@@ -10,42 +10,42 @@ import { ListGroup } from 'react-bootstrap';
 import Basemap from './Basemap';
 
 const BasemapList = (props) => {
-  let basemaps = [];
-  for (let basemapId in props.basemaps) {
-      let basemap = props.basemaps[basemapId];
-      let boundOnBasemapClick = props.onBasemapClick.bind(null, basemapId);
-      basemaps.push(
-        <Basemap key={ basemapId }
-          basemapName={ basemap.name }
-          active={ basemap.active }
-          onBasemapClick={ boundOnBasemapClick }
-          state={basemap.state}
-        />
-      );
-  }
+    let basemaps = [];
+    for (let basemapId in props.basemaps) {
+        let basemap = props.basemaps[basemapId];
+        let boundOnBasemapClick = props.onBasemapClick.bind(null, basemapId);
+        basemaps.push(
+            <Basemap key={ basemapId }
+                basemapName={ basemap.name }
+                active={ basemap.active }
+                onBasemapClick={ boundOnBasemapClick }
+                state={basemap.state}
+            />
+        );
+    }
 
-  let bodyClassNames = ['panel-body', 'pullDown', 'wiscviewer-sidebar-panel-body'];
-  let headerClassNames = ['panel-heading', 'wiscviewer-sidebar-panel-header', 'wiscviewer-layer-group-name'];
-  if (props.panelVisible === false) {
-      bodyClassNames.push('hidden');
-  } else {
-      headerClassNames.push('active');
-  }
-  return (
-      <div className="panel panel-default wiscviewer-sidebar-panel">
-        <div className={ headerClassNames.join(' ') }
-          role="button"
-          tabIndex={0}
-          >
+    let bodyClassNames = ['panel-body', 'pullDown', 'wiscviewer-sidebar-panel-body'];
+    let headerClassNames = ['panel-heading', 'wiscviewer-sidebar-panel-header', 'wiscviewer-layer-group-name'];
+    if (props.panelVisible === false) {
+        bodyClassNames.push('hidden');
+    } else {
+        headerClassNames.push('active');
+    }
+    return (
+        <div className="panel panel-default wiscviewer-sidebar-panel">
+            <div className={ headerClassNames.join(' ') }
+                role="button"
+                tabIndex={0}
+            >
             Basemaps
+            </div>
+            <div className={ bodyClassNames.join(' ') }>
+                <ListGroup className="wiscviewer-layer-list-group">
+                    { basemaps }
+                </ListGroup>
+            </div>
         </div>
-        <div className={ bodyClassNames.join(' ') }>
-          <ListGroup className="wiscviewer-layer-list-group">
-            { basemaps }
-          </ListGroup>
-        </div>
-      </div>
-  );
+    );
 };
 
 BasemapList.propTypes = {

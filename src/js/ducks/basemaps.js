@@ -65,47 +65,47 @@ export default function basemaps(state = initialBasemaps, action) {
     };
     switch (action.type) {
         case 'BASEMAPS:TOGGLE_BASEMAP':
-            {
-                let basemapIdToToggle = action.basemapId;
-                for (let basemapId in newState) {
-                    if (basemapId === basemapIdToToggle) {
-                        newState[basemapId] = {
-                            ...newState[basemapId],
-                            active: true
-                        };
-                    } else {
-                        newState[basemapId] = {
-                            ...newState[basemapId],
-                            active: false
-                        };
-                    }
+        {
+            let basemapIdToToggle = action.basemapId;
+            for (let basemapId in newState) {
+                if (basemapId === basemapIdToToggle) {
+                    newState[basemapId] = {
+                        ...newState[basemapId],
+                        active: true
+                    };
+                } else {
+                    newState[basemapId] = {
+                        ...newState[basemapId],
+                        active: false
+                    };
                 }
-                break;
             }
+            break;
+        }
         case 'BASEMAPS:BASEMAP_PRELOAD':
-            {
-                newState[action.basemapId] = {
-                    ...newState[action.basemapId],
-                    state: 'loading'
-                };
-                break;
-            }
+        {
+            newState[action.basemapId] = {
+                ...newState[action.basemapId],
+                state: 'loading'
+            };
+            break;
+        }
         case 'BASEMAPS:BASEMAP_LOADED':
-            {
-                newState[action.basemapId] = {
-                    ...newState[action.basemapId],
-                    state: 'loaded'
-                };
-                break;
-            }
+        {
+            newState[action.basemapId] = {
+                ...newState[action.basemapId],
+                state: 'loaded'
+            };
+            break;
+        }
         case 'BASEMAPS:BASEMAP_ERROR':
-            {
-                newState[action.basemapId] = {
-                    ...newState[action.basemapId],
-                    state: 'error'
-                };
-                break;
-            }
+        {
+            newState[action.basemapId] = {
+                ...newState[action.basemapId],
+                state: 'error'
+            };
+            break;
+        }
         default:
             break;
     }

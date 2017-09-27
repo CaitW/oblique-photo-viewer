@@ -96,7 +96,7 @@ export function getPhotoURLs(layerId, photoProperties) {
             break;
         }
         default:
-        break;
+            break;
     }
     return urls;
 }

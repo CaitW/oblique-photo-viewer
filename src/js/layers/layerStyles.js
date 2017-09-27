@@ -44,8 +44,8 @@ COLORS.PHOTOS = [
 ];
 
 COLORS.STRUCTURES = [
-     '#6D4C41',
-     '#3E2723'
+    '#6D4C41',
+    '#3E2723'
 ];
 
 COLORS.PROFILES = {

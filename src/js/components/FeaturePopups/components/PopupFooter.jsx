@@ -37,26 +37,26 @@ const getContentByLayerId = (layerId, featureProperties) => {
             let urls = getProfileURLs(featureProperties);
             if(urls.bluffXls) {
                 content.push(
-                  <a href={urls.bluffXls}
-                    key="download-bluff-excel-button"
-                    target="_blank"
-                    rel="noopener noreferrer" >
-                    <Button className="download-excel-button">
-                      <i className="fa fa-table"></i> Bluff Profile
-                    </Button>
-                  </a>
+                    <a href={urls.bluffXls}
+                        key="download-bluff-excel-button"
+                        target="_blank"
+                        rel="noopener noreferrer" >
+                        <Button className="download-excel-button">
+                            <i className="fa fa-table"></i> Bluff Profile
+                        </Button>
+                    </a>
                 );
             }
             if(urls.bathyXls) {
                 content.push(
-                  <a href={urls.bathyXls}
-                    key="download-bathy-excel-button"
-                    target="_blank"
-                    rel="noopener noreferrer" >
-                    <Button className="download-excel-button">
-                      <i className="fa fa-table"></i> Bathymetry Profile
-                    </Button>
-                  </a>
+                    <a href={urls.bathyXls}
+                        key="download-bathy-excel-button"
+                        target="_blank"
+                        rel="noopener noreferrer" >
+                        <Button className="download-excel-button">
+                            <i className="fa fa-table"></i> Bathymetry Profile
+                        </Button>
+                    </a>
                 );
             }
             break;
@@ -79,7 +79,7 @@ const PopupFooter = (props) => {
     return (
         <div>
             <div className="wiscviewer-popup-downloads-row">
-            {footer}
+                {footer}
             </div>
             {props.children}
         </div>

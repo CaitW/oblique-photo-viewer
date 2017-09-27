@@ -26,19 +26,19 @@ const ZoomToShoreline = (props) => {
     let shorelines = [];
     for(let lakeName in CONFIG.map.county_shorelines) {
         let shorelinesForLake = CONFIG.map.county_shorelines[lakeName];
-            shorelines.push(
-                <MenuItem className="wiscviewer-dropdown-header"
-                    key={lakeName}>
-                    <SVGInline svg={lake_icons[lakeName]} className={lakeName.replace(' ', '-')}/>
-                    {lakeName}
-                </MenuItem>
-            );
+        shorelines.push(
+            <MenuItem className="wiscviewer-dropdown-header"
+                key={lakeName}>
+                <SVGInline svg={lake_icons[lakeName]} className={lakeName.replace(' ', '-')}/>
+                {lakeName}
+            </MenuItem>
+        );
         for (let shorelineName in shorelinesForLake) {
             shorelines.push(
                 <MenuItem className="wiscviewer-dropdown-item"
                     key={shorelineName}
                     onClick={() => props.onZoomShorelineClick(lakeName, shorelineName)}>
-                        {shorelineName}
+                    {shorelineName}
                 </MenuItem>
             );
         }
