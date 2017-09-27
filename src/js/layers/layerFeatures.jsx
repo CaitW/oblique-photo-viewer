@@ -53,7 +53,7 @@ function getFeatureMidpoint(featureLayer) {
         let upperMiddle = false;
         let middlePoint = false;
         // if there are more than two coordinates
-        if(latLngs.length > 2) {
+        if (latLngs.length > 2) {
             // if the number of coordinates is even, find the
             // average of the two middle coordinates
             if (latLngs.length % 2 === 0) {
@@ -87,7 +87,7 @@ function getFeatureMidpoint(featureLayer) {
     }
 
     // if it's a line (getLatLngs isn't undefined)
-    if(typeof featureLayer.getLatLngs !== 'undefined') {
+    if (typeof featureLayer.getLatLngs !== 'undefined') {
         return getLineMidpoint(featureLayer.getLatLngs());
     // if it's a point (getLatLng isn't undefined)
     } else if (typeof featureLayer.getLatLng !== 'undefined') {

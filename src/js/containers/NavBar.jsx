@@ -64,7 +64,7 @@ class NavBar extends React.Component {
      * @param {object} nextProps - props to be received
      */
     componentWillReceiveProps(nextProps) {
-        if(nextProps.expanded !== this.state.expanded) {
+        if (nextProps.expanded !== this.state.expanded) {
             this.setState({
                 expanded: nextProps.expanded
             });
@@ -83,7 +83,7 @@ class NavBar extends React.Component {
         this.setState({
             expanded: expanded
         });
-        if(expanded !== this.props.expanded) {
+        if (expanded !== this.props.expanded) {
             store.dispatch(setNavExpand(expanded));
         }
     }

@@ -22,7 +22,7 @@ class PopupTabs extends React.Component {
     // eslint-disable-next-line class-methods-use-this
     update() {
 
-        if(typeof this.props.update !== 'undefined') {
+        if (typeof this.props.update !== 'undefined') {
             this.props.update();
         }
     }
@@ -61,7 +61,7 @@ class PopupTabs extends React.Component {
             case 'profiles': {
                 let eventKeyIndex = 1;
                 let urls = getProfileURLs(featureProperties);
-                if(urls.bluffJson) {
+                if (urls.bluffJson) {
                     tabs.push(
                         <ProfileTab key="bluff_graph"
                             eventKey={eventKeyIndex}
@@ -73,7 +73,7 @@ class PopupTabs extends React.Component {
                     );
                     eventKeyIndex += 1;
                 }
-                if(urls.bathyJson) {
+                if (urls.bathyJson) {
                     tabs.push(
                         <ProfileTab key="bathy_graph"
                             eventKey={eventKeyIndex}

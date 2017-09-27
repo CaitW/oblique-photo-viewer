@@ -34,7 +34,7 @@ class MobileLayerList extends React.Component {
             'hidden-md',
             'hidden-lg'
         ];
-        if(this.props.active === false) {
+        if (this.props.active === false) {
             classNames.push('hidden');
         }
         return (

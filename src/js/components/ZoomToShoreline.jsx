@@ -10,9 +10,9 @@ import SVGInline from 'react-svg-inline';
 
 import CONFIG from '../config.json';
 
-import superior_michigan_icon from'../../img/superior_michigan.svg';
-import superior_icon from'../../img/superior.svg';
-import michigan_icon from'../../img/michigan.svg';
+import superior_michigan_icon from '../../img/superior_michigan.svg';
+import superior_icon from '../../img/superior.svg';
+import michigan_icon from '../../img/michigan.svg';
 
 const lake_icons = {
     'Lake Michigan': michigan_icon,
@@ -24,7 +24,7 @@ const ZoomToShoreline = (props) => {
         <SVGInline svg={superior_michigan_icon} />
     );
     let shorelines = [];
-    for(let lakeName in CONFIG.map.county_shorelines) {
+    for (let lakeName in CONFIG.map.county_shorelines) {
         let shorelinesForLake = CONFIG.map.county_shorelines[lakeName];
         shorelines.push(
             <MenuItem className="wiscviewer-dropdown-header"

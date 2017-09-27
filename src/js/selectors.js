@@ -8,7 +8,7 @@ const getMobileFeatureModal = state => state.mobile.featureModal;
 
 export const getBasemapsByIdWithData = createSelector([getBasemapsById], basemaps => {
     let basemapsWithData = {};
-    for(let basemapId in basemaps) {
+    for (let basemapId in basemaps) {
         basemapsWithData[basemapId] = {
             ...BASEMAPS_BY_ID[basemapId],
             ...basemaps[basemapId]
@@ -57,8 +57,8 @@ export const mapLayerGroupsToLayers = createSelector(
 
 export const getActiveBasemapId = createSelector([getBasemapsById], basemaps => {
     let activeBasemapId = '';
-    for(let basemapId in basemaps) {
-        if(basemaps[basemapId].active === true) {
+    for (let basemapId in basemaps) {
+        if (basemaps[basemapId].active === true) {
             activeBasemapId = basemapId;
         }
     }

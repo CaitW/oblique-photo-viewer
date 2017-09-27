@@ -31,7 +31,7 @@ class Sidebar extends React.Component {
      */
     onTabClick(e) {
         let clickedTab = e.target.getAttribute('value');
-        if(typeof clickedTab === 'string') {
+        if (typeof clickedTab === 'string') {
             this.setState({
                 activeTab: clickedTab
             });
@@ -43,14 +43,14 @@ class Sidebar extends React.Component {
      * @returns {string} - returns "active" if tab is active, or empty string
      */
     getClassName(tabValue) {
-        if(this.state.activeTab === tabValue) {
+        if (this.state.activeTab === tabValue) {
             return 'active';
         }
         return '';
     }
     render() {
         let content = [];
-        if(this.state.activeTab === 'LayerList') {
+        if (this.state.activeTab === 'LayerList') {
             content.push(<LayerList key="layers" />);
         } else {
             content.push(<Legend key="legend" />);
@@ -61,7 +61,7 @@ class Sidebar extends React.Component {
             md: 4,
             lg: 3
         };
-        if(this.props.sidebarOpen === false) {
+        if (this.props.sidebarOpen === false) {
             props = {
                 lgHidden: true,
                 mdHidden: true,

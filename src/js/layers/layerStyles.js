@@ -325,7 +325,7 @@ function getLayerSubStyleName(layerId, feature) {
             subStyleName = feature.properties['Shore Protection Classification'];
             break;
         case 'profiles':
-            if(feature.properties.type === 'bathymetry') {
+            if (feature.properties.type === 'bathymetry') {
                 subStyleName = 'Bathymetric Profile';
             } else {
                 subStyleName = 'Bluff Profile';
@@ -362,7 +362,7 @@ const CACHE = {};
  * @returns {Object|false} - returns style object if cache exists, false if it doesn't
  */
 function getCachedStyle(layerId, feature) {
-    if(typeof CACHE[layerId] !== 'undefined') {
+    if (typeof CACHE[layerId] !== 'undefined') {
         let subStyleName = getLayerSubStyleName(layerId, feature);
         if (typeof CACHE[layerId][subStyleName] !== 'undefined') {
             return CACHE[layerId][subStyleName];
@@ -393,7 +393,7 @@ function createNewStyle(layerId, feature) {
     // assign the classname property of every style
     let layerIdClass = 'layer-' + layerId;
     let layerTypeClass = 'layer-type-' + feature.geometry.type;
-    if(typeof style.className === 'undefined') {
+    if (typeof style.className === 'undefined') {
         style.className = '';
     }
     style.className += ' ' + [layerTypeClass, layerIdClass].join(' ');

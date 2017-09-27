@@ -48,14 +48,14 @@ class PinnedFeaturePopupContainer extends React.Component {
     componentWillReceiveProps(nextProps) {
         let newOrder = [...this.state.order];
         // if a new popup has been added, add that item to the beginning of the list
-        for(let featureId in nextProps.pinnedFeatures) {
-            if(newOrder.indexOf(featureId) === -1) {
+        for (let featureId in nextProps.pinnedFeatures) {
+            if (newOrder.indexOf(featureId) === -1) {
                 newOrder.push(featureId);
             }
         }
         // if a popup has been closed, remove that popup from the order
-        for(let featureId of newOrder) {
-            if(typeof nextProps.pinnedFeatures[featureId] === 'undefined') {
+        for (let featureId of newOrder) {
+            if (typeof nextProps.pinnedFeatures[featureId] === 'undefined') {
                 newOrder.splice(newOrder.indexOf(featureId), 1);
             }
         }
@@ -79,7 +79,7 @@ class PinnedFeaturePopupContainer extends React.Component {
     }
     render() {
         let pinnedFeatures = [];
-        for(let featureId in this.props.pinnedFeatures) {
+        for (let featureId in this.props.pinnedFeatures) {
             let pinnedFeature = this.props.pinnedFeatures[featureId];
             let layerId = pinnedFeature.layerId;
             let layerName = this.props.layers[layerId].name;

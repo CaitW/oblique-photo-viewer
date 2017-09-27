@@ -11,7 +11,7 @@ const MapWrapper = (props) => {
     let sm = 7;
     let md = 8;
     let lg = 9;
-    if(props.sidebarOpen === false) {
+    if (props.sidebarOpen === false) {
         sm = 12;
         md = 12;
         lg = 12;

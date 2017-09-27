@@ -31,7 +31,7 @@ class ProfileTab extends React.Component {
         let popupHeight = this.profileDiv.clientHeight;
         // Set the dimensions of the canvas / graph
         let margin = { top: 10, right: 20, bottom: 40, left: 50 };
-        if(this.props.popupType === 'modal') {
+        if (this.props.popupType === 'modal') {
             margin.left = 70;
             margin.bottom = 60;
         }
@@ -41,14 +41,14 @@ class ProfileTab extends React.Component {
             x: (width / 2),
             y: (height + margin.top + 25)
         };
-        if(this.props.popupType === 'modal') {
+        if (this.props.popupType === 'modal') {
             xAxisLabel.y = xAxisLabel.y + 10;
         }
         let yAxisLabel = {
             x: 0 - (height / 2),
             y: (0 - margin.left) + 5
         };
-        if(this.props.popupType === 'modal') {
+        if (this.props.popupType === 'modal') {
             yAxisLabel.y = yAxisLabel.y + 5;
         }
         /**
@@ -146,7 +146,7 @@ class ProfileTab extends React.Component {
             'height': '200px',
             'width': '350px'
         };
-        if(this.props.popupType === 'modal') {
+        if (this.props.popupType === 'modal') {
             style.width = '100%';
             style.height = '300px';
         }

@@ -8,7 +8,7 @@ import { BASEMAPS_BY_ID } from '../util';
 
 const initialBasemaps = {};
 
-for(let basemapId in BASEMAPS_BY_ID) {
+for (let basemapId in BASEMAPS_BY_ID) {
     initialBasemaps[basemapId] = {
         active: BASEMAPS_BY_ID[basemapId].defaultActive,
         state: 'init'

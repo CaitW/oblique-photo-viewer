@@ -10,7 +10,7 @@ const LegendLayer = (props) => {
     let headerClassNames = ['panel-heading', 'wiscviewer-sidebar-panel-header'];
     let bodyClassNames = ['panel-body', 'pullDown', 'wiscviewer-sidebar-panel-body'];
     let styles = [];
-    for(let style of props.layerStyles) {
+    for (let style of props.layerStyles) {
         styles.push(
             <LegendStyle
                 key={style.styleName}

@@ -35,7 +35,7 @@ const getContentByLayerId = (layerId, featureProperties) => {
         }
         case 'profiles': {
             let urls = getProfileURLs(featureProperties);
-            if(urls.bluffXls) {
+            if (urls.bluffXls) {
                 content.push(
                     <a href={urls.bluffXls}
                         key="download-bluff-excel-button"
@@ -47,7 +47,7 @@ const getContentByLayerId = (layerId, featureProperties) => {
                     </a>
                 );
             }
-            if(urls.bathyXls) {
+            if (urls.bathyXls) {
                 content.push(
                     <a href={urls.bathyXls}
                         key="download-bathy-excel-button"
@@ -70,7 +70,7 @@ const getContentByLayerId = (layerId, featureProperties) => {
 const PopupFooter = (props) => {
 
     let footer = getContentByLayerId(props.layerId, props.featureProperties);
-    if(footer.length > 0) {
+    if (footer.length > 0) {
         footer.unshift(
             <i key="download" className="fa fa-download"></i>
         );

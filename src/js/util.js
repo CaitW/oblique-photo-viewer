@@ -63,7 +63,7 @@ export function getPhotoURLs(layerId, photoProperties) {
             for (let size in CONFIG.resources.photos.sizes) {
                 let sizeDir = CONFIG.resources.photos.sizes[size];
                 let modifiedFilename = fileName;
-                if(size !== 'original') {
+                if (size !== 'original') {
                     let parts = fileName.split('.');
                     parts[0] += '_' + sizeDir;
                     modifiedFilename = parts.join('.');
@@ -116,11 +116,11 @@ export function getProfileURLs(featureProperties) {
         bathyJson: false,
         bluffJson: false
     };
-    if(featureProperties.bluff_xls) {
+    if (featureProperties.bluff_xls) {
         urls.bluffXls = bluffXls + featureProperties.bluff_xls;
         urls.bluffJson = bluffJson+ featureProperties.bluff_json;
     }
-    if(featureProperties.bathy_xls) {
+    if (featureProperties.bathy_xls) {
         urls.bathyXls = bathyXls +  featureProperties.bathy_xls;
         urls.bathyJson = bathyJson + featureProperties.bathy_json;
     }

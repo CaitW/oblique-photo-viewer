@@ -89,7 +89,7 @@ export default function map(state = initialMapState, action) {
         }
         case 'MAP:DONE_ZOOMING':
         {
-            if(state.state.action === 'willZoom') {
+            if (state.state.action === 'willZoom') {
                 newState.state = {
                     action: 'none'
                 };
@@ -112,7 +112,7 @@ export default function map(state = initialMapState, action) {
         }
         case 'MAP:LEAFLET_POPUP_OPENED':
         {
-            if(state.zoom < 10) {
+            if (state.zoom < 10) {
                 newState.state = {
                     action: 'willZoomToPopup',
                     zoom: 10,

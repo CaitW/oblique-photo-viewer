@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const PopupTitle = (props) => {
     let featureName = '';
-    if(typeof props.featureProperties.OBJECTID === 'number') {
+    if (typeof props.featureProperties.OBJECTID === 'number') {
         featureName += '#' + props.featureProperties.OBJECTID;
     } else if (typeof props.featureProperties.ProfileNo === 'string') {
         featureName += props.featureProperties.ProfileNo;

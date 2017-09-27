@@ -9,14 +9,14 @@ import { ListGroupItem } from 'react-bootstrap';
 const Layer = (props) => {
     let iconClassNames = ['fa', 'wiscviewer-layer-left-icon'];
     let layerClassNames = ['wiscviewer-layer-item'];
-    if(props.state === 'loading') {
+    if (props.state === 'loading') {
         iconClassNames.push('fa-circle-o-notch');
         iconClassNames.push('fa-spin');
     } else if (props.state === 'error') {
         iconClassNames.push('fa-exclamation-triangle');
         iconClassNames.push('error');
     } else {
-        if(props.active) {
+        if (props.active) {
             iconClassNames.push('fa-check');
             iconClassNames.push('active');
             layerClassNames.push('active');
