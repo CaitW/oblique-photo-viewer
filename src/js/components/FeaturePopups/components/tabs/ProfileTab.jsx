@@ -142,7 +142,7 @@ class ProfileTab extends React.Component {
         }
         return (
             <Tab {...tabProps} className="wiscviewer-profile-tab">
-                <div style={style} className="wiscviewer-profile-graph" ref={(ref) => {this.profileDiv = ref;}}>
+                <div style={style} className="wiscviewer-profile-graph" ref={(ref) => { this.profileDiv = ref; }}>
                 </div>
             </Tab>
         );

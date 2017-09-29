@@ -49,7 +49,7 @@ class PinnedFeaturePopup extends React.Component {
                 <div className="wiscviewer-feature-popup wiscviewer-pinned-feature-popup hidden-xs"
                     role="button"
                     ref={
-                        (content) => {this.content = content;}
+                        (content) => { this.content = content; }
                     }
                     style={style}
                     onClick={this.props.onClick}
