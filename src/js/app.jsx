@@ -43,7 +43,7 @@ class App extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <Grid fluid={true} className="wiscviewer-grid">
+                <Grid fluid className="wiscviewer-grid">
                     <MobileFeaturePopup />
                     <MobileLayerList />
                     <Row className="wiscviewer-nav-container">

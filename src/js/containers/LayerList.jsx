@@ -52,7 +52,7 @@ class LayerList extends React.Component {
             <PanelGroup className="wiscviewer-layer-list">
                 {layerGroups}
                 <BasemapList basemaps={this.props.basemaps}
-                    panelVisible={true}
+                    panelVisible
                     onBasemapClick={this.constructor.onBasemapClick}
                     eventKey={eventKey.toString()}/>
             </PanelGroup>
