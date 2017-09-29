@@ -50,7 +50,7 @@ class App extends React.Component {
                         <NavBar />
                     </Row>
                     <Row className="wiscviewer-content-container">
-                        <Sidebar sidebarOpen={this.state.sidebarOpen}/>
+                        <Sidebar sidebarOpen={this.state.sidebarOpen} />
                         <MapWrapper sidebarOpen={this.state.sidebarOpen} toggleSidebar={this.toggleSidebar}>
                             <LeafletMap sidebarOpen={this.state.sidebarOpen} />
                         </MapWrapper>
@@ -61,4 +61,4 @@ class App extends React.Component {
         );
     }
 }
-render(<App/>, document.getElementById('react-root'));
+render(<App />, document.getElementById('react-root'));

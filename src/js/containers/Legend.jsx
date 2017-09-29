@@ -26,7 +26,7 @@ const Legend = (props) => {
             <LegendLayer key={layerId}
                 layerGroupName={layerGroupName}
                 layerName={layerName}
-                layerStyles={styles}/>
+                layerStyles={styles} />
         );
     }
     return (

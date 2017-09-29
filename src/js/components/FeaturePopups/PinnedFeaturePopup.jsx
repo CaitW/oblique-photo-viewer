@@ -64,12 +64,12 @@ class PinnedFeaturePopup extends React.Component {
                     <div className="wiscviewer-feature-popup-body">
                         <PopupTabs layerId={this.props.layerId}
                             featureProperties={this.props.featureProperties}
-                            popupType={this.popupType}/>
+                            popupType={this.popupType} />
                     </div>
                     <div className="wiscviewer-feature-popup-footer">
                         <PopupTitle featureProperties={this.props.featureProperties}
                             layerGroupName={this.props.layerGroupName}
-                            layerName={this.props.layerName}/>
+                            layerName={this.props.layerName} />
                         <PopupFooter layerId={this.props.layerId}
                             featureProperties={this.props.featureProperties}>
                             <div key="clearfix" className="clearfix" />

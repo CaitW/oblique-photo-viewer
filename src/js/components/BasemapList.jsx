@@ -19,7 +19,7 @@ const BasemapList = (props) => {
                 basemapName={basemap.name}
                 active={basemap.active}
                 onBasemapClick={boundOnBasemapClick}
-                state={basemap.state}/>
+                state={basemap.state} />
         );
     }
 

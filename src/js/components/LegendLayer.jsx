@@ -15,7 +15,7 @@ const LegendLayer = (props) => {
             <LegendStyle key={style.styleName}
                 styleName={style.styleName}
                 iconStyle={style.iconStyle}
-                styleIconClassNames={style.styleIconClassNames}/>
+                styleIconClassNames={style.styleIconClassNames} />
         );
     }
     return (

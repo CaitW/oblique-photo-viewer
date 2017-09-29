@@ -16,7 +16,7 @@ const ImageTab = (props) => {
     };
     return (
         <Tab {...tabProps} className="wiscviewer-image-tab">
-            <img src={props.imgPath} onLoad={props.update} alt={props.alt} style={style}/>
+            <img src={props.imgPath} onLoad={props.update} alt={props.alt} style={style} />
         </Tab>
     );
 };

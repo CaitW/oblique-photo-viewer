@@ -44,7 +44,7 @@ class LayerList extends React.Component {
                     layerGroupName={this.props.layers[layerGroupId].name}
                     layers={this.props.layers[layerGroupId].layers}
                     onLayerClick={this.constructor.onLayerClick}
-                    eventKey={eventKey.toString()}/>
+                    eventKey={eventKey.toString()} />
             );
             eventKey += 1;
         }
@@ -54,7 +54,7 @@ class LayerList extends React.Component {
                 <BasemapList basemaps={this.props.basemaps}
                     panelVisible
                     onBasemapClick={this.constructor.onBasemapClick}
-                    eventKey={eventKey.toString()}/>
+                    eventKey={eventKey.toString()} />
             </PanelGroup>
         );
     }

@@ -89,12 +89,12 @@ class FeaturePopup extends React.Component {
                     <PopupTabs layerId={this.props.layerId}
                         featureProperties={this.props.featureProperties}
                         update={this.update}
-                        popupType={this.popupType}/>
+                        popupType={this.popupType} />
                 </div>
                 <div className="wiscviewer-feature-popup-footer">
                     <PopupTitle featureProperties={this.props.featureProperties}
                         layerGroupName={layerGroupName}
-                        layerName={layerName}/>
+                        layerName={layerName} />
                     <PopupFooter layerId={this.props.layerId}
                         featureProperties={this.props.featureProperties}>
                         <div key="clearfix" className="clearfix" />
