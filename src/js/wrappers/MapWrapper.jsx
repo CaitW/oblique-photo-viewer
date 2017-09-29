@@ -24,7 +24,7 @@ const MapWrapper = (props) => {
     }
     return (
         <Col xs={xs} sm={sm} md={md} lg={lg} className="wiscviewer-map-container">
-            <div className="wiscviewer-sidebar-toggle hidden-xs" onClick={props.toggleSidebar}>
+            <div className="wiscviewer-sidebar-toggle hidden-xs" onClick={props.toggleSidebar} role="button">
                 <i className={iconClassNames.join(' ')} />
             </div>
             {props.children}
