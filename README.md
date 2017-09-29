@@ -115,6 +115,13 @@ The application utilizes Mapbox basemaps.
 1. To make custom modifications to a layer's popup, modify ```src/js/components/FeaturePopups/components/PopupTabs```
 1. Rebuild the application
 
+### Adding / Modifying / Removing data from downloads
+- Recreating the downloadable .zips / shapefiles requires running a separate gulp task, `make-downloads`
+
+1. Change data in `src/data`
+1. Run `gulp make-downloads`
+1. Rebuild the application (`gulp build` or `gulp dev-build`)
+
 ### Pull Requests
 
 When making pull requests, please use the gulp task `lint` to lint your files before submitting.

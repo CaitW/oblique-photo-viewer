@@ -19,13 +19,31 @@ var ogr2ogr = require('ogr2ogr');
 var gulpUtil = require('gulp-util');
 var shell = require('gulp-shell');
 
-// webpack configurations
+/**
+ * Webpack Configurations
+ *
+ * Dev
+ *  - Doesn't minify output
+ *  - Sets node environment variable to development
+ *
+ * Prod
+ *  - Minifies output
+ *  - Sets node environment variable to production
+ */
 var webpack_dev = require('./webpack.config.js');
 var webpack_prod = require('./webpack.config.prod.js');
 
-// esdoc config
+/**
+ * Configuration for Documentation (ESDoc)
+ */
 var esdoc_config = JSON.parse(fs.readFileSync('./.esdoc.json'));
 
+/**
+ * Server Config
+ *
+ * - Tries to get server_config.json. If it can't be found, throw an error.
+ * - server_config.json holds the location of the directory where the app should be deployed
+ */
 var CONFIG;
 
 try {
@@ -35,6 +53,10 @@ try {
     console.log("\x1b[31m%s\x1b[0m", "No server_config.json found. Copy and rename server_config.example.json or create your own. See github for more info.");
     throw "Error";
 }
+
+/**
+ * Util Functions
+ */
 
 // List all files in a directory in Node.js recursively in a synchronous fashion
 function walkSync (dir, filelist) {
@@ -53,6 +75,7 @@ function walkSync (dir, filelist) {
     return filelist;
 };
 
+// Returns files that have a .json extension
 function returnGeoJsonFiles (fileList) {
     let geoJsonFiles = [];
     for (let file of fileList) {
@@ -64,7 +87,14 @@ function returnGeoJsonFiles (fileList) {
 }
 
 /**
+ * Tasks
+ */
+
+/**
  * Clean up dist/ directory
+ *
+ * Parent tasks:
+ * - build
  */
 gulp.task('clean', function () {
   return del([
@@ -72,8 +102,10 @@ gulp.task('clean', function () {
   ]);
 });
 
-/**
+ /**
  * Make Data Downloads
+ *
+ * Parent tasks: (none) - MUST BE RUN MANUALLY
  */
 gulp.task('delete-temp-downloads', function () {
     return del(['./temp/']);
@@ -132,6 +164,10 @@ gulp.task('convert-and-zip-layer-shapefiles', function(done) {
 
 /**
  * Copy Files
+ *
+ * Parent Tasks:
+ *  - dev-build
+ *  - Build
  */
 gulp.task('copy-html', function() {
     return gulp.src(['src/index.html','src/about.html'])
@@ -168,6 +204,10 @@ gulp.task('copy', gulp.parallel('copy-html', 'copy-data', 'copy-downloads', 'cop
 
 /**
  * Build Stylesheets, copy
+ *
+ * Parent Tasks:
+ *  - dev-build
+ *  - build
  */
 gulp.task('sass-app', function() {
     return gulp.src('src/sass/app.scss')
@@ -190,7 +230,10 @@ gulp.task('sass-about', function() {
 gulp.task('sass', gulp.parallel('sass-app', 'sass-about'));
 
 /*
- * Build Javascript
+ * Build Javascript (dev)
+*
+ * Parent Tasks:
+ *  - dev-build
  */
 gulp.task('webpack-dev', function(done) {
     return webpack(webpack_dev, function(error) {
@@ -210,6 +253,13 @@ gulp.task('webpack-dev', function(done) {
         }
     });
 });
+
+/*
+ * Build Javascript (production)
+*
+ * Parent Tasks:
+ *  - build
+ */
 gulp.task('webpack-prod', function(done) {
     return webpack(webpack_prod, function(error) {
         var pluginError;
@@ -230,8 +280,10 @@ gulp.task('webpack-prod', function(done) {
 
 /*
  * Watch Files
+ *
+ * Parent tasks:
+ * - watch
  */
-
 gulp.task('watch-files', function() {
     livereload.listen();
     gulp.watch('src/js/**/*.js', gulp.parallel('webpack-dev'));
@@ -249,6 +301,8 @@ gulp.task('watch-files', function() {
 
 /*
  * Linting
+ *
+ * - Must be run manually
  */
 gulp.task('lint-js', (done) => {
     // Via CLI:
@@ -293,13 +347,24 @@ gulp.task('lint-css', function () {
     }));
 });
 
-// copy ./dist directory to the web server for hosting
+/**
+ * Copy ./dist directory to the web server for hosting
+ *
+ * Parent Tasks:
+ *  - deploy
+ */
 gulp.task('copy-to-server', function() {
     return gulp.src(['./dist/**/*'])
         .pipe(debug({ title: 'deploying:' }))
         .pipe(gulp.dest(CONFIG.SERVER_DIR));
 });
 
+/**
+ * Build documentation
+ *
+ * Parent Tasks:
+ *  - build
+ */
 gulp.task('make-docs', function() {
   return gulp.src('src/')
     .pipe(shell('npm run make-docs'))
@@ -310,22 +375,21 @@ gulp.task('make-docs', function() {
 /*
  * Development Tasks
  */
-
- // make data downloads
-gulp.task('make-downloads', gulp.series('zip-geojson-layers', 'zip-json-profiles', 'convert-and-zip-layer-shapefiles', 'delete-temp-downloads'));
 // build for development (skips some steps, like 'clean', 'make-downloads')
 gulp.task('dev-build', gulp.series('sass', 'webpack-dev', 'copy'));
 // alias
 gulp.task('default', gulp.parallel('dev-build'));
-// for active development
-gulp.task('watch', gulp.parallel('default', 'watch-files'));
 
 /**
- * Testing
+ * Utilities
  */
 
 // lint code
 gulp.task('lint', gulp.parallel('lint-js','lint-css'));
+ // make data downloads
+gulp.task('make-downloads', gulp.series('zip-geojson-layers', 'zip-json-profiles', 'convert-and-zip-layer-shapefiles', 'delete-temp-downloads'));
+// for active development
+gulp.task('watch', gulp.parallel('default', 'watch-files'));
 
 /**
  * Production Tasks

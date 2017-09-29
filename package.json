@@ -7,7 +7,7 @@
     "build": "gulp build",
     "deploy": "git fetch --all && git checkout origin/master --force && npm install && gulp deploy",
     "lint-js": "eslint --ext .js,.jsx src/js/** --ignore-path .eslintignore'",
-    "lint-css": "stylefmt -r 'src/sass/*.scss'",
+    "format-css": "stylefmt -r 'src/sass/*.scss'",
     "make-docs": "./node_modules/.bin/esdoc"
   },
   "repository": {
