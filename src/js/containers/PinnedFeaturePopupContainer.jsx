@@ -12,12 +12,10 @@ import PinnedFeaturePopup from '../components/FeaturePopups/PinnedFeaturePopup';
 import { getLayersByIdWithData } from '../selectors';
 import { LAYER_GROUPS_BY_ID } from '../util';
 
-const mapStateToProps = (state) => {
-    return {
+const mapStateToProps = (state) => ({
         pinnedFeatures: state.pinnedFeatures,
         layers: getLayersByIdWithData(state)
-    };
-};
+    });
 
 class PinnedFeaturePopupContainer extends React.Component {
     /**

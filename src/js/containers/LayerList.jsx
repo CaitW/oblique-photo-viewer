@@ -15,12 +15,10 @@ import { toggleLayer } from '../ducks/layers';
 import { toggleBasemap } from '../ducks/basemaps';
 import { mapLayerGroupsToLayers, getBasemapsByIdWithData } from '../selectors';
 
-const mapStateToProps = (state) => {
-    return {
+const mapStateToProps = (state) => ({
         layers: mapLayerGroupsToLayers(state),
         basemaps: getBasemapsByIdWithData(state)
-    };
-};
+    });
 
 class LayerList extends React.Component {
     /**

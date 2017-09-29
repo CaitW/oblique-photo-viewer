@@ -16,9 +16,7 @@ import PopupTabs from './components/PopupTabs';
 import PopupTitle from './components/PopupTitle';
 import PopupFooter from './components/PopupFooter';
 
-const mapStateToProps = (state) => {
-    return getMobileFeaturePopupProps(state);
-};
+const mapStateToProps = (state) => getMobileFeaturePopupProps(state);
 
 class MobileFeaturePopup extends React.Component {
     /**

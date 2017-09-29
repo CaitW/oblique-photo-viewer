@@ -13,14 +13,12 @@ import ObliquePhotoMap from '../classes/ObliquePhotoMap';
 import { doneZooming } from '../ducks/map';
 import { getLayersByIdWithData, getBasemapsByIdWithData, getActiveBasemapId } from '../selectors';
 
-const mapStateToProps = (state) => {
-    return {
+const mapStateToProps = (state) => ({
         layers: getLayersByIdWithData(state),
         basemaps: getBasemapsByIdWithData(state),
         map: state.map,
         activeBasemap: getActiveBasemapId(state)
-    };
-};
+    });
 
 class LeafletMap extends React.Component {
     /**

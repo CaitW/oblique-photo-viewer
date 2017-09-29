@@ -20,9 +20,7 @@ import { openMobileLayerList } from '../ducks/mobile';
 import { zoomToShoreline, resetMapView } from '../ducks/map';
 import { setNavExpand } from '../ducks/nav';
 
-const mapStateToProps = (state) => {
-    return state.nav;
-};
+const mapStateToProps = (state) => state.nav;
 
 class NavBar extends React.Component {
     /**
