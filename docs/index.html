@@ -208,6 +208,14 @@
 <li>To make custom modifications to a layer&apos;s popup, modify <code>src/js/components/FeaturePopups/components/PopupTabs</code></li>
 <li>Rebuild the application</li>
 </ol>
+<h3 id="adding---modifying---removing-data-from-downloads">Adding / Modifying / Removing data from downloads</h3><ul>
+<li><p>Recreating the downloadable .zips / shapefiles requires running a separate gulp task, <code>make-downloads</code></p>
+</li>
+<li><p>Change data in <code>src/data</code></p>
+</li>
+<li>Run <code>gulp make-downloads</code></li>
+<li>Rebuild the application (<code>gulp build</code> or <code>gulp dev-build</code>)</li>
+</ul>
 <h3 id="pull-requests">Pull Requests</h3><p>When making pull requests, please use the gulp task <code>lint</code> to lint your files before submitting.</p>
 <h3 id="releases">Releases</h3><p>Only issue a release after running the <code>gulp build</code> task, so that the /dist folder is built using the production configuration</p>
 </div>
