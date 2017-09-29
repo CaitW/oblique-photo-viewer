@@ -62,7 +62,7 @@ class FeaturePopup extends React.Component {
         return (
             <div className="wiscviewer-feature-popup"
                 tabIndex={-1}
-                role="dialog"
+                role="button"
                 onClick={this.bringToFront}>
                 <div className="wiscviewer-feature-popup-header">
                     <div className="wiscviewer-feature-popup-controls">
