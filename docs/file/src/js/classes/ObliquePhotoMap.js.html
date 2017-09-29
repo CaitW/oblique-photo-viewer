@@ -125,27 +125,27 @@ export default class ObliquePhotoMap {
      * manually added / removed. The below function removes the React node
      * when a popup is closed
      */
-    static onPopupClose (e) {
-        let container = e.popup.getContent();
+    static onPopupClose(e) {
+        const container = e.popup.getContent();
         /**
          * setTimeout hack to get around this current issue with React:
          * https://github.com/facebook/react/issues/3298
          */
-        setTimeout(function () {
+        setTimeout(() =&gt; {
             unmountComponentAtNode(container);
-        },10);
+        }, 10);
     }
     /**
      * Dispatch a map action every time the user clicks the map
      */
-    static onMapMousedown () {
+    static onMapMousedown() {
         store.dispatch(mapMousedown());
     }
     /**
      * @param {string} map - the string ID of the html element that the map will be added to
      */
     constructor(map) {
-        var self = this;
+        const self = this;
         this.basemapGroup = L.layerGroup();
         this.layerGroup = L.layerGroup();
         this.map = L.map(map, {
@@ -173,8 +173,8 @@ export default class ObliquePhotoMap {
     /**
      * Dispatch a zoom action every time the map is zoomed
      */
-    dispatchZoom () {
-        let currentZoom = this.map.getZoom();
+    dispatchZoom() {
+        const currentZoom = this.map.getZoom();
         store.dispatch(mapNewZoomLevel(currentZoom));
     }
     /**
@@ -183,50 +183,53 @@ export default class ObliquePhotoMap {
      * @param {Object} layer - key/value pairs describing a layer
      */
     createLayer(layerId, layer) {
-        var self = this;
+        const self = this;
         store.dispatch(layerPreload(layerId));
         switch (layer.type) {
-            case &quot;tileLayer&quot;:
-                if (typeof layer.url === &quot;undefined&quot;) {
-                    console.error(&quot;Layer &quot; + layerId + &quot; must have a tile URL&quot;);
+            case &apos;tileLayer&apos;:
+                if (typeof layer.url === &apos;undefined&apos;) {
+                    console.error(&apos;Layer &apos; + layerId + &apos; must have a tile URL&apos;);
                 } else {
                     this.layerIndex[layerId] = L.tileLayer(layer.url, {
                         zIndex: 1
                     });
-                    this.layerIndex[layerId].once(&quot;load&quot;, function () {
+                    this.layerIndex[layerId].once(&apos;load&apos;, () =&gt; {
                         store.dispatch(layerLoaded(layerId));
-                    })
+                    });
+                    this.layerIndex[layerId].once(&apos;tileerror&apos;, () =&gt; {
+                        store.dispatch(layerError(layerId));
+                    });
                 }
                 break;
-            case &quot;geojson&quot;:
-                if (typeof layer.dataLocation === &quot;undefined&quot;) {
-                    console.error(&quot;Layer &quot; + layerId + &quot; must have a data location&quot;);
+            case &apos;geojson&apos;:
+                if (typeof layer.dataLocation === &apos;undefined&apos;) {
+                    console.error(&apos;Layer &apos; + layerId + &apos; must have a data location&apos;);
                 } else {
-                    let layerOptions = {
-                        pointToLayer: function (feature, latlng) {
+                    const layerOptions = {
+                        pointToLayer(feature, latlng) {
                             // eslint-disable-next-line
                             return new L.circleMarker(latlng, {
                                 layerId
                             });
                         },
-                        layerId: layerId
+                        layerId
                     };
                     layerOptions.onEachFeature = onEachFeature(layerId, self.map);
                     layerOptions.style = LAYER_STYLE(layerId);
                     this.layerIndex[layerId] = L.geoJson(null, layerOptions);
                     axios.get(layer.dataLocation)
-                        .then(function(response) {
+                        .then((response) =&gt; {
                             self.layerIndex[layerId].addData(response.data);
                             store.dispatch(layerLoaded(layerId));
                         })
-                        .catch(function(error) {
+                        .catch((error) =&gt; {
                             console.error(error);
                             store.dispatch(layerError(layerId));
                         });
                 }
                 break;
             default:
-                console.error(&quot;Unrecognized layer type in config&quot;);
+                console.error(&apos;Unrecognized layer type in config&apos;);
                 store.dispatch(layerError(layerId));
                 break;
         }
@@ -240,7 +243,7 @@ export default class ObliquePhotoMap {
      * @param {Object} layer - key/value pairs describing a layer
      */
     toggleLayer(layerId, layer) {
-        if (typeof this.layerIndex[layerId] === &quot;undefined&quot;) {
+        if (typeof this.layerIndex[layerId] === &apos;undefined&apos;) {
             this.createLayer(layerId, layer);
         }
         if (layer.active === true) {
@@ -258,11 +261,11 @@ export default class ObliquePhotoMap {
      * @param {Object} basemap - key/value pairs describing a layer
      */
     toggleBasemap(basemapId, basemap) {
-        var self = this;
-        if (typeof basemap.url === &quot;undefined&quot;) {
-            console.error(&quot;Basemap &quot; + basemapId + &quot; must have a tile URL&quot;);
+        const self = this;
+        if (typeof basemap.url === &apos;undefined&apos;) {
+            console.error(&apos;Basemap &apos; + basemapId + &apos; must have a tile URL&apos;);
         } else {
-            if (typeof this.basemapIndex[basemapId] === &quot;undefined&quot;) {
+            if (typeof this.basemapIndex[basemapId] === &apos;undefined&apos;) {
                 this.basemapIndex[basemapId] = L.tileLayer(basemap.url, {
                     zIndex: 0
                 });
@@ -270,9 +273,12 @@ export default class ObliquePhotoMap {
             if (basemap.active === true) {
                 this.basemapGroup.clearLayers();
                 store.dispatch(basemapPreload(basemapId));
-                self.basemapIndex[basemapId].once(&quot;load&quot;, function () {
+                self.basemapIndex[basemapId].once(&apos;load&apos;, () =&gt; {
                     store.dispatch(basemapLoaded(basemapId));
-                })
+                });
+                self.basemapIndex[basemapId].once(&apos;tileerror&apos;, () =&gt; {
+                    store.dispatch(basemapError(basemapId));
+                });
                 this.basemapGroup.addLayer(self.basemapIndex[basemapId]);
             }
         }
@@ -305,7 +311,7 @@ export default class ObliquePhotoMap {
      * @param {number} zoom - zoom level
      * @param {LatLng} coordinates - [lat, lng]
      */
-    zoomToPopup (zoom, coordinates) {
+    zoomToPopup(zoom, coordinates) {
         this.map.panTo(coordinates, {
             animate: true
         });
@@ -319,7 +325,7 @@ export default class ObliquePhotoMap {
      * Force leaflet to re-calculate the size of the map within its bounding div
      * - wrapper for the Leaflet function invalidateSize
      */
-    updateSize () {
+    updateSize() {
         this.map.invalidateSize();
     }
 }

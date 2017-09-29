@@ -1,7 +1,7 @@
 {
-  "coverage": "44.72%",
+  "coverage": "45.22%",
   "expectCount": 199,
-  "actualCount": 89,
+  "actualCount": 90,
   "files": {
     "src/js/app.jsx": {
       "expectCount": 7,
@@ -63,10 +63,10 @@
       "actualCount": 3,
       "undocumentLines": [
         19,
-        23,
-        30,
-        34,
-        48
+        21,
+        28,
+        32,
+        46
       ]
     },
     "src/js/components/FeaturePopups/PinnedFeaturePopup.jsx": {
@@ -78,7 +78,7 @@
         16,
         20,
         34,
-        53
+        51
       ]
     },
     "src/js/components/FeaturePopups/components/PopupFooter.jsx": {
@@ -93,8 +93,8 @@
       "actualCount": 1,
       "undocumentLines": [
         12,
-        14,
-        29
+        13,
+        27
       ]
     },
     "src/js/components/FeaturePopups/components/PopupTitle.jsx": {
@@ -126,8 +126,8 @@
       "undocumentLines": [
         14,
         15,
-        138,
-        155
+        127,
+        144
       ]
     },
     "src/js/components/Layer.jsx": {
@@ -185,19 +185,19 @@
       "actualCount": 2,
       "undocumentLines": [
         18,
-        25,
-        40
+        23,
+        38
       ]
     },
     "src/js/containers/LeafletMap.jsx": {
       "expectCount": 11,
       "actualCount": 6,
       "undocumentLines": [
-        16,
-        25,
-        31,
-        107,
-        109
+        14,
+        21,
+        27,
+        103,
+        105
       ]
     },
     "src/js/containers/Legend.jsx": {
@@ -205,7 +205,7 @@
       "actualCount": 0,
       "undocumentLines": [
         14,
-        20
+        18
       ]
     },
     "src/js/containers/MobileLayerList.jsx": {
@@ -213,8 +213,8 @@
       "actualCount": 1,
       "undocumentLines": [
         16,
-        21,
-        28
+        19,
+        26
       ]
     },
     "src/js/containers/NavBar.jsx": {
@@ -222,9 +222,9 @@
       "actualCount": 7,
       "undocumentLines": [
         23,
-        27,
-        50,
-        90
+        25,
+        48,
+        88
       ]
     },
     "src/js/containers/PinnedFeaturePopupContainer.jsx": {
@@ -232,18 +232,18 @@
       "actualCount": 4,
       "undocumentLines": [
         15,
-        22,
-        30,
-        80
+        20,
+        28,
+        78
       ]
     },
     "src/js/containers/Sidebar.jsx": {
       "expectCount": 6,
       "actualCount": 3,
       "undocumentLines": [
-        13,
         14,
-        51
+        15,
+        52
       ]
     },
     "src/js/ducks/basemaps.js": {
@@ -343,9 +343,8 @@
     },
     "src/js/util.js": {
       "expectCount": 5,
-      "actualCount": 1,
+      "actualCount": 2,
       "undocumentLines": [
-        49,
         3,
         4,
         5

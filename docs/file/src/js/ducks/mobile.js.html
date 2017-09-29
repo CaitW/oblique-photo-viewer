@@ -119,8 +119,8 @@
  */
 export function openMobileLayerList() {
     return {
-        type: &quot;MOBILE:LAYER_POPUP:OPEN&quot;
-    }
+        type: &apos;MOBILE:LAYER_POPUP:OPEN&apos;
+    };
 }
 
 /**
@@ -128,8 +128,8 @@ export function openMobileLayerList() {
  */
 export function closeMobileLayerList() {
     return {
-        type: &quot;MOBILE:LAYER_POPUP:CLOSE&quot;
-    }
+        type: &apos;MOBILE:LAYER_POPUP:CLOSE&apos;
+    };
 }
 
 /**
@@ -140,10 +140,10 @@ export function closeMobileLayerList() {
  */
 export function updateWindowDimensions(height, width) {
     return {
-        type: &quot;WINDOW:UPDATE_DIMENSIONS&quot;,
+        type: &apos;WINDOW:UPDATE_DIMENSIONS&apos;,
         height,
         width
-    }
+    };
 }
 
 /**
@@ -155,11 +155,11 @@ export function updateWindowDimensions(height, width) {
  */
 export function mobileClickFeature(featureProperties, layerId, featureIndex) {
     return {
-        type: &quot;MOBILE:LAYER:CLICK_FEATURE&quot;,
+        type: &apos;MOBILE:LAYER:CLICK_FEATURE&apos;,
         featureProperties,
         layerId,
         featureIndex
-    }
+    };
 }
 
 /**
@@ -167,11 +167,11 @@ export function mobileClickFeature(featureProperties, layerId, featureIndex) {
  */
 export function closeMobileFeatureModal() {
     return {
-        type: &quot;MOBILE:FEATURE_MODAL:CLOSE&quot;
-    }
+        type: &apos;MOBILE:FEATURE_MODAL:CLOSE&apos;
+    };
 }
 
-let initialState = {
+const initialState = {
     window: {
         height: false,
         width: false
@@ -189,31 +189,31 @@ let initialState = {
 
 export default function mobile(state = initialState, action) {
     let newState = Object.assign({}, state);
-    let layersPopupState = Object.assign({}, newState.layersPopup);
-    let windowState = Object.assign({}, newState.window);
-    let featureModalState = Object.assign({}, newState.featureModal);
+    const layersPopupState = Object.assign({}, newState.layersPopup);
+    const windowState = Object.assign({}, newState.window);
+    const featureModalState = Object.assign({}, newState.featureModal);
     switch (action.type) {
-        case &quot;MOBILE:LAYER_POPUP:OPEN&quot;:
+        case &apos;MOBILE:LAYER_POPUP:OPEN&apos;:
             layersPopupState.visible = true;
             newState.layersPopup = layersPopupState;
             break;
-        case &quot;MOBILE:LAYER_POPUP:CLOSE&quot;:
+        case &apos;MOBILE:LAYER_POPUP:CLOSE&apos;:
             layersPopupState.visible = false;
             newState.layersPopup = layersPopupState;
             break;
-        case &quot;WINDOW:UPDATE_DIMENSIONS&quot;:
+        case &apos;WINDOW:UPDATE_DIMENSIONS&apos;:
             windowState.height = action.height;
             windowState.width = action.width;
             newState.window = windowState;
             break;
-        case &quot;MOBILE:LAYER:CLICK_FEATURE&quot;:
+        case &apos;MOBILE:LAYER:CLICK_FEATURE&apos;:
             featureModalState.visible = true;
             featureModalState.featureProperties = action.featureProperties;
             featureModalState.layerId = action.layerId;
             featureModalState.featureIndex = action.featureIndex;
             newState.featureModal = featureModalState;
             break;
-        case &quot;MOBILE:FEATURE_MODAL:CLOSE&quot;:
+        case &apos;MOBILE:FEATURE_MODAL:CLOSE&apos;:
             featureModalState.visible = false;
             featureModalState.featureProperties = false;
             featureModalState.layerId = false;

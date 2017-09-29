@@ -104,31 +104,31 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/js/ducks/nav.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const initialState = {
     expanded: false
-}
+};
 
 /**
  * Sets the expanded state of the mobile version of the nav
  */
-export function setNavExpand (expanded) {
+export function setNavExpand(expanded) {
     return {
-        type: &quot;NAV:SET_EXPANDED&quot;,
+        type: &apos;NAV:SET_EXPANDED&apos;,
         expanded
-    }
+    };
 }
 
 export default function nav(state = initialState, action) {
-    let newState = {
+    const newState = {
         ...state
     };
     switch (action.type) {
-        case &quot;MAP:MOUSEDOWN&quot;:
-                newState.expanded = false;
+        case &apos;MAP:MOUSEDOWN&apos;:
+            newState.expanded = false;
             break;
-        case &quot;NAV:SET_EXPANDED&quot;:
-                newState.expanded = action.expanded;
+        case &apos;NAV:SET_EXPANDED&apos;:
+            newState.expanded = action.expanded;
             break;
-        case &quot;MAP:ZOOM_TO_COUNTY&quot;:
-                newState.expanded = false;
+        case &apos;MAP:ZOOM_TO_COUNTY&apos;:
+            newState.expanded = false;
             break;
         default:
             break;

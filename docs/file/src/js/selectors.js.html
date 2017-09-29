@@ -110,20 +110,20 @@ const getBasemapsById = state =&gt; state.basemaps;
 const getLayerGroupsById = state =&gt; state.layers.layerGroupsById;
 const getMobileFeatureModal = state =&gt; state.mobile.featureModal;
 
-export const getBasemapsByIdWithData = createSelector([getBasemapsById], basemaps =&gt; {
-    let basemapsWithData = {};
-    for(let basemapId in basemaps) {
+export const getBasemapsByIdWithData = createSelector([getBasemapsById], (basemaps) =&gt; {
+    const basemapsWithData = {};
+    for (const basemapId in basemaps) {
         basemapsWithData[basemapId] = {
             ...BASEMAPS_BY_ID[basemapId],
             ...basemaps[basemapId]
-        }
+        };
     }
     return basemapsWithData;
 });
 
-export const getLayersByIdWithData = createSelector([getLayersById], layers =&gt; {
-    let layersWithData = {};
-    for (let layerId in layers) {
+export const getLayersByIdWithData = createSelector([getLayersById], (layers) =&gt; {
+    const layersWithData = {};
+    for (const layerId in layers) {
         layersWithData[layerId] = {
             ...LAYERS_BY_ID[layerId],
             ...layers[layerId]
@@ -132,9 +132,9 @@ export const getLayersByIdWithData = createSelector([getLayersById], layers =&gt
     return layersWithData;
 });
 
-export const getLayerGroupsByIdWithData = createSelector([getLayerGroupsById], layerGroups =&gt; {
-    let layersGroupsWithData = {};
-    for (let layerGroupId in layerGroups) {
+export const getLayerGroupsByIdWithData = createSelector([getLayerGroupsById], (layerGroups) =&gt; {
+    const layersGroupsWithData = {};
+    for (const layerGroupId in layerGroups) {
         layersGroupsWithData[layerGroupId] = {
             ...LAYER_GROUPS_BY_ID[layerGroupId]
         };
@@ -145,13 +145,13 @@ export const getLayerGroupsByIdWithData = createSelector([getLayerGroupsById], l
 export const mapLayerGroupsToLayers = createSelector(
     [getLayerGroupsByIdWithData, getLayersByIdWithData],
     (layerGroups, layers) =&gt; {
-        let mappedLayerGroups = {};
-        for (let layerGroupId in layerGroups) {
+        const mappedLayerGroups = {};
+        for (const layerGroupId in layerGroups) {
             mappedLayerGroups[layerGroupId] = {
                 ...layerGroups[layerGroupId],
                 layers: {}
             };
-            for (let layerId of layerGroups[layerGroupId].layers) {
+            for (const layerId of layerGroups[layerGroupId].layers) {
                 mappedLayerGroups[layerGroupId].layers[layerId] = layers[layerId];
             }
         }
@@ -159,19 +159,19 @@ export const mapLayerGroupsToLayers = createSelector(
     }
 );
 
-export const getActiveBasemapId = createSelector([getBasemapsById], basemaps =&gt; {
-    let activeBasemapId = &quot;&quot;;
-    for(let basemapId in basemaps) {
-        if(basemaps[basemapId].active === true) {
+export const getActiveBasemapId = createSelector([getBasemapsById], (basemaps) =&gt; {
+    let activeBasemapId = &apos;&apos;;
+    for (const basemapId in basemaps) {
+        if (basemaps[basemapId].active === true) {
             activeBasemapId = basemapId;
         }
     }
     return activeBasemapId;
 });
 
-export const getActiveLayers = createSelector(getLayersById, layers =&gt; {
-    let activeLayers = [];
-    for (let layerId in layers) {
+export const getActiveLayers = createSelector(getLayersById, (layers) =&gt; {
+    const activeLayers = [];
+    for (const layerId in layers) {
         if (layers[layerId].active === true) {
             activeLayers.push(layerId);
         }
@@ -182,34 +182,34 @@ export const getActiveLayers = createSelector(getLayersById, layers =&gt; {
 export const getActiveLayerStyleTypes = createSelector(
     [getLayersByIdWithData, getLayerGroupsByIdWithData, getActiveLayers],
     (layers, layerGroups, activeLayers) =&gt; {
-        let stylesByLayerId = {};
-        for (let layerId of activeLayers) {
-            let layer = layers[layerId];
-            let layerName = layer.name || layerId;
-            let layerGroupId = layer.layerGroupId;
+        const stylesByLayerId = {};
+        for (const layerId of activeLayers) {
+            const layer = layers[layerId];
+            const layerName = layer.name || layerId;
+            const layerGroupId = layer.layerGroupId;
             let layerGroupName = layerGroupId;
-            if (typeof layerGroups[layerGroupId] !== &quot;undefined&quot;) {
+            if (typeof layerGroups[layerGroupId] !== &apos;undefined&apos;) {
                 layerGroupName = layerGroups[layerGroupId].name || layerGroupId;
             }
-            let legendStyles = layer.legendStyles;
+            const legendStyles = layer.legendStyles;
             let styles = [];
             for (let styleName in legendStyles) {
-                let styleIconClassNames = [&quot;fa&quot;];
-                let iconStyle = {
-                    color: &quot;#000000&quot;
+                const styleIconClassNames = [&apos;fa&apos;];
+                const iconStyle = {
+                    color: &apos;#000000&apos;
                 };
                 if (
-                    legendStyles[styleName].geometryType === &quot;LineString&quot;
-                    || legendStyles[styleName].geometryType === &quot;MultiLineString&quot;
+                    legendStyles[styleName].geometryType === &apos;LineString&apos;
+                    || legendStyles[styleName].geometryType === &apos;MultiLineString&apos;
                 ) {
-                    styleIconClassNames.push(&quot;fa-minus&quot;);
+                    styleIconClassNames.push(&apos;fa-minus&apos;);
                     iconStyle.color = legendStyles[styleName].style.color;
-                } else if (legendStyles[styleName].geometryType === &quot;Point&quot;) {
-                    styleIconClassNames.push(&quot;fa-circle&quot;);
+                } else if (legendStyles[styleName].geometryType === &apos;Point&apos;) {
+                    styleIconClassNames.push(&apos;fa-circle&apos;);
                     iconStyle.color = legendStyles[styleName].style.strokeColor;
                 }
-                if (styleName === &quot;null&quot;) {
-                    styleName = &quot;(No Value)&quot;;
+                if (styleName === &apos;null&apos;) {
+                    styleName = &apos;(No Value)&apos;;
                 }
                 styles.push({
                     styleName,
@@ -217,7 +217,7 @@ export const getActiveLayerStyleTypes = createSelector(
                     styleIconClassNames
                 });
             }
-            styles = styles.sort(function(a, b) {
+            styles = styles.sort((a, b) =&gt; {
                 if (a.styleName &lt; b.styleName) {
                     return -1;
                 }
@@ -239,21 +239,21 @@ export const getActiveLayerStyleTypes = createSelector(
 export const getMobileFeaturePopupProps = createSelector(
     [getLayersByIdWithData, getLayerGroupsByIdWithData, getMobileFeatureModal],
     (layers, layerGroups, featureModal) =&gt; {
-        if (typeof featureModal.layerId !== &quot;undefined&quot; &amp;&amp; featureModal.layerId !== false) {
-            let layerId = featureModal.layerId;
-            let layerName = layers[layerId].name;
-            let layerGroupId = layers[layerId].layerGroupId;
-            let layerGroupName = layerGroups[layerGroupId].name;
+        if (typeof featureModal.layerId !== &apos;undefined&apos; &amp;&amp; featureModal.layerId !== false) {
+            const layerId = featureModal.layerId;
+            const layerName = layers[layerId].name;
+            const layerGroupId = layers[layerId].layerGroupId;
+            const layerGroupName = layerGroups[layerGroupId].name;
             return {
                 ...featureModal,
                 layerName,
                 layerGroupName
-            }
+            };
         }
         return {
             ...featureModal,
-            layerName: &quot;&quot;,
-            layerGroupName: &quot;&quot;
+            layerName: &apos;&apos;,
+            layerGroupName: &apos;&apos;
         };
     }
 );

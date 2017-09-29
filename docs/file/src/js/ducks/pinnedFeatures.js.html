@@ -110,7 +110,7 @@
  */
 import uuid from &apos;uuid&apos;;
 
-let initialState = {};
+const initialState = {};
 
 /**
  * When a Leaflet-based feature popup is &quot;pinned&quot;, by clicking on the pin icon
@@ -124,11 +124,11 @@ let initialState = {};
  */
 export function newPinnedFeature(layerId, featureProperties, position) {
     return {
-        type: &quot;PINNED_FEATURES:NEW&quot;,
+        type: &apos;PINNED_FEATURES:NEW&apos;,
         layerId,
         featureProperties,
         position
-    }
+    };
 }
 
 /**
@@ -138,18 +138,18 @@ export function newPinnedFeature(layerId, featureProperties, position) {
  */
 export function closePinnedFeature(featureId) {
     return {
-        type: &quot;PINNED_FEATURES:CLOSE&quot;,
+        type: &apos;PINNED_FEATURES:CLOSE&apos;,
         featureId
-    }
+    };
 }
 
 export default function pinnedFeatures(state = initialState, action) {
-    let newState = {
+    const newState = {
         ...state
     };
     switch (action.type) {
-        case &quot;PINNED_FEATURES:NEW&quot;: {
-            let newPinnedFeatureId = uuid.v4();
+        case &apos;PINNED_FEATURES:NEW&apos;: {
+            const newPinnedFeatureId = uuid.v4();
             newState[newPinnedFeatureId] = {
                 layerId: action.layerId,
                 featureProperties: action.featureProperties,
@@ -157,7 +157,7 @@ export default function pinnedFeatures(state = initialState, action) {
             };
             break;
         }
-        case &quot;PINNED_FEATURES:CLOSE&quot;:
+        case &apos;PINNED_FEATURES:CLOSE&apos;:
             delete newState[action.featureId];
             break;
         default:

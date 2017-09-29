@@ -105,23 +105,23 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import CONFIG from &apos;./config.json&apos;;
 
 const LAYERS_BY_ID = {};
-const LAYER_GROUPS_BY_ID = {}
+const LAYER_GROUPS_BY_ID = {};
 const BASEMAPS_BY_ID = {};
 
-for (let basemapId in CONFIG.map.basemaps) {
+for (const basemapId in CONFIG.map.basemaps) {
     BASEMAPS_BY_ID[basemapId] = {
         ...CONFIG.map.basemaps[basemapId],
         state: &apos;init&apos;
-    }
+    };
     BASEMAPS_BY_ID[basemapId].name = BASEMAPS_BY_ID[basemapId].name || basemapId;
 }
 
 // Set up layer groups, default values
-for (let layerGroupId in CONFIG.map.layers) {
-    let layerGroupProperties = CONFIG.map.layers[layerGroupId];
+for (const layerGroupId in CONFIG.map.layers) {
+    const layerGroupProperties = CONFIG.map.layers[layerGroupId];
     // reassign some values
-    let name = layerGroupProperties.name || layerGroupId;
-    let layers = [];
+    const name = layerGroupProperties.name || layerGroupId;
+    const layers = [];
     LAYER_GROUPS_BY_ID[layerGroupId] = {
         ...layerGroupProperties,
         name,
@@ -131,13 +131,13 @@ for (let layerGroupId in CONFIG.map.layers) {
 }
 
 // set up layers, default values
-for (let layerGroupId in LAYER_GROUPS_BY_ID) {
-    let layerGroupLayers = CONFIG.map.layers[layerGroupId].layers;
-    for (let layerId in layerGroupLayers) {
-        let layer = layerGroupLayers[layerId];
+for (const layerGroupId in LAYER_GROUPS_BY_ID) {
+    const layerGroupLayers = CONFIG.map.layers[layerGroupId].layers;
+    for (const layerId in layerGroupLayers) {
+        const layer = layerGroupLayers[layerId];
         // reassign some values
-        let name = layer.name || layerId;
-        let id = layerId;
+        const name = layer.name || layerId;
+        const id = layerId;
         // assign new layer
         LAYERS_BY_ID[layerId] = {
             ...layer,
@@ -150,52 +150,57 @@ for (let layerGroupId in LAYER_GROUPS_BY_ID) {
     }
 }
 
-export function getPhotoURLs (layerId, photoProperties) {
-    let urls = {};
+/**
+ * Get URL for photos associated with a particular feature, layerId
+ * @param {string} layerId
+ * @param {Object} photoProperties
+ */
+export function getPhotoURLs(layerId, photoProperties) {
+    const urls = {};
     switch (layerId) {
-        case &quot;photos_1976&quot;:
-        case &quot;photos_2007&quot;: {
-            let base = CONFIG.resources.photos.urlBase;
-            let lakeName = photoProperties[&quot;Great Lake&quot;].replace(/ /gi, &quot;&quot;);
-            let year = photoProperties[&quot;Year&quot;];
-            let fileName = photoProperties[&quot;File Name&quot;];
-            for (let size in CONFIG.resources.photos.sizes) {
-                let sizeDir = CONFIG.resources.photos.sizes[size];
+        case &apos;photos_1976&apos;:
+        case &apos;photos_2007&apos;: {
+            const base = CONFIG.resources.photos.urlBase;
+            const lakeName = photoProperties[&apos;Great Lake&apos;].replace(/ /gi, &apos;&apos;);
+            const year = photoProperties.Year;
+            const fileName = photoProperties[&apos;File Name&apos;];
+            for (const size in CONFIG.resources.photos.sizes) {
+                const sizeDir = CONFIG.resources.photos.sizes[size];
                 let modifiedFilename = fileName;
-                if(size !== &quot;original&quot;) {
-                    let parts = fileName.split(&quot;.&quot;);
-                    parts[0] += &quot;_&quot; + sizeDir;
-                    modifiedFilename = parts.join(&quot;.&quot;);
+                if (size !== &apos;original&apos;) {
+                    const parts = fileName.split(&apos;.&apos;);
+                    parts[0] += &apos;_&apos; + sizeDir;
+                    modifiedFilename = parts.join(&apos;.&apos;);
                 }
-                urls[size] = [base,lakeName,year,sizeDir,modifiedFilename].join(&quot;/&quot;);
+                urls[size] = [base, lakeName, year, sizeDir, modifiedFilename].join(&apos;/&apos;);
             }
             break;
         }
-        case &quot;photos_2016&quot;: {
-            let base = CONFIG.resources.photos_2016.urlBase;
-            let fileName = photoProperties.filename;
-            urls.original = [base,fileName].join(&quot;/&quot;);
-            urls.popup = [base,&quot;popup&quot;,fileName].join(&quot;/&quot;);
+        case &apos;photos_2016&apos;: {
+            const base = CONFIG.resources.photos_2016.urlBase;
+            const fileName = photoProperties.filename;
+            urls.original = [base, fileName].join(&apos;/&apos;);
+            urls.popup = [base, &apos;popup&apos;, fileName].join(&apos;/&apos;);
             break;
         }
-        case &quot;photos_2017&quot;: {
-            let base = CONFIG.resources.photos_2017.urlBase;
-            let fileName = photoProperties.id;
-            let ext = CONFIG.resources.photos_2017.extension;
-            urls.original = [base,fileName].join(&quot;/&quot;) + ext;
-            urls.popup = [base,&quot;popup&quot;,fileName].join(&quot;/&quot;) + ext;
+        case &apos;photos_2017&apos;: {
+            const base = CONFIG.resources.photos_2017.urlBase;
+            const fileName = photoProperties.id;
+            const ext = CONFIG.resources.photos_2017.extension;
+            urls.original = [base, fileName].join(&apos;/&apos;) + ext;
+            urls.popup = [base, &apos;popup&apos;, fileName].join(&apos;/&apos;) + ext;
             break;
         }
-        case &quot;photos_2012&quot;: {
-            let base = CONFIG.resources.photos_2012.urlBase;
-            let fileName = photoProperties.imageId;
-            let ext = CONFIG.resources.photos_2012.extension;
-            urls.original = [base,fileName].join(&quot;/&quot;) + ext;
-            urls.popup = [base,&quot;popup&quot;,fileName].join(&quot;/&quot;) + ext;
+        case &apos;photos_2012&apos;: {
+            const base = CONFIG.resources.photos_2012.urlBase;
+            const fileName = photoProperties.imageId;
+            const ext = CONFIG.resources.photos_2012.extension;
+            urls.original = [base, fileName].join(&apos;/&apos;) + ext;
+            urls.popup = [base, &apos;popup&apos;, fileName].join(&apos;/&apos;) + ext;
             break;
         }
         default:
-        break;
+            break;
     }
     return urls;
 }
@@ -204,23 +209,23 @@ export function getPhotoURLs (layerId, photoProperties) {
  * Gets URLS of profile documents based on the feature&apos;s properties
  * @param {Object} featureProperties
  */
-export function getProfileURLs (featureProperties) {
-    let bluffXls = CONFIG.resources.profiles.pathToXls.bluff;
-    let bathyXls = CONFIG.resources.profiles.pathToXls.bathy;
-    let bluffJson = CONFIG.resources.profiles.pathToJson.bluff;
-    let bathyJson = CONFIG.resources.profiles.pathToJson.bathy;
-    let urls = {
+export function getProfileURLs(featureProperties) {
+    const bluffXls = CONFIG.resources.profiles.pathToXls.bluff;
+    const bathyXls = CONFIG.resources.profiles.pathToXls.bathy;
+    const bluffJson = CONFIG.resources.profiles.pathToJson.bluff;
+    const bathyJson = CONFIG.resources.profiles.pathToJson.bathy;
+    const urls = {
         bluffXls: false,
         bathyXls: false,
         bathyJson: false,
         bluffJson: false
     };
-    if(featureProperties.bluff_xls) {
+    if (featureProperties.bluff_xls) {
         urls.bluffXls = bluffXls + featureProperties.bluff_xls;
-        urls.bluffJson = bluffJson+ featureProperties.bluff_json;
+        urls.bluffJson = bluffJson + featureProperties.bluff_json;
     }
-    if(featureProperties.bathy_xls) {
-        urls.bathyXls = bathyXls +  featureProperties.bathy_xls;
+    if (featureProperties.bathy_xls) {
+        urls.bathyXls = bathyXls + featureProperties.bathy_xls;
         urls.bathyJson = bathyJson + featureProperties.bathy_json;
     }
     return urls;
