@@ -33,7 +33,9 @@ const MapWrapper = (props) => {
 };
 
 MapWrapper.propTypes = {
-    children: PropTypes.object
+    children: PropTypes.object,
+    sidebarOpen: PropTypes.bool.isRequired,
+    toggleSidebar: PropTypes.func.isRequired
 };
 
 MapWrapper.defaultProps = {

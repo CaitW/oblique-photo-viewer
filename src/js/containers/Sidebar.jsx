@@ -97,4 +97,8 @@ class Sidebar extends React.Component {
     }
 }
 
+Sidebar.propTypes = {
+    sidebarOpen: PropTypes.bool.isRequired
+};
+
 export default Sidebar;

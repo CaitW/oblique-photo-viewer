@@ -115,7 +115,8 @@ LeafletMap.propTypes = {
     layers: PropTypes.object.isRequired,
     basemaps: PropTypes.object.isRequired,
     map: PropTypes.object.isRequired,
-    activeBasemap: PropTypes.string.isRequired
+    activeBasemap: PropTypes.string.isRequired,
+    sidebarOpen: PropTypes.bool.isRequired
 };
 
 export default connect(mapStateToProps)(LeafletMap);

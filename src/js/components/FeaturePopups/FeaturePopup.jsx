@@ -112,7 +112,8 @@ FeaturePopup.propTypes = {
     closePopup: PropTypes.func.isRequired,
     openNextFeature: PropTypes.func.isRequired,
     openPreviousFeature: PropTypes.func.isRequired,
-    getPosition: PropTypes.func.isRequired
+    getPosition: PropTypes.func.isRequired,
+    updateAfterZoom: PropTypes.func.isRequired
 };
 
 export default FeaturePopup;
