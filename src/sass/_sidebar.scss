@@ -1,5 +1,4 @@
 @import 'sidebar/legend';
-
 $hide_scroll_padding: 17px;
 
 .wiscviewer-sidebar {
@@ -49,6 +48,7 @@ $hide_scroll_padding: 17px;
     color: $primary_500;
     background-color: $primary_900;
     font-size: 14px;
+
     &:focus {
       outline: none;
     }
@@ -64,10 +64,11 @@ $hide_scroll_padding: 17px;
     }
 
     &:first-child:not(.active) {
-      box-shadow: inset -3px 3px 10px rgba(0,0,0,0.10);
+      box-shadow: inset -3px 3px 10px rgba(0, 0, 0, 0.1);
     }
+
     &:last-child:not(.active) {
-      box-shadow: inset 3px 3px 10px rgba(0,0,0,0.10);
+      box-shadow: inset 3px 3px 10px rgba(0, 0, 0, 0.1);
     }
   }
 }
@@ -110,7 +111,7 @@ $hide_scroll_padding: 17px;
 
     &.active {
       color: $primary_50;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.20);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
   }
 }
@@ -135,8 +136,9 @@ $hide_scroll_padding: 17px;
   &.active {
     color: #8bc34a;
   }
+
   &.error {
-    color: #FFEB3B;
+    color: #ffeb3b;
   }
 }
 
@@ -164,6 +166,7 @@ $hide_scroll_padding: 17px;
   z-index: 450;
   line-height: 50px;
   text-align: center;
+
   &:hover {
     cursor: pointer;
     color: $primary_50;

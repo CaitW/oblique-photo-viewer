@@ -47,14 +47,16 @@ h6 {
 
 .wiscviewer-about-title-row {
   background-color: $primary_800;
+
   .wiscviewer-brand-container {
     display: flex;
   }
+
   .wiscviewer-about-brand {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.30);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
 
   img {
@@ -62,9 +64,11 @@ h6 {
     width: 150px;
     height: 150px;
   }
+
   h1 {
-  color: $primary_50;
+    color: $primary_50;
   }
+
   p {
     color: $primary_200;
   }
@@ -80,13 +84,16 @@ h6 {
     color: $primary_700;
     font-size: 18px;
   }
+
   dd {
     margin-bottom: 10px;
   }
+
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
+
     li {
       line-height: 1.6;
       padding: 5px 0;
@@ -97,19 +104,21 @@ h6 {
 .wiscviewer-section {
   display: flex;
   padding: 10px;
+
   .wiscviewer-section-title {
     min-width: 200px;
     font-size: 30px;
     font-family: $font_header;
   }
-  .wiscviewer-section-text {
 
+  .wiscviewer-section-text {
   }
 }
 
 .wiscviewer-about-contact-row {
   background-color: $primary_100;
   margin-bottom: 20px;
+
   i {
     font-size: 40px;
     margin-right: 10px;
@@ -135,6 +144,7 @@ button {
   border-radius: 0 !important;
   width: 100%;
   text-align: left !important;
+
   &.btn {
     margin-bottom: 5px;
     border: none;
@@ -163,6 +173,7 @@ img {
 
 .wiscviewer-about-download-button-column {
   min-width: 200px;
+
   &:first-child {
     margin-right: 10px;
   }
@@ -172,21 +183,26 @@ img {
   .wiscviewer-section {
     flex-direction: column;
   }
+
   .wiscviewer-about-download-button-row {
     flex-direction: column;
+
     button.btn {
       width: 100%;
     }
   }
+
   .wiscviewer-about-download-button-column {
-      &:first-child {
-    margin-right: 0;
+    &:first-child {
+      margin-right: 0;
+    }
   }
-  }
+
   .wiscviewer-about-title-row {
     .wiscviewer-brand-container {
       flex-direction: column;
     }
+
     .wiscviewer-about-logo img {
       display: none;
     }

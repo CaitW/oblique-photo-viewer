@@ -20,6 +20,7 @@
   .modal-header {
     border: 0;
     font-size: 16px;
+
     i {
       margin: 0 10px;
     }
@@ -35,6 +36,7 @@
     border: 0;
     min-height: 60px;
     padding: 10px;
+
     button {
       margin: 0;
     }
@@ -114,6 +116,7 @@
     border-radius: 0;
     margin-bottom: 0;
   }
+
   .wiscviewer-layer-list-group {
     .wiscviewer-layer-item {
       &.active {

@@ -19,7 +19,7 @@
   width: 50px;
   height: 50px;
   float: left;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.30);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .wiscviewer-brand {
@@ -27,7 +27,7 @@
   font-family: $font_header;
   font-size: 20px;
   padding: 18px 15px 12px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.30);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 
   &:before {
     content: 'WI Shoreline Inventory';
@@ -47,27 +47,32 @@
 }
 
 .wiscviewer-nav-tool {
-    font-size: 16px;
-    > a {
-        color: $primary_100 !important;
-        &:hover {
-            color: $primary_50 !important;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.20);
-        }
-        i {
-            color: $primary_300;
-        }
-        svg {
-            width: 22px;
-            height: 30px;
-            display: inline-block;
-            float: left;
-            margin: -5px 8px auto -7px;
-            path {
-                fill: $primary_300;
-            }
-        }
+  font-size: 16px;
+
+  > a {
+    color: $primary_100 !important;
+
+    &:hover {
+      color: $primary_50 !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
+
+    i {
+      color: $primary_300;
+    }
+
+    svg {
+      width: 22px;
+      height: 30px;
+      display: inline-block;
+      float: left;
+      margin: -5px 8px auto -7px;
+
+      path {
+        fill: $primary_300;
+      }
+    }
+  }
 }
 
 .wiscviewer-mobile-toggle {
@@ -116,29 +121,31 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-
   .wiscviewer-nav-tool-zoom {
     // just the primary button
     > a .SVGInline {
       display: block;
       height: 20px;
+
       svg {
-        margin: -5px 0 auto 0
+        margin: -5px 0 auto 0;
       }
     }
   }
 
   .wiscviewer-nav-tool {
-      font-size: 20px;
-      > a {
-          i {
-              margin-right: 0px;
-              color: $primary_100;
-          }
-          svg path {
-              fill: $primary_100;
-          }
+    font-size: 20px;
+
+    > a {
+      i {
+        margin-right: 0;
+        color: $primary_100;
       }
+
+      svg path {
+        fill: $primary_100;
+      }
+    }
   }
 
   .wiscviewer-nav-tool-zoom {
@@ -180,7 +187,7 @@
   }
 
   .wiscviewer-nav-tool-icon,
-  .wiscviewer-nav-tool > a svg  {
+  .wiscviewer-nav-tool > a svg {
     margin-right: 20px;
   }
 }

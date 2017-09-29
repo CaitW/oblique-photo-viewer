@@ -1,8 +1,12 @@
 @import 'featurePopups/unpinned';
+
 @import 'featurePopups/pinned';
+
 @import 'featurePopups/mobile';
 // tabs
+
 @import 'featurePopups/tabs/data-tab';
+
 @import 'featurePopups/tabs/profile-tab';
 
 // Both Leaflet Popups and Pinned Popups
@@ -74,6 +78,7 @@
 
   span {
     margin-left: 15px;
+
     > i:not(:first-child) {
       margin-left: 10px;
     }
@@ -98,6 +103,7 @@
 
     li {
       height: 100%;
+
       a {
         height: 100%;
         padding: 5px 10px;
@@ -111,7 +117,7 @@
         &[aria-selected=true] {
           background-color: $primary_800;
           color: $primary_50;
-          text-shadow: 0 1px 2px rgba(0,0,0,0.20);
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 
           &:hover,
           &:focus {
@@ -133,7 +139,7 @@
 
   .tab-content {
     background-color: $primary_100;
-    border-width: 0 0 4px 0;
+    border-width: 0 0 4px;
 
     img {
       width: 100%;
@@ -143,7 +149,7 @@
 }
 
 .wiscviewer-feature-popup-footer {
-  padding: 10px 10px;
+  padding: 10px;
   background-color: $primary_900;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -156,11 +162,14 @@
 .wiscviewer-popup-downloads-row {
   padding: 10px 0 0;
   color: $primary_200;
+
   > i {
     margin-left: 5px;
   }
+
   a {
     margin-left: 15px;
+
     i {
       margin-right: 5px;
     }

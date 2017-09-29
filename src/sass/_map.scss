@@ -22,7 +22,6 @@
   $zoom-selector: 'data-zoom=\'' + $zoom-level + '\'';
 
   &[#{$zoom-selector}] {
-
     .layer-type-Point,
     .layer-photos_1976,
     .layer-photos_2007,
@@ -76,9 +75,10 @@
   .leaflet-control-zoom-out {
     background-color: $primary_800;
     color: $primary_100;
+
     &:hover {
       color: $primary_50;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.20);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
   }
 
@@ -92,19 +92,18 @@
     border-radius: 0;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   }
-
 }
 
 .leaflet-control-scale-line {
   background-color: $primary_800;
   color: $primary_200;
   border: none;
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
 }
 
 .leaflet-control-scale-line:not(:first-child) {
-    border: none;
-    margin-top: -2px;
+  border: none;
+  margin-top: -2px;
 }
 
 .leaflet-container .leaflet-control-mouseposition {
@@ -113,5 +112,5 @@
   background-color: $primary_800;
   border: none;
   color: $primary_200;
-  font: 11px "Open Sans";
+  font: 11px 'Open Sans';
 }
