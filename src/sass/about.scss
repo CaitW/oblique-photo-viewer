@@ -81,7 +81,7 @@ h6 {
 .wiscviewer-about-content-row {
   i {
     margin: 0 15px;
-    color: $primary_700;
+    // color: $primary_700;
     font-size: 18px;
   }
 
@@ -110,8 +110,10 @@ h6 {
     font-size: 30px;
     font-family: $font_header;
   }
-
-  .wiscviewer-section-text {
+  .wiscviewer-section-subtitle {
+    font-size: 24px;
+    font-family: $font_header;
+    line-height: 48px;
   }
 }
 
@@ -146,6 +148,7 @@ button {
   text-align: left !important;
 
   &.btn {
+    font-size: 18px;
     margin-bottom: 5px;
     border: none;
   }
@@ -154,6 +157,7 @@ button {
     float: left;
     vertical-align: middle;
     margin: 3px 20px auto 0;
+    color: $primary_700;
   }
 
   &:hover {
@@ -172,7 +176,7 @@ img {
 }
 
 .wiscviewer-about-download-button-column {
-  min-width: 200px;
+  width: 200px;
 
   &:first-child {
     margin-right: 10px;
@@ -186,13 +190,10 @@ img {
 
   .wiscviewer-about-download-button-row {
     flex-direction: column;
-
-    button.btn {
-      width: 100%;
-    }
   }
 
   .wiscviewer-about-download-button-column {
+    width: 100%;
     &:first-child {
       margin-right: 0;
     }
