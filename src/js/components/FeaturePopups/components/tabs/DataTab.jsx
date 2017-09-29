@@ -35,8 +35,8 @@ class DataTab extends React.Component {
         if (typeof layerData !== 'undefined' && typeof layerData.tableProperties !== 'undefined') {
             const displayProperties = layerData.tableProperties;
             for (let property in this.props.featureProperties) {
-                if ( typeof displayProperties[property] === 'undefined'
-                    || displayProperties[property] !== false ) {
+                if (typeof displayProperties[property] === 'undefined'
+                    || displayProperties[property] !== false) {
                     const value = this.props.featureProperties[property];
                     if (typeof displayProperties[property] === 'string') {
                         property = displayProperties[property];
