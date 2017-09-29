@@ -79,7 +79,7 @@ class NavBar extends React.Component {
      */
     toggle(expanded) {
         this.setState({
-            expanded: expanded
+            expanded
         });
         if (expanded !== this.props.expanded) {
             store.dispatch(setNavExpand(expanded));

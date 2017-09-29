@@ -102,13 +102,13 @@ export default class ObliquePhotoMap {
                     console.error('Layer ' + layerId + ' must have a data location');
                 } else {
                     const layerOptions = {
-                        pointToLayer: function (feature, latlng) {
+                        pointToLayer (feature, latlng) {
                             // eslint-disable-next-line
                             return new L.circleMarker(latlng, {
                                 layerId
                             });
                         },
-                        layerId: layerId
+                        layerId
                     };
                     layerOptions.onEachFeature = onEachFeature(layerId, self.map);
                     layerOptions.style = LAYER_STYLE(layerId);
