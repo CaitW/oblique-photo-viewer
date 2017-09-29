@@ -18,6 +18,7 @@ var zip = require('gulp-zip');
 var ogr2ogr = require('ogr2ogr');
 var gulpUtil = require('gulp-util');
 var shell = require('gulp-shell');
+var uglifycss = require('gulp-uglifycss');
 
 /**
  * Webpack Configurations
@@ -214,6 +215,7 @@ gulp.task('sass-app', function() {
         .pipe(debug({title: 'processing stylesheet:'}))
         .pipe(sass.sync()
             .on('error', sass.logError))
+        .pipe(uglifycss())
         .pipe(gulp.dest('./dist/'))
         .pipe(livereload());
 });
@@ -223,6 +225,7 @@ gulp.task('sass-about', function() {
         .pipe(debug({title: 'processing stylesheet:'}))
         .pipe(sass.sync()
             .on('error', sass.logError))
+        .pipe(uglifycss())
         .pipe(gulp.dest('./dist/'))
         .pipe(livereload());
 });
