@@ -59,14 +59,12 @@ class MobileFeaturePopup extends React.Component {
                     <Modal.Header>
                         <PopupTitle featureProperties={this.props.featureProperties}
                             layerGroupName={this.props.layerGroupName}
-                            layerName={this.props.layerName}
-                        />
+                            layerName={this.props.layerName}/>
                     </Modal.Header>
                     <Modal.Body>
                         <PopupTabs layerId={this.props.layerId}
                             featureProperties={this.props.featureProperties}
-                            popupType={this.popupType}
-                        />
+                            popupType={this.popupType}/>
                     </Modal.Body>
                     <Modal.Footer>
                         <PopupFooter layerId={this.props.layerId}

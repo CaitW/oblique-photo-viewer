@@ -19,8 +19,7 @@ const BasemapList = (props) => {
                 basemapName={basemap.name}
                 active={basemap.active}
                 onBasemapClick={boundOnBasemapClick}
-                state={basemap.state}
-            />
+                state={basemap.state}/>
         );
     }
 
@@ -35,8 +34,7 @@ const BasemapList = (props) => {
         <div className="panel panel-default wiscviewer-sidebar-panel">
             <div className={headerClassNames.join(' ')}
                 role="button"
-                tabIndex={0}
-            >
+                tabIndex={0}>
             Basemaps
             </div>
             <div className={bodyClassNames.join(' ')}>

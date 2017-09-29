@@ -44,8 +44,7 @@ class PinnedFeaturePopup extends React.Component {
         return (
             <Draggable axis="both"
                 handle=".handle"
-                zIndex={1100}
-            >
+                zIndex={1100}>
                 <div className="wiscviewer-feature-popup wiscviewer-pinned-feature-popup hidden-xs"
                     role="button"
                     ref={
@@ -53,8 +52,7 @@ class PinnedFeaturePopup extends React.Component {
                     }
                     style={style}
                     onClick={this.props.onClick}
-                    tabIndex={0}
-                >
+                    tabIndex={0}>
                     <div className="wiscviewer-feature-popup-header handle">
                         <div className="wiscviewer-feature-popup-controls">
                             <i className="fa fa-times feature-popup-close-button"
@@ -67,14 +65,12 @@ class PinnedFeaturePopup extends React.Component {
                     <div className="wiscviewer-feature-popup-body">
                         <PopupTabs layerId={this.props.layerId}
                             featureProperties={this.props.featureProperties}
-                            popupType={this.popupType}
-                        />
+                            popupType={this.popupType}/>
                     </div>
                     <div className="wiscviewer-feature-popup-footer">
                         <PopupTitle featureProperties={this.props.featureProperties}
                             layerGroupName={this.props.layerGroupName}
-                            layerName={this.props.layerName}
-                        />
+                            layerName={this.props.layerName}/>
                         <PopupFooter layerId={this.props.layerId}
                             featureProperties={this.props.featureProperties}>
                             <div key="clearfix" className="clearfix"></div>

@@ -93,8 +93,7 @@ class PinnedFeaturePopupContainer extends React.Component {
                     closePopup={() => { this.constructor.closePopup(featureId); }}
                     key={featureId}
                     onClick={() => { this.bringToFront(featureId); }}
-                    zIndex={zIndex}
-                />
+                    zIndex={zIndex}/>
             );
         }
         return (

@@ -18,8 +18,7 @@ const LayerGroup = (props) => {
                 layerName={props.layers[layerId].name}
                 active={props.layers[layerId].active}
                 onLayerClick={boundOnLayerClick}
-                state={props.layers[layerId].state}
-            />
+                state={props.layers[layerId].state}/>
         );
     }
     const bodyClassNames = ['panel-body', 'pullDown', 'wiscviewer-sidebar-panel-body'];
@@ -28,8 +27,7 @@ const LayerGroup = (props) => {
         <div className="panel panel-default wiscviewer-sidebar-panel">
             <div className={headerClassNames.join(' ')}
                 role="button"
-                tabIndex={0}
-            >
+                tabIndex={0}>
                 <span className="wiscviewer-layer-group-name"> {props.layerGroupName} </span>
             </div>
             <div className={bodyClassNames.join(' ')}>

@@ -106,8 +106,7 @@ class LeafletMap extends React.Component {
                 id="map"
                 className="wiscviewer-map"
                 data-zoom={this.props.map.zoom}
-                data-basemap={this.props.activeBasemap}
-            >
+                data-basemap={this.props.activeBasemap}>
             </div>
         );
     }

@@ -42,8 +42,7 @@ class PopupTabs extends React.Component {
                         title="Image"
                         imgPath={photoURLs.popup}
                         alt="Oblique"
-                        update={this.update}
-                    />
+                        update={this.update}/>
                 );
                 tabs.push(
                     <DataTab key="data"
@@ -51,8 +50,7 @@ class PopupTabs extends React.Component {
                         title="Data"
                         layerId={layerId}
                         featureProperties={featureProperties}
-                        update={this.update}
-                    />
+                        update={this.update}/>
                 );
                 break;
             }
@@ -66,8 +64,7 @@ class PopupTabs extends React.Component {
                             title="Bluff Profile"
                             jsonLocation={urls.bluffJson}
                             update={this.update}
-                            popupType={this.props.popupType}
-                        />
+                            popupType={this.props.popupType}/>
                     );
                     eventKeyIndex += 1;
                 }
@@ -78,8 +75,7 @@ class PopupTabs extends React.Component {
                             title="Bathy Profile"
                             jsonLocation={urls.bathyJson}
                             update={this.update}
-                            popupType={this.props.popupType}
-                        />
+                            popupType={this.props.popupType}/>
                     );
                     eventKeyIndex += 1;
                 }
@@ -89,8 +85,7 @@ class PopupTabs extends React.Component {
                         title="Data"
                         layerId={layerId}
                         featureProperties={featureProperties}
-                        update={this.update}
-                    />
+                        update={this.update}/>
                 );
                 break;
             }
@@ -101,8 +96,7 @@ class PopupTabs extends React.Component {
                         title="Data"
                         layerId={layerId}
                         featureProperties={featureProperties}
-                        update={this.update}
-                    />
+                        update={this.update}/>
                 );
                 break;
             }

@@ -15,16 +15,14 @@ const LegendLayer = (props) => {
             <LegendStyle key={style.styleName}
                 styleName={style.styleName}
                 iconStyle={style.iconStyle}
-                styleIconClassNames={style.styleIconClassNames}
-            />
+                styleIconClassNames={style.styleIconClassNames}/>
         );
     }
     return (
         <div className="panel panel-default wiscviewer-sidebar-panel wiscviewer-legend-layer-group">
             <div className={headerClassNames.join(' ')}
                 role="button"
-                tabIndex={0}
-            >
+                tabIndex={0}>
                 <span className="wiscviewer-layer-name"> {props.layerName} </span>
                 <span className="wiscviewer-layer-group-name"> {props.layerGroupName} </span>
             </div>

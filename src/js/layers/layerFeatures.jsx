@@ -159,8 +159,7 @@ function createLeafletPopup(feature, featureLayer, layerId, map) {
                 closePopup={closePopup}
                 getPosition={getPopupPosition}
                 openNextFeature={featureLayer.openNextFeature}
-                openPreviousFeature={featureLayer.openPreviousFeature}
-            />,
+                openPreviousFeature={featureLayer.openPreviousFeature}/>,
             container
         );
     });
