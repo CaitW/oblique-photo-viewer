@@ -37,9 +37,9 @@ class PinnedFeaturePopup extends React.Component {
             y: this.props.initialPosition.y - this.state.height
         };
         const style = {
-            'top': initialPositionAdjustedForContent.y,
-            'left': initialPositionAdjustedForContent.x,
-            'zIndex': this.props.zIndex
+            top: initialPositionAdjustedForContent.y,
+            left: initialPositionAdjustedForContent.x,
+            zIndex: this.props.zIndex
         };
         return (
             <Draggable axis="both"

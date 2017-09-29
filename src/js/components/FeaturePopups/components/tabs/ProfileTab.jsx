@@ -132,8 +132,8 @@ class ProfileTab extends React.Component {
         delete tabProps.update;
         delete tabProps.popupType;
         const style = {
-            'height': '200px',
-            'width': '350px'
+            height: '200px',
+            width: '350px'
         };
         if (this.props.popupType === 'modal') {
             style.width = '100%';
