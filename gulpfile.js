@@ -106,15 +106,17 @@ gulp.task('clean', () => del([
  *
  * Parent tasks: (none) - MUST BE RUN MANUALLY
  */
-gulp.task('delete-temp-downloads', () => del(['./temp/']));
+// zip up geojson layer files
 gulp.task('zip-geojson-layers', () => gulp.src(['./src/data/layers/*.json'])
     .pipe(debug({ title: 'zipping:' }))
     .pipe(zip('layers-geojson.zip'))
     .pipe(gulp.dest('./src/downloads')));
+// zip up JSON profiles
 gulp.task('zip-json-profiles', () => gulp.src(['./src/data/profiles/**/*.json'])
     .pipe(debug({ title: 'zipping:' }))
     .pipe(zip('profiles-json.zip'))
     .pipe(gulp.dest('./src/downloads')));
+// convert JSON layers to shapefiles, zip
 gulp.task('convert-and-zip-layer-shapefiles', (done) => {
     const geojsons = returnGeoJsonFiles(walkSync('./src/data/layers/'));
 
@@ -152,6 +154,10 @@ gulp.task('convert-and-zip-layer-shapefiles', (done) => {
     }
     return convertToShapefile(0, geojsons);
 });
+// delete temporary downloads folder
+gulp.task('delete-temp-downloads', () => del(['./temp/']));
+
+gulp.task('make-downloads', gulp.series('zip-geojson-layers', 'zip-json-profiles', 'convert-and-zip-layer-shapefiles', 'delete-temp-downloads'));
 
 
 /**
@@ -161,25 +167,32 @@ gulp.task('convert-and-zip-layer-shapefiles', (done) => {
  *  - dev-build
  *  - Build
  */
+// copy index, about html files
 gulp.task('copy-html', () => gulp.src(['src/index.html', 'src/about.html'])
     .pipe(debug({ title: 'copying:' }))
     .pipe(gulp.dest('dist/'))
     .pipe(livereload()));
+// copy data folder
 gulp.task('copy-data', () => gulp.src('./src/data/**/*')
     .pipe(debug({ title: 'copying:' }))
     .pipe(gulp.dest('./dist/data')));
+// copy downloads folder
 gulp.task('copy-downloads', () => gulp.src('./src/downloads/**/*')
     .pipe(debug({ title: 'copying:' }))
     .pipe(gulp.dest('./dist/downloads/')));
+// copy fonts
 gulp.task('copy-fonts', () => gulp.src('./src/fonts/**/*')
     .pipe(debug({ title: 'copying:' }))
     .pipe(gulp.dest('./dist/fonts')));
+// copy favicons
 gulp.task('copy-favicons', () => gulp.src('./src/favicons/**/*')
     .pipe(debug({ title: 'copying:' }))
     .pipe(gulp.dest('./dist/')));
+// copy images
 gulp.task('copy-img', () => gulp.src('./src/img/**/*')
     .pipe(debug({ title: 'copying:' }))
     .pipe(gulp.dest('./dist/img/')));
+
 gulp.task('copy', gulp.parallel('copy-html', 'copy-data', 'copy-downloads', 'copy-fonts', 'copy-favicons', 'copy-img'));
 
 /**
@@ -236,21 +249,24 @@ gulp.task('webpack-dev', done => webpack(webpack_dev, (error) => {
  * Parent Tasks:
  *  - build
  */
-gulp.task('webpack-prod', done => webpack(webpack_prod, (error) => {
-    let pluginError;
-    if (error) {
-        pluginError = new gulpUtil.PluginError('webpack', error);
-        if (done) {
-            done(pluginError);
-        } else {
-            gulpUtil.log('[webpack]', pluginError);
+gulp.task('webpack-prod',
+    done => webpack(webpack_prod,
+    (error) => {
+        let pluginError;
+        if (error) {
+            pluginError = new gulpUtil.PluginError('webpack', error);
+            if (done) {
+                done(pluginError);
+            } else {
+                gulpUtil.log('[webpack]', pluginError);
+            }
+            return;
         }
-        return;
+        if (done) {
+            done();
+        }
     }
-    if (done) {
-        done();
-    }
-}));
+));
 
 /*
  * Watch Files
@@ -313,8 +329,7 @@ gulp.task('lint-css', () =>
     // stylelint "src/sass/*.scss"
     // Command line command to format:
     // stylefmt -r "src/sass/*.scss"
-    gulp
-        .src(['src/sass/*.scss', '!src/sass/lib/**'])
+    gulp.src(['src/sass/*.scss', '!src/sass/lib/**'])
         .pipe(debug({ title: 'linting css :' }))
         .pipe(gulpStylelint({
             reporters: [
@@ -322,6 +337,9 @@ gulp.task('lint-css', () =>
             ]
         }))
 );
+
+// lint code
+gulp.task('lint', gulp.parallel('lint-js', 'lint-css'));
 
 /**
  * Copy ./dist directory to the web server for hosting
@@ -354,10 +372,6 @@ gulp.task('default', gulp.parallel('dev-build'));
 /**
  * Utilities
  */
-// lint code
-gulp.task('lint', gulp.parallel('lint-js', 'lint-css'));
-// make data downloads
-gulp.task('make-downloads', gulp.series('zip-geojson-layers', 'zip-json-profiles', 'convert-and-zip-layer-shapefiles', 'delete-temp-downloads'));
 // for active development
 gulp.task('watch', gulp.parallel('default', 'watch-files'));
 
