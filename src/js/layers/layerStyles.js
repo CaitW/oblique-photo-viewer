@@ -90,7 +90,7 @@ const DEFAULT_STYLES = {
  * - the keys of each function in LAYER_STYLES_BY_ID correspond to layers in config.json
  */
 const LAYER_STYLES_BY_ID = {
-    backshore_1976 (subStyleName) {
+    backshore_1976(subStyleName) {
         const style = {
             ...DEFAULT_STYLES.LineString
         };
@@ -113,7 +113,7 @@ const LAYER_STYLES_BY_ID = {
         }
         return style;
     },
-    backshore_2007 (subStyleName) {
+    backshore_2007(subStyleName) {
         const style = {
             ...DEFAULT_STYLES.LineString
         };
@@ -136,21 +136,21 @@ const LAYER_STYLES_BY_ID = {
         }
         return style;
     },
-    photos_1976 () {
+    photos_1976() {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.PHOTOS[0],
             strokeColor: COLORS.PHOTOS[0]
         };
     },
-    photos_2007 () {
+    photos_2007() {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.PHOTOS[1],
             strokeColor: COLORS.PHOTOS[1],
         };
     },
-    structure_1976 () {
+    structure_1976() {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.STRUCTURES[0],
@@ -158,7 +158,7 @@ const LAYER_STYLES_BY_ID = {
             opacity: 1
         };
     },
-    structure_2007 () {
+    structure_2007() {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.STRUCTURES[1],
@@ -166,7 +166,7 @@ const LAYER_STYLES_BY_ID = {
             opacity: 1
         };
     },
-    beachclass_1976 (subStyleName) {
+    beachclass_1976(subStyleName) {
         const style = {
             ...DEFAULT_STYLES.LineString
         };
@@ -207,7 +207,7 @@ const LAYER_STYLES_BY_ID = {
         }
         return style;
     },
-    beachclass_2007 (subStyleName) {
+    beachclass_2007(subStyleName) {
         const style = {
             ...DEFAULT_STYLES.LineString
         };
@@ -248,7 +248,7 @@ const LAYER_STYLES_BY_ID = {
         }
         return style;
     },
-    profiles (subStyleName) {
+    profiles(subStyleName) {
         const style = {
             ...DEFAULT_STYLES.LineString,
             color: COLORS.PROFILES.bluff
@@ -262,21 +262,21 @@ const LAYER_STYLES_BY_ID = {
         }
         return style;
     },
-    photos_2016 () {
+    photos_2016() {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.PHOTOS[3],
             strokeColor: COLORS.PHOTOS[3]
         };
     },
-    photos_2017 () {
+    photos_2017() {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.PHOTOS[4],
             strokeColor: COLORS.PHOTOS[4]
         };
     },
-    photos_2012 () {
+    photos_2012() {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.PHOTOS[2],

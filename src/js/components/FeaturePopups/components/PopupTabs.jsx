@@ -123,7 +123,7 @@ PopupTabs.propTypes = {
 };
 
 PopupTabs.defaultProps = {
-    update () {}
+    update() {}
 };
 
 export default PopupTabs;
