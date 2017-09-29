@@ -42,14 +42,14 @@ class ProfileTab extends React.Component {
             y: (height + margin.top + 25)
         };
         if (this.props.popupType === 'modal') {
-            xAxisLabel.y = xAxisLabel.y + 10;
+            xAxisLabel.y += 10;
         }
         const yAxisLabel = {
             x: 0 - (height / 2),
             y: (0 - margin.left) + 5
         };
         if (this.props.popupType === 'modal') {
-            yAxisLabel.y = yAxisLabel.y + 5;
+            yAxisLabel.y += 5;
         }
         /**
          * Scale Functions
