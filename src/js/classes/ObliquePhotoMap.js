@@ -92,6 +92,9 @@ export default class ObliquePhotoMap {
                     this.layerIndex[layerId].once('load', () => {
                         store.dispatch(layerLoaded(layerId));
                     });
+                    this.layerIndex[layerId].once('tileerror', () => {
+                        store.dispatch(layerError(layerId));
+                    });
                 }
                 break;
             case 'geojson':
@@ -168,6 +171,9 @@ export default class ObliquePhotoMap {
                 store.dispatch(basemapPreload(basemapId));
                 self.basemapIndex[basemapId].once('load', () => {
                     store.dispatch(basemapLoaded(basemapId));
+                });
+                self.basemapIndex[basemapId].once('tileerror', () => {
+                    store.dispatch(basemapError(basemapId));
                 });
                 this.basemapGroup.addLayer(self.basemapIndex[basemapId]);
             }
