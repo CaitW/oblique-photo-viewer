@@ -118,7 +118,7 @@ export function getProfileURLs(featureProperties) {
     };
     if (featureProperties.bluff_xls) {
         urls.bluffXls = bluffXls + featureProperties.bluff_xls;
-        urls.bluffJson = bluffJson+ featureProperties.bluff_json;
+        urls.bluffJson = bluffJson + featureProperties.bluff_json;
     }
     if (featureProperties.bathy_xls) {
         urls.bathyXls = bathyXls + featureProperties.bathy_xls;
