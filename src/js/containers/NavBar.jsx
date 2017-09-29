@@ -101,7 +101,7 @@ class NavBar extends React.Component {
                 <Navbar.Collapse className="wiscviewer-nav-tools">
                     <Nav pullRight>
                         <NavItem eventKey={1}
-                            className='visible-xs-block wiscviewer-nav-tool wiscviewer-nav-tool-layers'
+                            className="visible-xs-block wiscviewer-nav-tool wiscviewer-nav-tool-layers"
                             onClick={this.constructor.onMobileLayersClick}
                         >
                             <i className="fa fa-clone wiscviewer-nav-tool-icon"></i>Layers
