@@ -68,7 +68,6 @@ const getContentByLayerId = (layerId, featureProperties) => {
 };
 
 const PopupFooter = (props) => {
-
     const footer = getContentByLayerId(props.layerId, props.featureProperties);
     if (footer.length > 0) {
         footer.unshift(

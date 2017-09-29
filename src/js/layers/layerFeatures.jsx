@@ -31,7 +31,6 @@ const LAYER_FEATURES = {};
  * @param {L.Layer} featureLayer - a leaflet layer representing a single feature
  */
 function getFeatureMidpoint(featureLayer) {
-
     /**
      * Convert a lat/lng to a geojson point
      *

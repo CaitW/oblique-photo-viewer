@@ -10,7 +10,6 @@ import ProfileTab from './tabs/ProfileTab';
 import { getPhotoURLs, getProfileURLs } from '../../../util';
 
 class PopupTabs extends React.Component {
-
     constructor(props) {
         super(props);
         this.update = this.update.bind(this);
@@ -21,7 +20,6 @@ class PopupTabs extends React.Component {
      */
     // eslint-disable-next-line class-methods-use-this
     update() {
-
         if (typeof this.props.update !== 'undefined') {
             this.props.update();
         }

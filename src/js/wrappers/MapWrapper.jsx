@@ -30,7 +30,6 @@ const MapWrapper = (props) => {
             {props.children}
         </Col>
     );
-
 };
 
 MapWrapper.propTypes = {

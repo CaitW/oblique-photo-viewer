@@ -122,7 +122,6 @@ class ProfileTab extends React.Component {
                 .attr('class', 'axis-label')
                 .style('text-anchor', 'middle')
                 .text('Altitude (ft)');
-
         });
     }
     render() {

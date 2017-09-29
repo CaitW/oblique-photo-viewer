@@ -42,7 +42,6 @@ const ZoomToShoreline = (props) => {
                 </MenuItem>
             );
         }
-
     }
     return (
         <NavDropdown title={title}
