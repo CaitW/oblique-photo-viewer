@@ -94,7 +94,7 @@ class Sidebar extends React.Component {
                 </div>
             </Col>
         );
-    };
-};
+    }
+}
 
 export default Sidebar;

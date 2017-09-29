@@ -230,7 +230,7 @@ function addFeatureLayerToList(featureLayer, layerId) {
     LAYER_FEATURES[layerId] = LAYER_FEATURES[layerId] || [];
     LAYER_FEATURES[layerId].push(featureLayer);
     return LAYER_FEATURES[layerId].length - 1;
-};
+}
 
 /**
  * This is the primary exported function from layerFeatures.js
