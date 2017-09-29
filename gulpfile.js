@@ -338,7 +338,9 @@ gulp.task('lint-js', (done) => {
         })
 });
 gulp.task('lint-css', function () {
-    // Command line command to lint:
+    // Command line to lint:
+    // stylelint "src/sass/*.scss"
+    // Command line command to format:
     // stylefmt -r "src/sass/*.scss"
   return gulp
     .src(['src/sass/*.scss','!src/sass/lib/**'])
