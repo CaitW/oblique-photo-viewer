@@ -1,24 +1,18 @@
 const gulp = require('gulp');
 const webpack = require('webpack');
-const watch = require('gulp-watch');
 const livereload = require('gulp-livereload');
 const sass = require('gulp-sass');
-const concat = require('gulp-concat');
-const uglify = require('gulp-uglify');
-const pump = require('pump');
 const del = require('del');
 const fs = require('fs');
-const runSequence = require('run-sequence');
 const eslint = require('gulp-eslint');
 const gulpStylelint = require('gulp-stylelint');
-const util = require('gulp-util');
-const jsonMinify = require('gulp-jsonminify');
 const debug = require('gulp-debug');
 const zip = require('gulp-zip');
 const ogr2ogr = require('ogr2ogr');
 const gulpUtil = require('gulp-util');
 const shell = require('gulp-shell');
 const uglifycss = require('gulp-uglifycss');
+const path = require('path');
 
 /**
  * Webpack Configurations
@@ -35,11 +29,6 @@ const webpack_dev = require('./webpack.config.js');
 const webpack_prod = require('./webpack.config.prod.js');
 
 /**
- * Configuration for Documentation (ESDoc)
- */
-const esdoc_config = JSON.parse(fs.readFileSync('./.esdoc.json'));
-
-/**
  * Server Config
  *
  * - Tries to get server_config.json. If it can't be found, throw an error.
@@ -51,7 +40,10 @@ try {
     CONFIG = fs.readFileSync('./server_config.json');
     CONFIG = JSON.parse(CONFIG);
 } catch (err) {
-    console.log('\x1b[31m%s\x1b[0m', 'No server_config.json found. Copy and rename server_config.example.json or create your own. See github for more info.');
+    console.log(
+        '\x1b[31m%s\x1b[0m',
+        'No server_config.json found. Copy and rename server_config.example.json or create your own. See github for more info.'
+    );
     throw 'Error';
 }
 
@@ -61,10 +53,7 @@ try {
 
 // List all files in a directory in Node.js recursively in a synchronous fashion
 function walkSync(dir, filelist) {
-    var path = path || require('path');
-    var fs = fs || require('fs'),
-        files = fs.readdirSync(dir);
-    filelist = filelist || [];
+    const files = fs.readdirSync(dir);
     files.forEach((file) => {
         if (fs.statSync(path.join(dir, file))
             .isDirectory()) {
@@ -118,7 +107,7 @@ gulp.task('zip-json-profiles', () => gulp.src(['./src/data/profiles/**/*.json'])
     .pipe(gulp.dest('./src/downloads')));
 // convert JSON layers to shapefiles, zip
 gulp.task('convert-and-zip-layer-shapefiles', (done) => {
-    const geojsons = returnGeoJsonFiles(walkSync('./src/data/layers/'));
+    const geojsons = returnGeoJsonFiles(walkSync('./src/data/layers/', []));
 
     function convertToShapefile(index, fileList) {
         if (index < fileList.length) {
@@ -245,7 +234,7 @@ gulp.task('webpack-dev', done => webpack(webpack_dev, (error) => {
 
 /*
  * Build Javascript (production)
-*
+ *
  * Parent Tasks:
  *  - build
  */
