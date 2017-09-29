@@ -1,2 +1,2 @@
-src/lib/**/*.js
+src/js/lib/**
 *.json
