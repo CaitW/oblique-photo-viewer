@@ -13,7 +13,7 @@ MobileToggle.contextTypes = {
     $bs_navbar: PropTypes.shape({
         bsClass: PropTypes.string,
         expanded: PropTypes.bool,
-        onToggle: PropTypes.func.isRequired,
+        onToggle: PropTypes.func.isRequired
     })
 };
 

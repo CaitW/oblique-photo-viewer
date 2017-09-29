@@ -147,7 +147,7 @@ const LAYER_STYLES_BY_ID = {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.PHOTOS[1],
-            strokeColor: COLORS.PHOTOS[1],
+            strokeColor: COLORS.PHOTOS[1]
         };
     },
     structure_1976() {

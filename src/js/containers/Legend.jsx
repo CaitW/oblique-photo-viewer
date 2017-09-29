@@ -37,7 +37,7 @@ const Legend = (props) => {
 };
 
 Legend.propTypes = {
-    activeLayerStyleTypes: PropTypes.object.isRequired,
+    activeLayerStyleTypes: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps)(Legend);
