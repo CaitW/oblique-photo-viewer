@@ -59,4 +59,3 @@ MobileLayerList.propTypes = {
 
 export default connect(mapStateToProps)(MobileLayerList);
 
-
