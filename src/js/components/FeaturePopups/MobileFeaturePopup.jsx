@@ -73,8 +73,7 @@ class MobileFeaturePopup extends React.Component {
                                 <i className="fa fa-arrow-left wiscviewer-feature-popup-previous-button"
                                     onClick={this.openPreviousFeature}
                                     role="button"
-                                    tabIndex={-1}>
-                                </i>
+                                    tabIndex={-1} />
                                 <Button key="close"
                                     className="wiscviewer-mobile-feature-modal-close"
                                     onClick={this.constructor.close}>
@@ -83,8 +82,7 @@ class MobileFeaturePopup extends React.Component {
                                 <i className="fa fa-arrow-right wiscviewer-feature-popup-next-button"
                                     onClick={this.openNextFeature}
                                     role="button"
-                                    tabIndex={-1}>
-                                </i>
+                                    tabIndex={-1} />
                             </div>
                         </PopupFooter>
                     </Modal.Footer>

@@ -94,8 +94,7 @@ class NavBar extends React.Component {
                 className="wiscviewer-nav">
                 <Navbar.Header>
                     <img src="img/wisconsin.svg" alt="Wisconsin Logo" className="wiscviewer-logo" />
-                    <Navbar.Brand className="wiscviewer-brand">
-                    </Navbar.Brand>
+                    <Navbar.Brand className="wiscviewer-brand" />
                     <MobileToggle />
                 </Navbar.Header>
                 <Navbar.Collapse className="wiscviewer-nav-tools">
@@ -103,7 +102,7 @@ class NavBar extends React.Component {
                         <NavItem eventKey={1}
                             className="visible-xs-block wiscviewer-nav-tool wiscviewer-nav-tool-layers"
                             onClick={this.constructor.onMobileLayersClick}>
-                            <i className="fa fa-clone wiscviewer-nav-tool-icon"></i>Layers
+                            <i className="fa fa-clone wiscviewer-nav-tool-icon" />Layers
                         </NavItem>
                         <ZoomToShoreline onZoomShorelineClick={this.constructor.onZoomShorelineClick} />
                         <ResetView onResetViewClick={this.constructor.onResetViewClick} />

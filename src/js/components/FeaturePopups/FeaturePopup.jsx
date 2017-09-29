@@ -68,25 +68,21 @@ class FeaturePopup extends React.Component {
                         <i className="fa fa-thumb-tack feature-popup-pin"
                             onClick={this.pin}
                             role="button"
-                            tabIndex={-1}>
-                        </i>
+                            tabIndex={-1} />
                         <span className="wiscviewer-feature-nav-tools">
                             <i className="fa fa-arrow-left feature-popup-previous-button"
                                 onClick={this.props.openPreviousFeature}
                                 role="button"
-                                tabIndex={-1}>
-                            </i>
+                                tabIndex={-1} />
                             <i className="fa fa-arrow-right feature-popup-next-button"
                                 onClick={this.props.openNextFeature}
                                 role="button"
-                                tabIndex={-1}>
-                            </i>
+                                tabIndex={-1} />
                         </span>
                         <i className="fa fa-times feature-popup-close-button"
                             onClick={this.close}
                             role="button"
-                            tabIndex={-1}>
-                        </i>
+                            tabIndex={-1} />
                     </div>
                 </div>
                 <div className="wiscviewer-feature-popup-body">
@@ -101,7 +97,7 @@ class FeaturePopup extends React.Component {
                         layerName={layerName}/>
                     <PopupFooter layerId={this.props.layerId}
                         featureProperties={this.props.featureProperties}>
-                        <div key="clearfix" className="clearfix"></div>
+                        <div key="clearfix" className="clearfix" />
                     </PopupFooter>
                 </div>
             </div>

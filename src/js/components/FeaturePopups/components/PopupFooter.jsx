@@ -27,7 +27,7 @@ const getContentByLayerId = (layerId, featureProperties) => {
                     target="_blank"
                     rel="noopener noreferrer" >
                     <Button className="open-larger-image-button">
-                        <i className="fa fa-image"></i> Full Size
+                        <i className="fa fa-image" /> Full Size
                     </Button>
                 </a>
             );
@@ -42,7 +42,7 @@ const getContentByLayerId = (layerId, featureProperties) => {
                         target="_blank"
                         rel="noopener noreferrer" >
                         <Button className="download-excel-button">
-                            <i className="fa fa-table"></i> Bluff Profile
+                            <i className="fa fa-table" /> Bluff Profile
                         </Button>
                     </a>
                 );
@@ -54,7 +54,7 @@ const getContentByLayerId = (layerId, featureProperties) => {
                         target="_blank"
                         rel="noopener noreferrer" >
                         <Button className="download-excel-button">
-                            <i className="fa fa-table"></i> Bathymetry Profile
+                            <i className="fa fa-table" /> Bathymetry Profile
                         </Button>
                     </a>
                 );
@@ -71,7 +71,7 @@ const PopupFooter = (props) => {
     const footer = getContentByLayerId(props.layerId, props.featureProperties);
     if (footer.length > 0) {
         footer.unshift(
-            <i key="download" className="fa fa-download"></i>
+            <i key="download" className="fa fa-download" />
         );
     }
 

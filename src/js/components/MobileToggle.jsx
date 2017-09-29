@@ -5,7 +5,7 @@ const MobileToggle = (props, context) => (
     <button type="button"
         onClick={context.$bs_navbar.onToggle}
         className="navbar-toggle collapsed wiscviewer-mobile-toggle">
-        <i className="fa fa-bars"></i>
+        <i className="fa fa-bars" />
     </button>
 );
 

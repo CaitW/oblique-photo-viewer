@@ -78,14 +78,14 @@ class Sidebar extends React.Component {
                             tabIndex={-1}
                             onClick={this.onTabClick}
                             value="LayerList">
-                            <i className="fa fa-map"> </i>
+                            <i className="fa fa-map" />
                         </div>
                         <div className={this.getClassName('Legend')}
                             onClick={this.onTabClick}
                             role="button"
                             tabIndex={-1}
                             value="Legend">
-                            <i className="fa fa-key"> </i>
+                            <i className="fa fa-key" />
                         </div>
                     </div>
                     <div className="wiscviewer-sidebar-tab-content">

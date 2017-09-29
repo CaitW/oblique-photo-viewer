@@ -29,7 +29,7 @@ const Layer = (props) => {
         <ListGroupItem active={props.active}
             className={layerClassNames.join(' ')}
             onClick={props.onLayerClick}>
-            <i className={iconClassNames.join(' ')}></i>
+            <i className={iconClassNames.join(' ')} />
             {props.layerName}
         </ListGroupItem>
     );

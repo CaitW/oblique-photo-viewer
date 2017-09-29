@@ -58,8 +58,7 @@ class PinnedFeaturePopup extends React.Component {
                             <i className="fa fa-times feature-popup-close-button"
                                 onClick={this.props.closePopup}
                                 role="button"
-                                tabIndex={-1}>
-                            </i>
+                                tabIndex={-1} />
                         </div>
                     </div>
                     <div className="wiscviewer-feature-popup-body">
@@ -73,7 +72,7 @@ class PinnedFeaturePopup extends React.Component {
                             layerName={this.props.layerName}/>
                         <PopupFooter layerId={this.props.layerId}
                             featureProperties={this.props.featureProperties}>
-                            <div key="clearfix" className="clearfix"></div>
+                            <div key="clearfix" className="clearfix" />
                         </PopupFooter>
                     </div>
                 </div>
