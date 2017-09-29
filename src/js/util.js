@@ -58,7 +58,7 @@ export function getPhotoURLs(layerId, photoProperties) {
         case 'photos_2007': {
             const base = CONFIG.resources.photos.urlBase;
             const lakeName = photoProperties['Great Lake'].replace(/ /gi, '');
-            const year = photoProperties['Year'];
+            const year = photoProperties.Year;
             const fileName = photoProperties['File Name'];
             for (const size in CONFIG.resources.photos.sizes) {
                 const sizeDir = CONFIG.resources.photos.sizes[size];
