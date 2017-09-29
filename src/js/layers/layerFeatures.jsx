@@ -241,12 +241,14 @@ function addFeatureLayerToList(featureLayer, layerId) {
 export function onEachFeature(layerId, map) {
     return (feature, featureLayer) => {
         const featureIndex = addFeatureLayerToList(featureLayer, layerId);
+        /* eslint-disable no-param-reassign */
         featureLayer.popup = false;
         featureLayer.featureIndex = featureIndex;
         featureLayer.layerId = layerId;
         featureLayer.map = map;
         featureLayer.feature = feature;
         featureLayer.togglePopup = togglePopup.bind(featureLayer);
+        /* eslint-enable no-param-reassign */
         featureLayer.on('mouseup', featureLayer.togglePopup);
     };
 }
