@@ -22,7 +22,6 @@ module.exports = {
                 body: 1
             }
         }],
-        'arrow-parens': ['error', 'as-needed'],
         'guard-for-in': 0,
         'no-console': ['error', {allow: ['error']}],
         // TODO: for in loops, for of loops
@@ -34,7 +33,13 @@ module.exports = {
             message: '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
         }],
         'max-len': ['error', 120],
-        'react/forbid-prop-types': 0
+        'react/forbid-prop-types': 0,
+        "comma-dangle": ["error", "never"],
+        'react/jsx-indent': ['error', 4],
+        'react/jsx-indent-props': ['error', 4],
+        'react/jsx-first-prop-new-line': ['error', 'never'],
+        'prefer-template': 'off',
+        'react/jsx-closing-bracket-location': ['error', 'after-props']
     },
     env: {
         "browser": true
