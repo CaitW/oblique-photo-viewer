@@ -15,7 +15,7 @@ const Layer = (props) => {
     } else if (props.state === 'error') {
         iconClassNames.push('fa-exclamation-triangle');
         iconClassNames.push('error');
-    } else {
+    } else if (props.state === 'loaded') {
         if (props.active) {
             iconClassNames.push('fa-check');
             iconClassNames.push('active');
