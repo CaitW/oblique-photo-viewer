@@ -13,7 +13,7 @@ import store from '../store';
 import LayerList from '../containers/LayerList';
 import { closeMobileLayerList } from '../ducks/mobile';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
         active: state.mobile.layersPopup.visible
     });
 class MobileLayerList extends React.Component {

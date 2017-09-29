@@ -15,7 +15,7 @@ import { toggleLayer } from '../ducks/layers';
 import { toggleBasemap } from '../ducks/basemaps';
 import { mapLayerGroupsToLayers, getBasemapsByIdWithData } from '../selectors';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
         layers: mapLayerGroupsToLayers(state),
         basemaps: getBasemapsByIdWithData(state)
     });

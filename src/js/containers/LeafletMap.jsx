@@ -13,7 +13,7 @@ import ObliquePhotoMap from '../classes/ObliquePhotoMap';
 import { doneZooming } from '../ducks/map';
 import { getLayersByIdWithData, getBasemapsByIdWithData, getActiveBasemapId } from '../selectors';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
         layers: getLayersByIdWithData(state),
         basemaps: getBasemapsByIdWithData(state),
         map: state.map,
