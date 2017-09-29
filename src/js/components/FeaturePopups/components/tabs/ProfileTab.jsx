@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Tab  } from 'react-bootstrap';
+import { Tab } from 'react-bootstrap';
 
 import { scaleLinear } from 'd3-scale';
 import { axisBottom, axisLeft } from 'd3-axis';
