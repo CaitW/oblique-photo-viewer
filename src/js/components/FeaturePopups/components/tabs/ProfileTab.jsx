@@ -80,7 +80,7 @@ class ProfileTab extends React.Component {
             .y(d => y(d.y));
         const michiganAvg = line()
             .x(d => (x(d.x)))
-            .y(d => y(CONFIG.lakeMichiganWaterLevel.avg));
+            .y(() => y(CONFIG.lakeMichiganWaterLevel.avg));
         // Adds the svg canvas
         const svg = select(this.profileDiv)
             .append('svg')
