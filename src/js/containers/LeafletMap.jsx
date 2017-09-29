@@ -8,9 +8,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import store from '../store';
 import ObliquePhotoMap from '../classes/ObliquePhotoMap';
-import { doneZooming } from '../ducks/map';
 import { getLayersByIdWithData, getBasemapsByIdWithData, getActiveBasemapId } from '../selectors';
 
 const mapStateToProps = state => ({
