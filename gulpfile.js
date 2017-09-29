@@ -1,24 +1,24 @@
-var gulp = require('gulp');
-var webpack = require('webpack');
-var watch = require('gulp-watch');
-var livereload = require('gulp-livereload');
-var sass = require('gulp-sass');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var pump = require('pump');
-var del = require('del');
-var fs = require('fs');
-var runSequence = require('run-sequence');
-var eslint = require('gulp-eslint');
-var gulpStylelint = require('gulp-stylelint');
-var util = require('gulp-util');
-var jsonMinify = require('gulp-jsonminify');
-var debug = require('gulp-debug');
-var zip = require('gulp-zip');
-var ogr2ogr = require('ogr2ogr');
-var gulpUtil = require('gulp-util');
-var shell = require('gulp-shell');
-var uglifycss = require('gulp-uglifycss');
+const gulp = require('gulp');
+const webpack = require('webpack');
+const watch = require('gulp-watch');
+const livereload = require('gulp-livereload');
+const sass = require('gulp-sass');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const pump = require('pump');
+const del = require('del');
+const fs = require('fs');
+const runSequence = require('run-sequence');
+const eslint = require('gulp-eslint');
+const gulpStylelint = require('gulp-stylelint');
+const util = require('gulp-util');
+const jsonMinify = require('gulp-jsonminify');
+const debug = require('gulp-debug');
+const zip = require('gulp-zip');
+const ogr2ogr = require('ogr2ogr');
+const gulpUtil = require('gulp-util');
+const shell = require('gulp-shell');
+const uglifycss = require('gulp-uglifycss');
 
 /**
  * Webpack Configurations
@@ -31,13 +31,13 @@ var uglifycss = require('gulp-uglifycss');
  *  - Minifies output
  *  - Sets node environment variable to production
  */
-var webpack_dev = require('./webpack.config.js');
-var webpack_prod = require('./webpack.config.prod.js');
+const webpack_dev = require('./webpack.config.js');
+const webpack_prod = require('./webpack.config.prod.js');
 
 /**
  * Configuration for Documentation (ESDoc)
  */
-var esdoc_config = JSON.parse(fs.readFileSync('./.esdoc.json'));
+const esdoc_config = JSON.parse(fs.readFileSync('./.esdoc.json'));
 
 /**
  * Server Config
@@ -45,14 +45,14 @@ var esdoc_config = JSON.parse(fs.readFileSync('./.esdoc.json'));
  * - Tries to get server_config.json. If it can't be found, throw an error.
  * - server_config.json holds the location of the directory where the app should be deployed
  */
-var CONFIG;
+let CONFIG;
 
 try {
     CONFIG = fs.readFileSync('./server_config.json');
     CONFIG = JSON.parse(CONFIG);
 } catch (err) {
-    console.log("\x1b[31m%s\x1b[0m", "No server_config.json found. Copy and rename server_config.example.json or create your own. See github for more info.");
-    throw "Error";
+    console.log('\x1b[31m%s\x1b[0m', 'No server_config.json found. Copy and rename server_config.example.json or create your own. See github for more info.');
+    throw 'Error';
 }
 
 /**
@@ -60,12 +60,12 @@ try {
  */
 
 // List all files in a directory in Node.js recursively in a synchronous fashion
-function walkSync (dir, filelist) {
+function walkSync(dir, filelist) {
     var path = path || require('path');
     var fs = fs || require('fs'),
         files = fs.readdirSync(dir);
     filelist = filelist || [];
-    files.forEach(function(file) {
+    files.forEach((file) => {
         if (fs.statSync(path.join(dir, file))
             .isDirectory()) {
             filelist = walkSync(path.join(dir, file), filelist);
@@ -74,13 +74,13 @@ function walkSync (dir, filelist) {
         }
     });
     return filelist;
-};
+}
 
 // Returns files that have a .json extension
-function returnGeoJsonFiles (fileList) {
-    let geoJsonFiles = [];
-    for (let file of fileList) {
-        if(file.split('.')[1] === 'json') {
+function returnGeoJsonFiles(fileList) {
+    const geoJsonFiles = [];
+    for (const file of fileList) {
+        if (file.split('.')[1] === 'json') {
             geoJsonFiles.push(file);
         }
     }
@@ -97,49 +97,41 @@ function returnGeoJsonFiles (fileList) {
  * Parent tasks:
  * - build
  */
-gulp.task('clean', function () {
-  return del([
+gulp.task('clean', () => del([
     'dist/*'
-  ]);
-});
+]));
 
- /**
+/**
  * Make Data Downloads
  *
  * Parent tasks: (none) - MUST BE RUN MANUALLY
  */
-gulp.task('delete-temp-downloads', function () {
-    return del(['./temp/']);
-})
-gulp.task('zip-geojson-layers', function() {
-    return gulp.src(['./src/data/layers/*.json'])
-        .pipe(debug({title: 'zipping:'}))
-        .pipe(zip('layers-geojson.zip'))
-        .pipe(gulp.dest('./src/downloads'));
-});
-gulp.task('zip-json-profiles', function() {
-    return gulp.src(['./src/data/profiles/**/*.json'])
-        .pipe(debug({title: 'zipping:'}))
-        .pipe(zip('profiles-json.zip'))
-        .pipe(gulp.dest('./src/downloads'));
-});
-gulp.task('convert-and-zip-layer-shapefiles', function(done) {
-    let geojsons = returnGeoJsonFiles(walkSync('./src/data/layers/'));
+gulp.task('delete-temp-downloads', () => del(['./temp/']));
+gulp.task('zip-geojson-layers', () => gulp.src(['./src/data/layers/*.json'])
+    .pipe(debug({ title: 'zipping:' }))
+    .pipe(zip('layers-geojson.zip'))
+    .pipe(gulp.dest('./src/downloads')));
+gulp.task('zip-json-profiles', () => gulp.src(['./src/data/profiles/**/*.json'])
+    .pipe(debug({ title: 'zipping:' }))
+    .pipe(zip('profiles-json.zip'))
+    .pipe(gulp.dest('./src/downloads')));
+gulp.task('convert-and-zip-layer-shapefiles', (done) => {
+    const geojsons = returnGeoJsonFiles(walkSync('./src/data/layers/'));
 
     function convertToShapefile(index, fileList) {
         if (index < fileList.length) {
-            let file = fileList[index];
-            let fileName = file.split(".")[0].replace('src/data/layers/', '') + ".zip";
-            console.log("starting " + fileName);
-            let ogr = ogr2ogr("./" + file)
+            const file = fileList[index];
+            const fileName = file.split('.')[0].replace('src/data/layers/', '') + '.zip';
+            console.log('starting ' + fileName);
+            const ogr = ogr2ogr('./' + file)
                 .format('ESRI Shapefile')
                 .skipfailures();
-            ogr.exec(function(er, data) {
+            ogr.exec((er, data) => {
                 if (er) {
-                    console.error(er)
+                    console.error(er);
                 } else {
-                    if (!fs.existsSync('./temp/layer-shapefiles/')){
-                        if(!fs.existsSync('./temp')) {
+                    if (!fs.existsSync('./temp/layer-shapefiles/')) {
+                        if (!fs.existsSync('./temp')) {
                             fs.mkdirSync('./temp');
                         }
                         fs.mkdirSync('./temp/layer-shapefiles/');
@@ -153,9 +145,8 @@ gulp.task('convert-and-zip-layer-shapefiles', function(done) {
                 .pipe(debug({ title: 'zipping:' }))
                 .pipe(zip('layers-shp.zip'))
                 .pipe(gulp.dest('./src/downloads'))
-                .on('end', function() {
+                .on('end', () => {
                     done();
-                    return;
                 });
         }
     }
@@ -170,37 +161,25 @@ gulp.task('convert-and-zip-layer-shapefiles', function(done) {
  *  - dev-build
  *  - Build
  */
-gulp.task('copy-html', function() {
-    return gulp.src(['src/index.html','src/about.html'])
-        .pipe(debug({title: 'copying:'}))
-        .pipe(gulp.dest('dist/'))
-        .pipe(livereload());
-});
-gulp.task('copy-data', function() {
-    return gulp.src('./src/data/**/*')
-        .pipe(debug({title: 'copying:'}))
-        .pipe(gulp.dest('./dist/data'));
-});
-gulp.task('copy-downloads', function () {
-    return gulp.src('./src/downloads/**/*')
-        .pipe(debug({title: 'copying:'}))
-        .pipe(gulp.dest('./dist/downloads/'));
-})
-gulp.task('copy-fonts', function () {
-    return gulp.src('./src/fonts/**/*')
-        .pipe(debug({title: 'copying:'}))
-        .pipe(gulp.dest('./dist/fonts'));
-});
-gulp.task('copy-favicons', function () {
-    return gulp.src('./src/favicons/**/*')
-        .pipe(debug({title: 'copying:'}))
-        .pipe(gulp.dest('./dist/'));
-});
-gulp.task('copy-img', function () {
-    return gulp.src('./src/img/**/*')
-        .pipe(debug({title: 'copying:'}))
-        .pipe(gulp.dest('./dist/img/'));
-})
+gulp.task('copy-html', () => gulp.src(['src/index.html', 'src/about.html'])
+    .pipe(debug({ title: 'copying:' }))
+    .pipe(gulp.dest('dist/'))
+    .pipe(livereload()));
+gulp.task('copy-data', () => gulp.src('./src/data/**/*')
+    .pipe(debug({ title: 'copying:' }))
+    .pipe(gulp.dest('./dist/data')));
+gulp.task('copy-downloads', () => gulp.src('./src/downloads/**/*')
+    .pipe(debug({ title: 'copying:' }))
+    .pipe(gulp.dest('./dist/downloads/')));
+gulp.task('copy-fonts', () => gulp.src('./src/fonts/**/*')
+    .pipe(debug({ title: 'copying:' }))
+    .pipe(gulp.dest('./dist/fonts')));
+gulp.task('copy-favicons', () => gulp.src('./src/favicons/**/*')
+    .pipe(debug({ title: 'copying:' }))
+    .pipe(gulp.dest('./dist/')));
+gulp.task('copy-img', () => gulp.src('./src/img/**/*')
+    .pipe(debug({ title: 'copying:' }))
+    .pipe(gulp.dest('./dist/img/')));
 gulp.task('copy', gulp.parallel('copy-html', 'copy-data', 'copy-downloads', 'copy-fonts', 'copy-favicons', 'copy-img'));
 
 /**
@@ -210,25 +189,21 @@ gulp.task('copy', gulp.parallel('copy-html', 'copy-data', 'copy-downloads', 'cop
  *  - dev-build
  *  - build
  */
-gulp.task('sass-app', function() {
-    return gulp.src('src/sass/app.scss')
-        .pipe(debug({title: 'processing stylesheet:'}))
-        .pipe(sass.sync()
-            .on('error', sass.logError))
-        .pipe(uglifycss())
-        .pipe(gulp.dest('./dist/'))
-        .pipe(livereload());
-});
+gulp.task('sass-app', () => gulp.src('src/sass/app.scss')
+    .pipe(debug({ title: 'processing stylesheet:' }))
+    .pipe(sass.sync()
+        .on('error', sass.logError))
+    .pipe(uglifycss())
+    .pipe(gulp.dest('./dist/'))
+    .pipe(livereload()));
 
-gulp.task('sass-about', function() {
-    return gulp.src('src/sass/about.scss')
-        .pipe(debug({title: 'processing stylesheet:'}))
-        .pipe(sass.sync()
-            .on('error', sass.logError))
-        .pipe(uglifycss())
-        .pipe(gulp.dest('./dist/'))
-        .pipe(livereload());
-});
+gulp.task('sass-about', () => gulp.src('src/sass/about.scss')
+    .pipe(debug({ title: 'processing stylesheet:' }))
+    .pipe(sass.sync()
+        .on('error', sass.logError))
+    .pipe(uglifycss())
+    .pipe(gulp.dest('./dist/'))
+    .pipe(livereload()));
 
 gulp.task('sass', gulp.parallel('sass-app', 'sass-about'));
 
@@ -238,24 +213,22 @@ gulp.task('sass', gulp.parallel('sass-app', 'sass-about'));
  * Parent Tasks:
  *  - dev-build
  */
-gulp.task('webpack-dev', function(done) {
-    return webpack(webpack_dev, function(error) {
-        var pluginError;
-        if (error) {
-            pluginError = new gulpUtil.PluginError('webpack', error);
-            if (done) {
-                done(pluginError);
-            } else {
-                gulpUtil.log('[webpack]', pluginError);
-            }
-            return;
-        }
+gulp.task('webpack-dev', done => webpack(webpack_dev, (error) => {
+    let pluginError;
+    if (error) {
+        pluginError = new gulpUtil.PluginError('webpack', error);
         if (done) {
-            livereload.reload('./dist/app.bundle.js');
-            done();
+            done(pluginError);
+        } else {
+            gulpUtil.log('[webpack]', pluginError);
         }
-    });
-});
+        return;
+    }
+    if (done) {
+        livereload.reload('./dist/app.bundle.js');
+        done();
+    }
+}));
 
 /*
  * Build Javascript (production)
@@ -263,23 +236,21 @@ gulp.task('webpack-dev', function(done) {
  * Parent Tasks:
  *  - build
  */
-gulp.task('webpack-prod', function(done) {
-    return webpack(webpack_prod, function(error) {
-        var pluginError;
-        if (error) {
-            pluginError = new gulpUtil.PluginError('webpack', error);
-            if (done) {
-                done(pluginError);
-            } else {
-                gulpUtil.log('[webpack]', pluginError);
-            }
-            return;
-        }
+gulp.task('webpack-prod', done => webpack(webpack_prod, (error) => {
+    let pluginError;
+    if (error) {
+        pluginError = new gulpUtil.PluginError('webpack', error);
         if (done) {
-            done();
+            done(pluginError);
+        } else {
+            gulpUtil.log('[webpack]', pluginError);
         }
-    });
-});
+        return;
+    }
+    if (done) {
+        done();
+    }
+}));
 
 /*
  * Watch Files
@@ -287,7 +258,7 @@ gulp.task('webpack-prod', function(done) {
  * Parent tasks:
  * - watch
  */
-gulp.task('watch-files', function() {
+gulp.task('watch-files', () => {
     livereload.listen();
     gulp.watch('src/js/**/*.js', gulp.parallel('webpack-dev'));
     gulp.watch('src/js/**/*.jsx', gulp.parallel('webpack-dev'));
@@ -307,21 +278,21 @@ gulp.task('watch-files', function() {
  *
  * - Must be run manually
  */
-gulp.task('lint-js', (done) => {
+gulp.task('lint-js', done =>
     // Via CLI:
     // eslint --ext .js,.jsx src/js/** --ignore-pattern '/lib/' --ignore-pattern '*.json'
     // ESLint ignores files with "node_modules" paths.
     // So, it's best to have gulp ignore the directory as well.
     // Also, Be sure to return the stream from the task;
     // Otherwise, the task may end before the stream has finished.
-    return gulp.src([
+    gulp.src([
         'src/js/**/*.js',
         'src/js/**/*.jsx',
         '!node_modules/**',
         '!src/js/lib/**',
         '!*.json'
-        ])
-        .pipe(debug({title: 'linting js :'}))
+    ])
+        .pipe(debug({ title: 'linting js :' }))
         // eslint() attaches the lint output to the "eslint" property
         // of the file object so it can be used by other modules.
         .pipe(eslint({
@@ -333,24 +304,24 @@ gulp.task('lint-js', (done) => {
         // To have the process exit with an error code (1) on
         // lint error, return the stream and pipe to failAfterError last.
         .pipe(eslint.failAfterError())
-        .on('end', function () {
+        .on('end', () => {
             done();
         })
-});
-gulp.task('lint-css', function () {
+);
+gulp.task('lint-css', () =>
     // Command line to lint:
     // stylelint "src/sass/*.scss"
     // Command line command to format:
     // stylefmt -r "src/sass/*.scss"
-  return gulp
-    .src(['src/sass/*.scss','!src/sass/lib/**'])
-    .pipe(debug({title: 'linting css :'}))
-    .pipe(gulpStylelint({
-      reporters: [
-        {formatter: 'string', console: true}
-      ]
-    }));
-});
+    gulp
+        .src(['src/sass/*.scss', '!src/sass/lib/**'])
+        .pipe(debug({ title: 'linting css :' }))
+        .pipe(gulpStylelint({
+            reporters: [
+                { formatter: 'string', console: true }
+            ]
+        }))
+);
 
 /**
  * Copy ./dist directory to the web server for hosting
@@ -358,11 +329,9 @@ gulp.task('lint-css', function () {
  * Parent Tasks:
  *  - deploy
  */
-gulp.task('copy-to-server', function() {
-    return gulp.src(['./dist/**/*'])
-        .pipe(debug({ title: 'deploying:' }))
-        .pipe(gulp.dest(CONFIG.SERVER_DIR));
-});
+gulp.task('copy-to-server', () => gulp.src(['./dist/**/*'])
+    .pipe(debug({ title: 'deploying:' }))
+    .pipe(gulp.dest(CONFIG.SERVER_DIR)));
 
 /**
  * Build documentation
@@ -370,12 +339,9 @@ gulp.task('copy-to-server', function() {
  * Parent Tasks:
  *  - build
  */
-gulp.task('make-docs', function() {
-  return gulp.src('src/')
+gulp.task('make-docs', () => gulp.src('src/')
     .pipe(shell('npm run make-docs'))
-    .pipe(gulp.dest('./dist'));
-});
-
+    .pipe(gulp.dest('./dist')));
 
 /*
  * Development Tasks
@@ -388,10 +354,9 @@ gulp.task('default', gulp.parallel('dev-build'));
 /**
  * Utilities
  */
-
 // lint code
-gulp.task('lint', gulp.parallel('lint-js','lint-css'));
- // make data downloads
+gulp.task('lint', gulp.parallel('lint-js', 'lint-css'));
+// make data downloads
 gulp.task('make-downloads', gulp.series('zip-geojson-layers', 'zip-json-profiles', 'convert-and-zip-layer-shapefiles', 'delete-temp-downloads'));
 // for active development
 gulp.task('watch', gulp.parallel('default', 'watch-files'));
@@ -399,7 +364,7 @@ gulp.task('watch', gulp.parallel('default', 'watch-files'));
 /**
  * Production Tasks
  */
- // makes clean, minified production build in /dist
+// makes clean, minified production build in /dist
 gulp.task('build', gulp.series('clean', 'sass', 'webpack-prod', 'copy', 'make-docs'));
 gulp.task('deploy', gulp.series('build', 'copy-to-server'));
 
