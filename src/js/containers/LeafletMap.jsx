@@ -12,11 +12,11 @@ import ObliquePhotoMap from '../classes/ObliquePhotoMap';
 import { getLayersByIdWithData, getBasemapsByIdWithData, getActiveBasemapId } from '../selectors';
 
 const mapStateToProps = state => ({
-        layers: getLayersByIdWithData(state),
-        basemaps: getBasemapsByIdWithData(state),
-        map: state.map,
-        activeBasemap: getActiveBasemapId(state)
-    });
+    layers: getLayersByIdWithData(state),
+    basemaps: getBasemapsByIdWithData(state),
+    map: state.map,
+    activeBasemap: getActiveBasemapId(state)
+});
 
 class LeafletMap extends React.Component {
     /**

@@ -12,8 +12,8 @@ import { getActiveLayerStyleTypes } from '../selectors';
 import LegendLayer from '../components/LegendLayer';
 
 const mapStateToProps = state => ({
-        activeLayerStyleTypes: getActiveLayerStyleTypes(state)
-    });
+    activeLayerStyleTypes: getActiveLayerStyleTypes(state)
+});
 
 const Legend = (props) => {
     const layers = [];
