@@ -1,4 +1,7 @@
-# Wisconsin Shoreline Inventory and Oblique Photo Viewer
+![Wisconsin Shoreline Inventory and Oblique Viewer](http://floodatlas.org/asfpm/oblique_viewer/img/wiscviewer-banner.png)
+
+# [Wisconsin Shoreline Inventory and Oblique Photo Viewer](http://floodatlas.org/asfpm/oblique_viewer)
+An interactive map visualization of Wisconsin coastal data. [More info...](http://floodatlas.org/asfpm/oblique_viewer/about.html)
 
 ## Front-end Stack:
  * **Framework**
