@@ -41,6 +41,10 @@ i {
   color: $primary_700;
 }
 
+p {
+  color: $primary_800;
+}
+
 .wiscviewer-about-title-row {
   background-color: $primary_800;
 
@@ -75,23 +79,26 @@ i {
 }
 
 .wiscviewer-about-content-row {
-  i {
-    margin: 0 15px;
-    font-size: 18px;
-  }
 
-  dd {
-    margin-bottom: 10px;
-  }
-
-  ul {
+  dl {
     list-style: none;
     padding: 0;
     margin: 0;
 
-    li {
+    dt {
       line-height: 1.6;
       padding: 5px 0;
+        i {
+          width: 50px;
+          text-align: center;
+          font-size: 18px;
+        }
+    }
+    dd {
+      margin-bottom: 10px;
+      padding-left: 55px;
+      font-size: 14px;
+      color: $primary_800;
     }
   }
 }
@@ -181,9 +188,6 @@ img {
 .wiscviewer-subsection {
   padding: 10px 20px;
   background-color: $primary_100;
-  dd {
-    padding-left: 50px;
-  }
 }
 
 @media (max-width: 768px) {
