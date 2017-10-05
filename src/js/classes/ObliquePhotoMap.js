@@ -46,7 +46,8 @@ export default class ObliquePhotoMap {
         this.layerGroup = L.layerGroup();
         this.map = L.map(map, {
             maxBounds: CONFIG.map.maxExtent,
-            layers: [self.basemapGroup, self.layerGroup]
+            layers: [self.basemapGroup, self.layerGroup],
+            inertia: false
         })
             .fitBounds(CONFIG.map.wisconsinExtent, {
                 padding: [10, 10]
