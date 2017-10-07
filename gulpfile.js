@@ -105,6 +105,11 @@ gulp.task('zip-json-profiles', () => gulp.src(['./src/data/profiles/**/*.json'])
     .pipe(debug({ title: 'zipping:' }))
     .pipe(zip('profiles-json.zip'))
     .pipe(gulp.dest('./src/downloads')));
+// zip up XLS profiles
+gulp.task('zip-xlsx-profiles', () => gulp.src(['./src/data/profiles/**/*.xlsx'])
+    .pipe(debug({ title: 'zipping:' }))
+    .pipe(zip('profiles-xlsx.zip'))
+    .pipe(gulp.dest('./src/downloads')));
 // convert JSON layers to shapefiles, zip
 gulp.task('convert-and-zip-layer-shapefiles', (done) => {
     const geojsons = returnGeoJsonFiles(walkSync('./src/data/layers/', []));
@@ -146,7 +151,7 @@ gulp.task('convert-and-zip-layer-shapefiles', (done) => {
 // delete temporary downloads folder
 gulp.task('delete-temp-downloads', () => del(['./temp/']));
 
-gulp.task('make-downloads', gulp.series('zip-geojson-layers', 'zip-json-profiles', 'convert-and-zip-layer-shapefiles', 'delete-temp-downloads'));
+gulp.task('make-downloads', gulp.series('zip-geojson-layers', 'zip-json-profiles', 'zip-xlsx-profiles', 'convert-and-zip-layer-shapefiles', 'delete-temp-downloads'));
 
 
 /**
