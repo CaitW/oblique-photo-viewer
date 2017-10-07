@@ -350,12 +350,12 @@
         },
         "profiles": {
             "pathToXls": {
-                "bluff": "./data/profiles/bluff/",
-                "bathy": "./data/profiles/bathy/"
+                "bluff": "./data/profiles/xlsx/bluff/",
+                "bathy": "./data/profiles/xlsx/bathy/"
             },
             "pathToJson": {
-                "bluff": "./data/profiles/bluff/",
-                "bathy": "./data/profiles/bathy/"
+                "bluff": "./data/profiles/json/bluff/",
+                "bathy": "./data/profiles/json/bathy/"
             }
         },
         "photos_2016": {
