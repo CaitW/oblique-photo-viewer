@@ -75771,7 +75771,7 @@ var NavBar = function (_React$Component) {
                             { eventKey: 1,
                                 className: 'visible-xs-block wiscviewer-nav-tool wiscviewer-nav-tool-layers',
                                 onClick: this.constructor.onMobileLayersClick },
-                            _react2.default.createElement('i', { className: 'fa fa-clone wiscviewer-nav-tool-icon' }),
+                            _react2.default.createElement('i', { className: 'fa fa-map wiscviewer-nav-tool-icon' }),
                             'Layers'
                         ),
                         _react2.default.createElement(_ZoomToShoreline2.default, { onZoomShorelineClick: this.constructor.onZoomShorelineClick }),
@@ -75987,7 +75987,7 @@ var lakeIcons = {
 };
 
 var ZoomToShoreline = function ZoomToShoreline(props) {
-    var title = _react2.default.createElement(_reactSvgInline2.default, { svg: _superior_michigan2.default });
+    var title = _react2.default.createElement(_reactSvgInline2.default, { svg: _superior_michigan2.default, className: 'wiscviewer-nav-tool-icon' });
     var shorelines = [];
 
     var _loop = function _loop(lakeName) {
