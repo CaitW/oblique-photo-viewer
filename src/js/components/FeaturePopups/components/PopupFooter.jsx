@@ -76,7 +76,7 @@ const PopupFooter = (props) => {
     }
 
     return (
-        <div>
+        <div className="wiscviewer-feature-popup-footer-wrapper">
             <div className="wiscviewer-popup-downloads-row">
                 {footer}
             </div>

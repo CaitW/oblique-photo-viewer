@@ -19067,7 +19067,7 @@ var PopupFooter = function PopupFooter(props) {
 
     return _react2.default.createElement(
         'div',
-        null,
+        { className: 'wiscviewer-feature-popup-footer-wrapper' },
         _react2.default.createElement(
             'div',
             { className: 'wiscviewer-popup-downloads-row' },

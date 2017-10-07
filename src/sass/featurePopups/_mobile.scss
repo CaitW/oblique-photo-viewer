@@ -15,6 +15,11 @@
 
   .modal-header {
     background-color: $primary_900;
+    .wiscviewer-feature-popup-title,
+    .wiscviewer-layer-group-name,
+    .wiscviewer-layer-name {
+      font-size: 20px;
+    }
   }
 
   .modal-footer {
@@ -47,6 +52,7 @@
       }
 
       &.active {
+        background-color: $primary_800;
         a {
           color: $primary_50;
           border: none;
@@ -59,13 +65,13 @@
     padding: 0;
     overflow-x: auto;
     border: none;
-    border: 0 solid $primary_900;
+    border: 0 solid $primary_800;
     border-width: 4px 0;
   }
 
-  .wiscviewer-popup-downloads-row {
+  .wiscviewer-popup-downloads-row:not(:empty) {
     display: block;
-    margin: 0 0 10px;
+    margin: 0 0 20px 0;
     padding: 0;
     text-align: left;
 

@@ -7,6 +7,7 @@
     margin-bottom: 0;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
     z-index: 500;
+    overflow: hidden;
   }
 }
 
@@ -166,7 +167,7 @@
   .wiscviewer-nav-container {
     max-height: 100%;
     overflow-y: auto;
-    overflow-x: scroll;
+    overflow-x: hidden;
   }
   .navbar-nav>li>a {
     line-height: 40px;
