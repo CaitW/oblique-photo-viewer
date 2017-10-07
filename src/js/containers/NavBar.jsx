@@ -102,7 +102,7 @@ class NavBar extends React.Component {
                         <NavItem eventKey={1}
                             className="visible-xs-block wiscviewer-nav-tool wiscviewer-nav-tool-layers"
                             onClick={this.constructor.onMobileLayersClick}>
-                            <i className="fa fa-clone wiscviewer-nav-tool-icon" />Layers
+                            <i className="fa fa-map wiscviewer-nav-tool-icon" />Layers
                         </NavItem>
                         <ZoomToShoreline onZoomShorelineClick={this.constructor.onZoomShorelineClick} />
                         <ResetView onResetViewClick={this.constructor.onResetViewClick} />
