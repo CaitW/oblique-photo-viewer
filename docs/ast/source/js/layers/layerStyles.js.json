@@ -15424,7 +15424,7 @@
                         "left": {
                           "type": "MemberExpression",
                           "start": 9382,
-                          "end": 9405,
+                          "end": 9410,
                           "loc": {
                             "start": {
                               "line": 328,
@@ -15432,7 +15432,7 @@
                             },
                             "end": {
                               "line": 328,
-                              "column": 39
+                              "column": 44
                             }
                           },
                           "object": {
@@ -15488,7 +15488,7 @@
                           "property": {
                             "type": "Identifier",
                             "start": 9401,
-                            "end": 9405,
+                            "end": 9410,
                             "loc": {
                               "start": {
                                 "line": 328,
@@ -15496,23 +15496,23 @@
                               },
                               "end": {
                                 "line": 328,
-                                "column": 39
+                                "column": 44
                               },
-                              "identifierName": "type"
+                              "identifierName": "bathy_xls"
                             },
-                            "name": "type"
+                            "name": "bathy_xls"
                           },
                           "computed": false
                         },
-                        "operator": "===",
+                        "operator": "!==",
                         "right": {
                           "type": "StringLiteral",
-                          "start": 9410,
+                          "start": 9415,
                           "end": 9422,
                           "loc": {
                             "start": {
                               "line": 328,
-                              "column": 44
+                              "column": 49
                             },
                             "end": {
                               "line": 328,
@@ -15520,10 +15520,10 @@
                             }
                           },
                           "extra": {
-                            "rawValue": "bathymetry",
-                            "raw": "'bathymetry'"
+                            "rawValue": "false",
+                            "raw": "\"false\""
                           },
-                          "value": "bathymetry"
+                          "value": "false"
                         }
                       },
                       "consequent": {
@@ -51240,9 +51240,9 @@
         "postfix": false,
         "binop": null
       },
-      "value": "type",
+      "value": "bathy_xls",
       "start": 9401,
-      "end": 9405,
+      "end": 9410,
       "loc": {
         "start": {
           "line": 328,
@@ -51250,7 +51250,7 @@
         },
         "end": {
           "line": 328,
-          "column": 39
+          "column": 44
         }
       }
     },
@@ -51267,17 +51267,17 @@
         "binop": 6,
         "updateContext": null
       },
-      "value": "===",
-      "start": 9406,
-      "end": 9409,
+      "value": "!==",
+      "start": 9411,
+      "end": 9414,
       "loc": {
         "start": {
           "line": 328,
-          "column": 40
+          "column": 45
         },
         "end": {
           "line": 328,
-          "column": 43
+          "column": 48
         }
       }
     },
@@ -51294,13 +51294,13 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "bathymetry",
-      "start": 9410,
+      "value": "false",
+      "start": 9415,
       "end": 9422,
       "loc": {
         "start": {
           "line": 328,
-          "column": 44
+          "column": 49
         },
         "end": {
           "line": 328,

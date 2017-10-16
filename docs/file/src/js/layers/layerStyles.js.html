@@ -429,7 +429,7 @@ function getLayerSubStyleName(layerId, feature) {
             subStyleName = feature.properties[&apos;Shore Protection Classification&apos;];
             break;
         case &apos;profiles&apos;:
-            if (feature.properties.type === &apos;bathymetry&apos;) {
+            if (feature.properties.bathy_xls !== &quot;false&quot;) {
                 subStyleName = &apos;Bathymetric Profile&apos;;
             } else {
                 subStyleName = &apos;Bluff Profile&apos;;
