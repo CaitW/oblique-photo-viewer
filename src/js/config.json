@@ -366,7 +366,7 @@
         },
         "photos_2017": {
             "urlBase": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2017_photos",
-            "extension": ".JPG",
+            "extension": ".jpg",
             "sizes": {
                 "popup": "popup"
             }

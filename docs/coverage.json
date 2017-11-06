@@ -1,6 +1,6 @@
 {
-  "coverage": "45.22%",
-  "expectCount": 199,
+  "coverage": "45%",
+  "expectCount": 200,
   "actualCount": 90,
   "files": {
     "src/js/app.jsx": {
@@ -342,9 +342,10 @@
       ]
     },
     "src/js/util.js": {
-      "expectCount": 5,
+      "expectCount": 6,
       "actualCount": 2,
       "undocumentLines": [
+        49,
         3,
         4,
         5

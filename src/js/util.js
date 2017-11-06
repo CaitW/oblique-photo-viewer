@@ -46,6 +46,18 @@ for (const layerGroupId in LAYER_GROUPS_BY_ID) {
     }
 }
 
+function transformExtensionToLowercase (filename) {
+    const parts = filename.split(".");
+    if (parts.length > 1) {
+        const extension = parts[parts.length - 1];
+        const lowercaseExtension = extension.toLowerCase();
+        parts.pop();
+        parts.push(lowercaseExtension);
+        return parts.join(".");
+    }
+    return filename;
+}
+
 /**
  * Get URL for photos associated with a particular feature, layerId
  * @param {string} layerId
@@ -97,6 +109,10 @@ export function getPhotoURLs(layerId, photoProperties) {
         }
         default:
             break;
+    }
+    // make sure every url file extension is lowercase
+    for (let urlID in urls) {
+        urls[urlID] = transformExtensionToLowercase(urls[urlID]);
     }
     return urls;
 }
