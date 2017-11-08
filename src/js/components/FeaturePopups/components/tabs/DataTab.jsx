@@ -32,18 +32,37 @@ class DataTab extends React.Component {
 
         const rows = [];
 
+        /**
+         * To decide which properties to show in the data table, we're going to reference config.json
+         *
+         * - In CONFIG.layers[layerGroupId].layers[layerId], there's a property called tableProperties
+         * - This property determines, for each feature in a layer, which of that feature's properties
+         *  will be shown in the data table
+         *
+         * FOR EACH FEATURE'S PROPERTIES: SHOW THE PROPERTY NAME/VALUE IN THE TABLE IF:
+         * - The corresponding property in tableProperties == true
+         * - The corresponding property in tableProperties == a string, also rename the property key to the string
+         * - A property in the feature properties exists but the corresponding property in tableProperties is undefined
+         *
+         * DON'T SHOW IF:
+         * - If the corresponding property in tableProperties == false
+         * - If a feature property is anything other than a string
+        */
         if (typeof layerData !== 'undefined' && typeof layerData.tableProperties !== 'undefined') {
             const displayProperties = layerData.tableProperties;
             for (let property in this.props.featureProperties) {
                 if (typeof displayProperties[property] === 'undefined'
-                    || displayProperties[property] !== false) {
+                    || displayProperties[property] === true
+                    || typeof displayProperties[property] === 'string') {
                     const value = this.props.featureProperties[property];
                     if (typeof displayProperties[property] === 'string') {
                         property = displayProperties[property];
                     }
-                    rows.push(
-                        this.constructor.renderRow(property, value)
-                    );
+                    if(typeof value === 'string') {
+                        rows.push(
+                            this.constructor.renderRow(property, value)
+                        );
+                    }
                 }
             }
         } else {

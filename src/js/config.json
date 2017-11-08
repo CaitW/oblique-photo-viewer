@@ -161,7 +161,8 @@
                             "County": true,
                             "State": true,
                             "File Name": true,
-                            "Year": true
+                            "Year": true,
+                            "urls": false
                         },
                         "idProperty": "OBJECTID"
                     },
@@ -183,7 +184,8 @@
                             "County": true,
                             "State": true,
                             "File Name": true,
-                            "Year": true
+                            "Year": true,
+                            "urls": false
                         },
                         "idProperty": "OBJECTID"
                     },
@@ -196,7 +198,8 @@
                             "imageId": "Image ID",
                             "altitude": "Altutude",
                             "date": "Date",
-                            "imageUrl": false
+                            "imageUrl": false,
+                            "urls": false
                         },
                         "idProperty": "imageId"
                     },
@@ -208,7 +211,8 @@
                         "tableProperties": {
                             "name": "Name",
                             "filename": false,
-                            "date": "Date"
+                            "date": "Date",
+                            "urls": false
                         },
                         "idProperty": "name"
                     },
@@ -220,7 +224,8 @@
                         "tableProperties": {
                             "id": "Name",
                             "altitude": "Altitude",
-                            "date": "Date"
+                            "date": "Date",
+                            "urls": false
                         },
                         "idProperty": "id"
                     }
@@ -245,7 +250,8 @@
                             "bluff_json": false,
                             "bathy_json": false,
                             "notes": "Notes",
-                            "type": "Type"
+                            "type": "Type",
+                            "urls": false
                         },
                         "idProperty": "ID"
                     }
@@ -340,13 +346,11 @@
     },
     "resources": {
         "photos": {
-            "urlBase": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/1976_2007_inventories",
-            "sizes": {
-                "popup": "pop",
-                "medium": "med",
-                "original": "orig",
-                "thumbnail": "thumb"
-            }
+            "photos_1976": "http://floodatlas.org/asfpm/oblique_viewer_resources/1976_2007_inventories",
+            "photos_2007": "http://floodatlas.org/asfpm/oblique_viewer_resources/1976_2007_inventories",
+            "photos_2012": "http://floodatlas.org/asfpm/oblique_viewer_resources/2012_photos",
+            "photos_2016": "http://floodatlas.org/asfpm/oblique_viewer_resources/2016_photos",
+            "photos_2017": "http://floodatlas.org/asfpm/oblique_viewer_resources/2017_photos"
         },
         "profiles": {
             "pathToXls": {
@@ -356,26 +360,6 @@
             "pathToJson": {
                 "bluff": "./data/profiles/json/bluff/",
                 "bathy": "./data/profiles/json/bathy/"
-            }
-        },
-        "photos_2016": {
-            "urlBase": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2016_photos",
-            "sizes": {
-                "popup": "popup"
-            }
-        },
-        "photos_2017": {
-            "urlBase": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2017_photos",
-            "extension": ".jpg",
-            "sizes": {
-                "popup": "popup"
-            }
-        },
-        "photos_2012": {
-            "urlBase": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2012_photos",
-            "extension": ".jpg",
-            "sizes": {
-                "popup": "popup"
             }
         }
     },

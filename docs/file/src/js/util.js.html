@@ -150,73 +150,18 @@ for (const layerGroupId in LAYER_GROUPS_BY_ID) {
     }
 }
 
-function transformExtensionToLowercase (filename) {
-    const parts = filename.split(&quot;.&quot;);
-    if (parts.length &gt; 1) {
-        const extension = parts[parts.length - 1];
-        const lowercaseExtension = extension.toLowerCase();
-        parts.pop();
-        parts.push(lowercaseExtension);
-        return parts.join(&quot;.&quot;);
-    }
-    return filename;
-}
-
 /**
  * Get URL for photos associated with a particular feature, layerId
  * @param {string} layerId
  * @param {Object} photoProperties
  */
 export function getPhotoURLs(layerId, photoProperties) {
-    const urls = {};
-    switch (layerId) {
-        case &apos;photos_1976&apos;:
-        case &apos;photos_2007&apos;: {
-            const base = CONFIG.resources.photos.urlBase;
-            const lakeName = photoProperties[&apos;Great Lake&apos;].replace(/ /gi, &apos;&apos;);
-            const year = photoProperties.Year;
-            const fileName = photoProperties[&apos;File Name&apos;];
-            for (const size in CONFIG.resources.photos.sizes) {
-                const sizeDir = CONFIG.resources.photos.sizes[size];
-                let modifiedFilename = fileName;
-                if (size !== &apos;original&apos;) {
-                    const parts = fileName.split(&apos;.&apos;);
-                    parts[0] += &apos;_&apos; + sizeDir;
-                    modifiedFilename = parts.join(&apos;.&apos;);
-                }
-                urls[size] = [base, lakeName, year, sizeDir, modifiedFilename].join(&apos;/&apos;);
-            }
-            break;
-        }
-        case &apos;photos_2016&apos;: {
-            const base = CONFIG.resources.photos_2016.urlBase;
-            const fileName = photoProperties.filename;
-            urls.original = [base, fileName].join(&apos;/&apos;);
-            urls.popup = [base, &apos;popup&apos;, fileName].join(&apos;/&apos;);
-            break;
-        }
-        case &apos;photos_2017&apos;: {
-            const base = CONFIG.resources.photos_2017.urlBase;
-            const fileName = photoProperties.id;
-            const ext = CONFIG.resources.photos_2017.extension;
-            urls.original = [base, fileName].join(&apos;/&apos;) + ext;
-            urls.popup = [base, &apos;popup&apos;, fileName].join(&apos;/&apos;) + ext;
-            break;
-        }
-        case &apos;photos_2012&apos;: {
-            const base = CONFIG.resources.photos_2012.urlBase;
-            const fileName = photoProperties.imageId;
-            const ext = CONFIG.resources.photos_2012.extension;
-            urls.original = [base, fileName].join(&apos;/&apos;) + ext;
-            urls.popup = [base, &apos;popup&apos;, fileName].join(&apos;/&apos;) + ext;
-            break;
-        }
-        default:
-            break;
-    }
-    // make sure every url file extension is lowercase
-    for (let urlID in urls) {
-        urls[urlID] = transformExtensionToLowercase(urls[urlID]);
+    const urls = {
+        ...photoProperties.urls
+    };
+    const urlBase = CONFIG.resources.photos[layerId];
+    for (let size in urls) {
+        urls[size] = urlBase + &quot;/&quot; + urls[size];
     }
     return urls;
 }

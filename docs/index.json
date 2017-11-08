@@ -1877,7 +1877,7 @@
     "__docId__": 128,
     "kind": "file",
     "name": "src/js/components/FeaturePopups/components/tabs/DataTab.jsx",
-    "content": "import React from 'react';\nimport PropTypes from 'prop-types';\nimport { Tab, Table } from 'react-bootstrap';\n\nimport { LAYERS_BY_ID } from '../../../../util';\n\nclass DataTab extends React.Component {\n    /**\n     * Given a property and a value, render a table row\n     * @param {string} property - the property name\n     * @param {string} value - the value of the property\n     */\n    static renderRow(property, value) {\n        return (\n            <tr key={property}>\n                <td><strong>{property}</strong></td>\n                <td>{value}</td>\n            </tr>\n        );\n    }\n    componentDidMount() {\n        this.props.update();\n    }\n    render() {\n        const layerData = LAYERS_BY_ID[this.props.layerId];\n        const tabProps = {\n            ...this.props\n        };\n        delete tabProps.layerId;\n        delete tabProps.featureProperties;\n        delete tabProps.update;\n\n        const rows = [];\n\n        if (typeof layerData !== 'undefined' && typeof layerData.tableProperties !== 'undefined') {\n            const displayProperties = layerData.tableProperties;\n            for (let property in this.props.featureProperties) {\n                if (typeof displayProperties[property] === 'undefined'\n                    || displayProperties[property] !== false) {\n                    const value = this.props.featureProperties[property];\n                    if (typeof displayProperties[property] === 'string') {\n                        property = displayProperties[property];\n                    }\n                    rows.push(\n                        this.constructor.renderRow(property, value)\n                    );\n                }\n            }\n        } else {\n            for (const property in this.props.featureProperties) {\n                const value = this.props.featureProperties[property];\n                rows.push(\n                    this.constructor.renderRow(property, value)\n                );\n            }\n        }\n\n        return (\n            <Tab {...tabProps} className=\"wiscviewer-data-tab\">\n                <Table className=\"wiscviewer-data-table\">\n                    <tbody>\n                        {rows}\n                    </tbody>\n                </Table>\n            </Tab>\n        );\n    }\n}\n\nDataTab.propTypes = {\n    layerId: PropTypes.oneOfType([\n        PropTypes.string,\n        PropTypes.bool\n    ]).isRequired,\n    featureProperties: PropTypes.oneOfType([\n        PropTypes.object,\n        PropTypes.bool\n    ]).isRequired,\n    update: PropTypes.func.isRequired\n};\n\nexport default DataTab;\n",
+    "content": "import React from 'react';\nimport PropTypes from 'prop-types';\nimport { Tab, Table } from 'react-bootstrap';\n\nimport { LAYERS_BY_ID } from '../../../../util';\n\nclass DataTab extends React.Component {\n    /**\n     * Given a property and a value, render a table row\n     * @param {string} property - the property name\n     * @param {string} value - the value of the property\n     */\n    static renderRow(property, value) {\n        return (\n            <tr key={property}>\n                <td><strong>{property}</strong></td>\n                <td>{value}</td>\n            </tr>\n        );\n    }\n    componentDidMount() {\n        this.props.update();\n    }\n    render() {\n        const layerData = LAYERS_BY_ID[this.props.layerId];\n        const tabProps = {\n            ...this.props\n        };\n        delete tabProps.layerId;\n        delete tabProps.featureProperties;\n        delete tabProps.update;\n\n        const rows = [];\n\n        /**\n         * To decide which properties to show in the data table, we're going to reference config.json\n         *\n         * - In CONFIG.layers[layerGroupId].layers[layerId], there's a property called tableProperties\n         * - This property determines, for each feature in a layer, which of that feature's properties\n         *  will be shown in the data table\n         *\n         * FOR EACH FEATURE'S PROPERTIES: SHOW THE PROPERTY NAME/VALUE IN THE TABLE IF:\n         * - The corresponding property in tableProperties == true\n         * - The corresponding property in tableProperties == a string, also rename the property key to the string\n         * - A property in the feature properties exists but the corresponding property in tableProperties is undefined\n         *\n         * DON'T SHOW IF:\n         * - If the corresponding property in tableProperties == false\n         * - If a feature property is anything other than a string\n        */\n        if (typeof layerData !== 'undefined' && typeof layerData.tableProperties !== 'undefined') {\n            const displayProperties = layerData.tableProperties;\n            for (let property in this.props.featureProperties) {\n                if (typeof displayProperties[property] === 'undefined'\n                    || displayProperties[property] === true\n                    || typeof displayProperties[property] === 'string') {\n                    const value = this.props.featureProperties[property];\n                    if (typeof displayProperties[property] === 'string') {\n                        property = displayProperties[property];\n                    }\n                    if(typeof value === 'string') {\n                        rows.push(\n                            this.constructor.renderRow(property, value)\n                        );\n                    }\n                }\n            }\n        } else {\n            for (const property in this.props.featureProperties) {\n                const value = this.props.featureProperties[property];\n                rows.push(\n                    this.constructor.renderRow(property, value)\n                );\n            }\n        }\n\n        return (\n            <Tab {...tabProps} className=\"wiscviewer-data-tab\">\n                <Table className=\"wiscviewer-data-table\">\n                    <tbody>\n                        {rows}\n                    </tbody>\n                </Table>\n            </Tab>\n        );\n    }\n}\n\nDataTab.propTypes = {\n    layerId: PropTypes.oneOfType([\n        PropTypes.string,\n        PropTypes.bool\n    ]).isRequired,\n    featureProperties: PropTypes.oneOfType([\n        PropTypes.object,\n        PropTypes.bool\n    ]).isRequired,\n    update: PropTypes.func.isRequired\n};\n\nexport default DataTab;\n",
     "static": true,
     "longname": "/Users/caitlinwolters/Documents/repositories/oblique-photo-viewer/src/js/components/FeaturePopups/components/tabs/DataTab.jsx",
     "access": "public",
@@ -5867,7 +5867,7 @@
     "__docId__": 297,
     "kind": "file",
     "name": "src/js/util.js",
-    "content": "import CONFIG from './config.json';\n\nconst LAYERS_BY_ID = {};\nconst LAYER_GROUPS_BY_ID = {};\nconst BASEMAPS_BY_ID = {};\n\nfor (const basemapId in CONFIG.map.basemaps) {\n    BASEMAPS_BY_ID[basemapId] = {\n        ...CONFIG.map.basemaps[basemapId],\n        state: 'init'\n    };\n    BASEMAPS_BY_ID[basemapId].name = BASEMAPS_BY_ID[basemapId].name || basemapId;\n}\n\n// Set up layer groups, default values\nfor (const layerGroupId in CONFIG.map.layers) {\n    const layerGroupProperties = CONFIG.map.layers[layerGroupId];\n    // reassign some values\n    const name = layerGroupProperties.name || layerGroupId;\n    const layers = [];\n    LAYER_GROUPS_BY_ID[layerGroupId] = {\n        ...layerGroupProperties,\n        name,\n        layers,\n        state: 'init'\n    };\n}\n\n// set up layers, default values\nfor (const layerGroupId in LAYER_GROUPS_BY_ID) {\n    const layerGroupLayers = CONFIG.map.layers[layerGroupId].layers;\n    for (const layerId in layerGroupLayers) {\n        const layer = layerGroupLayers[layerId];\n        // reassign some values\n        const name = layer.name || layerId;\n        const id = layerId;\n        // assign new layer\n        LAYERS_BY_ID[layerId] = {\n            ...layer,\n            id,\n            name,\n            layerGroupId\n        };\n        // add layer ID to layer groups\n        LAYER_GROUPS_BY_ID[layerGroupId].layers.push(layerId);\n    }\n}\n\nfunction transformExtensionToLowercase (filename) {\n    const parts = filename.split(\".\");\n    if (parts.length > 1) {\n        const extension = parts[parts.length - 1];\n        const lowercaseExtension = extension.toLowerCase();\n        parts.pop();\n        parts.push(lowercaseExtension);\n        return parts.join(\".\");\n    }\n    return filename;\n}\n\n/**\n * Get URL for photos associated with a particular feature, layerId\n * @param {string} layerId\n * @param {Object} photoProperties\n */\nexport function getPhotoURLs(layerId, photoProperties) {\n    const urls = {};\n    switch (layerId) {\n        case 'photos_1976':\n        case 'photos_2007': {\n            const base = CONFIG.resources.photos.urlBase;\n            const lakeName = photoProperties['Great Lake'].replace(/ /gi, '');\n            const year = photoProperties.Year;\n            const fileName = photoProperties['File Name'];\n            for (const size in CONFIG.resources.photos.sizes) {\n                const sizeDir = CONFIG.resources.photos.sizes[size];\n                let modifiedFilename = fileName;\n                if (size !== 'original') {\n                    const parts = fileName.split('.');\n                    parts[0] += '_' + sizeDir;\n                    modifiedFilename = parts.join('.');\n                }\n                urls[size] = [base, lakeName, year, sizeDir, modifiedFilename].join('/');\n            }\n            break;\n        }\n        case 'photos_2016': {\n            const base = CONFIG.resources.photos_2016.urlBase;\n            const fileName = photoProperties.filename;\n            urls.original = [base, fileName].join('/');\n            urls.popup = [base, 'popup', fileName].join('/');\n            break;\n        }\n        case 'photos_2017': {\n            const base = CONFIG.resources.photos_2017.urlBase;\n            const fileName = photoProperties.id;\n            const ext = CONFIG.resources.photos_2017.extension;\n            urls.original = [base, fileName].join('/') + ext;\n            urls.popup = [base, 'popup', fileName].join('/') + ext;\n            break;\n        }\n        case 'photos_2012': {\n            const base = CONFIG.resources.photos_2012.urlBase;\n            const fileName = photoProperties.imageId;\n            const ext = CONFIG.resources.photos_2012.extension;\n            urls.original = [base, fileName].join('/') + ext;\n            urls.popup = [base, 'popup', fileName].join('/') + ext;\n            break;\n        }\n        default:\n            break;\n    }\n    // make sure every url file extension is lowercase\n    for (let urlID in urls) {\n        urls[urlID] = transformExtensionToLowercase(urls[urlID]);\n    }\n    return urls;\n}\n\n/**\n * Gets URLS of profile documents based on the feature's properties\n * @param {Object} featureProperties\n */\nexport function getProfileURLs(featureProperties) {\n    const bluffXls = CONFIG.resources.profiles.pathToXls.bluff;\n    const bathyXls = CONFIG.resources.profiles.pathToXls.bathy;\n    const bluffJson = CONFIG.resources.profiles.pathToJson.bluff;\n    const bathyJson = CONFIG.resources.profiles.pathToJson.bathy;\n    const urls = {\n        bluffXls: false,\n        bathyXls: false,\n        bathyJson: false,\n        bluffJson: false\n    };\n    if (featureProperties.bluff_xls) {\n        urls.bluffXls = bluffXls + featureProperties.bluff_xls;\n        urls.bluffJson = bluffJson + featureProperties.bluff_json;\n    }\n    if (featureProperties.bathy_xls) {\n        urls.bathyXls = bathyXls + featureProperties.bathy_xls;\n        urls.bathyJson = bathyJson + featureProperties.bathy_json;\n    }\n    return urls;\n}\n\nexport { LAYERS_BY_ID, LAYER_GROUPS_BY_ID, BASEMAPS_BY_ID };\n",
+    "content": "import CONFIG from './config.json';\n\nconst LAYERS_BY_ID = {};\nconst LAYER_GROUPS_BY_ID = {};\nconst BASEMAPS_BY_ID = {};\n\nfor (const basemapId in CONFIG.map.basemaps) {\n    BASEMAPS_BY_ID[basemapId] = {\n        ...CONFIG.map.basemaps[basemapId],\n        state: 'init'\n    };\n    BASEMAPS_BY_ID[basemapId].name = BASEMAPS_BY_ID[basemapId].name || basemapId;\n}\n\n// Set up layer groups, default values\nfor (const layerGroupId in CONFIG.map.layers) {\n    const layerGroupProperties = CONFIG.map.layers[layerGroupId];\n    // reassign some values\n    const name = layerGroupProperties.name || layerGroupId;\n    const layers = [];\n    LAYER_GROUPS_BY_ID[layerGroupId] = {\n        ...layerGroupProperties,\n        name,\n        layers,\n        state: 'init'\n    };\n}\n\n// set up layers, default values\nfor (const layerGroupId in LAYER_GROUPS_BY_ID) {\n    const layerGroupLayers = CONFIG.map.layers[layerGroupId].layers;\n    for (const layerId in layerGroupLayers) {\n        const layer = layerGroupLayers[layerId];\n        // reassign some values\n        const name = layer.name || layerId;\n        const id = layerId;\n        // assign new layer\n        LAYERS_BY_ID[layerId] = {\n            ...layer,\n            id,\n            name,\n            layerGroupId\n        };\n        // add layer ID to layer groups\n        LAYER_GROUPS_BY_ID[layerGroupId].layers.push(layerId);\n    }\n}\n\n/**\n * Get URL for photos associated with a particular feature, layerId\n * @param {string} layerId\n * @param {Object} photoProperties\n */\nexport function getPhotoURLs(layerId, photoProperties) {\n    const urls = {\n        ...photoProperties.urls\n    };\n    const urlBase = CONFIG.resources.photos[layerId];\n    for (let size in urls) {\n        urls[size] = urlBase + \"/\" + urls[size];\n    }\n    return urls;\n}\n\n/**\n * Gets URLS of profile documents based on the feature's properties\n * @param {Object} featureProperties\n */\nexport function getProfileURLs(featureProperties) {\n    const bluffXls = CONFIG.resources.profiles.pathToXls.bluff;\n    const bathyXls = CONFIG.resources.profiles.pathToXls.bathy;\n    const bluffJson = CONFIG.resources.profiles.pathToJson.bluff;\n    const bathyJson = CONFIG.resources.profiles.pathToJson.bathy;\n    const urls = {\n        bluffXls: false,\n        bathyXls: false,\n        bathyJson: false,\n        bluffJson: false\n    };\n    if (featureProperties.bluff_xls) {\n        urls.bluffXls = bluffXls + featureProperties.bluff_xls;\n        urls.bluffJson = bluffJson + featureProperties.bluff_json;\n    }\n    if (featureProperties.bathy_xls) {\n        urls.bathyXls = bathyXls + featureProperties.bathy_xls;\n        urls.bathyJson = bathyJson + featureProperties.bathy_json;\n    }\n    return urls;\n}\n\nexport { LAYERS_BY_ID, LAYER_GROUPS_BY_ID, BASEMAPS_BY_ID };\n",
     "static": true,
     "longname": "/Users/caitlinwolters/Documents/repositories/oblique-photo-viewer/src/js/util.js",
     "access": "public",
@@ -5876,37 +5876,6 @@
   },
   {
     "__docId__": 298,
-    "kind": "function",
-    "name": "transformExtensionToLowercase",
-    "memberof": "src/js/util.js",
-    "generator": false,
-    "async": false,
-    "static": true,
-    "longname": "src/js/util.js~transformExtensionToLowercase",
-    "access": "public",
-    "export": false,
-    "importPath": "oblique-photo-viewer/src/js/util.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 49,
-    "undocument": true,
-    "params": [
-      {
-        "name": "filename",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "ignore": true
-  },
-  {
-    "__docId__": 299,
     "kind": "function",
     "name": "getPhotoURLs",
     "memberof": "src/js/util.js",
@@ -5919,7 +5888,7 @@
     "importPath": "oblique-photo-viewer/src/js/util.js",
     "importStyle": "{getPhotoURLs}",
     "description": "Get URL for photos associated with a particular feature, layerId",
-    "lineNumber": 66,
+    "lineNumber": 54,
     "params": [
       {
         "nullable": null,
@@ -5949,7 +5918,7 @@
     }
   },
   {
-    "__docId__": 300,
+    "__docId__": 299,
     "kind": "function",
     "name": "getProfileURLs",
     "memberof": "src/js/util.js",
@@ -5962,7 +5931,7 @@
     "importPath": "oblique-photo-viewer/src/js/util.js",
     "importStyle": "{getProfileURLs}",
     "description": "Gets URLS of profile documents based on the feature's properties",
-    "lineNumber": 124,
+    "lineNumber": 69,
     "params": [
       {
         "nullable": null,
@@ -5982,7 +5951,7 @@
     }
   },
   {
-    "__docId__": 301,
+    "__docId__": 300,
     "kind": "variable",
     "name": "LAYERS_BY_ID",
     "memberof": "src/js/util.js",
@@ -6002,7 +5971,7 @@
     }
   },
   {
-    "__docId__": 302,
+    "__docId__": 301,
     "kind": "variable",
     "name": "LAYER_GROUPS_BY_ID",
     "memberof": "src/js/util.js",
@@ -6022,7 +5991,7 @@
     }
   },
   {
-    "__docId__": 303,
+    "__docId__": 302,
     "kind": "variable",
     "name": "BASEMAPS_BY_ID",
     "memberof": "src/js/util.js",
@@ -6042,7 +6011,7 @@
     }
   },
   {
-    "__docId__": 304,
+    "__docId__": 303,
     "kind": "file",
     "name": "src/js/wrappers/MapWrapper.jsx",
     "content": "/**\n * MapWrapper.jsx\n * This component contains the primary map container (LeafletMap)\n */\nimport React from 'react';\nimport { Col } from 'react-bootstrap';\nimport PropTypes from 'prop-types';\n\nconst MapWrapper = (props) => {\n    const xs = 12;\n    let sm = 7;\n    let md = 8;\n    let lg = 9;\n    if (props.sidebarOpen === false) {\n        sm = 12;\n        md = 12;\n        lg = 12;\n    }\n    const iconClassNames = ['fa'];\n    if (props.sidebarOpen) {\n        iconClassNames.push('fa-chevron-left');\n    } else {\n        iconClassNames.push('fa-chevron-right');\n    }\n    return (\n        <Col xs={xs} sm={sm} md={md} lg={lg} className=\"wiscviewer-map-container\">\n            <div className=\"wiscviewer-sidebar-toggle hidden-xs\"\n                onClick={props.toggleSidebar}\n                role=\"button\"\n                tabIndex={0}>\n                <i className={iconClassNames.join(' ')} />\n            </div>\n            {props.children}\n        </Col>\n    );\n};\n\nMapWrapper.propTypes = {\n    children: PropTypes.object,\n    sidebarOpen: PropTypes.bool.isRequired,\n    toggleSidebar: PropTypes.func.isRequired\n};\n\nMapWrapper.defaultProps = {\n    children: {}\n};\n\nexport default MapWrapper;\n",
@@ -6053,7 +6022,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 305,
+    "__docId__": 304,
     "kind": "function",
     "name": "MapWrapper",
     "memberof": "src/js/wrappers/MapWrapper.jsx",
