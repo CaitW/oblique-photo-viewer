@@ -346,11 +346,11 @@
     },
     "resources": {
         "photos": {
-            "photos_1976": "http://floodatlas.org/asfpm/oblique_viewer_resources/1976_2007_inventories",
-            "photos_2007": "http://floodatlas.org/asfpm/oblique_viewer_resources/1976_2007_inventories",
-            "photos_2012": "http://floodatlas.org/asfpm/oblique_viewer_resources/2012_photos",
-            "photos_2016": "http://floodatlas.org/asfpm/oblique_viewer_resources/2016_photos",
-            "photos_2017": "http://floodatlas.org/asfpm/oblique_viewer_resources/2017_photos"
+            "photos_1976": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/1976_2007_inventories",
+            "photos_2007": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/1976_2007_inventories",
+            "photos_2012": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2012_photos",
+            "photos_2016": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2016_photos",
+            "photos_2017": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2017_photos"
         },
         "profiles": {
             "pathToXls": {
