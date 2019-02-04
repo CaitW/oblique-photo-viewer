@@ -55,6 +55,11 @@ export function getPhotoURLs(layerId, photoProperties) {
     const urls = {
         ...photoProperties.urls
     };
+    if(layerId === "photos_2018") {
+        const split = urls.popup.split(".");
+        split[0] += "_pop";
+        urls.popup = split.join(".");
+    }
     const urlBase = CONFIG.resources.photos[layerId];
     for (let size in urls) {
         urls[size] = urlBase + "/" + urls[size];
