@@ -40,7 +40,8 @@ COLORS.PHOTOS = [
     '#7E57C2',
     '#673AB7',
     '#512DA8',
-    '#311B92'
+    '#311B92',
+    '#21106d'
 ];
 
 COLORS.STRUCTURES = [
@@ -274,6 +275,13 @@ const LAYER_STYLES_BY_ID = {
             ...DEFAULT_STYLES.Point,
             color: COLORS.PHOTOS[4],
             strokeColor: COLORS.PHOTOS[4]
+        };
+    },
+    photos_2018() {
+        return {
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.PHOTOS[5],
+            strokeColor: COLORS.PHOTOS[5]
         };
     },
     photos_2012() {
