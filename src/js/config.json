@@ -233,7 +233,7 @@
                         "name": "2018 Photos",
                         "type": "geojson",
                         "dataLocation": "./data/layers/photos_2018.json",
-                        "defaultActive": true,
+                        "defaultActive": false,
                         "tableProperties": {
                             "id": "Name",
                             "DateTime": "Date / Time",
