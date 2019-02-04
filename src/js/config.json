@@ -228,6 +228,19 @@
                             "urls": false
                         },
                         "idProperty": "id"
+                    },
+                    "photos_2018": {
+                        "name": "2018 Photos",
+                        "type": "geojson",
+                        "dataLocation": "./data/layers/photos_2018.json",
+                        "defaultActive": true,
+                        "tableProperties": {
+                            "id": "Name",
+                            "DateTime": "Date / Time",
+                            "Direction": false,
+                            "Path": false
+                        },
+                        "idProperty": "id"
                     }
                 }
             },
@@ -350,7 +363,8 @@
             "photos_2007": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/1976_2007_inventories",
             "photos_2012": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2012_photos",
             "photos_2016": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2016_photos",
-            "photos_2017": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2017_photos"
+            "photos_2017": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2017_photos",
+            "photos_2018": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2018_photos"
         },
         "profiles": {
             "pathToXls": {
