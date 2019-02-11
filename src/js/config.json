@@ -270,6 +270,63 @@
                     }
                 }
             },
+            "wcmp": {
+                "name": "WCMP",
+                "layers": {
+                    "bluffcrest": {
+                        "name": "Bluff Crest",
+                        "type": "geojson",
+                        "dataLocation": "./data/layers/wcmp_bluff_crest.json",
+                        "defaultActive": false,
+                        "tableProperties": {
+                            "OBJECTID": "ID",
+                            "TransectID": "TransectID",
+                            "EPR_5615": "EPR_5615",
+                            "EPR_9515": "EPR_9515"
+                        },
+                        "idProperty": "OBJECTID"
+                    },
+                    "blufftoe": {
+                        "name": "Bluff Toe",
+                        "type": "geojson",
+                        "dataLocation": "./data/layers/wcmp_bluff_toe.json",
+                        "defaultActive": false,
+                        "tableProperties": {
+                            "OBJECTID": "ID",
+                            "TransectID": "TransectID",
+                            "EPR_5615": "EPR_5615",
+                            "EPR_9515": "EPR_9515"
+                        },
+                        "idProperty": "OBJECTID"
+                    },
+                    "shoreline_2015": {
+                        "name": "Shoreline",
+                        "type": "geojson",
+                        "dataLocation": "./data/layers/wcmp_shoreline_2015.json",
+                        "defaultActive": false,
+                        "tableProperties": {
+                            "OBJECTID": "ID",
+                            "Date_": "Date",
+                            "UNCERTAINT": "UNCERTAINT",
+                            "Shape_Leng": "Shape_Leng"
+                        },
+                        "idProperty": "OBJECTID"
+                    },
+                    "shoreline_rec_rate": {
+                        "name": "Shoreline Recede Rate",
+                        "type": "geojson",
+                        "dataLocation": "./data/layers/wcmp_shoreline_rec_rate.json",
+                        "defaultActive": false,
+                        "tableProperties": {
+                            "OBJECTID": "ID",
+                            "Sheet1__Tr": "Sheet1__Tr",
+                            "Sheet1__Ra": "Sheet1__Ra",
+                            "Sheet1___1": "Sheet1___1"
+                        },
+                        "idProperty": "OBJECTID"
+                    }
+                }
+            },
             "boundaries": {
                 "name": "Boundaries",
                 "layers": {
