@@ -46,7 +46,7 @@ class DataTab extends React.Component {
          *
          * DON'T SHOW IF:
          * - If the corresponding property in tableProperties == false
-         * - If a feature property is anything other than a string
+         * - If a feature property is anything other than a string or a number
         */
         if (typeof layerData !== 'undefined' && typeof layerData.tableProperties !== 'undefined') {
             const displayProperties = layerData.tableProperties;
@@ -58,7 +58,7 @@ class DataTab extends React.Component {
                     if (typeof displayProperties[property] === 'string') {
                         property = displayProperties[property];
                     }
-                    if(typeof value === 'string') {
+                    if (typeof value === 'string' || typeof value === 'number') {
                         rows.push(
                             this.constructor.renderRow(property, value)
                         );
