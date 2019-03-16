@@ -28850,7 +28850,11 @@ function getFeatureMidpoint(featureLayer) {
 
     // if it's a line (getLatLngs isn't undefined)
     if (typeof featureLayer.getLatLngs !== 'undefined') {
-        return getLineMidpoint(featureLayer.getLatLngs());
+        var latLngs = featureLayer.getLatLngs();
+        if (featureLayer.feature.geometry.type === 'MultiLineString') {
+            latLngs = featureLayer.getLatLngs()[0];
+        }
+        return getLineMidpoint(latLngs);
         // if it's a point (getLatLng isn't undefined)
     } else if (typeof featureLayer.getLatLng !== 'undefined') {
         return getPointCoords(featureLayer.getLatLng());
