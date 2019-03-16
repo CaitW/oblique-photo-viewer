@@ -50,6 +50,15 @@ To make changes, you will need to: fully install all dependencies, alter the sou
 1. ```cd``` to the repository directory
 1. ```npm install```
 
+If you plan to rebuild .zip files, you'll need to install `gdal`:
+1. [Download](http://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries)
+1. Make sure that GDAL is added to your path. For mac:
+
+```
+echo 'export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH' >> ~/.bash_profile
+source ~/.bash_profile
+```
+
 ### Changes
 1. Make any changes required to ```src/```
 1. ```gulp dev-build``` to compile for testing, `gulp build` to compile for production
