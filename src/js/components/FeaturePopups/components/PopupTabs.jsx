@@ -6,6 +6,7 @@ import uuid from 'uuid';
 import ImageTab from './tabs/ImageTab';
 import DataTab from './tabs/DataTab';
 import ProfileTab from './tabs/ProfileTab';
+import RecessionTab from './tabs/RecessionTab';
 
 import { getPhotoURLs, getProfileURLs } from '../../../util';
 
@@ -84,6 +85,22 @@ class PopupTabs extends React.Component {
                     <DataTab key="data"
                         eventKey={eventKeyIndex}
                         title="Data"
+                        layerId={layerId}
+                        featureProperties={featureProperties}
+                        update={this.update} />
+                );
+                break;
+            }
+            case 'bluff_toe_rec_long':
+            case 'bluff_crest_rec_long':
+            case 'shoreline_rec_long':
+            case 'bluff_toe_rec_short':
+            case 'bluff_crest_rec_short':
+            case 'shoreline_rec_short': {
+                tabs.push(
+                    <RecessionTab key="recession"
+                        eventKey={1}
+                        title="Recession"
                         layerId={layerId}
                         featureProperties={featureProperties}
                         update={this.update} />
