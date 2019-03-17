@@ -119,7 +119,7 @@ function createLeafletPopup(feature, featureLayer, layerId, map) {
         closeOnClick: false,
         className: 'feature-popup hidden-xs',
         autoClose: true,
-        maxWidth: 350,
+        maxWidth: 500,
         minWidth: 350,
         closeButton: false
     })
