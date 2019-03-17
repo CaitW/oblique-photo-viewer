@@ -1502,29 +1502,6 @@ module.exports = ReactDOMComponentTree;
 
 /***/ }),
 /* 25 */
-/***/ (function(module, exports) {
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-
-module.exports = _interopRequireDefault;
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.1.13 ToObject(argument)
-var defined = __webpack_require__(55);
-module.exports = function (it) {
-  return Object(defined(it));
-};
-
-
-/***/ }),
-/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1812,6 +1789,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports) {
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+module.exports = _interopRequireDefault;
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 7.1.13 ToObject(argument)
+var defined = __webpack_require__(55);
+module.exports = function (it) {
+  return Object(defined(it));
+};
 
 
 /***/ }),
@@ -2800,7 +2800,7 @@ exports.f = __webpack_require__(22) ? gOPD : function getOwnPropertyDescriptor(O
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = __webpack_require__(40);
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var IE_PROTO = __webpack_require__(202)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
@@ -2915,7 +2915,7 @@ module.exports = warning;
 
 
 var bind = __webpack_require__(496);
-var isBuffer = __webpack_require__(1211);
+var isBuffer = __webpack_require__(1212);
 
 /*global toString:true*/
 
@@ -3475,7 +3475,7 @@ module.exports = function (KEY, exec) {
 // 6 -> Array#findIndex
 var ctx = __webpack_require__(48);
 var IObject = __webpack_require__(117);
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var toLength = __webpack_require__(20);
 var asc = __webpack_require__(218);
 module.exports = function (TYPE, $create) {
@@ -4164,7 +4164,7 @@ if (__webpack_require__(22)) {
   var has = __webpack_require__(40);
   var classof = __webpack_require__(97);
   var isObject = __webpack_require__(16);
-  var toObject = __webpack_require__(26);
+  var toObject = __webpack_require__(27);
   var isArrayIter = __webpack_require__(215);
   var create = __webpack_require__(83);
   var getPrototypeOf = __webpack_require__(43);
@@ -6859,7 +6859,7 @@ module.exports = exports["default"];
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = void 0;
@@ -8401,7 +8401,7 @@ module.exports = exports['default'];
 /* 134 */
 /***/ (function(module, exports) {
 
-module.exports = {"map":{"wisconsinExtent":[[42.49196631300103,-92.88924132554837],[47.0807747621805,-86.80479844725258]],"maxExtent":[[37,-99],[52,-79]],"basemaps":{"light":{"name":"Light","url":"https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw","defaultActive":true},"streets":{"name":"Streets","url":"https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw","defaultActive":false},"satellite":{"name":"Satellite","url":"https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw","defaultActive":false}},"layers":{"1976_inventory":{"name":"1976-78 Inventory","layers":{"backshore_1976":{"name":"Bluff Condition","type":"geojson","dataLocation":"./data/layers/backshore_1976.json","defaultActive":true,"tableProperties":{"OBJECTID":false,"Backshore Type":true,"Notes":true,"County":true,"FIPS":true,"Segment Length (miles)":true,"Vegetation Classification":true,"Bluff Condition Classification":true,"Bluff Modified Classification":true,"Bluff Failure Classification":true,"Non-Bluff Classification":true,"Confidence Level Classification":true},"idProperty":"OBJECTID"},"beachclass_1976":{"name":"Beach Protection","type":"geojson","dataLocation":"./data/layers/beachclass_1976.json","defaultActive":false,"tableProperties":{"OBJECTID":false,"Shore Type":true,"Notes":true,"County":true,"FIPS":true,"Segment Length (miles)":true,"Beach Classification":true,"Shore Protection Classification":true},"idProperty":"OBJECTID"},"structure_1976":{"name":"Shore Structures","type":"geojson","dataLocation":"./data/layers/structure_1976.json","defaultActive":false,"tableProperties":{"OBJECTID":false,"Notes":true,"County":true,"FIPS":true,"Structure Type":true},"idProperty":"OBJECTID"}}},"2007_inventory":{"name":"2007-08 Inventory","layers":{"backshore_2007":{"name":"Bluff Condition","type":"geojson","dataLocation":"./data/layers/backshore_2007.json","defaultActive":false,"tableProperties":{"OBJECTID":false,"Backshore Type":true,"Notes":true,"County":true,"FIPS":true,"Segment Length (miles)":true,"Vegetation Classification":true,"Bluff Condition Classification":true,"Bluff Modified Classification":true,"Bluff Failure Classification":true,"Non-Bluff Classification":true,"Confidence Level Classification":true},"idProperty":"OBJECTID"},"beachclass_2007":{"name":"Beach Protection","type":"geojson","dataLocation":"./data/layers/beachclass_2007.json","defaultActive":false,"tableProperties":{"OBJECTID":false,"Shore Type":true,"Notes":true,"County":true,"FIPS":true,"Segment Length (miles)":true,"Beach Classification":true,"Shore Protection Classification":true},"idProperty":"OBJECTID"},"structure_2007":{"name":"Shore Structures","type":"geojson","dataLocation":"./data/layers/structure_2007.json","defaultActive":false,"tableProperties":{"OBJECTID":false,"Notes":true,"County":true,"FIPS":true,"Structure Type":true},"idProperty":"OBJECTID"}}},"Oblique Photos":{"name":"Oblique Photos","layers":{"photos_1976":{"name":"1976-78 Photos","type":"geojson","dataLocation":"./data/layers/photos_1976.json","defaultActive":true,"tableProperties":{"OBJECTID":false,"Original File Name":true,"Longitude":true,"Latitude":true,"Easting":true,"Northing":true,"UTM Zone":true,"Great Lake":true,"County FIPS":true,"County":true,"State":true,"File Name":true,"Year":true,"urls":false},"idProperty":"OBJECTID"},"photos_2007":{"name":"2007-08 Photos","type":"geojson","dataLocation":"./data/layers/photos_2007.json","defaultActive":false,"tableProperties":{"OBJECTID":false,"Original File Name":true,"Longitude":true,"Latitude":true,"Easting":true,"Northing":true,"UTM Zone":true,"Great Lake":true,"County FIPS":true,"County":true,"State":true,"File Name":true,"Year":true,"urls":false},"idProperty":"OBJECTID"},"photos_2012":{"name":"2012 Photos","type":"geojson","dataLocation":"./data/layers/photos_2012.json","defaultActive":false,"tableProperties":{"imageId":"Image ID","altitude":"Altutude","date":"Date","imageUrl":false,"urls":false},"idProperty":"imageId"},"photos_2016":{"name":"2016 Photos","type":"geojson","dataLocation":"./data/layers/photos_2016.json","defaultActive":false,"tableProperties":{"name":"Name","filename":false,"date":"Date","urls":false},"idProperty":"name"},"photos_2017":{"name":"2017 Photos","type":"geojson","dataLocation":"./data/layers/photos_2017.json","defaultActive":false,"tableProperties":{"id":"Name","altitude":"Altitude","date":"Date","urls":false},"idProperty":"id"},"photos_2018":{"name":"2018 Photos","type":"geojson","dataLocation":"./data/layers/photos_2018.json","defaultActive":false,"tableProperties":{"id":"Name","DateTime":"Date / Time","Direction":false,"Path":false},"idProperty":"id"}}},"bluff_profiles":{"name":"2012 Bluff Profiles","layers":{"profiles":{"name":"Profile Lines","type":"geojson","dataLocation":"./data/layers/profiles.json","defaultActive":false,"tableProperties":{"ID":false,"ProfileNo":"Profile Number","county":"County","bluff_xls":false,"bathy_xls":false,"bluff_jpg":false,"bathy_png":false,"bluff_json":false,"bathy_json":false,"notes":"Notes","type":"Type","urls":false},"idProperty":"ID"}}},"wcmp":{"name":"1959 - 1995 Coastal Recession","layers":{"bluffcrest":{"name":"Bluff Crest","type":"geojson","dataLocation":"./data/layers/wcmp_bluff_crest.json","defaultActive":false,"tableProperties":{"OBJECTID":"ID","TransectID":"TransectID","EPR_5615":"EPR_5615","EPR_9515":"EPR_9515"},"idProperty":"OBJECTID"},"blufftoe":{"name":"Bluff Toe","type":"geojson","dataLocation":"./data/layers/wcmp_bluff_toe.json","defaultActive":false,"tableProperties":{"OBJECTID":"ID","TransectID":"TransectID","EPR_5615":"EPR_5615","EPR_9515":"EPR_9515"},"idProperty":"OBJECTID"},"shoreline_2015":{"name":"Shoreline","type":"geojson","dataLocation":"./data/layers/wcmp_shoreline_2015.json","defaultActive":false,"tableProperties":{"OBJECTID":"ID","Date_":"Date","UNCERTAINT":"UNCERTAINT","Shape_Leng":"Shape_Leng"},"idProperty":"OBJECTID"},"shoreline_rec_rate":{"name":"Shoreline Recede Rate","type":"geojson","dataLocation":"./data/layers/wcmp_shoreline_rec_rate.json","defaultActive":false,"tableProperties":{"OBJECTID":"ID","Sheet1__Tr":"Sheet1__Tr","Sheet1__Ra":"Sheet1__Ra","Sheet1___1":"Sheet1___1"},"idProperty":"OBJECTID"}}},"boundaries":{"name":"Boundaries","layers":{"county_bounds":{"name":"County Boundaries","type":"tileLayer","url":"https://api.mapbox.com/styles/v1/asfpm/ciyudtx3u00262sll3x184fnb/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw","defaultActive":true,"legendStyles":{"County Boundaries":{"geometryType":"LineString","style":{"color":"#333333"}}}}}}},"county_shorelines":{"Lake Superior":{"Douglas County":[[46.64283679198892,-92.3126220703125],[46.76808718675661,-91.58477783203126]],"bayfield County":[[46.54280504427768,-91.58203125000001],[46.99430443309905,-90.49575805664064]],"ashland County":[[46.55083326736553,-90.96199035644533],[46.74503658076334,-90.49850463867189]],"iron County":[[46.56133900067355,-90.55103302001953],[46.59402360423837,-90.41524887084961]]},"Lake Michigan":{"marinette County":[[44.95799590837475,-87.8075408935547],[45.101153694326484,-87.5328826904297]],"oconto County":[[44.67304768858752,-88.03894042968751],[44.97645666320777,-87.74574279785158]],"brown County":[[44.52049959138874,-88.05953979492189],[44.692088041727786,-87.7532958984375]],"door County":[[44.61979915773973,-87.81646728515625],[45.50249699389715,-86.71234130859375]],"kewaunee County":[[44.276671273775186,-87.77801513671876],[44.728198689689535,-87.22869873046876]],"manitowoc County":[[43.79389779242341,-87.9400634765625],[44.40827836571936,-87.33444213867189]],"sheboygan County":[[43.5326204268101,-88.00048828125001],[43.923615428841146,-87.45117187500001]],"ozaukee County":[[43.180145655844626,-88.15841674804688],[43.5734266934657,-87.60910034179689]],"milwaukee County":[[42.83267430318037,-88.16665649414064],[43.22819449883485,-87.61734008789064]],"racine County":[[42.65466692646942,-87.93045043945314],[42.86338298693097,-87.65579223632814]],"kenosha County":[[42.481212777716166,-87.95997619628908],[42.69051116998241,-87.68531799316406]]}}},"resources":{"photos":{"photos_1976":"http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/1976_2007_inventories","photos_2007":"http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/1976_2007_inventories","photos_2012":"http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2012_photos","photos_2016":"http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2016_photos","photos_2017":"http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2017_photos","photos_2018":"http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2018_photos"},"profiles":{"pathToXls":{"bluff":"./data/profiles/xlsx/bluff/","bathy":"./data/profiles/xlsx/bathy/"},"pathToJson":{"bluff":"./data/profiles/json/bluff/","bathy":"./data/profiles/json/bathy/"}}},"profileSummaryStatistics":{"xMin":0,"xMax":9530.166258,"yMin":522.0314105,"yMax":698.784306},"lakeMichiganWaterLevel":{"avg":578.02}}
+module.exports = {"map":{"wisconsinExtent":[[42.49196631300103,-92.88924132554837],[47.0807747621805,-86.80479844725258]],"maxExtent":[[37,-99],[52,-79]],"basemaps":{"light":{"name":"Light","url":"https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw","defaultActive":false},"streets":{"name":"Streets","url":"https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw","defaultActive":false},"satellite":{"name":"Satellite","url":"https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw","defaultActive":false}},"layers":{"1976_inventory":{"name":"1976-78 Inventory","layers":{"backshore_1976":{"name":"Bluff Condition","type":"geojson","dataLocation":"./data/layers/backshore_1976.json","defaultActive":false,"tableProperties":{"OBJECTID":false,"Backshore Type":true,"Notes":true,"County":true,"FIPS":true,"Segment Length (miles)":true,"Vegetation Classification":true,"Bluff Condition Classification":true,"Bluff Modified Classification":true,"Bluff Failure Classification":true,"Non-Bluff Classification":true,"Confidence Level Classification":true},"idProperty":"OBJECTID"},"beachclass_1976":{"name":"Beach Protection","type":"geojson","dataLocation":"./data/layers/beachclass_1976.json","defaultActive":false,"tableProperties":{"OBJECTID":false,"Shore Type":true,"Notes":true,"County":true,"FIPS":true,"Segment Length (miles)":true,"Beach Classification":true,"Shore Protection Classification":true},"idProperty":"OBJECTID"},"structure_1976":{"name":"Shore Structures","type":"geojson","dataLocation":"./data/layers/structure_1976.json","defaultActive":false,"tableProperties":{"OBJECTID":false,"Notes":true,"County":true,"FIPS":true,"Structure Type":true},"idProperty":"OBJECTID"}}},"2007_inventory":{"name":"2007-08 Inventory","layers":{"backshore_2007":{"name":"Bluff Condition","type":"geojson","dataLocation":"./data/layers/backshore_2007.json","defaultActive":false,"tableProperties":{"OBJECTID":false,"Backshore Type":true,"Notes":true,"County":true,"FIPS":true,"Segment Length (miles)":true,"Vegetation Classification":true,"Bluff Condition Classification":true,"Bluff Modified Classification":true,"Bluff Failure Classification":true,"Non-Bluff Classification":true,"Confidence Level Classification":true},"idProperty":"OBJECTID"},"beachclass_2007":{"name":"Beach Protection","type":"geojson","dataLocation":"./data/layers/beachclass_2007.json","defaultActive":false,"tableProperties":{"OBJECTID":false,"Shore Type":true,"Notes":true,"County":true,"FIPS":true,"Segment Length (miles)":true,"Beach Classification":true,"Shore Protection Classification":true},"idProperty":"OBJECTID"},"structure_2007":{"name":"Shore Structures","type":"geojson","dataLocation":"./data/layers/structure_2007.json","defaultActive":false,"tableProperties":{"OBJECTID":false,"Notes":true,"County":true,"FIPS":true,"Structure Type":true},"idProperty":"OBJECTID"}}},"Oblique Photos":{"name":"Oblique Photos","layers":{"photos_1976":{"name":"1976-78 Photos","type":"geojson","dataLocation":"./data/layers/photos_1976.json","defaultActive":false,"tableProperties":{"OBJECTID":false,"Original File Name":true,"Longitude":true,"Latitude":true,"Easting":true,"Northing":true,"UTM Zone":true,"Great Lake":true,"County FIPS":true,"County":true,"State":true,"File Name":true,"Year":true,"urls":false},"idProperty":"OBJECTID"},"photos_2007":{"name":"2007-08 Photos","type":"geojson","dataLocation":"./data/layers/photos_2007.json","defaultActive":false,"tableProperties":{"OBJECTID":false,"Original File Name":true,"Longitude":true,"Latitude":true,"Easting":true,"Northing":true,"UTM Zone":true,"Great Lake":true,"County FIPS":true,"County":true,"State":true,"File Name":true,"Year":true,"urls":false},"idProperty":"OBJECTID"},"photos_2012":{"name":"2012 Photos","type":"geojson","dataLocation":"./data/layers/photos_2012.json","defaultActive":false,"tableProperties":{"imageId":"Image ID","altitude":"Altutude","date":"Date","imageUrl":false,"urls":false},"idProperty":"imageId"},"photos_2016":{"name":"2016 Photos","type":"geojson","dataLocation":"./data/layers/photos_2016.json","defaultActive":false,"tableProperties":{"name":"Name","filename":false,"date":"Date","urls":false},"idProperty":"name"},"photos_2017":{"name":"2017 Photos","type":"geojson","dataLocation":"./data/layers/photos_2017.json","defaultActive":false,"tableProperties":{"id":"Name","altitude":"Altitude","date":"Date","urls":false},"idProperty":"id"},"photos_2018":{"name":"2018 Photos","type":"geojson","dataLocation":"./data/layers/photos_2018.json","defaultActive":false,"tableProperties":{"id":"Name","DateTime":"Date / Time","Direction":false,"Path":false},"idProperty":"id"}}},"bluff_profiles":{"name":"2012 Bluff Profiles","layers":{"profiles":{"name":"Profile Lines","type":"geojson","dataLocation":"./data/layers/profiles.json","defaultActive":false,"tableProperties":{"ID":false,"ProfileNo":"Profile Number","county":"County","bluff_xls":false,"bathy_xls":false,"bluff_jpg":false,"bathy_png":false,"bluff_json":false,"bathy_json":false,"notes":"Notes","type":"Type","urls":false},"idProperty":"ID"}}},"wcmp":{"name":"1959 - 1995 Coastal Recession","layers":{"bluff_toe_rec_long":{"name":"Bluff Toe Recession – Long-term (1956 – 2015)","type":"geojson","dataLocation":"./data/layers/bluff_toe_rec_rate.json","defaultActive":true,"tableProperties":{"OBJECTID":"ID"},"idProperty":"OBJECTID"},"bluff_crest_rec_long":{"name":"Bluff Crest Recession - Long-term (1956 - 2015)","type":"geojson","dataLocation":"./data/layers/bluff_crest_rec_rate.json","defaultActive":false,"tableProperties":{"OBJECTID":"ID"},"idProperty":"OBJECTID"},"shoreline_rec_long":{"name":"Shoreline Recession – Long-term (1956 - 2015)","type":"geojson","dataLocation":"./data/layers/shore_change_rate.json","defaultActive":false,"tableProperties":{"OBJECTID":"ID"},"idProperty":"OBJECTID"},"bluff_toe_rec_short":{"name":"Bluff Toe Recession – Short-term (1995 – 2015)","type":"geojson","dataLocation":"./data/layers/bluff_toe_rec_rate.json","defaultActive":false,"tableProperties":{"OBJECTID":"ID"},"idProperty":"OBJECTID"},"bluff_crest_rec_short":{"name":"Bluff Crest Recession – Short-term (1995 - 2015)","type":"geojson","dataLocation":"./data/layers/bluff_crest_rec_rate.json","defaultActive":false,"tableProperties":{"OBJECTID":"ID"},"idProperty":"OBJECTID"},"shoreline_rec_short":{"name":"Shoreline Recession – Short-term (1995 - 2015)","type":"geojson","dataLocation":"./data/layers/shore_change_rate.json","defaultActive":false,"tableProperties":{"OBJECTID":"ID"},"idProperty":"OBJECTID"},"shoreline_position":{"name":"Shoreline Position (2015)","type":"geojson","dataLocation":"./data/layers/shoreline_2015.json","defaultActive":false,"tableProperties":{"OBJECTID":"ID"},"idProperty":"OBJECTID"}}},"boundaries":{"name":"Boundaries","layers":{"county_bounds":{"name":"County Boundaries","type":"tileLayer","url":"https://api.mapbox.com/styles/v1/asfpm/ciyudtx3u00262sll3x184fnb/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw","defaultActive":true,"legendStyles":{"County Boundaries":{"geometryType":"LineString","style":{"color":"#333333"}}}}}}},"county_shorelines":{"Lake Superior":{"Douglas County":[[46.64283679198892,-92.3126220703125],[46.76808718675661,-91.58477783203126]],"bayfield County":[[46.54280504427768,-91.58203125000001],[46.99430443309905,-90.49575805664064]],"ashland County":[[46.55083326736553,-90.96199035644533],[46.74503658076334,-90.49850463867189]],"iron County":[[46.56133900067355,-90.55103302001953],[46.59402360423837,-90.41524887084961]]},"Lake Michigan":{"marinette County":[[44.95799590837475,-87.8075408935547],[45.101153694326484,-87.5328826904297]],"oconto County":[[44.67304768858752,-88.03894042968751],[44.97645666320777,-87.74574279785158]],"brown County":[[44.52049959138874,-88.05953979492189],[44.692088041727786,-87.7532958984375]],"door County":[[44.61979915773973,-87.81646728515625],[45.50249699389715,-86.71234130859375]],"kewaunee County":[[44.276671273775186,-87.77801513671876],[44.728198689689535,-87.22869873046876]],"manitowoc County":[[43.79389779242341,-87.9400634765625],[44.40827836571936,-87.33444213867189]],"sheboygan County":[[43.5326204268101,-88.00048828125001],[43.923615428841146,-87.45117187500001]],"ozaukee County":[[43.180145655844626,-88.15841674804688],[43.5734266934657,-87.60910034179689]],"milwaukee County":[[42.83267430318037,-88.16665649414064],[43.22819449883485,-87.61734008789064]],"racine County":[[42.65466692646942,-87.93045043945314],[42.86338298693097,-87.65579223632814]],"kenosha County":[[42.481212777716166,-87.95997619628908],[42.69051116998241,-87.68531799316406]]}}},"resources":{"photos":{"photos_1976":"http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/1976_2007_inventories","photos_2007":"http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/1976_2007_inventories","photos_2012":"http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2012_photos","photos_2016":"http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2016_photos","photos_2017":"http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2017_photos","photos_2018":"http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2018_photos"},"profiles":{"pathToXls":{"bluff":"./data/profiles/xlsx/bluff/","bathy":"./data/profiles/xlsx/bathy/"},"pathToJson":{"bluff":"./data/profiles/json/bluff/","bathy":"./data/profiles/json/bathy/"}}},"profileSummaryStatistics":{"xMin":0,"xMax":9530.166258,"yMin":522.0314105,"yMax":698.784306},"lakeMichiganWaterLevel":{"avg":578.02}}
 
 /***/ }),
 /* 135 */
@@ -10671,7 +10671,7 @@ module.exports = exports['default'];
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = style;
@@ -10729,7 +10729,7 @@ module.exports = exports["default"];
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = void 0;
@@ -12911,7 +12911,7 @@ module.exports = function (original, length) {
 "use strict";
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var toAbsoluteIndex = __webpack_require__(82);
 var toLength = __webpack_require__(20);
 module.exports = function fill(value /* , start = 0, end = @length */) {
@@ -16305,7 +16305,7 @@ for (var alias in aliases) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = void 0;
@@ -17438,7 +17438,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 var _uuid = __webpack_require__(425);
 
@@ -17455,6 +17455,10 @@ var _DataTab2 = _interopRequireDefault(_DataTab);
 var _ProfileTab = __webpack_require__(1049);
 
 var _ProfileTab2 = _interopRequireDefault(_ProfileTab);
+
+var _RecessionTab = __webpack_require__(1202);
+
+var _RecessionTab2 = _interopRequireDefault(_RecessionTab);
 
 var _util = __webpack_require__(77);
 
@@ -17546,6 +17550,21 @@ var PopupTabs = function (_React$Component) {
                         tabs.push(_react2.default.createElement(_DataTab2.default, { key: 'data',
                             eventKey: eventKeyIndex,
                             title: 'Data',
+                            layerId: layerId,
+                            featureProperties: featureProperties,
+                            update: this.update }));
+                        break;
+                    }
+                case 'bluff_toe_rec_long':
+                case 'bluff_crest_rec_long':
+                case 'shoreline_rec_long':
+                case 'bluff_toe_rec_short':
+                case 'bluff_crest_rec_short':
+                case 'shoreline_rec_short':
+                    {
+                        tabs.push(_react2.default.createElement(_RecessionTab2.default, { key: 'recession',
+                            eventKey: 1,
+                            title: 'Recession',
                             layerId: layerId,
                             featureProperties: featureProperties,
                             update: this.update }));
@@ -19077,7 +19096,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 var _util = __webpack_require__(77);
 
@@ -19196,7 +19215,7 @@ exports.default = PopupFooter;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(46);
-var normalizeHeaderName = __webpack_require__(1213);
+var normalizeHeaderName = __webpack_require__(1214);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -19381,7 +19400,7 @@ module.exports.f = function getOwnPropertyNames(it) {
 var getKeys = __webpack_require__(81);
 var gOPS = __webpack_require__(148);
 var pIE = __webpack_require__(118);
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var IObject = __webpack_require__(117);
 var $assign = Object.assign;
 
@@ -19591,7 +19610,7 @@ module.exports = function (iterator, fn, value, entries) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var aFunction = __webpack_require__(32);
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var IObject = __webpack_require__(117);
 var toLength = __webpack_require__(20);
 
@@ -19627,7 +19646,7 @@ module.exports = function (that, callbackfn, aLen, memo, isRight) {
 "use strict";
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var toAbsoluteIndex = __webpack_require__(82);
 var toLength = __webpack_require__(20);
 
@@ -24568,7 +24587,7 @@ function capitalize(string) {
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = camelizeStyleName;
@@ -24595,7 +24614,7 @@ module.exports = exports["default"];
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = exports.animationEnd = exports.animationDelay = exports.animationTiming = exports.animationDuration = exports.animationName = exports.transitionEnd = exports.transitionDuration = exports.transitionDelay = exports.transitionTiming = exports.transitionProperty = exports.transform = void 0;
@@ -25034,7 +25053,7 @@ exports.default = Transition;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = activeElement;
@@ -25591,7 +25610,7 @@ ListGroupItem.defaultProps = defaultProps;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = scrollbarSize;
@@ -26868,7 +26887,7 @@ Overlay.defaultProps = defaultProps;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = offset;
@@ -26912,7 +26931,7 @@ module.exports = exports["default"];
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = scrollTop;
@@ -28626,7 +28645,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 var _reactRedux = __webpack_require__(76);
 
@@ -28883,7 +28902,7 @@ function createLeafletPopup(feature, featureLayer, layerId, map) {
         closeOnClick: false,
         className: 'feature-popup hidden-xs',
         autoClose: true,
-        maxWidth: 350,
+        maxWidth: 500,
         minWidth: 350,
         closeButton: false
     }).setLatLng(_leaflet2.default.latLng(featureMiddlePoint[1], featureMiddlePoint[0])).setContent(container);
@@ -46139,12 +46158,12 @@ module.exports = function bind(fn, thisArg) {
 
 
 var utils = __webpack_require__(46);
-var settle = __webpack_require__(1214);
-var buildURL = __webpack_require__(1216);
-var parseHeaders = __webpack_require__(1217);
-var isURLSameOrigin = __webpack_require__(1218);
+var settle = __webpack_require__(1215);
+var buildURL = __webpack_require__(1217);
+var parseHeaders = __webpack_require__(1218);
+var isURLSameOrigin = __webpack_require__(1219);
 var createError = __webpack_require__(498);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(1219);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(1220);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -46241,7 +46260,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(1220);
+      var cookies = __webpack_require__(1221);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -46325,7 +46344,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(1215);
+var enhanceError = __webpack_require__(1216);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -46937,7 +46956,7 @@ __webpack_require__(56)('getOwnPropertyDescriptor', function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 Object.getPrototypeOf(O)
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var $getPrototypeOf = __webpack_require__(43);
 
 __webpack_require__(56)('getPrototypeOf', function () {
@@ -46952,7 +46971,7 @@ __webpack_require__(56)('getPrototypeOf', function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 Object.keys(O)
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var $keys = __webpack_require__(81);
 
 __webpack_require__(56)('keys', function () {
@@ -48169,7 +48188,7 @@ $export($export.S, 'Date', { now: function () { return new Date().getTime(); } }
 "use strict";
 
 var $export = __webpack_require__(1);
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var toPrimitive = __webpack_require__(54);
 
 $export($export.P + $export.F * __webpack_require__(15)(function () {
@@ -48294,7 +48313,7 @@ $export($export.S, 'Array', { isArray: __webpack_require__(149) });
 
 var ctx = __webpack_require__(48);
 var $export = __webpack_require__(1);
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var call = __webpack_require__(316);
 var isArrayIter = __webpack_require__(215);
 var toLength = __webpack_require__(20);
@@ -48418,7 +48437,7 @@ $export($export.P + $export.F * __webpack_require__(15)(function () {
 
 var $export = __webpack_require__(1);
 var aFunction = __webpack_require__(32);
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var fails = __webpack_require__(15);
 var $sort = [].sort;
 var test = [1, 2, 3];
@@ -48842,7 +48861,7 @@ __webpack_require__(154)('match', 1, function (defined, MATCH, $match, maybeCall
 
 
 var anObject = __webpack_require__(10);
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var toLength = __webpack_require__(20);
 var toInteger = __webpack_require__(50);
 var advanceStringIndex = __webpack_require__(222);
@@ -49978,7 +49997,7 @@ __webpack_require__(71)('includes');
 // https://tc39.github.io/proposal-flatMap/#sec-Array.prototype.flatMap
 var $export = __webpack_require__(1);
 var flattenIntoArray = __webpack_require__(331);
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var toLength = __webpack_require__(20);
 var aFunction = __webpack_require__(32);
 var arraySpeciesCreate = __webpack_require__(218);
@@ -50007,7 +50026,7 @@ __webpack_require__(71)('flatMap');
 // https://tc39.github.io/proposal-flatMap/#sec-Array.prototype.flatten
 var $export = __webpack_require__(1);
 var flattenIntoArray = __webpack_require__(331);
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var toLength = __webpack_require__(20);
 var toInteger = __webpack_require__(50);
 var arraySpeciesCreate = __webpack_require__(218);
@@ -50225,7 +50244,7 @@ $export($export.S, 'Object', {
 "use strict";
 
 var $export = __webpack_require__(1);
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var aFunction = __webpack_require__(32);
 var $defineProperty = __webpack_require__(23);
 
@@ -50244,7 +50263,7 @@ __webpack_require__(22) && $export($export.P + __webpack_require__(158), 'Object
 "use strict";
 
 var $export = __webpack_require__(1);
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var aFunction = __webpack_require__(32);
 var $defineProperty = __webpack_require__(23);
 
@@ -50263,7 +50282,7 @@ __webpack_require__(22) && $export($export.P + __webpack_require__(158), 'Object
 "use strict";
 
 var $export = __webpack_require__(1);
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var toPrimitive = __webpack_require__(54);
 var getPrototypeOf = __webpack_require__(43);
 var getOwnPropertyDescriptor = __webpack_require__(42).f;
@@ -50288,7 +50307,7 @@ __webpack_require__(22) && $export($export.P + __webpack_require__(158), 'Object
 "use strict";
 
 var $export = __webpack_require__(1);
-var toObject = __webpack_require__(26);
+var toObject = __webpack_require__(27);
 var toPrimitive = __webpack_require__(54);
 var getPrototypeOf = __webpack_require__(43);
 var getOwnPropertyDescriptor = __webpack_require__(42).f;
@@ -51939,7 +51958,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactDom = __webpack_require__(29);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 var _reactRedux = __webpack_require__(76);
 
@@ -51955,19 +51974,19 @@ var _MobileFeaturePopup = __webpack_require__(990);
 
 var _MobileFeaturePopup2 = _interopRequireDefault(_MobileFeaturePopup);
 
-var _MapWrapper = __webpack_require__(1202);
+var _MapWrapper = __webpack_require__(1203);
 
 var _MapWrapper2 = _interopRequireDefault(_MapWrapper);
 
-var _MobileLayerList = __webpack_require__(1203);
+var _MobileLayerList = __webpack_require__(1204);
 
 var _MobileLayerList2 = _interopRequireDefault(_MobileLayerList);
 
-var _PinnedFeaturePopupContainer = __webpack_require__(1204);
+var _PinnedFeaturePopupContainer = __webpack_require__(1205);
 
 var _PinnedFeaturePopupContainer2 = _interopRequireDefault(_PinnedFeaturePopupContainer);
 
-var _LeafletMap = __webpack_require__(1207);
+var _LeafletMap = __webpack_require__(1208);
 
 var _LeafletMap2 = _interopRequireDefault(_LeafletMap);
 
@@ -66741,7 +66760,7 @@ module.exports = exports["default"];
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = hyphenateStyleName;
@@ -66785,7 +66804,7 @@ module.exports = exports["default"];
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = _getComputedStyle;
@@ -69834,7 +69853,7 @@ Modal.BACKDROP_TRANSITION_DURATION = 150;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = void 0;
@@ -69869,7 +69888,7 @@ exports.default = _default;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = filterEvents;
@@ -69935,7 +69954,7 @@ module.exports = exports["default"];
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = void 0;
@@ -70837,7 +70856,7 @@ module.exports = exports['default'];
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = void 0;
@@ -70867,7 +70886,7 @@ exports.default = _default;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = addClass;
@@ -72541,7 +72560,7 @@ module.exports = exports['default'];
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = position;
@@ -72620,7 +72639,7 @@ module.exports = _extends;
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = offsetParent;
@@ -72653,7 +72672,7 @@ module.exports = exports["default"];
 "use strict";
 
 
-var _interopRequireDefault = __webpack_require__(25);
+var _interopRequireDefault = __webpack_require__(26);
 
 exports.__esModule = true;
 exports.default = scrollTop;
@@ -76748,7 +76767,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 var _reactRedux = __webpack_require__(76);
 
@@ -77106,7 +77125,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 var _reactSvgInline = __webpack_require__(974);
 
@@ -77403,7 +77422,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -77523,7 +77542,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 var _LayerList = __webpack_require__(429);
 
@@ -77687,7 +77706,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 var _Layer = __webpack_require__(983);
 
@@ -77777,7 +77796,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -77846,7 +77865,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 var _Basemap = __webpack_require__(985);
 
@@ -77927,7 +77946,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -78122,7 +78141,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(76);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 var _propTypes = __webpack_require__(2);
 
@@ -78344,7 +78363,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 var _reactRedux = __webpack_require__(76);
 
@@ -84888,7 +84907,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -84940,7 +84959,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 var _util = __webpack_require__(77);
 
@@ -85091,7 +85110,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 var _d3Scale = __webpack_require__(1050);
 
@@ -90989,11 +91008,159 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactBootstrap = __webpack_require__(27);
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactBootstrap = __webpack_require__(25);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var RecessionTab = function (_React$Component) {
+    _inherits(RecessionTab, _React$Component);
+
+    function RecessionTab() {
+        _classCallCheck(this, RecessionTab);
+
+        return _possibleConstructorReturn(this, (RecessionTab.__proto__ || Object.getPrototypeOf(RecessionTab)).apply(this, arguments));
+    }
+
+    _createClass(RecessionTab, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.props.update();
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var tabProps = _extends({}, this.props);
+            delete tabProps.layerId;
+            delete tabProps.featureProperties;
+            delete tabProps.update;
+            var values = this.props.featureProperties;
+
+            return _react2.default.createElement(
+                _reactBootstrap.Tab,
+                _extends({}, tabProps, { className: 'wiscviewer-recession-tab' }),
+                _react2.default.createElement(
+                    _reactBootstrap.Table,
+                    { className: 'wiscviewer-recession-table' },
+                    _react2.default.createElement(
+                        'thead',
+                        null,
+                        _react2.default.createElement(
+                            'tr',
+                            null,
+                            _react2.default.createElement(
+                                'th',
+                                null,
+                                'Transect Id: ',
+                                values.TransectID
+                            ),
+                            _react2.default.createElement(
+                                'th',
+                                null,
+                                'Recession Rate'
+                            ),
+                            _react2.default.createElement(
+                                'th',
+                                null,
+                                'Total Distance'
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'tbody',
+                        null,
+                        _react2.default.createElement(
+                            'tr',
+                            null,
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                '20 Year Measurement (1995 - 2015)'
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                values.Yr_20_Rate,
+                                ' ft/yr'
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                values.Yr_20_Dist,
+                                ' ft'
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'tr',
+                            null,
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                '59 Year Measurement (1956 - 2015)'
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                values.Yr_59_Rate,
+                                ' ft/yr'
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                values.Yr_59_Dist,
+                                ' ft'
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return RecessionTab;
+}(_react2.default.Component);
+
+RecessionTab.propTypes = {
+    layerId: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.bool]).isRequired,
+    featureProperties: _propTypes2.default.oneOfType([_propTypes2.default.object, _propTypes2.default.bool]).isRequired,
+    update: _propTypes2.default.func.isRequired
+};
+
+exports.default = RecessionTab;
+
+/***/ }),
+/* 1203 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactBootstrap = __webpack_require__(25);
 
 var _propTypes = __webpack_require__(2);
 
@@ -91049,7 +91216,7 @@ MapWrapper.defaultProps = {
 exports.default = MapWrapper;
 
 /***/ }),
-/* 1203 */
+/* 1204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -91069,7 +91236,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactBootstrap = __webpack_require__(27);
+var _reactBootstrap = __webpack_require__(25);
 
 var _reactRedux = __webpack_require__(76);
 
@@ -91172,7 +91339,7 @@ MobileLayerList.propTypes = {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(MobileLayerList);
 
 /***/ }),
-/* 1204 */
+/* 1205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -91200,7 +91367,7 @@ var _store2 = _interopRequireDefault(_store);
 
 var _pinnedFeatures = __webpack_require__(272);
 
-var _PinnedFeaturePopup = __webpack_require__(1205);
+var _PinnedFeaturePopup = __webpack_require__(1206);
 
 var _PinnedFeaturePopup2 = _interopRequireDefault(_PinnedFeaturePopup);
 
@@ -91378,7 +91545,7 @@ PinnedFeaturePopupContainer.propTypes = {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(PinnedFeaturePopupContainer);
 
 /***/ }),
-/* 1205 */
+/* 1206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -91398,7 +91565,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactDraggable = __webpack_require__(1206);
+var _reactDraggable = __webpack_require__(1207);
 
 var _reactDraggable2 = _interopRequireDefault(_reactDraggable);
 
@@ -91540,7 +91707,7 @@ PinnedFeaturePopup.propTypes = {
 exports.default = PinnedFeaturePopup;
 
 /***/ }),
-/* 1206 */
+/* 1207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function (global, factory) {
@@ -93750,7 +93917,7 @@ exports.default = PinnedFeaturePopup;
 
 
 /***/ }),
-/* 1207 */
+/* 1208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93772,7 +93939,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactRedux = __webpack_require__(76);
 
-var _ObliquePhotoMap = __webpack_require__(1208);
+var _ObliquePhotoMap = __webpack_require__(1209);
 
 var _ObliquePhotoMap2 = _interopRequireDefault(_ObliquePhotoMap);
 
@@ -93935,7 +94102,7 @@ LeafletMap.propTypes = {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(LeafletMap);
 
 /***/ }),
-/* 1208 */
+/* 1209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93947,7 +94114,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _axios = __webpack_require__(1209);
+var _axios = __webpack_require__(1210);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -93957,7 +94124,7 @@ var _leaflet = __webpack_require__(431);
 
 var _leaflet2 = _interopRequireDefault(_leaflet);
 
-var _AddMousePosition = __webpack_require__(1228);
+var _AddMousePosition = __webpack_require__(1229);
 
 var _AddMousePosition2 = _interopRequireDefault(_AddMousePosition);
 
@@ -93965,7 +94132,7 @@ var _config = __webpack_require__(134);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _layerStyles = __webpack_require__(1229);
+var _layerStyles = __webpack_require__(1230);
 
 var _layerStyles2 = _interopRequireDefault(_layerStyles);
 
@@ -94242,13 +94409,13 @@ var ObliquePhotoMap = function () {
 exports.default = ObliquePhotoMap;
 
 /***/ }),
-/* 1209 */
+/* 1210 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(1210);
+module.exports = __webpack_require__(1211);
 
 /***/ }),
-/* 1210 */
+/* 1211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94256,7 +94423,7 @@ module.exports = __webpack_require__(1210);
 
 var utils = __webpack_require__(46);
 var bind = __webpack_require__(496);
-var Axios = __webpack_require__(1212);
+var Axios = __webpack_require__(1213);
 var defaults = __webpack_require__(300);
 
 /**
@@ -94291,14 +94458,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(500);
-axios.CancelToken = __webpack_require__(1226);
+axios.CancelToken = __webpack_require__(1227);
 axios.isCancel = __webpack_require__(499);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(1227);
+axios.spread = __webpack_require__(1228);
 
 module.exports = axios;
 
@@ -94307,7 +94474,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 1211 */
+/* 1212 */
 /***/ (function(module, exports) {
 
 /*!
@@ -94334,7 +94501,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 1212 */
+/* 1213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94342,10 +94509,10 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(300);
 var utils = __webpack_require__(46);
-var InterceptorManager = __webpack_require__(1221);
-var dispatchRequest = __webpack_require__(1222);
-var isAbsoluteURL = __webpack_require__(1224);
-var combineURLs = __webpack_require__(1225);
+var InterceptorManager = __webpack_require__(1222);
+var dispatchRequest = __webpack_require__(1223);
+var isAbsoluteURL = __webpack_require__(1225);
+var combineURLs = __webpack_require__(1226);
 
 /**
  * Create a new instance of Axios
@@ -94427,7 +94594,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 1213 */
+/* 1214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94446,7 +94613,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 1214 */
+/* 1215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94479,7 +94646,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 1215 */
+/* 1216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94507,7 +94674,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 1216 */
+/* 1217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94582,7 +94749,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 1217 */
+/* 1218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94626,7 +94793,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 1218 */
+/* 1219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94701,7 +94868,7 @@ module.exports = (
 
 
 /***/ }),
-/* 1219 */
+/* 1220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94744,7 +94911,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 1220 */
+/* 1221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94804,7 +94971,7 @@ module.exports = (
 
 
 /***/ }),
-/* 1221 */
+/* 1222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94863,14 +95030,14 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 1222 */
+/* 1223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(46);
-var transformData = __webpack_require__(1223);
+var transformData = __webpack_require__(1224);
 var isCancel = __webpack_require__(499);
 var defaults = __webpack_require__(300);
 
@@ -94949,7 +95116,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 1223 */
+/* 1224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94976,7 +95143,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 1224 */
+/* 1225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94997,7 +95164,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 1225 */
+/* 1226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95018,7 +95185,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 1226 */
+/* 1227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95082,7 +95249,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 1227 */
+/* 1228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95116,7 +95283,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 1228 */
+/* 1229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95181,7 +95348,7 @@ function AddMousePosition(L) {
 }
 
 /***/ }),
-/* 1229 */
+/* 1230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
