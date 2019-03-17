@@ -273,55 +273,73 @@
             "wcmp": {
                 "name": "1959 - 1995 Coastal Recession",
                 "layers": {
-                    "bluffcrest": {
-                        "name": "Bluff Crest",
+                    "bluff_toe_rec_long": {
+                        "name": "Bluff Toe Recession – Long-term (1956 – 2015)",
                         "type": "geojson",
-                        "dataLocation": "./data/layers/wcmp_bluff_crest.json",
+                        "dataLocation": "./data/layers/bluff_toe_rec_rate.json",
                         "defaultActive": false,
                         "tableProperties": {
-                            "OBJECTID": "ID",
-                            "TransectID": "TransectID",
-                            "EPR_5615": "EPR_5615",
-                            "EPR_9515": "EPR_9515"
+                            "OBJECTID": "ID"
                         },
                         "idProperty": "OBJECTID"
                     },
-                    "blufftoe": {
-                        "name": "Bluff Toe",
+                    "bluff_crest_rec_long": {
+                        "name": "Bluff Crest Recession - Long-term (1956 - 2015)",
                         "type": "geojson",
-                        "dataLocation": "./data/layers/wcmp_bluff_toe.json",
+                        "dataLocation": "./data/layers/bluff_crest_rec_rate.json",
                         "defaultActive": false,
                         "tableProperties": {
-                            "OBJECTID": "ID",
-                            "TransectID": "TransectID",
-                            "EPR_5615": "EPR_5615",
-                            "EPR_9515": "EPR_9515"
+                            "OBJECTID": "ID"
                         },
                         "idProperty": "OBJECTID"
                     },
-                    "shoreline_2015": {
-                        "name": "Shoreline",
+                    "shoreline_rec_long": {
+                        "name": "Shoreline Recession – Long-term (1956 - 2015)",
                         "type": "geojson",
-                        "dataLocation": "./data/layers/wcmp_shoreline_2015.json",
+                        "dataLocation": "./data/layers/shore_change_rate.json",
                         "defaultActive": false,
                         "tableProperties": {
-                            "OBJECTID": "ID",
-                            "Date_": "Date",
-                            "UNCERTAINT": "UNCERTAINT",
-                            "Shape_Leng": "Shape_Leng"
+                            "OBJECTID": "ID"
                         },
                         "idProperty": "OBJECTID"
                     },
-                    "shoreline_rec_rate": {
-                        "name": "Shoreline Recede Rate",
+                    "bluff_toe_rec_short": {
+                        "name": "Bluff Toe Recession – Short-term (1995 – 2015)",
                         "type": "geojson",
-                        "dataLocation": "./data/layers/wcmp_shoreline_rec_rate.json",
+                        "dataLocation": "./data/layers/bluff_toe_rec_rate.json",
                         "defaultActive": false,
                         "tableProperties": {
-                            "OBJECTID": "ID",
-                            "Sheet1__Tr": "Sheet1__Tr",
-                            "Sheet1__Ra": "Sheet1__Ra",
-                            "Sheet1___1": "Sheet1___1"
+                            "OBJECTID": "ID"
+                        },
+                        "idProperty": "OBJECTID"
+                    },
+                    "bluff_crest_rec_short": {
+                        "name": "Bluff Crest Recession – Short-term (1995 - 2015)",
+                        "type": "geojson",
+                        "dataLocation": "./data/layers/bluff_crest_rec_rate.json",
+                        "defaultActive": false,
+                        "tableProperties": {
+                            "OBJECTID": "ID"
+                        },
+                        "idProperty": "OBJECTID"
+                    },
+                    "shoreline_rec_short": {
+                        "name": "Shoreline Recession – Short-term (1995 - 2015)",
+                        "type": "geojson",
+                        "dataLocation": "./data/layers/shore_change_rate.json",
+                        "defaultActive": false,
+                        "tableProperties": {
+                            "OBJECTID": "ID"
+                        },
+                        "idProperty": "OBJECTID"
+                    },
+                    "shoreline_position": {
+                        "name": "Shoreline Position (2015)",
+                        "type": "geojson",
+                        "dataLocation": "./data/layers/shoreline_2015.json",
+                        "defaultActive": false,
+                        "tableProperties": {
+                            "OBJECTID": "ID"
                         },
                         "idProperty": "OBJECTID"
                     }
