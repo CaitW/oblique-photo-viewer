@@ -122,10 +122,20 @@ $hide_scroll_padding: 17px;
   padding: 15px;
   font-size: 16px;
   border-radius: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .wiscviewer-layer-group-name {
 
+  }
+  .wiscviewer-layer-group-info,
+  .wiscviewer-layer-group-info > a {
+    color: $primary_400;
+  }
   &:hover {
     cursor: default;
   }
+
 }
 
 .wiscviewer-layer-left-icon {

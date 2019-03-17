@@ -41,6 +41,7 @@ class LayerList extends React.Component {
         for (const layerGroupId in this.props.layers) {
             layerGroups.push(
                 <LayerGroup key={layerGroupId}
+                    layerGroupId={layerGroupId}
                     layerGroupName={this.props.layers[layerGroupId].name}
                     layers={this.props.layers[layerGroupId].layers}
                     onLayerClick={this.constructor.onLayerClick}

@@ -28,7 +28,12 @@ const LayerGroup = (props) => {
             <div className={headerClassNames.join(' ')}
                 role="button"
                 tabIndex={0}>
-                <span className="wiscviewer-layer-group-name"> {props.layerGroupName} </span>
+                <div className="wiscviewer-layer-group-name"> {props.layerGroupName} </div>
+                <div className="wiscviewer-layer-group-info">
+                    <a href={"/about#" + props.layerGroupId} target="_blank">
+                        <i className="fa fa-question-circle"></i>
+                    </a>
+                </div>
             </div>
             <div className={bodyClassNames.join(' ')}>
                 <ListGroup className="wiscviewer-layer-list-group">
@@ -40,6 +45,7 @@ const LayerGroup = (props) => {
 };
 
 LayerGroup.propTypes = {
+    layerGroupId: PropTypes.string.isRequired,
     layerGroupName: PropTypes.string.isRequired,
     layers: PropTypes.object.isRequired,
     onLayerClick: PropTypes.func.isRequired
