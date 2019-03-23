@@ -8,6 +8,19 @@
 import store from '../store';
 import { legendStyleUpdate } from '../ducks/layers';
 
+/**
+ * String values for recession rates
+ */
+export const NO_RECESSION = 'No recession';
+// short term rates
+export const ZERO_TO_TEN = '0 to 10 feet';
+export const TEN_TO_TWENTY = '0 to 20 feet';
+export const GREATER_THAN_TWENTY = 'Greater than 20 feet';
+// long term rates
+export const ZERO_TO_TWENTY = '0 to 20 feet';
+export const TWENTY_TO_FORTY = '20 to 40 feet';
+export const FORTY_TO_SIXTY = '40 to 60 feet';
+export const GREATER_THAN_SIXTY = 'Greater than 60 feet';
 
 /**
  * Colors used in the app
@@ -52,6 +65,21 @@ COLORS.STRUCTURES = [
 COLORS.PROFILES = {
     bathy: '#00838F',
     bluff: '#4E342E'
+};
+
+COLORS.SHORT_TERM_RATES = {
+    [NO_RECESSION]: '#FFFFFF',
+    [ZERO_TO_TEN]: '#CCCCFF',
+    [TEN_TO_TWENTY]: '#7960F2',
+    [GREATER_THAN_TWENTY]: '#0000E0'
+};
+
+COLORS.LONG_TERM_RATES = {
+    [NO_RECESSION]: '#FFFFFF',
+    [ZERO_TO_TWENTY]: '#FFE0E0',
+    [TWENTY_TO_FORTY]: '#DB877A',
+    [FORTY_TO_SIXTY]: '#BF5542',
+    [GREATER_THAN_SIXTY]: '#8E0909'
 };
 
 // Default styles, if no style is specified for a particular layer
@@ -291,40 +319,52 @@ const LAYER_STYLES_BY_ID = {
             strokeColor: COLORS.PHOTOS[2]
         };
     },
-    // square, red
-    bluff_toe_rec_long() {
-        return {
-            ...DEFAULT_STYLES.Point
-        };
-    },
-    // circle, red
-    bluff_crest_rec_long() {
-        return {
-            ...DEFAULT_STYLES.Point
-        };
-    },
-    // triangle, red
-    shoreline_rec_long() {
-        return {
-            ...DEFAULT_STYLES.Point
-        };
-    },
     // square, blue
-    bluff_toe_rec_short() {
+    bluff_toe_rec_short(subStyleName) {
         return {
-            ...DEFAULT_STYLES.Point
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.SHORT_TERM_RATES[subStyleName],
+            strokeColor: COLORS.SHORT_TERM_RATES[subStyleName]
         };
     },
     // circle, blue
-    bluff_crest_rec_short() {
+    bluff_crest_rec_short(subStyleName) {
         return {
-            ...DEFAULT_STYLES.Point
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.SHORT_TERM_RATES[subStyleName],
+            strokeColor: COLORS.SHORT_TERM_RATES[subStyleName]
         };
     },
     // triangle, blue
-    shoreline_rec_short() {
+    shoreline_rec_short(subStyleName) {
         return {
-            ...DEFAULT_STYLES.Point
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.SHORT_TERM_RATES[subStyleName],
+            strokeColor: COLORS.SHORT_TERM_RATES[subStyleName]
+        };
+    },
+    // square, red
+    bluff_toe_rec_long(subStyleName) {
+        return {
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.LONG_TERM_RATES[subStyleName],
+            strokeColor: COLORS.LONG_TERM_RATES[subStyleName]
+        };
+    },
+    // circle, red
+    bluff_crest_rec_long(subStyleName) {
+        return {
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.LONG_TERM_RATES[subStyleName],
+            strokeColor: COLORS.LONG_TERM_RATES[subStyleName]
+        };
+    },
+    // triangle, red
+    shoreline_rec_long(subStyleName) {
+        return {
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.LONG_TERM_RATES[subStyleName],
+            strokeColor: COLORS.LONG_TERM_RATES[subStyleName]
         };
     },
     // orange
@@ -334,6 +374,39 @@ const LAYER_STYLES_BY_ID = {
         };
     }
 };
+
+// No recession (distance <= 0)
+// 0 to 10 feet (0 < distance <= 10)
+// 10 to 20 feet (10 < distance <= 20)
+// Greater than 20 feet (20 < distance)
+const getShortTermClassification = (distance) => {
+    if (distance > 20) {
+        return GREATER_THAN_TWENTY;
+    } else if (distance > 10) {
+        return TEN_TO_TWENTY;
+    } else if (distance > 0) {
+        return ZERO_TO_TEN;
+    } 
+    return NO_RECESSION;
+}
+
+// No recession (distance <= 0)
+// 0 to 20 feet (0 < distance <= 20)
+// 20 to 40 feet (20 < distance <= 40)
+// 40 to 60 feet (40 < distance <= 60)
+// Greater than 60 feet (40 < distance)
+const getLongTermClassification = (distance) => {
+    if (distance > 60) {
+        return GREATER_THAN_SIXTY;
+    } else if (distance > 40) {
+        return FORTY_TO_SIXTY;
+    } else if (distance > 20) {
+        return TWENTY_TO_FORTY;
+    } else if (distance > 0) {
+        return ZERO_TO_TWENTY;
+    } 
+    return NO_RECESSION;
+}
 
 /**
  * If a layer should have different styles for features based on a particular feature property
@@ -394,18 +467,25 @@ function getLayerSubStyleName(layerId, feature) {
             subStyleName = '2012 Photos';
             break;
         case 'bluff_toe_rec_long':
+            subStyleName = getLongTermClassification(feature.properties.Yr_59_Dist);
             break;
         case 'bluff_crest_rec_long':
+            subStyleName = getLongTermClassification(feature.properties.Yr_59_Dist);
             break;
         case 'shoreline_rec_long':
+            subStyleName = getLongTermClassification(feature.properties.Yr_59_Dist);
             break;
         case 'bluff_toe_rec_short':
+            subStyleName = getShortTermClassification(feature.properties.Yr_20_Dist);
             break;
         case 'bluff_crest_rec_short':
+            subStyleName = getShortTermClassification(feature.properties.Yr_20_Dist);
             break;
         case 'shoreline_rec_short':
+            subStyleName = getShortTermClassification(feature.properties.Yr_20_Dist);
             break;
         case 'shoreline_position ':
+            subStyleName = 'Shoreline Position';
             break;
         default:
             break;
