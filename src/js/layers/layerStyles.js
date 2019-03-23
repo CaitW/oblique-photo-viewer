@@ -393,6 +393,20 @@ function getLayerSubStyleName(layerId, feature) {
         case 'photos_2012':
             subStyleName = '2012 Photos';
             break;
+        case 'bluff_toe_rec_long':
+            break;
+        case 'bluff_crest_rec_long':
+            break;
+        case 'shoreline_rec_long':
+            break;
+        case 'bluff_toe_rec_short':
+            break;
+        case 'bluff_crest_rec_short':
+            break;
+        case 'shoreline_rec_short':
+            break;
+        case 'shoreline_position ':
+            break;
         default:
             break;
     }
