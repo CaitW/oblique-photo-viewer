@@ -290,6 +290,48 @@ const LAYER_STYLES_BY_ID = {
             color: COLORS.PHOTOS[2],
             strokeColor: COLORS.PHOTOS[2]
         };
+    },
+    // square, red
+    bluff_toe_rec_long() {
+        return {
+            ...DEFAULT_STYLES.Point
+        };
+    },
+    // circle, red
+    bluff_crest_rec_long() {
+        return {
+            ...DEFAULT_STYLES.Point
+        };
+    },
+    // triangle, red
+    shoreline_rec_long() {
+        return {
+            ...DEFAULT_STYLES.Point
+        };
+    },
+    // square, blue
+    bluff_toe_rec_short() {
+        return {
+            ...DEFAULT_STYLES.Point
+        };
+    },
+    // circle, blue
+    bluff_crest_rec_short() {
+        return {
+            ...DEFAULT_STYLES.Point
+        };
+    },
+    // triangle, blue
+    shoreline_rec_short() {
+        return {
+            ...DEFAULT_STYLES.Point
+        };
+    },
+    // orange
+    shoreline_position() {
+        return {
+            ...DEFAULT_STYLES.LineString
+        };
     }
 };
 
