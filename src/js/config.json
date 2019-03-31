@@ -11,17 +11,17 @@
         "basemaps": {
             "light": {
                 "name": "Light",
-                "url": "https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
+                "url": "https://api.mapbox.com/styles/v1/asfpm/cjtx6r6pu22fp1fqfdt39oyt2/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2p0eDZvYm8zMmZvajN6bnMyaTVpNGpvZSJ9.9dYbhRifnEJtLdrX1KQwqA",
                 "defaultActive": true
             },
             "streets": {
                 "name": "Streets",
-                "url": "https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
+                "url": "https://api.mapbox.com/styles/v1/asfpm/cjtx6u38d2jum1fmw7jfy8tte/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2p0eDZvYm8zMmZvajN6bnMyaTVpNGpvZSJ9.9dYbhRifnEJtLdrX1KQwqA",
                 "defaultActive": false
             },
             "satellite": {
                 "name": "Satellite",
-                "url": "https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
+                "url": "https://api.mapbox.com/styles/v1/asfpm/cjtx6tfdp2jz91fpozn3udjpr/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2p0eDZvYm8zMmZvajN6bnMyaTVpNGpvZSJ9.9dYbhRifnEJtLdrX1KQwqA",
                 "defaultActive": false
             }
         },
@@ -355,7 +355,7 @@
                     "county_bounds": {
                         "name": "County Boundaries",
                         "type": "tileLayer",
-                        "url": "https://api.mapbox.com/styles/v1/asfpm/ciyudtx3u00262sll3x184fnb/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2l5c3dkaGpoMDAxNjJxbzU5bnF1dW1sbCJ9.GjU3Gi7_OgI_whH2ZXrxVw",
+                        "url": "https://api.mapbox.com/styles/v1/asfpm/ciyudtx3u00262sll3x184fnb/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2p0eDZvYm8zMmZvajN6bnMyaTVpNGpvZSJ9.9dYbhRifnEJtLdrX1KQwqA",
                         "defaultActive": true,
                         "legendStyles": {
                             "County Boundaries": {
