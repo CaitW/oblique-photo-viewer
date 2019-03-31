@@ -1,6 +1,6 @@
 /**
  * layerStyles.js
- * This contains style functions that are applied to each layer when they are loaded.
+ * This contains style functions that are applied to each geojson layer when they are loaded.
  * Additionally, this file caches the styles applied by each layer, so that when
  * the user activates them in the map, we save memory and we can keep track of all possible styles
  * for use in the legend
