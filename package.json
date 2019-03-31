@@ -79,6 +79,7 @@
     "d3-selection": "^1.1.0",
     "d3-shape": "^1.2.0",
     "leaflet": "^1.2.0",
+    "leaflet-svg-shape-markers": "https://github.com/CaitW/Leaflet.SvgShapeMarkers.git#1d7d24b1fd886c66fbde58616ffe43c9fe9014af",
     "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "react-bootstrap": "^0.31.3",
