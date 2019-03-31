@@ -337,6 +337,7 @@ gulp.task('lint', gulp.parallel('lint-js', 'lint-css'));
 
 /**
  * Copy ./dist directory to the web server for hosting
+ *  - For ASFPM, this will be a directory on the same machine
  *
  * Parent Tasks:
  *  - deploy
