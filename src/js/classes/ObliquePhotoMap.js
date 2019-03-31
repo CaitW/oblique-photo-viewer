@@ -107,10 +107,29 @@ export default class ObliquePhotoMap {
                 } else {
                     const layerOptions = {
                         pointToLayer(feature, latlng) {
-                            // eslint-disable-next-line
-                            return new L.circleMarker(latlng, {
-                                layerId
-                            });
+                            let marker;
+                            switch (layer.displayType) {
+                                case 'square':
+                                    marker = new L.ShapeMarker(latlng, {
+                                        shape: 'square',
+                                        radius: 4,
+                                        layerId
+                                    });
+                                    break;
+                                case 'triangle':
+                                    marker = new L.ShapeMarker(latlng, {
+                                        shape: 'triangle',
+                                        radius: 4,
+                                        layerId
+                                    });
+                                    break;
+                                default:
+                                    marker = L.circleMarker(latlng, {
+                                        layerId
+                                    });
+                                    break;
+                            }
+                            return marker;
                         },
                         layerId
                     };
