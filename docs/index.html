@@ -61,6 +61,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PopupTitle">PopupTitle</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-components-featurepopups-components-tabs">js/components/FeaturePopups/components/tabs</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/components/FeaturePopups/components/tabs/DataTab.jsx~DataTab.html">DataTab</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab.html">ProfileTab</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/components/FeaturePopups/components/tabs/RecessionTab.jsx~RecessionTab.html">RecessionTab</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ImageTab">ImageTab</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-containers">js/containers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/containers/Sidebar.jsx~Sidebar.html">Sidebar</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-ducks">js/ducks</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapError">basemapError</a></span></span></li>
@@ -95,6 +96,14 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-layers">js/layers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getFeatureLayer">getFeatureLayer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-onEachFeature">onEachFeature</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-LAYER_STYLE">LAYER_STYLE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORTY_TO_SIXTY">FORTY_TO_SIXTY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GREATER_THAN_SIXTY">GREATER_THAN_SIXTY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GREATER_THAN_TWENTY">GREATER_THAN_TWENTY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NO_RECESSION">NO_RECESSION</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEN_TO_TWENTY">TEN_TO_TWENTY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TWENTY_TO_FORTY">TWENTY_TO_FORTY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZERO_TO_TEN">ZERO_TO_TEN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZERO_TO_TWENTY">ZERO_TO_TWENTY</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-lib">js/lib</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddMousePosition">AddMousePosition</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-wrappers">js/wrappers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-MapWrapper">MapWrapper</a></span></span></li>
 </ul>
@@ -156,7 +165,14 @@
 <li><code>cd</code> to the repository directory</li>
 <li><code>npm install</code></li>
 </ol>
-<h3 id="changes">Changes</h3><ol>
+<p>If you plan to rebuild .zip files, you&apos;ll need to install <code>gdal</code>:</p>
+<ol>
+<li><a href="http://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries">Download</a></li>
+<li>Make sure that GDAL is added to your path. For mac:</li>
+</ol>
+<pre><code><code class="source-code prettyprint">echo &apos;export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH&apos; &gt;&gt; ~/.bash_profile
+source ~/.bash_profile</code>
+</code></pre><h3 id="changes">Changes</h3><ol>
 <li>Make any changes required to <code>src/</code></li>
 <li><code>gulp dev-build</code> to compile for testing, <code>gulp build</code> to compile for production</li>
 </ol>
@@ -179,6 +195,7 @@
         &quot;LAYER_ID&quot;: {
             &quot;name&quot;: &quot;LAYER_NAME&quot;,
             &quot;type&quot;: /* &quot;geojson&quot; OR &quot;tileLayer&quot;, mapped to Leaflet layer types of same name */,
+            &quot;displayType&quot;: /* Optional. If this is a point geometry, you can select &apos;square&apos; or &apos;triangle&apos; to resymbolize points to those shapes */,
             &quot;styleID&quot;: &quot;STYLE_ID&quot;, /* referring to the style specified in /src/js/layers/layerStyles.js */
             &quot;dataLocation&quot;: &quot;./data/layers/LAYER.json&quot;, /* for geoJson types, refers to location of geoJSON file with layer data */
             &quot;defaultActive&quot;: false, /* boolean: active or inactive on map load */
@@ -224,7 +241,7 @@
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.3)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
 </footer>
 
 <script src="script/search_index.js"></script>

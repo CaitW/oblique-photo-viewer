@@ -61,6 +61,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PopupTitle">PopupTitle</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-components-featurepopups-components-tabs">js/components/FeaturePopups/components/tabs</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/components/FeaturePopups/components/tabs/DataTab.jsx~DataTab.html">DataTab</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab.html">ProfileTab</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/components/FeaturePopups/components/tabs/RecessionTab.jsx~RecessionTab.html">RecessionTab</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ImageTab">ImageTab</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-containers">js/containers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/containers/Sidebar.jsx~Sidebar.html">Sidebar</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-ducks">js/ducks</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapError">basemapError</a></span></span></li>
@@ -95,6 +96,14 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-layers">js/layers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getFeatureLayer">getFeatureLayer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-onEachFeature">onEachFeature</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-LAYER_STYLE">LAYER_STYLE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORTY_TO_SIXTY">FORTY_TO_SIXTY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GREATER_THAN_SIXTY">GREATER_THAN_SIXTY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GREATER_THAN_TWENTY">GREATER_THAN_TWENTY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NO_RECESSION">NO_RECESSION</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEN_TO_TWENTY">TEN_TO_TWENTY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TWENTY_TO_FORTY">TWENTY_TO_FORTY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZERO_TO_TEN">ZERO_TO_TEN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZERO_TO_TWENTY">ZERO_TO_TWENTY</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-lib">js/lib</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddMousePosition">AddMousePosition</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-wrappers">js/wrappers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-MapWrapper">MapWrapper</a></span></span></li>
 </ul>
@@ -104,14 +113,28 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/js/layers/layerStyles.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
  * layerStyles.js
- * This contains style functions that are applied to each layer when they are loaded.
+ * This contains style functions that are applied to each geojson layer when they are loaded.
  * Additionally, this file caches the styles applied by each layer, so that when
  * the user activates them in the map, we save memory and we can keep track of all possible styles
  * for use in the legend
  */
 import store from &apos;../store&apos;;
 import { legendStyleUpdate } from &apos;../ducks/layers&apos;;
+import { LAYERS_BY_ID } from &apos;../util&apos;;
 
+/**
+ * String values for recession rates
+ */
+export const NO_RECESSION = &apos;No recession&apos;;
+// short term rates
+export const ZERO_TO_TEN = &apos;0 to 10 feet&apos;;
+export const TEN_TO_TWENTY = &apos;0 to 20 feet&apos;;
+export const GREATER_THAN_TWENTY = &apos;Greater than 20 feet&apos;;
+// long term rates
+export const ZERO_TO_TWENTY = &apos;0 to 20 feet&apos;;
+export const TWENTY_TO_FORTY = &apos;20 to 40 feet&apos;;
+export const FORTY_TO_SIXTY = &apos;40 to 60 feet&apos;;
+export const GREATER_THAN_SIXTY = &apos;Greater than 60 feet&apos;;
 
 /**
  * Colors used in the app
@@ -144,7 +167,8 @@ COLORS.PHOTOS = [
     &apos;#7E57C2&apos;,
     &apos;#673AB7&apos;,
     &apos;#512DA8&apos;,
-    &apos;#311B92&apos;
+    &apos;#311B92&apos;,
+    &apos;#21106d&apos;
 ];
 
 COLORS.STRUCTURES = [
@@ -155,6 +179,21 @@ COLORS.STRUCTURES = [
 COLORS.PROFILES = {
     bathy: &apos;#00838F&apos;,
     bluff: &apos;#4E342E&apos;
+};
+
+COLORS.SHORT_TERM_RATES = {
+    [NO_RECESSION]: &apos;#FFFFFF&apos;,
+    [ZERO_TO_TEN]: &apos;#CCCCFF&apos;,
+    [TEN_TO_TWENTY]: &apos;#7960F2&apos;,
+    [GREATER_THAN_TWENTY]: &apos;#0000E0&apos;
+};
+
+COLORS.LONG_TERM_RATES = {
+    [NO_RECESSION]: &apos;#FFFFFF&apos;,
+    [ZERO_TO_TWENTY]: &apos;#FFE0E0&apos;,
+    [TWENTY_TO_FORTY]: &apos;#DB877A&apos;,
+    [FORTY_TO_SIXTY]: &apos;#BF5542&apos;,
+    [GREATER_THAN_SIXTY]: &apos;#8E0909&apos;
 };
 
 // Default styles, if no style is specified for a particular layer
@@ -180,6 +219,27 @@ const DEFAULT_STYLES = {
         lineCap: &apos;round&apos;,
         lineJoin: &apos;round&apos;,
         color: COLORS.BLACK
+    }
+};
+
+const SPECIAL_STYLES = {
+    Square: {
+        color: COLORS.BLACK,
+        strokeColor: COLORS.BLACK,
+        weight: 0,
+        opacity: 1,
+        fillOpacity: 1,
+        lineCap: &apos;square&apos;,
+        lineJoin: &apos;miter&apos;
+    },
+    Triangle: {
+        color: COLORS.BLACK,
+        strokeColor: COLORS.BLACK,
+        weight: 0,
+        opacity: 1,
+        fillOpacity: 1,
+        lineCap: &apos;square&apos;,
+        lineJoin: &apos;miter&apos;
     }
 };
 
@@ -380,14 +440,108 @@ const LAYER_STYLES_BY_ID = {
             strokeColor: COLORS.PHOTOS[4]
         };
     },
+    photos_2018() {
+        return {
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.PHOTOS[5],
+            strokeColor: COLORS.PHOTOS[5]
+        };
+    },
     photos_2012() {
         return {
             ...DEFAULT_STYLES.Point,
             color: COLORS.PHOTOS[2],
             strokeColor: COLORS.PHOTOS[2]
         };
+    },
+    // square, blue
+    bluff_toe_rec_short(subStyleName) {
+        return {
+            ...SPECIAL_STYLES.Square,
+            color: COLORS.SHORT_TERM_RATES[subStyleName],
+            strokeColor: COLORS.SHORT_TERM_RATES[subStyleName]
+        };
+    },
+    // circle, blue
+    bluff_crest_rec_short(subStyleName) {
+        return {
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.SHORT_TERM_RATES[subStyleName],
+            strokeColor: COLORS.SHORT_TERM_RATES[subStyleName]
+        };
+    },
+    // triangle, blue
+    shoreline_rec_short(subStyleName) {
+        return {
+            ...SPECIAL_STYLES.Triangle,
+            color: COLORS.SHORT_TERM_RATES[subStyleName],
+            strokeColor: COLORS.SHORT_TERM_RATES[subStyleName]
+        };
+    },
+    // square, red
+    bluff_toe_rec_long(subStyleName) {
+        return {
+            ...SPECIAL_STYLES.Square,
+            color: COLORS.LONG_TERM_RATES[subStyleName],
+            strokeColor: COLORS.LONG_TERM_RATES[subStyleName]
+        };
+    },
+    // circle, red
+    bluff_crest_rec_long(subStyleName) {
+        return {
+            ...DEFAULT_STYLES.Point,
+            color: COLORS.LONG_TERM_RATES[subStyleName],
+            strokeColor: COLORS.LONG_TERM_RATES[subStyleName]
+        };
+    },
+    // triangle, red
+    shoreline_rec_long(subStyleName) {
+        return {
+            ...SPECIAL_STYLES.Triangle,
+            color: COLORS.LONG_TERM_RATES[subStyleName],
+            strokeColor: COLORS.LONG_TERM_RATES[subStyleName]
+        };
+    },
+    // orange
+    shoreline_position() {
+        return {
+            ...DEFAULT_STYLES.LineString
+        };
     }
 };
+
+// No recession (distance &lt;= 0)
+// 0 to 10 feet (0 &lt; distance &lt;= 10)
+// 10 to 20 feet (10 &lt; distance &lt;= 20)
+// Greater than 20 feet (20 &lt; distance)
+const getShortTermClassification = (distance) =&gt; {
+    if (distance &gt; 20) {
+        return GREATER_THAN_TWENTY;
+    } else if (distance &gt; 10) {
+        return TEN_TO_TWENTY;
+    } else if (distance &gt; 0) {
+        return ZERO_TO_TEN;
+    } 
+    return NO_RECESSION;
+}
+
+// No recession (distance &lt;= 0)
+// 0 to 20 feet (0 &lt; distance &lt;= 20)
+// 20 to 40 feet (20 &lt; distance &lt;= 40)
+// 40 to 60 feet (40 &lt; distance &lt;= 60)
+// Greater than 60 feet (40 &lt; distance)
+const getLongTermClassification = (distance) =&gt; {
+    if (distance &gt; 60) {
+        return GREATER_THAN_SIXTY;
+    } else if (distance &gt; 40) {
+        return FORTY_TO_SIXTY;
+    } else if (distance &gt; 20) {
+        return TWENTY_TO_FORTY;
+    } else if (distance &gt; 0) {
+        return ZERO_TO_TWENTY;
+    } 
+    return NO_RECESSION;
+}
 
 /**
  * If a layer should have different styles for features based on a particular feature property
@@ -447,6 +601,27 @@ function getLayerSubStyleName(layerId, feature) {
         case &apos;photos_2012&apos;:
             subStyleName = &apos;2012 Photos&apos;;
             break;
+        case &apos;bluff_toe_rec_long&apos;:
+            subStyleName = getLongTermClassification(feature.properties.Yr_59_Dist);
+            break;
+        case &apos;bluff_crest_rec_long&apos;:
+            subStyleName = getLongTermClassification(feature.properties.Yr_59_Dist);
+            break;
+        case &apos;shoreline_rec_long&apos;:
+            subStyleName = getLongTermClassification(feature.properties.Yr_59_Dist);
+            break;
+        case &apos;bluff_toe_rec_short&apos;:
+            subStyleName = getShortTermClassification(feature.properties.Yr_20_Dist);
+            break;
+        case &apos;bluff_crest_rec_short&apos;:
+            subStyleName = getShortTermClassification(feature.properties.Yr_20_Dist);
+            break;
+        case &apos;shoreline_rec_short&apos;:
+            subStyleName = getShortTermClassification(feature.properties.Yr_20_Dist);
+            break;
+        case &apos;shoreline_position &apos;:
+            subStyleName = &apos;Shoreline Position&apos;;
+            break;
         default:
             break;
     }
@@ -485,6 +660,7 @@ function getCachedStyle(layerId, feature) {
  */
 function createNewStyle(layerId, feature) {
     let style = null;
+    const layer = LAYERS_BY_ID[layerId];
     // Get either the singular name for the layer&apos;s style or the name of the sub-style for this feature
     const subStyleName = getLayerSubStyleName(layerId, feature);
     // If there&apos;s a style set for a particular Layer ID, fetch that style
@@ -496,11 +672,13 @@ function createNewStyle(layerId, feature) {
     }
     // assign the classname property of every style
     const layerIdClass = &apos;layer-&apos; + layerId;
-    const layerTypeClass = &apos;layer-type-&apos; + feature.geometry.type;
+    const layerGeometryClass = &apos;layer-geometry-&apos; + feature.geometry.type;
+    const displayType = (layer.displayType) ? layer.displayType : feature.geometry.type.toLowerCase();
+    const layerDisplayTypeClass = &apos;layer-display-type-&apos; + displayType;
     if (typeof style.className === &apos;undefined&apos;) {
         style.className = &apos;&apos;;
     }
-    style.className += &apos; &apos; + [layerTypeClass, layerIdClass].join(&apos; &apos;);
+    style.className += &apos; &apos; + [layerGeometryClass, layerIdClass, layerDisplayTypeClass].join(&apos; &apos;);
     // add the style to the legend
     store.dispatch(legendStyleUpdate(layerId, subStyleName, style, feature.geometry.type));
     // add style to cache
@@ -526,7 +704,7 @@ export default function LAYER_STYLE(layerId) {
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.3)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
 </footer>
 
 <script src="script/search_index.js"></script>

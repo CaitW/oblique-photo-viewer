@@ -1,7 +1,7 @@
 {
-  "coverage": "45.22%",
-  "expectCount": 199,
-  "actualCount": 90,
+  "coverage": "42.72%",
+  "expectCount": 213,
+  "actualCount": 91,
   "files": {
     "src/js/app.jsx": {
       "expectCount": 7,
@@ -20,11 +20,11 @@
       "expectCount": 17,
       "actualCount": 12,
       "undocumentLines": [
-        45,
-        46,
         47,
-        59,
-        60
+        48,
+        49,
+        62,
+        63
       ]
     },
     "src/js/components/AboutButton.jsx": {
@@ -85,16 +85,16 @@
       "expectCount": 2,
       "actualCount": 1,
       "undocumentLines": [
-        70
+        71
       ]
     },
     "src/js/components/FeaturePopups/components/PopupTabs.jsx": {
       "expectCount": 4,
       "actualCount": 1,
       "undocumentLines": [
-        12,
         13,
-        27
+        14,
+        28
       ]
     },
     "src/js/components/FeaturePopups/components/PopupTitle.jsx": {
@@ -128,6 +128,15 @@
         15,
         127,
         144
+      ]
+    },
+    "src/js/components/FeaturePopups/components/tabs/RecessionTab.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        6,
+        9
       ]
     },
     "src/js/components/Layer.jsx": {
@@ -304,10 +313,20 @@
       ]
     },
     "src/js/layers/layerStyles.js": {
-      "expectCount": 8,
-      "actualCount": 7,
+      "expectCount": 19,
+      "actualCount": 8,
       "undocumentLines": [
-        57
+        17,
+        18,
+        19,
+        21,
+        22,
+        23,
+        24,
+        87,
+        112,
+        404,
+        420
       ]
     },
     "src/js/lib/AddMousePosition.js": {

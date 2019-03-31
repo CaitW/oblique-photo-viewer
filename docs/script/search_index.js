@@ -36,10 +36,28 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "oblique-photo-viewer/src/js/layers/layerstyles.js~forty_to_sixty",
+    "variable/index.html#static-variable-FORTY_TO_SIXTY",
+    "<span>FORTY_TO_SIXTY</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/layers/layerStyles.js</span>",
+    "variable"
+  ],
+  [
     "oblique-photo-viewer/src/js/components/featurepopups/featurepopup.jsx~featurepopup",
     "class/src/js/components/FeaturePopups/FeaturePopup.jsx~FeaturePopup.html",
     "<span>FeaturePopup</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/FeaturePopups/FeaturePopup.jsx</span>",
     "class"
+  ],
+  [
+    "oblique-photo-viewer/src/js/layers/layerstyles.js~greater_than_sixty",
+    "variable/index.html#static-variable-GREATER_THAN_SIXTY",
+    "<span>GREATER_THAN_SIXTY</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/layers/layerStyles.js</span>",
+    "variable"
+  ],
+  [
+    "oblique-photo-viewer/src/js/layers/layerstyles.js~greater_than_twenty",
+    "variable/index.html#static-variable-GREATER_THAN_TWENTY",
+    "<span>GREATER_THAN_TWENTY</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/layers/layerStyles.js</span>",
+    "variable"
   ],
   [
     "oblique-photo-viewer/src/js/components/featurepopups/components/tabs/imagetab.jsx~imagetab",
@@ -102,6 +120,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "oblique-photo-viewer/src/js/layers/layerstyles.js~no_recession",
+    "variable/index.html#static-variable-NO_RECESSION",
+    "<span>NO_RECESSION</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/layers/layerStyles.js</span>",
+    "variable"
+  ],
+  [
     "oblique-photo-viewer/src/js/classes/obliquephotomap.js~obliquephotomap",
     "class/src/js/classes/ObliquePhotoMap.js~ObliquePhotoMap.html",
     "<span>ObliquePhotoMap</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/classes/ObliquePhotoMap.js</span>",
@@ -138,6 +162,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "oblique-photo-viewer/src/js/components/featurepopups/components/tabs/recessiontab.jsx~recessiontab",
+    "class/src/js/components/FeaturePopups/components/tabs/RecessionTab.jsx~RecessionTab.html",
+    "<span>RecessionTab</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/FeaturePopups/components/tabs/RecessionTab.jsx</span>",
+    "class"
+  ],
+  [
     "oblique-photo-viewer/src/js/components/resetview.jsx~resetview",
     "function/index.html#static-function-ResetView",
     "<span>ResetView</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/components/ResetView.jsx</span>",
@@ -148,6 +178,30 @@ window.esdocSearchIndex = [
     "class/src/js/containers/Sidebar.jsx~Sidebar.html",
     "<span>Sidebar</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/containers/Sidebar.jsx</span>",
     "class"
+  ],
+  [
+    "oblique-photo-viewer/src/js/layers/layerstyles.js~ten_to_twenty",
+    "variable/index.html#static-variable-TEN_TO_TWENTY",
+    "<span>TEN_TO_TWENTY</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/layers/layerStyles.js</span>",
+    "variable"
+  ],
+  [
+    "oblique-photo-viewer/src/js/layers/layerstyles.js~twenty_to_forty",
+    "variable/index.html#static-variable-TWENTY_TO_FORTY",
+    "<span>TWENTY_TO_FORTY</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/layers/layerStyles.js</span>",
+    "variable"
+  ],
+  [
+    "oblique-photo-viewer/src/js/layers/layerstyles.js~zero_to_ten",
+    "variable/index.html#static-variable-ZERO_TO_TEN",
+    "<span>ZERO_TO_TEN</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/layers/layerStyles.js</span>",
+    "variable"
+  ],
+  [
+    "oblique-photo-viewer/src/js/layers/layerstyles.js~zero_to_twenty",
+    "variable/index.html#static-variable-ZERO_TO_TWENTY",
+    "<span>ZERO_TO_TWENTY</span> <span class=\"search-result-import-path\">oblique-photo-viewer/src/js/layers/layerStyles.js</span>",
+    "variable"
   ],
   [
     "oblique-photo-viewer/src/js/components/zoomtoshoreline.jsx~zoomtoshoreline",
@@ -1017,6 +1071,24 @@ window.esdocSearchIndex = [
     "src/js/components/featurepopups/components/tabs/profiletab.jsx~profiletab#render",
     "class/src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab.html#instance-method-render",
     "src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab#render",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/components/tabs/recessiontab.jsx",
+    "file/src/js/components/FeaturePopups/components/tabs/RecessionTab.jsx.html",
+    "src/js/components/FeaturePopups/components/tabs/RecessionTab.jsx",
+    "file"
+  ],
+  [
+    "src/js/components/featurepopups/components/tabs/recessiontab.jsx~recessiontab#componentdidmount",
+    "class/src/js/components/FeaturePopups/components/tabs/RecessionTab.jsx~RecessionTab.html#instance-method-componentDidMount",
+    "src/js/components/FeaturePopups/components/tabs/RecessionTab.jsx~RecessionTab#componentDidMount",
+    "method"
+  ],
+  [
+    "src/js/components/featurepopups/components/tabs/recessiontab.jsx~recessiontab#render",
+    "class/src/js/components/FeaturePopups/components/tabs/RecessionTab.jsx~RecessionTab.html#instance-method-render",
+    "src/js/components/FeaturePopups/components/tabs/RecessionTab.jsx~RecessionTab#render",
     "method"
   ],
   [

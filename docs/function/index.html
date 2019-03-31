@@ -61,6 +61,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-PopupTitle">PopupTitle</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-components-featurepopups-components-tabs">js/components/FeaturePopups/components/tabs</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/components/FeaturePopups/components/tabs/DataTab.jsx~DataTab.html">DataTab</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/components/FeaturePopups/components/tabs/ProfileTab.jsx~ProfileTab.html">ProfileTab</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/components/FeaturePopups/components/tabs/RecessionTab.jsx~RecessionTab.html">RecessionTab</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ImageTab">ImageTab</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-containers">js/containers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/js/containers/Sidebar.jsx~Sidebar.html">Sidebar</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-ducks">js/ducks</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-basemapError">basemapError</a></span></span></li>
@@ -95,6 +96,14 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-layers">js/layers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getFeatureLayer">getFeatureLayer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-onEachFeature">onEachFeature</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-LAYER_STYLE">LAYER_STYLE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORTY_TO_SIXTY">FORTY_TO_SIXTY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GREATER_THAN_SIXTY">GREATER_THAN_SIXTY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GREATER_THAN_TWENTY">GREATER_THAN_TWENTY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NO_RECESSION">NO_RECESSION</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEN_TO_TWENTY">TEN_TO_TWENTY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TWENTY_TO_FORTY">TWENTY_TO_FORTY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZERO_TO_TEN">ZERO_TO_TEN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ZERO_TO_TWENTY">ZERO_TO_TWENTY</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-lib">js/lib</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-AddMousePosition">AddMousePosition</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#js-wrappers">js/wrappers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-MapWrapper">MapWrapper</a></span></span></li>
 </ul>
@@ -1850,11 +1859,11 @@ Click handlers then:</li>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/layers/layerStyles.js.html#lineNumber415">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/layers/layerStyles.js.html#lineNumber584">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import LAYER_STYLE from &apos;<span><a href="file/src/js/layers/layerStyles.js.html#lineNumber415">oblique-photo-viewer/src/js/layers/layerStyles.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import LAYER_STYLE from &apos;<span><a href="file/src/js/layers/layerStyles.js.html#lineNumber584">oblique-photo-viewer/src/js/layers/layerStyles.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Imported by ObliquePhotoMap. When passed a layerId, this function returns a function,
@@ -2333,11 +2342,11 @@ bound to the LayerId, to get all a style for each feature in a particular layer<
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/components/FeaturePopups/components/PopupFooter.jsx.html#lineNumber70">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/components/FeaturePopups/components/PopupFooter.jsx.html#lineNumber71">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import PopupFooter from &apos;<span><a href="file/src/js/components/FeaturePopups/components/PopupFooter.jsx.html#lineNumber70">oblique-photo-viewer/src/js/components/FeaturePopups/components/PopupFooter.jsx</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import PopupFooter from &apos;<span><a href="file/src/js/components/FeaturePopups/components/PopupFooter.jsx.html#lineNumber71">oblique-photo-viewer/src/js/components/FeaturePopups/components/PopupFooter.jsx</a></span>&apos;</code></pre></div>
   
   
   
@@ -3140,11 +3149,11 @@ bound to the LayerId, to get all a style for each feature in a particular layer<
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber261">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber265">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {getFeatureLayer} from &apos;<span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber261">oblique-photo-viewer/src/js/layers/layerFeatures.jsx</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {getFeatureLayer} from &apos;<span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber265">oblique-photo-viewer/src/js/layers/layerFeatures.jsx</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>For the mobile version of the feature popup (MobileFeaturePopup.jsx)
@@ -3298,11 +3307,11 @@ and &quot;previous&quot; button functionality</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/util.js.html#lineNumber69">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/util.js.html#lineNumber74">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {getProfileURLs} from &apos;<span><a href="file/src/js/util.js.html#lineNumber69">oblique-photo-viewer/src/js/util.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {getProfileURLs} from &apos;<span><a href="file/src/js/util.js.html#lineNumber74">oblique-photo-viewer/src/js/util.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Gets URLS of profile documents based on the feature&apos;s properties</p>
@@ -4384,11 +4393,11 @@ entry.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber241">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber245">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {onEachFeature} from &apos;<span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber241">oblique-photo-viewer/src/js/layers/layerFeatures.jsx</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {onEachFeature} from &apos;<span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber245">oblique-photo-viewer/src/js/layers/layerFeatures.jsx</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>This is the primary exported function from layerFeatures.js
@@ -5023,7 +5032,7 @@ Click handlers then:</li>
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.0.3)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
 </footer>
 
 <script src="script/search_index.js"></script>
