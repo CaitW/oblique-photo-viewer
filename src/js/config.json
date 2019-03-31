@@ -276,6 +276,7 @@
                     "bluff_toe_rec_long": {
                         "name": "Bluff Toe Recession – Long-term (1956 – 2015)",
                         "type": "geojson",
+                        "displayType": "square",
                         "dataLocation": "./data/layers/bluff_toe_rec_rate.json",
                         "defaultActive": false,
                         "tableProperties": {
@@ -296,6 +297,7 @@
                     "shoreline_rec_long": {
                         "name": "Shoreline Recession – Long-term (1956 - 2015)",
                         "type": "geojson",
+                        "displayType": "triangle",
                         "dataLocation": "./data/layers/shore_change_rate.json",
                         "defaultActive": false,
                         "tableProperties": {
@@ -306,6 +308,7 @@
                     "bluff_toe_rec_short": {
                         "name": "Bluff Toe Recession – Short-term (1995 – 2015)",
                         "type": "geojson",
+                        "displayType": "square",
                         "dataLocation": "./data/layers/bluff_toe_rec_rate.json",
                         "defaultActive": false,
                         "tableProperties": {
@@ -326,6 +329,7 @@
                     "shoreline_rec_short": {
                         "name": "Shoreline Recession – Short-term (1995 - 2015)",
                         "type": "geojson",
+                        "displayType": "triangle",
                         "dataLocation": "./data/layers/shore_change_rate.json",
                         "defaultActive": false,
                         "tableProperties": {

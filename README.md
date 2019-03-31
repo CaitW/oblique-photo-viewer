@@ -93,6 +93,7 @@ The configuration file is located in ```src/js/config.json```. It contains selec
         "LAYER_ID": {
             "name": "LAYER_NAME",
             "type": /* "geojson" OR "tileLayer", mapped to Leaflet layer types of same name */,
+            "displayType": /* Optional. If this is a point geometry, you can select 'square' or 'triangle' to resymbolize points to those shapes */,
             "styleID": "STYLE_ID", /* referring to the style specified in /src/js/layers/layerStyles.js */
             "dataLocation": "./data/layers/LAYER.json", /* for geoJson types, refers to location of geoJSON file with layer data */
             "defaultActive": false, /* boolean: active or inactive on map load */
