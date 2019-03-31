@@ -108,6 +108,27 @@ const DEFAULT_STYLES = {
     }
 };
 
+const SPECIAL_STYLES = {
+    Square: {
+        color: COLORS.BLACK,
+        strokeColor: COLORS.BLACK,
+        weight: 0,
+        opacity: 1,
+        fillOpacity: 1,
+        lineCap: 'square',
+        lineJoin: 'miter'
+    },
+    Triangle: {
+        color: COLORS.BLACK,
+        strokeColor: COLORS.BLACK,
+        weight: 0,
+        opacity: 1,
+        fillOpacity: 1,
+        lineCap: 'square',
+        lineJoin: 'miter'
+    }
+};
+
 /**
  * Individual layer styles are added below, as referenced by ID in config.json
  *
@@ -322,7 +343,7 @@ const LAYER_STYLES_BY_ID = {
     // square, blue
     bluff_toe_rec_short(subStyleName) {
         return {
-            ...DEFAULT_STYLES.Point,
+            ...SPECIAL_STYLES.Square,
             color: COLORS.SHORT_TERM_RATES[subStyleName],
             strokeColor: COLORS.SHORT_TERM_RATES[subStyleName]
         };
@@ -338,7 +359,7 @@ const LAYER_STYLES_BY_ID = {
     // triangle, blue
     shoreline_rec_short(subStyleName) {
         return {
-            ...DEFAULT_STYLES.Point,
+            ...SPECIAL_STYLES.Triangle,
             color: COLORS.SHORT_TERM_RATES[subStyleName],
             strokeColor: COLORS.SHORT_TERM_RATES[subStyleName]
         };
@@ -346,7 +367,7 @@ const LAYER_STYLES_BY_ID = {
     // square, red
     bluff_toe_rec_long(subStyleName) {
         return {
-            ...DEFAULT_STYLES.Point,
+            ...SPECIAL_STYLES.Square,
             color: COLORS.LONG_TERM_RATES[subStyleName],
             strokeColor: COLORS.LONG_TERM_RATES[subStyleName]
         };
@@ -362,7 +383,7 @@ const LAYER_STYLES_BY_ID = {
     // triangle, red
     shoreline_rec_long(subStyleName) {
         return {
-            ...DEFAULT_STYLES.Point,
+            ...SPECIAL_STYLES.Triangle,
             color: COLORS.LONG_TERM_RATES[subStyleName],
             strokeColor: COLORS.LONG_TERM_RATES[subStyleName]
         };
