@@ -7,6 +7,7 @@
  */
 import store from '../store';
 import { legendStyleUpdate } from '../ducks/layers';
+import { LAYERS_BY_ID } from '../util';
 
 /**
  * String values for recession rates
@@ -546,6 +547,7 @@ function getCachedStyle(layerId, feature) {
  */
 function createNewStyle(layerId, feature) {
     let style = null;
+    const layer = LAYERS_BY_ID[layerId];
     // Get either the singular name for the layer's style or the name of the sub-style for this feature
     const subStyleName = getLayerSubStyleName(layerId, feature);
     // If there's a style set for a particular Layer ID, fetch that style
@@ -557,11 +559,13 @@ function createNewStyle(layerId, feature) {
     }
     // assign the classname property of every style
     const layerIdClass = 'layer-' + layerId;
-    const layerTypeClass = 'layer-type-' + feature.geometry.type;
+    const layerGeometryClass = 'layer-geometry-' + feature.geometry.type;
+    const displayType = (layer.displayType) ? layer.displayType : feature.geometry.type.toLowerCase();
+    const layerDisplayTypeClass = 'layer-display-type-' + displayType;
     if (typeof style.className === 'undefined') {
         style.className = '';
     }
-    style.className += ' ' + [layerTypeClass, layerIdClass].join(' ');
+    style.className += ' ' + [layerGeometryClass, layerIdClass, layerDisplayTypeClass].join(' ');
     // add the style to the legend
     store.dispatch(legendStyleUpdate(layerId, subStyleName, style, feature.geometry.type));
     // add style to cache

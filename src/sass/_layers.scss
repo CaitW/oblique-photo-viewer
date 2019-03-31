@@ -2,26 +2,30 @@
   $profile-width: 1 + (0.35 * $zoom-level);
   $line-width: 4 + (0.6 * $zoom-level);
 
-  @if $zoom-level > 15 {
-    $line-width: 4 + (0.8 * $zoom-level);
-  }
   $dot-stroke: 1 + (0.4 * $zoom-level);
+  $square-stroke: 0;
+  $triangle-stroke: 0;
+
+  @if $zoom-level > 11 {
+    $triangle-stroke: 0.5 + (0.4 * $zoom-level);
+  }
 
   @if $zoom-level > 13 {
     $dot-stroke: 1 + (0.6 * $zoom-level);
+    $square-stroke: 0.5 + (0.4 * $zoom-level);
   }
 
   @if $zoom-level > 15 {
+    $line-width: 4 + (0.8 * $zoom-level);
     $dot-stroke: 1 + (0.8 * $zoom-level);
+    $square-stroke: 0.5 + (0.6 * $zoom-level);
+    $triangle-stroke: 0.5 + (0.6 * $zoom-level);
   }
+
   $zoom-selector: 'data-zoom=\'' + $zoom-level + '\'';
 
   &[#{$zoom-selector}] {
-    .layer-type-Point,
-    .layer-photos_1976,
-    .layer-photos_2007,
-    .layer-structure_1976,
-    .layer-structure_2007 {
+    .layer-display-type-point {
       stroke-width: $dot-stroke;
 
       &:hover {
@@ -29,12 +33,19 @@
       }
     }
 
-    .layer-type-MultiLineString,
-    .layer-type-LineString,
-    .layer-beachclass_1976,
-    .layer-beachclass_2007,
-    .layer-backshore_1976,
-    .layer-backshore_2007 {
+    .layer-display-type-square,
+    .layer-display-type-triangle {
+      stroke-width: $square-stroke;
+      stroke-width: $triangle-stroke;
+
+      &:hover {
+        stroke-width: $square-stroke + 2;
+        stroke-width: $triangle-stroke + 2;
+      }
+    }
+
+    .layer-geometry-MultiLineString,
+    .layer-geometry-LineString {
       stroke-width: $line-width;
 
       @if $zoom-level > 10 {
