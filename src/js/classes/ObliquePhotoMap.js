@@ -2,6 +2,8 @@ import axios from 'axios';
 import { unmountComponentAtNode } from 'react-dom';
 import L from 'leaflet';
 
+// Leaflet Plugins
+import AddSVGShapesToLeaflet from 'leaflet-svg-shape-markers';
 import AddMousePosition from '../lib/AddMousePosition';
 
 import CONFIG from '../config.json';
@@ -52,8 +54,9 @@ export default class ObliquePhotoMap {
             .fitBounds(CONFIG.map.wisconsinExtent, {
                 padding: [10, 10]
             });
-        // shim to add non-es6 L.Control.MousePosition
+        // shims to add non-es6 plugins
         AddMousePosition(L);
+        AddSVGShapesToLeaflet(L);
         L.control.mousePosition().addTo(self.map);
         L.control.scale().addTo(self.map);
         this.basemapIndex = {};
