@@ -101,7 +101,13 @@ export const getActiveLayerStyleTypes = createSelector(
                     styleIconClassNames.push('fa-minus');
                     iconStyle.color = legendStyles[styleName].style.color;
                 } else if (legendStyles[styleName].geometryType === 'Point') {
-                    styleIconClassNames.push('fa-circle');
+                    if(legendStyles[styleName].displayType === 'square') {
+                        styleIconClassNames.push('fa-square');
+                    } else if (legendStyles[styleName].displayType === 'triangle') {
+                        styleIconClassNames.push('fa-play fa-rotate-270');
+                    } else {
+                        styleIconClassNames.push('fa-circle');
+                    }
                     iconStyle.color = legendStyles[styleName].style.strokeColor;
                 }
                 if (styleName === 'null') {

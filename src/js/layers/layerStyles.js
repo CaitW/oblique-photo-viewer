@@ -567,7 +567,7 @@ function createNewStyle(layerId, feature) {
     }
     style.className += ' ' + [layerGeometryClass, layerIdClass, layerDisplayTypeClass].join(' ');
     // add the style to the legend
-    store.dispatch(legendStyleUpdate(layerId, subStyleName, style, feature.geometry.type));
+    store.dispatch(legendStyleUpdate(layerId, subStyleName, style, feature.geometry.type, displayType));
     // add style to cache
     CACHE[layerId] = CACHE[layerId] || {};
     CACHE[layerId][subStyleName] = style;
