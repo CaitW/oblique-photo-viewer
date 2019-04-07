@@ -1,28 +1,27 @@
 const path = require('path');
 const webpack = require('webpack');
+
 module.exports = {
+    mode: 'development',
     context: path.resolve(__dirname, './src'),
     entry: {
-        app: ["babel-polyfill", './js/app.jsx'],
+        app: ["babel-polyfill", './js/app.jsx']
     },
     output: {
-        path: path.resolve(__dirname, './dist'),
-        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'app.bundle.js'
     },
     resolve: {
-        extensions: ['8', '.js', '.jsx']
+        extensions: ['*', '.js', '.jsx']
     },
     module: {
-        loaders: [{
+        rules: [{
             test: /.jsx?$/,
             loader: 'babel-loader',
             exclude: /node_modules/,
             query: {
                 presets: ['es2015', 'react', 'stage-2'],
             }
-        }, {
-            test: /\.json$/,
-            loader: 'json-loader'
         }, {
             test: /\.svg$/,
             loader: 'raw-loader'
