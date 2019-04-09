@@ -144,13 +144,14 @@ export function toggleLayer(layerId) {
  * @param {string} geometryType - usually point or line, allows the legend to determine what shape to show
  *  as an icon next to a legend entry
  */
-export function legendStyleUpdate(layerId, propertyName, style, geometryType) {
+export function legendStyleUpdate(layerId, propertyName, style, geometryType, displayType) {
     return {
         type: &apos;LAYER:LEGEND_STYLE_UPDATE&apos;,
         layerId,
         propertyName,
         style,
-        geometryType
+        geometryType,
+        displayType
     };
 }
 
@@ -229,7 +230,8 @@ export default function layers(state = initialLayers, action) {
         case &apos;LAYER:LEGEND_STYLE_UPDATE&apos;: {
             const legendStyle = {
                 style: action.style,
-                geometryType: action.geometryType
+                geometryType: action.geometryType,
+                displayType: action.displayType
             };
             newState.layersById = {
                 ...state.layersById,

@@ -267,10 +267,10 @@
       "expectCount": 9,
       "actualCount": 5,
       "undocumentLines": [
-        77,
         78,
-        96,
-        101
+        79,
+        97,
+        102
       ]
     },
     "src/js/ducks/map.js": {
@@ -349,7 +349,7 @@
         58,
         68,
         78,
-        135
+        141
       ]
     },
     "src/js/store.js": {
