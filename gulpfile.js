@@ -151,8 +151,16 @@ gulp.task('convert-and-zip-layer-shapefiles', (done) => {
 // delete temporary downloads folder
 gulp.task('delete-temp-downloads', () => del(['./temp/']));
 
-gulp.task('make-downloads', gulp.series('zip-geojson-layers', 'zip-json-profiles', 'zip-xlsx-profiles', 'convert-and-zip-layer-shapefiles', 'delete-temp-downloads'));
-
+gulp.task(
+    'make-downloads',
+    gulp.series(
+        'zip-geojson-layers',
+        'zip-json-profiles',
+        'zip-xlsx-profiles',
+        'convert-and-zip-layer-shapefiles',
+        'delete-temp-downloads'
+    )
+);
 
 /**
  * Copy Files
