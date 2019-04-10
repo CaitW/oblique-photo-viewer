@@ -1,5 +1,4 @@
 const gulp = require('gulp');
-const webpack = require('webpack');
 const livereload = require('gulp-livereload');
 const sass = require('gulp-sass');
 const del = require('del');
@@ -45,7 +44,7 @@ try {
         '\x1b[31m%s\x1b[0m',
         'No server_config.json found. Copy and rename server_config.example.json or create your own. See github for more info.'
     );
-    throw 'Error';
+    throw new Error('Error');
 }
 
 /**
@@ -230,9 +229,11 @@ gulp.task('sass', gulp.parallel('sass-app', 'sass-about'));
  *  - dev-build
  */
 gulp.task('webpack-dev', () => gulp.src('src/js/app.jsx')
-    .pipe(webpackStream(webpack_dev, null, (err, stats) => {
-        const error = new gulpUtil.PluginError('webpack', err);
-        gulpUtil.log('[webpack]', error);
+    .pipe(webpackStream(webpack_dev, null, (err) => {
+        if (err) {
+            const error = new gulpUtil.PluginError('webpack', err);
+            gulpUtil.log('[webpack]', error);
+        }
     }))
     .pipe(gulp.dest('./dist/'))
 )
@@ -244,17 +245,14 @@ gulp.task('webpack-dev', () => gulp.src('src/js/app.jsx')
  *  - build
  */
 gulp.task('webpack-prod', () => gulp.src('src/js/app.jsx')
-    .pipe(webpackStream(webpack_prod, null, (err, stats) => {
-        if(err) {
+    .pipe(webpackStream(webpack_prod, null, (err) => {
+        if (err) {
             const error = new gulpUtil.PluginError('webpack', err);
             gulpUtil.log('[webpack]', error);
-        } else {
-            gulpUtil.log('[webpack]', stats);
-        }
+        } 
     }))
     .pipe(gulp.dest('./dist/'))
 )
-
 
 /*
  * Watch Files
