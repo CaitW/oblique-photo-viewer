@@ -5,7 +5,7 @@ module.exports = {
     mode: 'production',
     context: path.resolve(__dirname, './src'),
     entry: {
-        app: ["babel-polyfill", './js/app.jsx']
+        app: ['./js/app.jsx']
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -18,10 +18,7 @@ module.exports = {
         rules: [{
             test: /.jsx?$/,
             loader: 'babel-loader',
-            exclude: /node_modules/,
-            query: {
-                presets: ['es2015', 'react', 'stage-2']
-            }
+            exclude: /node_modules/
         }, {
             test: /\.svg$/,
             loader: 'raw-loader'
