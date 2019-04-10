@@ -13,6 +13,7 @@ const gulpUtil = require('gulp-util');
 const shell = require('gulp-shell');
 const uglifycss = require('gulp-uglifycss');
 const path = require('path');
+const webpackStream = require('webpack-stream');
 
 /**
  * Webpack Configurations
@@ -228,22 +229,13 @@ gulp.task('sass', gulp.parallel('sass-app', 'sass-about'));
  * Parent Tasks:
  *  - dev-build
  */
-gulp.task('webpack-dev', done => webpack(webpack_dev, (error) => {
-    let pluginError;
-    if (error) {
-        pluginError = new gulpUtil.PluginError('webpack', error);
-        if (done) {
-            done(pluginError);
-        } else {
-            gulpUtil.log('[webpack]', pluginError);
-        }
-        return;
-    }
-    if (done) {
-        livereload.reload('./dist/app.bundle.js');
-        done();
-    }
-}));
+gulp.task('webpack-dev', () => gulp.src('src/js/app.jsx')
+    .pipe(webpackStream(webpack_dev, null, (err, stats) => {
+        const error = new gulpUtil.PluginError('webpack', err);
+        gulpUtil.log('[webpack]', error);
+    }))
+    .pipe(gulp.dest('./dist/'))
+)
 
 /*
  * Build Javascript (production)
@@ -251,24 +243,18 @@ gulp.task('webpack-dev', done => webpack(webpack_dev, (error) => {
  * Parent Tasks:
  *  - build
  */
-gulp.task('webpack-prod',
-    done => webpack(webpack_prod,
-    (error) => {
-        let pluginError;
-        if (error) {
-            pluginError = new gulpUtil.PluginError('webpack', error);
-            if (done) {
-                done(pluginError);
-            } else {
-                gulpUtil.log('[webpack]', pluginError);
-            }
-            return;
+gulp.task('webpack-prod', () => gulp.src('src/js/app.jsx')
+    .pipe(webpackStream(webpack_prod, null, (err, stats) => {
+        if(err) {
+            const error = new gulpUtil.PluginError('webpack', err);
+            gulpUtil.log('[webpack]', error);
+        } else {
+            gulpUtil.log('[webpack]', stats);
         }
-        if (done) {
-            done();
-        }
-    }
-));
+    }))
+    .pipe(gulp.dest('./dist/'))
+)
+
 
 /*
  * Watch Files
