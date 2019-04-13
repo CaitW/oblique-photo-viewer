@@ -1,0 +1,12 @@
+{
+  "parser": "flow",
+  "semi": false,
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ]
+}
