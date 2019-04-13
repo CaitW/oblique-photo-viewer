@@ -1,22 +1,22 @@
-import { createStore, combineReducers } from 'redux';
-import layers from './ducks/layers';
-import basemaps from './ducks/basemaps';
-import map from './ducks/map';
-import mobile from './ducks/mobile';
-import pinnedFeatures from './ducks/pinnedFeatures';
-import nav from './ducks/nav';
+import { createStore, combineReducers } from "redux"
+import layers from "./ducks/layers"
+import basemaps from "./ducks/basemaps"
+import map from "./ducks/map"
+import mobile from "./ducks/mobile"
+import pinnedFeatures from "./ducks/pinnedFeatures"
+import nav from "./ducks/nav"
 
 const theReducer = combineReducers({
-    layers,
-    basemaps,
-    map,
-    mobile,
-    pinnedFeatures,
-    nav
-});
+  layers,
+  basemaps,
+  map,
+  mobile,
+  pinnedFeatures,
+  nav
+})
 const store = createStore(
-    theReducer,
-    // eslint-disable-next-line no-underscore-dangle
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-export default store;
+  theReducer,
+  // eslint-disable-next-line no-underscore-dangle
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+export default store

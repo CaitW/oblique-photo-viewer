@@ -14,18 +14,18 @@
  * Opens the mobile layer list
  */
 export function openMobileLayerList() {
-    return {
-        type: 'MOBILE:LAYER_POPUP:OPEN'
-    };
+  return {
+    type: "MOBILE:LAYER_POPUP:OPEN"
+  }
 }
 
 /**
  * Closes the mobile layer list
  */
 export function closeMobileLayerList() {
-    return {
-        type: 'MOBILE:LAYER_POPUP:CLOSE'
-    };
+  return {
+    type: "MOBILE:LAYER_POPUP:CLOSE"
+  }
 }
 
 /**
@@ -35,11 +35,11 @@ export function closeMobileLayerList() {
  * @param {number} width
  */
 export function updateWindowDimensions(height, width) {
-    return {
-        type: 'WINDOW:UPDATE_DIMENSIONS',
-        height,
-        width
-    };
+  return {
+    type: "WINDOW:UPDATE_DIMENSIONS",
+    height,
+    width
+  }
 }
 
 /**
@@ -50,75 +50,75 @@ export function updateWindowDimensions(height, width) {
  * @param {number} featureIndex - a number indicating the feature's order within the layer
  */
 export function mobileClickFeature(featureProperties, layerId, featureIndex) {
-    return {
-        type: 'MOBILE:LAYER:CLICK_FEATURE',
-        featureProperties,
-        layerId,
-        featureIndex
-    };
+  return {
+    type: "MOBILE:LAYER:CLICK_FEATURE",
+    featureProperties,
+    layerId,
+    featureIndex
+  }
 }
 
 /**
  * When the user clicks on the "close" button in the mobile feature modal
  */
 export function closeMobileFeatureModal() {
-    return {
-        type: 'MOBILE:FEATURE_MODAL:CLOSE'
-    };
+  return {
+    type: "MOBILE:FEATURE_MODAL:CLOSE"
+  }
 }
 
 const initialState = {
-    window: {
-        height: false,
-        width: false
-    },
-    layersPopup: {
-        visible: false
-    },
-    featureModal: {
-        visible: false,
-        featureProperties: false,
-        layerId: false,
-        featureIndex: false
-    }
-};
+  window: {
+    height: false,
+    width: false
+  },
+  layersPopup: {
+    visible: false
+  },
+  featureModal: {
+    visible: false,
+    featureProperties: false,
+    layerId: false,
+    featureIndex: false
+  }
+}
 
 export default function mobile(state = initialState, action) {
-    let newState = Object.assign({}, state);
-    const layersPopupState = Object.assign({}, newState.layersPopup);
-    const windowState = Object.assign({}, newState.window);
-    const featureModalState = Object.assign({}, newState.featureModal);
-    switch (action.type) {
-        case 'MOBILE:LAYER_POPUP:OPEN':
-            layersPopupState.visible = true;
-            newState.layersPopup = layersPopupState;
-            break;
-        case 'MOBILE:LAYER_POPUP:CLOSE':
-            layersPopupState.visible = false;
-            newState.layersPopup = layersPopupState;
-            break;
-        case 'WINDOW:UPDATE_DIMENSIONS':
-            windowState.height = action.height;
-            windowState.width = action.width;
-            newState.window = windowState;
-            break;
-        case 'MOBILE:LAYER:CLICK_FEATURE':
-            featureModalState.visible = true;
-            featureModalState.featureProperties = action.featureProperties;
-            featureModalState.layerId = action.layerId;
-            featureModalState.featureIndex = action.featureIndex;
-            newState.featureModal = featureModalState;
-            break;
-        case 'MOBILE:FEATURE_MODAL:CLOSE':
-            featureModalState.visible = false;
-            featureModalState.featureProperties = false;
-            featureModalState.layerId = false;
-            featureModalState.featureIndex = false;
-            newState.featureModal = featureModalState;
-            break;
-        default:
-            newState = state;
-            break;
-    }
-    return newState;
+  let newState = Object.assign({}, state)
+  const layersPopupState = Object.assign({}, newState.layersPopup)
+  const windowState = Object.assign({}, newState.window)
+  const featureModalState = Object.assign({}, newState.featureModal)
+  switch (action.type) {
+    case "MOBILE:LAYER_POPUP:OPEN":
+      layersPopupState.visible = true
+      newState.layersPopup = layersPopupState
+      break
+    case "MOBILE:LAYER_POPUP:CLOSE":
+      layersPopupState.visible = false
+      newState.layersPopup = layersPopupState
+      break
+    case "WINDOW:UPDATE_DIMENSIONS":
+      windowState.height = action.height
+      windowState.width = action.width
+      newState.window = windowState
+      break
+    case "MOBILE:LAYER:CLICK_FEATURE":
+      featureModalState.visible = true
+      featureModalState.featureProperties = action.featureProperties
+      featureModalState.layerId = action.layerId
+      featureModalState.featureIndex = action.featureIndex
+      newState.featureModal = featureModalState
+      break
+    case "MOBILE:FEATURE_MODAL:CLOSE":
+      featureModalState.visible = false
+      featureModalState.featureProperties = false
+      featureModalState.layerId = false
+      featureModalState.featureIndex = false
+      newState.featureModal = featureModalState
+      break
+    default:
+      newState = state
+      break
+  }
+  return newState
 }
