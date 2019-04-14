@@ -22,7 +22,7 @@
     $triangle-stroke: 0.5 + (0.6 * $zoom-level);
   }
 
-  $zoom-selector: 'data-zoom=\'' + $zoom-level + '\'';
+  $zoom-selector: "data-zoom='"+ $zoom-level + "'";
 
   &[#{$zoom-selector}] {
     .layer-display-type-point {

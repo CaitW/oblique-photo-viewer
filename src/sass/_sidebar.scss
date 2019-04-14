@@ -2,7 +2,10 @@
 $hide_scroll_padding: 17px;
 
 .wiscviewer-sidebar {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  box-shadow:
+ 0 2px 2px 0 rgba(0, 0, 0, 0.2),
+ 0 1px 5px 0 rgba(0, 0, 0, 0.2),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2);
   z-index: 500;
   background-color: $primary_800;
   color: $primary_50;
@@ -125,17 +128,18 @@ $hide_scroll_padding: 17px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  .wiscviewer-layer-group-name {
 
+  .wiscviewer-layer-group-name {
   }
+
   .wiscviewer-layer-group-info,
   .wiscviewer-layer-group-info > a {
     color: $primary_400;
   }
+
   &:hover {
     cursor: default;
   }
-
 }
 
 .wiscviewer-layer-left-icon {
@@ -182,7 +186,3 @@ $hide_scroll_padding: 17px;
     color: $primary_50;
   }
 }
-
-
-
-

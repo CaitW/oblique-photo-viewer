@@ -6,10 +6,12 @@
   tr {
     td {
       border: none !important;
+
       &:first-child {
         text-align: left;
         color: $primary_900;
       }
+
       &:last-child {
         text-align: right;
       }
@@ -34,6 +36,6 @@
 }
 
 .wiscviewer-mobile-feature-popup .wiscviewer-data-table {
-    width: 100%;
-    font-size: 14px;
+  width: 100%;
+  font-size: 14px;
 }

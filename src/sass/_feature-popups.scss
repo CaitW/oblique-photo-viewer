@@ -111,7 +111,7 @@
           border-top-left-radius: 3px;
         }
 
-        &[aria-selected=true] {
+        &[aria-selected='true'] {
           background-color: $primary_800;
           color: $primary_50;
           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -122,7 +122,7 @@
           }
         }
 
-        &[aria-selected=false] {
+        &[aria-selected='false'] {
           color: $primary_200;
           background-color: inherit;
 
@@ -172,4 +172,3 @@
     }
   }
 }
-

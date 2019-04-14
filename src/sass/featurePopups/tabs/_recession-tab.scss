@@ -5,12 +5,15 @@
   color: $primary_900;
 
   tr {
-    td, th {
+    td,
+    th {
       border: none !important;
+
       &:first-child {
         text-align: left;
         color: $primary_900;
       }
+
       &:last-child {
         text-align: right;
       }
@@ -35,6 +38,6 @@
 }
 
 .wiscviewer-mobile-feature-popup .wiscviewer-recession-table {
-    width: 100%;
-    font-size: 14px;
+  width: 100%;
+  font-size: 14px;
 }
