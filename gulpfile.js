@@ -124,9 +124,9 @@ gulp.task("convert-and-zip-layer-shapefiles", done => {
     if (index < fileList.length) {
       const file = fileList[index]
       const fileName =
-        file.split(".")[0].replace("src/data/layers/", "") + ".zip"
-      console.log("starting " + fileName)
-      const ogr = ogr2ogr("./" + file)
+        `${file.split(".")[0].replace("src/data/layers/", "")  }.zip`
+      console.log(`starting ${  fileName}`)
+      const ogr = ogr2ogr(`./${  file}`)
         .format("ESRI Shapefile")
         .skipfailures()
       ogr.exec((er, data) => {
@@ -139,7 +139,7 @@ gulp.task("convert-and-zip-layer-shapefiles", done => {
             }
             fs.mkdirSync("./temp/layer-shapefiles/")
           }
-          fs.writeFileSync("./temp/layer-shapefiles/" + fileName, data)
+          fs.writeFileSync(`./temp/layer-shapefiles/${  fileName}`, data)
         }
         return convertToShapefile(index + 1, fileList)
       })
