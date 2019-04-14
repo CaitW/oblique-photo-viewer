@@ -427,4 +427,4 @@ gulp.task(
   "build",
   gulp.series("clean", "sass", "webpack-prod", "copy", "make-docs")
 )
-gulp.task("deploy", gulp.series("build", "copy-to-server"))
+gulp.task("deploy", gulp.series("copy-to-server"))
