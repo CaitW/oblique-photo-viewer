@@ -53,7 +53,7 @@
       },
       {
         "lineNumber": 33,
-        "line": "export function legendStyleUpdate(layerId, propertyName, style, geometryType, displayType) {"
+        "line": "export function legendStyleUpdate("
       }
     ],
     "codeParams": [

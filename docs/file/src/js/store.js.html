@@ -111,28 +111,28 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/js/store.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { createStore, combineReducers } from &apos;redux&apos;;
-import layers from &apos;./ducks/layers&apos;;
-import basemaps from &apos;./ducks/basemaps&apos;;
-import map from &apos;./ducks/map&apos;;
-import mobile from &apos;./ducks/mobile&apos;;
-import pinnedFeatures from &apos;./ducks/pinnedFeatures&apos;;
-import nav from &apos;./ducks/nav&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { createStore, combineReducers } from &quot;redux&quot;
+import layers from &quot;./ducks/layers&quot;
+import basemaps from &quot;./ducks/basemaps&quot;
+import map from &quot;./ducks/map&quot;
+import mobile from &quot;./ducks/mobile&quot;
+import pinnedFeatures from &quot;./ducks/pinnedFeatures&quot;
+import nav from &quot;./ducks/nav&quot;
 
 const theReducer = combineReducers({
-    layers,
-    basemaps,
-    map,
-    mobile,
-    pinnedFeatures,
-    nav
-});
+  layers,
+  basemaps,
+  map,
+  mobile,
+  pinnedFeatures,
+  nav
+})
 const store = createStore(
-    theReducer,
-    // eslint-disable-next-line no-underscore-dangle
-    window.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-export default store;
+  theReducer,
+  // eslint-disable-next-line no-underscore-dangle
+  window.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+export default store
 </code></pre>
 
 </div>

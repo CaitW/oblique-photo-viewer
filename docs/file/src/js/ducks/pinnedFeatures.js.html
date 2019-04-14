@@ -117,9 +117,9 @@
  * Contains the actions and reducer part that controls feature popups that have
  * been pinned to the page
  */
-import uuid from &apos;uuid&apos;;
+import uuid from &quot;uuid&quot;
 
-const initialState = {};
+const initialState = {}
 
 /**
  * When a Leaflet-based feature popup is &quot;pinned&quot;, by clicking on the pin icon
@@ -132,12 +132,12 @@ const initialState = {};
  * @param {number} position.y - pixel coordinate describing y offset from top of window
  */
 export function newPinnedFeature(layerId, featureProperties, position) {
-    return {
-        type: &apos;PINNED_FEATURES:NEW&apos;,
-        layerId,
-        featureProperties,
-        position
-    };
+  return {
+    type: &quot;PINNED_FEATURES:NEW&quot;,
+    layerId,
+    featureProperties,
+    position
+  }
 }
 
 /**
@@ -146,33 +146,33 @@ export function newPinnedFeature(layerId, featureProperties, position) {
  * @param {string} featureId - the ID of the feature to close
  */
 export function closePinnedFeature(featureId) {
-    return {
-        type: &apos;PINNED_FEATURES:CLOSE&apos;,
-        featureId
-    };
+  return {
+    type: &quot;PINNED_FEATURES:CLOSE&quot;,
+    featureId
+  }
 }
 
 export default function pinnedFeatures(state = initialState, action) {
-    const newState = {
-        ...state
-    };
-    switch (action.type) {
-        case &apos;PINNED_FEATURES:NEW&apos;: {
-            const newPinnedFeatureId = uuid.v4();
-            newState[newPinnedFeatureId] = {
-                layerId: action.layerId,
-                featureProperties: action.featureProperties,
-                position: action.position
-            };
-            break;
-        }
-        case &apos;PINNED_FEATURES:CLOSE&apos;:
-            delete newState[action.featureId];
-            break;
-        default:
-            break;
+  const newState = {
+    ...state
+  }
+  switch (action.type) {
+    case &quot;PINNED_FEATURES:NEW&quot;: {
+      const newPinnedFeatureId = uuid.v4()
+      newState[newPinnedFeatureId] = {
+        layerId: action.layerId,
+        featureProperties: action.featureProperties,
+        position: action.position
+      }
+      break
     }
-    return newState;
+    case &quot;PINNED_FEATURES:CLOSE&quot;:
+      delete newState[action.featureId]
+      break
+    default:
+      break
+  }
+  return newState
 }
 </code></pre>
 

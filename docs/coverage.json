@@ -1,7 +1,7 @@
 {
-  "coverage": "42.72%",
+  "coverage": "41.78%",
   "expectCount": 213,
-  "actualCount": 91,
+  "actualCount": 89,
   "files": {
     "src/js/app.jsx": {
       "expectCount": 7,
@@ -23,8 +23,8 @@
         47,
         48,
         49,
-        62,
-        63
+        61,
+        62
       ]
     },
     "src/js/components/AboutButton.jsx": {
@@ -267,10 +267,10 @@
       "expectCount": 9,
       "actualCount": 5,
       "undocumentLines": [
-        78,
-        79,
-        97,
-        102
+        84,
+        85,
+        103,
+        108
       ]
     },
     "src/js/ducks/map.js": {
@@ -291,9 +291,10 @@
     },
     "src/js/ducks/nav.js": {
       "expectCount": 3,
-      "actualCount": 1,
+      "actualCount": 0,
       "undocumentLines": [
         1,
+        8,
         15
       ]
     },
@@ -314,7 +315,7 @@
     },
     "src/js/layers/layerStyles.js": {
       "expectCount": 19,
-      "actualCount": 8,
+      "actualCount": 7,
       "undocumentLines": [
         17,
         18,
@@ -323,10 +324,11 @@
         22,
         23,
         24,
-        87,
-        112,
-        404,
-        420
+        84,
+        109,
+        140,
+        401,
+        417
       ]
     },
     "src/js/lib/AddMousePosition.js": {
@@ -343,13 +345,13 @@
         6,
         7,
         9,
-        20,
-        31,
-        41,
-        58,
-        68,
-        78,
-        141
+        23,
+        37,
+        50,
+        67,
+        80,
+        93,
+        156
       ]
     },
     "src/js/store.js": {
