@@ -9,7 +9,7 @@
     "gh-pages": "gulp build && git subtree push --prefix dist origin gh-pages",
     "lint-js": "eslint --ext .js,.jsx src/js/** --ignore-path .eslintignore'",
     "format-js": "prettier --write './**/*.js'",
-    "format-css": "stylefmt -r 'src/sass/*.scss'",
+    "format-css": "prettier-stylelint --write 'src/**/*.{css,scss}'",
     "make-docs": "./node_modules/.bin/esdoc"
   },
   "repository": {
@@ -60,8 +60,8 @@
     "json-loader": "^0.5.4",
     "ogr2ogr": "^1.0.1",
     "prettier": "1.16.4",
+    "prettier-stylelint": "^0.4.2",
     "raw-loader": "2.0.0",
-    "stylefmt": "^6.0.0",
     "stylelint-config-standard": "18.2.0",
     "stylelint-scss": "3.5.4",
     "stylelint-selector-bem-pattern": "2.1.0",
