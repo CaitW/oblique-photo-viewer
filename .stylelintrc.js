@@ -6,25 +6,12 @@ module.exports = {
            Airbnb config
            ========================================================================== */
     // CSS formatting
-    "selector-no-id": true,
     indentation: 2,
     "selector-list-comma-newline-after": "always",
     "declaration-colon-space-after": "always",
     "declaration-colon-space-before": "never",
     "block-opening-brace-space-before": "always",
     "declaration-block-single-line-max-declarations": 1,
-    "rule-nested-empty-line-before": [
-      "always",
-      {
-        ignore: ["after-comment"]
-      }
-    ],
-    "rule-non-nested-empty-line-before": [
-      "always",
-      {
-        ignore: ["after-comment"]
-      }
-    ],
     // Comments
     "comment-empty-line-before": [
       "always",
@@ -85,7 +72,6 @@ module.exports = {
     "color-hex-case": "lower",
     "color-hex-length": "long",
     "color-no-invalid-hex": true,
-    "no-indistinguishable-colors": true,
     // strings
     "string-quotes": "single",
     // Values
@@ -107,11 +93,6 @@ module.exports = {
     "declaration-block-trailing-semicolon": "always",
     // Declaration blocks
     "declaration-block-no-duplicate-properties": true,
-    // More on this one here:
-    // http://stylelint.io/user-guide/rules/declaration-block-no-ignored-properties/
-    "declaration-block-no-ignored-properties": true,
-    // Require a reason before or after a stylelint disable
-    "stylelint-disable-reason": "always-after",
     // Prevents adding unnecesary Specificity or complicated sass stuff
     "scss/selector-no-redundant-nesting-selector": true
   }
