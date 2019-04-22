@@ -178,7 +178,6 @@ button {
   background-color: $primary_400 !important;
   color: $primary_900 !important;
   border-radius: 0 !important;
-  width: 100%;
   text-align: left !important;
 
   &.btn {
@@ -191,7 +190,7 @@ button {
   i {
     float: left;
     vertical-align: middle;
-    margin: 3px 20px auto 0;
+    margin: 5px 20px auto 0;
   }
 
   &:hover {
@@ -210,8 +209,6 @@ img {
 }
 
 .wiscviewer-about-download-button-column {
-  width: 200px;
-
   &:first-child {
     margin-right: 10px;
   }
