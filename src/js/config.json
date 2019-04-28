@@ -1,468 +1,465 @@
 {
-    "map": {
-        "wisconsinExtent": [
-            [42.491966313001029, -92.889241325548369],
-            [47.080774762180504, -86.80479844725258]
-        ],
-        "maxExtent": [
-            [37, -99],
-            [52, -79]
-        ],
-        "basemaps": {
-            "light": {
-                "name": "Light",
-                "url": "https://api.mapbox.com/styles/v1/asfpm/cjtx6r6pu22fp1fqfdt39oyt2/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2p0eDZvYm8zMmZvajN6bnMyaTVpNGpvZSJ9.9dYbhRifnEJtLdrX1KQwqA",
-                "defaultActive": true
-            },
-            "streets": {
-                "name": "Streets",
-                "url": "https://api.mapbox.com/styles/v1/asfpm/cjtx6u38d2jum1fmw7jfy8tte/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2p0eDZvYm8zMmZvajN6bnMyaTVpNGpvZSJ9.9dYbhRifnEJtLdrX1KQwqA",
-                "defaultActive": false
-            },
-            "satellite": {
-                "name": "Satellite",
-                "url": "https://api.mapbox.com/styles/v1/asfpm/cjtx6tfdp2jz91fpozn3udjpr/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2p0eDZvYm8zMmZvajN6bnMyaTVpNGpvZSJ9.9dYbhRifnEJtLdrX1KQwqA",
-                "defaultActive": false
-            }
-        },
+  "map": {
+    "wisconsinExtent": [
+      [42.491966313001029, -92.889241325548369],
+      [47.080774762180504, -86.80479844725258]
+    ],
+    "maxExtent": [[37, -99], [52, -79]],
+    "basemaps": {
+      "light": {
+        "name": "Light",
+        "url": "https://api.mapbox.com/styles/v1/asfpm/cjtx6r6pu22fp1fqfdt39oyt2/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2p0eDZvYm8zMmZvajN6bnMyaTVpNGpvZSJ9.9dYbhRifnEJtLdrX1KQwqA",
+        "defaultActive": true
+      },
+      "streets": {
+        "name": "Streets",
+        "url": "https://api.mapbox.com/styles/v1/asfpm/cjtx6u38d2jum1fmw7jfy8tte/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2p0eDZvYm8zMmZvajN6bnMyaTVpNGpvZSJ9.9dYbhRifnEJtLdrX1KQwqA",
+        "defaultActive": false
+      },
+      "satellite": {
+        "name": "Satellite",
+        "url": "https://api.mapbox.com/styles/v1/asfpm/cjtx6tfdp2jz91fpozn3udjpr/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2p0eDZvYm8zMmZvajN6bnMyaTVpNGpvZSJ9.9dYbhRifnEJtLdrX1KQwqA",
+        "defaultActive": false
+      }
+    },
+    "layers": {
+      "1976_inventory": {
+        "name": "1976-78 Inventory",
         "layers": {
-            "1976_inventory": {
-                "name": "1976-78 Inventory",
-                "layers": {
-                    "backshore_1976": {
-                        "name": "Bluff Condition",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/backshore_1976.json",
-                        "defaultActive": true,
-                        "tableProperties": {
-                            "OBJECTID": false,
-                            "Backshore Type": true,
-                            "Notes": true,
-                            "County": true,
-                            "FIPS": true,
-                            "Segment Length (miles)": true,
-                            "Vegetation Classification": true,
-                            "Bluff Condition Classification": true,
-                            "Bluff Modified Classification": true,
-                            "Bluff Failure Classification": true,
-                            "Non-Bluff Classification": true,
-                            "Confidence Level Classification": true
-                        },
-                        "idProperty": "OBJECTID"
-                    },
-                    "beachclass_1976": {
-                        "name": "Beach Protection",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/beachclass_1976.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "OBJECTID": false,
-                            "Shore Type": true,
-                            "Notes": true,
-                            "County": true,
-                            "FIPS": true,
-                            "Segment Length (miles)": true,
-                            "Beach Classification": true,
-                            "Shore Protection Classification": true
-                        },
-                        "idProperty": "OBJECTID"
-                    },
-                    "structure_1976": {
-                        "name": "Shore Structures",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/structure_1976.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "OBJECTID": false,
-                            "Notes": true,
-                            "County": true,
-                            "FIPS": true,
-                            "Structure Type": true
-                        },
-                        "idProperty": "OBJECTID"
-                    }
-                }
+          "backshore_1976": {
+            "name": "Bluff Condition",
+            "type": "geojson",
+            "dataLocation": "./data/layers/backshore_1976.json",
+            "defaultActive": true,
+            "tableProperties": {
+              "OBJECTID": false,
+              "Backshore Type": true,
+              "Notes": true,
+              "County": true,
+              "FIPS": true,
+              "Segment Length (miles)": true,
+              "Vegetation Classification": true,
+              "Bluff Condition Classification": true,
+              "Bluff Modified Classification": true,
+              "Bluff Failure Classification": true,
+              "Non-Bluff Classification": true,
+              "Confidence Level Classification": true
             },
-            "2007_inventory": {
-                "name": "2007-08 Inventory",
-                "layers": {
-                    "backshore_2007": {
-                        "name": "Bluff Condition",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/backshore_2007.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "OBJECTID": false,
-                            "Backshore Type": true,
-                            "Notes": true,
-                            "County": true,
-                            "FIPS": true,
-                            "Segment Length (miles)": true,
-                            "Vegetation Classification": true,
-                            "Bluff Condition Classification": true,
-                            "Bluff Modified Classification": true,
-                            "Bluff Failure Classification": true,
-                            "Non-Bluff Classification": true,
-                            "Confidence Level Classification": true
-                        },
-                        "idProperty": "OBJECTID"
-                    },
-                    "beachclass_2007": {
-                        "name": "Beach Protection",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/beachclass_2007.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "OBJECTID": false,
-                            "Shore Type": true,
-                            "Notes": true,
-                            "County": true,
-                            "FIPS": true,
-                            "Segment Length (miles)": true,
-                            "Beach Classification": true,
-                            "Shore Protection Classification": true
-                        },
-                        "idProperty": "OBJECTID"
-                    },
-                    "structure_2007": {
-                        "name": "Shore Structures",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/structure_2007.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "OBJECTID": false,
-                            "Notes": true,
-                            "County": true,
-                            "FIPS": true,
-                            "Structure Type": true
-                        },
-                        "idProperty": "OBJECTID"
-                    }
-                }
+            "idProperty": "OBJECTID"
+          },
+          "beachclass_1976": {
+            "name": "Beach Protection",
+            "type": "geojson",
+            "dataLocation": "./data/layers/beachclass_1976.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": false,
+              "Shore Type": true,
+              "Notes": true,
+              "County": true,
+              "FIPS": true,
+              "Segment Length (miles)": true,
+              "Beach Classification": true,
+              "Shore Protection Classification": true
             },
-            "Oblique Photos": {
-                "name": "Oblique Photos",
-                "layers": {
-                    "photos_1976": {
-                        "name": "1976-78 Photos",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/photos_1976.json",
-                        "defaultActive": true,
-                        "tableProperties": {
-                            "OBJECTID": false,
-                            "Original File Name": true,
-                            "Longitude": true,
-                            "Latitude": true,
-                            "Easting": true,
-                            "Northing": true,
-                            "UTM Zone": true,
-                            "Great Lake": true,
-                            "County FIPS": true,
-                            "County": true,
-                            "State": true,
-                            "File Name": true,
-                            "Year": true,
-                            "urls": false
-                        },
-                        "idProperty": "OBJECTID"
-                    },
-                    "photos_2007": {
-                        "name": "2007-08 Photos",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/photos_2007.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "OBJECTID": false,
-                            "Original File Name": true,
-                            "Longitude": true,
-                            "Latitude": true,
-                            "Easting": true,
-                            "Northing": true,
-                            "UTM Zone": true,
-                            "Great Lake": true,
-                            "County FIPS": true,
-                            "County": true,
-                            "State": true,
-                            "File Name": true,
-                            "Year": true,
-                            "urls": false
-                        },
-                        "idProperty": "OBJECTID"
-                    },
-                    "photos_2012": {
-                        "name": "2012 Photos",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/photos_2012.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "imageId": "Image ID",
-                            "altitude": "Altutude",
-                            "date": "Date",
-                            "imageUrl": false,
-                            "urls": false
-                        },
-                        "idProperty": "imageId"
-                    },
-                    "photos_2016": {
-                        "name": "2016 Photos",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/photos_2016.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "name": "Name",
-                            "filename": false,
-                            "date": "Date",
-                            "urls": false
-                        },
-                        "idProperty": "name"
-                    },
-                    "photos_2017": {
-                        "name": "2017 Photos",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/photos_2017.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "id": "Name",
-                            "altitude": "Altitude",
-                            "date": "Date",
-                            "urls": false
-                        },
-                        "idProperty": "id"
-                    },
-                    "photos_2018": {
-                        "name": "2018 Photos",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/photos_2018.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "id": "Name",
-                            "DateTime": "Date / Time",
-                            "Direction": false,
-                            "Path": false
-                        },
-                        "idProperty": "id"
-                    }
-                }
+            "idProperty": "OBJECTID"
+          },
+          "structure_1976": {
+            "name": "Shore Structures",
+            "type": "geojson",
+            "dataLocation": "./data/layers/structure_1976.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": false,
+              "Notes": true,
+              "County": true,
+              "FIPS": true,
+              "Structure Type": true
             },
-            "bluff_profiles": {
-                "name": "2012 Bluff Profiles",
-                "layers": {
-                    "profiles": {
-                        "name": "Profile Lines",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/profiles.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "ID": false,
-                            "ProfileNo": "Profile Number",
-                            "county": "County",
-                            "bluff_xls": false,
-                            "bathy_xls": false,
-                            "bluff_jpg": false,
-                            "bathy_png": false,
-                            "bluff_json": false,
-                            "bathy_json": false,
-                            "notes": "Notes",
-                            "type": "Type",
-                            "urls": false
-                        },
-                        "idProperty": "ID"
-                    }
-                }
-            },
-            "wcmp": {
-                "name": "1959 - 1995 Coastal Recession",
-                "layers": {
-                    "bluff_toe_rec_long": {
-                        "name": "Bluff Toe Recession – Long-term (1956 – 2015)",
-                        "type": "geojson",
-                        "displayType": "square",
-                        "dataLocation": "./data/layers/bluff_toe_rec_rate.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "OBJECTID": "ID"
-                        },
-                        "idProperty": "OBJECTID"
-                    },
-                    "bluff_crest_rec_long": {
-                        "name": "Bluff Crest Recession - Long-term (1956 - 2015)",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/bluff_crest_rec_rate.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "OBJECTID": "ID"
-                        },
-                        "idProperty": "OBJECTID"
-                    },
-                    "shoreline_rec_long": {
-                        "name": "Shoreline Recession – Long-term (1956 - 2015)",
-                        "type": "geojson",
-                        "displayType": "triangle",
-                        "dataLocation": "./data/layers/shore_change_rate.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "OBJECTID": "ID"
-                        },
-                        "idProperty": "OBJECTID"
-                    },
-                    "bluff_toe_rec_short": {
-                        "name": "Bluff Toe Recession – Short-term (1995 – 2015)",
-                        "type": "geojson",
-                        "displayType": "square",
-                        "dataLocation": "./data/layers/bluff_toe_rec_rate.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "OBJECTID": "ID"
-                        },
-                        "idProperty": "OBJECTID"
-                    },
-                    "bluff_crest_rec_short": {
-                        "name": "Bluff Crest Recession – Short-term (1995 - 2015)",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/bluff_crest_rec_rate.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "OBJECTID": "ID"
-                        },
-                        "idProperty": "OBJECTID"
-                    },
-                    "shoreline_rec_short": {
-                        "name": "Shoreline Recession – Short-term (1995 - 2015)",
-                        "type": "geojson",
-                        "displayType": "triangle",
-                        "dataLocation": "./data/layers/shore_change_rate.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "OBJECTID": "ID"
-                        },
-                        "idProperty": "OBJECTID"
-                    },
-                    "shoreline_position": {
-                        "name": "Shoreline Position (2015)",
-                        "type": "geojson",
-                        "dataLocation": "./data/layers/shoreline_2015.json",
-                        "defaultActive": false,
-                        "tableProperties": {
-                            "OBJECTID": "ID"
-                        },
-                        "idProperty": "OBJECTID"
-                    }
-                }
-            },
-            "boundaries": {
-                "name": "Boundaries",
-                "layers": {
-                    "county_bounds": {
-                        "name": "County Boundaries",
-                        "type": "tileLayer",
-                        "url": "https://api.mapbox.com/styles/v1/asfpm/ciyudtx3u00262sll3x184fnb/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2p0eDZvYm8zMmZvajN6bnMyaTVpNGpvZSJ9.9dYbhRifnEJtLdrX1KQwqA",
-                        "defaultActive": true,
-                        "legendStyles": {
-                            "County Boundaries": {
-                                "geometryType": "LineString",
-                                "style": {
-                                    "color": "#333333"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "county_shorelines": {
-            "Lake Superior": {
-                "Douglas County": [
-                    [46.64283679198892, -92.3126220703125],
-                    [46.76808718675661, -91.58477783203126]
-                ],
-                "bayfield County": [
-                    [46.54280504427768, -91.58203125000001],
-                    [46.99430443309905, -90.49575805664064]
-                ],
-                "ashland County": [
-                    [46.55083326736553, -90.96199035644533],
-                    [46.74503658076334, -90.49850463867189]
-                ],
-                "iron County": [
-                    [46.56133900067355, -90.55103302001953],
-                    [46.59402360423837, -90.41524887084961]
-                ]
-            },
-            "Lake Michigan": {
-                "marinette County": [
-                    [44.95799590837475, -87.8075408935547],
-                    [45.101153694326484, -87.5328826904297]
-                ],
-                "oconto County": [
-                    [44.67304768858752, -88.03894042968751],
-                    [44.97645666320777, -87.74574279785158]
-                ],
-                "brown County": [
-                    [44.52049959138874, -88.05953979492189],
-                    [44.692088041727786, -87.7532958984375]
-                ],
-                "door County": [
-                    [44.61979915773973, -87.81646728515625],
-                    [45.50249699389715, -86.71234130859375]
-                ],
-                "kewaunee County": [
-                    [44.276671273775186, -87.77801513671876],
-                    [44.728198689689535, -87.22869873046876]
-                ],
-                "manitowoc County": [
-                    [43.79389779242341, -87.9400634765625],
-                    [44.40827836571936, -87.33444213867189]
-                ],
-                "sheboygan County": [
-                    [43.5326204268101, -88.00048828125001],
-                    [43.923615428841146, -87.45117187500001]
-                ],
-                "ozaukee County": [
-                    [43.180145655844626, -88.15841674804688],
-                    [43.5734266934657, -87.60910034179689]
-                ],
-                "milwaukee County": [
-                    [42.83267430318037, -88.16665649414064],
-                    [43.22819449883485, -87.61734008789064]
-                ],
-                "racine County": [
-                    [42.65466692646942, -87.93045043945314],
-                    [42.86338298693097, -87.65579223632814]
-                ],
-                "kenosha County": [
-                    [42.481212777716166, -87.95997619628908],
-                    [42.69051116998241, -87.68531799316406]
-                ]
-            }
+            "idProperty": "OBJECTID"
+          }
         }
-    },
-    "resources": {
-        "photos": {
-            "photos_1976": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/1976_2007_inventories",
-            "photos_2007": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/1976_2007_inventories",
-            "photos_2012": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2012_photos",
-            "photos_2016": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2016_photos",
-            "photos_2017": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2017_photos",
-            "photos_2018": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2018_photos"
-        },
-        "profiles": {
-            "pathToXls": {
-                "bluff": "./data/profiles/xlsx/bluff/",
-                "bathy": "./data/profiles/xlsx/bathy/"
+      },
+      "2007_inventory": {
+        "name": "2007-08 Inventory",
+        "layers": {
+          "backshore_2007": {
+            "name": "Bluff Condition",
+            "type": "geojson",
+            "dataLocation": "./data/layers/backshore_2007.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": false,
+              "Backshore Type": true,
+              "Notes": true,
+              "County": true,
+              "FIPS": true,
+              "Segment Length (miles)": true,
+              "Vegetation Classification": true,
+              "Bluff Condition Classification": true,
+              "Bluff Modified Classification": true,
+              "Bluff Failure Classification": true,
+              "Non-Bluff Classification": true,
+              "Confidence Level Classification": true
             },
-            "pathToJson": {
-                "bluff": "./data/profiles/json/bluff/",
-                "bathy": "./data/profiles/json/bathy/"
-            }
+            "idProperty": "OBJECTID"
+          },
+          "beachclass_2007": {
+            "name": "Beach Protection",
+            "type": "geojson",
+            "dataLocation": "./data/layers/beachclass_2007.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": false,
+              "Shore Type": true,
+              "Notes": true,
+              "County": true,
+              "FIPS": true,
+              "Segment Length (miles)": true,
+              "Beach Classification": true,
+              "Shore Protection Classification": true
+            },
+            "idProperty": "OBJECTID"
+          },
+          "structure_2007": {
+            "name": "Shore Structures",
+            "type": "geojson",
+            "dataLocation": "./data/layers/structure_2007.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": false,
+              "Notes": true,
+              "County": true,
+              "FIPS": true,
+              "Structure Type": true
+            },
+            "idProperty": "OBJECTID"
+          }
         }
+      },
+      "Oblique Photos": {
+        "name": "Oblique Photos",
+        "layers": {
+          "photos_1976": {
+            "name": "1976-78 Photos",
+            "type": "geojson",
+            "dataLocation": "./data/layers/photos_1976.json",
+            "defaultActive": true,
+            "tableProperties": {
+              "OBJECTID": false,
+              "Original File Name": true,
+              "Longitude": true,
+              "Latitude": true,
+              "Easting": true,
+              "Northing": true,
+              "UTM Zone": true,
+              "Great Lake": true,
+              "County FIPS": true,
+              "County": true,
+              "State": true,
+              "File Name": true,
+              "Year": true,
+              "urls": false
+            },
+            "idProperty": "OBJECTID"
+          },
+          "photos_2007": {
+            "name": "2007-08 Photos",
+            "type": "geojson",
+            "dataLocation": "./data/layers/photos_2007.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": false,
+              "Original File Name": true,
+              "Longitude": true,
+              "Latitude": true,
+              "Easting": true,
+              "Northing": true,
+              "UTM Zone": true,
+              "Great Lake": true,
+              "County FIPS": true,
+              "County": true,
+              "State": true,
+              "File Name": true,
+              "Year": true,
+              "urls": false
+            },
+            "idProperty": "OBJECTID"
+          },
+          "photos_2012": {
+            "name": "2012 Photos",
+            "type": "geojson",
+            "dataLocation": "./data/layers/photos_2012.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "imageId": "Image ID",
+              "altitude": "Altutude",
+              "date": "Date",
+              "imageUrl": false,
+              "urls": false
+            },
+            "idProperty": "imageId"
+          },
+          "photos_2016": {
+            "name": "2016 Photos",
+            "type": "geojson",
+            "dataLocation": "./data/layers/photos_2016.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "name": "Name",
+              "filename": false,
+              "date": "Date",
+              "urls": false
+            },
+            "idProperty": "name"
+          },
+          "photos_2017": {
+            "name": "2017 Photos",
+            "type": "geojson",
+            "dataLocation": "./data/layers/photos_2017.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "id": "Name",
+              "altitude": "Altitude",
+              "date": "Date",
+              "urls": false
+            },
+            "idProperty": "id"
+          },
+          "photos_2018": {
+            "name": "2018 Photos",
+            "type": "geojson",
+            "dataLocation": "./data/layers/photos_2018.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "id": "Name",
+              "DateTime": "Date / Time",
+              "Direction": false,
+              "Path": false
+            },
+            "idProperty": "id"
+          }
+        }
+      },
+      "bluff_profiles": {
+        "name": "2012 Bluff Profiles",
+        "layers": {
+          "profiles": {
+            "name": "Profile Lines",
+            "type": "geojson",
+            "dataLocation": "./data/layers/profiles.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "ID": false,
+              "ProfileNo": "Profile Number",
+              "county": "County",
+              "bluff_xls": false,
+              "bathy_xls": false,
+              "bluff_jpg": false,
+              "bathy_png": false,
+              "bluff_json": false,
+              "bathy_json": false,
+              "notes": "Notes",
+              "type": "Type",
+              "urls": false
+            },
+            "idProperty": "ID"
+          }
+        }
+      },
+      "wcmp": {
+        "name": "1959 - 1995 Coastal Recession",
+        "layers": {
+          "bluff_toe_rec_long": {
+            "name": "Bluff Toe Recession – Long-term (1956 – 2015)",
+            "type": "geojson",
+            "displayType": "square",
+            "dataLocation": "./data/layers/bluff_toe_rec_rate.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": "ID"
+            },
+            "idProperty": "OBJECTID"
+          },
+          "bluff_crest_rec_long": {
+            "name": "Bluff Crest Recession - Long-term (1956 - 2015)",
+            "type": "geojson",
+            "dataLocation": "./data/layers/bluff_crest_rec_rate.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": "ID"
+            },
+            "idProperty": "OBJECTID"
+          },
+          "shoreline_rec_long": {
+            "name": "Shoreline Recession – Long-term (1956 - 2015)",
+            "type": "geojson",
+            "displayType": "triangle",
+            "dataLocation": "./data/layers/shore_change_rate.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": "ID"
+            },
+            "idProperty": "OBJECTID"
+          },
+          "bluff_toe_rec_short": {
+            "name": "Bluff Toe Recession – Short-term (1995 – 2015)",
+            "type": "geojson",
+            "displayType": "square",
+            "dataLocation": "./data/layers/bluff_toe_rec_rate.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": "ID"
+            },
+            "idProperty": "OBJECTID"
+          },
+          "bluff_crest_rec_short": {
+            "name": "Bluff Crest Recession – Short-term (1995 - 2015)",
+            "type": "geojson",
+            "dataLocation": "./data/layers/bluff_crest_rec_rate.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": "ID"
+            },
+            "idProperty": "OBJECTID"
+          },
+          "shoreline_rec_short": {
+            "name": "Shoreline Recession – Short-term (1995 - 2015)",
+            "type": "geojson",
+            "displayType": "triangle",
+            "dataLocation": "./data/layers/shore_change_rate.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": "ID"
+            },
+            "idProperty": "OBJECTID"
+          },
+          "shoreline_position": {
+            "name": "Shoreline Position (2015)",
+            "type": "geojson",
+            "dataLocation": "./data/layers/shoreline_2015.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": "ID"
+            },
+            "idProperty": "OBJECTID"
+          }
+        }
+      },
+      "boundaries": {
+        "name": "Boundaries",
+        "layers": {
+          "county_bounds": {
+            "name": "County Boundaries",
+            "type": "tileLayer",
+            "url": "https://api.mapbox.com/styles/v1/asfpm/ciyudtx3u00262sll3x184fnb/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYXNmcG0iLCJhIjoiY2p0eDZvYm8zMmZvajN6bnMyaTVpNGpvZSJ9.9dYbhRifnEJtLdrX1KQwqA",
+            "defaultActive": true,
+            "legendStyles": {
+              "County Boundaries": {
+                "geometryType": "LineString",
+                "style": {
+                  "color": "#333333"
+                }
+              }
+            }
+          }
+        }
+      }
     },
-    "profileSummaryStatistics": {
-      "xMin": 0,
-      "xMax": 9530.166258,
-      "yMin": 522.0314105,
-      "yMax": 698.784306
-    },
-    "lakeMichiganWaterLevel": {
-        "avg": 578.02
+    "county_shorelines": {
+      "Lake Superior": {
+        "Douglas County": [
+          [46.64283679198892, -92.3126220703125],
+          [46.76808718675661, -91.58477783203126]
+        ],
+        "bayfield County": [
+          [46.54280504427768, -91.58203125000001],
+          [46.99430443309905, -90.49575805664064]
+        ],
+        "ashland County": [
+          [46.55083326736553, -90.96199035644533],
+          [46.74503658076334, -90.49850463867189]
+        ],
+        "iron County": [
+          [46.56133900067355, -90.55103302001953],
+          [46.59402360423837, -90.41524887084961]
+        ]
+      },
+      "Lake Michigan": {
+        "marinette County": [
+          [44.95799590837475, -87.8075408935547],
+          [45.101153694326484, -87.5328826904297]
+        ],
+        "oconto County": [
+          [44.67304768858752, -88.03894042968751],
+          [44.97645666320777, -87.74574279785158]
+        ],
+        "brown County": [
+          [44.52049959138874, -88.05953979492189],
+          [44.692088041727786, -87.7532958984375]
+        ],
+        "door County": [
+          [44.61979915773973, -87.81646728515625],
+          [45.50249699389715, -86.71234130859375]
+        ],
+        "kewaunee County": [
+          [44.276671273775186, -87.77801513671876],
+          [44.728198689689535, -87.22869873046876]
+        ],
+        "manitowoc County": [
+          [43.79389779242341, -87.9400634765625],
+          [44.40827836571936, -87.33444213867189]
+        ],
+        "sheboygan County": [
+          [43.5326204268101, -88.00048828125001],
+          [43.923615428841146, -87.45117187500001]
+        ],
+        "ozaukee County": [
+          [43.180145655844626, -88.15841674804688],
+          [43.5734266934657, -87.60910034179689]
+        ],
+        "milwaukee County": [
+          [42.83267430318037, -88.16665649414064],
+          [43.22819449883485, -87.61734008789064]
+        ],
+        "racine County": [
+          [42.65466692646942, -87.93045043945314],
+          [42.86338298693097, -87.65579223632814]
+        ],
+        "kenosha County": [
+          [42.481212777716166, -87.95997619628908],
+          [42.69051116998241, -87.68531799316406]
+        ]
+      }
     }
+  },
+  "resources": {
+    "photos": {
+      "photos_1976": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/1976_2007_inventories",
+      "photos_2007": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/1976_2007_inventories",
+      "photos_2012": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2012_photos",
+      "photos_2016": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2016_photos",
+      "photos_2017": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2017_photos",
+      "photos_2018": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2018_photos"
+    },
+    "profiles": {
+      "pathToXls": {
+        "bluff": "./data/profiles/xlsx/bluff/",
+        "bathy": "./data/profiles/xlsx/bathy/"
+      },
+      "pathToJson": {
+        "bluff": "./data/profiles/json/bluff/",
+        "bathy": "./data/profiles/json/bathy/"
+      }
+    }
+  },
+  "profileSummaryStatistics": {
+    "xMin": 0,
+    "xMax": 9530.166258,
+    "yMin": 522.0314105,
+    "yMax": 698.784306
+  },
+  "lakeMichiganWaterLevel": {
+    "avg": 578.02
+  }
 }
