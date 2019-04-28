@@ -6,17 +6,17 @@
  * and Leaflet passes the layer's data to that function on load. It is used here to
  * apply click handling functions to each feature in each layer.
  */
-import React from 'react';
-import L from 'leaflet';
-import { render } from 'react-dom';
-import { midpoint, point } from 'turf';
+import React from "react"
+import L from "leaflet"
+import { render } from "react-dom"
+import { midpoint, point } from "turf"
 
-import store from '../store';
-import { mobileClickFeature } from '../ducks/mobile';
-import { leafletPopupOpened } from '../ducks/map';
-import FeaturePopup from '../components/FeaturePopups/FeaturePopup';
+import store from "../store"
+import { mobileClickFeature } from "../ducks/mobile"
+import { leafletPopupOpened } from "../ducks/map"
+import FeaturePopup from "../components/FeaturePopups/FeaturePopup"
 
-const LAYER_FEATURES = {};
+const LAYER_FEATURES = {}
 
 /**
  * When we open a popup, we want to make sure that popup opens at the
@@ -31,72 +31,72 @@ const LAYER_FEATURES = {};
  * @param {L.Layer} featureLayer - a leaflet layer representing a single feature
  */
 function getFeatureMidpoint(featureLayer) {
-    /**
-     * Convert a lat/lng to a geojson point
-     *
-     * @param {L.LatLng} latLng
-     * @returns {GeoJSON Feature}
-     */
-    function toCoordFeature(latLng) {
-        return point([latLng.lng, latLng.lat]);
-    }
+  /**
+   * Convert a lat/lng to a geojson point
+   *
+   * @param {L.LatLng} latLng
+   * @returns {GeoJSON Feature}
+   */
+  function toCoordFeature(latLng) {
+    return point([latLng.lng, latLng.lat])
+  }
 
-    /**
-     * Get the midpoint of a line using Turf's `midpoint` function
-     *
-     * @param {L.LatLng[]} latLngs
-     * @returns {coordinates} - [x,y] coordinates describing the middle of a line
-     */
-    function getLineMidpoint(latLngs) {
-        let lowerMiddle = false;
-        let upperMiddle = false;
-        let middlePoint = false;
-        // if there are more than two coordinates
-        if (latLngs.length > 2) {
-            // if the number of coordinates is even, find the
-            // average of the two middle coordinates
-            if (latLngs.length % 2 === 0) {
-                const firstIndex = (latLngs.length / 2) - 1;
-                const lastIndex = latLngs.length / 2;
-                lowerMiddle = toCoordFeature(latLngs[firstIndex]);
-                upperMiddle = toCoordFeature(latLngs[lastIndex]);
-                middlePoint = midpoint(lowerMiddle, upperMiddle);
-                // if the number of coordinates is odd, get the median value
-            } else {
-                const middleIndex = Math.ceil(latLngs.length / 2);
-                middlePoint = toCoordFeature(latLngs[(middleIndex)]);
-            }
-            // if there are exactly 2 coordinates
-        } else if (latLngs.length === 2) {
-            lowerMiddle = toCoordFeature(latLngs[0]);
-            upperMiddle = toCoordFeature(latLngs[1]);
-            middlePoint = midpoint(lowerMiddle, upperMiddle);
-            // if there is exactly 1 coordinate
-        } else if (latLngs.length === 1) {
-            middlePoint = toCoordFeature(latLngs[0]);
-        }
-        return middlePoint.geometry.coordinates;
+  /**
+   * Get the midpoint of a line using Turf's `midpoint` function
+   *
+   * @param {L.LatLng[]} latLngs
+   * @returns {coordinates} - [x,y] coordinates describing the middle of a line
+   */
+  function getLineMidpoint(latLngs) {
+    let lowerMiddle = false
+    let upperMiddle = false
+    let middlePoint = false
+    // if there are more than two coordinates
+    if (latLngs.length > 2) {
+      // if the number of coordinates is even, find the
+      // average of the two middle coordinates
+      if (latLngs.length % 2 === 0) {
+        const firstIndex = latLngs.length / 2 - 1
+        const lastIndex = latLngs.length / 2
+        lowerMiddle = toCoordFeature(latLngs[firstIndex])
+        upperMiddle = toCoordFeature(latLngs[lastIndex])
+        middlePoint = midpoint(lowerMiddle, upperMiddle)
+        // if the number of coordinates is odd, get the median value
+      } else {
+        const middleIndex = Math.ceil(latLngs.length / 2)
+        middlePoint = toCoordFeature(latLngs[middleIndex])
+      }
+      // if there are exactly 2 coordinates
+    } else if (latLngs.length === 2) {
+      lowerMiddle = toCoordFeature(latLngs[0])
+      upperMiddle = toCoordFeature(latLngs[1])
+      middlePoint = midpoint(lowerMiddle, upperMiddle)
+      // if there is exactly 1 coordinate
+    } else if (latLngs.length === 1) {
+      middlePoint = toCoordFeature(latLngs[0])
     }
+    return middlePoint.geometry.coordinates
+  }
 
-    /**
-     * Get the coordinates of a feature
-     */
-    function getPointCoords(latLng) {
-        return toCoordFeature(latLng).geometry.coordinates;
+  /**
+   * Get the coordinates of a feature
+   */
+  function getPointCoords(latLng) {
+    return toCoordFeature(latLng).geometry.coordinates
+  }
+
+  // if it's a line (getLatLngs isn't undefined)
+  if (typeof featureLayer.getLatLngs !== "undefined") {
+    let latLngs = featureLayer.getLatLngs()
+    if (featureLayer.feature.geometry.type === "MultiLineString") {
+      latLngs = featureLayer.getLatLngs()[0]
     }
-
-    // if it's a line (getLatLngs isn't undefined)
-    if (typeof featureLayer.getLatLngs !== 'undefined') {
-        let latLngs = featureLayer.getLatLngs();
-        if (featureLayer.feature.geometry.type === 'MultiLineString') {
-            latLngs = featureLayer.getLatLngs()[0];
-        }
-        return getLineMidpoint(latLngs);
+    return getLineMidpoint(latLngs)
     // if it's a point (getLatLng isn't undefined)
-    } else if (typeof featureLayer.getLatLng !== 'undefined') {
-        return getPointCoords(featureLayer.getLatLng());
-    }
-    return false;
+  } else if (typeof featureLayer.getLatLng !== "undefined") {
+    return getPointCoords(featureLayer.getLatLng())
+  }
+  return false
 }
 
 /**
@@ -113,62 +113,64 @@ function getFeatureMidpoint(featureLayer) {
  * @param {L.Map} map - the Leaflet map containing the feature
  */
 function createLeafletPopup(feature, featureLayer, layerId, map) {
-    const featureMiddlePoint = getFeatureMidpoint(featureLayer);
-    const container = document.createElement('div');
-    const popup = L.popup({
-        closeOnClick: false,
-        className: 'feature-popup hidden-xs',
-        autoClose: true,
-        maxWidth: 500,
-        minWidth: 350,
-        closeButton: false
-    })
-        .setLatLng(L.latLng(featureMiddlePoint[1], featureMiddlePoint[0]))
-        .setContent(container);
-    /**
-     * Gets the pixel position of the popup within the window
-     * @returns {Object} - position with properties x, y
-     */
-    const getPopupPosition = () => {
-        const popupPosition = popup.getLatLng();
-        const positionInMap = map.latLngToContainerPoint(popupPosition);
-        const mapElement = document.getElementById('map');
-        const mapLocation = mapElement.getBoundingClientRect();
-        const positionInDocument = {
-            x: positionInMap.x + mapLocation.left,
-            y: positionInMap.y + mapLocation.top
-        };
-        return positionInDocument;
-    };
-    const closePopup = () => {
+  const featureMiddlePoint = getFeatureMidpoint(featureLayer)
+  const container = document.createElement("div")
+  const popup = L.popup({
+    closeOnClick: false,
+    className: "feature-popup hidden-xs",
+    autoClose: true,
+    maxWidth: 500,
+    minWidth: 350,
+    closeButton: false
+  })
+    .setLatLng(L.latLng(featureMiddlePoint[1], featureMiddlePoint[0]))
+    .setContent(container)
+  /**
+   * Gets the pixel position of the popup within the window
+   * @returns {Object} - position with properties x, y
+   */
+  const getPopupPosition = () => {
+    const popupPosition = popup.getLatLng()
+    const positionInMap = map.latLngToContainerPoint(popupPosition)
+    const mapElement = document.getElementById("map")
+    const mapLocation = mapElement.getBoundingClientRect()
+    const positionInDocument = {
+      x: positionInMap.x + mapLocation.left,
+      y: positionInMap.y + mapLocation.top
+    }
+    return positionInDocument
+  }
+  const closePopup = () => {
     // eslint-disable-next-line
-        popup._close();
-    };
-    const updateAfterZoom = () => {
-        map.once('zoomend', () => {
-            setTimeout(() => {
-                popup.update();
-            }, 500);
-        });
-    };
-    popup.on('add', () => {
-        store.dispatch(
-            leafletPopupOpened([featureMiddlePoint[1], featureMiddlePoint[0]])
-        );
-        render(
-            <FeaturePopup layerId={layerId}
-                featureProperties={feature.properties}
-                popup={popup}
-                updateAfterZoom={updateAfterZoom}
-                closePopup={closePopup}
-                getPosition={getPopupPosition}
-                openNextFeature={featureLayer.openNextFeature}
-                openPreviousFeature={featureLayer.openPreviousFeature} />,
-            container
-        );
-    });
-    popup.openOn(map);
-    return popup;
+    popup._close()
+  }
+  const updateAfterZoom = () => {
+    map.once("zoomend", () => {
+      setTimeout(() => {
+        popup.update()
+      }, 500)
+    })
+  }
+  popup.on("add", () => {
+    store.dispatch(
+      leafletPopupOpened([featureMiddlePoint[1], featureMiddlePoint[0]])
+    )
+    render(
+      <FeaturePopup
+        layerId={layerId}
+        featureProperties={feature.properties}
+        popup={popup}
+        updateAfterZoom={updateAfterZoom}
+        closePopup={closePopup}
+        getPosition={getPopupPosition}
+        openNextFeature={featureLayer.openNextFeature}
+        openPreviousFeature={featureLayer.openPreviousFeature}
+      />,
+      container
+    )
+  })
+  popup.openOn(map)
+  return popup
 }
 
 /**
@@ -177,10 +179,11 @@ function createLeafletPopup(feature, featureLayer, layerId, map) {
  * then opens the next layer in the LAYER_INDEX
  */
 function toggleNextFeaturePopup() {
-    const featureIndex = this.featureIndex;
-    const layerId = this.layerId;
-    const nextFeatureIndex = ((featureIndex + 1) >= LAYER_FEATURES[layerId].length) ? 0 : featureIndex + 1;
-    LAYER_FEATURES[layerId][nextFeatureIndex].togglePopup();
+  const featureIndex = this.featureIndex
+  const layerId = this.layerId
+  const nextFeatureIndex =
+    featureIndex + 1 >= LAYER_FEATURES[layerId].length ? 0 : featureIndex + 1
+  LAYER_FEATURES[layerId][nextFeatureIndex].togglePopup()
 }
 
 /**
@@ -189,10 +192,11 @@ function toggleNextFeaturePopup() {
  * then opens the previous layer in the LAYER_INDEX
  */
 function togglePreviousFeaturePopup() {
-    const featureIndex = this.featureIndex;
-    const layerId = this.layerId;
-    const previousFeatureIndex = ((featureIndex - 1) < 0) ? LAYER_FEATURES[layerId].length - 1 : featureIndex - 1;
-    LAYER_FEATURES[layerId][previousFeatureIndex].togglePopup();
+  const featureIndex = this.featureIndex
+  const layerId = this.layerId
+  const previousFeatureIndex =
+    featureIndex - 1 < 0 ? LAYER_FEATURES[layerId].length - 1 : featureIndex - 1
+  LAYER_FEATURES[layerId][previousFeatureIndex].togglePopup()
 }
 
 /**
@@ -202,21 +206,23 @@ function togglePreviousFeaturePopup() {
  *  - toggle an already-created popup
  */
 function togglePopup() {
-    const feature = this.feature;
-    const featureIndex = this.featureIndex;
-    const layerId = this.layerId;
-    const map = this.map;
-    this.openNextFeature = toggleNextFeaturePopup.bind(this);
-    this.openPreviousFeature = togglePreviousFeaturePopup.bind(this);
-    // if the window is sufficiently small, show the mobile feature modal
-    if (store.getState().mobile.window.width < 992) {
-        store.dispatch(mobileClickFeature(feature.properties, layerId, featureIndex));
+  const feature = this.feature
+  const featureIndex = this.featureIndex
+  const layerId = this.layerId
+  const map = this.map
+  this.openNextFeature = toggleNextFeaturePopup.bind(this)
+  this.openPreviousFeature = togglePreviousFeaturePopup.bind(this)
+  // if the window is sufficiently small, show the mobile feature modal
+  if (store.getState().mobile.window.width < 992) {
+    store.dispatch(
+      mobileClickFeature(feature.properties, layerId, featureIndex)
+    )
     // else, show a popup
-    } else if (this.popup === false) {
-        this.popup = createLeafletPopup(feature, this, layerId, map, featureIndex);
-    } else {
-        this.popup.openOn(map);
-    }
+  } else if (this.popup === false) {
+    this.popup = createLeafletPopup(feature, this, layerId, map, featureIndex)
+  } else {
+    this.popup.openOn(map)
+  }
 }
 
 /**
@@ -229,9 +235,9 @@ function togglePopup() {
  * - returns an index value for each feature layer added
  */
 function addFeatureLayerToList(featureLayer, layerId) {
-    LAYER_FEATURES[layerId] = LAYER_FEATURES[layerId] || [];
-    LAYER_FEATURES[layerId].push(featureLayer);
-    return LAYER_FEATURES[layerId].length - 1;
+  LAYER_FEATURES[layerId] = LAYER_FEATURES[layerId] || []
+  LAYER_FEATURES[layerId].push(featureLayer)
+  return LAYER_FEATURES[layerId].length - 1
 }
 
 /**
@@ -243,18 +249,18 @@ function addFeatureLayerToList(featureLayer, layerId) {
  *  - attach the popup to the featureLayer
  */
 export function onEachFeature(layerId, map) {
-    return (feature, featureLayer) => {
-        const featureIndex = addFeatureLayerToList(featureLayer, layerId);
-        /* eslint-disable no-param-reassign */
-        featureLayer.popup = false;
-        featureLayer.featureIndex = featureIndex;
-        featureLayer.layerId = layerId;
-        featureLayer.map = map;
-        featureLayer.feature = feature;
-        featureLayer.togglePopup = togglePopup.bind(featureLayer);
-        /* eslint-enable no-param-reassign */
-        featureLayer.on('mouseup', featureLayer.togglePopup);
-    };
+  return (feature, featureLayer) => {
+    const featureIndex = addFeatureLayerToList(featureLayer, layerId)
+    /* eslint-disable no-param-reassign */
+    featureLayer.popup = false
+    featureLayer.featureIndex = featureIndex
+    featureLayer.layerId = layerId
+    featureLayer.map = map
+    featureLayer.feature = feature
+    featureLayer.togglePopup = togglePopup.bind(featureLayer)
+    /* eslint-enable no-param-reassign */
+    featureLayer.on("mouseup", featureLayer.togglePopup)
+  }
 }
 
 /**
@@ -263,6 +269,5 @@ export function onEachFeature(layerId, map) {
  * and "previous" button functionality
  */
 export function getFeatureLayer(featureIndex, layerId) {
-    return LAYER_FEATURES[layerId][featureIndex];
+  return LAYER_FEATURES[layerId][featureIndex]
 }
-
