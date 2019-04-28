@@ -15,7 +15,7 @@ import { LAYERS_BY_ID } from "../util"
 export const NO_RECESSION = "No recession"
 // short term rates
 export const ZERO_TO_TEN = "0 to 10 feet"
-export const TEN_TO_TWENTY = "0 to 20 feet"
+export const TEN_TO_TWENTY = "10 to 20 feet"
 export const GREATER_THAN_TWENTY = "Greater than 20 feet"
 // long term rates
 export const ZERO_TO_TWENTY = "0 to 20 feet"
