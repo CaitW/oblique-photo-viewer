@@ -564,8 +564,9 @@ function createNewStyle(layerId, feature) {
   if (typeof style.className === "undefined") {
     style.className = ""
   }
-  style.className +=
-    " " + [layerGeometryClass, layerIdClass, layerDisplayTypeClass].join(" ")
+  style.className =
+    style.className +
+    (" " + [layerGeometryClass, layerIdClass, layerDisplayTypeClass].join(" "))
   // add the style to the legend
   store.dispatch(
     legendStyleUpdate(
