@@ -129,11 +129,14 @@ $hide_scroll_padding: 17px;
   justify-content: space-between;
   align-items: center;
 
+  // this selector also appears in the global scope, as it is used outside of the sidebar as well
   .wiscviewer-layer-group-name {
+    text-align: right;
   }
-
+  
   .wiscviewer-layer-group-info,
   .wiscviewer-layer-group-info > a {
+    line-height: 12px;
     color: $primary_400;
   }
 
