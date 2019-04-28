@@ -19,17 +19,19 @@ const Legend = props => {
   const layers = []
   const activeLayerStyleTypes = props.activeLayerStyleTypes
   for (const layerId in activeLayerStyleTypes) {
-    const styles = activeLayerStyleTypes[layerId].styles
-    const layerName = activeLayerStyleTypes[layerId].layerName
-    const layerGroupName = activeLayerStyleTypes[layerId].layerGroupName
-    layers.push(
-      <LegendLayer
-        key={layerId}
-        layerGroupName={layerGroupName}
-        layerName={layerName}
-        layerStyles={styles}
-      />
-    )
+    if (Object.prototype.hasOwnProperty.call(activeLayerStyleTypes, layerId)) {
+      const styles = activeLayerStyleTypes[layerId].styles
+      const layerName = activeLayerStyleTypes[layerId].layerName
+      const layerGroupName = activeLayerStyleTypes[layerId].layerGroupName
+      layers.push(
+        <LegendLayer
+          key={layerId}
+          layerGroupName={layerGroupName}
+          layerName={layerName}
+          layerStyles={styles}
+        />
+      )
+    }
   }
   return <PanelGroup className="wiscviewer-legend">{layers}</PanelGroup>
 }
