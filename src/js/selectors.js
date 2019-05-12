@@ -131,17 +131,21 @@ export const getActiveLayerStyleTypes = createSelector(
         styles.push({
           styleName,
           iconStyle,
-          styleIconClassNames
+          styleIconClassNames,
+          sortOrder: legendStyles[styleName].sortOrder
         })
       }
       styles = styles.sort((a, b) => {
-        if (a.styleName < b.styleName) {
-          return -1
+        if (a.sortOrder === b.sortOrder) {
+          if (a.styleName < b.styleName) {
+            return -1
+          }
+          if (a.styleName > b.styleName) {
+            return 1
+          }
+          return 0
         }
-        if (a.styleName > b.styleName) {
-          return 1
-        }
-        return 0
+        return a.sortOrder - b.sortOrder
       })
       stylesByLayerId[layerId] = {
         layerName,

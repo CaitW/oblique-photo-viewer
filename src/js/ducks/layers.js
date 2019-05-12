@@ -36,7 +36,8 @@ export function legendStyleUpdate(
   propertyName,
   style,
   geometryType,
-  displayType
+  displayType,
+  sortOrder
 ) {
   return {
     type: "LAYER:LEGEND_STYLE_UPDATE",
@@ -44,7 +45,8 @@ export function legendStyleUpdate(
     propertyName,
     style,
     geometryType,
-    displayType
+    displayType,
+    sortOrder
   }
 }
 
@@ -124,7 +126,8 @@ export default function layers(state = initialLayers, action) {
       const legendStyle = {
         style: action.style,
         geometryType: action.geometryType,
-        displayType: action.displayType
+        displayType: action.displayType,
+        sortOrder: action.sortOrder
       }
       newState.layersById = {
         ...state.layersById,

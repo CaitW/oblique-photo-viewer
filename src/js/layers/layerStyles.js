@@ -427,6 +427,48 @@ const getLongTermClassification = distance => {
   return NO_RECESSION
 }
 
+const LEGEND_SORT_OVERRIDES_BY_LAYER_ID = {
+  bluff_toe_rec_long: [
+    NO_RECESSION,
+    ZERO_TO_TWENTY,
+    TWENTY_TO_FORTY,
+    FORTY_TO_SIXTY,
+    GREATER_THAN_SIXTY
+  ],
+  bluff_crest_rec_long: [
+    NO_RECESSION,
+    ZERO_TO_TWENTY,
+    TWENTY_TO_FORTY,
+    FORTY_TO_SIXTY,
+    GREATER_THAN_SIXTY
+  ],
+  shoreline_rec_long: [
+    NO_RECESSION,
+    ZERO_TO_TWENTY,
+    TWENTY_TO_FORTY,
+    FORTY_TO_SIXTY,
+    GREATER_THAN_SIXTY
+  ],
+  bluff_toe_rec_short: [
+    NO_RECESSION,
+    ZERO_TO_TEN,
+    TEN_TO_TWENTY,
+    GREATER_THAN_TWENTY
+  ],
+  bluff_crest_rec_short: [
+    NO_RECESSION,
+    ZERO_TO_TEN,
+    TEN_TO_TWENTY,
+    GREATER_THAN_TWENTY
+  ],
+  shoreline_rec_short: [
+    NO_RECESSION,
+    ZERO_TO_TEN,
+    TEN_TO_TWENTY,
+    GREATER_THAN_TWENTY
+  ]
+}
+
 /**
  * If a layer should have different styles for features based on a particular feature property
  * i.e. For all features in the Profiles layer:
@@ -567,6 +609,8 @@ function createNewStyle(layerId, feature) {
   style.className =
     style.className +
     (" " + [layerGeometryClass, layerIdClass, layerDisplayTypeClass].join(" "))
+  const sortOverride = LEGEND_SORT_OVERRIDES_BY_LAYER_ID[layerId]
+  const sortOrder = sortOverride ? sortOverride.indexOf(subStyleName) : 0
   // add the style to the legend
   store.dispatch(
     legendStyleUpdate(
@@ -574,7 +618,8 @@ function createNewStyle(layerId, feature) {
       subStyleName,
       style,
       feature.geometry.type,
-      displayType
+      displayType,
+      sortOrder
     )
   )
   // add style to cache
