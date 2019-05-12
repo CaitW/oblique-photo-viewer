@@ -55,7 +55,7 @@
         15,
         16,
         22,
-        58
+        62
       ]
     },
     "src/js/components/FeaturePopups/MobileFeaturePopup.jsx": {
@@ -66,7 +66,7 @@
         21,
         28,
         32,
-        46
+        52
       ]
     },
     "src/js/components/FeaturePopups/PinnedFeaturePopup.jsx": {
@@ -78,14 +78,14 @@
         16,
         20,
         34,
-        51
+        50
       ]
     },
     "src/js/components/FeaturePopups/components/PopupFooter.jsx": {
       "expectCount": 2,
       "actualCount": 1,
       "undocumentLines": [
-        71
+        77
       ]
     },
     "src/js/components/FeaturePopups/components/PopupTabs.jsx": {
@@ -109,8 +109,8 @@
       "actualCount": 1,
       "undocumentLines": [
         7,
-        21,
-        24
+        23,
+        26
       ]
     },
     "src/js/components/FeaturePopups/components/tabs/ImageTab.jsx": {
@@ -126,8 +126,8 @@
       "undocumentLines": [
         14,
         15,
-        127,
-        144
+        136,
+        157
       ]
     },
     "src/js/components/FeaturePopups/components/tabs/RecessionTab.jsx": {
@@ -202,11 +202,11 @@
       "expectCount": 11,
       "actualCount": 6,
       "undocumentLines": [
-        14,
-        21,
-        27,
-        103,
-        105
+        18,
+        25,
+        31,
+        127,
+        131
       ]
     },
     "src/js/containers/Legend.jsx": {

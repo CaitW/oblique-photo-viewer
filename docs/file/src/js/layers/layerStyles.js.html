@@ -128,7 +128,7 @@ import { LAYERS_BY_ID } from &quot;../util&quot;
 export const NO_RECESSION = &quot;No recession&quot;
 // short term rates
 export const ZERO_TO_TEN = &quot;0 to 10 feet&quot;
-export const TEN_TO_TWENTY = &quot;0 to 20 feet&quot;
+export const TEN_TO_TWENTY = &quot;10 to 20 feet&quot;
 export const GREATER_THAN_TWENTY = &quot;Greater than 20 feet&quot;
 // long term rates
 export const ZERO_TO_TWENTY = &quot;0 to 20 feet&quot;
@@ -677,8 +677,9 @@ function createNewStyle(layerId, feature) {
   if (typeof style.className === &quot;undefined&quot;) {
     style.className = &quot;&quot;
   }
-  style.className +=
-    &quot; &quot; + [layerGeometryClass, layerIdClass, layerDisplayTypeClass].join(&quot; &quot;)
+  style.className =
+    style.className +
+    (&quot; &quot; + [layerGeometryClass, layerIdClass, layerDisplayTypeClass].join(&quot; &quot;))
   // add the style to the legend
   store.dispatch(
     legendStyleUpdate(

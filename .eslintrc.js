@@ -147,7 +147,7 @@ module.exports = {
     "prefer-arrow-callback": 2, // increases readability and consistency.
     "prefer-const": 2, // better to be explicit about what is expected to change.
     "prefer-rest-params": 2, // easier to read than slicing args. #ES6only
-    "prefer-template": 2, // string concatenation is slow and error-prone. #ES6only
+    // "prefer-template": 2, // string concatenation is slow and error-prone. #ES6only
     quotes: [2, "double", { avoidEscape: true, allowTemplateLiterals: false }],
     radix: 2, // should be explicit about what kind of int is being parsed.
     "react/display-name": 1, // components should have names to make stack traces easier to read.
