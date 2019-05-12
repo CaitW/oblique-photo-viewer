@@ -401,9 +401,11 @@ const LAYER_STYLES_BY_ID = {
 const getShortTermClassification = distance => {
   if (distance > 20) {
     return GREATER_THAN_TWENTY
-  } else if (distance > 10) {
+  }
+  if (distance > 10) {
     return TEN_TO_TWENTY
-  } else if (distance > 0) {
+  }
+  if (distance > 0) {
     return ZERO_TO_TEN
   }
   return NO_RECESSION
@@ -417,11 +419,14 @@ const getShortTermClassification = distance => {
 const getLongTermClassification = distance => {
   if (distance > 60) {
     return GREATER_THAN_SIXTY
-  } else if (distance > 40) {
+  }
+  if (distance > 40) {
     return FORTY_TO_SIXTY
-  } else if (distance > 20) {
+  }
+  if (distance > 20) {
     return TWENTY_TO_FORTY
-  } else if (distance > 0) {
+  }
+  if (distance > 0) {
     return ZERO_TO_TWENTY
   }
   return NO_RECESSION
@@ -606,9 +611,8 @@ function createNewStyle(layerId, feature) {
   if (typeof style.className === "undefined") {
     style.className = ""
   }
-  style.className =
-    style.className +
-    (" " + [layerGeometryClass, layerIdClass, layerDisplayTypeClass].join(" "))
+  style.className +=
+    " " + [layerGeometryClass, layerIdClass, layerDisplayTypeClass].join(" ")
   const sortOverride = LEGEND_SORT_OVERRIDES_BY_LAYER_ID[layerId]
   const sortOrder = sortOverride ? sortOverride.indexOf(subStyleName) : 0
   // add the style to the legend

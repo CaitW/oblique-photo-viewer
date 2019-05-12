@@ -33,12 +33,14 @@ export default class ObliquePhotoMap {
       unmountComponentAtNode(container)
     }, 10)
   }
+
   /**
    * Dispatch a map action every time the user clicks the map
    */
   static onMapMousedown() {
     store.dispatch(mapMousedown())
   }
+
   /**
    * @param {string} map - the string ID of the html element that the map will be added to
    */
@@ -69,6 +71,7 @@ export default class ObliquePhotoMap {
     // set some default values
     this.dispatchZoom()
   }
+
   /**
    * Dispatch a zoom action every time the map is zoomed
    */
@@ -76,6 +79,7 @@ export default class ObliquePhotoMap {
     const currentZoom = this.map.getZoom()
     store.dispatch(mapNewZoomLevel(currentZoom))
   }
+
   /**
    * Create a new map layer
    * @param {string} layerId - a unique identifier for a layer
@@ -153,6 +157,7 @@ export default class ObliquePhotoMap {
         break
     }
   }
+
   /**
    * Toggle a layer on or off
    * - Create a layer if it doesn't exist
@@ -171,6 +176,7 @@ export default class ObliquePhotoMap {
       this.layerGroup.removeLayer(this.layerIndex[layerId])
     }
   }
+
   /**
    * Toggle a basemap on or off
    * - Create if it doesn't exist
@@ -202,6 +208,7 @@ export default class ObliquePhotoMap {
       }
     }
   }
+
   /**
    * Zoom to an extent
    * - wrapper for the Leaflet function map.fitBounds with added padding
@@ -214,6 +221,7 @@ export default class ObliquePhotoMap {
     })
     store.dispatch(doneZooming())
   }
+
   /**
    * Pan and Zoom to a location
    * - wrapper for the Leaflet function map.setView
@@ -225,6 +233,7 @@ export default class ObliquePhotoMap {
     this.map.setView(coordinates, zoom)
     store.dispatch(doneZooming())
   }
+
   /**
    *
    * @param {number} zoom - zoom level
@@ -240,6 +249,7 @@ export default class ObliquePhotoMap {
       })
     })
   }
+
   /**
    * Force leaflet to re-calculate the size of the map within its bounding div
    * - wrapper for the Leaflet function invalidateSize

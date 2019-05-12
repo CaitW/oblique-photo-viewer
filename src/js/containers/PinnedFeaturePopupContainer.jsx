@@ -25,6 +25,7 @@ class PinnedFeaturePopupContainer extends React.Component {
   static closePopup(featureId) {
     store.dispatch(closePinnedFeature(featureId))
   }
+
   constructor() {
     super()
     /**
@@ -36,6 +37,7 @@ class PinnedFeaturePopupContainer extends React.Component {
     }
     this.bringToFront = this.bringToFront.bind(this)
   }
+
   /**
    * Function to process new props from Redux / its parent container
    * - If a new popup has been pinned, add that popup to the container and order accordingly
@@ -61,6 +63,7 @@ class PinnedFeaturePopupContainer extends React.Component {
       order: newOrder
     })
   }
+
   /**
    * If a user clicks on a popup that isn't in front, bring it in front so that its contents
    * are visible above all others
@@ -75,6 +78,7 @@ class PinnedFeaturePopupContainer extends React.Component {
       order: newOrder
     })
   }
+
   render() {
     const pinnedFeatures = []
     for (const featureId in this.props.pinnedFeatures) {

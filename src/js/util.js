@@ -61,7 +61,7 @@ export function getPhotoURLs(layerId, photoProperties) {
     urls.popup = split.join(".")
   }
   const urlBase = CONFIG.resources.photos[layerId]
-  for (let size in urls) {
+  for (const size in urls) {
     urls[size] = urlBase + "/" + urls[size]
   }
   return urls

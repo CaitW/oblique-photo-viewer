@@ -29,6 +29,7 @@ class NavBar extends React.Component {
   static onMobileLayersClick() {
     store.dispatch(openMobileLayerList())
   }
+
   /**
    * When a user clicks on a county shoreline, dispatches an action to zoom to a particular shoreline.
    * Shorelines are organized by Lake, then County. Per config.json
@@ -39,12 +40,14 @@ class NavBar extends React.Component {
   static onZoomShorelineClick(lakeName, countyName) {
     store.dispatch(zoomToShoreline(lakeName, countyName))
   }
+
   /**
    * When a user clicks on the reset button, dispatches an action to reset the map view
    */
   static onResetViewClick() {
     store.dispatch(resetMapView())
   }
+
   constructor(props) {
     super(props)
     /**
@@ -57,6 +60,7 @@ class NavBar extends React.Component {
     this.collapse = this.collapse.bind(this)
     this.toggle = this.toggle.bind(this)
   }
+
   /**
    * When component is about to recieve new props, check to see if the nav should be expanded (mobile only)
    * @param {object} nextProps - props to be received
@@ -68,12 +72,14 @@ class NavBar extends React.Component {
       })
     }
   }
+
   /**
    * Force the nav to close (mobile mode only)
    */
   collapse() {
     this.toggle(false)
   }
+
   /**
    * Toggle the nav open or closed (mobile mode only)
    */
@@ -85,6 +91,7 @@ class NavBar extends React.Component {
       store.dispatch(setNavExpand(expanded))
     }
   }
+
   render() {
     return (
       <Navbar

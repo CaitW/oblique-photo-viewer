@@ -10,7 +10,7 @@ import { Modal, Button } from "react-bootstrap"
 import { connect } from "react-redux"
 
 import store from "../store"
-import LayerList from "../containers/LayerList"
+import LayerList from "./LayerList"
 import { closeMobileLayerList } from "../ducks/mobile"
 
 const mapStateToProps = state => ({
@@ -23,6 +23,7 @@ class MobileLayerList extends React.Component {
   static closeModal() {
     store.dispatch(closeMobileLayerList())
   }
+
   render() {
     const classNames = [
       "wiscviewer-modal",

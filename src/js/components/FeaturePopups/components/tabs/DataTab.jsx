@@ -20,9 +20,11 @@ class DataTab extends React.Component {
       </tr>
     )
   }
+
   componentDidMount() {
     this.props.update()
   }
+
   render() {
     const layerData = LAYERS_BY_ID[this.props.layerId]
     const tabProps = {

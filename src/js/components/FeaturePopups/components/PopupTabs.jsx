@@ -15,6 +15,7 @@ class PopupTabs extends React.Component {
     super(props)
     this.update = this.update.bind(this)
   }
+
   /**
    * Applies to popups within the Leaflet map scope, which need to update their dimensions once
    *  images have loaded
@@ -25,6 +26,7 @@ class PopupTabs extends React.Component {
       this.props.update()
     }
   }
+
   render() {
     const tabs = []
     const featureProperties = this.props.featureProperties

@@ -6,6 +6,7 @@ class RecessionTab extends React.Component {
   componentDidMount() {
     this.props.update()
   }
+
   render() {
     const tabProps = {
       ...this.props
@@ -20,7 +21,10 @@ class RecessionTab extends React.Component {
         <Table className="wiscviewer-recession-table">
           <thead>
             <tr>
-              <th>Transect Id: {values.TransectID}</th>
+              <th>
+                Transect Id:
+                {values.TransectID}
+              </th>
               <th>Recession Rate</th>
               <th>Total Distance</th>
             </tr>

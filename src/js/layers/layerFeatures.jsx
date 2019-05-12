@@ -93,7 +93,8 @@ function getFeatureMidpoint(featureLayer) {
     }
     return getLineMidpoint(latLngs)
     // if it's a point (getLatLng isn't undefined)
-  } else if (typeof featureLayer.getLatLng !== "undefined") {
+  }
+  if (typeof featureLayer.getLatLng !== "undefined") {
     return getPointCoords(featureLayer.getLatLng())
   }
   return false

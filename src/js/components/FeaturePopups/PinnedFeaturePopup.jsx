@@ -19,6 +19,7 @@ class PinnedFeaturePopup extends React.Component {
     }
     this.popupType = "pinned"
   }
+
   /**
    * On component mount, set the width and height of the container
    */
@@ -31,6 +32,7 @@ class PinnedFeaturePopup extends React.Component {
       width
     })
   }
+
   render() {
     const initialPositionAdjustedForContent = {
       x: this.props.initialPosition.x - this.state.width / 2,

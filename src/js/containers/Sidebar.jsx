@@ -26,6 +26,7 @@ class Sidebar extends React.Component {
     this.onTabClick = this.onTabClick.bind(this)
     this.getClassName = this.getClassName.bind(this)
   }
+
   /**
    * Called when a tab is clicked. Sets state to the value of the clicked tab.
    * @param {SyntheticEvent} e
@@ -38,6 +39,7 @@ class Sidebar extends React.Component {
       })
     }
   }
+
   /**
    * Return a classname for active vs inactive tabs
    * @param {string} tabValue - check tab value against currently active tab
@@ -49,6 +51,7 @@ class Sidebar extends React.Component {
     }
     return ""
   }
+
   render() {
     const content = []
     if (this.state.activeTab === "LayerList") {

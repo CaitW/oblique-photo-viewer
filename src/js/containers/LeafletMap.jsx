@@ -33,6 +33,7 @@ class LeafletMap extends React.Component {
     this.toggleBasemaps(null, this.props.basemaps)
     this.toggleLayers(null, this.props.layers)
   }
+
   /**
    * When this component recieves new props (via Redux or parent components), it toggles additional
    * functions to determine whether the props have changed
@@ -46,6 +47,7 @@ class LeafletMap extends React.Component {
     this.toggleMapActions(oldProps.map, nextProps.map)
     this.sidebarToggled(oldProps.sidebarOpen, nextProps.sidebarOpen)
   }
+
   /**
    * Compare old layer props and new layer props.
    * - If there are new layer selections, toggle them in the map
@@ -63,6 +65,7 @@ class LeafletMap extends React.Component {
       }
     }
   }
+
   /**
    * Compare old basemap props and new basemap props.
    * - If there are new basemap selections, toggle them in the map
@@ -79,6 +82,7 @@ class LeafletMap extends React.Component {
       }
     }
   }
+
   /**
    * Compare old map action props and new map action props
    * - If there are new map actions, execute corresponding functions
@@ -113,6 +117,7 @@ class LeafletMap extends React.Component {
       }
     }
   }
+
   /**
    * Compare old sidebar props and new sidebar props
    * - If the sidebar props have changed, toggle updateSize
@@ -124,6 +129,7 @@ class LeafletMap extends React.Component {
       this.map.updateSize()
     }
   }
+
   render() {
     return (
       <div

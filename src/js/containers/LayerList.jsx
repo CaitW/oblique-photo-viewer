@@ -28,6 +28,7 @@ class LayerList extends React.Component {
   static onLayerClick(layerId) {
     store.dispatch(toggleLayer(layerId))
   }
+
   /**
    * When a basemap is clicked, dispatch an action to the store
    * @param {string} basemapId - a unique basemap id
@@ -35,6 +36,7 @@ class LayerList extends React.Component {
   static onBasemapClick(basemapId) {
     store.dispatch(toggleBasemap(basemapId))
   }
+
   render() {
     const layerGroups = []
     let eventKey = 1

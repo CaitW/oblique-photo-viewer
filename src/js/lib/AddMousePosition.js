@@ -14,7 +14,7 @@ export default function AddMousePosition(L) {
       prefix: ""
     },
 
-    onAdd: function(map) {
+    onAdd(map) {
       this._container = L.DomUtil.create("div", "leaflet-control-mouseposition")
       L.DomEvent.disableClickPropagation(this._container)
       map.on("mousemove", this._onMouseMove, this)
@@ -22,21 +22,21 @@ export default function AddMousePosition(L) {
       return this._container
     },
 
-    onRemove: function(map) {
+    onRemove(map) {
       map.off("mousemove", this._onMouseMove)
     },
 
-    _onMouseMove: function(e) {
-      var lng = this.options.lngFormatter
+    _onMouseMove(e) {
+      const lng = this.options.lngFormatter
         ? this.options.lngFormatter(e.latlng.lng)
         : L.Util.formatNum(e.latlng.lng, this.options.numDigits)
-      var lat = this.options.latFormatter
+      const lat = this.options.latFormatter
         ? this.options.latFormatter(e.latlng.lat)
         : L.Util.formatNum(e.latlng.lat, this.options.numDigits)
-      var value = this.options.lngFirst
+      const value = this.options.lngFirst
         ? lng + this.options.separator + lat
         : lat + this.options.separator + lng
-      var prefixAndValue = this.options.prefix + " " + value
+      const prefixAndValue = this.options.prefix + " " + value
       this._container.innerHTML = prefixAndValue
     }
   })

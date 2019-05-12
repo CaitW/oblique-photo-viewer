@@ -25,12 +25,14 @@ class MobileFeaturePopup extends React.Component {
   static close() {
     store.dispatch(closeMobileFeatureModal())
   }
+
   constructor(props) {
     super(props)
     this.openPreviousFeature = this.openPreviousFeature.bind(this)
     this.openNextFeature = this.openNextFeature.bind(this)
     this.popupType = "modal"
   }
+
   /**
    * Opens previous feature in the layer
    */
@@ -40,6 +42,7 @@ class MobileFeaturePopup extends React.Component {
       this.props.layerId
     ).openPreviousFeature()
   }
+
   /**
    * Opens next feature in the layer
    */
@@ -49,6 +52,7 @@ class MobileFeaturePopup extends React.Component {
       this.props.layerId
     ).openPreviousFeature()
   }
+
   render() {
     const classNames = [
       "wiscviewer-modal",

@@ -24,6 +24,7 @@ class App extends React.Component {
     const width = window.innerWidth
     store.dispatch(updateWindowDimensions(height, width))
   }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -31,15 +32,18 @@ class App extends React.Component {
     }
     this.toggleSidebar = this.toggleSidebar.bind(this)
   }
+
   componentDidMount() {
     this.constructor.updateDimensions()
     window.addEventListener("resize", this.constructor.updateDimensions)
   }
+
   toggleSidebar() {
     this.setState({
       sidebarOpen: !this.state.sidebarOpen
     })
   }
+
   render() {
     return (
       <Provider store={store}>
