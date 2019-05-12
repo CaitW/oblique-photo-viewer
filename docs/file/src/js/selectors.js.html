@@ -210,14 +210,14 @@ export const getActiveLayerStyleTypes = createSelector(
     for (const layerId of activeLayers) {
       const layer = layers[layerId]
       const layerName = layer.name || layerId
-      const layerGroupId = layer.layerGroupId
+      const { layerGroupId } = layer
       let layerGroupName = layerGroupId
       if (typeof layerGroups[layerGroupId] !== &quot;undefined&quot;) {
         layerGroupName = layerGroups[layerGroupId].name || layerGroupId
       }
-      const legendStyles = layer.legendStyles
+      const { legendStyles } = layer
       let styles = []
-      for (let styleName in legendStyles) {
+      for (const styleName in legendStyles) {
         const styleIconClassNames = [&quot;fa&quot;]
         const iconStyle = {
           color: &quot;#000000&quot;
@@ -238,23 +238,25 @@ export const getActiveLayerStyleTypes = createSelector(
           }
           iconStyle.color = legendStyles[styleName].style.strokeColor
         }
-        if (styleName === &quot;null&quot;) {
-          styleName = &quot;(No Value)&quot;
-        }
+        const newStyleName = styleName === &quot;null&quot; ? &quot;(No Value)&quot; : styleName
         styles.push({
-          styleName,
+          styleName: newStyleName,
           iconStyle,
-          styleIconClassNames
+          styleIconClassNames,
+          sortOrder: legendStyles[styleName].sortOrder
         })
       }
       styles = styles.sort((a, b) =&gt; {
-        if (a.styleName &lt; b.styleName) {
-          return -1
+        if (a.sortOrder === b.sortOrder) {
+          if (a.styleName &lt; b.styleName) {
+            return -1
+          }
+          if (a.styleName &gt; b.styleName) {
+            return 1
+          }
+          return 0
         }
-        if (a.styleName &gt; b.styleName) {
-          return 1
-        }
-        return 0
+        return a.sortOrder - b.sortOrder
       })
       stylesByLayerId[layerId] = {
         layerName,
@@ -273,9 +275,9 @@ export const getMobileFeaturePopupProps = createSelector(
       typeof featureModal.layerId !== &quot;undefined&quot; &amp;&amp;
       featureModal.layerId !== false
     ) {
-      const layerId = featureModal.layerId
+      const { layerId } = featureModal
       const layerName = layers[layerId].name
-      const layerGroupId = layers[layerId].layerGroupId
+      const { layerGroupId } = layers[layerId]
       const layerGroupName = layerGroups[layerGroupId].name
       return {
         ...featureModal,

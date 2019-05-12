@@ -61,7 +61,8 @@
       "propertyName",
       "style",
       "geometryType",
-      "displayType"
+      "displayType",
+      "sortOrder"
     ],
     "docParams": [
       "layerId",

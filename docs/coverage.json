@@ -1,7 +1,7 @@
 {
-  "coverage": "41.78%",
-  "expectCount": 213,
-  "actualCount": 89,
+  "coverage": "41.12%",
+  "expectCount": 214,
+  "actualCount": 88,
   "files": {
     "src/js/app.jsx": {
       "expectCount": 7,
@@ -9,22 +9,22 @@
       "undocumentLines": [
         21,
         22,
-        27,
-        29,
-        34,
-        38,
-        43
+        28,
+        30,
+        36,
+        41,
+        47
       ]
     },
     "src/js/classes/ObliquePhotoMap.js": {
       "expectCount": 17,
       "actualCount": 12,
       "undocumentLines": [
-        47,
-        48,
         49,
-        61,
-        62
+        50,
+        51,
+        63,
+        64
       ]
     },
     "src/js/components/AboutButton.jsx": {
@@ -55,7 +55,7 @@
         15,
         16,
         22,
-        62
+        68
       ]
     },
     "src/js/components/FeaturePopups/MobileFeaturePopup.jsx": {
@@ -64,9 +64,9 @@
       "undocumentLines": [
         19,
         21,
-        28,
-        32,
-        52
+        29,
+        33,
+        56
       ]
     },
     "src/js/components/FeaturePopups/PinnedFeaturePopup.jsx": {
@@ -77,8 +77,8 @@
         14,
         16,
         20,
-        34,
-        50
+        36,
+        52
       ]
     },
     "src/js/components/FeaturePopups/components/PopupFooter.jsx": {
@@ -94,7 +94,7 @@
       "undocumentLines": [
         13,
         14,
-        28
+        30
       ]
     },
     "src/js/components/FeaturePopups/components/PopupTitle.jsx": {
@@ -109,8 +109,8 @@
       "actualCount": 1,
       "undocumentLines": [
         7,
-        23,
-        26
+        24,
+        28
       ]
     },
     "src/js/components/FeaturePopups/components/tabs/ImageTab.jsx": {
@@ -126,8 +126,8 @@
       "undocumentLines": [
         14,
         15,
-        136,
-        157
+        139,
+        160
       ]
     },
     "src/js/components/FeaturePopups/components/tabs/RecessionTab.jsx": {
@@ -136,7 +136,7 @@
       "undocumentLines": [
         5,
         6,
-        9
+        10
       ]
     },
     "src/js/components/Layer.jsx": {
@@ -195,7 +195,7 @@
       "undocumentLines": [
         18,
         23,
-        38
+        40
       ]
     },
     "src/js/containers/LeafletMap.jsx": {
@@ -205,8 +205,8 @@
         18,
         25,
         31,
-        127,
-        131
+        133,
+        137
       ]
     },
     "src/js/containers/Legend.jsx": {
@@ -223,7 +223,7 @@
       "undocumentLines": [
         16,
         19,
-        26
+        27
       ]
     },
     "src/js/containers/NavBar.jsx": {
@@ -232,8 +232,8 @@
       "undocumentLines": [
         23,
         25,
-        48,
-        88
+        51,
+        95
       ]
     },
     "src/js/containers/PinnedFeaturePopupContainer.jsx": {
@@ -242,8 +242,8 @@
       "undocumentLines": [
         15,
         20,
-        28,
-        78
+        29,
+        82
       ]
     },
     "src/js/containers/Sidebar.jsx": {
@@ -252,7 +252,7 @@
       "undocumentLines": [
         14,
         15,
-        52
+        55
       ]
     },
     "src/js/ducks/basemaps.js": {
@@ -267,10 +267,10 @@
       "expectCount": 9,
       "actualCount": 5,
       "undocumentLines": [
-        84,
-        85,
-        103,
-        108
+        86,
+        87,
+        105,
+        110
       ]
     },
     "src/js/ducks/map.js": {
@@ -314,8 +314,8 @@
       ]
     },
     "src/js/layers/layerStyles.js": {
-      "expectCount": 19,
-      "actualCount": 7,
+      "expectCount": 20,
+      "actualCount": 6,
       "undocumentLines": [
         17,
         18,
@@ -328,7 +328,9 @@
         109,
         140,
         401,
-        417
+        419,
+        435,
+        489
       ]
     },
     "src/js/lib/AddMousePosition.js": {
@@ -351,7 +353,7 @@
         67,
         80,
         93,
-        156
+        158
       ]
     },
     "src/js/store.js": {

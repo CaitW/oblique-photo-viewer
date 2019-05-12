@@ -157,7 +157,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-AddMousePosition">AddMousePosition</a></span></span><span class="code" data-ice="signature">(L: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-AddMousePosition">AddMousePosition</a></span></span><span class="code" data-ice="signature">(L: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -1043,7 +1043,7 @@ and &quot;previous&quot; button functionality</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-legendStyleUpdate">legendStyleUpdate</a></span></span><span class="code" data-ice="signature">(layerId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, propertyName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, style: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, geometryType: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): {&quot;type&quot;: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, &quot;layerId&quot;: <span>*</span>, &quot;propertyName&quot;: <span>*</span>, &quot;style&quot;: <span>*</span>, &quot;geometryType&quot;: <span>*</span>, &quot;displayType&quot;: <span>*</span>}</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-legendStyleUpdate">legendStyleUpdate</a></span></span><span class="code" data-ice="signature">(layerId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, propertyName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, style: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, geometryType: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): {&quot;type&quot;: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, &quot;layerId&quot;: <span>*</span>, &quot;propertyName&quot;: <span>*</span>, &quot;style&quot;: <span>*</span>, &quot;geometryType&quot;: <span>*</span>, &quot;displayType&quot;: <span>*</span>, &quot;sortOrder&quot;: <span>*</span>}</span>
         </p>
       </div>
       <div>
@@ -1581,7 +1581,7 @@ Click handlers then:</li>
     
     
     
-    <span class="code" data-ice="name">AddMousePosition</span><span class="code" data-ice="signature">(L: <span>*</span>)</span>
+    <span class="code" data-ice="name">AddMousePosition</span><span class="code" data-ice="signature">(L: <span>*</span>): <span>*</span></span>
     <span class="right-info">
       
       
@@ -1616,7 +1616,19 @@ Click handlers then:</li>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1858,11 +1870,11 @@ Click handlers then:</li>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/layers/layerStyles.js.html#lineNumber593">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/layers/layerStyles.js.html#lineNumber642">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import LAYER_STYLE from &apos;<span><a href="file/src/js/layers/layerStyles.js.html#lineNumber593">oblique-photo-viewer/src/js/layers/layerStyles.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import LAYER_STYLE from &apos;<span><a href="file/src/js/layers/layerStyles.js.html#lineNumber642">oblique-photo-viewer/src/js/layers/layerStyles.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Imported by ObliquePhotoMap. When passed a layerId, this function returns a function,
@@ -3148,11 +3160,11 @@ bound to the LayerId, to get all a style for each feature in a particular layer<
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber271">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber272">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {getFeatureLayer} from &apos;<span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber271">oblique-photo-viewer/src/js/layers/layerFeatures.jsx</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {getFeatureLayer} from &apos;<span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber272">oblique-photo-viewer/src/js/layers/layerFeatures.jsx</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>For the mobile version of the feature popup (MobileFeaturePopup.jsx)
@@ -3378,11 +3390,11 @@ and &quot;previous&quot; button functionality</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/ducks/layers.js.html#lineNumber77">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/ducks/layers.js.html#lineNumber79">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {layerError} from &apos;<span><a href="file/src/js/ducks/layers.js.html#lineNumber77">oblique-photo-viewer/src/js/ducks/layers.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {layerError} from &apos;<span><a href="file/src/js/ducks/layers.js.html#lineNumber79">oblique-photo-viewer/src/js/ducks/layers.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Tells the store that a layer has errored</p>
@@ -3450,11 +3462,11 @@ and &quot;previous&quot; button functionality</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/ducks/layers.js.html#lineNumber66">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/ducks/layers.js.html#lineNumber68">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {layerLoaded} from &apos;<span><a href="file/src/js/ducks/layers.js.html#lineNumber66">oblique-photo-viewer/src/js/ducks/layers.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {layerLoaded} from &apos;<span><a href="file/src/js/ducks/layers.js.html#lineNumber68">oblique-photo-viewer/src/js/ducks/layers.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Tells the store that a layer has loaded</p>
@@ -3522,11 +3534,11 @@ and &quot;previous&quot; button functionality</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/ducks/layers.js.html#lineNumber55">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/ducks/layers.js.html#lineNumber57">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {layerPreload} from &apos;<span><a href="file/src/js/ducks/layers.js.html#lineNumber55">oblique-photo-viewer/src/js/ducks/layers.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {layerPreload} from &apos;<span><a href="file/src/js/ducks/layers.js.html#lineNumber57">oblique-photo-viewer/src/js/ducks/layers.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Tells the store that a layer is in a pre-loading state</p>
@@ -3594,11 +3606,11 @@ and &quot;previous&quot; button functionality</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/ducks/layers.js.html#lineNumber108">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/ducks/layers.js.html#lineNumber110">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import layers from &apos;<span><a href="file/src/js/ducks/layers.js.html#lineNumber108">oblique-photo-viewer/src/js/ducks/layers.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import layers from &apos;<span><a href="file/src/js/ducks/layers.js.html#lineNumber110">oblique-photo-viewer/src/js/ducks/layers.js</a></span>&apos;</code></pre></div>
   
   
   
@@ -3742,7 +3754,7 @@ map is sufficiently zoomed out</p>
     
     
     
-    <span class="code" data-ice="name">legendStyleUpdate</span><span class="code" data-ice="signature">(layerId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, propertyName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, style: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, geometryType: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): {&quot;type&quot;: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, &quot;layerId&quot;: <span>*</span>, &quot;propertyName&quot;: <span>*</span>, &quot;style&quot;: <span>*</span>, &quot;geometryType&quot;: <span>*</span>, &quot;displayType&quot;: <span>*</span>}</span>
+    <span class="code" data-ice="name">legendStyleUpdate</span><span class="code" data-ice="signature">(layerId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, propertyName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, style: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, geometryType: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): {&quot;type&quot;: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, &quot;layerId&quot;: <span>*</span>, &quot;propertyName&quot;: <span>*</span>, &quot;style&quot;: <span>*</span>, &quot;geometryType&quot;: <span>*</span>, &quot;displayType&quot;: <span>*</span>, &quot;sortOrder&quot;: <span>*</span>}</span>
     <span class="right-info">
       
       
@@ -3807,7 +3819,7 @@ entry.</p>
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType">{&quot;type&quot;: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, &quot;layerId&quot;: <span>*</span>, &quot;propertyName&quot;: <span>*</span>, &quot;style&quot;: <span>*</span>, &quot;geometryType&quot;: <span>*</span>, &quot;displayType&quot;: <span>*</span>}</td>
+          <td class="return-type code" data-ice="returnType">{&quot;type&quot;: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, &quot;layerId&quot;: <span>*</span>, &quot;propertyName&quot;: <span>*</span>, &quot;style&quot;: <span>*</span>, &quot;geometryType&quot;: <span>*</span>, &quot;displayType&quot;: <span>*</span>, &quot;sortOrder&quot;: <span>*</span>}</td>
           
         </tr>
       </tbody>
@@ -4392,11 +4404,11 @@ entry.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber251">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber252">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {onEachFeature} from &apos;<span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber251">oblique-photo-viewer/src/js/layers/layerFeatures.jsx</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {onEachFeature} from &apos;<span><a href="file/src/js/layers/layerFeatures.jsx.html#lineNumber252">oblique-photo-viewer/src/js/layers/layerFeatures.jsx</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>This is the primary exported function from layerFeatures.js

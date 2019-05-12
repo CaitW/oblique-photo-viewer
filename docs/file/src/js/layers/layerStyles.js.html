@@ -514,9 +514,11 @@ const LAYER_STYLES_BY_ID = {
 const getShortTermClassification = distance =&gt; {
   if (distance &gt; 20) {
     return GREATER_THAN_TWENTY
-  } else if (distance &gt; 10) {
+  }
+  if (distance &gt; 10) {
     return TEN_TO_TWENTY
-  } else if (distance &gt; 0) {
+  }
+  if (distance &gt; 0) {
     return ZERO_TO_TEN
   }
   return NO_RECESSION
@@ -530,14 +532,59 @@ const getShortTermClassification = distance =&gt; {
 const getLongTermClassification = distance =&gt; {
   if (distance &gt; 60) {
     return GREATER_THAN_SIXTY
-  } else if (distance &gt; 40) {
+  }
+  if (distance &gt; 40) {
     return FORTY_TO_SIXTY
-  } else if (distance &gt; 20) {
+  }
+  if (distance &gt; 20) {
     return TWENTY_TO_FORTY
-  } else if (distance &gt; 0) {
+  }
+  if (distance &gt; 0) {
     return ZERO_TO_TWENTY
   }
   return NO_RECESSION
+}
+
+const LEGEND_SORT_OVERRIDES_BY_LAYER_ID = {
+  bluff_toe_rec_long: [
+    NO_RECESSION,
+    ZERO_TO_TWENTY,
+    TWENTY_TO_FORTY,
+    FORTY_TO_SIXTY,
+    GREATER_THAN_SIXTY
+  ],
+  bluff_crest_rec_long: [
+    NO_RECESSION,
+    ZERO_TO_TWENTY,
+    TWENTY_TO_FORTY,
+    FORTY_TO_SIXTY,
+    GREATER_THAN_SIXTY
+  ],
+  shoreline_rec_long: [
+    NO_RECESSION,
+    ZERO_TO_TWENTY,
+    TWENTY_TO_FORTY,
+    FORTY_TO_SIXTY,
+    GREATER_THAN_SIXTY
+  ],
+  bluff_toe_rec_short: [
+    NO_RECESSION,
+    ZERO_TO_TEN,
+    TEN_TO_TWENTY,
+    GREATER_THAN_TWENTY
+  ],
+  bluff_crest_rec_short: [
+    NO_RECESSION,
+    ZERO_TO_TEN,
+    TEN_TO_TWENTY,
+    GREATER_THAN_TWENTY
+  ],
+  shoreline_rec_short: [
+    NO_RECESSION,
+    ZERO_TO_TEN,
+    TEN_TO_TWENTY,
+    GREATER_THAN_TWENTY
+  ]
 }
 
 /**
@@ -677,9 +724,10 @@ function createNewStyle(layerId, feature) {
   if (typeof style.className === &quot;undefined&quot;) {
     style.className = &quot;&quot;
   }
-  style.className =
-    style.className +
-    (&quot; &quot; + [layerGeometryClass, layerIdClass, layerDisplayTypeClass].join(&quot; &quot;))
+  style.className +=
+    &quot; &quot; + [layerGeometryClass, layerIdClass, layerDisplayTypeClass].join(&quot; &quot;)
+  const sortOverride = LEGEND_SORT_OVERRIDES_BY_LAYER_ID[layerId]
+  const sortOrder = sortOverride ? sortOverride.indexOf(subStyleName) : 0
   // add the style to the legend
   store.dispatch(
     legendStyleUpdate(
@@ -687,7 +735,8 @@ function createNewStyle(layerId, feature) {
       subStyleName,
       style,
       feature.geometry.type,
-      displayType
+      displayType,
+      sortOrder
     )
   )
   // add style to cache
