@@ -125,11 +125,9 @@ export const getActiveLayerStyleTypes = createSelector(
           }
           iconStyle.color = legendStyles[styleName].style.strokeColor
         }
-        if (styleName === "null") {
-          styleName = "(No Value)"
-        }
+        const newStyleName = styleName === "null" ? "(No Value)" : styleName
         styles.push({
-          styleName,
+          styleName: newStyleName,
           iconStyle,
           styleIconClassNames,
           sortOrder: legendStyles[styleName].sortOrder
