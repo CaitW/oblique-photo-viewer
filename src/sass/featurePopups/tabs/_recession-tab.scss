@@ -1,5 +1,4 @@
 .wiscviewer-recession-table {
-  width: 450px;
   margin-bottom: 0;
   font-size: 12px;
   color: $primary_900;
@@ -40,4 +39,10 @@
 .wiscviewer-mobile-feature-popup .wiscviewer-recession-table {
   width: 100%;
   font-size: 14px;
+}
+
+.wiscviewer-recession-table-caption {
+  color:rgba(38,50,56, 0.5);
+  font-style: italic;
+  padding: 5px 10px;
 }

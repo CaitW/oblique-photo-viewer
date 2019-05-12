@@ -38,6 +38,10 @@ class RecessionTab extends React.Component {
             </tr>
           </tbody>
         </Table>
+        <div className="wiscviewer-recession-table-caption">
+          A positive recession value represents a landward movement. A negative
+          recession value represents a lakeward movement (known as accretion)
+        </div>
       </Tab>
     )
   }
