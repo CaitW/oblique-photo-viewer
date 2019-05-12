@@ -97,14 +97,14 @@ export const getActiveLayerStyleTypes = createSelector(
     for (const layerId of activeLayers) {
       const layer = layers[layerId]
       const layerName = layer.name || layerId
-      const layerGroupId = layer.layerGroupId
+      const { layerGroupId } = layer
       let layerGroupName = layerGroupId
       if (typeof layerGroups[layerGroupId] !== "undefined") {
         layerGroupName = layerGroups[layerGroupId].name || layerGroupId
       }
-      const legendStyles = layer.legendStyles
+      const { legendStyles } = layer
       let styles = []
-      for (let styleName in legendStyles) {
+      for (const styleName in legendStyles) {
         const styleIconClassNames = ["fa"]
         const iconStyle = {
           color: "#000000"
@@ -162,9 +162,9 @@ export const getMobileFeaturePopupProps = createSelector(
       typeof featureModal.layerId !== "undefined" &&
       featureModal.layerId !== false
     ) {
-      const layerId = featureModal.layerId
+      const { layerId } = featureModal
       const layerName = layers[layerId].name
-      const layerGroupId = layers[layerId].layerGroupId
+      const { layerGroupId } = layers[layerId]
       const layerGroupName = layerGroups[layerGroupId].name
       return {
         ...featureModal,
