@@ -340,7 +340,10 @@
             "dataLocation": "./data/layers/shoreline_2015.json",
             "defaultActive": false,
             "tableProperties": {
-              "OBJECTID": "ID"
+              "OBJECTID": "ID",
+              "Date_": "Date of Measurement",
+              "UNCERTAINT": false,
+              "Shape_Leng": "Segment Length (m)"
             },
             "idProperty": "OBJECTID"
           }
