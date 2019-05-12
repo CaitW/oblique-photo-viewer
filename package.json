@@ -4,11 +4,11 @@
   "description": "Oblique Photo Viewer",
   "main": "dist/app.bundle.js",
   "scripts": {
-    "build": "gulp build && npm run format-js",
+    "build": "npm run format-js && gulp build",
     "deploy": "git fetch --all && git checkout origin/master --force && npm install && gulp deploy",
     "gh-pages": "gulp build && git subtree push --prefix dist origin gh-pages",
     "lint-js": "eslint --ext .js,.jsx src/js/**",
-    "format-js": "eslint --ext .js,.jsx src/js/** --fix || prettier --write './**/*.{js,jsx}'",
+    "format-js": "eslint --ext .js,.jsx src/js/** --fix && prettier --write './**/*.{js,jsx} || prettier --write './**/*.{js,jsx}'",
     "format-css": "prettier-stylelint --write 'src/**/*.{css,scss}'",
     "make-docs": "./node_modules/.bin/esdoc",
     "start": "gulp build && http-server ./dist -o & gulp watch-files"
