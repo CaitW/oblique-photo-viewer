@@ -28,13 +28,13 @@ class RecessionTab extends React.Component {
           <tbody>
             <tr>
               <td>20 Year Measurement (1995 - 2015)</td>
-              <td>{values.Yr_20_Rate} ft/yr</td>
-              <td>{values.Yr_20_Dist} ft</td>
+              <td>{Math.round(values.Yr_20_Rate * 10) / 10} ft/yr</td>
+              <td>{Math.round(values.Yr_20_Dist)} ft</td>
             </tr>
             <tr>
               <td>59 Year Measurement (1956 - 2015)</td>
-              <td>{values.Yr_59_Rate} ft/yr</td>
-              <td>{values.Yr_59_Dist} ft</td>
+              <td>{Math.round(values.Yr_59_Rate * 10) / 10} ft/yr</td>
+              <td>{Math.round(values.Yr_59_Dist)} ft</td>
             </tr>
           </tbody>
         </Table>
