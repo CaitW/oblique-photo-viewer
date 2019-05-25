@@ -2708,10 +2708,10 @@
                     }
                   },
                   "extra": {
-                    "rawValue": "#CCCCFF",
-                    "raw": "\"#CCCCFF\""
+                    "rawValue": "#6d82ff",
+                    "raw": "\"#6d82ff\""
                   },
-                  "value": "#CCCCFF"
+                  "value": "#6d82ff"
                 }
               },
               {
@@ -2763,10 +2763,10 @@
                     }
                   },
                   "extra": {
-                    "rawValue": "#7960F2",
-                    "raw": "\"#7960F2\""
+                    "rawValue": "#0529ff",
+                    "raw": "\"#0529ff\""
                   },
-                  "value": "#7960F2"
+                  "value": "#0529ff"
                 }
               },
               {
@@ -2818,10 +2818,10 @@
                     }
                   },
                   "extra": {
-                    "rawValue": "#0000E0",
-                    "raw": "\"#0000E0\""
+                    "rawValue": "#00148a",
+                    "raw": "\"#00148a\""
                   },
-                  "value": "#0000E0"
+                  "value": "#00148a"
                 }
               }
             ]
@@ -35476,7 +35476,7 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "#CCCCFF",
+      "value": "#6d82ff",
       "start": 1518,
       "end": 1527,
       "loc": {
@@ -35633,7 +35633,7 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "#7960F2",
+      "value": "#0529ff",
       "start": 1548,
       "end": 1557,
       "loc": {
@@ -35790,7 +35790,7 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "#0000E0",
+      "value": "#00148a",
       "start": 1584,
       "end": 1593,
       "loc": {
