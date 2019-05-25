@@ -75,7 +75,7 @@ class Sidebar extends React.Component {
     }
     return (
       <Col {...props} className="wiscviewer-sidebar">
-        <div className="wiscviewer-sidebar-inner-container">
+        <div className="wiscviewer-sidebar-static-container">
           <div className="wiscviewer-sidebar-tabs">
             <div
               className={this.getClassName("LayerList")}
@@ -96,6 +96,8 @@ class Sidebar extends React.Component {
               <i className="fa fa-key" />
             </div>
           </div>
+        </div>
+        <div className="wiscviewer-sidebar-scrolling-container">
           <div className="wiscviewer-sidebar-tab-content">{content}</div>
         </div>
       </Col>
