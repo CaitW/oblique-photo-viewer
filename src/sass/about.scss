@@ -200,7 +200,7 @@ button {
 
 img {
   max-width: 500px;
-  max-height: 200px;
+  max-height: 300px;
   margin: 10px;
 }
 
@@ -212,6 +212,18 @@ img {
   &:first-child {
     margin-right: 10px;
   }
+}
+
+table, tr, td, th {
+  border: 2px solid #eceff1;
+}
+
+th, td {
+  padding: 5px
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #cfd8dc
 }
 
 .wiscviewer-subsection {

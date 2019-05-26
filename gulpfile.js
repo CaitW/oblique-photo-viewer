@@ -181,7 +181,7 @@ gulp.task(
 // copy index, about html files
 gulp.task("copy-html", () =>
   gulp
-    .src(["src/index.html", "src/about.html"])
+    .src(["src/index.html", "src/about.html", "src/recession.html"])
     .pipe(debug({ title: "copying:" }))
     .pipe(gulp.dest("dist/"))
     .pipe(livereload())
