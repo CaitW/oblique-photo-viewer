@@ -25,7 +25,7 @@
   text-transform: uppercase;
   text-align: center;
   background-color: $primary_900;
-  padding: 5px 0px;
+  padding: 5px 0;
 
   a {
     color: $primary_300 !important;
@@ -72,7 +72,7 @@
 .wiscviewer-dropdown-item {
   text-transform: capitalize;
   background-color: $primary_800;
-  padding: 3px 0px;
+  padding: 3px 0;
 
   a {
     color: $primary_200 !important;
@@ -109,10 +109,12 @@
     font-size: 18px;
     padding: 5px 0;
   }
+
   .wiscviewer-nav-dropdown .dropdown-menu {
     width: 100%;
     max-width: 100%;
   }
+
   .wiscviewer-dropdown-header {
     text-align: left;
   }

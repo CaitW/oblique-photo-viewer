@@ -1,16 +1,18 @@
 .wiscviewer-recession-table {
-  width: 450px;
   margin-bottom: 0;
   font-size: 12px;
   color: $primary_900;
 
   tr {
-    td, th {
+    td,
+    th {
       border: none !important;
+
       &:first-child {
         text-align: left;
         color: $primary_900;
       }
+
       &:last-child {
         text-align: right;
       }
@@ -35,6 +37,12 @@
 }
 
 .wiscviewer-mobile-feature-popup .wiscviewer-recession-table {
-    width: 100%;
-    font-size: 14px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.wiscviewer-recession-table-caption {
+  color:rgba(38,50,56, 0.5);
+  font-style: italic;
+  padding: 5px 10px;
 }

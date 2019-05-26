@@ -118,130 +118,127 @@
  * the user activates them in the map, we save memory and we can keep track of all possible styles
  * for use in the legend
  */
-import store from &apos;../store&apos;;
-import { legendStyleUpdate } from &apos;../ducks/layers&apos;;
-import { LAYERS_BY_ID } from &apos;../util&apos;;
+import store from &quot;../store&quot;
+import { legendStyleUpdate } from &quot;../ducks/layers&quot;
+import { LAYERS_BY_ID } from &quot;../util&quot;
 
 /**
  * String values for recession rates
  */
-export const NO_RECESSION = &apos;No recession&apos;;
+export const NO_RECESSION = &quot;No recession&quot;
 // short term rates
-export const ZERO_TO_TEN = &apos;0 to 10 feet&apos;;
-export const TEN_TO_TWENTY = &apos;0 to 20 feet&apos;;
-export const GREATER_THAN_TWENTY = &apos;Greater than 20 feet&apos;;
+export const ZERO_TO_TEN = &quot;0 to 10 feet&quot;
+export const TEN_TO_TWENTY = &quot;10 to 20 feet&quot;
+export const GREATER_THAN_TWENTY = &quot;Greater than 20 feet&quot;
 // long term rates
-export const ZERO_TO_TWENTY = &apos;0 to 20 feet&apos;;
-export const TWENTY_TO_FORTY = &apos;20 to 40 feet&apos;;
-export const FORTY_TO_SIXTY = &apos;40 to 60 feet&apos;;
-export const GREATER_THAN_SIXTY = &apos;Greater than 60 feet&apos;;
+export const ZERO_TO_TWENTY = &quot;0 to 20 feet&quot;
+export const TWENTY_TO_FORTY = &quot;20 to 40 feet&quot;
+export const FORTY_TO_SIXTY = &quot;40 to 60 feet&quot;
+export const GREATER_THAN_SIXTY = &quot;Greater than 60 feet&quot;
 
 /**
  * Colors used in the app
  */
 const COLORS = {
-    RED: &apos;#F44336&apos;,
-    GREEN: &apos;#8BC34A&apos;,
-    YELLOW: &apos;#FFEB3B&apos;,
-    GRAY: &apos;#9E9E9E&apos;,
-    BLACK: &apos;#000000&apos;
-};
+  RED: &quot;#F44336&quot;,
+  GREEN: &quot;#8BC34A&quot;,
+  YELLOW: &quot;#FFEB3B&quot;,
+  GRAY: &quot;#9E9E9E&quot;,
+  BLACK: &quot;#000000&quot;
+}
 
 COLORS.BEACH = [
-    &apos;#E0E0E0&apos;,
-    &apos;#a6cee3&apos;,
-    &apos;#1f78b4&apos;,
-    &apos;#b2df8a&apos;,
-    &apos;#33a02c&apos;,
-    &apos;#fb9a99&apos;,
-    &apos;#e31a1c&apos;,
-    &apos;#fdbf6f&apos;,
-    &apos;#ff7f00&apos;,
-    &apos;#cab2d6&apos;,
-    &apos;#6a3d9a&apos;,
-    &apos;#ffff99&apos;
-];
+  &quot;#E0E0E0&quot;,
+  &quot;#a6cee3&quot;,
+  &quot;#1f78b4&quot;,
+  &quot;#b2df8a&quot;,
+  &quot;#33a02c&quot;,
+  &quot;#fb9a99&quot;,
+  &quot;#e31a1c&quot;,
+  &quot;#fdbf6f&quot;,
+  &quot;#ff7f00&quot;,
+  &quot;#cab2d6&quot;,
+  &quot;#6a3d9a&quot;,
+  &quot;#ffff99&quot;
+]
 
 COLORS.PHOTOS = [
-    &apos;#9575CD&apos;,
-    &apos;#7E57C2&apos;,
-    &apos;#673AB7&apos;,
-    &apos;#512DA8&apos;,
-    &apos;#311B92&apos;,
-    &apos;#21106d&apos;
-];
+  &quot;#9575CD&quot;,
+  &quot;#7E57C2&quot;,
+  &quot;#673AB7&quot;,
+  &quot;#512DA8&quot;,
+  &quot;#311B92&quot;,
+  &quot;#21106d&quot;
+]
 
-COLORS.STRUCTURES = [
-    &apos;#6D4C41&apos;,
-    &apos;#3E2723&apos;
-];
+COLORS.STRUCTURES = [&quot;#6D4C41&quot;, &quot;#3E2723&quot;]
 
 COLORS.PROFILES = {
-    bathy: &apos;#00838F&apos;,
-    bluff: &apos;#4E342E&apos;
-};
+  bathy: &quot;#00838F&quot;,
+  bluff: &quot;#4E342E&quot;
+}
 
 COLORS.SHORT_TERM_RATES = {
-    [NO_RECESSION]: &apos;#FFFFFF&apos;,
-    [ZERO_TO_TEN]: &apos;#CCCCFF&apos;,
-    [TEN_TO_TWENTY]: &apos;#7960F2&apos;,
-    [GREATER_THAN_TWENTY]: &apos;#0000E0&apos;
-};
+  [NO_RECESSION]: &quot;#FFFFFF&quot;,
+  [ZERO_TO_TEN]: &quot;#6d82ff&quot;,
+  [TEN_TO_TWENTY]: &quot;#0529ff&quot;,
+  [GREATER_THAN_TWENTY]: &quot;#00148a&quot;
+}
 
 COLORS.LONG_TERM_RATES = {
-    [NO_RECESSION]: &apos;#FFFFFF&apos;,
-    [ZERO_TO_TWENTY]: &apos;#FFE0E0&apos;,
-    [TWENTY_TO_FORTY]: &apos;#DB877A&apos;,
-    [FORTY_TO_SIXTY]: &apos;#BF5542&apos;,
-    [GREATER_THAN_SIXTY]: &apos;#8E0909&apos;
-};
+  [NO_RECESSION]: &quot;#FFFFFF&quot;,
+  [ZERO_TO_TWENTY]: &quot;#FFE0E0&quot;,
+  [TWENTY_TO_FORTY]: &quot;#DB877A&quot;,
+  [FORTY_TO_SIXTY]: &quot;#BF5542&quot;,
+  [GREATER_THAN_SIXTY]: &quot;#8E0909&quot;
+}
 
 // Default styles, if no style is specified for a particular layer
 const DEFAULT_STYLES = {
-    LineString: {
-        weight: 4,
-        opacity: 0.9,
-        lineCap: &apos;round&apos;,
-        lineJoin: &apos;round&apos;,
-        color: COLORS.BLACK
-    },
-    Point: {
-        radius: 1,
-        color: COLORS.BLACK,
-        strokeColor: COLORS.BLACK,
-        weight: 0,
-        opacity: 0.8,
-        fillOpacity: 0
-    },
-    MultiLineString: {
-        weight: 4,
-        opacity: 0.9,
-        lineCap: &apos;round&apos;,
-        lineJoin: &apos;round&apos;,
-        color: COLORS.BLACK
-    }
-};
+  LineString: {
+    weight: 4,
+    opacity: 0.9,
+    lineCap: &quot;round&quot;,
+    lineJoin: &quot;round&quot;,
+    color: COLORS.BLACK
+  },
+  Point: {
+    radius: 1,
+    color: COLORS.BLACK,
+    strokeColor: COLORS.BLACK,
+    weight: 0,
+    opacity: 0.8,
+    fillOpacity: 0
+  },
+  MultiLineString: {
+    weight: 4,
+    opacity: 0.9,
+    lineCap: &quot;round&quot;,
+    lineJoin: &quot;round&quot;,
+    color: COLORS.BLACK
+  }
+}
 
 const SPECIAL_STYLES = {
-    Square: {
-        color: COLORS.BLACK,
-        strokeColor: COLORS.BLACK,
-        weight: 0,
-        opacity: 1,
-        fillOpacity: 1,
-        lineCap: &apos;square&apos;,
-        lineJoin: &apos;miter&apos;
-    },
-    Triangle: {
-        color: COLORS.BLACK,
-        strokeColor: COLORS.BLACK,
-        weight: 0,
-        opacity: 1,
-        fillOpacity: 1,
-        lineCap: &apos;square&apos;,
-        lineJoin: &apos;miter&apos;
-    }
-};
+  Square: {
+    color: COLORS.BLACK,
+    strokeColor: COLORS.BLACK,
+    weight: 0,
+    opacity: 1,
+    fillOpacity: 1,
+    lineCap: &quot;square&quot;,
+    lineJoin: &quot;miter&quot;
+  },
+  Triangle: {
+    color: COLORS.BLACK,
+    strokeColor: COLORS.BLACK,
+    weight: 0,
+    opacity: 1,
+    fillOpacity: 1,
+    lineCap: &quot;square&quot;,
+    lineJoin: &quot;miter&quot;
+  }
+}
 
 /**
  * Individual layer styles are added below, as referenced by ID in config.json
@@ -254,275 +251,277 @@ const SPECIAL_STYLES = {
  * - the keys of each function in LAYER_STYLES_BY_ID correspond to layers in config.json
  */
 const LAYER_STYLES_BY_ID = {
-    backshore_1976(subStyleName) {
-        const style = {
-            ...DEFAULT_STYLES.LineString
-        };
-        switch (subStyleName) {
-            case &apos;Moderately Stable&apos;:
-                style.color = COLORS.GREEN;
-                break;
-            case &apos;Moderately Unstable&apos;:
-                style.color = COLORS.YELLOW;
-                break;
-            case &apos;No Bluff&apos;:
-                style.color = COLORS.GRAY;
-                break;
-            case &apos;Unstable / Failing&apos;:
-                style.color = COLORS.RED;
-                break;
-            default:
-                style.color = COLORS.BLACK;
-                break;
-        }
-        return style;
-    },
-    backshore_2007(subStyleName) {
-        const style = {
-            ...DEFAULT_STYLES.LineString
-        };
-        switch (subStyleName) {
-            case &apos;Moderately Stable&apos;:
-                style.color = COLORS.GREEN;
-                break;
-            case &apos;Moderately Unstable&apos;:
-                style.color = COLORS.YELLOW;
-                break;
-            case &apos;No Bluff&apos;:
-                style.color = COLORS.GRAY;
-                break;
-            case &apos;Unstable / Failing&apos;:
-                style.color = COLORS.RED;
-                break;
-            default:
-                style.color = COLORS.BLACK;
-                break;
-        }
-        return style;
-    },
-    photos_1976() {
-        return {
-            ...DEFAULT_STYLES.Point,
-            color: COLORS.PHOTOS[0],
-            strokeColor: COLORS.PHOTOS[0]
-        };
-    },
-    photos_2007() {
-        return {
-            ...DEFAULT_STYLES.Point,
-            color: COLORS.PHOTOS[1],
-            strokeColor: COLORS.PHOTOS[1]
-        };
-    },
-    structure_1976() {
-        return {
-            ...DEFAULT_STYLES.Point,
-            color: COLORS.STRUCTURES[0],
-            fillColor: COLORS.STRUCTURES[0],
-            opacity: 1
-        };
-    },
-    structure_2007() {
-        return {
-            ...DEFAULT_STYLES.Point,
-            color: COLORS.STRUCTURES[1],
-            fillColor: COLORS.STRUCTURES[1],
-            opacity: 1
-        };
-    },
-    beachclass_1976(subStyleName) {
-        const style = {
-            ...DEFAULT_STYLES.LineString
-        };
-        switch (subStyleName) {
-            case &apos;None&apos;:
-                style.color = COLORS.BEACH[0];
-                break;
-            case &apos;Revetment&apos;:
-                style.color = COLORS.BEACH[1];
-                break;
-            case &apos;Poorly Organized Rip-Rap / Rubble&apos;:
-                style.color = COLORS.BEACH[2];
-                break;
-            case &apos;Seawall / Bulkhead&apos;:
-                style.color = COLORS.BEACH[3];
-                break;
-            case &apos;Groin / Jetty / Offshore Breakwater&apos;:
-                style.color = COLORS.BEACH[4];
-                break;
-            case &apos;Small Boat Dock&apos;:
-                style.color = COLORS.BEACH[5];
-                break;
-            case &apos;Public Marina&apos;:
-                style.color = COLORS.BEACH[6];
-                break;
-            case &apos;Commercial / Industrial Dock&apos;:
-                style.color = COLORS.BEACH[7];
-                break;
-            case &apos;Personal Marina&apos;:
-                style.color = COLORS.BEACH[8];
-                break;
-            case &apos;Offshore Breakwater&apos;:
-                style.color = COLORS.BEACH[9];
-                break;
-            default:
-                style.opacity = 0;
-                break;
-        }
-        return style;
-    },
-    beachclass_2007(subStyleName) {
-        const style = {
-            ...DEFAULT_STYLES.LineString
-        };
-        switch (subStyleName) {
-            case &apos;None&apos;:
-                style.color = COLORS.BEACH[0];
-                break;
-            case &apos;Revetment&apos;:
-                style.color = COLORS.BEACH[1];
-                break;
-            case &apos;Poorly Organized Rip-Rap / Rubble&apos;:
-                style.color = COLORS.BEACH[2];
-                break;
-            case &apos;Seawall / Bulkhead&apos;:
-                style.color = COLORS.BEACH[3];
-                break;
-            case &apos;Groin / Jetty / Offshore Breakwater&apos;:
-                style.color = COLORS.BEACH[4];
-                break;
-            case &apos;Small Boat Dock&apos;:
-                style.color = COLORS.BEACH[5];
-                break;
-            case &apos;Public Marina&apos;:
-                style.color = COLORS.BEACH[6];
-                break;
-            case &apos;Commercial / Industrial Dock&apos;:
-                style.color = COLORS.BEACH[7];
-                break;
-            case &apos;Personal Marina&apos;:
-                style.color = COLORS.BEACH[8];
-                break;
-            case &apos;Offshore Breakwater&apos;:
-                style.color = COLORS.BEACH[9];
-                break;
-            default:
-                style.opacity = 0;
-                break;
-        }
-        return style;
-    },
-    profiles(subStyleName) {
-        const style = {
-            ...DEFAULT_STYLES.LineString,
-            color: COLORS.PROFILES.bluff
-        };
-        switch (subStyleName) {
-            case &apos;Bathymetric Profile&apos;:
-                style.color = COLORS.PROFILES.bathy;
-                break;
-            default:
-                break;
-        }
-        return style;
-    },
-    photos_2016() {
-        return {
-            ...DEFAULT_STYLES.Point,
-            color: COLORS.PHOTOS[3],
-            strokeColor: COLORS.PHOTOS[3]
-        };
-    },
-    photos_2017() {
-        return {
-            ...DEFAULT_STYLES.Point,
-            color: COLORS.PHOTOS[4],
-            strokeColor: COLORS.PHOTOS[4]
-        };
-    },
-    photos_2018() {
-        return {
-            ...DEFAULT_STYLES.Point,
-            color: COLORS.PHOTOS[5],
-            strokeColor: COLORS.PHOTOS[5]
-        };
-    },
-    photos_2012() {
-        return {
-            ...DEFAULT_STYLES.Point,
-            color: COLORS.PHOTOS[2],
-            strokeColor: COLORS.PHOTOS[2]
-        };
-    },
-    // square, blue
-    bluff_toe_rec_short(subStyleName) {
-        return {
-            ...SPECIAL_STYLES.Square,
-            color: COLORS.SHORT_TERM_RATES[subStyleName],
-            strokeColor: COLORS.SHORT_TERM_RATES[subStyleName]
-        };
-    },
-    // circle, blue
-    bluff_crest_rec_short(subStyleName) {
-        return {
-            ...DEFAULT_STYLES.Point,
-            color: COLORS.SHORT_TERM_RATES[subStyleName],
-            strokeColor: COLORS.SHORT_TERM_RATES[subStyleName]
-        };
-    },
-    // triangle, blue
-    shoreline_rec_short(subStyleName) {
-        return {
-            ...SPECIAL_STYLES.Triangle,
-            color: COLORS.SHORT_TERM_RATES[subStyleName],
-            strokeColor: COLORS.SHORT_TERM_RATES[subStyleName]
-        };
-    },
-    // square, red
-    bluff_toe_rec_long(subStyleName) {
-        return {
-            ...SPECIAL_STYLES.Square,
-            color: COLORS.LONG_TERM_RATES[subStyleName],
-            strokeColor: COLORS.LONG_TERM_RATES[subStyleName]
-        };
-    },
-    // circle, red
-    bluff_crest_rec_long(subStyleName) {
-        return {
-            ...DEFAULT_STYLES.Point,
-            color: COLORS.LONG_TERM_RATES[subStyleName],
-            strokeColor: COLORS.LONG_TERM_RATES[subStyleName]
-        };
-    },
-    // triangle, red
-    shoreline_rec_long(subStyleName) {
-        return {
-            ...SPECIAL_STYLES.Triangle,
-            color: COLORS.LONG_TERM_RATES[subStyleName],
-            strokeColor: COLORS.LONG_TERM_RATES[subStyleName]
-        };
-    },
-    // orange
-    shoreline_position() {
-        return {
-            ...DEFAULT_STYLES.LineString
-        };
+  backshore_1976(subStyleName) {
+    const style = {
+      ...DEFAULT_STYLES.LineString
     }
-};
+    switch (subStyleName) {
+      case &quot;Moderately Stable&quot;:
+        style.color = COLORS.GREEN
+        break
+      case &quot;Moderately Unstable&quot;:
+        style.color = COLORS.YELLOW
+        break
+      case &quot;No Bluff&quot;:
+        style.color = COLORS.GRAY
+        break
+      case &quot;Unstable / Failing&quot;:
+        style.color = COLORS.RED
+        break
+      default:
+        style.color = COLORS.BLACK
+        break
+    }
+    return style
+  },
+  backshore_2007(subStyleName) {
+    const style = {
+      ...DEFAULT_STYLES.LineString
+    }
+    switch (subStyleName) {
+      case &quot;Moderately Stable&quot;:
+        style.color = COLORS.GREEN
+        break
+      case &quot;Moderately Unstable&quot;:
+        style.color = COLORS.YELLOW
+        break
+      case &quot;No Bluff&quot;:
+        style.color = COLORS.GRAY
+        break
+      case &quot;Unstable / Failing&quot;:
+        style.color = COLORS.RED
+        break
+      default:
+        style.color = COLORS.BLACK
+        break
+    }
+    return style
+  },
+  photos_1976() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.PHOTOS[0],
+      strokeColor: COLORS.PHOTOS[0]
+    }
+  },
+  photos_2007() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.PHOTOS[1],
+      strokeColor: COLORS.PHOTOS[1]
+    }
+  },
+  structure_1976() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.STRUCTURES[0],
+      fillColor: COLORS.STRUCTURES[0],
+      opacity: 1
+    }
+  },
+  structure_2007() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.STRUCTURES[1],
+      fillColor: COLORS.STRUCTURES[1],
+      opacity: 1
+    }
+  },
+  beachclass_1976(subStyleName) {
+    const style = {
+      ...DEFAULT_STYLES.LineString
+    }
+    switch (subStyleName) {
+      case &quot;None&quot;:
+        style.color = COLORS.BEACH[0]
+        break
+      case &quot;Revetment&quot;:
+        style.color = COLORS.BEACH[1]
+        break
+      case &quot;Poorly Organized Rip-Rap / Rubble&quot;:
+        style.color = COLORS.BEACH[2]
+        break
+      case &quot;Seawall / Bulkhead&quot;:
+        style.color = COLORS.BEACH[3]
+        break
+      case &quot;Groin / Jetty / Offshore Breakwater&quot;:
+        style.color = COLORS.BEACH[4]
+        break
+      case &quot;Small Boat Dock&quot;:
+        style.color = COLORS.BEACH[5]
+        break
+      case &quot;Public Marina&quot;:
+        style.color = COLORS.BEACH[6]
+        break
+      case &quot;Commercial / Industrial Dock&quot;:
+        style.color = COLORS.BEACH[7]
+        break
+      case &quot;Personal Marina&quot;:
+        style.color = COLORS.BEACH[8]
+        break
+      case &quot;Offshore Breakwater&quot;:
+        style.color = COLORS.BEACH[9]
+        break
+      default:
+        style.opacity = 0
+        break
+    }
+    return style
+  },
+  beachclass_2007(subStyleName) {
+    const style = {
+      ...DEFAULT_STYLES.LineString
+    }
+    switch (subStyleName) {
+      case &quot;None&quot;:
+        style.color = COLORS.BEACH[0]
+        break
+      case &quot;Revetment&quot;:
+        style.color = COLORS.BEACH[1]
+        break
+      case &quot;Poorly Organized Rip-Rap / Rubble&quot;:
+        style.color = COLORS.BEACH[2]
+        break
+      case &quot;Seawall / Bulkhead&quot;:
+        style.color = COLORS.BEACH[3]
+        break
+      case &quot;Groin / Jetty / Offshore Breakwater&quot;:
+        style.color = COLORS.BEACH[4]
+        break
+      case &quot;Small Boat Dock&quot;:
+        style.color = COLORS.BEACH[5]
+        break
+      case &quot;Public Marina&quot;:
+        style.color = COLORS.BEACH[6]
+        break
+      case &quot;Commercial / Industrial Dock&quot;:
+        style.color = COLORS.BEACH[7]
+        break
+      case &quot;Personal Marina&quot;:
+        style.color = COLORS.BEACH[8]
+        break
+      case &quot;Offshore Breakwater&quot;:
+        style.color = COLORS.BEACH[9]
+        break
+      default:
+        style.opacity = 0
+        break
+    }
+    return style
+  },
+  profiles(subStyleName) {
+    const style = {
+      ...DEFAULT_STYLES.LineString,
+      color: COLORS.PROFILES.bluff
+    }
+    switch (subStyleName) {
+      case &quot;Bathymetric Profile&quot;:
+        style.color = COLORS.PROFILES.bathy
+        break
+      default:
+        break
+    }
+    return style
+  },
+  photos_2016() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.PHOTOS[3],
+      strokeColor: COLORS.PHOTOS[3]
+    }
+  },
+  photos_2017() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.PHOTOS[4],
+      strokeColor: COLORS.PHOTOS[4]
+    }
+  },
+  photos_2018() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.PHOTOS[5],
+      strokeColor: COLORS.PHOTOS[5]
+    }
+  },
+  photos_2012() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.PHOTOS[2],
+      strokeColor: COLORS.PHOTOS[2]
+    }
+  },
+  // square, blue
+  bluff_toe_rec_short(subStyleName) {
+    return {
+      ...SPECIAL_STYLES.Square,
+      color: COLORS.SHORT_TERM_RATES[subStyleName],
+      strokeColor: COLORS.SHORT_TERM_RATES[subStyleName]
+    }
+  },
+  // circle, blue
+  bluff_crest_rec_short(subStyleName) {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.SHORT_TERM_RATES[subStyleName],
+      strokeColor: COLORS.SHORT_TERM_RATES[subStyleName]
+    }
+  },
+  // triangle, blue
+  shoreline_rec_short(subStyleName) {
+    return {
+      ...SPECIAL_STYLES.Triangle,
+      color: COLORS.SHORT_TERM_RATES[subStyleName],
+      strokeColor: COLORS.SHORT_TERM_RATES[subStyleName]
+    }
+  },
+  // square, red
+  bluff_toe_rec_long(subStyleName) {
+    return {
+      ...SPECIAL_STYLES.Square,
+      color: COLORS.LONG_TERM_RATES[subStyleName],
+      strokeColor: COLORS.LONG_TERM_RATES[subStyleName]
+    }
+  },
+  // circle, red
+  bluff_crest_rec_long(subStyleName) {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.LONG_TERM_RATES[subStyleName],
+      strokeColor: COLORS.LONG_TERM_RATES[subStyleName]
+    }
+  },
+  // triangle, red
+  shoreline_rec_long(subStyleName) {
+    return {
+      ...SPECIAL_STYLES.Triangle,
+      color: COLORS.LONG_TERM_RATES[subStyleName],
+      strokeColor: COLORS.LONG_TERM_RATES[subStyleName]
+    }
+  },
+  // orange
+  shoreline_position() {
+    return {
+      ...DEFAULT_STYLES.LineString
+    }
+  }
+}
 
 // No recession (distance &lt;= 0)
 // 0 to 10 feet (0 &lt; distance &lt;= 10)
 // 10 to 20 feet (10 &lt; distance &lt;= 20)
 // Greater than 20 feet (20 &lt; distance)
-const getShortTermClassification = (distance) =&gt; {
-    if (distance &gt; 20) {
-        return GREATER_THAN_TWENTY;
-    } else if (distance &gt; 10) {
-        return TEN_TO_TWENTY;
-    } else if (distance &gt; 0) {
-        return ZERO_TO_TEN;
-    } 
-    return NO_RECESSION;
+const getShortTermClassification = distance =&gt; {
+  if (distance &gt; 20) {
+    return GREATER_THAN_TWENTY
+  }
+  if (distance &gt; 10) {
+    return TEN_TO_TWENTY
+  }
+  if (distance &gt; 0) {
+    return ZERO_TO_TEN
+  }
+  return NO_RECESSION
 }
 
 // No recession (distance &lt;= 0)
@@ -530,17 +529,62 @@ const getShortTermClassification = (distance) =&gt; {
 // 20 to 40 feet (20 &lt; distance &lt;= 40)
 // 40 to 60 feet (40 &lt; distance &lt;= 60)
 // Greater than 60 feet (40 &lt; distance)
-const getLongTermClassification = (distance) =&gt; {
-    if (distance &gt; 60) {
-        return GREATER_THAN_SIXTY;
-    } else if (distance &gt; 40) {
-        return FORTY_TO_SIXTY;
-    } else if (distance &gt; 20) {
-        return TWENTY_TO_FORTY;
-    } else if (distance &gt; 0) {
-        return ZERO_TO_TWENTY;
-    } 
-    return NO_RECESSION;
+const getLongTermClassification = distance =&gt; {
+  if (distance &gt; 60) {
+    return GREATER_THAN_SIXTY
+  }
+  if (distance &gt; 40) {
+    return FORTY_TO_SIXTY
+  }
+  if (distance &gt; 20) {
+    return TWENTY_TO_FORTY
+  }
+  if (distance &gt; 0) {
+    return ZERO_TO_TWENTY
+  }
+  return NO_RECESSION
+}
+
+const LEGEND_SORT_OVERRIDES_BY_LAYER_ID = {
+  bluff_toe_rec_long: [
+    NO_RECESSION,
+    ZERO_TO_TWENTY,
+    TWENTY_TO_FORTY,
+    FORTY_TO_SIXTY,
+    GREATER_THAN_SIXTY
+  ],
+  bluff_crest_rec_long: [
+    NO_RECESSION,
+    ZERO_TO_TWENTY,
+    TWENTY_TO_FORTY,
+    FORTY_TO_SIXTY,
+    GREATER_THAN_SIXTY
+  ],
+  shoreline_rec_long: [
+    NO_RECESSION,
+    ZERO_TO_TWENTY,
+    TWENTY_TO_FORTY,
+    FORTY_TO_SIXTY,
+    GREATER_THAN_SIXTY
+  ],
+  bluff_toe_rec_short: [
+    NO_RECESSION,
+    ZERO_TO_TEN,
+    TEN_TO_TWENTY,
+    GREATER_THAN_TWENTY
+  ],
+  bluff_crest_rec_short: [
+    NO_RECESSION,
+    ZERO_TO_TEN,
+    TEN_TO_TWENTY,
+    GREATER_THAN_TWENTY
+  ],
+  shoreline_rec_short: [
+    NO_RECESSION,
+    ZERO_TO_TEN,
+    TEN_TO_TWENTY,
+    GREATER_THAN_TWENTY
+  ]
 }
 
 /**
@@ -556,82 +600,82 @@ const getLongTermClassification = (distance) =&gt; {
  * @param {GeoJSON Feature} feature - a GeoJSON feature
  */
 function getLayerSubStyleName(layerId, feature) {
-    let subStyleName = layerId;
-    switch (layerId) {
-        case &apos;backshore_1976&apos;:
-            subStyleName = feature.properties[&apos;Bluff Condition Classification&apos;];
-            break;
-        case &apos;backshore_2007&apos;:
-            subStyleName = feature.properties[&apos;Bluff Condition Classification&apos;];
-            break;
-        case &apos;photos_1976&apos;:
-            subStyleName = &apos;1976 Photos&apos;;
-            break;
-        case &apos;photos_2007&apos;:
-            subStyleName = &apos;2007 Photos&apos;;
-            break;
-        case &apos;structure_1976&apos;:
-            subStyleName = &apos;Structures&apos;;
-            break;
-        case &apos;structure_2007&apos;:
-            subStyleName = &apos;Structures&apos;;
-            break;
-        case &apos;beachclass_1976&apos;:
-            subStyleName = feature.properties[&apos;Shore Protection Classification&apos;];
-            break;
-        case &apos;beachclass_2007&apos;:
-            subStyleName = feature.properties[&apos;Shore Protection Classification&apos;];
-            break;
-        case &apos;profiles&apos;:
-            if (feature.properties.bathy_xls !== false) {
-                subStyleName = &apos;Bathymetric Profile&apos;;
-            } else {
-                subStyleName = &apos;Bluff Profile&apos;;
-            }
-            break;
-        case &apos;photos_obl_2016&apos;:
-            subStyleName = &apos;2016 Photos&apos;;
-            break;
-        case &apos;photos_dm_2016&apos;:
-            subStyleName = &apos;2016 Photos&apos;;
-            break;
-        case &apos;photos_2017&apos;:
-            subStyleName = &apos;2017 Photos&apos;;
-            break;
-        case &apos;photos_2012&apos;:
-            subStyleName = &apos;2012 Photos&apos;;
-            break;
-        case &apos;bluff_toe_rec_long&apos;:
-            subStyleName = getLongTermClassification(feature.properties.Yr_59_Dist);
-            break;
-        case &apos;bluff_crest_rec_long&apos;:
-            subStyleName = getLongTermClassification(feature.properties.Yr_59_Dist);
-            break;
-        case &apos;shoreline_rec_long&apos;:
-            subStyleName = getLongTermClassification(feature.properties.Yr_59_Dist);
-            break;
-        case &apos;bluff_toe_rec_short&apos;:
-            subStyleName = getShortTermClassification(feature.properties.Yr_20_Dist);
-            break;
-        case &apos;bluff_crest_rec_short&apos;:
-            subStyleName = getShortTermClassification(feature.properties.Yr_20_Dist);
-            break;
-        case &apos;shoreline_rec_short&apos;:
-            subStyleName = getShortTermClassification(feature.properties.Yr_20_Dist);
-            break;
-        case &apos;shoreline_position &apos;:
-            subStyleName = &apos;Shoreline Position&apos;;
-            break;
-        default:
-            break;
-    }
-    return subStyleName;
+  let subStyleName = layerId
+  switch (layerId) {
+    case &quot;backshore_1976&quot;:
+      subStyleName = feature.properties[&quot;Bluff Condition Classification&quot;]
+      break
+    case &quot;backshore_2007&quot;:
+      subStyleName = feature.properties[&quot;Bluff Condition Classification&quot;]
+      break
+    case &quot;photos_1976&quot;:
+      subStyleName = &quot;1976 Photos&quot;
+      break
+    case &quot;photos_2007&quot;:
+      subStyleName = &quot;2007 Photos&quot;
+      break
+    case &quot;structure_1976&quot;:
+      subStyleName = &quot;Structures&quot;
+      break
+    case &quot;structure_2007&quot;:
+      subStyleName = &quot;Structures&quot;
+      break
+    case &quot;beachclass_1976&quot;:
+      subStyleName = feature.properties[&quot;Shore Protection Classification&quot;]
+      break
+    case &quot;beachclass_2007&quot;:
+      subStyleName = feature.properties[&quot;Shore Protection Classification&quot;]
+      break
+    case &quot;profiles&quot;:
+      if (feature.properties.bathy_xls !== false) {
+        subStyleName = &quot;Bathymetric Profile&quot;
+      } else {
+        subStyleName = &quot;Bluff Profile&quot;
+      }
+      break
+    case &quot;photos_obl_2016&quot;:
+      subStyleName = &quot;2016 Photos&quot;
+      break
+    case &quot;photos_dm_2016&quot;:
+      subStyleName = &quot;2016 Photos&quot;
+      break
+    case &quot;photos_2017&quot;:
+      subStyleName = &quot;2017 Photos&quot;
+      break
+    case &quot;photos_2012&quot;:
+      subStyleName = &quot;2012 Photos&quot;
+      break
+    case &quot;bluff_toe_rec_long&quot;:
+      subStyleName = getLongTermClassification(feature.properties.Yr_59_Dist)
+      break
+    case &quot;bluff_crest_rec_long&quot;:
+      subStyleName = getLongTermClassification(feature.properties.Yr_59_Dist)
+      break
+    case &quot;shoreline_rec_long&quot;:
+      subStyleName = getLongTermClassification(feature.properties.Yr_59_Dist)
+      break
+    case &quot;bluff_toe_rec_short&quot;:
+      subStyleName = getShortTermClassification(feature.properties.Yr_20_Dist)
+      break
+    case &quot;bluff_crest_rec_short&quot;:
+      subStyleName = getShortTermClassification(feature.properties.Yr_20_Dist)
+      break
+    case &quot;shoreline_rec_short&quot;:
+      subStyleName = getShortTermClassification(feature.properties.Yr_20_Dist)
+      break
+    case &quot;shoreline_position &quot;:
+      subStyleName = &quot;Shoreline Position&quot;
+      break
+    default:
+      break
+  }
+  return subStyleName
 }
 
 /**
  * Cache every unique style so that it can be reused for features sharing the same style
  */
-const CACHE = {};
+const CACHE = {}
 
 /**
  * Return a cached style if it exists
@@ -641,13 +685,13 @@ const CACHE = {};
  * @returns {Object|false} - returns style object if cache exists, false if it doesn&apos;t
  */
 function getCachedStyle(layerId, feature) {
-    if (typeof CACHE[layerId] !== &apos;undefined&apos;) {
-        const subStyleName = getLayerSubStyleName(layerId, feature);
-        if (typeof CACHE[layerId][subStyleName] !== &apos;undefined&apos;) {
-            return CACHE[layerId][subStyleName];
-        }
+  if (typeof CACHE[layerId] !== &quot;undefined&quot;) {
+    const subStyleName = getLayerSubStyleName(layerId, feature)
+    if (typeof CACHE[layerId][subStyleName] !== &quot;undefined&quot;) {
+      return CACHE[layerId][subStyleName]
     }
-    return false;
+  }
+  return false
 }
 
 /**
@@ -659,32 +703,46 @@ function getCachedStyle(layerId, feature) {
  * @return {object} - style
  */
 function createNewStyle(layerId, feature) {
-    let style = null;
-    const layer = LAYERS_BY_ID[layerId];
-    // Get either the singular name for the layer&apos;s style or the name of the sub-style for this feature
-    const subStyleName = getLayerSubStyleName(layerId, feature);
-    // If there&apos;s a style set for a particular Layer ID, fetch that style
-    // Otherwise, get the default style for that geometry type
-    if (typeof LAYER_STYLES_BY_ID[layerId] !== &apos;undefined&apos;) {
-        style = LAYER_STYLES_BY_ID[layerId](subStyleName);
-    } else if (typeof DEFAULT_STYLES[feature.geometry.type] !== &apos;undefined&apos;) {
-        style = DEFAULT_STYLES[feature.geometry.type];
-    }
-    // assign the classname property of every style
-    const layerIdClass = &apos;layer-&apos; + layerId;
-    const layerGeometryClass = &apos;layer-geometry-&apos; + feature.geometry.type;
-    const displayType = (layer.displayType) ? layer.displayType : feature.geometry.type.toLowerCase();
-    const layerDisplayTypeClass = &apos;layer-display-type-&apos; + displayType;
-    if (typeof style.className === &apos;undefined&apos;) {
-        style.className = &apos;&apos;;
-    }
-    style.className += &apos; &apos; + [layerGeometryClass, layerIdClass, layerDisplayTypeClass].join(&apos; &apos;);
-    // add the style to the legend
-    store.dispatch(legendStyleUpdate(layerId, subStyleName, style, feature.geometry.type));
-    // add style to cache
-    CACHE[layerId] = CACHE[layerId] || {};
-    CACHE[layerId][subStyleName] = style;
-    return style;
+  let style = null
+  const layer = LAYERS_BY_ID[layerId]
+  // Get either the singular name for the layer&apos;s style or the name of the sub-style for this feature
+  const subStyleName = getLayerSubStyleName(layerId, feature)
+  // If there&apos;s a style set for a particular Layer ID, fetch that style
+  // Otherwise, get the default style for that geometry type
+  if (typeof LAYER_STYLES_BY_ID[layerId] !== &quot;undefined&quot;) {
+    style = LAYER_STYLES_BY_ID[layerId](subStyleName)
+  } else if (typeof DEFAULT_STYLES[feature.geometry.type] !== &quot;undefined&quot;) {
+    style = DEFAULT_STYLES[feature.geometry.type]
+  }
+  // assign the classname property of every style
+  const layerIdClass = &quot;layer-&quot; + layerId
+  const layerGeometryClass = &quot;layer-geometry-&quot; + feature.geometry.type
+  const displayType = layer.displayType
+    ? layer.displayType
+    : feature.geometry.type.toLowerCase()
+  const layerDisplayTypeClass = &quot;layer-display-type-&quot; + displayType
+  if (typeof style.className === &quot;undefined&quot;) {
+    style.className = &quot;&quot;
+  }
+  style.className +=
+    &quot; &quot; + [layerGeometryClass, layerIdClass, layerDisplayTypeClass].join(&quot; &quot;)
+  const sortOverride = LEGEND_SORT_OVERRIDES_BY_LAYER_ID[layerId]
+  const sortOrder = sortOverride ? sortOverride.indexOf(subStyleName) : 0
+  // add the style to the legend
+  store.dispatch(
+    legendStyleUpdate(
+      layerId,
+      subStyleName,
+      style,
+      feature.geometry.type,
+      displayType,
+      sortOrder
+    )
+  )
+  // add style to cache
+  CACHE[layerId] = CACHE[layerId] || {}
+  CACHE[layerId][subStyleName] = style
+  return style
 }
 
 /**
@@ -695,9 +753,9 @@ function createNewStyle(layerId, feature) {
  * @returns {function} - a function that gets a unique style based on the feature that&apos;s passed to it
  */
 export default function LAYER_STYLE(layerId) {
-    return function layerStyle(feature) {
-        return getCachedStyle(layerId, feature) || createNewStyle(layerId, feature);
-    };
+  return function layerStyle(feature) {
+    return getCachedStyle(layerId, feature) || createNewStyle(layerId, feature)
+  }
 }
 </code></pre>
 

@@ -1,1 +1,74 @@
-[]
+[
+  {
+    "name": "legendStyleUpdate",
+    "filePath": "src/js/ducks/layers.js",
+    "lines": [
+      {
+        "lineNumber": 21,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 22,
+        "line": " * When the app is processing a layer and comes across a new feature style, it dispatches this"
+      },
+      {
+        "lineNumber": 23,
+        "line": " * action to store the style in the store. It's then used by the legend to display an appropriate"
+      },
+      {
+        "lineNumber": 24,
+        "line": " * entry."
+      },
+      {
+        "lineNumber": 25,
+        "line": " *"
+      },
+      {
+        "lineNumber": 26,
+        "line": " * @param {string} layerId"
+      },
+      {
+        "lineNumber": 27,
+        "line": " * @param {string} propertyName - the name of the property within the feature that's being styled"
+      },
+      {
+        "lineNumber": 28,
+        "line": " *  i.e. in the Structures layer, we're styling different structure types"
+      },
+      {
+        "lineNumber": 29,
+        "line": " * @param {Object} style - the key/value pairs that describe a Leaflet style"
+      },
+      {
+        "lineNumber": 30,
+        "line": " * @param {string} geometryType - usually point or line, allows the legend to determine what shape to show"
+      },
+      {
+        "lineNumber": 31,
+        "line": " *  as an icon next to a legend entry"
+      },
+      {
+        "lineNumber": 32,
+        "line": " */"
+      },
+      {
+        "lineNumber": 33,
+        "line": "export function legendStyleUpdate("
+      }
+    ],
+    "codeParams": [
+      "layerId",
+      "propertyName",
+      "style",
+      "geometryType",
+      "displayType",
+      "sortOrder"
+    ],
+    "docParams": [
+      "layerId",
+      "propertyName",
+      "style",
+      "geometryType"
+    ]
+  }
+]

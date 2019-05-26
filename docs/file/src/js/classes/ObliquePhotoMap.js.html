@@ -111,255 +111,265 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/js/classes/ObliquePhotoMap.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import axios from &apos;axios&apos;;
-import { unmountComponentAtNode } from &apos;react-dom&apos;;
-import L from &apos;leaflet&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import axios from &quot;axios&quot;
+import { unmountComponentAtNode } from &quot;react-dom&quot;
+import L from &quot;leaflet&quot;
 
 // Leaflet Plugins
-import AddSVGShapesToLeaflet from &apos;leaflet-svg-shape-markers&apos;;
-import AddMousePosition from &apos;../lib/AddMousePosition&apos;;
+import AddSVGShapesToLeaflet from &quot;leaflet-svg-shape-markers&quot;
+import AddMousePosition from &quot;../lib/AddMousePosition&quot;
 
-import CONFIG from &apos;../config.json&apos;;
-import LAYER_STYLE from &apos;../layers/layerStyles&apos;;
-import { onEachFeature } from &apos;../layers/layerFeatures&apos;;
-import { mapNewZoomLevel, mapMousedown, doneZooming } from &apos;../ducks/map&apos;;
-import { layerPreload, layerLoaded, layerError } from &apos;../ducks/layers&apos;;
-import { basemapPreload, basemapLoaded, basemapError } from &apos;../ducks/basemaps&apos;;
-import store from &apos;../store&apos;;
+import CONFIG from &quot;../config.json&quot;
+import LAYER_STYLE from &quot;../layers/layerStyles&quot;
+import { onEachFeature } from &quot;../layers/layerFeatures&quot;
+import { mapNewZoomLevel, mapMousedown, doneZooming } from &quot;../ducks/map&quot;
+import { layerPreload, layerLoaded, layerError } from &quot;../ducks/layers&quot;
+import { basemapPreload, basemapLoaded, basemapError } from &quot;../ducks/basemaps&quot;
+import store from &quot;../store&quot;
 
 /**
  * The main class that contains the Leaflet-based map component
  */
 export default class ObliquePhotoMap {
+  /**
+   * Leaflet popups are tied into React, and the react nodes need to be
+   * manually added / removed. The below function removes the React node
+   * when a popup is closed
+   */
+  static onPopupClose(e) {
+    const container = e.popup.getContent()
     /**
-     * Leaflet popups are tied into React, and the react nodes need to be
-     * manually added / removed. The below function removes the React node
-     * when a popup is closed
+     * setTimeout hack to get around this current issue with React:
+     * https://github.com/facebook/react/issues/3298
      */
-    static onPopupClose(e) {
-        const container = e.popup.getContent();
-        /**
-         * setTimeout hack to get around this current issue with React:
-         * https://github.com/facebook/react/issues/3298
-         */
-        setTimeout(() =&gt; {
-            unmountComponentAtNode(container);
-        }, 10);
+    setTimeout(() =&gt; {
+      unmountComponentAtNode(container)
+    }, 10)
+  }
+
+  /**
+   * Dispatch a map action every time the user clicks the map
+   */
+  static onMapMousedown() {
+    store.dispatch(mapMousedown())
+  }
+
+  /**
+   * @param {string} map - the string ID of the html element that the map will be added to
+   */
+  constructor(map) {
+    const self = this
+    this.basemapGroup = L.layerGroup()
+    this.layerGroup = L.layerGroup()
+    this.map = L.map(map, {
+      maxBounds: CONFIG.map.maxExtent,
+      layers: [self.basemapGroup, self.layerGroup],
+      inertia: false
+    }).fitBounds(CONFIG.map.wisconsinExtent, {
+      padding: [10, 10]
+    })
+    // shims to add non-es6 plugins
+    AddMousePosition(L)
+    AddSVGShapesToLeaflet(L)
+    L.control.mousePosition().addTo(self.map)
+    L.control.scale().addTo(self.map)
+    this.basemapIndex = {}
+    this.layerIndex = {}
+    this.dispatchZoom = this.dispatchZoom.bind(this)
+    this.updateSize = this.updateSize.bind(this)
+    this.zoomToPopup = this.zoomToPopup.bind(this)
+    this.map.on(&quot;zoomend&quot;, self.dispatchZoom)
+    this.map.on(&quot;mousedown&quot;, self.constructor.onMapMousedown)
+    this.map.on(&quot;popupclose&quot;, self.constructor.onPopupClose)
+    // set some default values
+    this.dispatchZoom()
+  }
+
+  /**
+   * Dispatch a zoom action every time the map is zoomed
+   */
+  dispatchZoom() {
+    const currentZoom = this.map.getZoom()
+    store.dispatch(mapNewZoomLevel(currentZoom))
+  }
+
+  /**
+   * Create a new map layer
+   * @param {string} layerId - a unique identifier for a layer
+   * @param {Object} layer - key/value pairs describing a layer
+   */
+  createLayer(layerId, layer) {
+    const self = this
+    store.dispatch(layerPreload(layerId))
+    switch (layer.type) {
+      case &quot;tileLayer&quot;:
+        if (typeof layer.url === &quot;undefined&quot;) {
+          console.error(&quot;Layer &quot; + layerId + &quot; must have a tile URL&quot;)
+        } else {
+          this.layerIndex[layerId] = L.tileLayer(layer.url, {
+            zIndex: 1
+          })
+          this.layerIndex[layerId].once(&quot;load&quot;, () =&gt; {
+            store.dispatch(layerLoaded(layerId))
+          })
+          this.layerIndex[layerId].once(&quot;tileerror&quot;, () =&gt; {
+            store.dispatch(layerError(layerId))
+          })
+        }
+        break
+      case &quot;geojson&quot;:
+        if (typeof layer.dataLocation === &quot;undefined&quot;) {
+          console.error(&quot;Layer &quot; + layerId + &quot; must have a data location&quot;)
+        } else {
+          const layerOptions = {
+            pointToLayer(feature, latlng) {
+              let marker
+              switch (layer.displayType) {
+                case &quot;square&quot;:
+                  marker = new L.ShapeMarker(latlng, {
+                    shape: &quot;square&quot;,
+                    radius: 4,
+                    layerId
+                  })
+                  break
+                case &quot;triangle&quot;:
+                  marker = new L.ShapeMarker(latlng, {
+                    shape: &quot;triangle&quot;,
+                    radius: 4,
+                    layerId
+                  })
+                  break
+                default:
+                  marker = L.circleMarker(latlng, {
+                    layerId
+                  })
+                  break
+              }
+              return marker
+            },
+            layerId
+          }
+          layerOptions.onEachFeature = onEachFeature(layerId, self.map)
+          layerOptions.style = LAYER_STYLE(layerId)
+          this.layerIndex[layerId] = L.geoJson(null, layerOptions)
+          axios
+            .get(layer.dataLocation)
+            .then(response =&gt; {
+              self.layerIndex[layerId].addData(response.data)
+              store.dispatch(layerLoaded(layerId))
+            })
+            .catch(error =&gt; {
+              console.error(error)
+              store.dispatch(layerError(layerId))
+            })
+        }
+        break
+      default:
+        console.error(&quot;Unrecognized layer type in config&quot;)
+        store.dispatch(layerError(layerId))
+        break
     }
-    /**
-     * Dispatch a map action every time the user clicks the map
-     */
-    static onMapMousedown() {
-        store.dispatch(mapMousedown());
+  }
+
+  /**
+   * Toggle a layer on or off
+   * - Create a layer if it doesn&apos;t exist
+   * - Toggle it if it already exists and is in the map
+   *
+   * @param {string} layerId - a unique identifier for a layer
+   * @param {Object} layer - key/value pairs describing a layer
+   */
+  toggleLayer(layerId, layer) {
+    if (typeof this.layerIndex[layerId] === &quot;undefined&quot;) {
+      this.createLayer(layerId, layer)
     }
-    /**
-     * @param {string} map - the string ID of the html element that the map will be added to
-     */
-    constructor(map) {
-        const self = this;
-        this.basemapGroup = L.layerGroup();
-        this.layerGroup = L.layerGroup();
-        this.map = L.map(map, {
-            maxBounds: CONFIG.map.maxExtent,
-            layers: [self.basemapGroup, self.layerGroup],
-            inertia: false
+    if (layer.active === true) {
+      this.layerGroup.addLayer(this.layerIndex[layerId])
+    } else {
+      this.layerGroup.removeLayer(this.layerIndex[layerId])
+    }
+  }
+
+  /**
+   * Toggle a basemap on or off
+   * - Create if it doesn&apos;t exist
+   * - Toggle it if it already exists
+   *
+   * @param {string} basemapId - a unique identifier for a layer
+   * @param {Object} basemap - key/value pairs describing a layer
+   */
+  toggleBasemap(basemapId, basemap) {
+    const self = this
+    if (typeof basemap.url === &quot;undefined&quot;) {
+      console.error(&quot;Basemap &quot; + basemapId + &quot; must have a tile URL&quot;)
+    } else {
+      if (typeof this.basemapIndex[basemapId] === &quot;undefined&quot;) {
+        this.basemapIndex[basemapId] = L.tileLayer(basemap.url, {
+          zIndex: 0
         })
-            .fitBounds(CONFIG.map.wisconsinExtent, {
-                padding: [10, 10]
-            });
-        // shims to add non-es6 plugins
-        AddMousePosition(L);
-        AddSVGShapesToLeaflet(L);
-        L.control.mousePosition().addTo(self.map);
-        L.control.scale().addTo(self.map);
-        this.basemapIndex = {};
-        this.layerIndex = {};
-        this.dispatchZoom = this.dispatchZoom.bind(this);
-        this.updateSize = this.updateSize.bind(this);
-        this.zoomToPopup = this.zoomToPopup.bind(this);
-        this.map.on(&apos;zoomend&apos;, self.dispatchZoom);
-        this.map.on(&apos;mousedown&apos;, self.constructor.onMapMousedown);
-        this.map.on(&apos;popupclose&apos;, self.constructor.onPopupClose);
-        // set some default values
-        this.dispatchZoom();
+      }
+      if (basemap.active === true) {
+        this.basemapGroup.clearLayers()
+        store.dispatch(basemapPreload(basemapId))
+        self.basemapIndex[basemapId].once(&quot;load&quot;, () =&gt; {
+          store.dispatch(basemapLoaded(basemapId))
+        })
+        self.basemapIndex[basemapId].once(&quot;tileerror&quot;, () =&gt; {
+          store.dispatch(basemapError(basemapId))
+        })
+        this.basemapGroup.addLayer(self.basemapIndex[basemapId])
+      }
     }
-    /**
-     * Dispatch a zoom action every time the map is zoomed
-     */
-    dispatchZoom() {
-        const currentZoom = this.map.getZoom();
-        store.dispatch(mapNewZoomLevel(currentZoom));
-    }
-    /**
-     * Create a new map layer
-     * @param {string} layerId - a unique identifier for a layer
-     * @param {Object} layer - key/value pairs describing a layer
-     */
-    createLayer(layerId, layer) {
-        const self = this;
-        store.dispatch(layerPreload(layerId));
-        switch (layer.type) {
-            case &apos;tileLayer&apos;:
-                if (typeof layer.url === &apos;undefined&apos;) {
-                    console.error(&apos;Layer &apos; + layerId + &apos; must have a tile URL&apos;);
-                } else {
-                    this.layerIndex[layerId] = L.tileLayer(layer.url, {
-                        zIndex: 1
-                    });
-                    this.layerIndex[layerId].once(&apos;load&apos;, () =&gt; {
-                        store.dispatch(layerLoaded(layerId));
-                    });
-                    this.layerIndex[layerId].once(&apos;tileerror&apos;, () =&gt; {
-                        store.dispatch(layerError(layerId));
-                    });
-                }
-                break;
-            case &apos;geojson&apos;:
-                if (typeof layer.dataLocation === &apos;undefined&apos;) {
-                    console.error(&apos;Layer &apos; + layerId + &apos; must have a data location&apos;);
-                } else {
-                    const layerOptions = {
-                        pointToLayer(feature, latlng) {
-                            let marker;
-                            switch (layer.displayType) {
-                                case &apos;square&apos;:
-                                    marker = new L.ShapeMarker(latlng, {
-                                        shape: &apos;square&apos;,
-                                        radius: 4,
-                                        layerId
-                                    });
-                                    break;
-                                case &apos;triangle&apos;:
-                                    marker = new L.ShapeMarker(latlng, {
-                                        shape: &apos;triangle&apos;,
-                                        radius: 4,
-                                        layerId
-                                    });
-                                    break;
-                                default:
-                                    marker = L.circleMarker(latlng, {
-                                        layerId
-                                    });
-                                    break;
-                            }
-                            return marker;
-                        },
-                        layerId
-                    };
-                    layerOptions.onEachFeature = onEachFeature(layerId, self.map);
-                    layerOptions.style = LAYER_STYLE(layerId);
-                    this.layerIndex[layerId] = L.geoJson(null, layerOptions);
-                    axios.get(layer.dataLocation)
-                        .then((response) =&gt; {
-                            self.layerIndex[layerId].addData(response.data);
-                            store.dispatch(layerLoaded(layerId));
-                        })
-                        .catch((error) =&gt; {
-                            console.error(error);
-                            store.dispatch(layerError(layerId));
-                        });
-                }
-                break;
-            default:
-                console.error(&apos;Unrecognized layer type in config&apos;);
-                store.dispatch(layerError(layerId));
-                break;
-        }
-    }
-    /**
-     * Toggle a layer on or off
-     * - Create a layer if it doesn&apos;t exist
-     * - Toggle it if it already exists and is in the map
-     *
-     * @param {string} layerId - a unique identifier for a layer
-     * @param {Object} layer - key/value pairs describing a layer
-     */
-    toggleLayer(layerId, layer) {
-        if (typeof this.layerIndex[layerId] === &apos;undefined&apos;) {
-            this.createLayer(layerId, layer);
-        }
-        if (layer.active === true) {
-            this.layerGroup.addLayer(this.layerIndex[layerId]);
-        } else {
-            this.layerGroup.removeLayer(this.layerIndex[layerId]);
-        }
-    }
-    /**
-     * Toggle a basemap on or off
-     * - Create if it doesn&apos;t exist
-     * - Toggle it if it already exists
-     *
-     * @param {string} basemapId - a unique identifier for a layer
-     * @param {Object} basemap - key/value pairs describing a layer
-     */
-    toggleBasemap(basemapId, basemap) {
-        const self = this;
-        if (typeof basemap.url === &apos;undefined&apos;) {
-            console.error(&apos;Basemap &apos; + basemapId + &apos; must have a tile URL&apos;);
-        } else {
-            if (typeof this.basemapIndex[basemapId] === &apos;undefined&apos;) {
-                this.basemapIndex[basemapId] = L.tileLayer(basemap.url, {
-                    zIndex: 0
-                });
-            }
-            if (basemap.active === true) {
-                this.basemapGroup.clearLayers();
-                store.dispatch(basemapPreload(basemapId));
-                self.basemapIndex[basemapId].once(&apos;load&apos;, () =&gt; {
-                    store.dispatch(basemapLoaded(basemapId));
-                });
-                self.basemapIndex[basemapId].once(&apos;tileerror&apos;, () =&gt; {
-                    store.dispatch(basemapError(basemapId));
-                });
-                this.basemapGroup.addLayer(self.basemapIndex[basemapId]);
-            }
-        }
-    }
-    /**
-     * Zoom to an extent
-     * - wrapper for the Leaflet function map.fitBounds with added padding
-     *
-     * @param {LatLngBounds|Array[]} extent - [[lat, lng],[lat, lng]]
-     */
-    zoomToExtent(extent) {
-        this.map.fitBounds(extent, {
-            padding: [10, 10]
-        });
-        store.dispatch(doneZooming());
-    }
-    /**
-     * Pan and Zoom to a location
-     * - wrapper for the Leaflet function map.setView
-     *
-     * @param {number} zoom - zoom level
-     * @param {LatLng} coordinates - [lat, lng]
-     */
-    panAndZoom(zoom, coordinates) {
-        this.map.setView(coordinates, zoom);
-        store.dispatch(doneZooming());
-    }
-    /**
-     *
-     * @param {number} zoom - zoom level
-     * @param {LatLng} coordinates - [lat, lng]
-     */
-    zoomToPopup(zoom, coordinates) {
-        this.map.panTo(coordinates, {
-            animate: true
-        });
-        this.map.once(&apos;moveend&apos;, () =&gt; {
-            this.map.setZoom(zoom, {
-                animate: true
-            });
-        });
-    }
-    /**
-     * Force leaflet to re-calculate the size of the map within its bounding div
-     * - wrapper for the Leaflet function invalidateSize
-     */
-    updateSize() {
-        this.map.invalidateSize();
-    }
+  }
+
+  /**
+   * Zoom to an extent
+   * - wrapper for the Leaflet function map.fitBounds with added padding
+   *
+   * @param {LatLngBounds|Array[]} extent - [[lat, lng],[lat, lng]]
+   */
+  zoomToExtent(extent) {
+    this.map.fitBounds(extent, {
+      padding: [10, 10]
+    })
+    store.dispatch(doneZooming())
+  }
+
+  /**
+   * Pan and Zoom to a location
+   * - wrapper for the Leaflet function map.setView
+   *
+   * @param {number} zoom - zoom level
+   * @param {LatLng} coordinates - [lat, lng]
+   */
+  panAndZoom(zoom, coordinates) {
+    this.map.setView(coordinates, zoom)
+    store.dispatch(doneZooming())
+  }
+
+  /**
+   *
+   * @param {number} zoom - zoom level
+   * @param {LatLng} coordinates - [lat, lng]
+   */
+  zoomToPopup(zoom, coordinates) {
+    this.map.panTo(coordinates, {
+      animate: true
+    })
+    this.map.once(&quot;moveend&quot;, () =&gt; {
+      this.map.setZoom(zoom, {
+        animate: true
+      })
+    })
+  }
+
+  /**
+   * Force leaflet to re-calculate the size of the map within its bounding div
+   * - wrapper for the Leaflet function invalidateSize
+   */
+  updateSize() {
+    this.map.invalidateSize()
+  }
 }
 </code></pre>
 

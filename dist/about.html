@@ -37,17 +37,15 @@
             </div>
         </div>
         <div class="row wiscviewer-about-downloads-row">
-            <div class="col-sm-12 col-md-10 col-lg-8">
+            <div>
                 <div class="wiscviewer-section">
                     <div class="wiscviewer-section-title">
                         Downloads
                     </div>
                     <div class="wiscviewer-section-text">
+                        <div class="wiscviewer-section-subtitle">1976 and 2007 Shoreline Inventory Current Data</div>
                         <div class="wiscviewer-about-download-button-row">
                             <div class="wiscviewer-about-download-button-column">
-                                <div class="button-group-label">
-                                    <i class="fa fa-map-o"></i> Layers
-                                </div>
                                 <div class="btn-group" role="group">
                                     <a href="downloads/layers-geojson.zip">
                                         <button type="button" class="btn btn-default"><i class="fa fa-download"></i>GeoJSON</button>
@@ -57,10 +55,10 @@
                                     </a>
                                 </div>
                             </div>
+                        </div>
+                        <div class="wiscviewer-section-subtitle">2012 Bluff Profiles</div>
+                        <div class="wiscviewer-about-download-button-row">
                             <div class="wiscviewer-about-download-button-column">
-                                <div class="button-group-label">
-                                    <i class="fa fa-line-chart"></i> Profiles
-                                </div>
                                 <div class="btn-group" role="group">
                                     <a href="downloads/profiles-json.zip">
                                         <button type="button" class="btn btn-default"><i class="fa fa-download"></i> JSON </button>
@@ -71,9 +69,10 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="wiscviewer-section-subtitle">Oblique Photos</div>
                         <a href="https://www.floodsciencecenter.org/projects/shoreline-inventory-oblique-photo-viewer/shoreline-data-oblique-photo-archives/">
                             <button type="button" class="btn btn-more">
-                                <i class="fa fa-external-link-square"></i> More...
+                                <i class="fa fa-external-link-square"></i> Flood Science Center
                             </button>
                         </a>
                     </div>
@@ -81,7 +80,7 @@
             </div>
         </div>
         <div class="row wiscviewer-about-content-row">
-            <div class="col-sm-12 col-md-10 col-lg-8">
+            <div>
                 <div class="wiscviewer-section">
                     <div class="wiscviewer-section-title">
                         Datasets
@@ -107,9 +106,65 @@
                         <div class="wiscviewer-section-subtitle"> 2012 Bluff Profiles </div>
                         <p> Bluff profiles, graphs, and images courtesy David Mickelson </p>
                         <div class="wiscviewer-section-subtitle"> 1959-1995 Coastal Recession </div>
-                        <p> [about content] </p>
-                        <div class="wiscviewer-section-subtitle-2"> Funding </div>
-                        <p> 1959 - 1995 Coastal Recession Measurement funded by the Wisconsin Coastal Management Program and the National Oceanic and Atmospheric Administration, Office for Coastal Management under the Coastal Zone Management Act, Grant # NA17NOS4730144</p>
+                        <p><b>Coastal Recession Information</b></p>
+                        <p>Lake Michigan coastal bluff and shoreline recession information is provided for Kenosha, Racine, Milwaukee, and Ozaukee Counties (collectively called “southeastern Wisconsin”). Data shown represents the distance the bluff or shoreline has receded, or moved landward, over two analysis periods: a long-term period from 1956 to 2015 and a short-term period from 1995 to 2015. Recession information is provided for the bluff crest and the bluff toe or, in areas that lack a bluff, the shoreline, defined as follows:</p>
+                        <p>Bluff Crest: the location where the relatively flatter upland meets the steeper bluff face</p>
+                        <p>Bluff Toe: the location where the bluff face meets the beach</p>
+                        <p>Shoreline: the location where the beach meets the water</p>
+                        
+                        <p class="text-center"><img src="img/bluff_features_w_beach.png"></p>
+                        <p>The coastal recession information was produced as a part of ongoing studies at the University of Wisconsin-Madison Coastal Sustainability Laboratory. This data has been made public through collaborations of the University of Wisconsin-Madison, the Wisconsin Coastal Management Program, University of Wisconsin Sea Grant, and the Association of State Floodplain Managers. The data presented here should be considered preliminary and may not reflect current conditions along the coast.</p>
+                        
+                        <p><b>Recession Data Layers</b></p>
+                        <p>The following recession measurements are available for viewing:</p>
+                        <table>
+                            <thead>
+                                <th>Layer</th>
+                                <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Bluff Toe Recession <br> Long-term (1956 – 2015)</td>
+                                    <td>The distance the bluff toe has moved landward between 1956 and 2015. </td>
+                                </tr>
+                                <tr>
+                                    <td>Bluff Crest Recession <br> Long-term (1956 - 2015)</td>
+                                    <td>The distance the bluff crest has moved landward between 1956 and 2015. </td>
+                                </tr>
+                                <tr>
+                                    <td>Shoreline Recession <br> Long-term (1956 - 2015)</td>
+                                    <td>The distance the shoreline has moved landward between 1956 and 2015. </td>
+                                </tr>
+                                <tr>
+                                    <td>Bluff Toe Recession <br> Short-term (1995 – 2015)</td>
+                                    <td>The distance the bluff toe has moved landward between 1995 and 2015. </td>
+                                </tr>
+                                <tr>
+                                    <td>Bluff Crest Recession <br> Short-term (1995 - 2015)</td>
+                                    <td>The distance the bluff crest has moved landward between 1995 and 2015. </td>
+                                </tr>
+                                <tr>
+                                    <td>Shoreline Recession <br> Short-term (1995 - 2015)</td>
+                                    <td>The distance the shoreline has moved landward between 1995 and 2015. </td>
+                                </tr>
+                                <tr>
+                                    <td>Shoreline Position (2015)</td>
+                                    <td>The location where the beach met the water, as measured in 2015 aerial photographs</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <p class="text-center"><img src="img/bluff_recession_w_beach.png"></p>
+                        <p>Each data point represents an average of recession measurements along a 300-foot section of coast and does not represent any specific property or municipal boundaries. By clicking on a point, the actual average measured recession distance and an average annual rate of recession can be viewed. Note that a positive recession value represents a landward movement of the feature and a negative recession value represents a lakeward movement of the feature, also known as accretion.</p>
+                        <p>The recession information can provide useful insights into the historic migration of the southeastern Wisconsin coast. It should be noted that the recession distances provided here represent how the bluffs and shorelines have responded to historic environmental conditions and human actions over a specific time period in the past (1956-2015 and 1995-2015). There is always uncertainty in how bluff and shoreline recession will respond to future conditions. Bluff recession can also be sporadic. For example, a bluff crest that had remained unchanged for decades can recede many feet almost instantly due to a bluff collapse. Human actions may also change the evolution of the coast. For example, a bluff that may have been heavily eroded historically may have been recently stabilized or had shore protection added such that recession could be expected to decrease compared to historic rates.</p>
+                        <p><b>Disclaimer</b></p>
+                        <p>Please note that the data presented here should be considered preliminary and may not reflect current conditions along the coast. Care should be exercised in interpreting these data based on knowledge of coastal geology, engineering and mapping. Site assessments may be necessary to property interpret this data. As the Lake Michigan coast is a dynamic and constantly changing environment, one should consider consulting with local authorities and qualified professionals before building or making other land use decisions along the coast.</p>
+                        <p><b>Methods</b></p>
+                        <p>Bluff recession distances were measured from historical aerial photos in Geographic Information System (GIS) software for two analysis periods: 1956-2015 and 1995-2015. Using GIS software, photos from each year are georeferenced to position them accurately in space and orthorectified to remove vertical distortions caused by the camera lens. The bluff crest, bluff toe, and shoreline are carefully traced on each photo. The bluff crest is identified as the break in slope between the upland and the bluff slope, the bluff toe is identified as the break in slope between the bluff slope and beach, and the shoreline is defined as the location that appears as the interface between the water and the land at the time the photo was acquired. Differences in soil color, vegetation or other indicators are used to distinguish the features on each photo. Once each feature is digitized, the Digital Shoreline Analysis System (DSAS) software is used to measure the location of each digitized feature along transect lines spaced at 10-meter intervals along the shoreline. The data presented here shows recession data which have been spatially averaged along 300-foot sections of coast. The data shown on this data viewer therefore represents average recession over a distance wider than a typical single lot, parcel, or shoreline frontage, and not at a specific parcel or location on the coast. </p>
+                        <p><b>Measurement Uncertainty</b></p>
+                        <p>Uncertainty is inherent in any measurement. Errors during the digitization process of coastal features are the primary source of uncertainty for these bluff recession measurements. The most important sources of uncertainty during the digitization process are georeferencing errors of older photographs, photo resolution and/or quality, and visual obstruction of features in photos (i.e., dense forests concealing the bluff crest). Approximate uncertainty in the long-term recession distances is ±4 feet (±0.07 ft/year for recession rate) and in the short-term recession distances ±2 feet (±0.1 ft/yr for recession rate). Uncertainty values may be higher in some areas that suffer from image quality issues.</p>
+                        <p><b>Funding</b></p>
+                        <p>Funded by the Wisconsin Coastal Management Program and the National Oceanic and Atmospheric Administration, Office for Coastal Management under Grant # NA17NOS4730144</p>                        
                         <div class="wiscviewer-section-subtitle"> Basemaps </div>
                         <p> Basemaps are provided by
                             <a href="https://www.mapbox.com/feedback/">Mapbox©</a>, which are based on

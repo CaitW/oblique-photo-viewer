@@ -2,7 +2,10 @@
 $hide_scroll_padding: 17px;
 
 .wiscviewer-sidebar {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  box-shadow:
+ 0 2px 2px 0 rgba(0, 0, 0, 0.2),
+ 0 1px 5px 0 rgba(0, 0, 0, 0.2),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2);
   z-index: 500;
   background-color: $primary_800;
   color: $primary_50;
@@ -10,35 +13,12 @@ $hide_scroll_padding: 17px;
   height: 100%;
   overflow-y: hidden;
   overflow-x: hidden;
-}
-
-.wiscviewer-sidebar-inner-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: -17px;
-  left: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  -ms-overflow-style: none;
-
-  // there's a -17px buffer on the sidebar inner container to hide the scrollbar
-  // this adjusts the content so that -17px margin isn't visible
-  .wiscviewer-sidebar-tabs,
-  .wiscviewer-sidebar-tab-content {
-    margin-right: 17px;
-    // width: 100%;
-  }
+  display: flex;
+  flex-direction: column;
 }
 
 .wiscviewer-sidebar-tabs {
   margin-bottom: 3px;
-  margin-right: 17px;
 
   div {
     display: inline-block;
@@ -71,6 +51,29 @@ $hide_scroll_padding: 17px;
       box-shadow: inset 3px 3px 10px rgba(0, 0, 0, 0.1);
     }
   }
+}
+
+.wiscviewer-sidebar-static-container,
+.wiscviewer-sidebar-scrolling-container {
+  width: calc(100% + 17px);
+}
+
+.wiscviewer-sidebar-scrolling-container {
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+}
+
+// there's a -17px buffer on the sidebar inner container to hide the scrollbar
+// this adjusts the content so that -17px margin isn't visible
+.wiscviewer-sidebar-tabs,
+.wiscviewer-sidebar-tab-content {
+  width: calc(100% - 17px)
 }
 
 .wiscviewer-sidebar-panel {
@@ -125,17 +128,21 @@ $hide_scroll_padding: 17px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  .wiscviewer-layer-group-name {
 
+  // this selector also appears in the global scope, as it is used outside of the sidebar as well
+  .wiscviewer-layer-group-name {
+    text-align: right;
   }
+  
   .wiscviewer-layer-group-info,
   .wiscviewer-layer-group-info > a {
+    line-height: 12px;
     color: $primary_400;
   }
+
   &:hover {
     cursor: default;
   }
-
 }
 
 .wiscviewer-layer-left-icon {
@@ -182,7 +189,3 @@ $hide_scroll_padding: 17px;
     color: $primary_50;
   }
 }
-
-
-
-

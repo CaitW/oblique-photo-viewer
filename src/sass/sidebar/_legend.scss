@@ -4,6 +4,7 @@
   list-style: none;
   text-transform: capitalize;
   color: $primary_200;
+
   li {
     padding: 1px 0;
   }
@@ -18,9 +19,3 @@
   }
 }
 
-.wiscviewer-legend-layer-group {
-  .wiscviewer-layer-group-name {
-    float: right;
-    margin-top: 4px;
-  }
-}

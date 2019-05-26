@@ -116,7 +116,7 @@
  *
  * Contains the actions and reducer part that controls map functionality.
  */
-import CONFIG from &apos;../config.json&apos;;
+import CONFIG from &quot;../config.json&quot;
 
 /**
  * Sets the map store to contain a zoom-to-shoreline action
@@ -124,48 +124,48 @@ import CONFIG from &apos;../config.json&apos;;
  * @param {string} countyName
  */
 export function zoomToShoreline(lakeName, countyName) {
-    return {
-        type: &apos;MAP:ZOOM_TO_SHORELINE&apos;,
-        lakeName,
-        countyName
-    };
+  return {
+    type: &quot;MAP:ZOOM_TO_SHORELINE&quot;,
+    lakeName,
+    countyName
+  }
 }
 
 /**
  * Sets the map store to done zooming
  */
 export function doneZooming() {
-    return {
-        type: &apos;MAP:DONE_ZOOMING&apos;
-    };
+  return {
+    type: &quot;MAP:DONE_ZOOMING&quot;
+  }
 }
 
 /**
  * Tells the map to reset the view back to the default as specified by the config
  */
 export function resetMapView() {
-    return {
-        type: &apos;MAP:RESET_VIEW&apos;
-    };
+  return {
+    type: &quot;MAP:RESET_VIEW&quot;
+  }
 }
 
 /**
  * Dispatched when the map is done zooming to a new level
  */
 export function mapNewZoomLevel(zoomLevel) {
-    return {
-        type: &apos;MAP:NEW_ZOOM_LEVEL&apos;,
-        zoomLevel
-    };
+  return {
+    type: &quot;MAP:NEW_ZOOM_LEVEL&quot;,
+    zoomLevel
+  }
 }
 
 /**
  * Dispatched when the user clicks on the map
  */
 export function mapMousedown() {
-    return {
-        type: &apos;MAP:MOUSEDOWN&apos;
-    };
+  return {
+    type: &quot;MAP:MOUSEDOWN&quot;
+  }
 }
 
 /**
@@ -175,72 +175,67 @@ export function mapMousedown() {
  * @param {array} coordinates - the coordinates of the location where the popup opened
  */
 export function leafletPopupOpened(coordinates) {
-    return {
-        type: &apos;MAP:LEAFLET_POPUP_OPENED&apos;,
-        coordinates
-    };
+  return {
+    type: &quot;MAP:LEAFLET_POPUP_OPENED&quot;,
+    coordinates
+  }
 }
 
 const initialMapState = {
-    state: {
-        action: &apos;none&apos;
-    },
-    zoom: false
-};
+  state: {
+    action: &quot;none&quot;
+  },
+  zoom: false
+}
 
 export default function map(state = initialMapState, action) {
-    let newState = Object.assign({}, state);
-    switch (action.type) {
-        case &apos;MAP:ZOOM_TO_SHORELINE&apos;:
-        {
-            const shorelineExtent = CONFIG.map.county_shorelines[action.lakeName][action.countyName];
-            newState.state = {
-                action: &apos;willZoom&apos;,
-                extent: shorelineExtent
-            };
-            break;
-        }
-        case &apos;MAP:DONE_ZOOMING&apos;:
-        {
-            if (state.state.action === &apos;willZoom&apos;) {
-                newState.state = {
-                    action: &apos;none&apos;
-                };
-            }
-            break;
-        }
-        case &apos;MAP:RESET_VIEW&apos;:
-        {
-            const wisconsinExtent = CONFIG.map.wisconsinExtent;
-            newState.state = {
-                action: &apos;willZoom&apos;,
-                extent: wisconsinExtent
-            };
-            break;
-        }
-        case &apos;MAP:NEW_ZOOM_LEVEL&apos;:
-        {
-            newState.zoom = action.zoomLevel;
-            break;
-        }
-        case &apos;MAP:LEAFLET_POPUP_OPENED&apos;:
-        {
-            if (state.zoom &lt; 10) {
-                newState.state = {
-                    action: &apos;willZoomToPopup&apos;,
-                    zoom: 10,
-                    coordinates: action.coordinates
-                };
-            }
-            break;
-        }
-        default:
-        {
-            newState = state;
-            break;
-        }
+  let newState = Object.assign({}, state)
+  switch (action.type) {
+    case &quot;MAP:ZOOM_TO_SHORELINE&quot;: {
+      const shorelineExtent =
+        CONFIG.map.county_shorelines[action.lakeName][action.countyName]
+      newState.state = {
+        action: &quot;willZoom&quot;,
+        extent: shorelineExtent
+      }
+      break
     }
-    return newState;
+    case &quot;MAP:DONE_ZOOMING&quot;: {
+      if (state.state.action === &quot;willZoom&quot;) {
+        newState.state = {
+          action: &quot;none&quot;
+        }
+      }
+      break
+    }
+    case &quot;MAP:RESET_VIEW&quot;: {
+      const wisconsinExtent = CONFIG.map.wisconsinExtent
+      newState.state = {
+        action: &quot;willZoom&quot;,
+        extent: wisconsinExtent
+      }
+      break
+    }
+    case &quot;MAP:NEW_ZOOM_LEVEL&quot;: {
+      newState.zoom = action.zoomLevel
+      break
+    }
+    case &quot;MAP:LEAFLET_POPUP_OPENED&quot;: {
+      if (state.zoom &lt; 10) {
+        newState.state = {
+          action: &quot;willZoomToPopup&quot;,
+          zoom: 10,
+          coordinates: action.coordinates
+        }
+      }
+      break
+    }
+    default: {
+      newState = state
+      break
+    }
+  }
+  return newState
 }
 </code></pre>
 

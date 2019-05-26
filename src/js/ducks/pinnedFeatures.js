@@ -4,9 +4,9 @@
  * Contains the actions and reducer part that controls feature popups that have
  * been pinned to the page
  */
-import uuid from 'uuid';
+import uuid from "uuid"
 
-const initialState = {};
+const initialState = {}
 
 /**
  * When a Leaflet-based feature popup is "pinned", by clicking on the pin icon
@@ -19,12 +19,12 @@ const initialState = {};
  * @param {number} position.y - pixel coordinate describing y offset from top of window
  */
 export function newPinnedFeature(layerId, featureProperties, position) {
-    return {
-        type: 'PINNED_FEATURES:NEW',
-        layerId,
-        featureProperties,
-        position
-    };
+  return {
+    type: "PINNED_FEATURES:NEW",
+    layerId,
+    featureProperties,
+    position
+  }
 }
 
 /**
@@ -33,31 +33,31 @@ export function newPinnedFeature(layerId, featureProperties, position) {
  * @param {string} featureId - the ID of the feature to close
  */
 export function closePinnedFeature(featureId) {
-    return {
-        type: 'PINNED_FEATURES:CLOSE',
-        featureId
-    };
+  return {
+    type: "PINNED_FEATURES:CLOSE",
+    featureId
+  }
 }
 
 export default function pinnedFeatures(state = initialState, action) {
-    const newState = {
-        ...state
-    };
-    switch (action.type) {
-        case 'PINNED_FEATURES:NEW': {
-            const newPinnedFeatureId = uuid.v4();
-            newState[newPinnedFeatureId] = {
-                layerId: action.layerId,
-                featureProperties: action.featureProperties,
-                position: action.position
-            };
-            break;
-        }
-        case 'PINNED_FEATURES:CLOSE':
-            delete newState[action.featureId];
-            break;
-        default:
-            break;
+  const newState = {
+    ...state
+  }
+  switch (action.type) {
+    case "PINNED_FEATURES:NEW": {
+      const newPinnedFeatureId = uuid.v4()
+      newState[newPinnedFeatureId] = {
+        layerId: action.layerId,
+        featureProperties: action.featureProperties,
+        position: action.position
+      }
+      break
     }
-    return newState;
+    case "PINNED_FEATURES:CLOSE":
+      delete newState[action.featureId]
+      break
+    default:
+      break
+  }
+  return newState
 }

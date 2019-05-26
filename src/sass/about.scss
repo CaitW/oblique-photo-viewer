@@ -57,16 +57,19 @@ p {
     flex-direction: column;
     justify-content: center;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+
     .wiscviewer-about-brand-name {
       font-family: $font-header;
       color: $primary_50;
       font-size: 36px;
     }
+
     .wiscviewer-about-brand-subtitle {
       font-size: 18px;
       color: $primary_200;
     }
   }
+
   img {
     float: left;
     width: 150px;
@@ -76,18 +79,23 @@ p {
 
 .wiscviewer-about-downloads-row {
   background-color: $primary_100;
+
   i {
     margin-right: 10px;
   }
+
   button i {
     margin-right: 20px;
   }
+
   button.btn-more {
     background-color: $primary_100 !important;
     border: 1px solid $primary_300;
+
     i {
       color: $primary_500;
     }
+
     &:hover {
       background-color: $primary_200 !important;
     }
@@ -95,7 +103,6 @@ p {
 }
 
 .wiscviewer-about-content-row {
-
   dl {
     list-style: none;
     padding: 0;
@@ -104,12 +111,14 @@ p {
     dt {
       line-height: 1.6;
       padding: 5px 0;
-        i {
-          width: 50px;
-          text-align: center;
-          font-size: 18px;
-        }
+
+      i {
+        width: 50px;
+        text-align: center;
+        font-size: 18px;
+      }
     }
+
     dd {
       margin-bottom: 10px;
       padding-left: 55px;
@@ -128,11 +137,13 @@ p {
     font-size: 30px;
     font-family: $font_header;
   }
+
   .wiscviewer-section-subtitle {
     font-size: 24px;
     font-family: $font_header;
     line-height: 48px;
   }
+
   .wiscviewer-section-subtitle-2 {
     font-size: 18px;
     font-family: $font_header;
@@ -167,7 +178,6 @@ button {
   background-color: $primary_400 !important;
   color: $primary_900 !important;
   border-radius: 0 !important;
-  width: 100%;
   text-align: left !important;
 
   &.btn {
@@ -180,7 +190,7 @@ button {
   i {
     float: left;
     vertical-align: middle;
-    margin: 3px 20px auto 0;
+    margin: 5px 20px auto 0;
   }
 
   &:hover {
@@ -190,7 +200,7 @@ button {
 
 img {
   max-width: 500px;
-  max-height: 200px;
+  max-height: 300px;
   margin: 10px;
 }
 
@@ -199,11 +209,21 @@ img {
 }
 
 .wiscviewer-about-download-button-column {
-  width: 200px;
-
   &:first-child {
     margin-right: 10px;
   }
+}
+
+table, tr, td, th {
+  border: 2px solid #eceff1;
+}
+
+th, td {
+  padding: 5px
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #cfd8dc
 }
 
 .wiscviewer-subsection {
@@ -222,6 +242,7 @@ img {
 
   .wiscviewer-about-download-button-column {
     width: 100%;
+
     &:first-child {
       margin-right: 0;
     }
@@ -237,6 +258,3 @@ img {
     }
   }
 }
-
-
-
