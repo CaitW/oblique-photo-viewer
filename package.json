@@ -17,7 +17,13 @@
     "type": "git",
     "url": "https://github.com/CaitW/oblique-photo-viewer.git"
   },
-  "keywords": ["Oblique", "Photo", "Viewer", "Shoreline", "Inventory"],
+  "keywords": [
+    "Oblique",
+    "Photo",
+    "Viewer",
+    "Shoreline",
+    "Inventory"
+  ],
   "author": "Caitlin Wolters, ASFPM",
   "license": "ISC",
   "devDependencies": {
