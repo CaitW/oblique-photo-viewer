@@ -30,11 +30,7 @@ const BasemapList = props => {
     "pullDown",
     "wiscviewer-sidebar-panel-body"
   ]
-  const headerClassNames = [
-    "panel-heading",
-    "wiscviewer-sidebar-panel-header",
-    "wiscviewer-layer-group-name"
-  ]
+  const headerClassNames = ["panel-heading", "wiscviewer-sidebar-panel-header"]
   if (props.panelVisible === false) {
     bodyClassNames.push("hidden")
   } else {
@@ -43,7 +39,12 @@ const BasemapList = props => {
   return (
     <div className="panel panel-default wiscviewer-sidebar-panel">
       <div className={headerClassNames.join(" ")} role="button" tabIndex={0}>
-        Basemaps
+        <div className="wiscviewer-layer-group-name">Basemaps</div>
+        <div className="wiscviewer-layer-group-info">
+          <a href="/about#basemaps" target="_blank">
+            <i className="fa fa-question-circle" />
+          </a>
+        </div>
       </div>
       <div className={bodyClassNames.join(" ")}>
         <ListGroup className="wiscviewer-layer-list-group">
