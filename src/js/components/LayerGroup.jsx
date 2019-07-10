@@ -37,7 +37,7 @@ const LayerGroup = props => {
           {props.layerGroupName}{" "}
         </div>
         <div className="wiscviewer-layer-group-info">
-          <a href={"/about#" + props.layerGroupId} target="_blank">
+          <a href={"about.html#" + props.layerGroupId} target="_blank">
             <i className="fa fa-question-circle" />
           </a>
         </div>

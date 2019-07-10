@@ -41,7 +41,7 @@ const BasemapList = props => {
       <div className={headerClassNames.join(" ")} role="button" tabIndex={0}>
         <div className="wiscviewer-layer-group-name">Basemaps</div>
         <div className="wiscviewer-layer-group-info">
-          <a href="/about#basemaps" target="_blank">
+          <a href="about.html#basemaps" target="_blank">
             <i className="fa fa-question-circle" />
           </a>
         </div>
