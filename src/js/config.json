@@ -137,7 +137,7 @@
           }
         }
       },
-      "Oblique Photos": {
+      "oblique_photos": {
         "name": "Oblique Photos",
         "layers": {
           "photos_1976": {
