@@ -50,12 +50,13 @@ COLORS.BEACH = [
 ]
 
 COLORS.PHOTOS = [
-  "#9575CD",
-  "#7E57C2",
-  "#673AB7",
-  "#512DA8",
-  "#311B92",
-  "#21106d"
+  "#bcb7d3",
+  "#a69fc4",
+  "#9087b6",
+  "#796fa7",
+  "#635798",
+  "#4d3f8a",
+  "#37277b"
 ]
 
 COLORS.STRUCTURES = ["#6D4C41", "#3E2723"]
@@ -331,6 +332,13 @@ const LAYER_STYLES_BY_ID = {
       strokeColor: COLORS.PHOTOS[5]
     }
   },
+  photos_2019() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.PHOTOS[6],
+      strokeColor: COLORS.PHOTOS[6]
+    }
+  },
   photos_2012() {
     return {
       ...DEFAULT_STYLES.Point,
@@ -398,7 +406,7 @@ const LAYER_STYLES_BY_ID = {
 // 0 to 10 feet (0 < distance <= 10)
 // 10 to 20 feet (10 < distance <= 20)
 // Greater than 20 feet (20 < distance)
-const getShortTermClassification = distance => {
+const getShortTermClassification = (distance) => {
   if (distance > 20) {
     return GREATER_THAN_TWENTY
   }
@@ -416,7 +424,7 @@ const getShortTermClassification = distance => {
 // 20 to 40 feet (20 < distance <= 40)
 // 40 to 60 feet (40 < distance <= 60)
 // Greater than 60 feet (40 < distance)
-const getLongTermClassification = distance => {
+const getLongTermClassification = (distance) => {
   if (distance > 60) {
     return GREATER_THAN_SIXTY
   }

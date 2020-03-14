@@ -52,7 +52,18 @@ for (const layerGroupId in LAYER_GROUPS_BY_ID) {
  * @param {Object} photoProperties
  */
 export function getPhotoURLs(layerId, photoProperties) {
-  const urls = {
+  const urlBase = CONFIG.resources.photos[layerId]
+  let urls = {}
+  // for 2019 photos, instead of modifying the JSON to include a "urls"
+  // property, we're just going to take the name and generate urls ourselves
+  if (layerId === "photos_2019") {
+    const popupName = photoProperties.Name.split(".")[0] + "_pop.jpg"
+    urls.original = urlBase + "/" + photoProperties.Name
+    urls.popup = urlBase + "/popup/" + popupName
+    return urls
+  }
+  // All the other photo files have a urls parameter
+  urls = {
     ...photoProperties.urls
   }
   if (layerId === "photos_2018") {
@@ -60,7 +71,6 @@ export function getPhotoURLs(layerId, photoProperties) {
     split[0] += "_pop"
     urls.popup = split.join(".")
   }
-  const urlBase = CONFIG.resources.photos[layerId]
   for (const size in urls) {
     urls[size] = urlBase + "/" + urls[size]
   }

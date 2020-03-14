@@ -20,7 +20,8 @@ const getContentByLayerId = (layerId, featureProperties) => {
     case "photos_2017":
     case "photos_2016":
     case "photos_2012":
-    case "photos_2018": {
+    case "photos_2018":
+    case "photos_2019": {
       const photoURLs = getPhotoURLs(layerId, featureProperties)
       content.push(
         <a
@@ -74,7 +75,7 @@ const getContentByLayerId = (layerId, featureProperties) => {
   return content
 }
 
-const PopupFooter = props => {
+const PopupFooter = (props) => {
   const footer = getContentByLayerId(props.layerId, props.featureProperties)
   if (footer.length > 0) {
     footer.unshift(<i key="download" className="fa fa-download" />)
