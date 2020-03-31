@@ -126,6 +126,8 @@ The application utilizes Mapbox basemaps.
 1. If you want to style the layer (geojson layers only), add a (Leaflet) style function in ```src/js/layers/layerStyles.js```
 1. If the layer should have different styles for different types of features, make sure to add a case to the `getLayerSubStyleName` function
 1. To make custom modifications to a layer's popup, modify ```src/js/components/FeaturePopups/components/PopupTabs```
+    1. If you have to show images in the popup, you'll probably have to modify `src/js/util.js` in the `getPhotoURLs` function. Previously, I amended the photo JSON files themselves, but with the 2019 photos, I just added a separate case for building the appropriate original and popup images URLs. 
+    2. Also, if adding a photos file, modify `src/js/components/FeaturePopups/components/PopupFooter.jsx` to include a download button for the full size image
 1. Rebuild the application
 
 ### Adding / Modifying / Removing data from downloads
