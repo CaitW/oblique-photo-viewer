@@ -224,7 +224,11 @@ source ~/.bash_profile</code>
 <li>If a geojson layer, add that layer&apos;s geojson file to <code>src/js/data/layers/</code></li>
 <li>If you want to style the layer (geojson layers only), add a (Leaflet) style function in <code>src/js/layers/layerStyles.js</code></li>
 <li>If the layer should have different styles for different types of features, make sure to add a case to the <code>getLayerSubStyleName</code> function</li>
-<li>To make custom modifications to a layer&apos;s popup, modify <code>src/js/components/FeaturePopups/components/PopupTabs</code></li>
+<li>To make custom modifications to a layer&apos;s popup, modify <code>src/js/components/FeaturePopups/components/PopupTabs</code><ol>
+<li>If you have to show images in the popup, you&apos;ll probably have to modify <code>src/js/util.js</code> in the <code>getPhotoURLs</code> function. Previously, I amended the photo JSON files themselves, but with the 2019 photos, I just added a separate case for building the appropriate original and popup images URLs. </li>
+<li>Also, if adding a photos file, modify <code>src/js/components/FeaturePopups/components/PopupFooter.jsx</code> to include a download button for the full size image</li>
+</ol>
+</li>
 <li>Rebuild the application</li>
 </ol>
 <h3 id="adding---modifying---removing-data-from-downloads">Adding / Modifying / Removing data from downloads</h3><ul>

@@ -163,15 +163,16 @@ COLORS.BEACH = [
 ]
 
 COLORS.PHOTOS = [
-  &quot;#9575CD&quot;,
-  &quot;#7E57C2&quot;,
-  &quot;#673AB7&quot;,
-  &quot;#512DA8&quot;,
-  &quot;#311B92&quot;,
-  &quot;#21106d&quot;
+  &quot;#bcb7d3&quot;,
+  &quot;#a69fc4&quot;,
+  &quot;#9087b6&quot;,
+  &quot;#796fa7&quot;,
+  &quot;#635798&quot;,
+  &quot;#4d3f8a&quot;,
+  &quot;#37277b&quot;
 ]
 
-COLORS.STRUCTURES = [&quot;#6D4C41&quot;, &quot;#3E2723&quot;]
+COLORS.STRUCTURES = [&quot;#8a6f66&quot;, &quot;#6D4C41&quot;, &quot;#3E2723&quot;]
 
 COLORS.PROFILES = {
   bathy: &quot;#00838F&quot;,
@@ -297,6 +298,29 @@ const LAYER_STYLES_BY_ID = {
     }
     return style
   },
+  backshore_2018(subStyleName) {
+    const style = {
+      ...DEFAULT_STYLES.LineString
+    }
+    switch (subStyleName) {
+      case &quot;Moderately Stable&quot;:
+        style.color = COLORS.GREEN
+        break
+      case &quot;Moderately Unstable&quot;:
+        style.color = COLORS.YELLOW
+        break
+      case &quot;No Bluff&quot;:
+        style.color = COLORS.GRAY
+        break
+      case &quot;Unstable / Failing&quot;:
+        style.color = COLORS.RED
+        break
+      default:
+        style.color = COLORS.BLACK
+        break
+    }
+    return style
+  },
   photos_1976() {
     return {
       ...DEFAULT_STYLES.Point,
@@ -324,6 +348,14 @@ const LAYER_STYLES_BY_ID = {
       ...DEFAULT_STYLES.Point,
       color: COLORS.STRUCTURES[1],
       fillColor: COLORS.STRUCTURES[1],
+      opacity: 1
+    }
+  },
+  structure_2018() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.STRUCTURES[2],
+      fillColor: COLORS.STRUCTURES[2],
       opacity: 1
     }
   },
@@ -409,6 +441,47 @@ const LAYER_STYLES_BY_ID = {
     }
     return style
   },
+  beachclass_2018(subStyleName) {
+    const style = {
+      ...DEFAULT_STYLES.LineString
+    }
+    switch (subStyleName) {
+      case &quot;None&quot;:
+        style.color = COLORS.BEACH[0]
+        break
+      case &quot;Revetment&quot;:
+        style.color = COLORS.BEACH[1]
+        break
+      case &quot;Poorly Organized Rip-Rap / Rubble&quot;:
+        style.color = COLORS.BEACH[2]
+        break
+      case &quot;Seawall / Bulkhead&quot;:
+        style.color = COLORS.BEACH[3]
+        break
+      case &quot;Groin / Jetty / Offshore Breakwater&quot;:
+        style.color = COLORS.BEACH[4]
+        break
+      case &quot;Small Boat Dock&quot;:
+        style.color = COLORS.BEACH[5]
+        break
+      case &quot;Public Marina&quot;:
+        style.color = COLORS.BEACH[6]
+        break
+      case &quot;Commercial / Industrial Dock&quot;:
+        style.color = COLORS.BEACH[7]
+        break
+      case &quot;Personal Marina&quot;:
+        style.color = COLORS.BEACH[8]
+        break
+      case &quot;Offshore Breakwater&quot;:
+        style.color = COLORS.BEACH[9]
+        break
+      default:
+        style.opacity = 0
+        break
+    }
+    return style
+  },
   profiles(subStyleName) {
     const style = {
       ...DEFAULT_STYLES.LineString,
@@ -442,6 +515,13 @@ const LAYER_STYLES_BY_ID = {
       ...DEFAULT_STYLES.Point,
       color: COLORS.PHOTOS[5],
       strokeColor: COLORS.PHOTOS[5]
+    }
+  },
+  photos_2019() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.PHOTOS[6],
+      strokeColor: COLORS.PHOTOS[6]
     }
   },
   photos_2012() {
@@ -608,6 +688,9 @@ function getLayerSubStyleName(layerId, feature) {
     case &quot;backshore_2007&quot;:
       subStyleName = feature.properties[&quot;Bluff Condition Classification&quot;]
       break
+    case &quot;backshore_2018&quot;:
+      subStyleName = feature.properties.BluffCon
+      break
     case &quot;photos_1976&quot;:
       subStyleName = &quot;1976 Photos&quot;
       break
@@ -620,11 +703,17 @@ function getLayerSubStyleName(layerId, feature) {
     case &quot;structure_2007&quot;:
       subStyleName = &quot;Structures&quot;
       break
+    case &quot;structure_2018&quot;:
+      subStyleName = &quot;Structures&quot;
+      break
     case &quot;beachclass_1976&quot;:
       subStyleName = feature.properties[&quot;Shore Protection Classification&quot;]
       break
     case &quot;beachclass_2007&quot;:
       subStyleName = feature.properties[&quot;Shore Protection Classification&quot;]
+      break
+    case &quot;beachclass_2018&quot;:
+      subStyleName = feature.properties.ProtectV
       break
     case &quot;profiles&quot;:
       if (feature.properties.bathy_xls !== false) {
