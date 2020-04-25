@@ -137,6 +137,83 @@
           }
         }
       },
+      "2018_inventory": {
+        "name": "2018-19 Inventory",
+        "layers": {
+          "backshore_2018": {
+            "name": "Bluff Condition",
+            "type": "geojson",
+            "dataLocation": "./data/layers/backshore_2018.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": false,
+              "BackShoreT": false,
+              "VegClass": false,
+              "BluffCondC": false,
+              "BluffModCl": false,
+              "BluffFailC": false,
+              "NonBluffCl": false,
+              "ConfClass": false,
+              "Comments": "Notes",
+              "CountyName": "County",
+              "CountyFIPS": "FIPS",
+              "Length_Mil": "Segment Length (miles)",
+              "YEAR_": false,
+              "SHINVCAT": false,
+              "SHAPE_Leng": false,
+              "BackShor": "Backshore Type",
+              "VegVal": "Vegetation Classification",
+              "BluffCon": "Bluff Condition Classification",
+              "BluffMod": "Bluff Modified Classification",
+              "BlufFail": "Bluff Failure Classification",
+              "NonBluff": "Non-Bluff Classification"
+            },
+            "idProperty": "OBJECTID"
+          },
+          "beachclass_2018": {
+            "name": "Beach Protection",
+            "type": "geojson",
+            "dataLocation": "./data/layers/beachclass_2018.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": false,
+              "ShoreType": false,
+              "Protection": false,
+              "BeachClass": false,
+              "Comments": "Notes",
+              "ConfClass": false,
+              "CountyName": "County",
+              "CountyFIPS": "FIPS",
+              "Length_Mil": "Segment Length (miles)",
+              "YEAR_": false,
+              "SHINVCAT": false,
+              "SHAPE_Leng": false,
+              "ShoreV": false,
+              "ProtectV": "Shore Protection Classification",
+              "BeachV": "Beach Classification",
+              "ConfV": "Confidence Level Classification"
+            },
+            "idProperty": "OBJECTID"
+          },
+          "structure_2018": {
+            "name": "Shore Structures",
+            "type": "geojson",
+            "dataLocation": "./data/layers/structure_2018.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "OBJECTID": false,
+              "StructureT": false,
+              "Notes": "Comments",
+              "CountyName": "County",
+              "CountyFIPS": "FIPS",
+              "Structure_": "Type",
+              "YEAR_": false,
+              "SHINVCAT": false
+            },
+            "idProperty": "OBJECTID"
+          }
+        }
+      },
       "oblique_photos": {
         "name": "Oblique Photos",
         "layers": {

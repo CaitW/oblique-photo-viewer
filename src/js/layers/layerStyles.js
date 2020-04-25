@@ -59,7 +59,7 @@ COLORS.PHOTOS = [
   "#37277b"
 ]
 
-COLORS.STRUCTURES = ["#6D4C41", "#3E2723"]
+COLORS.STRUCTURES = ["#8a6f66", "#6D4C41", "#3E2723"]
 
 COLORS.PROFILES = {
   bathy: "#00838F",
@@ -185,6 +185,29 @@ const LAYER_STYLES_BY_ID = {
     }
     return style
   },
+  backshore_2018(subStyleName) {
+    const style = {
+      ...DEFAULT_STYLES.LineString
+    }
+    switch (subStyleName) {
+      case "Moderately Stable":
+        style.color = COLORS.GREEN
+        break
+      case "Moderately Unstable":
+        style.color = COLORS.YELLOW
+        break
+      case "No Bluff":
+        style.color = COLORS.GRAY
+        break
+      case "Unstable / Failing":
+        style.color = COLORS.RED
+        break
+      default:
+        style.color = COLORS.BLACK
+        break
+    }
+    return style
+  },
   photos_1976() {
     return {
       ...DEFAULT_STYLES.Point,
@@ -212,6 +235,14 @@ const LAYER_STYLES_BY_ID = {
       ...DEFAULT_STYLES.Point,
       color: COLORS.STRUCTURES[1],
       fillColor: COLORS.STRUCTURES[1],
+      opacity: 1
+    }
+  },
+  structure_2018() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.STRUCTURES[2],
+      fillColor: COLORS.STRUCTURES[2],
       opacity: 1
     }
   },
@@ -257,6 +288,47 @@ const LAYER_STYLES_BY_ID = {
     return style
   },
   beachclass_2007(subStyleName) {
+    const style = {
+      ...DEFAULT_STYLES.LineString
+    }
+    switch (subStyleName) {
+      case "None":
+        style.color = COLORS.BEACH[0]
+        break
+      case "Revetment":
+        style.color = COLORS.BEACH[1]
+        break
+      case "Poorly Organized Rip-Rap / Rubble":
+        style.color = COLORS.BEACH[2]
+        break
+      case "Seawall / Bulkhead":
+        style.color = COLORS.BEACH[3]
+        break
+      case "Groin / Jetty / Offshore Breakwater":
+        style.color = COLORS.BEACH[4]
+        break
+      case "Small Boat Dock":
+        style.color = COLORS.BEACH[5]
+        break
+      case "Public Marina":
+        style.color = COLORS.BEACH[6]
+        break
+      case "Commercial / Industrial Dock":
+        style.color = COLORS.BEACH[7]
+        break
+      case "Personal Marina":
+        style.color = COLORS.BEACH[8]
+        break
+      case "Offshore Breakwater":
+        style.color = COLORS.BEACH[9]
+        break
+      default:
+        style.opacity = 0
+        break
+    }
+    return style
+  },
+  beachclass_2018(subStyleName) {
     const style = {
       ...DEFAULT_STYLES.LineString
     }
@@ -503,6 +575,9 @@ function getLayerSubStyleName(layerId, feature) {
     case "backshore_2007":
       subStyleName = feature.properties["Bluff Condition Classification"]
       break
+    case "backshore_2018":
+      subStyleName = feature.properties["BluffCon"]
+      break
     case "photos_1976":
       subStyleName = "1976 Photos"
       break
@@ -515,11 +590,17 @@ function getLayerSubStyleName(layerId, feature) {
     case "structure_2007":
       subStyleName = "Structures"
       break
+    case "structure_2018":
+      subStyleName = "Structures"
+      break
     case "beachclass_1976":
       subStyleName = feature.properties["Shore Protection Classification"]
       break
     case "beachclass_2007":
       subStyleName = feature.properties["Shore Protection Classification"]
+      break
+    case "beachclass_2018":
+      subStyleName = feature.properties["ProtectV"]
       break
     case "profiles":
       if (feature.properties.bathy_xls !== false) {
