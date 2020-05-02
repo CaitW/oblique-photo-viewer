@@ -11,19 +11,14 @@
     "format-js": "eslint --ext .js,.jsx src/js/** --fix && prettier --write './**/*.{js,jsx}' || prettier --write './**/*.{js,jsx}'",
     "format-css": "prettier-stylelint --write 'src/**/*.{css,scss}'",
     "make-docs": "./node_modules/.bin/esdoc",
+    "make-downloads": "gulp make-downloads",
     "start": "gulp build && http-server ./dist -o & gulp watch-files"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/CaitW/oblique-photo-viewer.git"
   },
-  "keywords": [
-    "Oblique",
-    "Photo",
-    "Viewer",
-    "Shoreline",
-    "Inventory"
-  ],
+  "keywords": ["Oblique", "Photo", "Viewer", "Shoreline", "Inventory"],
   "author": "Caitlin Wolters, ASFPM",
   "license": "ISC",
   "devDependencies": {
