@@ -700,12 +700,7 @@ function getLayerSubStyleName(layerId, feature) {
     case &quot;backshore_2018&quot;:
       subStyleName = feature.properties.BluffCon
       break
-    case &quot;photos_1976&quot;:
-      subStyleName = &quot;1976 Photos&quot;
-      break
-    case &quot;photos_2007&quot;:
-      subStyleName = &quot;2007 Photos&quot;
-      break
+
     case &quot;structure_1976&quot;:
       subStyleName = &quot;Structures&quot;
       break
@@ -731,6 +726,15 @@ function getLayerSubStyleName(layerId, feature) {
         subStyleName = &quot;Bluff Profile&quot;
       }
       break
+    case &quot;photos_1976&quot;:
+      subStyleName = &quot;1976 Photos&quot;
+      break
+    case &quot;photos_2007&quot;:
+      subStyleName = &quot;2007 Photos&quot;
+      break
+    case &quot;photos_2012&quot;:
+      subStyleName = &quot;2012 Photos&quot;
+      break
     case &quot;photos_obl_2016&quot;:
       subStyleName = &quot;2016 Photos&quot;
       break
@@ -740,8 +744,14 @@ function getLayerSubStyleName(layerId, feature) {
     case &quot;photos_2017&quot;:
       subStyleName = &quot;2017 Photos&quot;
       break
-    case &quot;photos_2012&quot;:
-      subStyleName = &quot;2012 Photos&quot;
+    case &quot;photos_2018&quot;:
+      subStyleName = &quot;2018 Photos&quot;
+      break
+    case &quot;photos_2019&quot;:
+      subStyleName = &quot;2019 Photos&quot;
+      break
+    case &quot;photos_2020&quot;:
+      subStyleName = &quot;2020 Photos&quot;
       break
     case &quot;bluff_toe_rec_long&quot;:
       subStyleName = getLongTermClassification(feature.properties.Yr_59_Dist)
