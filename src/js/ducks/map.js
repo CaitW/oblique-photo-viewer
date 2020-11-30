@@ -96,7 +96,7 @@ export default function map(state = initialMapState, action) {
       break
     }
     case "MAP:RESET_VIEW": {
-      const wisconsinExtent = CONFIG.map.wisconsinExtent
+      const { wisconsinExtent } = CONFIG.map
       newState.state = {
         action: "willZoom",
         extent: wisconsinExtent

@@ -66,7 +66,7 @@ class FeaturePopup extends React.Component {
   }
 
   render() {
-    const layerGroupId = LAYERS_BY_ID[this.props.layerId].layerGroupId
+    const { layerGroupId } = LAYERS_BY_ID[this.props.layerId]
     const layerGroupName = LAYER_GROUPS_BY_ID[layerGroupId].name
     const layerName = LAYERS_BY_ID[this.props.layerId].name
     return (

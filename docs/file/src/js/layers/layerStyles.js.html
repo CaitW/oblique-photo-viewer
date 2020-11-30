@@ -163,13 +163,14 @@ COLORS.BEACH = [
 ]
 
 COLORS.PHOTOS = [
-  &quot;#BCB7D3&quot;,
-  &quot;#A29DBA&quot;,
-  &quot;#8983A2&quot;,
-  &quot;#6F6A89&quot;,
-  &quot;#565071&quot;,
-  &quot;#3C3658&quot;,
-  &quot;#231D40&quot;
+  &quot;#BB8FCE&quot;,
+  &quot;#AA7FBD&quot;,
+  &quot;#9A70AC&quot;,
+  &quot;#8A609C&quot;,
+  &quot;#7A518B&quot;,
+  &quot;#6A417B&quot;,
+  &quot;#5A326A&quot;,
+  &quot;#4A235A&quot;
 ]
 
 COLORS.STRUCTURES = [&quot;#8a6f66&quot;, &quot;#6D4C41&quot;, &quot;#3E2723&quot;]
@@ -320,20 +321,6 @@ const LAYER_STYLES_BY_ID = {
         break
     }
     return style
-  },
-  photos_1976() {
-    return {
-      ...DEFAULT_STYLES.Point,
-      color: COLORS.PHOTOS[0],
-      strokeColor: COLORS.PHOTOS[0]
-    }
-  },
-  photos_2007() {
-    return {
-      ...DEFAULT_STYLES.Point,
-      color: COLORS.PHOTOS[1],
-      strokeColor: COLORS.PHOTOS[1]
-    }
   },
   structure_1976() {
     return {
@@ -496,6 +483,27 @@ const LAYER_STYLES_BY_ID = {
     }
     return style
   },
+  photos_1976() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.PHOTOS[0],
+      strokeColor: COLORS.PHOTOS[0]
+    }
+  },
+  photos_2007() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.PHOTOS[1],
+      strokeColor: COLORS.PHOTOS[1]
+    }
+  },
+  photos_2012() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.PHOTOS[2],
+      strokeColor: COLORS.PHOTOS[2]
+    }
+  },
   photos_2016() {
     return {
       ...DEFAULT_STYLES.Point,
@@ -531,13 +539,7 @@ const LAYER_STYLES_BY_ID = {
       strokeColor: COLORS.PHOTOS[7]
     }
   },
-  photos_2012() {
-    return {
-      ...DEFAULT_STYLES.Point,
-      color: COLORS.PHOTOS[2],
-      strokeColor: COLORS.PHOTOS[2]
-    }
-  },
+
   // square, blue
   bluff_toe_rec_short(subStyleName) {
     return {
@@ -598,7 +600,7 @@ const LAYER_STYLES_BY_ID = {
 // 0 to 10 feet (0 &lt; distance &lt;= 10)
 // 10 to 20 feet (10 &lt; distance &lt;= 20)
 // Greater than 20 feet (20 &lt; distance)
-const getShortTermClassification = (distance) =&gt; {
+const getShortTermClassification = distance =&gt; {
   if (distance &gt; 20) {
     return GREATER_THAN_TWENTY
   }
@@ -616,7 +618,7 @@ const getShortTermClassification = (distance) =&gt; {
 // 20 to 40 feet (20 &lt; distance &lt;= 40)
 // 40 to 60 feet (40 &lt; distance &lt;= 60)
 // Greater than 60 feet (40 &lt; distance)
-const getLongTermClassification = (distance) =&gt; {
+const getLongTermClassification = distance =&gt; {
   if (distance &gt; 60) {
     return GREATER_THAN_SIXTY
   }

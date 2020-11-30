@@ -76,7 +76,7 @@ const getContentByLayerId = (layerId, featureProperties) => {
   return content
 }
 
-const PopupFooter = (props) => {
+const PopupFooter = props => {
   const footer = getContentByLayerId(props.layerId, props.featureProperties)
   if (footer.length > 0) {
     footer.unshift(<i key="download" className="fa fa-download" />)

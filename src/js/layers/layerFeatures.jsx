@@ -180,8 +180,8 @@ function createLeafletPopup(feature, featureLayer, layerId, map) {
  * then opens the next layer in the LAYER_INDEX
  */
 function toggleNextFeaturePopup() {
-  const featureIndex = this.featureIndex
-  const layerId = this.layerId
+  const { featureIndex } = this
+  const { layerId } = this
   const nextFeatureIndex =
     featureIndex + 1 >= LAYER_FEATURES[layerId].length ? 0 : featureIndex + 1
   LAYER_FEATURES[layerId][nextFeatureIndex].togglePopup()
@@ -193,8 +193,8 @@ function toggleNextFeaturePopup() {
  * then opens the previous layer in the LAYER_INDEX
  */
 function togglePreviousFeaturePopup() {
-  const featureIndex = this.featureIndex
-  const layerId = this.layerId
+  const { featureIndex } = this
+  const { layerId } = this
   const previousFeatureIndex =
     featureIndex - 1 < 0 ? LAYER_FEATURES[layerId].length - 1 : featureIndex - 1
   LAYER_FEATURES[layerId][previousFeatureIndex].togglePopup()
@@ -207,10 +207,10 @@ function togglePreviousFeaturePopup() {
  *  - toggle an already-created popup
  */
 function togglePopup() {
-  const feature = this.feature
-  const featureIndex = this.featureIndex
-  const layerId = this.layerId
-  const map = this.map
+  const { feature } = this
+  const { featureIndex } = this
+  const { layerId } = this
+  const { map } = this
   this.openNextFeature = toggleNextFeaturePopup.bind(this)
   this.openPreviousFeature = togglePreviousFeaturePopup.bind(this)
   // if the window is sufficiently small, show the mobile feature modal

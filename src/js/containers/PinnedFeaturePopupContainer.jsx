@@ -83,9 +83,9 @@ class PinnedFeaturePopupContainer extends React.Component {
     const pinnedFeatures = []
     for (const featureId in this.props.pinnedFeatures) {
       const pinnedFeature = this.props.pinnedFeatures[featureId]
-      const layerId = pinnedFeature.layerId
+      const { layerId } = pinnedFeature
       const layerName = this.props.layers[layerId].name
-      const layerGroupId = this.props.layers[layerId].layerGroupId
+      const { layerGroupId } = this.props.layers[layerId]
       const layerGroupName = LAYER_GROUPS_BY_ID[layerGroupId].name
       const zIndex = this.state.order.indexOf(featureId)
       pinnedFeatures.push(

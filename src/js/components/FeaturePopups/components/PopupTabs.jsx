@@ -29,8 +29,8 @@ class PopupTabs extends React.Component {
 
   render() {
     const tabs = []
-    const featureProperties = this.props.featureProperties
-    const layerId = this.props.layerId
+    const { featureProperties } = this.props
+    const { layerId } = this.props
 
     switch (layerId) {
       case "photos_1976":
