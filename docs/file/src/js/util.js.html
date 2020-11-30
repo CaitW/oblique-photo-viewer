@@ -169,7 +169,7 @@ export function getPhotoURLs(layerId, photoProperties) {
   let urls = {}
   // for 2019 photos, instead of modifying the JSON to include a &quot;urls&quot;
   // property, we&apos;re just going to take the name and generate urls ourselves
-  if (layerId === &quot;photos_2019&quot;) {
+  if (layerId === &quot;photos_2019&quot; || layerId === &quot;photos_2020&quot;) {
     const popupName = photoProperties.Name.split(&quot;.&quot;)[0] + &quot;_pop.jpg&quot;
     urls.original = urlBase + &quot;/&quot; + photoProperties.Name
     urls.popup = urlBase + &quot;/popup/&quot; + popupName

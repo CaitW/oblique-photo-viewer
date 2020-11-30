@@ -50,13 +50,14 @@ COLORS.BEACH = [
 ]
 
 COLORS.PHOTOS = [
-  "#bcb7d3",
-  "#a69fc4",
-  "#9087b6",
-  "#796fa7",
-  "#635798",
-  "#4d3f8a",
-  "#37277b"
+  "#BB8FCE",
+  "#AA7FBD",
+  "#9A70AC",
+  "#8A609C",
+  "#7A518B",
+  "#6A417B",
+  "#5A326A",
+  "#4A235A"
 ]
 
 COLORS.STRUCTURES = ["#8a6f66", "#6D4C41", "#3E2723"]
@@ -207,20 +208,6 @@ const LAYER_STYLES_BY_ID = {
         break
     }
     return style
-  },
-  photos_1976() {
-    return {
-      ...DEFAULT_STYLES.Point,
-      color: COLORS.PHOTOS[0],
-      strokeColor: COLORS.PHOTOS[0]
-    }
-  },
-  photos_2007() {
-    return {
-      ...DEFAULT_STYLES.Point,
-      color: COLORS.PHOTOS[1],
-      strokeColor: COLORS.PHOTOS[1]
-    }
   },
   structure_1976() {
     return {
@@ -383,6 +370,27 @@ const LAYER_STYLES_BY_ID = {
     }
     return style
   },
+  photos_1976() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.PHOTOS[0],
+      strokeColor: COLORS.PHOTOS[0]
+    }
+  },
+  photos_2007() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.PHOTOS[1],
+      strokeColor: COLORS.PHOTOS[1]
+    }
+  },
+  photos_2012() {
+    return {
+      ...DEFAULT_STYLES.Point,
+      color: COLORS.PHOTOS[2],
+      strokeColor: COLORS.PHOTOS[2]
+    }
+  },
   photos_2016() {
     return {
       ...DEFAULT_STYLES.Point,
@@ -411,13 +419,14 @@ const LAYER_STYLES_BY_ID = {
       strokeColor: COLORS.PHOTOS[6]
     }
   },
-  photos_2012() {
+  photos_2020() {
     return {
       ...DEFAULT_STYLES.Point,
-      color: COLORS.PHOTOS[2],
-      strokeColor: COLORS.PHOTOS[2]
+      color: COLORS.PHOTOS[7],
+      strokeColor: COLORS.PHOTOS[7]
     }
   },
+
   // square, blue
   bluff_toe_rec_short(subStyleName) {
     return {
@@ -478,7 +487,7 @@ const LAYER_STYLES_BY_ID = {
 // 0 to 10 feet (0 < distance <= 10)
 // 10 to 20 feet (10 < distance <= 20)
 // Greater than 20 feet (20 < distance)
-const getShortTermClassification = distance => {
+const getShortTermClassification = (distance) => {
   if (distance > 20) {
     return GREATER_THAN_TWENTY
   }
@@ -496,7 +505,7 @@ const getShortTermClassification = distance => {
 // 20 to 40 feet (20 < distance <= 40)
 // 40 to 60 feet (40 < distance <= 60)
 // Greater than 60 feet (40 < distance)
-const getLongTermClassification = distance => {
+const getLongTermClassification = (distance) => {
   if (distance > 60) {
     return GREATER_THAN_SIXTY
   }

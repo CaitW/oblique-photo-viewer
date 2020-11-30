@@ -39,7 +39,8 @@ class PopupTabs extends React.Component {
       case "photos_2016":
       case "photos_2012":
       case "photos_2018":
-      case "photos_2019": {
+      case "photos_2019":
+      case "photos_2020": {
         const photoURLs = getPhotoURLs(layerId, featureProperties)
         tabs.push(
           <ImageTab

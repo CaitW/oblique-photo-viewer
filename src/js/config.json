@@ -328,6 +328,19 @@
               "Path": false
             },
             "idProperty": "Name"
+          },
+          "photos_2020": {
+            "name": "2020 Photos",
+            "type": "geojson",
+            "dataLocation": "./data/layers/photos_2020.json",
+            "defaultActive": false,
+            "tableProperties": {
+              "Name": true,
+              "DateTime": "Date / Time",
+              "Direction": false,
+              "Path": false
+            },
+            "idProperty": "Name"
           }
         }
       },
@@ -534,7 +547,8 @@
       "photos_2016": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2016_photos",
       "photos_2017": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2017_photos",
       "photos_2018": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2018_photos",
-      "photos_2019": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2019_photos"
+      "photos_2019": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2019_photos",
+      "photos_2020": "http://bin.ssec.wisc.edu/pub/wisconsinview/oblique_viewer_resources/2020_photos"
     },
     "profiles": {
       "pathToXls": {

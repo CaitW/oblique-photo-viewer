@@ -85,7 +85,7 @@
       "expectCount": 2,
       "actualCount": 1,
       "undocumentLines": [
-        78
+        79
       ]
     },
     "src/js/components/FeaturePopups/components/PopupTabs.jsx": {
@@ -327,10 +327,10 @@
         85,
         110,
         141,
-        481,
-        499,
-        515,
-        569
+        488,
+        506,
+        522,
+        576
       ]
     },
     "src/js/lib/AddMousePosition.js": {
