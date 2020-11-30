@@ -487,7 +487,7 @@ const LAYER_STYLES_BY_ID = {
 // 0 to 10 feet (0 < distance <= 10)
 // 10 to 20 feet (10 < distance <= 20)
 // Greater than 20 feet (20 < distance)
-const getShortTermClassification = distance => {
+const getShortTermClassification = (distance) => {
   if (distance > 20) {
     return GREATER_THAN_TWENTY
   }
@@ -505,7 +505,7 @@ const getShortTermClassification = distance => {
 // 20 to 40 feet (20 < distance <= 40)
 // 40 to 60 feet (40 < distance <= 60)
 // Greater than 60 feet (40 < distance)
-const getLongTermClassification = distance => {
+const getLongTermClassification = (distance) => {
   if (distance > 60) {
     return GREATER_THAN_SIXTY
   }
@@ -587,12 +587,7 @@ function getLayerSubStyleName(layerId, feature) {
     case "backshore_2018":
       subStyleName = feature.properties.BluffCon
       break
-    case "photos_1976":
-      subStyleName = "1976 Photos"
-      break
-    case "photos_2007":
-      subStyleName = "2007 Photos"
-      break
+
     case "structure_1976":
       subStyleName = "Structures"
       break
@@ -618,6 +613,15 @@ function getLayerSubStyleName(layerId, feature) {
         subStyleName = "Bluff Profile"
       }
       break
+    case "photos_1976":
+      subStyleName = "1976 Photos"
+      break
+    case "photos_2007":
+      subStyleName = "2007 Photos"
+      break
+    case "photos_2012":
+      subStyleName = "2012 Photos"
+      break
     case "photos_obl_2016":
       subStyleName = "2016 Photos"
       break
@@ -627,8 +631,14 @@ function getLayerSubStyleName(layerId, feature) {
     case "photos_2017":
       subStyleName = "2017 Photos"
       break
-    case "photos_2012":
-      subStyleName = "2012 Photos"
+    case "photos_2018":
+      subStyleName = "2018 Photos"
+      break
+    case "photos_2019":
+      subStyleName = "2019 Photos"
+      break
+    case "photos_2020":
+      subStyleName = "2020 Photos"
       break
     case "bluff_toe_rec_long":
       subStyleName = getLongTermClassification(feature.properties.Yr_59_Dist)
