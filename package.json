@@ -75,7 +75,7 @@
     "webpack-stream": "^5.2.1"
   },
   "dependencies": {
-    "axios": "0.18.0",
+    "axios": "0.21.1",
     "d3": "5.9.2",
     "d3-array": "2.0.3",
     "d3-axis": "^1.0.8",
